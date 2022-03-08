@@ -1,0 +1,391 @@
+<a name="ListFlavors"></a><a name="ListFlavors"></a>
+
+<h1 class="topictitle1">Querying Flavors</h1>
+<h4 class="sectiontitle">Function</h4><p>This API is used to query all load balancer flavors that are available to a specific user in a specific region.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p>Parameters <strong>marker</strong>, <strong>limit</strong>, and <strong>page_reverse</strong> are used for pagination query.</p>
+<p>Parameters <strong>marker</strong> and <strong>page_reverse</strong> take effect only when they are used together with parameter <strong>limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p>GET /v3/{project_id}/elb/flavors</p>
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the ID of the last record on the previous page.</p>
+<p>Note: </p>
+<ul><li><p>This parameter must be used together with <strong>limit</strong>.</p>
+</li><li><p>If this parameter is not specified, the first page will be queried.</p>
+</li><li><p>This parameter cannot be left blank or set to an invalid ID.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the number of records on each page.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>2000</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the page direction.</p>
+<p>The value can be <strong>true</strong> or <strong>false</strong>, and the default value is <strong>false</strong>.</p>
+<p>The last page in the list requested with <strong>page_reverse</strong> set to <strong>false</strong> will not contain the "next" link, and the last page in the list requested with <strong>page_reverse</strong> set to <strong>true</strong> will not contain the "previous" link.</p>
+<p>This parameter must be used together with <strong>limit</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the flavor ID.</p>
+<p>Multiple IDs can be queried in the format of <em>id=xxx&amp;id=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the flavor name.</p>
+<p>Multiple names can be queried in the format of <em>name=xxx&amp;name=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the flavor type. Flavors can be filtered by type.</p>
+<p>Multiple types can be queried in the format of <em>type=xxx&amp;type=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>shared</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies whether the flavor is available to all users.</p>
+<ul><li><p><strong>true</strong> indicates that the flavor is available to all users.</p>
+</li><li><p><strong>false</strong> indicates that the flavor is available only to a specific user.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Request header parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.1 "><p>X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.2.2.5.1.4 "><p>Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>flavors</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>Array of <a href="#ListFlavors__response_Flavor">Flavor</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Lists the flavors.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>page_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p><a href="#ListFlavors__response_PageInfo">PageInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Shows pagination information about the load balancer flavors.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListFlavors__response_Flavor"></a><a name="response_Flavor"></a><table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__response_Flavor" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Flavor</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the flavor ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p><a href="#ListFlavors__response_FlavorInfo">FlavorInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the flavor details.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the flavor name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>shared</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies whether the flavor is available to all users.</p>
+<ul><li><p><strong>true</strong> indicates that the flavor is available to all users.</p>
+</li><li><p><strong>false</strong> indicates that the flavor is available only to a specific user.</p>
+</li></ul>
+<p>Default: <strong>true</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the flavor type. Flavors can be filtered by type.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>32</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListFlavors__response_FlavorInfo"></a><a name="response_FlavorInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__response_FlavorInfo" frame="border" border="1" rules="all"><caption><b>Table 6 </b>FlavorInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>connection</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the maximum concurrent connections.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>cps</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the number of new connections per second.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>qps</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the number of requests per second at Layer 7.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the inbound and outbound bandwidth in the unit of Kbit/s.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListFlavors__response_PageInfo"></a><a name="response_PageInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__response_PageInfo" frame="border" border="1" rules="all"><caption><b>Table 7 </b>PageInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p>previous_marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.6.2.4.1.3 "><p>Specifies the ID of the first record in the pagination query result. This parameter will not be returned if no query result is returned.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p>next_marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.6.2.4.1.3 "><p>Marks the start record on the next page in the pagination query result. This parameter will not be returned if there is no next page.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p>current_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.6.2.4.1.3 "><p>Specifies the number of records.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><pre class="screen">GET
+
+https://{ELB_Endpoint}/v3/{060576782980d5762f9ec014dd2f1148}/elb/flavors?limit=2&amp;marker=179568ef-5ba4-4ca0-8c5e-5d581db779b1</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>Successful request.</p>
+<pre class="screen">{
+  "flavors" : [ {
+    "shared" : true,
+    "project_id" : "573d73c9f90e48d0bddfa0eb202b25c2",
+    "info" : {
+      "connection" : 1000000,
+      "cps" : 80000,
+      "qps" : 50000
+    },
+    "id" : "b2c5d750-5ea8-42f8-a6a8-8b0a1441168a",
+    "name" : "L7_flavor.elb.s2.medium",
+    "type" : "L7"
+  }, {
+    "shared" : true,
+    "project_id" : "573d73c9f90e48d0bddfa0eb202b25c2",
+    "info" : {
+      "connection" : 6000,
+      "cps" : 3000
+    },
+    "id" : "becf3beb-7653-45ab-a025-961597a901bc",
+    "name" : "L4_flavor.elb.s2.small",
+    "type" : "L4"
+  }, {
+    "shared" : true,
+    "project_id" : "3fb9975312cc43808cb274e2ac25d30c",
+    "info" : {
+      "connection" : 6000,
+      "cps" : 3000,
+      "qps" : 1000
+    },
+    "id" : "fb9394ab-d63d-4b4d-8ea0-b6dc974accc6",
+    "name" : "L7_flavor.elb.s1.small",
+    "type" : "L7"
+  } ],
+  "page_info" : {
+    "next_marker" : "fb9394ab-d63d-4b4d-8ea0-b6dc974accc6",
+    "previous_marker" : "b2c5d750-5ea8-42f8-a6a8-8b0a1441168a",
+    "current_count" : 3
+  },
+  "request_id" : "07b7cabe-bfb5-4809-8c28-5a90a961a707"
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ListFlavors__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.8.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.8.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.8.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.8.2.1.3.1.2 "><p>Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p>See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000002.html">Load Balancer Flavor</a>
+
+
+

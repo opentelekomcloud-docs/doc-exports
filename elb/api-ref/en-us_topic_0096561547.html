@@ -1,0 +1,459 @@
+<a name="en-us_topic_0096561547"></a><a name="en-us_topic_0096561547"></a>
+
+<h1 class="topictitle1">Querying Backend Server Groups</h1>
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table7129721916" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Request parameters</caption><thead align="left"><tr id="en-us_topic_0096561547__row538119214112"><th align="left" class="cellrowborder" valign="top" width="23.849999999999998%" id="mcps1.3.1.2.2.5.1.1"><p id="en-us_topic_0096561547__p738122119116">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.86%" id="mcps1.3.1.2.2.5.1.2"><p id="en-us_topic_0096561547__p2381132120119">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.5%" id="mcps1.3.1.2.2.5.1.3"><p id="en-us_topic_0096561547__p1138132113114">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.79%" id="mcps1.3.1.2.2.5.1.4"><p id="en-us_topic_0096561547__p173811921118">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__row1638115211110"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p938117212112">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p538162110118">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p338162118117">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p179681426923">Specifies the ID of the backend server group from which pagination query starts, that is, the ID of the last backend server group on the previous page. If this parameter is not specified, the first page will be queried.</p>
+<p id="en-us_topic_0096561547__p124032918214">This parameter must be used together with <strong id="en-us_topic_0096561547__b850714543105">limit</strong>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1538111211318"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p1538112211211">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p938117217112">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p183816211113">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p814016314216">Specifies the number of backend server groups on each page.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row113818213111"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p19382162112117">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p1138332110111">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p1738318219120">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p5902734022">Specifies the page direction. The value can be <strong id="en-us_topic_0096561547__b193155914107">true</strong> or <strong id="en-us_topic_0096561547__b51495961019">false</strong>, and the default value is <strong id="en-us_topic_0096561547__b121425991020">false</strong>. The last page in the list requested with <strong id="en-us_topic_0096561547__b101555961012">page_reverse</strong> set to <strong id="en-us_topic_0096561547__b31935915103">false</strong> will not contain the "next" link, and the last page in the list requested with <strong id="en-us_topic_0096561547__b1220859201012">page_reverse</strong> set to <strong id="en-us_topic_0096561547__b32145901014">true</strong> will not contain the "previous" link.</p>
+<p id="en-us_topic_0096561547__p13879193614214">This parameter must be used together with <strong id="en-us_topic_0096561547__b171819281120">limit</strong>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1038310211611"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p43834219115">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p1738316218113">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p3196163614328">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p193834211015">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1218512724616"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p88461695515">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p1084618910518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p188466919514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p11846891258">Specifies the ID of the project where the backend server group is used.</p>
+<p id="en-us_topic_0096561547__p8222164914610"></p>
+<p id="en-us_topic_0096561547__p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1738316211015"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p1938315214112">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p638322110119">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p938342115116">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p638312118113">Specifies the backend server group name.</p>
+<p id="en-us_topic_0096561547__p781531910400">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row63836212117"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p9383421217">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p1038342114119">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p43835215118">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p8383142115117">Provides supplementary information about the backend server group.</p>
+<p id="en-us_topic_0096561547__p1351602224018">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row83831421311"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p1738342119119">healthmonitor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p1838311211113">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p8383221516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p18384521816">Specifies the ID of the health check configured for the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row153841821318"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p17384102120119">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p23841211112">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p4384202112111">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p1038413212016">Specifies the ID of the load balancer associated with the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row4384421817"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p103844211014">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p738412214110">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p13384112114116">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p1323217399215">Specifies the protocol that the backend server group uses to receive requests.</p>
+<p id="en-us_topic_0096561547__p58331416213">TCP, UDP, and HTTP are supported.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row83841521313"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p18384112111113">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p17384182115111">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p33842021119">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p132038451727">Specifies the load balancing algorithm of the backend server group.</p>
+The value options are as follows:<ul id="en-us_topic_0096561547__ul142123811119"><li id="en-us_topic_0096561547__li164563820118"><strong id="en-us_topic_0096561547__b1343117327371">ROUND_ROBIN</strong>: indicates the weighted round robin algorithm.</li><li id="en-us_topic_0096561547__li14823814116"><strong id="en-us_topic_0096561547__b106751733143716">LEAST_CONNECTIONS</strong>: indicates the weighted least connections algorithm.</li><li id="en-us_topic_0096561547__li1151103831117"><strong id="en-us_topic_0096561547__b6207163517374">SOURCE_IP</strong>: indicates the source IP hash algorithm.</li></ul>
+
+<p id="en-us_topic_0096561547__p16826145612214">When the value is <strong id="en-us_topic_0096561547__b101973317289">SOURCE_IP</strong>, the weights of backend servers in the server group are invalid. For details about parameter <strong id="en-us_topic_0096561547__b419853112816">weight</strong>, see <a href="elb_zq_hd_0003.html#elb_zq_hd_0003__en-us_topic_0096561555_en-us_topic_0049139656_table63335993">Table 2</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row03845212012"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p1838410214111">member_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p438515214117">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p93851021514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p1848714119178">Lists the IDs of backend servers in the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row20385112113112"><td class="cellrowborder" valign="top" width="23.849999999999998%" headers="mcps1.3.1.2.2.5.1.1 "><p id="en-us_topic_0096561547__p1385921612">member_device_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.86%" headers="mcps1.3.1.2.2.5.1.2 "><p id="en-us_topic_0096561547__p83857219119">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.5%" headers="mcps1.3.1.2.2.5.1.3 "><p id="en-us_topic_0096561547__p638519217118">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.79%" headers="mcps1.3.1.2.2.5.1.4 "><p id="en-us_topic_0096561547__p1970143121718">Specifies the ID of the ECS corresponding to the backend server in the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__en-us_topic_0049139647_table37982174" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__en-us_topic_0049139647_row42245377"><th align="left" class="cellrowborder" valign="top" width="21.349999999999998%" id="mcps1.3.2.2.2.4.1.1"><p id="en-us_topic_0096561547__en-us_topic_0049139647_p66432381">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.11%" id="mcps1.3.2.2.2.4.1.2"><p id="en-us_topic_0096561547__en-us_topic_0049139647_p12313777">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.540000000000006%" id="mcps1.3.2.2.2.4.1.3"><p id="en-us_topic_0096561547__en-us_topic_0049139647_p58733156">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__en-us_topic_0049139647_row59765170"><td class="cellrowborder" valign="top" width="21.349999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0049139647_p9140568">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.2.2.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.540000000000006%" headers="mcps1.3.2.2.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0049139647_p64845166">Lists the backend server groups. For details, see <a href="#en-us_topic_0096561547__table92302230217">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row10442205112813"><td class="cellrowborder" valign="top" width="21.349999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="en-us_topic_0096561547__p12271111816">pools_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.2.2.2.4.1.2 "><p id="en-us_topic_0096561547__p61301601716">List</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.540000000000006%" headers="mcps1.3.2.2.2.4.1.3 "><p id="en-us_topic_0096561547__p93961314711">Provides links to the previous or next page during pagination query, respectively.</p>
+<p id="en-us_topic_0096561547__p3396814214">This parameter exists only in the response body of pagination query. For details, see <a href="#en-us_topic_0096561547__table18892135113610">Table 8</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561547__table92302230217"></a><a name="table92302230217"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table92302230217" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="en-us_topic_0096561547__b1456784191214">pools</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__row133851235215"><th align="left" class="cellrowborder" valign="top" width="26.529999999999998%" id="mcps1.3.2.3.2.4.1.1"><p id="en-us_topic_0096561547__p538510231029">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.330000000000002%" id="mcps1.3.2.3.2.4.1.2"><p id="en-us_topic_0096561547__p113851723029">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.14%" id="mcps1.3.2.3.2.4.1.3"><p id="en-us_topic_0096561547__p238515231524">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__row1538515231928"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p10385112317212">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p9385152316217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p17385182318219">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row53853231821"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p93851623825">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p73854231622">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p9691143585417">Specifies the ID of the project where the backend server group is used.</p>
+<p id="en-us_topic_0096561547__p79730154314">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row193851423226"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p638532316218">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p1238722315219">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p11387123624">Specifies the backend server group name.</p>
+<p id="en-us_topic_0096561547__p542020217439">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row12387723624"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p143878239216">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p338702318217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p938714238216">Provides supplementary information about the backend server group.</p>
+<p id="en-us_topic_0096561547__p14495643437">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row03893231222"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p153891923426">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p15389102319217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p11911111812316">Specifies the protocol that the backend server group uses to receive requests.</p>
+<p id="en-us_topic_0096561547__p298812201438">TCP, UDP, and HTTP are supported.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row13904232218"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p3390223022">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p14390152311214">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p10527152220310">Specifies the load balancing algorithm of the backend server group.</p>
+The value options are as follows:<ul id="en-us_topic_0096561547__ul12277910111012"><li id="en-us_topic_0096561547__li122801109102"><strong id="en-us_topic_0096561547__b969216091315">ROUND_ROBIN</strong>: indicates the weighted round robin algorithm.</li><li id="en-us_topic_0096561547__li72821910151014"><strong id="en-us_topic_0096561547__b38902141313">LEAST_CONNECTIONS</strong>: indicates the weighted least connections algorithm.</li><li id="en-us_topic_0096561547__li42861910141014"><strong id="en-us_topic_0096561547__b14360173131311">SOURCE_IP</strong>: indicates the source IP hash algorithm.</li></ul>
+
+<p id="en-us_topic_0096561547__p36516251039">When the value is <strong id="en-us_topic_0096561547__b175353491317">SOURCE_IP</strong>, the weights of backend servers in the server group are invalid.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1939082310210"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p103901423524">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p64801132161311">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p37541017">Lists the IDs of backend servers in the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1239182319212"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p13911723427">healthmonitor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p10858161622019">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p41358350">Specifies the ID of the health check configured for the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row13391172316213"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p16391182319210">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p143914231223">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p1659614271733">Specifies the administrative status of the backend server group.</p>
+<p id="en-us_topic_0096561547__p47273291316">This parameter is reserved. The default value is <strong id="en-us_topic_0096561547__b1248420108139">true</strong>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row1739172320217"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p133919231922">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p1132853491316">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p1539212231122">Lists the IDs of listeners associated with the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row9392152314213"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p63921523925">loadbalancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p188751622122010">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p1639219231026">Lists the IDs of load balancers associated with the backend server group.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row12392723325"><td class="cellrowborder" valign="top" width="26.529999999999998%" headers="mcps1.3.2.3.2.4.1.1 "><p id="en-us_topic_0096561547__p1739219232210">session_persistence</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.330000000000002%" headers="mcps1.3.2.3.2.4.1.2 "><p id="en-us_topic_0096561547__p839212319212">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.14%" headers="mcps1.3.2.3.2.4.1.3 "><p id="en-us_topic_0096561547__p181395331531">Specifies whether to enable the sticky session feature. For details, see <a href="#en-us_topic_0096561547__table576515134510">Table 7</a>.</p>
+<p id="en-us_topic_0096561547__p494963410315">Once the sticky session feature is enabled, requests from the same client are sent to the same backend server within the specified period.</p>
+<p id="en-us_topic_0096561547__p1576573519317">When this feature is disabled, the parameter value is <strong id="en-us_topic_0096561547__b154122022181313">null</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table17641175071912" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b5199253122014">members</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row17642135018199"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.2.4.2.4.1.1"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p564295010190">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.2.4.2.4.1.2"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p126421250191912">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.2.4.2.4.1.3"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p11642205012199">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row664275021919"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.2.4.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p464219506196">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.2.4.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p156423501195">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.2.4.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p164210502197">Specifies the ID of the associated backend server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table672914459541" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b138465752014">listeners</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row4729345175415"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.2.5.2.4.1.1"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p11729194505417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.2.5.2.4.1.2"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1272917457543">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.2.5.2.4.1.3"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p10729345185415">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row7729124519544"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.2.5.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p47291451542">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.2.5.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p172954519544">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.2.5.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p97291745165416">Specifies the ID of the associated backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table13106184745416" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b1137917127218">loadbalancers</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row101064477540"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.2.6.2.4.1.1"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p20106194715549">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.2.6.2.4.1.2"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p9106447115412">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.2.6.2.4.1.3"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p41061147105415">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row1110684720544"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.2.6.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p141068470547">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.2.6.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1110614745415">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.2.6.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1810694735420">Specifies the ID of the associated load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561547__table576515134510"></a><a name="table576515134510"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table576515134510" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b897659784">session_persistence</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row12652114216495"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.2.7.2.4.1.1"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p8652134218493">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.2.7.2.4.1.2"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p965284214496">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.2.7.2.4.1.3"><p id="en-us_topic_0096561547__en-us_topic_0096561549_p3652164264914">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__en-us_topic_0096561549_row16652114264914"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.2.7.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p106528426495">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.2.7.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p665216429491">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.2.7.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1082720181618">Specifies the sticky session type.</p>
+The value can be one of the following:<ul id="en-us_topic_0096561547__en-us_topic_0096561549_ul258091011289"><li id="en-us_topic_0096561547__en-us_topic_0096561549_li175822109282"><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b13160219163613">SOURCE_IP</strong>: Requests are distributed based on the client's IP address. Requests from the same IP address are sent to the same backend server.</li><li id="en-us_topic_0096561547__en-us_topic_0096561549_li1058512100288"><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b13123122818366">HTTP_COOKIE</strong>: When the client sends a request for the first time, the load balancer automatically generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to the backend server that processes the first request.</li><li id="en-us_topic_0096561547__en-us_topic_0096561549_li1858851072810"><strong id="en-us_topic_0096561547__en-us_topic_0096561549_b9757628366">APP_COOKIE</strong>: When the client sends a request for the first time, the backend server that receives the request generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to this backend server.</li></ul>
+
+<p id="en-us_topic_0096561547__en-us_topic_0096561549_p1382521641612">When the protocol of the backend server group is TCP, only <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b9575159612">SOURCE_IP</strong> takes effect. When the protocol of the backend server group is HTTP, only <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b1758181519614">HTTP_COOKIE</strong> or <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b45814151266">APP_COOKIE</strong> takes effect.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__en-us_topic_0096561549_row765217429490"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.2.7.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p26521442114916">cookie_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.2.7.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p16653174214493">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.2.7.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1184122312164">Specifies the cookie name.</p>
+<p id="en-us_topic_0096561547__en-us_topic_0096561549_p8672254169">This parameter is mandatory when the sticky session type is <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b19041396">APP_COOKIE</strong>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__en-us_topic_0096561549_row268634152316"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.2.7.2.4.1.1 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p1190604118422">persistence_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.2.7.2.4.1.2 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p19102413425">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.2.7.2.4.1.3 "><p id="en-us_topic_0096561547__en-us_topic_0096561549_p31964815179">Specifies the sticky session timeout duration in minutes.</p>
+<p id="en-us_topic_0096561547__en-us_topic_0096561549_p18281115101717">This parameter is invalid when <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b20486547017">type</strong> is set to <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b7485541101">APP_COOKIE</strong>.</p>
+<ul id="en-us_topic_0096561547__en-us_topic_0096561549_ul460616103285"><li id="en-us_topic_0096561547__en-us_topic_0096561549_li1615191052813">Optional value ranges are as follows:<ul id="en-us_topic_0096561547__en-us_topic_0096561549_ul19618201052818"><li id="en-us_topic_0096561547__en-us_topic_0096561549_li18619151018281">When the protocol of the backend server group is TCP or UDP, the value ranges from <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b1218829301">1</strong> to <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b780458296">60</strong>.</li><li id="en-us_topic_0096561547__en-us_topic_0096561549_li7622510192811">When the protocol of the backend server group is HTTP or HTTPS, the value ranges from <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b452303439">1</strong> to <strong id="en-us_topic_0096561547__en-us_topic_0096561549_b1902239440">1440</strong>.</li></ul>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561547__table18892135113610"></a><a name="table18892135113610"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561547__table18892135113610" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="en-us_topic_0096561547__b66661223171319">pools_links</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561547__row1594616518360"><th align="left" class="cellrowborder" valign="top" width="25.430000000000003%" id="mcps1.3.2.8.2.4.1.1"><p id="en-us_topic_0096561547__p190555213201">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.39%" id="mcps1.3.2.8.2.4.1.2"><p id="en-us_topic_0096561547__p294618543619">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.18000000000001%" id="mcps1.3.2.8.2.4.1.3"><p id="en-us_topic_0096561547__p195711706214">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561547__row8946175123611"><td class="cellrowborder" valign="top" width="25.430000000000003%" headers="mcps1.3.2.8.2.4.1.1 "><p id="en-us_topic_0096561547__p1994665173617">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.39%" headers="mcps1.3.2.8.2.4.1.2 "><p id="en-us_topic_0096561547__p494635183615">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.18000000000001%" headers="mcps1.3.2.8.2.4.1.3 "><p id="en-us_topic_0096561547__p44564735">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561547__row16946155113619"><td class="cellrowborder" valign="top" width="25.430000000000003%" headers="mcps1.3.2.8.2.4.1.1 "><p id="en-us_topic_0096561547__p189462503615">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.39%" headers="mcps1.3.2.8.2.4.1.2 "><p id="en-us_topic_0096561547__p1946857365">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.18000000000001%" headers="mcps1.3.2.8.2.4.1.3 "><p id="en-us_topic_0096561547__p85234211272">Specifies the prompt of the previous or next page. The value can be <strong id="en-us_topic_0096561547__b891745683712">next</strong> or <strong id="en-us_topic_0096561547__b179172561379">previous</strong>.</p>
+<ul id="en-us_topic_0096561547__ul577082711719"><li id="en-us_topic_0096561547__li1131173918719"><strong id="en-us_topic_0096561547__b1543375823710">next</strong>: indicates the URL of the next page.</li><li id="en-us_topic_0096561547__li8770927871"><strong id="en-us_topic_0096561547__b988075919376">previous</strong>: indicates the URL of the previous page.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="en-us_topic_0096561547__en-us_topic_0096561549_ul1435714151293"><li id="en-us_topic_0096561547__en-us_topic_0096561549_li183571915172912">Example request 1: Adding a backend server group with the sticky session feature disabled<pre class="screen" id="en-us_topic_0096561547__en-us_topic_0096561549_screen1925810295299">POST https://{Endpoint}/v2.0/lbaas/pools 
+
+{
+    "pool": {
+        "lb_algorithm":"ROUND_ROBIN",
+        "loadbalancer_id": "63ad9dfe-4750-479f-9630-ada43ccc8117",
+        "protocol":"HTTP"
+    }
+}</pre>
+</li></ul>
+
+<ul id="en-us_topic_0096561547__ul19361124715502"><li id="en-us_topic_0096561547__li1836213472504">Example request 2: Querying backend server groups whose load balancing algorithm is <strong id="en-us_topic_0096561547__b20577153311320">SOURCE_IP</strong><pre class="screen" id="en-us_topic_0096561547__screen936274755014">GET https://{Endpoint}/v2.0/lbaas/pools</pre>
+</li></ul>
+<ul id="en-us_topic_0096561547__ul3712101415503"><li id="en-us_topic_0096561547__li271217144501">Example response 2<pre class="screen" id="en-us_topic_0096561547__screen1371231417509">{
+    "pools": [
+        {
+            "lb_algorithm": "SOURCE_IP",
+            "protocol": "TCP",
+            "description": "",
+            "admin_state_up": true,
+            "loadbalancers": [
+                {
+                    "id": "07d28d4a-4899-40a3-a939-5d09d69019e1"
+                }
+            ],
+            "tenant_id": "1867112d054b427e808cc6096d8193a1",
+            "session_persistence": null,
+            "healthmonitor_id": null,
+            "listeners": [
+                {
+                    "id": "1b421c2d-7e78-4a78-9ee4-c8ccba41f15b"
+                }
+            ],
+            "members": [
+                {
+                    "id": "88f9c079-29cb-435a-b98f-0c5c0b90c2bd"
+                },
+                {
+                    "id": "2f4c9644-d5d2-4cf8-a3c0-944239a4f58c"
+                }
+            ],
+            "id": "3a9f50bb-f041-4eac-a117-82472d8a0007",
+            "name": "my-pool"
+        }
+    ]
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Status Codes</h4><p id="en-us_topic_0096561547__en-us_topic_0096561531_en-us_topic_0049139631_p12358762">See <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_hz_0000.html">Backend Server Group</a>
+
+
+

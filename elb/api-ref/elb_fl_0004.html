@@ -1,0 +1,93 @@
+<a name="elb_fl_0004"></a><a name="elb_fl_0004"></a>
+
+<h1 class="topictitle1">Querying Data in Pages</h1>
+<p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p26952341">APIs v2.0 allow users to query data in pages by adding the limit and marker parameters to the URL of the list request. The query results are displayed in the ascending order of IDs.</p>
+<ul id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_ul6282491413620"><li id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_li2465949413620"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b84235270615121">next ref</strong> in the response indicates the URL of the next page.</li><li id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_li5857903413620"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b84235270615124">previous ref</strong> in the response indicates the URL of the previous page.</li></ul>
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_table2460041" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_row40101120"><th align="left" class="cellrowborder" valign="top" width="19.368063193680634%" id="mcps1.3.3.2.2.5.1.1"><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p26965262"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b842352706164319">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.33856614338566%" id="mcps1.3.3.2.2.5.1.2"><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p36702580"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b8423527061617">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.558244175582445%" id="mcps1.3.3.2.2.5.1.3"><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p20119003"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b842352706192658">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.735126487351266%" id="mcps1.3.3.2.2.5.1.4"><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p19026538"><strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b84235270695939">Description</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_row64754634"><td class="cellrowborder" valign="top" width="19.368063193680634%" headers="mcps1.3.3.2.2.5.1.1 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p10634019">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.33856614338566%" headers="mcps1.3.3.2.2.5.1.2 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p56049180">int</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.558244175582445%" headers="mcps1.3.3.2.2.5.1.3 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p43689693">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.735126487351266%" headers="mcps1.3.3.2.2.5.1.4 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p49204239">Specifies the number of records on each page.</p>
+</td>
+</tr>
+<tr id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_row40184969"><td class="cellrowborder" valign="top" width="19.368063193680634%" headers="mcps1.3.3.2.2.5.1.1 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p33757095">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.33856614338566%" headers="mcps1.3.3.2.2.5.1.2 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p49970185">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.558244175582445%" headers="mcps1.3.3.2.2.5.1.3 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p21053208">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.735126487351266%" headers="mcps1.3.3.2.2.5.1.4 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_en-us_topic_0020100172_p65836146103218">Specifies the resource ID of pagination query. If the parameter is left blank, only resources on the first page are queried.</p>
+</td>
+</tr>
+<tr id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_row46967960"><td class="cellrowborder" valign="top" width="19.368063193680634%" headers="mcps1.3.3.2.2.5.1.1 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p46308405">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.33856614338566%" headers="mcps1.3.3.2.2.5.1.2 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p59993306">Bool</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.558244175582445%" headers="mcps1.3.3.2.2.5.1.3 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p27619632">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.735126487351266%" headers="mcps1.3.3.2.2.5.1.4 "><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p22597726">Specifies the paging sequence. The value can be <strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b842352706153910">true</strong> or <strong id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_b842352706153913">false</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4><p id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_p117023119515">None</p>
+
+<h4 class="sectiontitle">Example</h4><ul id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_ul133001550105013"><li id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_li43001150185012">Example request<pre class="screen" id="elb_fl_0004__en-us_topic_0109430488_en-us_topic_0049143234_screen18476557">GET /v2.0/networks?limit=2&amp;marker=3d42a0d4-a980-4613-ae76-a2cddecff054&amp;page_reverse=False</pre>
+</li></ul>
+
+<ul id="elb_fl_0004__en-us_topic_0109430488_ul5932191242413"><li id="elb_fl_0004__en-us_topic_0109430488_li493291213240">Example response<pre class="screen" id="elb_fl_0004__en-us_topic_0109430488_screen20932712142415">{
+    "networks": [
+        {
+            "status": "ACTIVE",
+            "subnets": [],
+            "name": "liudongtest ",
+            "admin_state_up": false,
+            "tenant_id": "6fbe9263116a4b68818cf1edce16bc4f",
+            "id": "60c809cb-6731-45d0-ace8-3bf5626421a9"
+        },
+        {
+            "status": "ACTIVE",
+            "subnets": [
+                "132dc12d-c02a-4c90-9cd5-c31669aace04"
+            ],
+            "name": "publicnet",
+            "admin_state_up": true,
+            "tenant_id": "6fbe9263116a4b68818cf1edce16bc4f",
+            "id": "9daeac7c-a98f-430f-8e38-67f9c044e299"
+        }
+    ],
+    "networks_links": [
+        {
+            "href": "http://192.168.82.231:9696/v2.0/networks?limit=2&amp;marker=9daeac7c-a98f-430f-8e38-67f9c044e299",
+            "rel": "next"
+        },
+        {
+            "href": "http://192.168.82.231:9696/v2.0/networks?limit=2&amp;marker=60c809cb-6731-45d0-ace8-3bf5626421a9&amp;page_reverse=True",
+            "rel": "previous"
+        }
+    ]
+}</pre>
+</li></ul>
+<p id="elb_fl_0004__en-us_topic_0109430488_p4932161220243"></p>
+
+
+
+<strong>Parent topic:</strong> <a href="elb_fl_0003.html">General Information About Shared Load Balancers</a>
+
+
+

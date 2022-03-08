@@ -1,0 +1,62 @@
+<a name="EN-US_TOPIC_0065820826"></a><a name="EN-US_TOPIC_0065820826"></a>
+
+<h1 class="topictitle1">Querying a Specified Tag for an <span id="text63402147569">ECS</span></h1>
+<div id="body1499653398050"><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p32738149">This API is used to query whether an <span id="EN-US_TOPIC_0065820826__text673918106418">ECS</span> has a specified tag.</p>
+<p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p83115521586">You are required to use the HTTP header <strong id="EN-US_TOPIC_0065820826__b842352706165643">X-OpenStack-Nova-API-Version: 2.26</strong> to specify the microversion on the client.</p>
+<div class="section" id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_section26207892"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p17816132418199">GET /v2.1/{project_id}/servers/{server_id}/tags/{tag}</p>
+<div class="p" id="EN-US_TOPIC_0065820826__p1715351183517"><a href="#EN-US_TOPIC_0065820826__en-us_topic_0057972841_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065820826__en-us_topic_0057972841_table32475667"></a><a name="en-us_topic_0057972841_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_row44937496"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0065820826__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0065820826__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0065820826__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_row1664874"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820826__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_row41565035"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p11324657">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p44882061">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p11568292">Specifies the <span id="EN-US_TOPIC_0065820826__text15155124319370">ECS</span> ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_row7149154519295"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p21503455299">tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p415074512298">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p1415044592918">Specifies the key of the tag to be queried. If no key is specified, all tags of the <span id="EN-US_TOPIC_0065820826__text1084122016918">ECS</span> will be displayed.</p>
+<p id="EN-US_TOPIC_0065820826__p141334271371">For details about key rules, see <a href="en-us_topic_0065817686.html">Tag Types</a>.</p>
+<div class="note" id="EN-US_TOPIC_0065820826__note124521913175616"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0065820826__p1745221311560">Tag functions have been upgraded on the public cloud. If the tags added before the function upgrade are in the format of "Key.Value", query tags using "Key".</p>
+<p id="EN-US_TOPIC_0065820826__p213418685710">For example, an existing tag is "a.b". The tag can be queried in the format of "tag=a.b" before and in the format of "tag=a" now according to the new tag rules.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_section34544438"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p34974717193053">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_section42464494"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_p30759103193058">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820826__section274565913012"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065820826__screen8645630163914">GET https://{endpoint}/v2.1/{project_id}/servers/{server_id}/tags/{tag}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820826__section163001561818"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065820826__p1177010814118">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065820826__en-us_topic_0057972841_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0108433460.html">Tag Management</a></div>
+</div>
+</div>
+

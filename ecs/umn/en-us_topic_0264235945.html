@@ -1,0 +1,28 @@
+<a name="EN-US_TOPIC_0264235945"></a><a name="EN-US_TOPIC_0264235945"></a>
+
+<h1 class="topictitle1">Why Is My Remote Session Interrupted by a Protocol Error?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_section472713533172"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_p57881558151714">An error message is displayed indicating that the remote session will be disconnected because of a protocol error.</p>
+<div class="fignone" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_en-us_topic_0120795668_fig1256612592310"><span class="figcap"><b>Figure 1 </b>Protocol error</span><br><span><img id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_image133433311811" src="en-us_image_0288997423.png"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_section162024181815"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_p126119541915">The registry subkey Certificate is damaged.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_section2388160183"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_ol195320353198"><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li95105271073">In the <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b11441106183217">Run</strong> dialog box, enter <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b11606125167">regedit</strong> and click <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b1627557183711">OK</strong> to open the registry editor.<div class="fignone" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_fig429554874215"><span class="figcap"><b>Figure 2 </b>Opening the registry editor</span><br><span><img id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_image149952115435" src="en-us_image_0288997424.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li179081925132511">Choose <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b8179933133710">HKEY_LOCAL_MACHINE</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b102574368373">SYSTEM</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b919954416372">ControlSet001</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b193816521373">Control</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b022011015381">Terminal Server</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b262816613816">RCM</strong>.</li><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li7444329172512">Delete <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b111651548183918">Certificate</strong>.<div class="fignone" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_fig134336512282"><span class="figcap"><b>Figure 3 </b>Deleting Certificate</span><br><span><img id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_image86584322918" src="en-us_image_0288997425.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li495383511919">Restart the <span id="EN-US_TOPIC_0264235945__text191980301279">ECS</span>.</li><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li951773911370">Choose <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_en-us_topic_0043474372_en-us_topic_0040724585_b84235270617313">Start</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_en-us_topic_0043474372_en-us_topic_0040724585_b84235270617317">Administrative Tools</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_en-us_topic_0043474372_en-us_topic_0040724585_b84235270617323">Remote Desktop Services</strong> &gt; <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_en-us_topic_0043474372_en-us_topic_0040724585_b84235270617124">Remote Desktop Session Host Configuration</strong>.<div class="fignone" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_fig15551901388"><span class="figcap"><b>Figure 4 </b>Opening Remote Desktop Session Host Configuration</span><br><span><img id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_image1092424312441" src="en-us_image_0288997426.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_li8405182015307">Right-click <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b949629181714">RDP-Tcp</strong> and choose <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b1363401521712">Properties</strong>. In the displayed dialog box, click <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b188463132420">General</strong> and set <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b17203287248">Security layer</strong> to <strong id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_b178641382412">RDP Security Layer</strong>.<div class="fignone" id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_fig538416200307"><span class="figcap"><b>Figure 5 </b>RDP-Tcp properties</span><br><span><img id="EN-US_TOPIC_0264235945__en-us_topic_0173587265_image7975153334715" src="en-us_image_0288997427.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

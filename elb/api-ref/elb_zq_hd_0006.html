@@ -1,0 +1,439 @@
+<a name="elb_zq_hd_0006"></a><a name="elb_zq_hd_0006"></a>
+
+<h1 class="topictitle1">Querying All Backend Servers (Extension API)</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p114937574506">This API is used to query all backend servers. Filter query and pagination query are supported.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_p1425263917142">Parameters <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b842352706173057">marker</strong>, <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b84235270617310">limit</strong>, and <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b84235270617314">page_reverse</strong> are used for pagination query. Parameters <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b842352706173217">marker</strong> and <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b842352706173221">page_reverse</strong> take effect only when they are used together with parameter <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008270_b842352706173232">limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p19245744817">GET /v2.0/lbaas/members</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0006__en-us_topic_0000001129421772_table996444517281" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row19641245152810"><th align="left" class="cellrowborder" valign="top" width="27.450000000000003%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p9220154122917">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.139999999999999%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p15220115412299">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.98%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p14220165411296">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.43%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p72201354112914">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row189641345182812"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p11220125414293">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p3220135422917">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p6220205472915">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p122055411291">Specifies the ID of the backend server from which pagination query starts, that is, the ID of the last backend server on the previous page. If this parameter is not specified, the first page will be queried.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p5220125452916">This parameter must be used together with <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b5192124103612">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row4327132262913"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p522175418298">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1622105472917">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1522115543293">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p19221135417298">Specifies the number of backend servers on each page. If this parameter is not set, all backend servers are queried by default.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row15328112216295"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1822117545295">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p82218543294">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p42211054142915">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p11221125492913">Specifies the page direction. The value can be <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b19223672232">true</strong> or <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b52249716237">false</strong>, and the default value is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b022513782316">false</strong>. The last page in the list requested with <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1422516772318">page_reverse</strong> set to <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b12261278238">false</strong> will not contain the "next" link, and the last page in the list requested with <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b102269718237">page_reverse</strong> set to <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b72271717237">true</strong> will not contain the "previous" link.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p5221195432916">This parameter must be used together with <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b9525544115111">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row107238376296"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p14221135402913">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p122115413291">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p31216161113">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1221135419293">Specifies the backend server ID.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p7954937184520">The value of this parameter is not the ID of the server but an ID automatically generated for the backend server that has already associated with the load balancer.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row172423782912"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p16221135417296">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1022117542290">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p2221105413299">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p13223155402913">Specifies the backend server name.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1372411372295"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p0223165412919">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p8223165492914">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p13223154192918">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p15223105442918">Specifies the private IP address of the backend server.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1546217327535">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1606104372916"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1522316546296">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p9223654132916">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1922305414297">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p102245541293">Specifies the port used by the backend server.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row9606144392915"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p12224154102916">subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p52248547293">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p17554304119">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1622465472911">Specifies the ID of the subnet where the backend server works.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1606164313297"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p9224135413297">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p10224954202918">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p12241454152911">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1122511549296">Specifies the administrative status of the backend server.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p136141610163013">This parameter is reserved, and the default value is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row7606104310299"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p18225654152912">weight</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p72254545297">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p102254549294">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p4225554122920">Specifies the backend server weight.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row36061343202918"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p72251754192911">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p3226054142910">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1398512374111">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p3226554102919">Specifies the backend server ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row20606443152911"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1222645415294">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p7226145412916">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p11226145415294">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p13931747122017">Specifies the health check result of the backend server. The value can be one of the following:</p>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul182681814182112"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li11268191418212"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1120111413114">ONLINE</strong>: The backend server is running normally.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li12681214132115"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b4501855115">NO_MONITOR</strong>: No health check is performed on the backend server.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li3268191412116"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b569891071114">OFFLINE</strong>: The cloud server used as the backend server is stopped or does not exist.</li></ul>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p13393647162012">The default value is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b16870622181115">ONLINE</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row182631675499"><td class="cellrowborder" valign="top" width="27.450000000000003%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1791419535386">members_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.139999999999999%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p8756111713497">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.43%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p16754141714919">Provides links to the previous or next page during pagination query, respectively.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p6508192224916">This parameter exists only in the response body of pagination query. For details, see <a href="#elb_zq_hd_0006__en-us_topic_0000001129421772_table168848562488">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0006__en-us_topic_0000001129421772_table109691887394" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b19767174972320">members_links</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row19121913919"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.4.3.2.4.1.1"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p41219903910">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.3.2.4.1.2"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p15127943917">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p134681053161120">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row191212983916"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.4.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p7121699392">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p172941205122">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p44564735">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row31218923918"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.4.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p12125963910">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p2127910393">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p85234211272">Specifies the prompt of the previous or next page. The value can be <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b891745683712">next</strong> or <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b179172561379">previous</strong>.</p>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul577082711719"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li1131173918719"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1543375823710">next</strong>: indicates the URL of the next page.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li8770927871"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b988075919376">previous</strong>: indicates the URL of the previous page.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0006__en-us_topic_0000001129421772_table983015617485" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row8971857154816"><th align="left" class="cellrowborder" valign="top" width="21.21%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1097195714483">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.189999999999998%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p99715704810">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.599999999999994%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p897205717489">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row9979574488"><td class="cellrowborder" valign="top" width="21.21%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p297145704817">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.189999999999998%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p109711575489">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.599999999999994%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p15981057124810">Lists the backend servers. For details, see <a href="#elb_zq_hd_0006__en-us_topic_0000001129421772_table19836165644814">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hd_0006__en-us_topic_0000001129421772_table19836165644814"></a><a name="en-us_topic_0000001129421772_table19836165644814"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0006__en-us_topic_0000001129421772_table19836165644814" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1361077885">members</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1698155719481"><th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p17981157184815">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p898185714817">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1598195717487">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1898957174813"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1898155784820">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p298165712482">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p6154231141610">Specifies the backend server ID.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p7954937184520_1">The value of this parameter is not the ID of the server but an ID automatically generated for the backend server that has already associated with the load balancer.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1898057104820"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p694411991416">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1694481915147">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p201561631141618">Specifies the ID of the project where the backend server is used.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p31221244165314">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row198175718480"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p119845715485">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p167680559252">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p13156193151618">Specifies the backend server name.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p618616462534">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row198185754810"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1698957194816">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1844516576257">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p2611194017408">Specifies the private IP address of the backend server. This IP address must be in the subnet specified by <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1619591619395">subnet_id</strong>.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p18611164024019">This parameter can be set only to the IP address of the primary NIC, for example, 192.168.3.11.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p8293104816534">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row109825713482"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p49815711485">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1198205794811">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p141561431161615">Specifies the port used by the backend server. The port number ranges from 1 to 65535.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row0988573489"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p39913578484">subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p234316216263">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p986015317414">Specifies the ID of the subnet where the backend server works. The private IP address of the backend server is in this subnet.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p88604374112">IPv6 subnets are not supported.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row12990576488"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1799155754814">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1499165711485">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p38145286413">Specifies the administrative status of the backend server.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1593820335160">This parameter is reserved. The value can be <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul6938153311619"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row99955734810"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p19955716486">weight</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p2991757154816">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p8605175104117">Specifies the backend server weight. The value ranges from <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b12942144314408">0</strong> to <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b159431143154016">100</strong>.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1460555119418">If the value is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1680456400">0</strong>, the backend server will not accept new requests. The default value is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b2070134654018">1</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row0991157114818"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p11996576485">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1916191416265">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p247217212817">Specifies the health check result of the backend server. The value can be one of the following:</p>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul1147212202817"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li1347217202810"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b866010266119">ONLINE</strong>: The backend server is running normally.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li547211216284"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b14856152819111">NO_MONITOR</strong>: No health check is performed on the backend server.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li1447222102810"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1313013131115">OFFLINE</strong>: The cloud server used as the backend server is stopped or does not exist.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row49955784813"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1699115724818">device_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p59911578483">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p47851838184616">Specifies the ID of the cloud server used as the backend server. If the cloud server does not exist, this parameter is an empty string.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row1999157194811"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1599857174818">device_owner</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p11100185794811">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p456355532610">Specifies the resource ID and AZ ID of the cloud server used as the backend server, for example, <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b1332545254614">compute:az2.dc2</strong>.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p10535173784617">If no corresponding ECS is available, the value is an empty string.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row12100125794811"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p610012578486">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p32226199263">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p16161192544615">Specifies the backend server ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row91001057154812"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p310075716485">members_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p1220154112148">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p958115491633">Provides links to the previous or next page during pagination query, respectively.</p>
+<p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p27814512315">This parameter exists only in the response body of pagination query. For details, see <a href="#elb_zq_hd_0006__en-us_topic_0000001129421772_table168848562488">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_row783144373820"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p3135312135212">pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p158232273526">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_p413651215529">Specifies the backend server ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hd_0006__en-us_topic_0000001129421772_table168848562488"></a><a name="en-us_topic_0000001129421772_table168848562488"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0006__en-us_topic_0000001129421772_table168848562488" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_b606526136">members_links</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_row19121913919"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p41219903910">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p15127943917">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p3121493399">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_row191212983916"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p7121699392">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p131299153916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p44564735">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_row31218923918"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p12125963910">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p2127910393">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_p85234211272">Specifies the prompt of the previous or next page. The value can be <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_b177311632192517">next</strong> or <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_b1573223202518">previous</strong>.</p>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_ul577082711719"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_li1131173918719"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_b510416358254">next</strong>: indicates the URL of the next page.</li><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_li8770927871"><strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561554_b8991113692519">previous</strong>: indicates the URL of the previous page.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul1545910142014"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li454591022018">Example request 1: Querying all backend servers<pre class="screen" id="elb_zq_hd_0006__en-us_topic_0000001129421772_screen20545131032017">GET https://{Endpoint}/v2.0/lbaas/members</pre>
+</li></ul>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul6545101012201"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li75451510142015">Example request 2: Displaying two backend servers on each page and filtering out backend servers whose health check result is <strong id="elb_zq_hd_0006__en-us_topic_0000001129421772_b84235270615515">OFFLINE</strong><pre class="screen" id="elb_zq_hd_0006__en-us_topic_0000001129421772_screen115453108206">GET https://{Endpoint}/v2.0/lbaas/members?operating_status=OFFLINE&amp;limit=2</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul4957151162314"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li113932752414">Example response 1<pre class="screen" id="elb_zq_hd_0006__en-us_topic_0000001129421772_screen775918574235">{
+    "members": [
+        {
+            "name": "", 
+            "weight": 1, 
+            "admin_state_up": false, 
+            "subnet_id": "03e1458a-fe0d-4e2f-bc4a-44f25a045287", 
+            "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+            "pool_id": "b299051c-a154-4bd6-b630-215151593306", 
+            "loadbalancer_id": "77bfe95e-9f5b-4cff-afd9-900f8de5775b", 
+            "device_owner": "", 
+            "address": "192.168.77.11", 
+            "protocol_port": 880, 
+            "id": "50bd4ae0-fdf4-4540-b94a-04ce6241751e", 
+            "operating_status": "OFFLINE", 
+            "device_id": ""
+        }, 
+        {
+            "name": "", 
+            "weight": 1, 
+            "admin_state_up": false, 
+            "subnet_id": "03e1458a-fe0d-4e2f-bc4a-44f25a045287", 
+            "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+            "pool_id": "b299051c-a154-4bd6-b630-215151593306", 
+            "loadbalancer_id": "77bfe95e-9f5b-4cff-afd9-900f8de5775b", 
+            "device_owner": "", 
+            "address": "192.168.77.12", 
+            "protocol_port": 880, 
+            "id": "fa2045e3-b296-406b-ad12-1611dce44be6", 
+            "operating_status": "OFFLINE", 
+            "device_id": ""
+        }
+    ]
+}</pre>
+</li></ul>
+<ul id="elb_zq_hd_0006__en-us_topic_0000001129421772_ul1866513242210"><li id="elb_zq_hd_0006__en-us_topic_0000001129421772_li5727124817247">Example response 2<pre class="screen" id="elb_zq_hd_0006__en-us_topic_0000001129421772_screen1274794564811">{
+    "members_links": [
+        {
+            "href": "https://network.localdomain.com:8020/v2.0/lbaas/members?pool_id=b299051c-a154-4bd6-b630-215151593306&amp;marker=50bd4ae0-fdf4-4540-b94a-04ce6241751e&amp;page_reverse=True", 
+            "rel": "previous"
+        }
+    ], 
+    "members": [
+        {
+            "name": "", 
+            "weight": 1, 
+            "admin_state_up": false, 
+            "subnet_id": "03e1458a-fe0d-4e2f-bc4a-44f25a045287", 
+            "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+            "pool_id": "b299051c-a154-4bd6-b630-215151593306", 
+            "loadbalancer_id": "77bfe95e-9f5b-4cff-afd9-900f8de5775b", 
+            "device_owner": "", 
+            "address": "192.168.77.11", 
+            "protocol_port": 880, 
+            "id": "50bd4ae0-fdf4-4540-b94a-04ce6241751e", 
+            "operating_status": "OFFLINE", 
+            "device_id": ""
+        }, 
+        {
+            "name": "", 
+            "weight": 1, 
+            "admin_state_up": false, 
+            "subnet_id": "03e1458a-fe0d-4e2f-bc4a-44f25a045287", 
+            "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+            "pool_id": "b299051c-a154-4bd6-b630-215151593306", 
+            "loadbalancer_id": "77bfe95e-9f5b-4cff-afd9-900f8de5775b", 
+            "device_owner": "", 
+            "address": "192.168.77.12", 
+            "protocol_port": 880, 
+            "id": "fa2045e3-b296-406b-ad12-1611dce44be6", 
+            "operating_status": "OFFLINE", 
+            "device_id": ""
+        }
+    ]
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Return Codes</h4><p id="elb_zq_hd_0006__en-us_topic_0000001129421772_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_hd_0000.html">Backend Server</a>
+
+
+

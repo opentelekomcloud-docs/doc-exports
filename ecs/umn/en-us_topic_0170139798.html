@@ -1,0 +1,29 @@
+<a name="EN-US_TOPIC_0170139798"></a><a name="EN-US_TOPIC_0170139798"></a>
+
+<h1 class="topictitle1">What Should I Do If Writing Data Failed When I Upload a File Using FTP?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_section372955204910"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_p1875181112492">When I attempted to upload a file using FTP, writing data failed. As a result, the file transfer failed.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_section1353812103435"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_p195771015164316">The operations described in this section apply to FTP on Windows ECSs only.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_section11681185814500"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_p1756731175115">When NAT is enabled on the FTP server, the FTP client must connect to the FTP server in passive mode. In such a case, the public IP address (EIP) of the server cannot be accessed from the router. Therefore, you need to add the EIP to the public IP address list on the server. Additionally, set the port range to limit the number of ports with data forwarded by the router.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_section358191916528"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_p1550436125317">The public IP address must be associated with the private IP address using NAT. Therefore, the server must be configured accordingly.</p>
+<ol id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_ol936153925217"><li id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li9844193513532">Configure the public IP address of the server.<p id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_p1580112312543"><a name="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li9844193513532"></a><a name="en-us_topic_0138293300_li9844193513532"></a>Choose <strong id="EN-US_TOPIC_0170139798__b842352706195316">Edit</strong> &gt; <strong id="EN-US_TOPIC_0170139798__b842352706195322">Settings</strong>.</p>
+<div class="fignone" id="EN-US_TOPIC_0170139798__fig1124882045115"><span class="figcap"><b>Figure 1 </b>Setting the public IP address</span><br><span><img id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_image074504682511" src="en-us_image_0171674763.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li06283521548">Choose <span class="parmvalue" id="EN-US_TOPIC_0170139798__parmvalue305256858195348"><b>Passive mode settings</b></span>, set the port range (for example, 50000-50100) for transmitting data, and enter the target public IP address.<div class="fignone" id="EN-US_TOPIC_0170139798__fig5351324135118"><span class="figcap"><b>Figure 2 </b>Setting the range of ports for data transmission</span><br><span><img id="EN-US_TOPIC_0170139798__image5636229115511" src="en-us_image_0182087025.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li79862218556">Click <strong id="EN-US_TOPIC_0170139798__b842352706224454">OK</strong>.</li><li id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li19346152115520">Allow traffic on TCP ports 50000-50100 and 21 in the security group in the inbound direction.</li><li id="EN-US_TOPIC_0170139798__en-us_topic_0138293300_li769119366551">Test the connection on the client.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0170135967.html">File Upload/Data Transfer</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

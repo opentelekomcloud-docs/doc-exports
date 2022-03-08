@@ -1,0 +1,30 @@
+<a name="EN-US_TOPIC_0058747426"></a><a name="EN-US_TOPIC_0058747426"></a>
+
+<h1 class="topictitle1">How Can I Check Whether the Network Communication Is Normal Between Two ECSs Equipped with an InfiniBand NIC Driver?</h1>
+<div id="body1493996281145"><p id="EN-US_TOPIC_0058747426__p8060118">For high-performance H2 ECSs equipped with an InfiniBand NIC driver (InfiniBand ECSs for short), perform the following operations to check whether the driver installation is successful and whether the network communication between the ECSs is normal.</p>
+<div class="note" id="EN-US_TOPIC_0058747426__note29063754174431"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0058747426__p60247198174431">During the check, if your ECS has no command tool installed, such as ibstat, obtain the tool from the installation package for the InfiniBand NIC driver and install the tool.</p>
+</div></div>
+<ol id="EN-US_TOPIC_0058747426__ol37916521232712"><li id="EN-US_TOPIC_0058747426__li6620078232712"><span>Check whether the NICs of the InfiniBand ECSs are functional.</span><p><ol type="a" id="EN-US_TOPIC_0058747426__ol61526902232858"><li id="EN-US_TOPIC_0058747426__li16871207232858">Log in to an ECS.</li><li id="EN-US_TOPIC_0058747426__li5464561523295">Run the following command to check whether the NIC is functional:<div class="p" id="EN-US_TOPIC_0058747426__p26847499232958"><a name="EN-US_TOPIC_0058747426__li5464561523295"></a><a name="li5464561523295"></a><strong id="EN-US_TOPIC_0058747426__b1033503923301">ibstat</strong><ul id="EN-US_TOPIC_0058747426__ul58719477232949"><li id="EN-US_TOPIC_0058747426__li13980926232949">If it is functional, go to <a href="#EN-US_TOPIC_0058747426__li2420713023281">2</a>.</li><li id="EN-US_TOPIC_0058747426__li6838035233139">If it is not functional, contact customer service for technical support.</li></ul>
+</div>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0058747426__li2420713023281"><a name="EN-US_TOPIC_0058747426__li2420713023281"></a><a name="li2420713023281"></a><span>Check whether the network communication between two InfiniBand ECSs is normal.</span><p><ol type="a" id="EN-US_TOPIC_0058747426__ol61094663235220"><li id="EN-US_TOPIC_0058747426__li12981058235220">Log in to one InfiniBand ECS and run the following command:<p id="EN-US_TOPIC_0058747426__p17941947235347"><a name="EN-US_TOPIC_0058747426__li12981058235220"></a><a name="li12981058235220"></a><strong id="EN-US_TOPIC_0058747426__b6195418235350">ib_write_bw -x 0 --pkey_index 0</strong></p>
+</li><li id="EN-US_TOPIC_0058747426__li48790445235259">Log in to the other InfiniBand ECS and run the following command:<p id="EN-US_TOPIC_0058747426__p64403419235412"><a name="EN-US_TOPIC_0058747426__li48790445235259"></a><a name="li48790445235259"></a><strong id="EN-US_TOPIC_0058747426__b1968555722215">ib_write_bw -x 0 --pkey_index 0</strong><em id="EN-US_TOPIC_0058747426__i36097916222111">ip_addr</em></p>
+<p id="EN-US_TOPIC_0058747426__p59328661222115">In the preceding command, <em id="EN-US_TOPIC_0058747426__i36249081222140">ip_addr</em> is the NIC IP address of the first InfiniBand ECS.</p>
+</li><li id="EN-US_TOPIC_0058747426__li608594890140">Check whether the terminal display is correct.<div class="fignone" id="EN-US_TOPIC_0058747426__fig13564645028"><a name="EN-US_TOPIC_0058747426__fig13564645028"></a><a name="fig13564645028"></a><span class="figcap"><b>Figure 1 </b>Normal network communication</span><br><span><img id="EN-US_TOPIC_0058747426__image460060560159" src="en-us_image_0058747512.jpg" title="Click to enlarge" class="imgResize"></span></div>
+<ul id="EN-US_TOPIC_0058747426__ul52102526101116"><li id="EN-US_TOPIC_0058747426__li8139703101116">If the terminal display is shown in <a href="#EN-US_TOPIC_0058747426__fig13564645028">Figure 1</a>, the network communication between the two InfiniBand ECSs is normal.</li><li id="EN-US_TOPIC_0058747426__li53050871101116">If the InfiniBand network is inaccessible, contact customer service for technical support.</li></ul>
+</li></ol>
+</p></li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

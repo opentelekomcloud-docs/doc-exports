@@ -1,0 +1,156 @@
+<a name="en-us_elb_02_0001"></a><a name="en-us_elb_02_0001"></a>
+
+<h1 class="topictitle1">Using Shared Load Balancers — Advanced Level</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="en-us_elb_02_0001__p13318235811">You have two web applications deployed on two ECSs separately, and the web applications provide one domain name but different URLs for users to access.</p>
+<p id="en-us_elb_02_0001__p14697175632114">To forward requests based on URLs, you need to create a load balancer, add an HTTP or HTTPS listener, and add forwarding policies to specify the URLs.</p>
+<p id="en-us_elb_02_0001__p66625093192530">An HTTP listener is used as an example to describe how to route requests from two URLs (<strong id="en-us_elb_02_0001__b019135712397">/ELB01</strong> and <strong id="en-us_elb_02_0001__b12208357183914">/ELB02</strong>) of the same domain name (www.example.com) to different backend servers.</p>
+
+<h4 class="sectiontitle">Prerequisites</h4><ul id="en-us_elb_02_0001__ul15892133835819"><li id="en-us_elb_02_0001__li264157195913">You have added security group rules to allow traffic from the ports used by the two ECSs. (Alternatively, you can enable all ports first and then disable the ports that are no longer used.) </li><li id="en-us_elb_02_0001__li41015404598">The security group containing the two ECSs allows traffic from 100.125.0.0/16<span id="en-us_elb_02_0001__ph1820812303110"></span>. (ELB uses these IP addresses to perform health checks and route requests to backend servers.)</li></ul>
+
+<h4 class="sectiontitle">Creating ECSs</h4><p id="en-us_elb_02_0001__p17398174135812">ECSs are used as backend servers.</p>
+<p id="en-us_elb_02_0001__p2287182713314">Each ECS needs an EIP to allow you to deploy the backend service on each ECS. In actual use, you can unbind the EIP from each ECS if the ECSs do not need to access the Internet or provide Internet-accessible services after the deployment is complete. Determine whether you need an EIP for your load balancer by referring to <a href="en-us_elb_01_0004.html">Load Balancing on a Public or Private Network</a>.</p>
+
+<ol id="en-us_elb_02_0001__ol09857595579"><li id="en-us_elb_02_0001__li18503134213513">Log in to the management console.</li><li id="en-us_elb_02_0001__li1658495082510">In the upper left corner of the page, click <span><img id="en-us_elb_02_0001__en-us_topic_0052569751_image1594134919536" src="en-us_image_0238408792.png"></span> and select the desired region and project.</li><li id="en-us_elb_02_0001__li1561583452013">Hover on <span><img id="en-us_elb_02_0001__en-us_topic_0052569751_image2280134131215" src="en-us_image_0000001206511791.png"></span> in the upper left corner to display <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b441019121229">Service List</strong> and choose <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b24131012142211">Computing</strong> &gt; <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b2416012112212">Elastic Cloud Server</strong>.</li><li id="en-us_elb_02_0001__li12985204673513"><p id="en-us_elb_02_0001__p9450171445511"><a name="en-us_elb_02_0001__li12985204673513"></a><a name="li12985204673513"></a>Click <strong id="en-us_elb_02_0001__b125841168812">Create ECS</strong>, configure the parameters, and click <strong id="en-us_elb_02_0001__b15851516781">Create Now</strong>.</p>
+<p id="en-us_elb_02_0001__p1745011147553"></p>
+The following table lists the specifications of the two ECSs.
+.. _en-us_elb_02_0001__table169305003620:
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_elb_02_0001__table169305003620" frame="border" border="1" rules="all"><caption><b>Table 1 </b>ECS specifications</caption><thead align="left"><tr id="en-us_elb_02_0001__row1926804361"><th align="left" class="cellrowborder" valign="top" width="46.949999999999996%" id="mcps1.3.4.4.3.1.2.3.1.1"><p id="en-us_elb_02_0001__p1892518019366"><strong id="en-us_elb_02_0001__b19953103985013">Item</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.05%" id="mcps1.3.4.4.3.1.2.3.1.2"><p id="en-us_elb_02_0001__p992515013615"><strong id="en-us_elb_02_0001__b173134916507">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_elb_02_0001__row1592617014367"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p6926904361">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p11926180193617">ECS01 and ECS02</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row1692618015368"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p99262003618">OS</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p4926180103613">CentOS 7.2 64bit</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row192710163612"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p892618033614">vCPUs</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p5927180103614">2</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row1592812043617"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p129271407366">Memory</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p9927301368">4 GB</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row392816093610"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p139281709369">System disk</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p199287015363">40 GB</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row159291018368"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p1992870163612">Data disk</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p3929207369">100 GB</p>
+</td>
+</tr>
+<tr id="en-us_elb_02_0001__row2092917063616"><td class="cellrowborder" valign="top" width="46.949999999999996%" headers="mcps1.3.4.4.3.1.2.3.1.1 "><p id="en-us_elb_02_0001__p13929906362">Bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.05%" headers="mcps1.3.4.4.3.1.2.3.1.2 "><p id="en-us_elb_02_0001__p1892918013619">5 Mbit/s</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+</li><li id="en-us_elb_02_0001__li98881217183519">Submit your request.</li></ol>
+<h4 class="sectiontitle">Deploying the Application</h4><p id="en-us_elb_02_0001__p19652191111417">Deploy Nginx on the two ECSs and edit two HTML pages for the web applications so that a page with message "Welcome to ELB test page one!" is returned when ECS01 is accessed, and the other page with message "Welcome to ELB test page two!" is returned when ECS02 is accessed.</p>
+<ol id="en-us_elb_02_0001__ol1137531718571"><li id="en-us_elb_02_0001__li7185175234820">Log in to the ECSs.</li><li id="en-us_elb_02_0001__li417184819279">Install and start Nginx.<ol type="a" id="en-us_elb_02_0001__ol38581142815"><li id="en-us_elb_02_0001__li48851946193831">Install Nginx:<p id="en-us_elb_02_0001__p10803603193928"><a name="en-us_elb_02_0001__li48851946193831"></a><a name="li48851946193831"></a><strong id="en-us_elb_02_0001__b45801066193937">yum -y install nginx</strong></p>
+</li><li id="en-us_elb_02_0001__li16912153204016">Start Nginx:<p id="en-us_elb_02_0001__p20912335402"><a name="en-us_elb_02_0001__li16912153204016"></a><a name="li16912153204016"></a><strong id="en-us_elb_02_0001__b15912123204017">systemctl start nginx.service</strong></p>
+</li><li id="en-us_elb_02_0001__li1329491843015">Enter <strong id="en-us_elb_02_0001__b529871817303">http://</strong><em id="en-us_elb_02_0001__i13299171814302">EIP bound to the ECS</em> in the address box of your browser.If the following page is displayed, Nginx has been installed.<span class="figcap"><b>Figure 1 </b>Nginx installed successfully</span><br><span><img id="en-us_elb_02_0001__image733865101817" src="en-us_image_0207375188.jpg"></span>
+
+</li></ol>
+</li><li id="en-us_elb_02_0001__li5437706117">Modify the HTML page of ECS01.<a name="en-us_elb_02_0001__li5437706117"></a><a name="li5437706117"></a>Move the <strong id="en-us_elb_02_0001__b582120535347">index.html</strong> file from the default root directory of Nginx <strong id="en-us_elb_02_0001__b18822125303414">/usr/share/nginx/html</strong> to the <strong id="en-us_elb_02_0001__b582216534348">ELB01</strong> directory and modify the file to identify access to ECS01.<ol type="a" id="en-us_elb_02_0001__ol17991841818"><li id="en-us_elb_02_0001__li73061128217">Create the <strong id="en-us_elb_02_0001__b111981836445">ELB01</strong> directory and copy the <strong id="en-us_elb_02_0001__b1523113411246">index.html</strong> file to this directory:<p id="en-us_elb_02_0001__p173003321518"><strong id="en-us_elb_02_0001__b110913141263">mkdir /usr/share/nginx/html/ELB01</strong></p>
+<p id="en-us_elb_02_0001__p1130613127218"><strong id="en-us_elb_02_0001__b1770484313713">cp <strong id="en-us_elb_02_0001__b983391711810">/usr/share/nginx/html/</strong>index.html /usr/share/nginx/html/ELB01</strong>/</p>
+</li><li id="en-us_elb_02_0001__li43715036155356">Open the <strong id="en-us_elb_02_0001__b108801613204212">index.html</strong> file.<p id="en-us_elb_02_0001__p57891004155356"><strong id="en-us_elb_02_0001__b1282164811124">vim /usr/share/nginx/html<strong id="en-us_elb_02_0001__b445614535191">/ELB01</strong>/index.html</strong></p>
+</li><li id="en-us_elb_02_0001__li58659743155356">Press <strong id="en-us_elb_02_0001__b21631824154011">i</strong> to enter editing mode.</li><li id="en-us_elb_02_0001__li53818751155356">Modify the <strong id="en-us_elb_02_0001__b1381499314202545">index.html</strong> file to be as follows:<pre class="screen" id="en-us_elb_02_0001__screen42293086155356"> ...
+    &lt;body&gt;
+        &lt;h1&gt;Welcome to &lt;strong&gt;ELB&lt;/strong&gt; test page one!&lt;/h1&gt;
+
+        &lt;div class="content"&gt;
+            &lt;p&gt;This page is used to test the &lt;strong&gt;ELB&lt;/strong&gt;!&lt;/p&gt;
+
+            &lt;div class="alert"&gt;
+                &lt;h2&gt;ELB01&lt;/h2&gt;
+                &lt;div class="content"&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page one)!&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page one)!&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page one)!&lt;/strong&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;</pre>
+</li><li id="en-us_elb_02_0001__li5284577155356">Press <strong id="en-us_elb_02_0001__b1198904442202845_1">Esc</strong> to exit editing mode. Then, enter <strong id="en-us_elb_02_0001__b201364315920295_1">:wq</strong> to save the settings and exit the file.</li></ol>
+
+</li><li id="en-us_elb_02_0001__li0811151216197">Modify the HTML page of ECS02.<a name="en-us_elb_02_0001__li0811151216197"></a><a name="li0811151216197"></a>Move the <strong id="en-us_elb_02_0001__b852213201664">index.html</strong> file from the default root directory of Nginx <strong id="en-us_elb_02_0001__b12677410172514">/usr/share/nginx/html</strong> to the <strong id="en-us_elb_02_0001__b179101139132510">ELB02</strong> directory and modify the file to identify access to ECS02.<ol type="a" id="en-us_elb_02_0001__ol78111712121918"><li id="en-us_elb_02_0001__li981115126194">Create the <strong id="en-us_elb_02_0001__b175231561769">ELB02</strong> directory and copy the <strong id="en-us_elb_02_0001__b205241756365">index.html</strong> file to this directory:<p id="en-us_elb_02_0001__p68111412151912"><strong id="en-us_elb_02_0001__b88113123191">mkdir /usr/share/nginx/html/ELB02</strong></p>
+<p id="en-us_elb_02_0001__p4811212191917"><strong id="en-us_elb_02_0001__b3812912161910">cp <strong id="en-us_elb_02_0001__b16812171217192">/usr/share/nginx/html/</strong>index.html /usr/share/nginx/html/ELB02</strong>/</p>
+</li><li id="en-us_elb_02_0001__li6812121219197">Open the <strong id="en-us_elb_02_0001__b143589415716">index.html</strong> file.<p id="en-us_elb_02_0001__p1881241241910"><strong id="en-us_elb_02_0001__b17812212181915">vim /usr/share/nginx/html<strong id="en-us_elb_02_0001__b1794479197">/ELB02</strong>/index.html</strong></p>
+</li><li id="en-us_elb_02_0001__li1812121217199">Press <strong id="en-us_elb_02_0001__b161511671718">i</strong> to enter editing mode.</li><li id="en-us_elb_02_0001__li12812912161915">Modify the <strong id="en-us_elb_02_0001__b169873713714">index.html</strong> file to be as follows:<pre class="screen" id="en-us_elb_02_0001__screen074901414420">...
+    &lt;body&gt;
+        &lt;h1&gt;Welcome to &lt;strong&gt;ELB&lt;/strong&gt; test page two!&lt;/h1&gt;
+
+        &lt;div class="content"&gt;
+            &lt;p&gt;This page is used to test the &lt;strong&gt;ELB&lt;/strong&gt;!&lt;/p&gt;
+
+            &lt;div class="alert"&gt;
+                &lt;h2&gt;ELB02&lt;/h2&gt;
+                &lt;div class="content"&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page two)!&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page two)!&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;strong&gt;ELB test (page two)!&lt;/strong&gt;&lt;/p&gt;
+                &lt;/div&gt;
+             &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;</pre>
+</li><li id="en-us_elb_02_0001__li1431755212157">Press <strong id="en-us_elb_02_0001__b1448510141770">Esc</strong> to exit editing mode. Then, enter <strong id="en-us_elb_02_0001__b1448611148719">:wq</strong> to save the settings and exit the file.</li></ol>
+
+</li><li id="en-us_elb_02_0001__li187810381119">Use your browser to access <strong id="en-us_elb_02_0001__b161936112081">http://</strong><em id="en-us_elb_02_0001__i15657926283">ECS01 EIP</em><strong id="en-us_elb_02_0001__b674019320820">/ELB01/</strong> and <strong id="en-us_elb_02_0001__b77684717818">http://</strong><em id="en-us_elb_02_0001__i1040845515810">ECS02 EIP</em><strong id="en-us_elb_02_0001__b13738411911">/ELB02/</strong> to verify that Nginx has been deployed.<p id="en-us_elb_02_0001__p12966153132218">If the modified HTML pages are displayed, Nginx has been deployed.</p>
+<ul id="en-us_elb_02_0001__ul117591613242"><li id="en-us_elb_02_0001__li1275991102411">HTML page of ECS01<span class="figcap"><b>Figure 2 </b>Nginx successfully deployed on ECS01</span><br><span><img id="en-us_elb_02_0001__image162241919366" src="en-us_image_0166358924.png"></span>
+</li><li id="en-us_elb_02_0001__li1049422182416">HTML page of ECS02<span class="figcap"><b>Figure 3 </b>Nginx successfully deployed on ECS02</span><br><span><img id="en-us_elb_02_0001__image122741811610" src="en-us_image_0166358926.png"></span>
+</li></ul>
+</li></ol>
+
+<h4 class="sectiontitle">Creating a Load Balancer</h4><ol id="en-us_elb_02_0001__ol353744134512"><li id="en-us_elb_02_0001__li1131682861711">In the upper left corner of the page, click <span><img id="en-us_elb_02_0001__en-us_topic_0052569751_image1997930516" src="en-us_image_0241225827.png"></span> and select the desired region and project.</li><li id="en-us_elb_02_0001__li17301740102218">Hover on <span><img id="en-us_elb_02_0001__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="en-us_elb_02_0001__li59220156440">Click <strong id="en-us_elb_02_0001__b9762174020218">Create Elastic Load Balancer</strong> and then configure the parameters.</li><li id="en-us_elb_02_0001__li22394472202211">Click <strong id="en-us_elb_02_0001__b9735141012126">Create Now</strong>.</li><li id="en-us_elb_02_0001__li60671811161537">Confirm the configuration and submit your request.</li><li id="en-us_elb_02_0001__li1870167192111">View the newly created load balancer in the load balancer list.</li></ol>
+
+<h4 class="sectiontitle">Adding a Listener</h4><p id="en-us_elb_02_0001__p845424162316">Add a listener to the created load balancer. When you add the listener, create a backend server group, configure a health check, and add the two ECSs to the created backend server group.</p>
+Configure two forwarding policies to forward HTTP requests to the two ECSs, for example, requests from <strong id="en-us_elb_02_0001__b313723134313">www.example.com/ELB01/</strong> to ECS01, and those from <strong id="en-us_elb_02_0001__b1313783194314">www.example.com/ELB02/</strong> to ECS02.<span class="figcap"><b>Figure 4 </b>Traffic forwarding</span><br><span><img class="vsd" id="en-us_elb_02_0001__image115200401353" src="en-us_image_0198607881.png"></span>
+
+<ol id="en-us_elb_02_0001__ol5476154122712"><li id="en-us_elb_02_0001__li122074130268">Hover on <span><img id="en-us_elb_02_0001__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="en-us_elb_02_0001__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="en-us_elb_02_0001__li44618046152949">Locate the created load balancer and click its name.</li><li id="en-us_elb_02_0001__li13174175374113">Under <strong id="en-us_elb_02_0001__b1155619280162">Listeners</strong>, click <strong id="en-us_elb_02_0001__b8558152814164">Add Listener</strong>.</li><li id="en-us_elb_02_0001__li3525459183317">Configure the listener and click <strong id="en-us_elb_02_0001__b7315836111710">Next</strong>.<ul id="en-us_elb_02_0001__ul19799192211283"><li id="en-us_elb_02_0001__li1680042242817"><strong id="en-us_elb_02_0001__b11154920174012">Name</strong>: Enter a name, for example, <strong id="en-us_elb_02_0001__b1315572024011">listener-HTTP</strong>.</li><li id="en-us_elb_02_0001__li361710862912"><strong id="en-us_elb_02_0001__b10904329184017">Frontend Protocol/Port</strong>: Select a protocol and enter a port for the load balancer to receive requests. For example, set it to <strong id="en-us_elb_02_0001__b4905329154010">HTTP</strong> and <strong id="en-us_elb_02_0001__b69062293400">80</strong>.</li></ul>
+</li><li id="en-us_elb_02_0001__li446913175196">Create a backend server group, configure a health check, and click <strong id="en-us_elb_02_0001__b1488914161912">Finish</strong>.<ul id="en-us_elb_02_0001__ul12469417191910"><li id="en-us_elb_02_0001__li74691170194">Backend server group<ul id="en-us_elb_02_0001__ul1346941761917"><li id="en-us_elb_02_0001__li7469161717192"><strong id="en-us_elb_02_0001__b1871985617407">Name</strong>: Enter a name, for example, <strong id="en-us_elb_02_0001__b157312563402">server_group-ELB</strong>.</li><li id="en-us_elb_02_0001__li94694172199"><strong id="en-us_elb_02_0001__b13427203134119">Load Balancing Algorithm</strong>: Select an algorithm that the load balancer will use to route requests, for example, <strong id="en-us_elb_02_0001__b94422354118">Weighted round robin</strong>.</li></ul>
+</li></ul>
+<ul id="en-us_elb_02_0001__ul1646920173194"><li id="en-us_elb_02_0001__li846910176194">Health check<ul id="en-us_elb_02_0001__ul046931771916"><li id="en-us_elb_02_0001__li1646931771918"><strong id="en-us_elb_02_0001__b16173141134118">Protocol</strong>: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.</li><li id="en-us_elb_02_0001__li104691517151910"><strong id="en-us_elb_02_0001__b197234311812">Domain Name</strong>: Enter a domain name that will be used for health checks, for example, www.example.com.</li><li id="en-us_elb_02_0001__li546971711191"><strong id="en-us_elb_02_0001__b92914183911">Port</strong>: Enter a port for the load balancer to perform health checks on backend servers, for example, <strong id="en-us_elb_02_0001__b174010189913">80</strong>.</li></ul>
+</li></ul>
+</li></ol>
+
+<h4 class="sectiontitle">Adding Forwarding Policies</h4><ol id="en-us_elb_02_0001__ol16279105810277"><li id="en-us_elb_02_0001__li1279175813279"><a name="en-us_elb_02_0001__li1279175813279"></a><a name="li1279175813279"></a>Click the name of the newly added listener and then click <strong id="en-us_elb_02_0001__b9882400396">Add</strong> next to <strong id="en-us_elb_02_0001__b86040264407">Forwarding Policies</strong>.</li><li id="en-us_elb_02_0001__li42791058102718">Configure the forwarding policy and click <strong id="en-us_elb_02_0001__b10444112104111">Next</strong>.<ul id="en-us_elb_02_0001__ul4782734162215"><li id="en-us_elb_02_0001__li197823348223"><strong id="en-us_elb_02_0001__b4608566412">Name</strong>: Enter a name for the forwarding policy, for example, <strong id="en-us_elb_02_0001__b44183274611">forwarding_policy-ELB01</strong>.</li><li id="en-us_elb_02_0001__li2078323419221"><strong id="en-us_elb_02_0001__b12425142215413">Domain Name</strong>: Enter a domain name that will be used to forward the requests, for example, www.example.com. The domain name in the request must exactly match that specified in the forwarding policy.</li><li id="en-us_elb_02_0001__li2739202722519"><strong id="en-us_elb_02_0001__b123583411346">URL</strong>: You can also specify a URL to forward the requests, for example, <strong id="en-us_elb_02_0001__b148561716482">/ELB01/</strong>.</li><li id="en-us_elb_02_0001__li66261226102716"><strong id="en-us_elb_02_0001__b79391032104812">URL Matching Rule</strong>: Select the rule for matching specified URL string with the requested URL. Three options are available, <strong id="en-us_elb_02_0001__b15790544155219">Exact match</strong>, <strong id="en-us_elb_02_0001__b7835482526">Prefix match</strong>, and <strong id="en-us_elb_02_0001__b1216005235216">Regular expression match</strong>. <strong id="en-us_elb_02_0001__b7615161517535">Exact match</strong> enjoys the highest priority, and <strong id="en-us_elb_02_0001__b115315113531">Regular expression match</strong> the lowest priority. Select <strong id="en-us_elb_02_0001__b133317381237">Exact match</strong> here.</li></ul>
+</li><li id="en-us_elb_02_0001__li12748141114321">Add the backend <span id="en-us_elb_02_0001__text21372058191113">server</span> group and configure a health check.<ul id="en-us_elb_02_0001__ul1274861111325"><li id="en-us_elb_02_0001__li11748611203214">Backend <span id="en-us_elb_02_0001__text1968719251596">server</span> group<ul id="en-us_elb_02_0001__ul17748131123211"><li id="en-us_elb_02_0001__li15748191119321"><strong id="en-us_elb_02_0001__b19948129125418">Name</strong>: Enter a name, for example, <strong id="en-us_elb_02_0001__b2324520125414">server_group-ELB01</strong>.</li><li id="en-us_elb_02_0001__li1374821120322"><strong id="en-us_elb_02_0001__b189541551103819">Load Balancing Algorithm</strong>: Select an algorithm that the load balancer will use to route requests, for example, <strong id="en-us_elb_02_0001__b16955105119388">Weighted round robin</strong>.</li></ul>
+</li></ul>
+<ul id="en-us_elb_02_0001__ul1574861111327"><li id="en-us_elb_02_0001__li374812116329">Health check<ul id="en-us_elb_02_0001__ul16748141112321"><li id="en-us_elb_02_0001__li1574819117322"><strong id="en-us_elb_02_0001__b178964583387">Protocol</strong>: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.</li><li id="en-us_elb_02_0001__li1174891118325"><strong id="en-us_elb_02_0001__b6493182083918">Domain Name</strong>: Enter a domain name that will be used for health checks, for example, <strong id="en-us_elb_02_0001__b134946203393">www.example.com</strong>.</li><li id="en-us_elb_02_0001__li574820119321"><strong id="en-us_elb_02_0001__b19139102715398">Port</strong>: Enter a port for the load balancer to perform health checks on backend servers, for example, <strong id="en-us_elb_02_0001__b9150627143917">80</strong>.</li></ul>
+</li></ul>
+</li><li id="en-us_elb_02_0001__li614204520397">Select the newly added forwarding policy. On the <strong id="en-us_elb_02_0001__b77345913115">Backend Server Groups</strong> tab page on the right, click <strong id="en-us_elb_02_0001__b18473129812">Add</strong>.</li><li id="en-us_elb_02_0001__li19903154544217"><a name="en-us_elb_02_0001__li19903154544217"></a><a name="li19903154544217"></a>Select the server you want to add, set the backend port, and click <strong id="en-us_elb_02_0001__b161061650880">Finish</strong>.<ul id="en-us_elb_02_0001__ul19482182214415"><li id="en-us_elb_02_0001__li2048352284418">Backend server: ECS01</li><li id="en-us_elb_02_0001__li6483922104411">Backend port: Set it to <strong id="en-us_elb_02_0001__b197391301571">80</strong>. Backend servers will use this port to communicate with the load balancer.</li></ul>
+</li><li id="en-us_elb_02_0001__li1423765125218">Repeat <a href="#en-us_elb_02_0001__li1279175813279">1</a> to <a href="#en-us_elb_02_0001__li19903154544217">5</a> to add another forwarding policy, create a backend server group, and add ECS02 to the backend server group. Configure the parameters.</li></ol>
+
+<h4 class="sectiontitle">Verifying Load Balancing</h4><p id="en-us_elb_02_0001__p159413171688">After the load balancer is configured, you can access the domain name or the specified URL to check whether the two ECSs are accessible.</p>
+<ol id="en-us_elb_02_0001__ol1177812309272"><li id="en-us_elb_02_0001__li10778123092715">Modify the <strong id="en-us_elb_02_0001__b663814318134">C:\Windows\System32\drivers\etc\hosts</strong> file on your PC to map the domain name to the load balancer EIP.View the load balancer EIP on the basic information page of the load balancer.<span class="figcap"><b>Figure 5 </b><strong id="en-us_elb_02_0001__b15771175144311">hosts</strong> file on your PC</span><br><span><img id="en-us_elb_02_0001__image67171744569" src="en-us_image_0166358967.png"></span>
+
+</li><li id="en-us_elb_02_0001__li1677863072715">On the CLI of your PC, run the following command to check whether the domain name is mapped to the load balancer EIP:<p id="en-us_elb_02_0001__p141804481111"><a name="en-us_elb_02_0001__li1677863072715"></a><a name="li1677863072715"></a><strong id="en-us_elb_02_0001__b099542951110">ping www.example.com</strong></p>
+<p id="en-us_elb_02_0001__p081752681216">If data packets are returned, the domain name has been mapped to the load balancer EIP.</p>
+</li><li id="en-us_elb_02_0001__li4888169202412">Use your browser to access <strong id="en-us_elb_02_0001__b920312301919">http://www.example.com/ELB01/</strong>. If the following page is displayed, the load balancer has routed the request to ECS01.<span class="figcap"><b>Figure 6 </b>Accessing ECS01</span><br><span><img id="en-us_elb_02_0001__image1262314345916" src="en-us_image_0166358972.png"></span>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_elb_02_0001__p1687510552309"><strong id="en-us_elb_02_0001__b5500632182014">ELB01/</strong> indicates that the default directory named <strong id="en-us_elb_02_0001__b137021434103312">ECS01</strong> is accessed, while <strong id="en-us_elb_02_0001__b666117341212">ELB01</strong> indicates the file name. Therefore, the slash (/) following <strong id="en-us_elb_02_0001__b354832612210">ELB01</strong> must be retained.</p>
+
+</li><li id="en-us_elb_02_0001__li1497010584220">Use your browser to access <strong id="en-us_elb_02_0001__b6514135572416">http://www.example.com/ELB02/</strong>. If the following page is displayed, the load balancer has routed the request to ECS02.<span class="figcap"><b>Figure 7 </b>Accessing ECS02</span><br><span><img id="en-us_elb_02_0001__image139479102108" src="en-us_image_0166358975.png"></span>
+</li></ol>
+
+
+
+
+
+
+

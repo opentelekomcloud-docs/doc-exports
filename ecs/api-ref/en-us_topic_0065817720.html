@@ -1,0 +1,209 @@
+<a name="EN-US_TOPIC_0065817720"></a><a name="EN-US_TOPIC_0065817720"></a>
+
+<h1 class="topictitle1">Creating an <span id="text4363193542">ECS</span> Group</h1>
+<div id="body1499652824863"><div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section31887518"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p25374974">This API is used to create an <span id="EN-US_TOPIC_0065817720__text367121110541">ECS</span> group.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section32752180"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p15728249">Only anti-affinity groups are supported.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section18552212"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p17835728145012">POST /v2.1/{project_id}/os-server-groups</p>
+<p id="EN-US_TOPIC_0065817720__p1040617275203">POST /v2/{project_id}/os-server-groups</p>
+<div class="p" id="EN-US_TOPIC_0065817720__p1154921125113"><a href="#EN-US_TOPIC_0065817720__table1334523718138">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817720__table1334523718138"></a><a name="table1334523718138"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817720__table1334523718138" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817720__row173451237201311"><th align="left" class="cellrowborder" valign="top" width="21.902190219021904%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817720__p2485124411136">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.94229422942294%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817720__p4485124418131">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.155515551555155%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817720__p124851144151310">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817720__row934512372130"><td class="cellrowborder" valign="top" width="21.902190219021904%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__p12485174416137">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.94229422942294%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__p748594416135">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.155515551555155%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__p34851444141316">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section35680930"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817720__p191672480517"><a href="#EN-US_TOPIC_0065817720__table173242991418">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817720__table173242991418"></a><a name="table173242991418"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817720__table173242991418" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817720__row3324199171414"><th align="left" class="cellrowborder" valign="top" width="17.9%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0065817720__p461571910145">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.19%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0065817720__p18615181981415">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.91%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0065817720__p061541920147">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0065817720__p96154195145">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817720__row1932479121412"><td class="cellrowborder" valign="top" width="17.9%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817720__p14615519101415">server_group</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.19%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817720__p2615151912142">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.91%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817720__p461561919149">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817720__p176151194142">Specifies the <span id="EN-US_TOPIC_0065817720__text1461551910144">ECS</span> group information. For details, see <a href="#EN-US_TOPIC_0065817720__en-us_topic_0057973153_table19917766">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817720__en-us_topic_0057973153_table19917766"></a><a name="en-us_topic_0057973153_table19917766"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_table19917766" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0065817720__b84235270618839">server_group</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row59878934"><th align="left" class="cellrowborder" valign="top" width="17.32%" id="mcps1.3.4.4.2.5.1.1"><p id="EN-US_TOPIC_0065817720__p115851920182615">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.11%" id="mcps1.3.4.4.2.5.1.2"><p id="EN-US_TOPIC_0065817720__p375944953017">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.480000000000004%" id="mcps1.3.4.4.2.5.1.3"><p id="EN-US_TOPIC_0065817720__p1560210202260">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.09%" id="mcps1.3.4.4.2.5.1.4"><p id="EN-US_TOPIC_0065817720__p10602192016264">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row28765213"><td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p48280896">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817720__p137591249173010">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.480000000000004%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p18438475">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.09%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p44665147">Specifies the <span id="EN-US_TOPIC_0065817720__text1417132114818">ECS</span> group name. The value contains 1 to 255 characters.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row66442010"><td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p13093750">policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817720__p12759104943011">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.480000000000004%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p53960863">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.09%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p173471532155519">Specifies the policies associated with the <span id="EN-US_TOPIC_0065817720__text31838237485">ECS</span> group. Options:</p>
+<ul id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_ul1237514118527"><li id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_li1374711155217"><strong id="EN-US_TOPIC_0065817720__b76011237203011">anti-affinity</strong>: <span id="EN-US_TOPIC_0065817720__text317320315213">ECS</span>s in this group must be deployed on different hosts.</li><li id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_li1737571119527"><strong id="EN-US_TOPIC_0065817720__b486418814496">affinity</strong>: <span id="EN-US_TOPIC_0065817720__text48051032928">ECS</span>s in this group must be deployed on the same host.</li><li id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_li1737581117523"><strong id="EN-US_TOPIC_0065817720__b433245743011">soft-anti-affinity</strong>: <span id="EN-US_TOPIC_0065817720__text11579101912541">ECS</span>s in this group are deployed on different hosts if possible. If the <span id="EN-US_TOPIC_0065817720__text163812376387">ECS</span>s cannot be deployed on different hosts, deploy them based on the actual condition for successful <span id="EN-US_TOPIC_0065817720__text1853224373820">ECS</span> creation.</li><li id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_li133751611115214"><strong id="EN-US_TOPIC_0065817720__b1613110294319">soft-affinity</strong>: <span id="EN-US_TOPIC_0065817720__text198214763818">ECS</span>s in this group are deployed on the same host if possible. If the <span id="EN-US_TOPIC_0065817720__text46698341928">ECS</span>s cannot be deployed on the same host, deploy them based on the actual condition for successful <span id="EN-US_TOPIC_0065817720__text332395112513">ECS</span> creation.</li></ul>
+<div class="note" id="EN-US_TOPIC_0065817720__note156714496517"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0065817720__p1856715491058">Only the anti-affinity policy is supported. The other three policies are retained to be compatible with native APIs. However, you are not advised to use the other three policies.</p>
+<p id="EN-US_TOPIC_0065817720__p356719491458">You are suggested to use the policy described in <a href="en-us_topic_0161097718.html">Creating an ECS Group</a>.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section52692922"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817720__p2625114213525"><a href="#EN-US_TOPIC_0065817720__table14250354151412">Table 4</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817720__table14250354151412"></a><a name="table14250354151412"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817720__table14250354151412" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817720__row5250115491411"><th align="left" class="cellrowborder" valign="top" width="27.402740274027405%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0065817720__p87081211159">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.81258125812581%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0065817720__p1670816151519">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.78467846784679%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0065817720__p17708201201510">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817720__row9250175461415"><td class="cellrowborder" valign="top" width="27.402740274027405%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__p20708181141514">server_group</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81258125812581%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__p170851161519">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.78467846784679%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__p870816141515">Specifies the <span id="EN-US_TOPIC_0065817720__text07081121512">ECS</span> group information. For details, see <a href="#EN-US_TOPIC_0065817720__en-us_topic_0057973153_table7944126">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817720__en-us_topic_0057973153_table7944126"></a><a name="en-us_topic_0057973153_table7944126"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_table7944126" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0065817720__b337498422">server_group</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row9238701"><th align="left" class="cellrowborder" valign="top" width="26.597340265973408%" id="mcps1.3.6.2.4.1.1"><p id="EN-US_TOPIC_0065817720__p177470268263">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.148085191480853%" id="mcps1.3.6.2.4.1.2"><p id="EN-US_TOPIC_0065817720__p167471026112613">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54.25457454254574%" id="mcps1.3.6.2.4.1.3"><p id="EN-US_TOPIC_0065817720__p67471426112617">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row60872190"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p31700356">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p17592014">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p61068496">Specifies the <span id="EN-US_TOPIC_0065817720__text1521862034917">ECS</span> group UUID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row12745552"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p25756821">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p5927779">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p36126903">Specifies the <span id="EN-US_TOPIC_0065817720__text61161723124917">ECS</span> group name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row56706675"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p29837953">policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p955132">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p18801115810585">Specifies the policies associated with the ECS group. Options:</p>
+<p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p1380255810580"><strong id="EN-US_TOPIC_0065817720__b842352706161537">anti-affinity</strong>: ECSs in this group must be deployed on different hosts.</p>
+<p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p138031158195815"><strong id="EN-US_TOPIC_0065817720__b842352706161548">affinity</strong>: ECSs in this group must be deployed on the same host.</p>
+<p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p68041058195811"><strong id="EN-US_TOPIC_0065817720__b842352706161556">soft-anti-affinity</strong>: ECSs in this group are deployed on different hosts if possible. If the ECSs cannot be deployed on different hosts, deploy them based on the actual condition for successful ECS creation.</p>
+<p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p680565816581"><strong id="EN-US_TOPIC_0065817720__b842352706161637">soft-affinity</strong>: ECSs in this group are deployed on the same host if possible. If the ECSs cannot be deployed on the same host, deploy them based on the actual condition for successful ECS creation.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row28154895"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p65953984">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p40672482">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p27313303">Specifies the <span id="EN-US_TOPIC_0065817720__text1712634116218">ECS</span>s contained in an <span id="EN-US_TOPIC_0065817720__text5197174013216">ECS</span> group.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row44493140"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p47174611">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p63047142">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p60373738">Specifies the <span id="EN-US_TOPIC_0065817720__text18469542154918">ECS</span> group metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row1034716141596"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p56149379">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p51805857">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p58946952">Specifies the tenant ID in UUID format for the <span id="EN-US_TOPIC_0065817720__text784594217211">ECS</span> group.</p>
+<p id="EN-US_TOPIC_0065817720__p1617417417483">This parameter is supported in microversion 2.13 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_row6492733"><td class="cellrowborder" valign="top" width="26.597340265973408%" headers="mcps1.3.6.2.4.1.1 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p172856208593">user_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.148085191480853%" headers="mcps1.3.6.2.4.1.2 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p14286172095912">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.25457454254574%" headers="mcps1.3.6.2.4.1.3 "><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p728822045918">Specifies the user ID in UUID format for the <span id="EN-US_TOPIC_0065817720__text189901143224">ECS</span> group.</p>
+<p id="EN-US_TOPIC_0065817720__p8237711194814">This parameter is supported in microversion 2.13 and later.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section4474257"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817720__screen12114194343211">POST https://{endpoint}/v2/9c53a566cb3443ab910cf0daebca90c4/os-server-groups
+POST https://{endpoint}/v2.1/9c53a566cb3443ab910cf0daebca90c4/os-server-groups</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_screen54316823165914">{
+    "server_group": {
+        "name": "test",
+        "policies": ["anti-affinity"]
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__section4844134018500"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065817720__screen188512404501">{
+    "server_group": {
+        "id": "5bbcc3c4-1da2-4437-a48a-66f15b1b13f9",
+        "name": "test",
+        "policies": [
+            "anti-affinity"
+        ],
+        "members": [],
+        "metadata": {}
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_section17661930132114"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817720__en-us_topic_0057973153_p11699192195015">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065817683.html">ECS Group Management</a></div>
+</div>
+</div>
+

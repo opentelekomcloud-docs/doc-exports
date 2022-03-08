@@ -1,0 +1,56 @@
+<a name="EN-US_TOPIC_0114225937"></a><a name="EN-US_TOPIC_0114225937"></a>
+
+<h1 class="topictitle1">Why Does a Disk Attached to a Windows ECS Go Offline?</h1>
+<div id="body1527302794354"><div class="section" id="EN-US_TOPIC_0114225937__section19665528155311"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0114225937__p1080783015316">A disk attached to a Windows ECS goes offline, and the system displays the message "The disk is offline because of policy set by an administrator."</p>
+<div class="fignone" id="EN-US_TOPIC_0114225937__fig1167510561578"><span class="figcap"><b>Figure 1 </b>Offline disk</span><br><span><img id="EN-US_TOPIC_0114225937__image15676856165711" src="en-us_image_0114229858.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0114225937__section16231817217"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0114225937__p14935142020212">Windows has three types of SAN policies: <strong id="EN-US_TOPIC_0114225937__b842352706143022">OnlineAll</strong>, <strong id="EN-US_TOPIC_0114225937__b842352706143026">OfflineShared</strong>, and <strong id="EN-US_TOPIC_0114225937__b842352706143029">OfflineInternal</strong>.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0114225937__table28191141038" frame="border" border="1" rules="all"><caption><b>Table 1 </b>SAN policies</caption><thead align="left"><tr id="EN-US_TOPIC_0114225937__row1581912410311"><th align="left" class="cellrowborder" valign="top" width="28.000000000000004%" id="mcps1.3.2.3.2.3.1.1"><p id="EN-US_TOPIC_0114225937__p18192049310">SAN Policy</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="72%" id="mcps1.3.2.3.2.3.1.2"><p id="EN-US_TOPIC_0114225937__p9819641738">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0114225937__row178191347320"><td class="cellrowborder" valign="top" width="28.000000000000004%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0114225937__p9819134231">OnlineAll</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0114225937__p4819943310">Indicates that all newly detected disks are automatically brought online.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0114225937__row581924937"><td class="cellrowborder" valign="top" width="28.000000000000004%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0114225937__p1632122130">OfflineShared</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0114225937__p183217225319">Indicates that all newly detected disks on sharable buses, such as FC or iSCSI, are offline by default, whereas disks on non-sharable buses are online.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0114225937__row981914132"><td class="cellrowborder" valign="top" width="28.000000000000004%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0114225937__p198191441431">OfflineInternal</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0114225937__p68199412320">Indicates that all newly detected disks are offline.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0114225937__p13259113112411">The SAN policy of certain Windows OSs, such as Windows Server 2008/2012 Enterprise Edition and Data Center Edition, is <strong id="EN-US_TOPIC_0114225937__b842352706143013">OfflineShared</strong> by default.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0114225937__section65994290513"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0114225937__p10423833854">Use the disk partition management tool DiskPart to obtain and set the SAN policy on the ECS to <strong id="EN-US_TOPIC_0114225937__b842352706203416">OnlineAll</strong>.</p>
+<ol id="EN-US_TOPIC_0114225937__ol1499241314918"><li id="EN-US_TOPIC_0114225937__li1699251313910">Log in to the Windows ECS.</li><li id="EN-US_TOPIC_0114225937__li12349123416106">Press <strong id="EN-US_TOPIC_0114225937__b84235270614291">Win+R</strong> to run <strong id="EN-US_TOPIC_0114225937__b84235270614296">cmd.exe</strong>.</li><li id="EN-US_TOPIC_0114225937__li19448201694">Run the following command to access DiskPart:<p id="EN-US_TOPIC_0114225937__p524611527101"><a name="EN-US_TOPIC_0114225937__li19448201694"></a><a name="li19448201694"></a><strong id="EN-US_TOPIC_0114225937__b1480935451017">diskpart</strong></p>
+</li><li id="EN-US_TOPIC_0114225937__li183791059141016">Run the following command to view the SAN policy on the ECS:<div class="p" id="EN-US_TOPIC_0114225937__p587911611114"><a name="EN-US_TOPIC_0114225937__li183791059141016"></a><a name="li183791059141016"></a><strong id="EN-US_TOPIC_0114225937__b10335920129">san</strong><ul id="EN-US_TOPIC_0114225937__ul11236214141217"><li id="EN-US_TOPIC_0114225937__li1223617148128">If the SAN policy is <strong id="EN-US_TOPIC_0114225937__b84235270611592">OnlineAll</strong>, run the <strong id="EN-US_TOPIC_0114225937__b84235270611596">exit</strong> command to exit DiskPart.</li></ul>
+<ul id="EN-US_TOPIC_0114225937__ul1723781418122"><li id="EN-US_TOPIC_0114225937__li122371014101217">If the SAN policy is not <strong id="EN-US_TOPIC_0114225937__b1591168914143051">OnlineAll</strong>, go to step <a href="#EN-US_TOPIC_0114225937__li5934113914122">5</a>.</li></ul>
+</div>
+</li><li id="EN-US_TOPIC_0114225937__li5934113914122"><a name="EN-US_TOPIC_0114225937__li5934113914122"></a><a name="li5934113914122"></a>Run the following command to change the SAN policy to <strong id="EN-US_TOPIC_0114225937__b842352706203719">OnlineAll</strong>:<p id="EN-US_TOPIC_0114225937__p1582745319216"><strong id="EN-US_TOPIC_0114225937__b447557122113">san policy=onlineall</strong></p>
+</li><li id="EN-US_TOPIC_0114225937__li7520113619226">(Optional) Use the <span id="EN-US_TOPIC_0114225937__text1123555371420">ECS</span> with the SAN policy changed to create a private image so that the configuration takes effect permanently. After an <span id="EN-US_TOPIC_0114225937__text6731130161516">ECS</span> is created using this private image, the disks attached to the <span id="EN-US_TOPIC_0114225937__text8193640142916">ECS</span> are online by default. You only need to initialize them.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

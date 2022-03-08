@@ -1,0 +1,71 @@
+<a name="elb_ug_jt_0001"></a><a name="elb_ug_jt_0001"></a>
+
+<h1 class="topictitle1">Overview</h1>
+<p id="elb_ug_jt_0001__p7018400154542">You need to add at least one listener after you have created a load balancer. This listener receives requests from clients and routes requests to backend <span id="elb_ug_jt_0001__text155315482502">server</span>s using the protocol, port, and load balancing algorithm you select.</p>
+<h4 class="sectiontitle">Supported Protocols</h4><p id="elb_ug_jt_0001__p152187401598">ELB provides load balancing at both Layer 4 and Layer 7.</p>
+<p id="elb_ug_jt_0001__p46198364461">Select TCP or UDP for load balancing at Layer 4 and HTTP or HTTPS at Layer 7.</p>
+
+<a name="elb_ug_jt_0001__table66244785114429"></a><a name="table66244785114429"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0001__table66244785114429" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Protocols supported by ELB</caption><thead align="left"><tr id="elb_ug_jt_0001__row36701900114429"><th align="left" class="cellrowborder" colspan="2" valign="top" id="mcps1.3.2.4.2.5.1.1"><p id="elb_ug_jt_0001__p4473966141520"><strong id="elb_ug_jt_0001__b842352706102621">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" id="mcps1.3.2.4.2.5.1.2"><p id="elb_ug_jt_0001__p60499166141520"><strong id="elb_ug_jt_0001__b1253116427617">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" id="mcps1.3.2.4.2.5.1.3"><p id="elb_ug_jt_0001__p18652969141520"><strong id="elb_ug_jt_0001__b84235270616379">Application Scenario</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0001__row52657811114429"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p8541510141438">Layer 4</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p20330484141012">TCP</p>
+</td>
+<td class="cellrowborder" valign="top" width="38%" headers="mcps1.3.2.4.2.5.1.2 "><ul id="elb_ug_jt_0001__ul39716962141048"><li id="elb_ug_jt_0001__li2168697141048">Source IP address-based sticky sessions</li><li id="elb_ug_jt_0001__li15734882141048">Fast data transfer</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.3 "><ul id="elb_ug_jt_0001__ul2315607141239"><li id="elb_ug_jt_0001__li5593824141239">Scenarios that require high reliability and data accuracy, such as file transfer, email, and remote login</li><li id="elb_ug_jt_0001__li59642403141239">Web applications that receive a large number of concurrent requests and require high performance</li></ul>
+</td>
+</tr>
+<tr id="elb_ug_jt_0001__row10959143516391"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p9959153583918">Layer 4</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p5270937101819">UDP</p>
+</td>
+<td class="cellrowborder" valign="top" width="38%" headers="mcps1.3.2.4.2.5.1.2 "><ul id="elb_ug_jt_0001__ul9365451918"><li id="elb_ug_jt_0001__li153517418198">Low reliability</li><li id="elb_ug_jt_0001__li93615418197">Fast data transfer</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.3 "><p id="elb_ug_jt_0001__p154747282312">Scenarios that require quick response, such as video chat, gaming, and real-time financial quotations</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0001__row0310182312312"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p1031015238313">Layer 4</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p9310132318310">SSL</p>
+</td>
+<td class="cellrowborder" valign="top" width="38%" headers="mcps1.3.2.4.2.5.1.2 "><ul id="elb_ug_jt_0001__ul19369121019249"><li id="elb_ug_jt_0001__li2369161012246">TCP-based security encryption</li><li id="elb_ug_jt_0001__li15194163042415">High reliability</li><li id="elb_ug_jt_0001__li18308124832215">Supported by only classic load balancers</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.3 "><p id="elb_ug_jt_0001__p1231015231431">Web applications that require encrypted transmission</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0001__row10296890141711"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p55450303141740">Layer 7</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p3481406314187">HTTP</p>
+</td>
+<td class="cellrowborder" valign="top" width="38%" headers="mcps1.3.2.4.2.5.1.2 "><ul id="elb_ug_jt_0001__ul21894483141932"><li id="elb_ug_jt_0001__li48229158141932">Cookie-based sticky sessions</li><li id="elb_ug_jt_0001__li10273639141932">X-Forward-For request header</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.3 "><p id="elb_ug_jt_0001__p55802598141819">Web applications where data content needs to be identified, such as mobile games</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0001__row25590944144339"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p28991905144339">Layer 7</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.5.1.1 "><p id="elb_ug_jt_0001__p11410140144345">HTTPS</p>
+</td>
+<td class="cellrowborder" valign="top" width="38%" headers="mcps1.3.2.4.2.5.1.2 "><ul id="elb_ug_jt_0001__ul51806117144345"><li id="elb_ug_jt_0001__li63601869144345">An extension of HTTP for encrypted data transmission to prevent unauthorized access</li><li id="elb_ug_jt_0001__li52975091141037">Encryption and decryption performed on load balancers</li><li id="elb_ug_jt_0001__li51477737144345">Multiple versions of encryption protocols and cipher suites</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.3 "><p id="elb_ug_jt_0001__p8947194144345">Web applications that require encrypted transmission</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+<strong>Parent topic:</strong> <a href="en-us_topic_0015479923.html">Listener</a>
+
+
+

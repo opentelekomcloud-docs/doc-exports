@@ -1,0 +1,64 @@
+<a name="EN-US_TOPIC_0046912051"></a><a name="EN-US_TOPIC_0046912051"></a>
+
+<h1 class="topictitle1">User Encryption</h1>
+<div id="body1484636276384"><p id="EN-US_TOPIC_0046912051__p20055263115511">User encryption allows you to use the encryption feature provided on the public cloud platform to encrypt <span id="EN-US_TOPIC_0046912051__text169521139133911">ECS</span> resources, improving data security. User encryption includes image encryption and EVS disk encryption.</p>
+<div class="section" id="EN-US_TOPIC_0046912051__section1150469610136"><h4 class="sectiontitle">Image Encryption</h4><p id="EN-US_TOPIC_0046912051__p2415470211592">Image encryption supports encrypting private images. When creating an <span id="EN-US_TOPIC_0046912051__text63942498416">ECS</span>, if you select an encrypted image, the system disk of the created <span id="EN-US_TOPIC_0046912051__text196281949172218">ECS</span> is automatically encrypted, improving data security.</p>
+<p id="EN-US_TOPIC_0046912051__p49795445115912">Use either of the following methods to create an encrypted image:</p>
+<ul id="EN-US_TOPIC_0046912051__ul21926139115947"><li id="EN-US_TOPIC_0046912051__li34065398115947">Use an external image file.</li><li id="EN-US_TOPIC_0046912051__li6039977115947">Use an existing encrypted ECS.</li></ul>
+<p id="EN-US_TOPIC_0046912051__p13350874114946">For more information about image encryption, see <em id="EN-US_TOPIC_0046912051__i8423526979632">Image Management Service User Guide</em>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0046912051__section2746706105950"><h4 class="sectiontitle">EVS Disk Encryption</h4><p id="EN-US_TOPIC_0046912051__p21243276105957">EVS disk encryption supports system disk encryption and data disk encryption.</p>
+<ul id="EN-US_TOPIC_0046912051__ul703855111154"><li id="EN-US_TOPIC_0046912051__li73531645111319">When creating an ECS, if you select an encrypted image, the system disk of the created ECS automatically has encryption enabled, and the encryption mode complies with the image encryption mode.</li><li id="EN-US_TOPIC_0046912051__li6698562111150">When creating an ECS, you can encrypt its system disk.</li><li id="EN-US_TOPIC_0046912051__li42000026111917">When creating an ECS, you can encrypt added data disks.</li></ul>
+<p id="EN-US_TOPIC_0046912051__p96231038194114">For more information about EVS disk encryption, see <em id="EN-US_TOPIC_0046912051__i2037223013">Elastic Volume Service User Guide</em>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0046912051__section4202207210118"><h4 class="sectiontitle">Impact on AS</h4><p id="EN-US_TOPIC_0046912051__p5527999142037">If you use an encrypted ECS to create an Auto Scaling (AS) configuration, the encryption mode of the created AS configuration complies with the ECS encryption mode.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0046912051__section19557327144021"><h4 class="sectiontitle">About Keys</h4><p id="EN-US_TOPIC_0046912051__p1198261843415">The key used for encryption relies on the Key Management Service (KMS). KMS uses a data encryption key (DEK) to encrypt data and a customer master key (CMK) to encrypt the DEK.</p>
+<div class="fignone" id="EN-US_TOPIC_0046912051__fig66853906172350"><span class="figcap"><b>Figure 1 </b>Data encryption process</span><br><span><img class="vsd" id="EN-US_TOPIC_0046912051__image5757142917357" src="en-us_image_0174076025.png"></span></div>
+<p id="EN-US_TOPIC_0046912051__p4575122617422"><a href="#EN-US_TOPIC_0046912051__table58453122162120">Table 1</a> describes the keys involved in the data encryption process.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0046912051__table58453122162120"></a><a name="table58453122162120"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0046912051__table58453122162120" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Keys</caption><thead align="left"><tr id="EN-US_TOPIC_0046912051__row6497527162120"><th align="left" class="cellrowborder" valign="top" width="19.05%" id="mcps1.3.5.5.2.4.1.1"><p id="EN-US_TOPIC_0046912051__p39076761162120">Name</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.190000000000005%" id="mcps1.3.5.5.2.4.1.2"><p id="EN-US_TOPIC_0046912051__p11101063162120">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="29.759999999999998%" id="mcps1.3.5.5.2.4.1.3"><p id="EN-US_TOPIC_0046912051__p26770914162120">Function</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0046912051__row58635137174217"><td class="cellrowborder" valign="top" width="19.05%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0046912051__p57954190174217">DEK</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.190000000000005%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0046912051__p63777803174217">An encryption key that is used for encrypting data.</p>
+</td>
+<td class="cellrowborder" valign="top" width="29.759999999999998%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0046912051__p65728400174217">Encrypts specific data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0046912051__row58688680162120"><td class="cellrowborder" valign="top" width="19.05%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0046912051__p56162650162120">CMK</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.190000000000005%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0046912051__p43507848163034">An encryption key created using KMS for encrypting DEKs.</p>
+<p id="EN-US_TOPIC_0046912051__p52880825162120">A CMK can encrypt multiple DEKs.</p>
+</td>
+<td class="cellrowborder" valign="top" width="29.759999999999998%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0046912051__p55488428162120">Supports CMK disabling and scheduled deletion.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0046912051__row16784881174432"><td class="cellrowborder" valign="top" width="19.05%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0046912051__p15745174440">Default CMK</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.190000000000005%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0046912051__p5894849611303">A master key automatically generated by the system when you use KMS for encryption for the first time.</p>
+<p id="EN-US_TOPIC_0046912051__p545438611310">The name extension of a default CMK is <strong id="EN-US_TOPIC_0046912051__b842352706112532">/default</strong>, for example, <strong id="EN-US_TOPIC_0046912051__b842352706235235">evs/default</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="29.759999999999998%" headers="mcps1.3.5.5.2.4.1.3 "><ul id="EN-US_TOPIC_0046912051__ul1649396175041"><li id="EN-US_TOPIC_0046912051__li37701702175041">Supports viewing details of the default CMK on the KMS console.</li><li id="EN-US_TOPIC_0046912051__li64703404175041">Does not support CMK disabling or scheduled deletion.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note" id="EN-US_TOPIC_0046912051__note26071892163418"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0046912051__p33320437163418">After disabling a CMK or scheduling the deletion of a CMK takes effect, the EVS disk encrypted using this CMK can still be used until the disk is detached from and then attached to an ECS again. During this process, the disk fails to be attached to the ECS because the CMK cannot be obtained. Therefore, the EVS disk becomes unavailable.</p>
+</div></div>
+<p id="EN-US_TOPIC_0046912051__p173702146375">For details about KMS, see <em id="EN-US_TOPIC_0046912051__i70864112">Key Management Service User Guide</em>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0092435778.html">Security</a></div>
+</div>
+</div>
+

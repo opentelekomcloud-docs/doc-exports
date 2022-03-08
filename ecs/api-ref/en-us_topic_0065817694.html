@@ -1,0 +1,156 @@
+<a name="EN-US_TOPIC_0065817694"></a><a name="EN-US_TOPIC_0065817694"></a>
+
+<h1 class="topictitle1">Creating an Image Using an <span id="text11650718104618">ECS</span></h1>
+<div id="body1499652824861"><div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section52906670"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817694__p6248125314267">This API is used to create an image using an <span id="EN-US_TOPIC_0065817694__text626174514571">ECS</span>. After the creation, you can use this image to create <span id="EN-US_TOPIC_0065817694__text9875272054">ECS</span>s.</p>
+<p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p39234444">Images created using an <span id="EN-US_TOPIC_0065817694__text10514164613572">ECS</span> are stored on storage nodes as snapshots.</p>
+</div>
+<div class="note" id="EN-US_TOPIC_0065817694__note22106546711"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0065817694__p139159517477">This API is a native OpenStack API that is not applicable to the images on the public cloud platform.</p>
+<ul id="EN-US_TOPIC_0065817694__ul254460786"><li id="EN-US_TOPIC_0065817694__li13503133717489">To create a system disk image or data disk image, use the IMS API (<strong id="EN-US_TOPIC_0065817694__b1486808326">POST /v2/cloudimages/action</strong>). For details, see "Creating an Image" in <em id="EN-US_TOPIC_0065817694__i842352697182234">Image Management Service API Reference</em>.</li><li id="EN-US_TOPIC_0065817694__li4544005820">To create a full-ECS image, use the IMS API (<strong id="EN-US_TOPIC_0065817694__b812488295">POST /v1/cloudimages/wholeimages/action</strong>). For details, see "Creating a Full-ECS Image" in <em id="EN-US_TOPIC_0065817694__i672249818">Image Management Service API Reference</em>.</li></ul>
+</div></div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section57581898"><h4 class="sectiontitle">Constraints</h4><ol id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_ol59593180205845"><li id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_li17399219205845">An <span id="EN-US_TOPIC_0065817694__text13298184714578">ECS</span> in the error state cannot be used to create an image.</li><li id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_li57249723205850">If an image created using an <span id="EN-US_TOPIC_0065817694__text13421048175716">ECS</span> is used to create a new <span id="EN-US_TOPIC_0065817694__text7761141112102">ECS</span>, the new <span id="EN-US_TOPIC_0065817694__text184314142106">ECS</span> must be located in the same AZ as the original <span id="EN-US_TOPIC_0065817694__text1287213195104">ECS</span>.</li><li id="EN-US_TOPIC_0065817694__li3966561051">After an ECS is deleted, the images and snapshots created using this ECS will not be automatically deleted. You must manually delete them.</li><li id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_li56735285205854">After an image created using an <span id="EN-US_TOPIC_0065817694__text17119232141014">ECS</span> is deleted, the associated snapshots will not be automatically deleted (this function is implemented by native OpenStack). You must manually delete such snapshots.</li><li id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_li487541320590">The image created using an <span id="EN-US_TOPIC_0065817694__text7970350185717">ECS</span> cannot be used to create data disks.</li><li id="EN-US_TOPIC_0065817694__li17269185411421">The images created using the API described in this section (URI: POST /v2/{project_id}/servers/{server_id}/action or POST /v2.1/{project_id}/servers/{server_id}/action) cannot be exported to OBS buckets. If such images must be exported, use the IMS API (<strong id="EN-US_TOPIC_0065817694__b1957694610">POST  /v2/cloudimages/action</strong>). For details, see "Creating an Image" in <em id="EN-US_TOPIC_0065817694__i835102066">Image Management Service API Reference</em>.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section6397988"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_en-us_topic_0020212650_p0312111422114">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0065817694__p1111135093117">POST /v2/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0065817694__p24616364512"><a href="#EN-US_TOPIC_0065817694__table9179610161220">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817694__table9179610161220"></a><a name="table9179610161220"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817694__table9179610161220" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817694__row517921012126"><th align="left" class="cellrowborder" valign="top" width="22.422242224222423%" id="mcps1.3.4.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817694__p1671661841217">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.66216621662166%" id="mcps1.3.4.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817694__p9716131831216">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.91559155915592%" id="mcps1.3.4.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817694__p2071671818123">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817694__row19179610111218"><td class="cellrowborder" valign="top" width="22.422242224222423%" headers="mcps1.3.4.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817694__p11716141813122">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.66216621662166%" headers="mcps1.3.4.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817694__p11717181821218">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.91559155915592%" headers="mcps1.3.4.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817694__p20717131816121">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817694__row1518041015124"><td class="cellrowborder" valign="top" width="22.422242224222423%" headers="mcps1.3.4.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817694__p1871731816127">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.66216621662166%" headers="mcps1.3.4.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817694__p197171118161217">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.91559155915592%" headers="mcps1.3.4.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817694__p571712187126">Specifies the <span id="EN-US_TOPIC_0065817694__text565720111113">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section33622195"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817694__p1911150132919"><a href="#EN-US_TOPIC_0065817694__table3529164221216">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817694__table3529164221216"></a><a name="table3529164221216"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817694__table3529164221216" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817694__row15530742161211"><th align="left" class="cellrowborder" valign="top" width="21.7%" id="mcps1.3.5.3.2.5.1.1"><p id="EN-US_TOPIC_0065817694__p6981184617123">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.59%" id="mcps1.3.5.3.2.5.1.2"><p id="EN-US_TOPIC_0065817694__p598114651213">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.080000000000002%" id="mcps1.3.5.3.2.5.1.3"><p id="EN-US_TOPIC_0065817694__p1098112466121">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="34.63%" id="mcps1.3.5.3.2.5.1.4"><p id="EN-US_TOPIC_0065817694__p159811446171212">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817694__row853020421122"><td class="cellrowborder" valign="top" width="21.7%" headers="mcps1.3.5.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817694__p59811546131217">createImage</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.59%" headers="mcps1.3.5.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817694__p11981134615121">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.080000000000002%" headers="mcps1.3.5.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817694__p189811146191216">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="34.63%" headers="mcps1.3.5.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817694__p1698164613128">Specifies the image created using <span id="EN-US_TOPIC_0065817694__text149818469126">ECS</span>. For details, see <a href="#EN-US_TOPIC_0065817694__en-us_topic_0057972976_table47198018">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817694__en-us_topic_0057972976_table47198018"></a><a name="en-us_topic_0057972976_table47198018"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_table47198018" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0065817694__b842352706145746">createImage</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_row23638763"><th align="left" class="cellrowborder" valign="top" width="21.87%" id="mcps1.3.5.4.2.5.1.1"><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p35691611">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.94%" id="mcps1.3.5.4.2.5.1.2"><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p29834312">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30.04%" id="mcps1.3.5.4.2.5.1.3"><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p5339351">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30.15%" id="mcps1.3.5.4.2.5.1.4"><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p660246">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_row53479976"><td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p36910823">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.94%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p43131274">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.04%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p36986682">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.15%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p3972286">Specifies the image name with a length greater than 0 bytes and less than 243 bytes.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_row35750577"><td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p10115639">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.94%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p65153652">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.04%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p14060437">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.15%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p42954492">Specifies the image attribute with a length greater than 0 bytes and less than 255 bytes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section34164304"><h4 class="sectiontitle">Response</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817694__table194321619184818" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0065817694__row944991954814"><th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.6.2.1.5.1.1"><p id="EN-US_TOPIC_0065817694__p19449719184818">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.6.2.1.5.1.2"><p id="EN-US_TOPIC_0065817694__p544961994813">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.6.2.1.5.1.3"><p id="EN-US_TOPIC_0065817694__p1144918191483">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.57575757575757%" id="mcps1.3.6.2.1.5.1.4"><p id="EN-US_TOPIC_0065817694__p15449161954819">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817694__row2449141911489"><td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.2.1.5.1.1 "><p id="EN-US_TOPIC_0065817694__p54499190480">Location</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.2.1.5.1.2 "><p id="EN-US_TOPIC_0065817694__p144491919134811">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.2.1.5.1.3 "><p id="EN-US_TOPIC_0065817694__p1644961924815">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.6.2.1.5.1.4 "><p id="EN-US_TOPIC_0065817694__p4449819124813">Specifies the local URL of the image, which is returned in the request header.</p>
+<p id="EN-US_TOPIC_0065817694__p179991156134920">This parameter is not supported in microversion 2.44 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817694__row244981920485"><td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.2.1.5.1.1 "><p id="EN-US_TOPIC_0065817694__p2464141924819">image_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.2.1.5.1.2 "><p id="EN-US_TOPIC_0065817694__p104641819174818">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.2.1.5.1.3 "><p id="EN-US_TOPIC_0065817694__p194647198489">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.6.2.1.5.1.4 "><p id="EN-US_TOPIC_0065817694__p746418198488">Specifies the image UUID.</p>
+<p id="EN-US_TOPIC_0065817694__p1353146174918">This parameter is supported in microversion 2.45 and later.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section39043280"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817694__screen2706317830">POST https://{endpoint}/v2/{project_id}/servers/{server_id}/action
+POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_screen47104276164918">{
+   "createImage" : {
+        "name" : "new-image-name",
+        "metadata": {
+            "ImageType": "Gold",
+            "ImageVersion": "2.0"
+        }
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__section10810185715811"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065817694__p198146571586">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_section128741313191616"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817694__en-us_topic_0057972976_p5693111841619">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385016.html">Status Management</a></div>
+</div>
+</div>
+

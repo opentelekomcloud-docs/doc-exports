@@ -1,0 +1,253 @@
+<a name="EN-US_TOPIC_0065817708"></a><a name="EN-US_TOPIC_0065817708"></a>
+
+<h1 class="topictitle1">Creating a Disk (Discarded)</h1>
+<div id="body1499652824862"><div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_section12073383"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p50602281">This API is used to create a disk.</p>
+<p id="EN-US_TOPIC_0065817708__p84921740195618">This API has been discarded. Use the EVS API "Creating EVS Disks (OpenStack Cinder API v2)".</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_section41551591"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817708__p255113315571">POST /v2/{project_id}/os-volumes</p>
+<p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p742294318453">POST /v2.1/{project_id}/os-volumes</p>
+<div class="p" id="EN-US_TOPIC_0065817708__p19812105465"><a href="#EN-US_TOPIC_0065817708__en-us_topic_0057973208_table2814978410562">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table2814978410562"></a><a name="en-us_topic_0057973208_table2814978410562"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table2814978410562" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row4149654710562"><th align="left" class="cellrowborder" valign="top" width="33%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817708__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817708__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817708__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row3491217610562"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p931403110562">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p1623904210562">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="44%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_section25012404"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817708__p1399110201260"><a href="#EN-US_TOPIC_0065817708__en-us_topic_0057973208_table34804632">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table34804632"></a><a name="en-us_topic_0057973208_table34804632"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table34804632" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row36029605"><th align="left" class="cellrowborder" valign="top" width="17.09%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p32716899">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.37%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0065817708__p138650455145">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.650000000000002%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p32823202">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.89%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p689602">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row6206419"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p32957959">availability_zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p11865174512140">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p52349023">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p24257404172631">Specifies the AZ to which the volume to be created belongs.</p>
+<p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p53666989172633">If the specified AZ does not exist, creating the volume failed, and the volume is in <strong id="EN-US_TOPIC_0065817708__b35370531172633">error</strong> state.</p>
+<p id="EN-US_TOPIC_0065817708__p46835060174724">The AZ to which the volume to be created belongs must be specified in the public cloud system.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row56113289"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p48882540">display_description</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p19865845111420">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p62775">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p9217191">Specifies the volume description.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row15845862"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p8446466">snapshot_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p19865144591412">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p13075179">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p43219210172642">Specifies the snapshot ID.</p>
+<p id="EN-US_TOPIC_0065817708__p37597922174724">If this parameter is specified, the volume is to be created from a snapshot.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row55906645"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p32144388">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p8865045111410">Yes (If the volume is created from a snapshot, this parameter is optional.)</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p53558660">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p16360982">Specifies the volume size.</p>
+<p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p1280275020341">Unit: GB</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row13031110"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p48886962">display_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p20866124516149">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p421011">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p10796115">Specifies the volume name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row30056178"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p18631317">volume_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p15866154581413">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p32741746">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p3124212">Specifies the volume type.</p>
+<div class="p" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p56795419259">Currently, the value can be <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706164929">SSD</strong>, <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706164932">SAS</strong>, <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706164937">SATA</strong>, <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706164941">co-p1</strong>, or <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706164944">uh-l1</strong>.<ul id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_ul22154279154310"><li id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_li30970989154310"><strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706165021">SSD</strong>: specifies the ultra-I/O disk type.</li><li id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_li6837123154347"><strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b1784237562165049">SAS</strong>: specifies the high I/O disk type.</li><li id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_li5886037215444"><strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b3295367816515">SATA</strong>: specifies the common I/O disk type.</li><li id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_li29645426154310"><strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706144211">co-p1</strong>: specifies the high I/O (performance-optimized I) disk type.</li><li id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_li52469292154310"><strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706144228">uh-l1</strong>: specifies the ultra-high I/O (latency-optimized) disk type.<div class="note" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_note32771213132611"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p65482244154310">EVS disks of the <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706154347">co-p1</strong> and <strong id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_b842352706154354">uh-l1</strong> types are used exclusively for high performance computing (HPC) and SAP HANA ECSs.</p>
+</div></div>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row28117914"><td class="cellrowborder" valign="top" width="17.09%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p62958527">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817708__p14866445111419">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.650000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p66475904">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.89%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p7904761">Specifies the volume metadata.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_section23785046"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817708__p74900127710"><a href="#EN-US_TOPIC_0065817708__en-us_topic_0057973208_table36305920">Table 3</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table36305920"></a><a name="en-us_topic_0057973208_table36305920"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_table36305920" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row2741419"><th align="left" class="cellrowborder" valign="top" width="31.003100310031%" id="mcps1.3.4.3.2.4.1.1"><p id="EN-US_TOPIC_0065817708__p62404314">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.38223822382238%" id="mcps1.3.4.3.2.4.1.2"><p id="EN-US_TOPIC_0065817708__p3528183">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.614661466146615%" id="mcps1.3.4.3.2.4.1.3"><p id="EN-US_TOPIC_0065817708__p17347392">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row15372252"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p37192867">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p59832271">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p39790453">Specifies the disk ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row22569763"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p16211514">displayName</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p38064249">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p27459986">Specifies the volume name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row45813283"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p19888403">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p347919">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p1000526">Specifies the volume status.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row9004739"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p58295271">attachments</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p24296474">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p25620180">Specifies the volume attachment information.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row29255030"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p20847223">availabilityZone</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p10903468">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p66714836">Specifies the AZ to which the volume belongs.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row63562612"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p48297932">createdAt</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p19818396">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p38630598">Specifies the time when the volume was created.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row12131070"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p43092599">displayDescription</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p839629">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p5879853">Specifies the volume description.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row52918685"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p58555089">volumeType</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p45341798">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p61056466">Specifies the volume type.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row12637282"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p16986940">snapshotId</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p33764890">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p5086724">Specifies the snapshot ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row45780519"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p17234528">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p53819489">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p49936605">Specifies the volume metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_row46776267"><td class="cellrowborder" valign="top" width="31.003100310031%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p30781293">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.38223822382238%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p10256828">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.614661466146615%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_p51969663">Specifies the size of the volume.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_section12738823"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817708__screen12857134013215">POST https://{endpoint}/v2/b84c367e4d1047fc9b54f28b400ddbc2/os-volumes
+POST https://{endpoint}/v2.1/b84c367e4d1047fc9b54f28b400ddbc2/os-volumes</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_screen30281189171813">{
+    "volume": {
+        "availability_zone": "az1-dc1",
+        "display_description": "test1",
+        "snapshot_id": null,
+        "size": 1,
+        "display_name": "test",
+        "volume_type": "SSD",
+        "metadata": {
+            "testkey": "testvalue"
+        }
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__section1781844134020"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065817708__screen68000446401">{
+  "volume": {
+    "displayDescription": "test1",
+    "volumeType": "SATA",
+    "createdAt": "2018-05-18T01:17:03.871808",
+    "metadata": {
+      "testkey": "testvalue",
+      "resourceSpecCode": "SATA"
+    },
+    "attachments": [
+      {}
+    ],
+    "snapshotId": null,
+    "size": 1,
+    "displayName": "test",
+    "id": "b4fb891c-c665-4478-92b0-8a7fa65a57cd",
+    "availabilityZone": "az1.dc1",
+    "status": "creating"
+  }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817708__en-us_topic_0057973208_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0267427881.html">Disk Management (OpenStack Nova APIs)</a></div>
+</div>
+</div>
+

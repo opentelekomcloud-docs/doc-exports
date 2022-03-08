@@ -1,0 +1,11 @@
+<a name="elb_faq_0114"></a><a name="elb_faq_0114"></a>
+
+<h1 class="topictitle1">Why Does ELB Frequently Send Requests to Backend Servers During Health Checks?</h1>
+<p id="elb_faq_0114__p089414334718">ELB is deployed in cluster mode, and all nodes for request forwarding in the cluster send requests to backend servers at the same time. If the health check interval is too short, health checks are performed once every few seconds, and a large number of packets are sent to backend servers. To control the frequency of access to backend servers, change the health check interval by referring to <a href="en-us_topic_0162227063.html">Configuring a Health Check</a>.</p>
+
+
+
+<strong>Parent topic:</strong> <a href="elb_faq_0204.html">Health Check</a>
+
+
+

@@ -1,0 +1,107 @@
+<a name="EN-US_TOPIC_0133622595"></a><a name="EN-US_TOPIC_0133622595"></a>
+
+<h1 class="topictitle1">Adding an ECS to an ECS Group</h1>
+<div id="body1538206367828"><div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section31887518"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_p25374974">This API is used to add an <span id="EN-US_TOPIC_0133622595__text1231935143719">ECS</span> to an <span id="EN-US_TOPIC_0133622595__text03351684211">ECS</span> group. The system automatically deploys the newly added <span id="EN-US_TOPIC_0133622595__text5214165319376">ECS</span> to a host that is different from the ones accommodating other <span id="EN-US_TOPIC_0133622595__text87211039164217">ECS</span>s in the <span id="EN-US_TOPIC_0133622595__text252884124216">ECS</span> group.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section32752180"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0133622595__ul1534351042"><li id="EN-US_TOPIC_0133622595__li63431111448">The ECS to be added has been stopped.</li><li id="EN-US_TOPIC_0133622595__li141915793311">Only KVM ECSs can be added.</li><li id="EN-US_TOPIC_0133622595__li18234758193412">Only the anti-affinity policy is supported. ECSs in the same ECS group are deployed on different hosts, improving service reliability.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section18552212"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0133622595__p14447689207">POST /v1/{project_id}/cloudservers/os-server-groups/{server_group_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0133622595__p192781939918"><a href="#EN-US_TOPIC_0133622595__table042161072218">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0133622595__table042161072218"></a><a name="table042161072218"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0133622595__table042161072218" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0133622595__row19423106228"><th align="left" class="cellrowborder" valign="top" width="22.19221922192219%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0133622595__p1595981917229">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.571957195719573%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0133622595__p13959171911223">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.235823582358236%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0133622595__p1095911992213">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0133622595__row642141042220"><td class="cellrowborder" valign="top" width="22.19221922192219%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0133622595__p1595931915224">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.571957195719573%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0133622595__p19959101918221">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.235823582358236%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0133622595__p10959201972218">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0133622595__row98841718182217"><td class="cellrowborder" valign="top" width="22.19221922192219%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0133622595__p179601119192210">server_group_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.571957195719573%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0133622595__p13960191916220">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.235823582358236%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0133622595__p59602194229">Specifies the ECS group ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section35680930"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0133622595__p12852319523"><a href="#EN-US_TOPIC_0133622595__table125642531229">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0133622595__table125642531229"></a><a name="table125642531229"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0133622595__table125642531229" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0133622595__row16564155320221"><th align="left" class="cellrowborder" valign="top" width="21.33%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0133622595__p1380052192315">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.35%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0133622595__p198004213234">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.72%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0133622595__p168000210236">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.6%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0133622595__p980015219235">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0133622595__row456419538225"><td class="cellrowborder" valign="top" width="21.33%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0133622595__p48009262318">add_member</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0133622595__p480072152311">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.72%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0133622595__p080012214232">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.6%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0133622595__p4800152142311">Specifies the information of the <span id="EN-US_TOPIC_0133622595__text178001020238">ECS</span> to be added to an <span id="EN-US_TOPIC_0133622595__text19800132182319">ECS</span> group.</p>
+<p id="EN-US_TOPIC_0133622595__p10800182162319">For details, see <a href="#EN-US_TOPIC_0133622595__table532112610239">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0133622595__table532112610239"></a><a name="table532112610239"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0133622595__table532112610239" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0133622595__b133517275816">add_member</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0133622595__row15321162614237"><th align="left" class="cellrowborder" valign="top" width="20.669999999999998%" id="mcps1.3.4.4.2.5.1.1"><p id="EN-US_TOPIC_0133622595__p15412153311238">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.909999999999998%" id="mcps1.3.4.4.2.5.1.2"><p id="EN-US_TOPIC_0133622595__p104121833172314">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.98%" id="mcps1.3.4.4.2.5.1.3"><p id="EN-US_TOPIC_0133622595__p204121533182314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.44%" id="mcps1.3.4.4.2.5.1.4"><p id="EN-US_TOPIC_0133622595__p1641263312237">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0133622595__row20321626192313"><td class="cellrowborder" valign="top" width="20.669999999999998%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0133622595__p1241211330237">instance_uuid</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.909999999999998%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0133622595__p7412233162320">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0133622595__p64121133162318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.44%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0133622595__p15412203362320">Specifies the ECS UUID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__section1927776"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0133622595__p1362511514334">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section4474257"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0133622595__screen16384153614393">POST https://{endpoint}/v1/{project_id}/cloudservers/os-server-groups/{server_group_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_screen54316823165914">{
+    "add_member": {
+        "instance_uuid":"34dac9a0-c4a7-457b-bab2-e2c696e0e401"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__section1961482663317"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0133622595__p3960203011333">Status code 200, indicating that the operation is successful</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_section17661930132114"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0133622595__en-us_topic_0057973153_p11699192195015">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0133622595__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0133622595__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0161097717.html">ECS Group Management</a></div>
+</div>
+</div>
+

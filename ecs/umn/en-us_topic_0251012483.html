@@ -1,0 +1,32 @@
+<a name="EN-US_TOPIC_0251012483"></a><a name="EN-US_TOPIC_0251012483"></a>
+
+<h1 class="topictitle1">What Should I Do If the Data Disk Attached a Windows <span id="text38671020192611">ECS</span> Is Unavailable?</h1>
+<div id="body1590981401171"><div class="section" id="EN-US_TOPIC_0251012483__section2121122516411"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0251012483__p59215278420">After logging in to my Windows <span id="EN-US_TOPIC_0251012483__text656782114561">ECS</span>, I cannot find the attached data disk.</p>
+<div class="caution" id="EN-US_TOPIC_0251012483__note9666314818"><span class="cautiontitle"><img src="public_sys-resources/caution_3.0-en-us.png"> </span><div class="cautionbody"><p id="EN-US_TOPIC_0251012483__p16643120817">Formatting a disk will cause data loss. Therefore, before formatting a disk, create a backup for it.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0251012483__section18368526611"><h4 class="sectiontitle">Possible Causes</h4><ul id="EN-US_TOPIC_0251012483__ul110318256106"><li id="EN-US_TOPIC_0251012483__li6103172521010">A newly added data disk has not been partitioned or initialized.</li><li id="EN-US_TOPIC_0251012483__li6103162513102">The disk becomes offline after the ECS OS is changed or the ECS specifications are modified.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0251012483__section99186331012"><h4 class="sectiontitle">Newly Added Data Disk Has Not Been Partitioned or Initialized</h4><p id="EN-US_TOPIC_0251012483__p177611348121018">A new data disk does not have partitions and file systems by default. That is why it is unavailable in <strong id="EN-US_TOPIC_0251012483__b73595625311">My Computer</strong>. To resolve this issue, manually initialize the disk.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0251012483__section1121018716719"><h4 class="sectiontitle">Disk Becomes Offline After the ECS OS Is Changed or the ECS Specifications Are Modified</h4><p id="EN-US_TOPIC_0251012483__p1657916478124">After the <span id="EN-US_TOPIC_0251012483__text10924432135613">ECS</span> OS is changed, data disks may become unavailable due to file system inconsistency. After the specifications of a Windows <span id="EN-US_TOPIC_0251012483__text144074435569">ECS</span> are modified, data disks may be offline.</p>
+<ol id="EN-US_TOPIC_0251012483__en-us_topic_0100593628_ol199331423201415"><li id="EN-US_TOPIC_0251012483__li14760143419179">Log in to the <span id="EN-US_TOPIC_0251012483__text263520443262">ECS</span>, open the <strong id="EN-US_TOPIC_0251012483__b5151175843915">cmd</strong> window, and enter <strong id="EN-US_TOPIC_0251012483__b1165991018406">diskmgmt.msc</strong> to switch to the <strong id="EN-US_TOPIC_0251012483__b938561184110">Disk Management</strong> page.<p id="EN-US_TOPIC_0251012483__p3638184016206">Check whether the affected disk is offline.</p>
+</li><li id="EN-US_TOPIC_0251012483__li18696203018194">Set the affected disk to be online.<div class="p" id="EN-US_TOPIC_0251012483__p181121882201"><a name="EN-US_TOPIC_0251012483__li18696203018194"></a><a name="li18696203018194"></a>In the disk list, right-click the affected disk and choose <strong id="EN-US_TOPIC_0251012483__b1363122017422">Online</strong> from the shortcut menu to make it online.<div class="fignone" id="EN-US_TOPIC_0251012483__fig1869603017195"><span class="figcap"><b>Figure 1 </b>Setting disk online</span><br><span><img id="EN-US_TOPIC_0251012483__image116315206272" src="en-us_image_0251063932.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</li><li id="EN-US_TOPIC_0251012483__li614611208235">In <strong id="EN-US_TOPIC_0251012483__b135141823145413">My Computer</strong>, check whether the data disk is displayed properly.<p id="EN-US_TOPIC_0251012483__p192341651172513">If the fault persists, initialize and partition the disk again. Before initializing the disk, create a backup for it.</p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

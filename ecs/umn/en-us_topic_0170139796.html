@@ -1,0 +1,53 @@
+<a name="EN-US_TOPIC_0170139796"></a><a name="EN-US_TOPIC_0170139796"></a>
+
+<h1 class="topictitle1">How Can I Use SFTP to Transfer Files Between a Local Linux Computer and a Linux <span id="text1376971313131">ECS</span>?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_section121841025124610"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p182121127134612">You want to use SFTP to transfer files between a local Linux computer and a Linux ECS. The following uses CentOS as an example.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_section10475181212712"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_ol112031229162812"><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li7961162992819">Log in to the <span id="EN-US_TOPIC_0170139796__text598921941320">ECS</span> as user <strong id="EN-US_TOPIC_0170139796__b191471138383">root</strong>.</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li15999133012811">Run the following command to check the OpenSSH version, which is expected to be 4.8p1 or later:<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p18217122623511"><a name="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li15999133012811"></a><a name="en-us_topic_0138882178_li15999133012811"></a><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b15220828153519">ssh -V</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p335915298428">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_screen20822015154213"># OpenSSH_7.4p1, OpenSSL 1.0.2k-fips 26 Jan 2017</pre>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li1363814474294">Create a user group and a user (for example, <strong id="EN-US_TOPIC_0170139796__b1476414515518">user1</strong>).<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p6775433163518"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b10739849133520">groupadd sftp</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p27321553354"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b1454013073617">useradd -g sftp -s /sbin/nologin user1</strong></p>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li5820143617308">Set a password for the user.<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p951974713367"><a name="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li5820143617308"></a><a name="en-us_topic_0138882178_li5820143617308"></a><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b648611491368">passwd user1</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_fig282551904413"><span class="figcap"><b>Figure 1 </b>Setting a password</span><br><span><img id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_image118256196443" src="en-us_image_0263798009.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li1064920494303">Assign permissions to directories.<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1660872153215"><a name="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li1064920494303"></a><a name="en-us_topic_0138882178_li1064920494303"></a><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b85945272327">chown</strong><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b162262517321"> root:sftp /home/user1</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p935862023718"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b67901663918">chmod 755 -R /home/user1</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p930863693711"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b98045663918">mkdir /home/user1/upload</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p5121856173717"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b180416103915">chown -R user1:sftp /home/user1/upload</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1151615349388"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b68053673917">chmod -R 755 /home/user1/upload</strong></p>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li94173594309">Run the following command to edit the <strong id="EN-US_TOPIC_0170139796__b41790345614">sshd_config</strong> configuration file:<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p4692115014459"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b1499767104615">vim /etc/ssh/sshd_config</strong></p>
+<div class="p" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1045044717451">Comment out the following information:<pre class="screen" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_screen16450247104518">#Subsystem sftp /usr/libexec/openssh/sftp-server</pre>
+</div>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p14501147114519">Add the following information:</p>
+<pre class="screen" id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_screen8450547134510">Subsystem sftp internal-sftp
+Match Group sftp
+ChrootDirectory /home/%u 
+ForceCommand internal-sftp
+AllowTcpForwarding no
+X11Forwarding no</pre>
+<div class="fignone" id="EN-US_TOPIC_0170139796__fig8395112141418"><span class="figcap"><b>Figure 2 </b>sshd_config file with the added information</span><br><span><img id="EN-US_TOPIC_0170139796__image74811938141516" src="en-us_image_0000001071727803.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li111671824133217">Run the following command to restart the <span id="EN-US_TOPIC_0170139796__text112621029111312">ECS</span>:<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p78891925163411"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b20262143114346">service sshd restart</strong></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p9587193220343">Alternatively, run the following command to restart sshd:</p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p14471205343"><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b13477206344">systemctl restart sshd</strong></p>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li73728138475">Run the following command on the local computer to set up the connection:<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p343495210471"><a name="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li73728138475"></a><a name="en-us_topic_0138882178_li73728138475"></a><strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b10899115417473">sftp root@</strong><em id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_i920215015475">IP address</em></p>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li035683545012">Run the <strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b735653535011">sftp</strong> command to check the connection.<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p2069314587506"><span><img id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_image920413422502" src="en-us_image_0263798010.png" title="Click to enlarge" class="imgResize"></span></p>
+</li><li id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li39814105216">Transfer files or folders.<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1088412425110"><a name="EN-US_TOPIC_0170139796__en-us_topic_0138882178_li39814105216"></a><a name="en-us_topic_0138882178_li39814105216"></a>To upload files or folders, run the <strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b25812585516">put   -r</strong> command.</p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p17224104515214"><span><img id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_image14552174505215" src="en-us_image_0263798011.png" title="Click to enlarge" class="imgResize"></span></p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1472152725218">To download files or folders, run the <strong id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_b15413256165114">get   -r</strong> command.</p>
+<p id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_p1854638105310"><span><img id="EN-US_TOPIC_0170139796__en-us_topic_0138882178_image287408185317" src="en-us_image_0263798012.png" title="Click to enlarge" class="imgResize"></span></p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0170135967.html">File Upload/Data Transfer</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,26 @@
+<a name="EN-US_TOPIC_0118224527"></a><a name="EN-US_TOPIC_0118224527"></a>
+
+<h1 class="topictitle1">What Should I Do If Cloud-Init Does Not Work After Python Is Upgraded?</h1>
+<div id="body1529660876715"><div class="section" id="EN-US_TOPIC_0118224527__section1481422814819"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0118224527__p729210383460">Take an <span id="EN-US_TOPIC_0118224527__text1148620843114">ECS</span> running CentOS 6.8 as an example. After Python was upgraded from 2.6 to 2.7, Cloud-Init did not work. Data, such as the login password, key, and hostname could not be imported to the <span id="EN-US_TOPIC_0118224527__text363154143014">ECS</span> using Cloud-Init.</p>
+<p id="EN-US_TOPIC_0118224527__p18806033124817">After the <strong id="EN-US_TOPIC_0118224527__b1352816216165652">cloud-init -v</strong> command was executed to view the Cloud-Init version, the system displayed errors, as shown in <a href="#EN-US_TOPIC_0118224527__fig311825713493">Figure 1</a>.</p>
+<div class="fignone" id="EN-US_TOPIC_0118224527__fig311825713493"><a name="EN-US_TOPIC_0118224527__fig311825713493"></a><a name="fig311825713493"></a><span class="figcap"><b>Figure 1 </b>Improper running of Cloud-Init</span><br><span><img id="EN-US_TOPIC_0118224527__image12500135211493" src="en-us_image_0123386277.jpg"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0118224527__section54074586484"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0118224527__p196116490373">The Python version used by Cloud-Init was incorrect.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0118224527__section174311653175215"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0118224527__p150175211370">Change the Python version used by Cloud-Init to the source version. To do so, change the environment variable value of <strong id="EN-US_TOPIC_0118224527__b84235270617221">/usr/bin/cloud-init</strong> from the default value <span class="filepath" id="EN-US_TOPIC_0118224527__filepath15284174314312"><b>#!/usr/bin/python</b></span> to <span class="filepath" id="EN-US_TOPIC_0118224527__filepath209297490435"><b>#!/usr/bin/python2.6</b></span>.</p>
+<div class="fignone" id="EN-US_TOPIC_0118224527__fig11465133314219"><span class="figcap"><b>Figure 2 </b>Changing the Python version</span><br><span><img id="EN-US_TOPIC_0118224527__image12329249183511" src="en-us_image_0123417484.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0105215483.html">Passwords and Key Pairs</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

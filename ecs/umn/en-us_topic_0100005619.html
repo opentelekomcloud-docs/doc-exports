@@ -1,0 +1,84 @@
+<a name="EN-US_TOPIC_0100005619"></a><a name="EN-US_TOPIC_0100005619"></a>
+
+<h1 class="topictitle1">How Can I Log In to an ECS After Its System Disk Is Exchanged with That Attached to Another ECS Running the Same OS?</h1>
+<div id="body1519956065628"><div class="section" id="EN-US_TOPIC_0100005619__section1794885713568"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0100005619__p1636830175717">Two ECSs run the same OS, for example, both run Windows or Linux. The system disks attached to the two ECSs are exchanged offline. After the exchanging, the login keys of the ECSs may change. In such a case, how can I log in to the ECSs?</p>
+<div class="note" id="EN-US_TOPIC_0100005619__note36601935131819"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_p22915012920">Before stopping an ECS for disk detachment, release the IP address assigned to the ECS using DHCP so that ECS can correctly obtain an IP address later. To do so, perform the following operations:</p>
+<ol id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_ol13254182543220"><li id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_li1546316314328">Log in to the Windows ECS.</li><li id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_li1933417518321">Run the following command to release the IP address:<p id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_p1837885393212"><a name="EN-US_TOPIC_0100005619__en-us_topic_0099821450_li1933417518321"></a><a name="en-us_topic_0099821450_li1933417518321"></a><strong id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_b72546258323">ipconfig /release</strong></p>
+<p id="EN-US_TOPIC_0100005619__en-us_topic_0099821450_p1118805023313">This operation will interrupt network connections and affect the use of the ECS. After the ECS is restarted, network connections will automatically recover.</p>
+</li></ol>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0100005619__section129031037631"><h4 class="sectiontitle">Windows</h4><p id="EN-US_TOPIC_0100005619__p1278083992915">For example, there are two Windows ECSs with parameters configured in <a href="#EN-US_TOPIC_0100005619__table1365540183310">Table 1</a>.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0100005619__table1365540183310"></a><a name="table1365540183310"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0100005619__table1365540183310" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter configurations</caption><thead align="left"><tr id="EN-US_TOPIC_0100005619__row96574014338"><th align="left" class="cellrowborder" valign="top" width="28.999999999999996%" id="mcps1.3.2.3.2.4.1.1"><p id="EN-US_TOPIC_0100005619__p634128183316">ECS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="34%" id="mcps1.3.2.3.2.4.1.2"><p id="EN-US_TOPIC_0100005619__p76573013311">System Disk</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="37%" id="mcps1.3.2.3.2.4.1.3"><p id="EN-US_TOPIC_0100005619__p16576611543">Key Pair</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0100005619__row1765718083310"><td class="cellrowborder" valign="top" width="28.999999999999996%" headers="mcps1.3.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0100005619__p1565710013339">ecs_01</p>
+</td>
+<td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0100005619__p15657202333">vol_01</p>
+</td>
+<td class="cellrowborder" valign="top" width="37%" headers="mcps1.3.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0100005619__p9618440846">Keypair_01</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0100005619__row174892462353"><td class="cellrowborder" valign="top" width="28.999999999999996%" headers="mcps1.3.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0100005619__p2490194613350">ecs_02</p>
+</td>
+<td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0100005619__p6490174620351">vol_02</p>
+</td>
+<td class="cellrowborder" valign="top" width="37%" headers="mcps1.3.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0100005619__p8575613545">Keypair_02</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0100005619__p18669773114">System disk vol_01 is detached from ecs_01 offline and then attached to ecs_02 as the system disk. How can I log in to ecs_02?</p>
+<div class="p" id="EN-US_TOPIC_0100005619__p5880049829">The random password for logging in to ecs_02 must be resolved again. The procedure is as follows:<ol id="EN-US_TOPIC_0100005619__ol128691852161511"><li id="EN-US_TOPIC_0100005619__li828717618019">Delete the initial password for logging in to ecs_02.<p id="EN-US_TOPIC_0100005619__p917910341154"><a name="EN-US_TOPIC_0100005619__li828717618019"></a><a name="li828717618019"></a>Locate the row containing ecs_02, click <strong id="EN-US_TOPIC_0100005619__b842352706161453">More</strong> in the <strong id="EN-US_TOPIC_0100005619__b842352706161456">Operation</strong> column, and select <strong id="EN-US_TOPIC_0100005619__b84235270616150">Delete Password</strong> from the drop-down list. Then, click <strong id="EN-US_TOPIC_0100005619__b842352706161647">Delete</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0100005619__note10627197111318"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0100005619__p11627167171311">ecs_02 must be in <strong id="EN-US_TOPIC_0100005619__b842352706161723">Stopped</strong> state.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0100005619__li1661135811018">Start ecs_02.<p id="EN-US_TOPIC_0100005619__p27822281096"><a name="EN-US_TOPIC_0100005619__li1661135811018"></a><a name="li1661135811018"></a>Locate the row containing ecs_02, click <strong id="EN-US_TOPIC_0100005619__b2048602443161750">More</strong> in the <strong id="EN-US_TOPIC_0100005619__b561512420161750">Operation</strong> column, and select <strong id="EN-US_TOPIC_0100005619__b2009151319161750">Start</strong> from the drop-down list. Then, in the <strong id="EN-US_TOPIC_0100005619__b842352706161836">Start ECS</strong> dialog box, click <strong id="EN-US_TOPIC_0100005619__b842352706161840">OK</strong>.</p>
+</li><li id="EN-US_TOPIC_0100005619__li138721252141517"><a name="EN-US_TOPIC_0100005619__li138721252141517"></a><a name="li138721252141517"></a>Obtain the password for logging in to ecs_02.<ol type="a" id="EN-US_TOPIC_0100005619__ol2758725259"><li id="EN-US_TOPIC_0100005619__li1810516586249">Locate the row containing ecs_02, click <strong id="EN-US_TOPIC_0100005619__b1214619057161926">More</strong> in the <strong id="EN-US_TOPIC_0100005619__b918586925161926">Operation</strong> column, and select <strong id="EN-US_TOPIC_0100005619__b1288037151161926">Get Password</strong> from the drop-down list.</li><li id="EN-US_TOPIC_0100005619__li474015532512">Click <strong id="EN-US_TOPIC_0100005619__b842352706162012">Select File</strong> and upload private key file <span class="parmvalue" id="EN-US_TOPIC_0100005619__parmvalue280556835162030"><b>Keypair_02</b></span> of ecs_02.</li><li id="EN-US_TOPIC_0100005619__li7571115911264">Click <strong id="EN-US_TOPIC_0100005619__b102668266317244">Get Password</strong> to obtain a new random password.</li></ol>
+</li><li id="EN-US_TOPIC_0100005619__li56533246275">Use the random password obtained in step <a href="#EN-US_TOPIC_0100005619__li138721252141517">3</a> to log in to ecs_02 with the system disk replaced.</li></ol>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0100005619__section1756045025614"><h4 class="sectiontitle">Linux</h4><p id="EN-US_TOPIC_0100005619__p5560155019563">For example, there are two Linux ECSs with parameters configured in <a href="#EN-US_TOPIC_0100005619__table9561950195614">Table 2</a>.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0100005619__table9561950195614"></a><a name="table9561950195614"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0100005619__table9561950195614" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter configurations</caption><thead align="left"><tr id="EN-US_TOPIC_0100005619__row1656285019569"><th align="left" class="cellrowborder" valign="top" width="33%" id="mcps1.3.3.3.2.4.1.1"><p id="EN-US_TOPIC_0100005619__p1562135011562">ECS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31%" id="mcps1.3.3.3.2.4.1.2"><p id="EN-US_TOPIC_0100005619__p125626503566">System Disk</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="36%" id="mcps1.3.3.3.2.4.1.3"><p id="EN-US_TOPIC_0100005619__p105632050125614">Key Pair</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0100005619__row556435013563"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0100005619__p17564205017567">ecs_01</p>
+</td>
+<td class="cellrowborder" valign="top" width="31%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0100005619__p756411505566">vol_01</p>
+</td>
+<td class="cellrowborder" valign="top" width="36%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0100005619__p16564850145611">Keypair_01</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0100005619__row6565125085617"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0100005619__p15565145013568">ecs_02</p>
+</td>
+<td class="cellrowborder" valign="top" width="31%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0100005619__p556613502563">vol_02</p>
+</td>
+<td class="cellrowborder" valign="top" width="36%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0100005619__p1566850175616">Keypair_02</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0100005619__p16854173461219">System disk vol_01 is detached from ecs_01 offline and then attached to ecs_02 as the system disk. How can I log in to ecs_02?</p>
+<p id="EN-US_TOPIC_0100005619__p1573195065616">Use either of the following methods to log in to ecs_02:</p>
+<ul id="EN-US_TOPIC_0100005619__ul123651327687"><li id="EN-US_TOPIC_0100005619__li498275011811">Use private key file <span class="parmvalue" id="EN-US_TOPIC_0100005619__parmvalue414826979163214"><b>Keypair_01</b></span> of ecs_01.</li><li id="EN-US_TOPIC_0100005619__li189841450687">Use private key file <span class="parmvalue" id="EN-US_TOPIC_0100005619__parmvalue1780878732163236"><b>Keypair_02</b></span> of ecs_02.</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+

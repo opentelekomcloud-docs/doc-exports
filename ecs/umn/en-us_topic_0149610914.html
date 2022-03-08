@@ -1,0 +1,148 @@
+<a name="EN-US_TOPIC_0149610914"></a><a name="EN-US_TOPIC_0149610914"></a>
+
+<h1 class="topictitle1">Installing a GRID Driver on a GPU-accelerated ECS</h1>
+<div id="body1547429597326"><div class="section" id="EN-US_TOPIC_0149610914__section18938132731610"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0149610914__p192394314334">To use graphics acceleration, such as OpenGL, DirectX, or Vulkan, install a GRID driver and separately purchase and configure a GRID license. The GRID driver with a vDWS license also supports CUDA for both computing and graphics acceleration.</p>
+<ul id="EN-US_TOPIC_0149610914__ul3241338103611"><li id="EN-US_TOPIC_0149610914__li96209483">A graphics-accelerated (G series) ECS created using a Windows public image has had a GRID driver of a specified version installed by default, but the GRID license must be purchased and configured separately.</li><li id="EN-US_TOPIC_0149610914__li824916276106">A graphics-accelerated (G series) ECS created using a Linux public image does not have a GRID driver installed by default. You are required to install a GRID driver and purchase and configure a GRID license separately.</li><li id="EN-US_TOPIC_0149610914__li112483883615">If a GPU-accelerated ECS is created using a private image, install a GRID driver and separately purchase and configure a GRID license.</li></ul>
+<p id="EN-US_TOPIC_0149610914__p73567401999">This section describes how to install a GRID driver, purchase or apply for a GRID license, and configure the license server.</p>
+<div class="p" id="EN-US_TOPIC_0149610914__p114213654014">Process of installing a GRID driver:<ol id="EN-US_TOPIC_0149610914__ol124941025142413"><li id="EN-US_TOPIC_0149610914__li54953252248"><a href="#EN-US_TOPIC_0149610914__section1130184214229">Purchasing a GRID License</a></li><li id="EN-US_TOPIC_0149610914__li2495172542412"><a href="#EN-US_TOPIC_0149610914__section91244318407">Downloading GRID Driver and Software License Packages</a></li><li id="EN-US_TOPIC_0149610914__li2049572513245"><a href="#EN-US_TOPIC_0149610914__section19229135113439">Deploying and Configuring the License Server</a></li><li id="EN-US_TOPIC_0149610914__li4495132518246"><a href="#EN-US_TOPIC_0149610914__section17545653184812">Installing the GRID Driver and Configuring the License</a></li></ol>
+</div>
+<div class="note" id="EN-US_TOPIC_0149610914__note15133138192110"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0149610914__ul185202984311"><li id="EN-US_TOPIC_0149610914__li105317297434">NVIDIA allows you to apply for a 90-day trial license.</li><li id="EN-US_TOPIC_0149610914__li13353659174912">For details about GPU-accelerated ECSs with different specifications and application scenarios, see <a href="en-us_topic_0097289624.html">GPU-accelerated ECSs</a>.</li></ul>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0149610914__section1130184214229"><a name="EN-US_TOPIC_0149610914__section1130184214229"></a><a name="section1130184214229"></a><h4 class="sectiontitle">Purchasing a GRID License</h4><ul id="EN-US_TOPIC_0149610914__ul514742462518"><li id="EN-US_TOPIC_0149610914__li614717247251">Purchase a license.<p id="EN-US_TOPIC_0149610914__p6123347202511"><a name="EN-US_TOPIC_0149610914__li614717247251"></a><a name="li614717247251"></a>To obtain an official license, contact NVIDIA or their NVIDIA agent in your local country or region.</p>
+</li><li id="EN-US_TOPIC_0149610914__li1914716243253">Apply for a trial license.<p id="EN-US_TOPIC_0149610914__p672411652417"><a name="EN-US_TOPIC_0149610914__li1914716243253"></a><a name="li1914716243253"></a>Log in at the <a href="https://www.nvidia.com/object/nvidia-enterprise-account.html" target="_blank" rel="noopener noreferrer">official NVIDIA website</a> and enter desired information.</p>
+<div class="p" id="EN-US_TOPIC_0149610914__p5526945192815">For details about how to register an account and apply for a trial license, see <a href="https://nvid.nvidia.com/NvidiaUtilities/#/needHelp" target="_blank" rel="noopener noreferrer">official NVIDIA help page</a>.<div class="note" id="EN-US_TOPIC_0149610914__note48937498303"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0149610914__p17894164963014">The method of using a trial license is the same as that of using an official license. You can use an official license to activate an account with a trial license to prevent repetitive registration. The trial license has a validity period of 90 days. After the trial license expires, it cannot be used anymore. Purchase an official license then.</p>
+</div></div>
+</div>
+<div class="p" id="EN-US_TOPIC_0149610914__p194952018329"><div class="fignone" id="EN-US_TOPIC_0149610914__fig45088922717"><span class="figcap"><b>Figure 1 </b>Applying for a trial license</span><br><span><img id="EN-US_TOPIC_0149610914__image9685133912478" src="en-us_image_0178069404.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0149610914__section91244318407"><a name="EN-US_TOPIC_0149610914__section91244318407"></a><a name="section91244318407"></a><h4 class="sectiontitle">Downloading GRID Driver and Software License Packages</h4><ol id="EN-US_TOPIC_0149610914__ol0691102015413"><li id="EN-US_TOPIC_0149610914__li56919201444">Obtain the driver installation package required for an OS. For details, see <a href="#EN-US_TOPIC_0149610914__table188851534175019">Table 1</a>.<div class="p" id="EN-US_TOPIC_0149610914__p22565397506">For more information about the GRID driver, see <a href="https://docs.nvidia.com/grid/index.html" target="_blank" rel="noopener noreferrer">NVIDIA vGPU Software Documentation</a>.<div class="note" id="EN-US_TOPIC_0149610914__note1088263435018"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0149610914__p488253455014">For a GPU passthrough ECS, select a GRID driver version as required.</p>
+<p id="EN-US_TOPIC_0149610914__p8882173445019">For a GPU virtualization ECS, select a driver version based on the following table.</p>
+</div></div>
+</div>
+<div class="p" id="EN-US_TOPIC_0149610914__p7885203420503">
+<div class="tablenoborder"><a name="EN-US_TOPIC_0149610914__table188851534175019"></a><a name="table188851534175019"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0149610914__table188851534175019" frame="border" border="1" rules="all"><caption><b>Table 1 </b>GRID driver versions supported by GPU-accelerated ECSs</caption><thead align="left"><tr id="EN-US_TOPIC_0149610914__row38821334115015"><th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.3.2.1.3.1.2.6.1.1"><p id="EN-US_TOPIC_0149610914__p11882134205019">ECS Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.3.2.1.3.1.2.6.1.2"><p id="EN-US_TOPIC_0149610914__p15882113415507">GPU Attachment</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="32%" id="mcps1.3.3.2.1.3.1.2.6.1.3"><p id="EN-US_TOPIC_0149610914__p68821634185016">OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26%" id="mcps1.3.3.2.1.3.1.2.6.1.4"><p id="EN-US_TOPIC_0149610914__p188821634185016">Driver Version</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.3.2.1.3.1.2.6.1.5"><p id="EN-US_TOPIC_0149610914__p148822034135011">CPU Architecture</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0149610914__row1288220341507"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p17882143415503">G6</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p11882634175015">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><ul id="EN-US_TOPIC_0149610914__ul128821934165016"><li id="EN-US_TOPIC_0149610914__li28827340501">Windows Server 2016 Standard 64bit</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p11882153495013">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p138821834155016">x86_64</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0149610914__row16884113418504"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p1688473412501">P2s</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p68846348507">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><ul id="EN-US_TOPIC_0149610914__ul19884193485017"><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li6106578714">Windows Server 2019 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li12552175414561">Windows Server 2016 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li2552165412569">Windows Server 2012 R2 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li1526713331588">Ubuntu Server 20.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li81191435884">Ubuntu Server 18.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li17552125414568">Ubuntu Server 16.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li1926618918918">CentOS 7.7 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li12552115419569">CentOS 7.4 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li16552125495614">EulerOS 2.5 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li247415441896">Oracle Linux 7.6 64bit</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p188412347506">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p11884103413504">x86_64</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0149610914__row188463416506"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p88847349507">P2v</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p78841634205014">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><ul id="EN-US_TOPIC_0149610914__ul188843346508"><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li128451132154">Windows Server 2019 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li156939414522">Windows Server 2016 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li1535914713319">Windows Server 2012 R2 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li63591379315">Ubuntu Server 16.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li73599773116">CentOS 7.7 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li163591379317">EulerOS 2.5 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li1901171075">Oracle Linux 7.6 64bit</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p788420344509">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p688413475015">x86_64</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0149610914__row16884193410506"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p1884734115010">P2</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p10884134105016">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><p id="EN-US_TOPIC_0149610914__p588423416504">Ubuntu Server 16.04 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p12884334175014">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p128841634155014">x86_64</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0149610914__row1088563415507"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p168841734135014">P1</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p19884113418507">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><ul id="EN-US_TOPIC_0149610914__ul1888563455018"><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li6587328134414">Windows Server 2012 R2 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li16530102834417">Ubuntu Server 16.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li453820287444">CentOS 7.4 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li5405142711440">Debian 9.0 64bit</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p48856342502">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p15885203475011">x86_64</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0149610914__row1885134185018"><td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.1.3.1.2.6.1.1 "><p id="EN-US_TOPIC_0149610914__p288510344504">PI2</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.2.1.3.1.2.6.1.2 "><p id="EN-US_TOPIC_0149610914__p148857346506">GPU passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="32%" headers="mcps1.3.3.2.1.3.1.2.6.1.3 "><ul id="EN-US_TOPIC_0149610914__ul488523475014"><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li1856019372456">Windows Server 2019 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li0200161392916">Windows Server 2016 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li195947305450">Windows Server 2012 R2 Standard 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li92001213182910">Ubuntu Server 16.04 64bit</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0097289624_li0899195717458">CentOS 7.8 64bit</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="26%" headers="mcps1.3.3.2.1.3.1.2.6.1.4 "><p id="EN-US_TOPIC_0149610914__p1488593415507">Select a version as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.1.3.1.2.6.1.5 "><p id="EN-US_TOPIC_0149610914__p11885934165013">x86_64</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</li><li id="EN-US_TOPIC_0149610914__li1653061815445">After the registration, log in at the <a href="https://nvid.nvidia.com/dashboard/" target="_blank" rel="noopener noreferrer">official NVIDIA website</a> and enter the account.</li><li id="EN-US_TOPIC_0149610914__li152724313381">Check whether NVIDIA is used for the first time.<ol type="a" id="EN-US_TOPIC_0149610914__en-us_topic_0035470098_ol324624620921"><li id="EN-US_TOPIC_0149610914__en-us_topic_0035470098_li1701586620915">If yes, go to step <a href="#EN-US_TOPIC_0149610914__li1859773663819">4</a>.</li><li id="EN-US_TOPIC_0149610914__en-us_topic_0035470098_li90281520923">If no, go to step <a href="#EN-US_TOPIC_0149610914__li0791101412396">6</a>.</li></ol>
+</li><li id="EN-US_TOPIC_0149610914__li1859773663819"><a name="EN-US_TOPIC_0149610914__li1859773663819"></a><a name="li1859773663819"></a>Obtain the Product Activation Key (PAK) from the email indicating successful registration with NVIDIA.<div class="fignone" id="EN-US_TOPIC_0149610914__fig133361216153817"><span class="figcap"><b>Figure 2 </b>PAK</span><br><span><img id="EN-US_TOPIC_0149610914__image18336141613820" src="en-us_image_0178334448.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li3655201120394">Enter the PAK obtained in step <a href="#EN-US_TOPIC_0149610914__li1859773663819">4</a> on the <strong id="EN-US_TOPIC_0149610914__b5152365120935">Redeem Product Activation Keys</strong> page and click <strong id="EN-US_TOPIC_0149610914__b6105968320935">Redeem</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig16617143616380"><span class="figcap"><b>Figure 3 </b>Redeem Product Activation Keys</span><br><span><img id="EN-US_TOPIC_0149610914__image361611361386" src="en-us_image_0178334449.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li0791101412396"><a name="EN-US_TOPIC_0149610914__li0791101412396"></a><a name="li0791101412396"></a>Specify <strong id="EN-US_TOPIC_0149610914__b84235270616548">Username</strong> and <strong id="EN-US_TOPIC_0149610914__b842352706165411">Password</strong> and click <strong id="EN-US_TOPIC_0149610914__b842352706165415">LOGIN</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig1367291114395"><span class="figcap"><b>Figure 4 </b>Logging in to the official NVIDIA website</span><br><span><img id="EN-US_TOPIC_0149610914__image1467271193914" src="en-us_image_0178334450.png"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li37981314203919">Log in at the official NVIDIA website as prompted and select <strong id="EN-US_TOPIC_0149610914__b842352706165838">SOFTWARE DOWNLOADS</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig028419910169"><span class="figcap"><b>Figure 5 </b><strong id="EN-US_TOPIC_0149610914__b19512353918">SOFTWARE DOWNLOADS</strong> page</span><br><span><img id="EN-US_TOPIC_0149610914__image107031556318" src="en-us_image_0000001093447741.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li82629506390">Download the GRID driver of the required version. For details, see <a href="#EN-US_TOPIC_0149610914__table188851534175019">Table 1</a>.</li><li id="EN-US_TOPIC_0149610914__li1737112533910">Decompress the GRID driver installation package and install the driver that matches your <span id="EN-US_TOPIC_0149610914__text19853933134416">ECS</span> OS.</li><li id="EN-US_TOPIC_0149610914__li1783092110416">On the <strong id="EN-US_TOPIC_0149610914__b29541016145315">SOFTWARE DOWNLOADS</strong> page, click <strong id="EN-US_TOPIC_0149610914__b298732518531">ADDITIONAL SOFTWARE</strong> to download the license software package.<div class="fignone" id="EN-US_TOPIC_0149610914__fig13215124318392"><span class="figcap"><b>Figure 6 </b>ADDITIONAL SOFTWARE</span><br><span><img id="EN-US_TOPIC_0149610914__image751612546520" src="en-us_image_0000001093667097.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0149610914__section19229135113439"><a name="EN-US_TOPIC_0149610914__section19229135113439"></a><a name="section19229135113439"></a><h4 class="sectiontitle">Deploying and Configuring the License Server</h4><p id="EN-US_TOPIC_0149610914__p654013428815">The following uses an <span id="EN-US_TOPIC_0149610914__text943116321299">ECS</span> running CentOS 7.5 as an example to describe how to deploy and configure the license server on the <span id="EN-US_TOPIC_0149610914__text476412210">ECS</span>.</p>
+<div class="note" id="EN-US_TOPIC_0149610914__note1529772292"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0149610914__ul183811226796"><li id="EN-US_TOPIC_0149610914__li8381026891">The target <span id="EN-US_TOPIC_0149610914__text22261377911">ECS</span> must have at least 2 vCPUs and 4 GiB of memory.</li><li id="EN-US_TOPIC_0149610914__li1338262617913">Ensure that the MAC address of the target <span id="EN-US_TOPIC_0149610914__text01835438912">ECS</span> has been recorded.</li><li id="EN-US_TOPIC_0149610914__li3519169143111">If the license server is used in the production environment, deploy it in high availability mode. For details, see <a href="https://docs.nvidia.com/grid/ls/2019.05/grid-license-server-user-guide/index.html#license-server-high-availability" target="_blank" rel="noopener noreferrer">official NVIDIA documentation for license server high availability</a>.</li></ul>
+</div></div>
+<ol id="EN-US_TOPIC_0149610914__ol910210119481"><li id="EN-US_TOPIC_0149610914__li01021164812">Configure the network.<ul id="EN-US_TOPIC_0149610914__ul15828182965310"><li id="EN-US_TOPIC_0149610914__li082942975313">If the license server is to be accessed using the VPC, ensure that the license server and the GPU-accelerated ECS with the GRID driver installed are in the same VPC subnet.</li><li id="EN-US_TOPIC_0149610914__li158291529185317">If the license server is to be accessed using a public IP address, configure the security group to which license server belongs and add inbound rules for TCP 7070 and TCP 8080.</li></ul>
+</li></ol><ol start="2" id="EN-US_TOPIC_0149610914__ol19863882574"><li id="EN-US_TOPIC_0149610914__li12556133618571">Install the license server.<p id="EN-US_TOPIC_0149610914__p1950241175715"><a name="EN-US_TOPIC_0149610914__li12556133618571"></a><a name="li12556133618571"></a>For details, see the <a href="https://docs.nvidia.com/grid/ls/latest/grid-license-server-user-guide/index.html#installing-nvidia-grid-license-server" target="_blank" rel="noopener noreferrer">official NVIDIA documentation for installing the license server</a>.</p>
+</li><li id="EN-US_TOPIC_0149610914__li1286358105711">Obtain the license file.<ol type="a" id="EN-US_TOPIC_0149610914__ol185931549194718"><li id="EN-US_TOPIC_0149610914__li1759334914715">Log in to the <a href="http://nvid.nvidia.com/dashboard/" target="_blank" rel="noopener noreferrer">NVIDIA website</a> on a new tab and select <strong id="EN-US_TOPIC_0149610914__b641353145711">LICENSE SERVERS</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig1319854518598"><span class="figcap"><b>Figure 7 </b>LICENSE SERVERS</span><br><span><img id="EN-US_TOPIC_0149610914__image246832211173" src="en-us_image_0000001093449637.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li8195326171816">Click <strong id="EN-US_TOPIC_0149610914__b167632461619">CREATE SERVER</strong>.</li><li id="EN-US_TOPIC_0149610914__li1178250181816">Set <strong id="EN-US_TOPIC_0149610914__b42011924215">Server Name</strong>, <strong id="EN-US_TOPIC_0149610914__b98681649216">Description</strong>, and <strong id="EN-US_TOPIC_0149610914__b1369138520">MAC Address</strong> (MAC address of the license server).</li><li id="EN-US_TOPIC_0149610914__li7781650161812">Select <strong id="EN-US_TOPIC_0149610914__b15289161711213">Feature</strong>, enter the number of required licenses in the <strong id="EN-US_TOPIC_0149610914__b17576131733">Licenses</strong> text box, and click <strong id="EN-US_TOPIC_0149610914__b1457911394314">ADD</strong>.<p id="EN-US_TOPIC_0149610914__p8960534121917">In active/standby deployment, enter the name of the standby server in <strong id="EN-US_TOPIC_0149610914__b21181426149">Failover License Server</strong> and enter the MAC address in <strong id="EN-US_TOPIC_0149610914__b123062337416">Failover MAC Address</strong>.</p>
+</li><li id="EN-US_TOPIC_0149610914__li1678155014185">Click <strong id="EN-US_TOPIC_0149610914__b522113359414">CREATE LICENSE SERVER</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig1865418576181"><span class="figcap"><b>Figure 8 </b>Create License Server</span><br><span><img id="EN-US_TOPIC_0149610914__image10588174942013" src="en-us_image_0000001093450009.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0149610914__li952915185612">Download the license file.<div class="fignone" id="EN-US_TOPIC_0149610914__fig19995314613"><span class="figcap"><b>Figure 9 </b>Downloading the license file</span><br><span><img id="EN-US_TOPIC_0149610914__image93131642142318" src="en-us_image_0000001093310123.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</li><li id="EN-US_TOPIC_0149610914__li15481821581">In the web browser, access the homepage of the license server management page using the link configured during the installation.<p id="EN-US_TOPIC_0149610914__p61067526141"><a name="EN-US_TOPIC_0149610914__li15481821581"></a><a name="li15481821581"></a>Default URL: http://<em id="EN-US_TOPIC_0149610914__i1534211352020">IP address of the <span id="EN-US_TOPIC_0149610914__text1360112153276">EIP</span></em>:8080/licserver</p>
+</li><li id="EN-US_TOPIC_0149610914__li1694181918159">Choose <strong id="EN-US_TOPIC_0149610914__b842352706171958">License Server</strong> &gt; <strong id="EN-US_TOPIC_0149610914__b84235270617208">License Management</strong>, select the .bin license file to be uploaded, and click <strong id="EN-US_TOPIC_0149610914__b842352706172159">Upload</strong>.<div class="fignone" id="EN-US_TOPIC_0149610914__fig101141159980"><span class="figcap"><b>Figure 10 </b>Uploading a license file</span><br><span><img id="EN-US_TOPIC_0149610914__image6434113775518" src="en-us_image_0178325096.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0149610914__section17545653184812"><a name="EN-US_TOPIC_0149610914__section17545653184812"></a><a name="section17545653184812"></a><h4 class="sectiontitle">Installing the GRID Driver and Configuring the License</h4><ol id="EN-US_TOPIC_0149610914__ol7448332155218"><li id="EN-US_TOPIC_0149610914__li144481132185216">Install the GRID driver of a desired version, for example, on a GPU-accelerated Windows ECS.<div class="note" id="EN-US_TOPIC_0149610914__note162543384526"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0149610914__p182550385521">Microsoft remote login protocols do not support GPU 3D hardware acceleration. To use this function, install third-party desktop protocol-compliant software, such as VNC, PCoIP, or NICE DCV, and access the ECS through the client.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0149610914__li64497321524">Open the NVIDIA control panel on the Windows control panel.</li><li id="EN-US_TOPIC_0149610914__li18449732135218">Enter the IP address and port number of the deployed license server in the level-1 license server, and then click <strong id="EN-US_TOPIC_0149610914__b842352706172838">Apply</strong>. If the message indicating that you have obtained a GRID license, the installation is successful. Additionally, the MAC address of the GPU-accelerated ECS with the GRID driver installed is displayed on the <strong id="EN-US_TOPIC_0149610914__b842352706173434">Licensed Clients</strong> page of the license server management console.<div class="fignone" id="EN-US_TOPIC_0149610914__fig7104162713349"><span class="figcap"><b>Figure 11 </b>License server management console</span><br><span><img id="EN-US_TOPIC_0149610914__image667864633411" src="en-us_image_0178370293.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0133513874.html">(Optional) Installing a Driver and Toolkit</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

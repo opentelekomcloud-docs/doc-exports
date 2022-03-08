@@ -1,0 +1,588 @@
+<a name="elb_ug_jt_0011"></a><a name="elb_ug_jt_0011"></a>
+
+<h1 class="topictitle1">Adding a Listener</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_jt_0011__p7018400154542">After you create a load balancer, add at least one listener to the load balancer. This listener is a process that checks for requests using the protocol and port you configure for connections from clients to the load balancer, and the protocol and port from the load balancer to backend servers.</p>
+<p id="elb_ug_jt_0011__p66625093192530">The listener also defines the health check configuration, based on which the load balancer continually checks the running statuses of backend servers. If a backend server is detected unhealthy, the load balancer routes traffic to these healthy ones. Traffic forwarding to this server resumes once it recovers.</p>
+<p id="elb_ug_jt_0011__p10761155918453">When you add an HTTP listener, ensure that the subnet of the load balancer has sufficient IP addresses. If the IP addresses are insufficient, add multiple subnets on the <strong id="elb_ug_jt_0011__b55285221142">Basic Information</strong> page of the load balancer. After you select a subnet, ensure that ACL rules are not configured for this subnet. If rules are configured, request packets may not be allowed.</p>
+
+<a name="elb_ug_jt_0011__section227717504716"></a><a name="section227717504716"></a><h4 class="sectiontitle">Adding a Listener to a Dedicated Load Balancer</h4><ol id="elb_ug_jt_0011__ol62774501571"><li id="elb_ug_jt_0011__li127710504713">Log in to the management console.</li><li id="elb_ug_jt_0011__li1427713507713">In the upper left corner of the page, click <span><img id="elb_ug_jt_0011__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_jt_0011__li17301740102218">Hover on <span><img id="elb_ug_jt_0011__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="elb_ug_jt_0011__li127815019719">Locate the load balancer and click its name.</li><li id="elb_ug_jt_0011__li1727817502718">Under <strong id="elb_ug_jt_0011__b811115014208">Listeners</strong>, click <strong id="elb_ug_jt_0011__b202175011202">Add Listener</strong>. Configure the parameters based on <a href="#elb_ug_jt_0011__table627865019713">Table 1</a>, <a href="#elb_ug_jt_0011__table02842501376">Table 2</a>, and <a href="#elb_ug_jt_0011__table172911502712">Table 3</a>.
+.. _elb_ug_jt_0011__table627865019713:
+
+<a name="elb_ug_jt_0011__table627865019713"></a><a name="table627865019713"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table627865019713" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for configuring a listener</caption><thead align="left"><tr id="elb_ug_jt_0011__row1227814501873"><th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.2.2.5.6.2.4.1.1"><p id="elb_ug_jt_0011__p2027885020714">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.2.2.5.6.2.4.1.2"><p id="elb_ug_jt_0011__p527812507716"><strong id="elb_ug_jt_0011__b247810711505">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.2.2.5.6.2.4.1.3"><p id="elb_ug_jt_0011__p1327819509714"><strong id="elb_ug_jt_0011__b476112875018">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row16278105019711"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p227811506714">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p1227820505714">Specifies the listener name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p72784502073">listener-pnqy</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row2027816501774"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p10278450772">Frontend Protocol/Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p1927817501475">Specifies the protocol and port used by the load balancer to receive requests from clients and forward the requests to backend servers.</p>
+<p id="elb_ug_jt_0011__p102781500720">The port number ranges from 1 to 65535, and the following protocols are supported:</p>
+<ul id="elb_ug_jt_0011__ul127816501078"><li id="elb_ug_jt_0011__li172781501279">HTTP</li></ul>
+<ul id="elb_ug_jt_0011__ul527813501378"><li id="elb_ug_jt_0011__li82793504713">TCP</li><li id="elb_ug_jt_0011__li172795501679">HTTPS</li><li id="elb_ug_jt_0011__li02795501676">UDP</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p52791750479">TCP/80</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row4280175017712"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p52803507717">Redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p52801050172">Redirects requests to an HTTPS listener when HTTP is used as the frontend protocol. If you have both HTTPS and HTTP listeners, you can use this function to redirect the requests from the HTTP listener to the HTTPS listener to ensure security.</p>
+<p id="elb_ug_jt_0011__p1928011501374"><span id="elb_ug_jt_0011__ph32808507717">If you create a redirect for an HTTP listener, the load balancer will return HTTP 301 Move Permanently to the clients.</span></p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p172803501375">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row128018501778"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p142806501373">Redirected To</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p132801250472">Specifies the HTTPS listener to which requests are redirected.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p42808506716">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1928014501575"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p72804503710">Server Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p62801250376">Specifies the certificate used by the server to authenticate the client when HTTPS is used as the frontend protocol.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p728055013717">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row52817501776"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p828116501072">Enable SNI</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p17281650475">Specifies whether to enable SNI when HTTPS is used as the frontend protocol.</p>
+<p id="elb_ug_jt_0011__p1028116501271">SNI is an extension to TLS and is used when a server uses multiple domain names and certificates. This allows the client to submit the domain name information while sending an SSL handshake request. After the load balancer receives the request, the load balancer queries the corresponding certificate based on the domain name and returns it to the client. If no certificate is found, the load balancer will return a default certificate.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p528155011718">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1028117507711"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p8281165016714">SNI Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p202812506712">Specifies the certificate associated with the domain name when the frontend protocol is HTTPS and SNI is enabled.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p828165016718">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row13281195020720"><td class="cellrowborder" colspan="3" valign="top" headers="mcps1.3.2.2.5.6.2.4.1.1 mcps1.3.2.2.5.6.2.4.1.2 mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p9281650471">Advanced Settings</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row13282115015716"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p1628205013716">Security Policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p92828501378">Specifies the security policy you can use if you select HTTPS as the frontend protocol. The following options are available (for details, see <a href="elb_ug_jt_0022.html">Security Policy</a>):</p>
+<ul id="elb_ug_jt_0011__ul6282155017719"><li id="elb_ug_jt_0011__li528285012711"><strong id="elb_ug_jt_0011__b165381424191216">TLS-1-0</strong></li><li id="elb_ug_jt_0011__li20282175017710"><strong id="elb_ug_jt_0011__b868316273133">TLS-1-1</strong></li><li id="elb_ug_jt_0011__li72821350179"><strong id="elb_ug_jt_0011__b560012919133">TLS-1-2</strong></li><li id="elb_ug_jt_0011__li1928218501171"><strong id="elb_ug_jt_0011__b18644157192910">TLS-1-2-Strict</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p1728295017714">TLS-1-0</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1539517510260"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p142831450474">Mutual Authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p10283145011718">Specifies whether to enable mutual authentication between the server and client. Both a server certificate and CA certificate are required for mutual authentication. You can enable this option if you have set <strong id="elb_ug_jt_0011__b161450982519">Frontend Protocol</strong> to <strong id="elb_ug_jt_0011__b1115669152511">HTTPS</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p62831501277">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row36321022142610"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p528345020718">CA Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p14283950678">Specifies the certificate used by the server to authenticate the client when HTTPS is used as the frontend protocol. This parameter is mandatory if you have set <strong id="elb_ug_jt_0011__b1175105711811">Frontend Protocol</strong> to <strong id="elb_ug_jt_0011__b1018719571813">HTTPS</strong> and enabled mutual authentication.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p16283250279">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1528225015717"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p142823502719">Obtain Load Balancer EIP</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p202824501077">Specifies whether to pass the load balancer EIP to backend servers if you select <strong id="elb_ug_jt_0011__b48381578448">HTTPS</strong> or <strong id="elb_ug_jt_0011__b1513019186446">HTTP</strong> for <strong id="elb_ug_jt_0011__b38501724412">Frontend Protocol</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p72826500718">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row11283150572"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p42841501479">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p16284950375">Provides supplementary information about the listener.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p202845501074">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row428410504718"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p8284185011719">Tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p1228413501173">Adds tags to the listener. Each tag is a key-value pair, and the tag key is unique.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p18284105012719">11/11</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_ug_jt_0011__table02842501376:
+
+<a name="elb_ug_jt_0011__table02842501376"></a><a name="table02842501376"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table02842501376" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters for adding a backend server group</caption><thead align="left"><tr id="elb_ug_jt_0011__row1828495020715"><th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.2.2.5.7.2.4.1.1"><p id="elb_ug_jt_0011__p228418501777">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.2.2.5.7.2.4.1.2"><p id="elb_ug_jt_0011__p52843505711"><strong id="elb_ug_jt_0011__b1682103693">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.2.2.5.7.2.4.1.3"><p id="elb_ug_jt_0011__p15284185011714"><strong id="elb_ug_jt_0011__b173045452145">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row1228411505710"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1628410501171">Backend Server Group</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p328514501372">Specifies a group of servers with the same features to receive requests from the load balancer. Two options are available:</p>
+<ul id="elb_ug_jt_0011__ul182857501576"><li id="elb_ug_jt_0011__li22856501673"><strong id="elb_ug_jt_0011__b191072213919">Create new</strong></li><li id="elb_ug_jt_0011__li14285135011719"><strong id="elb_ug_jt_0011__b6403167296">Use existing</strong><span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__en-us_topic_0242751126_p1494711463437"><span id="elb_ug_jt_0011__en-us_topic_0242751126_ph157831728154313">To associate an existing backend <span id="elb_ug_jt_0011__en-us_topic_0242751126_ph177241201433">server</span> group, ensure that it is not in use. Select the backend <span id="elb_ug_jt_0011__en-us_topic_0242751126_ph664172212532">server</span> group with the correct protocol. For example, if the frontend protocol is TCP, the backend protocol can only be TCP.</span></p>
+
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p132851550479">Create new</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1428545011716"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p928555018720">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p9285145013710">Specifies the name of the backend <span id="elb_ug_jt_0011__text641213985314">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1728514508715">server_group-sq4v</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row182851502713"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1528585013720">Backend Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1628517501677">Specifies the protocol used by backend servers to receive requests.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p828610501375">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row528612501476"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1728618501474">Load Balancing Algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p15286150273">Specifies the algorithm used by the load balancer to distribute traffic. The following options are available:</p>
+<ul id="elb_ug_jt_0011__ul172863502720"><li id="elb_ug_jt_0011__li182866501178"><strong id="elb_ug_jt_0011__b99191559153">Weighted round robin</strong>: Requests are routed to different servers based on their weights, which indicate server processing performance. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests.</li><li id="elb_ug_jt_0011__li1828619506716"><strong id="elb_ug_jt_0011__b157766981616">Weighted least connections</strong>: In addition to the weight assigned to each server, the number of connections processed by each backend server is also considered. Requests are routed to the server with the lowest connections-to-weight ratio.</li><li id="elb_ug_jt_0011__li1928613506719"><strong id="elb_ug_jt_0011__b6318161517164">Source IP hash</strong>: The source IP address of the request is input into a hash algorithm, and the resulting hash is used to identify a server in the static fragment table.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p1128614508717">Choose an appropriate algorithm based on your requirements for better traffic distribution.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p528685013711">Weighted round robin</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row132868508718"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p32861050471">Sticky Session</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p12866501771">Specifies whether to enable sticky sessions. If you enable sticky sessions, all requests from a client during one session are sent to the same backend server.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p11286105012717">For HTTP and HTTPS listeners, enabling or disabling sticky sessions may cause few seconds of service interruption.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1828665014717">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row828612507716"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1028618504713">Sticky Session Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1893518196499">After you enable the sticky session feature, select a sticky session type:</p>
+<ul id="elb_ug_jt_0011__ul71222441317"><li id="elb_ug_jt_0011__li31229471317"><strong id="elb_ug_jt_0011__b19312151315194">Source IP address</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hash key, and all backend servers are numbered. The system allocates the client to a particular server based on the generated key. This enables requests from different clients to be routed and ensures that a client is directed to the same server that it was using previously.</li><li id="elb_ug_jt_0011__li16123184161317"><strong id="elb_ug_jt_0011__elb_ug_jt_0004_b19659101662811">Load balancer cookie</strong>: The load balancer generates a cookie after receiving a request from the client. All subsequent requests with the same cookie are then routed to the same backend server.</li><li id="elb_ug_jt_0011__li1412454111312"><strong id="elb_ug_jt_0011__elb_ug_jt_0004_b716812231288">Application cookie</strong>: The application deployed on the backend server generates a cookie after receiving the first request from the client. All requests with the same cookie generated by backend application are then routed to the same backend server.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__elb_ug_jt_0011_p375831210472">Choose an appropriate sticky session type to better distribute requests and improve load balancing.</p>
+<ul id="elb_ug_jt_0011__elb_ug_jt_0011_ul67056312135"><li id="elb_ug_jt_0011__elb_ug_jt_0011_li1285321975510">Sticky sessions at Layer 4 (for TCP or UDP listeners): only <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b6885112984711">Source IP address</strong></li><li id="elb_ug_jt_0011__elb_ug_jt_0011_li8538354164612">Sticky sessions at Layer 7 (for HTTP or HTTPS listeners): <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b2041065474719">Load balancer cookie</strong> and <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b148311492477">Application cookie</strong></li></ul>
+
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p4291155012711">Source IP address</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row429111501473"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p122911650878">Cookie Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p32914502716">Specifies the cookie name. If you select <strong id="elb_ug_jt_0011__b10926210173720">Application cookie</strong>, enter a cookie name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1529110506712">cookieName-qsps</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row20291350679"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p02914501174">Stickiness Duration (min)</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p2291125012717">Specifies the minutes that sticky sessions are maintained.</p>
+<ul id="elb_ug_jt_0011__ul850974521420"><li id="elb_ug_jt_0011__li205099459145">Stickiness duration at Layer 4: <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b192583356485">1</strong> to <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b16341838155315">60</strong></li><li id="elb_ug_jt_0011__li84964337151">Stickiness duration at Layer 7: <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b43798583531">1</strong> to <strong id="elb_ug_jt_0011__elb_ug_jt_0011_b133412235412">1440</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p16291135013711">20</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row172911050671"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.2.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p629185013718">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.2.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p14291135010712">Provides supplementary information about the backend <span id="elb_ug_jt_0011__text102911850773">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1529119509716">N/A</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_ug_jt_0011__table172911502712:
+
+<a name="elb_ug_jt_0011__table172911502712"></a><a name="table172911502712"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table172911502712" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameters for configuring a health check</caption><thead align="left"><tr id="elb_ug_jt_0011__row1229210500710"><th align="left" class="cellrowborder" valign="top" width="20.792079207920793%" id="mcps1.3.2.2.5.8.2.4.1.1"><p id="elb_ug_jt_0011__p929265013715">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60.396039603960396%" id="mcps1.3.2.2.5.8.2.4.1.2"><p id="elb_ug_jt_0011__p1329214507720"><strong id="elb_ug_jt_0011__b1414949604">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.2.2.5.8.2.4.1.3"><p id="elb_ug_jt_0011__p12925504719"><strong id="elb_ug_jt_0011__b758414784016">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row92926501177"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p1129214509710">Enable Health Check</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p112921150773">Specifies whether to enable health checks.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p162921850878">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row15292135017712"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p9292165014714">Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><ul id="elb_ug_jt_0011__ul1229214505716"><li id="elb_ug_jt_0011__li529315015713">Specifies the protocol used by the load balancer to perform health checks on backend servers. You can select either TCP or HTTP. A selected protocol cannot be changed.</li><li id="elb_ug_jt_0011__li172937501573">If the frontend protocol is UDP, the health check protocol is UDP by default.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p162935501076">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row7293450876"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p1429313503712">Domain Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p1229305013711">Specifies the domain name that will be used for health checks. The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. This field is left blank by default and needs to be configured only if you use HTTP as the health check protocol. </p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p15293195018714">www.elb.com</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row72931501678"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p16293155011720">Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p329319501774">Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p729314503719">This parameter is optional. If you do not specify a health check port, a port of the backend server will be used for health checks by default. If you specify a port, it will be used for health checks.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p192932050573">80</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row192934505711"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p1729318506718">Advanced Settings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p129316509711">Provides some advanced features.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p1229316505714">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row152942501575"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p829495013712">Interval (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p15294350573">Specifies the maximum time between health checks, in seconds.</p>
+<p id="elb_ug_jt_0011__p192944501675">The interval ranges from <strong id="elb_ug_jt_0011__b1512992712117">1</strong> to <strong id="elb_ug_jt_0011__b161913410509">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p5294135019710">5</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row18294175014716"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p429415016713">Timeout (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p729410504713">Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout ranges from <strong id="elb_ug_jt_0011__b1784415166291">1</strong> to <strong id="elb_ug_jt_0011__b1085341619295">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p829416501573">10</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row16294650471"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p16294250271">Check Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p122941501370">Specifies the destination path for health checks. Configure this parameter only if you have set <strong id="elb_ug_jt_0011__b88141520175016">Protocol</strong> to <strong id="elb_ug_jt_0011__b148291720135016">HTTP</strong>. The path can contain 1 to 80 characters and <span id="elb_ug_jt_0011__ph20695142716610">must start with a slash (/)</span>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p92942508719">/index.html</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row729413501715"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.2.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p1129435012710">Maximum Retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.396039603960396%" headers="mcps1.3.2.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p6294195011712">Specifies the maximum number of health check retries. The value ranges from <strong id="elb_ug_jt_0011__b137670513118">1</strong> to <strong id="elb_ug_jt_0011__b157672511613">10</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p02956502719">3</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ol><ol start="6" id="elb_ug_jt_0011__ol129715013717"><li id="elb_ug_jt_0011__li122971550771">Click <strong id="elb_ug_jt_0011__b751141313318">Finish</strong>.</li><li id="elb_ug_jt_0011__li11297250974">Click <strong id="elb_ug_jt_0011__b520610148318">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Adding a Listener to <span id="elb_ug_jt_0011__ph1645535710329">a Shared</span> Load Balancer</h4><ol id="elb_ug_jt_0011__ol55149282152949"><li id="elb_ug_jt_0011__li677391520332">Log in to the management console.</li><li id="elb_ug_jt_0011__li675519100420">In the upper left corner of the page, click <span><img id="elb_ug_jt_0011__en-us_topic_0240829509_image177714713415_1" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_jt_0011__li83736197297">Hover on <span><img id="elb_ug_jt_0011__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="elb_ug_jt_0011__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="elb_ug_jt_0011__li44618046152949">Locate the load balancer and click its name.</li><li id="elb_ug_jt_0011__li13174175374113">Under <strong id="elb_ug_jt_0011__b8131172503710">Listeners</strong>, click <strong id="elb_ug_jt_0011__b11132142511376">Add Listener</strong>. Configure the parameters based on <a href="#elb_ug_jt_0011__table1441020925310">Table 4</a>, <a href="#elb_ug_jt_0011__table6414109125314">Table 5</a>, and <a href="#elb_ug_jt_0011__table124201898534">Table 6</a>.
+.. _elb_ug_jt_0011__table1441020925310:
+
+<a name="elb_ug_jt_0011__table1441020925310"></a><a name="table1441020925310"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table1441020925310" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Parameters for configuring a listener</caption><thead align="left"><tr id="elb_ug_jt_0011__row6406792539"><th align="left" class="cellrowborder" valign="top" width="20.408163265306122%" id="mcps1.3.3.2.5.6.2.4.1.1"><p id="elb_ug_jt_0011__p14406149145315"><strong id="elb_ug_jt_0011__b12120195118401">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.183673469387756%" id="mcps1.3.3.2.5.6.2.4.1.2"><p id="elb_ug_jt_0011__p1540699185318"><strong id="elb_ug_jt_0011__b926431783">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.408163265306122%" id="mcps1.3.3.2.5.6.2.4.1.3"><p id="elb_ug_jt_0011__p64061696536"><strong id="elb_ug_jt_0011__b1539971939">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row540649135313"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p114061099530">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p20406999532">Specifies the listener name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p740618913531">listener-pnqy</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1940718915310"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p10406391536">Frontend Protocol/Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p1940615919533">Specifies the protocol and port used by the load balancer to receive requests from clients and forward the requests to backend servers.</p>
+<p id="elb_ug_jt_0011__p14406159155310">The port number ranges from 1 to 65535, and the following protocols are supported:</p>
+<ul id="elb_ug_jt_0011__ul144061395537"><li id="elb_ug_jt_0011__li5406129115312">HTTP</li></ul>
+<ul id="elb_ug_jt_0011__ul74069935313"><li id="elb_ug_jt_0011__li2406109175318">TCP</li><li id="elb_ug_jt_0011__li2488542204114">HTTPS</li><li id="elb_ug_jt_0011__li1440619195311">UDP</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p174061798536">TCP/80</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row12407189195311"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p16407189175314">Redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p640720914532">Redirects requests to an HTTPS listener when HTTP is used as the frontend protocol. If you have both HTTPS and HTTP listeners, you can use this function to redirect the requests from the HTTP listener to the HTTPS listener to ensure security.</p>
+<p id="elb_ug_jt_0011__p8947814145414"><span id="elb_ug_jt_0011__ph165481846115311">If you create a redirect for an HTTP listener, the load balancer will return HTTP 301 Move Permanently to the clients.</span></p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p94074916539">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row14407129145313"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p184071992539">Redirected To</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p18407896536">Specifies the HTTPS listener to which requests are redirected.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p184076985311">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row8407159115311"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p1540749135315">Server Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p164079916535">Specifies the certificate used by the server to authenticate the client when HTTPS is used as the frontend protocol.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p2040712955313">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1840817965315"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p540739155315">Enable SNI</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p74089911535">Specifies whether to enable SNI when HTTPS is used as the frontend protocol.</p>
+<p id="elb_ug_jt_0011__p7408139175310">SNI is an extension to TLS and is used when a server uses multiple domain names and certificates. This allows the client to submit the domain name information while sending an SSL handshake request. After the load balancer receives the request, the load balancer queries the corresponding certificate based on the domain name and returns it to the client. If no certificate is found, the load balancer will return a default certificate.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p19408189115312">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row54081398531"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p154080910537">SNI Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p18408199185312">Specifies the certificate associated with the domain name when the frontend protocol is HTTPS and SNI is enabled.</p>
+<p id="elb_ug_jt_0011__p174088918535">Select an existing certificate or create one.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p174081918533">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1793611249220"><td class="cellrowborder" colspan="3" valign="top" headers="mcps1.3.3.2.5.6.2.4.1.1 mcps1.3.3.2.5.6.2.4.1.2 mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p1793717247218">Advanced Settings</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row92711114697"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p12854547567">Security Policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p208516541560">Specifies the security policy you can use if you select HTTPS as the frontend protocol. The following options are available (for details, see <a href="elb_ug_jt_0022.html">Security Policy</a>):</p>
+<ul id="elb_ug_jt_0011__ul5540161813580"><li id="elb_ug_jt_0011__li1354051818585"><strong id="elb_ug_jt_0011__b980216354">TLS-1-0</strong></li><li id="elb_ug_jt_0011__li20540718115815"><strong id="elb_ug_jt_0011__b1681952763">TLS-1-1</strong></li><li id="elb_ug_jt_0011__li654012188581"><strong id="elb_ug_jt_0011__b28421308">TLS-1-2</strong></li><li id="elb_ug_jt_0011__li354061865818"><strong id="elb_ug_jt_0011__b14123831111316">TLS-1-2-Strict</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p148514545563">TLS-1-0</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row054792718213"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p85481272213">Idle Timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p4548152716217">Specifies the length of time for a connection to keep alive, in seconds. If no request is received within this period, the load balancer closes the connection and establishes a new one with the client when the next request arrives. This parameter is mandatory when you have set <strong id="elb_ug_jt_0011__b322113683015">Frontend Protocol</strong> to <strong id="elb_ug_jt_0011__b927113912305">TCP</strong>, <strong id="elb_ug_jt_0011__b63621242173011">HTTP</strong> or <strong id="elb_ug_jt_0011__b1355674613019">HTTPS</strong>.</p>
+<p id="elb_ug_jt_0011__p829116340396">The idle timeout duration varies depending on the protocol:</p>
+<ul id="elb_ug_jt_0011__ul17753174144013"><li id="elb_ug_jt_0011__li177541844409">TCP: <strong id="elb_ug_jt_0011__b335832120186">10</strong> to <strong id="elb_ug_jt_0011__b1379424131815">4000</strong></li><li id="elb_ug_jt_0011__li1469033917408">HTTP or HTTPS: <strong id="elb_ug_jt_0011__b747371391817">0</strong> to <strong id="elb_ug_jt_0011__b166423165188">4000</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><ul id="elb_ug_jt_0011__ul171183494415"><li id="elb_ug_jt_0011__li21181649144115">TCP: The default value is <strong id="elb_ug_jt_0011__b57661059181614">300</strong>.</li><li id="elb_ug_jt_0011__li1018695511412">HTTP or HTTPS: The default value is <strong id="elb_ug_jt_0011__b26243236177">60</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1240949195314"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p1940929105310">Mutual Authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p24099919539">Specifies whether to enable mutual authentication between the server and client. Both a server certificate and CA certificate are required for mutual authentication. You can enable this option if you have set <strong id="elb_ug_jt_0011__b2367170192510">Frontend Protocol</strong> to <strong id="elb_ug_jt_0011__b203681601256">HTTPS</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p14093917539">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1441049115319"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p144091935311">CA Certificate</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p6409199155319">Specifies the certificate used by the server to authenticate the client when HTTPS is used as the frontend protocol. This parameter is mandatory if you have set <strong id="elb_ug_jt_0011__b1734572610815">Frontend Protocol</strong> to <strong id="elb_ug_jt_0011__b335716261489">HTTPS</strong> and enabled mutual authentication.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p13410194536">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row24101993534"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p241015975311">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p1741017985316">Provides supplementary information about the listener.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p1041019920538">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row134101995313"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.1 "><p id="elb_ug_jt_0011__p84103915314">Tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.183673469387756%" headers="mcps1.3.3.2.5.6.2.4.1.2 "><p id="elb_ug_jt_0011__p941079175316">Adds tags to the listener. Each tag is a key-value pair, and the tag key is unique.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.3.2.5.6.2.4.1.3 "><p id="elb_ug_jt_0011__p12410189115317">11/11</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_ug_jt_0011__table6414109125314:
+
+<a name="elb_ug_jt_0011__table6414109125314"></a><a name="table6414109125314"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table6414109125314" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Parameters for adding a backend server group</caption><thead align="left"><tr id="elb_ug_jt_0011__row24119915312"><th align="left" class="cellrowborder" valign="top" width="21.21212121212121%" id="mcps1.3.3.2.5.7.2.4.1.1"><p id="elb_ug_jt_0011__p1341114918533"><strong id="elb_ug_jt_0011__b08081543111411">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.58585858585859%" id="mcps1.3.3.2.5.7.2.4.1.2"><p id="elb_ug_jt_0011__p13411119115314"><strong id="elb_ug_jt_0011__b1960354431415">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.202020202020204%" id="mcps1.3.3.2.5.7.2.4.1.3"><p id="elb_ug_jt_0011__p1441116918537"><strong id="elb_ug_jt_0011__b995651556">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row941189135319"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p174111699530">Backend Server Group</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1241118935319">Specifies a group of servers with the same features to receive requests from the load balancer. Two options are available:</p>
+<ul id="elb_ug_jt_0011__ul17411149115314"><li id="elb_ug_jt_0011__li134118918537"><strong id="elb_ug_jt_0011__b389307281">Create new</strong></li><li id="elb_ug_jt_0011__li1411795537"><strong id="elb_ug_jt_0011__b2019184761">Use existing</strong><span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__en-us_topic_0242751126_p1494711463437_1"><span id="elb_ug_jt_0011__en-us_topic_0242751126_ph157831728154313_1">To associate an existing backend <span id="elb_ug_jt_0011__en-us_topic_0242751126_ph177241201433_1">server</span> group, ensure that it is not in use. Select the backend <span id="elb_ug_jt_0011__en-us_topic_0242751126_ph664172212532_1">server</span> group with the correct protocol. For example, if the frontend protocol is TCP, the backend protocol can only be TCP.</span></p>
+
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1341113935310">Create new</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row541279125318"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1741120913539">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p204128965312">Specifies the name of the backend <span id="elb_ug_jt_0011__text1307627823">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p13412699533">server_group-sq4v</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row64123910531"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p54120975314">Backend Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1241215910537">Specifies the protocol used by backend servers to receive requests.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p841216919534">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row184131694530"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p741211985316">Load Balancing Algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p241213913535">Specifies the algorithm used by the load balancer to distribute traffic. The following options are available:</p>
+<ul id="elb_ug_jt_0011__ul164121491534"><li id="elb_ug_jt_0011__li1541218995312"><strong id="elb_ug_jt_0011__b1306647349">Weighted round robin</strong>: Requests are routed to different servers based on their weights, which indicate server processing performance. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests.</li><li id="elb_ug_jt_0011__li17412597537"><strong id="elb_ug_jt_0011__b320321044">Weighted least connections</strong>: In addition to the weight assigned to each server, the number of connections processed by each backend server is also considered. Requests are routed to the server with the lowest connections-to-weight ratio.</li><li id="elb_ug_jt_0011__li24124915314"><strong id="elb_ug_jt_0011__b1974625387">Source IP hash</strong>: The source IP address of the request is input into a hash algorithm, and the resulting hash is used to identify a server in the static fragment table.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p9412129185318">Choose an appropriate algorithm based on your requirements for better traffic distribution.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1541319915534">Weighted round robin</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row11413149115315"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p184131091534">Sticky Session</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1441319955312">Specifies whether to enable sticky sessions. If you enable sticky sessions, all requests from a client during one session are sent to the same backend server.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p841318975316">For HTTP and HTTPS listeners, enabling or disabling sticky sessions may cause few seconds of service interruption.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p14131975315">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row84141394533"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1741329145317">Sticky Session Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p154132095532">After you enable the sticky session feature, select a sticky session type:</p>
+<ul id="elb_ug_jt_0011__ul1241312925312"><li id="elb_ug_jt_0011__li1413199135311"><strong id="elb_ug_jt_0011__b264711913192">Source IP address</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hash key, and all backend servers are numbered. The system allocates the client to a particular server based on the generated key. This enables requests from different clients to be routed and ensures that a client is directed to the same server that it was using previously.</li><li id="elb_ug_jt_0011__li13413159135315"><strong id="elb_ug_jt_0011__elb_ug_jt_0004_b19659101662811_1">Load balancer cookie</strong>: The load balancer generates a cookie after receiving a request from the client. All subsequent requests with the same cookie are then routed to the same backend server.</li><li id="elb_ug_jt_0011__li1841317995311"><strong id="elb_ug_jt_0011__elb_ug_jt_0004_b716812231288_1">Application cookie</strong>: The application deployed on the backend server generates a cookie after receiving the first request from the client. All requests with the same cookie generated by backend application are then routed to the same backend server.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p375831210472">Choose an appropriate sticky session type to better distribute requests and improve load balancing.</p>
+<ul id="elb_ug_jt_0011__ul67056312135"><li id="elb_ug_jt_0011__li1285321975510">Sticky sessions at Layer 4 (for TCP or UDP listeners): only <strong id="elb_ug_jt_0011__b6885112984711">Source IP address</strong></li><li id="elb_ug_jt_0011__li8538354164612">Sticky sessions at Layer 7 (for HTTP or HTTPS listeners): <strong id="elb_ug_jt_0011__b2041065474719">Load balancer cookie</strong> and <strong id="elb_ug_jt_0011__b148311492477">Application cookie</strong></li></ul>
+
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p941410911535">Source IP address</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row17414596534"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p14147913531">Cookie Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p10414159125310">Specifies the cookie name. If you select <strong id="elb_ug_jt_0011__b33480312378">Application cookie</strong>, enter a cookie name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p194143935314">cookieName-qsps</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1741499135315"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p1541412965310">Stickiness Duration (min)</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p12010323120">Specifies the minutes that sticky sessions are maintained.</p>
+<ul id="elb_ug_jt_0011__ul119741742723"><li id="elb_ug_jt_0011__li1498125411215">Stickiness duration at Layer 4: <strong id="elb_ug_jt_0011__b192583356485">1</strong> to <strong id="elb_ug_jt_0011__b16341838155315">60</strong></li><li id="elb_ug_jt_0011__li1997411424217">Stickiness duration at Layer 7: <strong id="elb_ug_jt_0011__b43798583531">1</strong> to <strong id="elb_ug_jt_0011__b133412235412">1440</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p1241414935319">20</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row541414919539"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.7.2.4.1.1 "><p id="elb_ug_jt_0011__p19414798530">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.7.2.4.1.2 "><p id="elb_ug_jt_0011__p1141469115313">Provides supplementary information about the backend <span id="elb_ug_jt_0011__text166525055810">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.7.2.4.1.3 "><p id="elb_ug_jt_0011__p114141696531">N/A</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_ug_jt_0011__table124201898534:
+
+<a name="elb_ug_jt_0011__table124201898534"></a><a name="table124201898534"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0011__table124201898534" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Parameters for configuring a health check</caption><thead align="left"><tr id="elb_ug_jt_0011__row1641417985317"><th align="left" class="cellrowborder" valign="top" width="21.21212121212121%" id="mcps1.3.3.2.5.8.2.4.1.1"><p id="elb_ug_jt_0011__p1741415965319"><strong id="elb_ug_jt_0011__b95900520405">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.58585858585859%" id="mcps1.3.3.2.5.8.2.4.1.2"><p id="elb_ug_jt_0011__p134141496538"><strong id="elb_ug_jt_0011__b187845694015">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.202020202020204%" id="mcps1.3.3.2.5.8.2.4.1.3"><p id="elb_ug_jt_0011__p114141794530"><strong id="elb_ug_jt_0011__b2043604098">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0011__row1941509125312"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p174155905311">Enable Health Check</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p15415195533">Specifies whether to enable health checks.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p541519155318">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row44158910530"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p184153920531">Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><ul id="elb_ug_jt_0011__ul1941518935311"><li id="elb_ug_jt_0011__li34159965316">Specifies the protocol used by the load balancer to perform health checks on backend servers. You can select either TCP or HTTP. A selected protocol cannot be changed.</li><li id="elb_ug_jt_0011__li13415189115311">If the frontend protocol is UDP, the health check protocol is UDP by default.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p741518914531">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row74169955315"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p8415159185317">Domain Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p0415109125316">Specifies the domain name that will be used for health checks. The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. This field is left blank by default and needs to be configured only if you use HTTP as the health check protocol. </p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p941614910531">www.elb.com</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row941639115316"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p154163918539">Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p1941659135311">Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_jt_0011__p14416492538">This parameter is optional. If you do not specify a health check port, a port of the backend server will be used for health checks by default.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p114161199530">80</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row184161396534"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p24161914533">Advanced Settings</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p04167995319">Provides some advanced features.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p1416209135317">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row641711935319"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p184163913537">Interval (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p1941614985312">Specifies the maximum time between health checks, in seconds.</p>
+<p id="elb_ug_jt_0011__p54161797531">The interval ranges from <strong id="elb_ug_jt_0011__b1842341748">1</strong> to <strong id="elb_ug_jt_0011__b613012711111">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p1417209155312">5</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row541759195312"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p9417179185316">Timeout (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p7417149135320">Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from <strong id="elb_ug_jt_0011__b151413331914">1</strong> to <strong id="elb_ug_jt_0011__b951443319110">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p194173975319">10</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row541714916532"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p15417394539">Check Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p1741712913533">Specifies the destination path for health checks. Configure this parameter only if you have set <strong id="elb_ug_jt_0011__b887015816490">Protocol</strong> to <strong id="elb_ug_jt_0011__b8882155824918">HTTP</strong>. The path can contain 1 to 80 characters and <span id="elb_ug_jt_0011__ph371449879">must start with a slash (/)</span>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p4417119195313">/index.html</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0011__row1941749175315"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.3.2.5.8.2.4.1.1 "><p id="elb_ug_jt_0011__p64172912539">Maximum Retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.3.2.5.8.2.4.1.2 "><p id="elb_ug_jt_0011__p2041799135312">Specifies the maximum number of health check retries. The value ranges from <strong id="elb_ug_jt_0011__b167557994">1</strong> to <strong id="elb_ug_jt_0011__b1411667858">10</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.3.2.5.8.2.4.1.3 "><p id="elb_ug_jt_0011__p44171975318">3</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ol><ol start="6" id="elb_ug_jt_0011__ol1163812163919"><li id="elb_ug_jt_0011__li2017261117112">Click <strong id="elb_ug_jt_0011__b2018159243">Finish</strong>.</li><li id="elb_ug_jt_0011__li1736818357399">Click <strong id="elb_ug_jt_0011__b2083632827">OK</strong>.</li></ol>
+
+
+
+
+
+
+

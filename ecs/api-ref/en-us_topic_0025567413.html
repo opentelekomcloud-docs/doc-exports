@@ -1,0 +1,118 @@
+<a name="EN-US_TOPIC_0025567413"></a><a name="EN-US_TOPIC_0025567413"></a>
+
+<h1 class="topictitle1">Modifying <span id="text1098723315211">ECS</span> Metadata with a Specified Key</h1>
+<div id="body1456137814029"><div class="section" id="EN-US_TOPIC_0025567413__section19950704192629"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0025567413__p5394350192629">This API is used to modify the <span id="EN-US_TOPIC_0025567413__text1588443512525">ECS</span> metadata with a specified key.</p>
+<ul id="EN-US_TOPIC_0025567413__ul836319252015"><li id="EN-US_TOPIC_0025567413__li48990849155458">If the metadata does not contain the target field, the field is automatically added.</li><li id="EN-US_TOPIC_0025567413__li44616756155458">If the metadata contains the target field, the field value is automatically updated.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section178513519245"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0025567413__p177145612165">An <span id="EN-US_TOPIC_0025567413__text194191313163511">ECS</span> must be in active, stopped, paused, or suspended state, which is specified by <strong id="EN-US_TOPIC_0025567413__b5426161318351">OS-EXT-STS:vm_state</strong>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section48549151192629"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0025567413__p8665112023416">PUT /v2.1/{project_id}/servers/{server_id}/metadata/{key}</p>
+<p id="EN-US_TOPIC_0025567413__p161799361813">PUT /v2/{project_id}/servers/{server_id}/metadata/{key}</p>
+<div class="p" id="EN-US_TOPIC_0025567413__p73232410250"><a href="#EN-US_TOPIC_0025567413__table258804192629">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0025567413__table258804192629"></a><a name="table258804192629"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0025567413__table258804192629" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0025567413__row33277594192629"><th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0025567413__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0025567413__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.67676767676768%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0025567413__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0025567413__row56232837192629"><td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0025567413__p58565959192629">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0025567413__p46222262192629">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0025567413__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0025567413__row7379590192629"><td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0025567413__p60875907192629">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0025567413__p32001416192629">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0025567413__p41977918192629">Specifies the <span id="EN-US_TOPIC_0025567413__text1978831715359">ECS</span> ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0025567413__row1185148119279"><td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0025567413__p2044590819279">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0025567413__p4550582719279">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0025567413__p6209335919279">Specifies the <span id="EN-US_TOPIC_0025567413__text2603338175211">ECS</span> metadata key.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section42256947192629"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0025567413__p996115404254"><a href="#EN-US_TOPIC_0025567413__table21113531192629">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0025567413__table21113531192629"></a><a name="table21113531192629"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0025567413__table21113531192629" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0025567413__row12974012192629"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0025567413__p44262053192629">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0025567413__p28456575192629">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0025567413__p23281266192629">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.99999999999999%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0025567413__p6734373192629">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0025567413__row8613312192629"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0025567413__p26589676192629">meta</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0025567413__p6280144192629">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0025567413__p38929685192629">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.99999999999999%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0025567413__p59800316192629">Specifies the user-defined metadata key pair.</p>
+<p id="EN-US_TOPIC_0025567413__p19894192011457">For a metadata key:</p>
+<p id="EN-US_TOPIC_0025567413__p131921502154">It contains a maximum of 255 Unicode characters and cannot be left blank. A key can contain uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), colons (:), and periods (.).</p>
+<p id="EN-US_TOPIC_0025567413__p999582373317">For a metadata value:</p>
+<p id="EN-US_TOPIC_0025567413__p186075811515">It contains a maximum of 255 Unicode characters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section12391939192629"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0025567413__p949371316300"><a href="#EN-US_TOPIC_0025567413__table34681280192629">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0025567413__table34681280192629"></a><a name="table34681280192629"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0025567413__table34681280192629" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0025567413__row7754416192629"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.2.2.2.4.1.1"><p id="EN-US_TOPIC_0025567413__p24127969192629">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.2.2.2.4.1.2"><p id="EN-US_TOPIC_0025567413__p8208474192629">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.5.2.2.2.4.1.3"><p id="EN-US_TOPIC_0025567413__p60906692192629">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0025567413__row34495047192629"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0025567413__p42635402192629">meta</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0025567413__p30915509192629">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0025567413__p55937021192629">Specifies the user-defined metadata key-value pair.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section1854919457276"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0025567413__screen19959171382518">PUT https://{endpoint}/v2/{project_id}/servers/{server_id}/metadata/{key}
+PUT https://{endpoint}/v2.1/{project_id}/servers/{server_id}/metadata/{key}</pre>
+<pre class="screen" id="EN-US_TOPIC_0025567413__screen189551579577">{
+    "meta":{
+        "key":"value"
+    }
+} </pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section06122457441"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0025567413__screen116231445164413">{
+    "meta":{
+        "key":"value"
+    }
+} </pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0025567413__section38207615192629"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0025567413__p7809121192629">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065817681.html">Metadata Management</a></div>
+</div>
+</div>
+

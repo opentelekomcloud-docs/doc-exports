@@ -1,0 +1,739 @@
+<a name="modelarts_23_0173"></a><a name="modelarts_23_0173"></a>
+
+<h1 class="topictitle1">TensorFlow</h1>
+<div id="body8662426"><p id="modelarts_23_0173__en-us_topic_0196618241_p8060118">TensorFlow has two types of APIs: Keras and tf. Keras and tf use different code for training and saving models, but the same code for inference.</p>
+<div class="section" id="modelarts_23_0173__en-us_topic_0196618241_section1337018527168"><h4 class="sectiontitle">Training a Model (Keras API)</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0173__en-us_topic_0196618241_screen825024713179"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="c1"># Import a training dataset.</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dropout</span>
+
+<span class="c1"># Define a model network.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">5120</span><span class="p">,</span><span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>
+
+<span class="c1"># Define an optimizer and loss functions.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="c1"># Train the model.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Evaluate the model.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_23_0173__en-us_topic_0196618241_section10626141011172"><h4 class="sectiontitle">Saving a Model (Keras API)</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0173__en-us_topic_0196618241_screen925975910178"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>  
+
+<span class="c1"># K.get_session().run(tf.global_variables_initializer())</span>
+
+<span class="c1"># Define the inputs and outputs of the prediction API.</span>
+<span class="c1"># The key values of the inputs and outputs dictionaries are used as the index keys for the input and output tensors of the model.</span>
+ <span class="c1"># The input and output definitions of the model must match the custom inference script.</span>
+<span class="n">predict_signature</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_def_utils</span><span class="o">.</span><span class="n">predict_signature_def</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;images&quot;</span> <span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;scores&quot;</span> <span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Define a save path.</span>
+<span class="n">builder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">SavedModelBuilder</span><span class="p">(</span><span class="s1">'./mnist_keras/'</span><span class="p">)</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="n">add_meta_graph_and_variables</span><span class="p">(</span>
+
+    <span class="n">sess</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">get_session</span><span class="p">(),</span>
+    <span class="c1"># The tf.saved_model.tag_constants.SERVING tag needs to be defined for inference and deployment.</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">tag_constants</span><span class="o">.</span><span class="n">SERVING</span><span class="p">],</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    signature_def_map: Only single items can exist, or the corresponding key needs to be defined as follows:</span>
+<span class="sd">    tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">signature_def_map</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_constants</span><span class="o">.</span><span class="n">DEFAULT_SERVING_SIGNATURE_DEF_KEY</span><span class="p">:</span>
+            <span class="n">predict_signature</span>
+    <span class="p">}</span>
+
+<span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_23_0173__en-us_topic_0196618241_section5263321161712"><h4 class="sectiontitle">Training a Model (tf API)</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0173__en-us_topic_0196618241_screen1567417138187"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">urllib</span>
+
+<span class="c1"># Training data is obtained from the Yann LeCun official website http://yann.lecun.com/exdb/mnist/.</span>
+<span class="n">SOURCE_URL</span> <span class="o">=</span> <span class="s1">'http://yann.lecun.com/exdb/mnist/'</span>
+<span class="n">TRAIN_IMAGES</span> <span class="o">=</span> <span class="s1">'train-images-idx3-ubyte.gz'</span>
+<span class="n">TRAIN_LABELS</span> <span class="o">=</span> <span class="s1">'train-labels-idx1-ubyte.gz'</span>
+<span class="n">TEST_IMAGES</span> <span class="o">=</span> <span class="s1">'t10k-images-idx3-ubyte.gz'</span>
+<span class="n">TEST_LABELS</span> <span class="o">=</span> <span class="s1">'t10k-labels-idx1-ubyte.gz'</span>
+<span class="n">VALIDATION_SIZE</span> <span class="o">=</span> <span class="mi">5000</span>
+
+
+<span class="k">def</span> <span class="nf">maybe_download</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">work_directory</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Download the data from Yann's website, unless it's already here.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">work_directory</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">work_directory</span><span class="p">)</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_directory</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+        <span class="n">filepath</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">SOURCE_URL</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
+        <span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully downloaded </span><span class="si">%s</span><span class="s1"> </span><span class="si">%d</span><span class="s1"> bytes.'</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">statinfo</span><span class="o">.</span><span class="n">st_size</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filepath</span>
+
+
+<span class="k">def</span> <span class="nf">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">):</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="s1">'&gt;'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">bytestream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">extract_images</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract the images into a 4D uint8 numpy array [index, y, x, depth].&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Extracting </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">bytestream</span><span class="p">:</span>
+        <span class="n">magic</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">magic</span> <span class="o">!=</span> <span class="mi">2051</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">'Invalid magic number </span><span class="si">%d</span><span class="s1"> in MNIST image file: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+                <span class="p">(</span><span class="n">magic</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+        <span class="n">num_images</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">bytestream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">rows</span> <span class="o">*</span> <span class="n">cols</span> <span class="o">*</span> <span class="n">num_images</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_images</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">def</span> <span class="nf">dense_to_one_hot</span><span class="p">(</span><span class="n">labels_dense</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert class labels from scalars to one-hot vectors.&quot;&quot;&quot;</span>
+    <span class="n">num_labels</span> <span class="o">=</span> <span class="n">labels_dense</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">index_offset</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_labels</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_classes</span>
+    <span class="n">labels_one_hot</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+    <span class="n">labels_one_hot</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">index_offset</span> <span class="o">+</span> <span class="n">labels_dense</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">labels_one_hot</span>
+
+
+<span class="k">def</span> <span class="nf">extract_labels</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract the labels into a 1D uint8 numpy array [index].&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Extracting </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">bytestream</span><span class="p">:</span>
+        <span class="n">magic</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">magic</span> <span class="o">!=</span> <span class="mi">2049</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">'Invalid magic number </span><span class="si">%d</span><span class="s1"> in MNIST label file: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span>
+                <span class="p">(</span><span class="n">magic</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+        <span class="n">num_items</span> <span class="o">=</span> <span class="n">_read32</span><span class="p">(</span><span class="n">bytestream</span><span class="p">)</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">bytestream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">num_items</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">one_hot</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dense_to_one_hot</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">labels</span>
+
+
+<span class="k">class</span> <span class="nc">DataSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class encompassing test, validation and training MNIST data set.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct a DataSet. one_hot arg is used only if fake_data is true.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">fake_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">=</span> <span class="mi">10000</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">one_hot</span> <span class="o">=</span> <span class="n">one_hot</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span>
+                    <span class="s1">'images.shape: </span><span class="si">%s</span><span class="s1"> labels.shape: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+                                                           <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Convert shape from [num examples, rows, columns, depth]</span>
+            <span class="c1"># to [num examples, rows*columns] (assuming depth == 1)</span>
+            <span class="k">assert</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                    <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="c1"># Convert from [0, 255] -&gt; [0.0, 1.0].</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_images</span> <span class="o">=</span> <span class="n">images</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="n">labels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_epochs_completed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">images</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_images</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">num_examples</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">epochs_completed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_epochs_completed</span>
+
+    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the next `batch_size` examples from this data set.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fake_data</span><span class="p">:</span>
+            <span class="n">fake_image</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">784</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">one_hot</span><span class="p">:</span>
+                <span class="n">fake_label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">9</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fake_label</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">fake_image</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)],</span> <span class="p">[</span>
+                <span class="n">fake_label</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span> <span class="o">+=</span> <span class="n">batch_size</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">:</span>
+            <span class="c1"># Finished epoch</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_epochs_completed</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1"># Shuffle the data</span>
+            <span class="n">perm</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">)</span>
+            <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_images</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
+            <span class="c1"># Start next epoch</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span> <span class="o">=</span> <span class="n">batch_size</span>
+            <span class="k">assert</span> <span class="n">batch_size</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_in_epoch</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_images</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">read_data_sets</span><span class="p">(</span><span class="n">train_dir</span><span class="p">,</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return training, validation and testing data sets.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">DataSets</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="n">data_sets</span> <span class="o">=</span> <span class="n">DataSets</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">fake_data</span><span class="p">:</span>
+        <span class="n">data_sets</span><span class="o">.</span><span class="n">train</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="n">one_hot</span><span class="p">)</span>
+        <span class="n">data_sets</span><span class="o">.</span><span class="n">validation</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="n">one_hot</span><span class="p">)</span>
+        <span class="n">data_sets</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">fake_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="n">one_hot</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data_sets</span>
+
+    <span class="n">local_file</span> <span class="o">=</span> <span class="n">maybe_download</span><span class="p">(</span><span class="n">TRAIN_IMAGES</span><span class="p">,</span> <span class="n">train_dir</span><span class="p">)</span>
+    <span class="n">train_images</span> <span class="o">=</span> <span class="n">extract_images</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span>
+
+    <span class="n">local_file</span> <span class="o">=</span> <span class="n">maybe_download</span><span class="p">(</span><span class="n">TRAIN_LABELS</span><span class="p">,</span> <span class="n">train_dir</span><span class="p">)</span>
+    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">extract_labels</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="n">one_hot</span><span class="p">)</span>
+
+    <span class="n">local_file</span> <span class="o">=</span> <span class="n">maybe_download</span><span class="p">(</span><span class="n">TEST_IMAGES</span><span class="p">,</span> <span class="n">train_dir</span><span class="p">)</span>
+    <span class="n">test_images</span> <span class="o">=</span> <span class="n">extract_images</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span>
+
+    <span class="n">local_file</span> <span class="o">=</span> <span class="n">maybe_download</span><span class="p">(</span><span class="n">TEST_LABELS</span><span class="p">,</span> <span class="n">train_dir</span><span class="p">)</span>
+    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">extract_labels</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="n">one_hot</span><span class="p">)</span>
+
+    <span class="n">validation_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="p">[:</span><span class="n">VALIDATION_SIZE</span><span class="p">]</span>
+    <span class="n">validation_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[:</span><span class="n">VALIDATION_SIZE</span><span class="p">]</span>
+    <span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="p">[</span><span class="n">VALIDATION_SIZE</span><span class="p">:]</span>
+    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[</span><span class="n">VALIDATION_SIZE</span><span class="p">:]</span>
+
+    <span class="n">data_sets</span><span class="o">.</span><span class="n">train</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">)</span>
+    <span class="n">data_sets</span><span class="o">.</span><span class="n">validation</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">validation_images</span><span class="p">,</span> <span class="n">validation_labels</span><span class="p">)</span>
+    <span class="n">data_sets</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_sets</span>
+
+<span class="n">training_iteration</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">modelarts_example_path</span> <span class="o">=</span>  <span class="s1">'./modelarts-mnist-train-save-deploy-example'</span>
+
+<span class="n">export_path</span> <span class="o">=</span> <span class="n">modelarts_example_path</span> <span class="o">+</span> <span class="s1">'/model/'</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s1">'./'</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Training model...'</span><span class="p">)</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">read_data_sets</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
+<span class="n">serialized_tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'tf_example'</span><span class="p">)</span>
+<span class="n">feature_configs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">784</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="p">}</span>
+<span class="n">tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">parse_example</span><span class="p">(</span><span class="n">serialized_tf_example</span><span class="p">,</span> <span class="n">feature_configs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">tf_example</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>  <span class="c1"># use tf.identity() to assign name</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">]))</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+<span class="n">cross_entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y_</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">train_step</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">top_k</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">index_to_string_table_from_tensor</span><span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]))</span>
+<span class="n">prediction_classes</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">to_int64</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">training_iteration</span><span class="p">):</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">train_step</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+<span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'training accuracy </span><span class="si">%g</span><span class="s1">'</span> <span class="o">%</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span>
+        <span class="n">y_</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span>
+    <span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Done training!'</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_23_0173__en-us_topic_0196618241_section66523281172"><h4 class="sectiontitle">Saving a Model (tf API)</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0173__en-us_topic_0196618241_screen4380141941818"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Export the model.</span>
+<span class="c1"># The model needs to be saved using the saved_model API.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Exporting trained model to'</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span>
+<span class="n">builder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">SavedModelBuilder</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
+
+<span class="n">tensor_info_x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">tensor_info_y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define the inputs and outputs of the prediction API.</span>
+<span class="c1"># The key values of the inputs and outputs dictionaries are used as the index keys for the input and output tensors of the model.</span>
+ <span class="c1"># The input and output definitions of the model must match the custom inference script.</span>
+<span class="n">prediction_signature</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_def_utils</span><span class="o">.</span><span class="n">build_signature_def</span><span class="p">(</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'images'</span><span class="p">:</span> <span class="n">tensor_info_x</span><span class="p">},</span>
+        <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'scores'</span><span class="p">:</span> <span class="n">tensor_info_y</span><span class="p">},</span>
+        <span class="n">method_name</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_constants</span><span class="o">.</span><span class="n">PREDICT_METHOD_NAME</span><span class="p">))</span>
+
+<span class="n">legacy_init_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">tables_initializer</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'legacy_init_op'</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_meta_graph_and_variables</span><span class="p">(</span>
+    <span class="c1"># Set tag to serve/tf.saved_model.tag_constants.SERVING.</span>
+    <span class="n">sess</span><span class="p">,</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">tag_constants</span><span class="o">.</span><span class="n">SERVING</span><span class="p">],</span>
+    <span class="n">signature_def_map</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">'predict_images'</span><span class="p">:</span>
+            <span class="n">prediction_signature</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">legacy_init_op</span><span class="o">=</span><span class="n">legacy_init_op</span><span class="p">)</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Done exporting!'</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_23_0173__en-us_topic_0196618241_section5321236111714"><h4 class="sectiontitle">Inference Code (Keras and tf APIs)</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0173__en-us_topic_0196618241_screen12930832151820"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">model_service.tfserving_model_service</span> <span class="kn">import</span> <span class="n">TfServingBaseService</span>
+
+
+<span class="k">class</span> <span class="nc">mnist_service</span><span class="p">(</span><span class="n">TfServingBaseService</span><span class="p">):</span>
+
+    <span class="c1"># Match the model input with the user's HTTPS API input during preprocessing.</span>
+    <span class="c1"># The model input corresponding to the preceding training part is {&quot;images&quot;:&lt;array&gt;}.</span>
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+        <span class="n">preprocessed_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Iterate the input data.</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_content</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">image1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
+                <span class="n">image1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+                <span class="n">image1</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">784</span><span class="p">))</span>
+                <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image1</span><span class="p">)</span>
+        <span class="c1"># Return the numpy array.</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">images</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="c1"># Perform batch processing on multiple input samples and ensure that the shape is the same as that inputted during training.</span>
+        <span class="n">images</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="mi">784</span><span class="p">))</span>
+        <span class="n">preprocessed_data</span><span class="p">[</span><span class="s1">'images'</span><span class="p">]</span> <span class="o">=</span> <span class="n">images</span>
+        <span class="k">return</span> <span class="n">preprocessed_data</span>
+
+    <span class="c1"># Processing logic of the inference for invoking the parent class.</span>
+
+    <span class="c1"># The output corresponding to model saving in the preceding training part is {&quot;scores&quot;:&lt;array&gt;}.</span>
+    <span class="c1"># Postprocess the HTTPS output.</span>
+    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">infer_output</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mnist_result&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="c1"># Iterate the model output.</span>
+        <span class="k">for</span> <span class="n">output_name</span><span class="p">,</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                <span class="n">infer_output</span><span class="p">[</span><span class="s2">&quot;mnist_result&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">infer_output</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0172.html">Examples of Custom Scripts</a></div>
+</div>
+</div>
+

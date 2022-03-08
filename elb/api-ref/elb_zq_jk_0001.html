@@ -1,0 +1,431 @@
+<a name="elb_zq_jk_0001"></a><a name="elb_zq_jk_0001"></a>
+
+<h1 class="topictitle1">Configuring a Health Check</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p12936535">This API is used to configure a health check for a backend server group to check the status of backend servers. If the health check result is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b650918235264">OFFLINE</strong>, backend servers are considered unhealthy. You need to check the server configuration.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_jk_0001__en-us_topic_0096561563_p3221182233515">The security group must allow access from 100.125.0.0/16. Otherwise, the health check cannot be performed.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_jk_0001__en-us_topic_0096561563_p383075710589">POST /v2.0/lbaas/healthmonitors</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_table470163" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_row24812117"><th align="left" class="cellrowborder" valign="top" width="19.59%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p63624481"><strong id="elb_zq_jk_0001__en-us_topic_0096561563_b842352706181819">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.53%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p95643582317">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.36%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p23091719">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.52%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p18288175017312">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_row40067039"><td class="cellrowborder" valign="top" width="19.59%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p24204730">healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p14426089">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.36%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p27662549">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p26073957">Specifies the health check. For details, see <a href="#elb_zq_jk_0001__en-us_topic_0096561563_table154092042172813">Table 2</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jk_0001__en-us_topic_0096561563_table154092042172813"></a><a name="en-us_topic_0096561563_table154092042172813"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jk_0001__en-us_topic_0096561563_table154092042172813" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="elb_zq_jk_0001__en-us_topic_0096561563_b19767174972320">healthmonitor</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row46491428288"><th align="left" class="cellrowborder" valign="top" width="25.132513251325133%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p964964217283">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.04100410041004%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p264916421285">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.23182318231823%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p2649124252811"><strong id="elb_zq_jk_0001__en-us_topic_0096561563_b84235270610412">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.59465946594659%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p816765003219">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row4649154292819"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p064913426281">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p18649342142815">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p564954210280">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p58501831291">Specifies the ID of the project where the health check is performed.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p8222164914610"></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p89192325324">The value must be the same as the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b985465116161">project_id</strong> in the token.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row10649742182816"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p2064915426287">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p064934217285">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1164994217288">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p18649174212283">Specifies the health check name.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p11916318557">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row564910428282"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p19650124216288">delay</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p865044232819">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p13650104211284">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p4650114222812">Specifies the maximum time between health checks in the unit of second. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b12853163810179">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b14219427175">50</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row156500428282"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p126504422285">max_retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1565054216286">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p83701912163318">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p21016417273">Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b8737342112519">OFFLINE</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b97392422258">ONLINE</strong>. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b18741134213251">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b18742842132513">10</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row867352042214"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p11674142010227">max_retries_down</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p167442012226">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p967420204229">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p36741620202218">Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b13429422181511">ONLINE</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b542932215152">OFFLINE</strong>. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b12431142219159">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b6432142231513">10</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row9650184282816"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p18650154292815">pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p15650184282813">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1365015423282">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p16501742122819">Specifies the ID of the backend server group.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p113190164112">Only one health check can be configured for each backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row865064210286"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p17650124215283">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1265094216286">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p186502424284">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p14932133633814">Specifies the administrative status of the health check.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p136141610163013">This parameter is reserved, and the default value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row196501742172819"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p186501942192817">timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p665074282815">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p465034217288">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1784571273912">Specifies the health check timeout duration in the unit of second. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b209591823161815">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1096032391812">50</strong>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jk_0001__en-us_topic_0096561563_p15769322123919">You are advised to set the value less than that of parameter <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b756717380188">delay</strong>.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1465010429289"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p56509421283">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p166502042192819">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p66504426282">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1444014213398">Specifies the health check protocol.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p76509429289">The value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b650145912188">TCP</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b761518218194">UDP_CONNECT</strong>, or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b09362053199">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p109081234192220">The relationships between the health check protocol and the protocol used by the backend server group are as follows:</p>
+<ul id="elb_zq_jk_0001__en-us_topic_0096561563_ul118471640122214"><li id="elb_zq_jk_0001__en-us_topic_0096561563_li184894042213">If the protocol of the backend server group is UDP, the parameter value can only be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1787111394610">UDP_CONNECT</strong>.</li><li id="elb_zq_jk_0001__en-us_topic_0096561563_li198611242162210">If the protocol of the backend server group is TCP, the parameter value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b871127131219">TCP</strong> or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b133266111125">HTTP</strong>.</li><li id="elb_zq_jk_0001__en-us_topic_0096561563_li1867017444224">If the protocol of the backend server group is HTTP, the parameter value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b17351185016127">TCP</strong> or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b921025411219">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1765014252814"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p165018425282">monitor_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1765164242812">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p17651114262814">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p10119958144115">Specifies the health check port. The port number ranges from 1 to 65535.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1165151154216">The value is left blank by default, indicating that the port of the backend server is used as the health check port.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row156511042142817"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1665119429286">domain_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p565118423287">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p176516429287">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p178364704214">Specifies the domain name of HTTP requests during the health check.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1833549104310">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b2052672201912">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b85288226191">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p19194239134314">The value is left blank by default, indicating that the private IP address of the load balancer is used as the destination address of HTTP requests.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p4782712144317">The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter, for example, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b04251753153515">www.test.com</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p193809825516">The value contains a maximum of 100 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1365164232813"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1065144210289">url_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p196510429281">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1565164232812">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p134815784414">Specifies the HTTP request path for the health check. The default value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b842352706112925">/</strong>, and the value must start with a slash (/).</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p2026272014445">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b83216185474">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b16322518174712">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p108766337449">An example value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b2050612302214">/test</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p538543195510">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row365154210281"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p12651114217286">expected_codes</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p765112420286">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p76513422286">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p57098356">Specifies the expected HTTP status code. The following options are available:</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p44123159">A single value, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b123604311196">200</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p61564112">A list of values, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b164586361198">200,202</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p17206096">A value range, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b089113210534">200-204</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p20637136">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1478226163617">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1279182643617">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1939437165618">The value contains a maximum of 64 characters.</p>
+<span class="notetitle"> NOTE: </span><p class="textintable" id="elb_zq_jk_0001__en-us_topic_0096561563_p60995292">This parameter is reserved.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row116511242152817"><td class="cellrowborder" valign="top" width="25.132513251325133%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p465120420287">http_method</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.04100410041004%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p186521042132812">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.23182318231823%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p106521542112814">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.59465946594659%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p316954715453">Specifies the HTTP request method. The default value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1583571003114">GET</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p21871844204517">The value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b393423343119">GET</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b9365193753110">HEAD</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1136474012312">POST</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b19183124916313">PUT</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b8869354123118">DELETE</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1237215584317">TRACE</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1931013373216">OPTIONS</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b896742910316">CONNECT</strong>, and <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b189921325153120">PATCH</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p658413198402">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b13164167473">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b11651862473">HTTP</strong>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jk_0001__en-us_topic_0096561563_p911455418383">This parameter is reserved.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_table16106256" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_row50461073"><th align="left" class="cellrowborder" valign="top" width="21.349999999999998%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p60815108">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.11%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p27076724">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.540000000000006%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p13224809">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_row64576574"><td class="cellrowborder" valign="top" width="21.349999999999998%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p63319983">healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p28645030">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.540000000000006%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_p35222847">Specifies the health check. For details, see <a href="#elb_zq_jk_0001__en-us_topic_0096561563_table186706722915">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jk_0001__en-us_topic_0096561563_table186706722915"></a><a name="en-us_topic_0096561563_table186706722915"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jk_0001__en-us_topic_0096561563_table186706722915" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1969320677">healthmonitor</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row19929157112914"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p59295713297">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p79292720293">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1258101218348">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1192911772916"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p5929177112912">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p5947132518343">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p109296702911">Specifies the health check ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row792915762911"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p59290711296">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1792918772913">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p269292715918">Specifies the ID of the project where the health check is performed.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row209291674295"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p692919752912">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p131123323411">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p199294713299">Specifies the health check name.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row5929279299"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p892987162910">delay</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p792918772915">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p119293720295">Specifies the maximum time between health checks in the unit of second. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b53341117227">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1233617116226">50</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row179291072296"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p15929157192911">max_retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p178711239193411">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p189309702917">Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1739405266">OFFLINE</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b527115768">ONLINE</strong>. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1862691373">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1023991351">10</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row48196131417"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p17820913710">max_retries_down</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p131913421349">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p69045219322">Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b39931845122517">ONLINE</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b16995194552511">OFFLINE</strong>. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b5997345142512">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b2999545162516">10</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1193097152917"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1793016712298">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p893015710294">Specifies the ID of the backend server group associated with the health check. For details, see <a href="#elb_zq_jk_0001__en-us_topic_0096561563_table567815515351">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row2930197182911"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p79301777292">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p293017715298">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p88489418492">Specifies the administrative status of the health check.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p148411551101613">This parameter is reserved. The value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_jk_0001__en-us_topic_0096561563_ul15841751151613"><li id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row09302716299"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p19303782913">timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p179315732915">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p37112334494">Specifies the health check timeout duration in the unit of second. The value ranges from <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1380316275226">1</strong> to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1580411278227">50</strong>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jk_0001__en-us_topic_0096561563_p57123374911">You are advised to set the value less than that of parameter <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b10582112915225">delay</strong>.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1793116752912"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p6931579296">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p49311173296">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p87193317494">Specifies the health check protocol.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p5711533184919">The value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b9594432122210">TCP</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b19595183219229">UDP_CONNECT</strong>, or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b14595123282211">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p06541511142">The relationships between the value of this parameter and the protocol of the backend server group are as follows:</p>
+<ul id="elb_zq_jk_0001__en-us_topic_0096561563_ul116545131418"><li id="elb_zq_jk_0001__en-us_topic_0096561563_li13654201171416">If the protocol of the backend server group is UDP, the parameter value can only be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b25511132412">UDP_CONNECT</strong>.</li><li id="elb_zq_jk_0001__en-us_topic_0096561563_li176541119147">If the protocol of the backend server group is TCP, the parameter value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b12116646246">TCP</strong> or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b191165482412">HTTP</strong>.</li><li id="elb_zq_jk_0001__en-us_topic_0096561563_li196541819144">If the protocol of the backend server group is HTTP, the parameter value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b167811969241">TCP</strong> or <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b378276152414">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row79313702914"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p29315710299">monitor_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1193119762917">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p19915125974920">Specifies the health check port. The port number ranges from 1 to 65535.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1891535916496">The value is left blank by default, indicating that the port of the backend server is used as the health check port.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row129325719290"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p4639141253611">expected_codes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1263931216363">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p30010494">Specifies the expected HTTP status code. The following options are available:</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1658995">A single value, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b165791552196">200</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p14930959">A list of values, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b856515132012">200,202</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p160907">A value range, such as <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b17726313541">200-204</strong></p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1448168">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b6389401468">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b113907012461">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p13033520">Currently, this parameter is not supported and is fixed at <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b84235270619455">200</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1993247182913"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p159326713290">domain_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p179321712912">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p12394754125016">Specifies the domain name of HTTP requests during the health check.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p73941354135010">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b55255217488">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1752620264817">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p14394115411501">The value is left blank by default, indicating that the private IP address of the load balancer is used as the destination address of HTTP requests.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p15394145435010">The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter, for example, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b67911125183711">www.test.com</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row593217719299"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p793277152911">url_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1593247182917">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p6417986512">Specifies the HTTP request path for the health check. The default value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1437591082310">/</strong>, and the value must start with a slash (/).</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p64181884511">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b16827165119475">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b188288512479">HTTP</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p1341818185114">An example value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b20236172942318">/test</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jk_0001__en-us_topic_0096561563_row3932167132916"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p793218711296">http_method</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1893212710291">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p48511267514">Specifies the HTTP request method. The default value is <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b19886729123413">GET</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p11851326135110">The value can be <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b205241432133411">GET</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1524432123415">HEAD</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b1452533293413">POST</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b12525832163420">PUT</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b452653210347">DELETE</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b2052773214341">TRACE</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b152812324344">OPTIONS</strong>, <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b75281932203417">CONNECT</strong>, and <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b7529193220347">PATCH</strong>.</p>
+<p id="elb_zq_jk_0001__en-us_topic_0096561563_p485142665115">This parameter is valid only when the value of <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b782231144617">type</strong> is set to <strong id="elb_zq_jk_0001__en-us_topic_0096561563_b178221611124616">HTTP</strong>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1885112263511">This parameter is reserved.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jk_0001__en-us_topic_0096561563_table567815515351"></a><a name="en-us_topic_0096561563_table567815515351"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jk_0001__en-us_topic_0096561563_table567815515351" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_jk_0001__en-us_topic_0096561563_b47154222110">pools</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row1679125113520"><th align="left" class="cellrowborder" valign="top" width="21.349999999999998%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p2679751103516">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.11%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p13679195193510">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.540000000000006%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1067965123519">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jk_0001__en-us_topic_0096561563_row15679151203513"><td class="cellrowborder" valign="top" width="21.349999999999998%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p767955143510">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p1867965119358">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.540000000000006%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_jk_0001__en-us_topic_0096561563_p66791851123518">Specifies the ID of the associated backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_jk_0001__en-us_topic_0096561563_ul1810132614363"><li id="elb_zq_jk_0001__en-us_topic_0096561563_li1481042616361">Example request: Configuring a health check<pre class="screen" id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0049139665_screen5332373913058">POST https://{Endpoint}/v2.0/lbaas/healthmonitors
+
+{
+  "healthmonitor": {
+    "admin_state_up": true,
+    "pool_id": "bb44bffb-05d9-412c-9d9c-b189d9e14193",
+    "domain_name": "www.test.com",
+    "delay": 10,
+    "max_retries": 10,
+    "max_retries_down": 5,
+    "timeout": 10,
+    "type": "HTTP"
+  }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_jk_0001__en-us_topic_0096561563_ul15179122462213"><li id="elb_zq_jk_0001__en-us_topic_0096561563_li191793247223">Example response<pre class="screen" id="elb_zq_jk_0001__en-us_topic_0096561563_screen1179424152217">{
+  "healthmonitor": {
+    "name": "",
+    "admin_state_up": true,
+    "tenant_id": "145483a5107745e9b3d80f956713e6a3",
+    "domain_name": "www.test.com",
+    "delay": 10,
+    "max_retries": 10,
+    "expected_codes": "200", 
+    "max_retries_down": 5,
+    "http_method": "GET",
+    "timeout": 10,
+    "pools": [
+      {
+        "id": "bb44bffb-05d9-412c-9d9c-b189d9e14193"
+      }
+    ],
+    "url_path": "/",
+    "type": "HTTP",
+    "id": "2dca3867-98c5-4cde-8f2c-b89ae6bd7e36",
+    "monitor_port": 112
+  }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_jk_0001__en-us_topic_0096561563_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_1102.html#elb_gc_1102">Status Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_jk_0000.html">Health Check</a>
+
+
+

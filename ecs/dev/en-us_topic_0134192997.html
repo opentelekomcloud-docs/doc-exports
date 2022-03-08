@@ -1,0 +1,204 @@
+<a name="EN-US_TOPIC_0134192997"></a><a name="EN-US_TOPIC_0134192997"></a>
+
+<h1 class="topictitle1">Binding a NIC to an ECS</h1>
+<div id="body24429544"><div class="section" id="EN-US_TOPIC_0134192997__section17655101401010"><h4 class="sectiontitle">Scenarios</h4><div class="p" id="EN-US_TOPIC_0134192997__p5400617171013">If an ECS requires multiple NICs, you can call the API for creating NICs and bind them to the ECS.<div class="note" id="EN-US_TOPIC_0134192997__note8444134215018"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0134192997__p134599424503">You can bind a NIC by setting the <span class="parmname" id="EN-US_TOPIC_0134192997__parmname44643139175255"><b>nics</b></span> parameter during ECS creation or bind a NIC after the ECS is created. This section describes how to bind a NIC to a created ECS.</p>
+</div></div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0134192997__section155629238105"><h4 class="sectiontitle">Involved APIs</h4><p id="EN-US_TOPIC_0134192997__p615272619104">Binding a NIC involves the following APIs:</p>
+<ul id="EN-US_TOPIC_0134192997__ul212414841111"><li id="EN-US_TOPIC_0134192997__li1312404821119">API for creating a network</li><li id="EN-US_TOPIC_0134192997__li553817881218">API for creating a subnet</li><li id="EN-US_TOPIC_0134192997__li10971153018121">API for creating a port</li><li id="EN-US_TOPIC_0134192997__li17629143991217">API for binding a NIC to an ECS</li><li id="EN-US_TOPIC_0134192997__li165634578128">API for viewing ECS NICs</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0134192997__section14681162715101"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0134192997__ol1650142591319"><li id="EN-US_TOPIC_0134192997__li135010259138"><span>Create a NIC.</span><p><ol type="a" id="EN-US_TOPIC_0134192997__ol473113480131"><li id="EN-US_TOPIC_0134192997__li13126146141320">Create a network.<ul id="EN-US_TOPIC_0134192997__ul145541457161518"><li id="EN-US_TOPIC_0134192997__li18554135721518">API<p id="EN-US_TOPIC_0134192997__p26126001616"><a name="EN-US_TOPIC_0134192997__li18554135721518"></a><a name="li18554135721518"></a>URI format: POST /v2.0/networks</p>
+<p id="EN-US_TOPIC_0134192997__p20119543173312">For details, see section "Creating a Network" in <em>Virtual Private Cloud API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li12554185721517">Request example<p id="EN-US_TOPIC_0134192997__p33373561219"><a name="EN-US_TOPIC_0134192997__li12554185721517"></a><a name="li12554185721517"></a>POST: https://<em id="EN-US_TOPIC_0134192997__i7172113013366">{endpoint}</em>/v2.0/networks</p>
+<p id="EN-US_TOPIC_0134192997__p184501625164012">Obtain the endpoint from <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+<p id="EN-US_TOPIC_0134192997__p2075519587213">Body</p>
+<pre class="screen" id="EN-US_TOPIC_0134192997__screen99615514228">{
+  "network": {
+    "shared": false, 
+    "name": "demo-net", 
+    "admin_state_up": true, 
+    "tenant_id": "74610f3a5ad941998e91f076297ecf27"
+  }
+}</pre>
+</li><li id="EN-US_TOPIC_0134192997__li4554057171515">Response example<pre class="screen" id="EN-US_TOPIC_0134192997__screen172316479228">{
+  "network": {
+    "id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+    "name": "demo-net",
+    "status": "ACTIVE",
+    "shared": false,
+    "subnets": [],
+    "availability_zone_hints": [],
+    "availability_zones": [
+      "eu-de-01",
+      "eu-de-02"
+    ],
+    "admin_state_up": true,
+    "tenant_id": "74610f3a5ad941998e91f076297ecf27",
+    "provider:network_type": "vxlan",
+    "router:external": false
+  }
+}</pre>
+</li></ul>
+</li><li id="EN-US_TOPIC_0134192997__li181171211233">Record the <span class="parmname" id="EN-US_TOPIC_0134192997__parmname1157213438175635"><b>network</b></span> ID in the response.</li><li id="EN-US_TOPIC_0134192997__li192711253121311">Create a subnet.<ul id="EN-US_TOPIC_0134192997__ul486577151615"><li id="EN-US_TOPIC_0134192997__li13865207161611">API<p id="EN-US_TOPIC_0134192997__p38652714163"><a name="EN-US_TOPIC_0134192997__li13865207161611"></a><a name="li13865207161611"></a>URI format: POST /v2.0/subnets</p>
+<p id="EN-US_TOPIC_0134192997__p03361235133810">For details, see section "Creating a Subnet" in <em>Virtual Private Cloud API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li48814721616">Request example<p id="EN-US_TOPIC_0134192997__p680128112810"><a name="EN-US_TOPIC_0134192997__li48814721616"></a><a name="li48814721616"></a>POST: https://{endpoint}/v2.0/subnets</p>
+<p id="EN-US_TOPIC_0134192997__p6128103374416">Obtain the endpoint from <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+<p id="EN-US_TOPIC_0134192997__p1948318304284">Body</p>
+<pre class="screen" id="EN-US_TOPIC_0134192997__screen91108396289">{
+    "subnet": {
+        "name": "testsubnet",
+        "enable_dhcp": true,
+        "network_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+        "tenant_id": "74610f3a5ad941998e91f076297ecf27",
+        "dns_nameservers": [
+            "8.8.8.8",
+            "8.8.8.7"
+        ],
+        "allocation_pools": [
+            {
+                "start": "10.0.10.2",
+                "end": "10.0.10.254"
+            }
+        ],
+        "host_routes": [],
+        "ip_version": 4,
+        "gateway_ip": "10.0.10.1",
+        "cidr": "10.0.10.0/24"
+    }
+}</pre>
+</li><li id="EN-US_TOPIC_0134192997__li168819781613">Response example<pre class="screen" id="EN-US_TOPIC_0134192997__screen776011277298">{
+  "subnet": {
+    "name": "testsubnet",
+    "cidr": "10.0.10.0/24",
+    "id": "877b5567-e8c6-4a0d-aabf-0f13da225fe5",
+    "enable_dhcp": true,
+    "network_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+    "tenant_id": "74610f3a5ad941998e91f076297ecf27",
+    "dns_nameservers": [
+      "8.8.8.8",
+      "8.8.8.7"
+    ],
+    "allocation_pools": [
+      {
+        "start": "10.0.10.2",
+        "end": "10.0.10.254"
+      }
+    ],
+    "host_routes": [],
+    "ip_version": 4,
+    "gateway_ip": "10.0.10.1"
+  }
+}</pre>
+</li></ul>
+</li><li id="EN-US_TOPIC_0134192997__li16568540182916">Record the <span class="parmname" id="EN-US_TOPIC_0134192997__parmname1768393608175734"><b>subnet</b></span> ID in the response.</li><li id="EN-US_TOPIC_0134192997__li55373991419">Create a port.<ul id="EN-US_TOPIC_0134192997__ul142521031619"><li id="EN-US_TOPIC_0134192997__li34258109162">API<p id="EN-US_TOPIC_0134192997__p143921011165"><a name="EN-US_TOPIC_0134192997__li34258109162"></a><a name="li34258109162"></a>URI format: POST /v2.0/ports</p>
+<p id="EN-US_TOPIC_0134192997__p164221034132413">For details, see section "Creating a Port" in <em>Virtual Private Cloud API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li1043901051612">Request example<p id="EN-US_TOPIC_0134192997__p1344771783115"><a name="EN-US_TOPIC_0134192997__li1043901051612"></a><a name="li1043901051612"></a>POST: https://<em id="EN-US_TOPIC_0134192997__i101581115102613">{endpoint}</em>/v2.0/ports</p>
+<p id="EN-US_TOPIC_0134192997__p17992239174412">Obtain the endpoint from <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+<p id="EN-US_TOPIC_0134192997__p13613130153111">Body</p>
+<pre class="screen" id="EN-US_TOPIC_0134192997__screen1040184513313">{
+    "port": {
+        "admin_state_up": true, 
+
+        "fixed_ips": [
+            {
+                "subnet_id": "877b5567-e8c6-4a0d-aabf-0f13da225fe5"
+            }
+        ], 
+        "name": "test", 
+        "network_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+        "tenant_id": "74610f3a5ad941998e91f076297ecf27"
+    }
+}</pre>
+</li><li id="EN-US_TOPIC_0134192997__li134391310151616">Response example<pre class="screen" id="EN-US_TOPIC_0134192997__screen181801927153318">{
+  "port": {
+    "id": "7bf1c36f-e7f8-478a-be3d-674b486abbc4",
+    "name": "test",
+    "status": "DOWN",
+    "admin_state_up": true,
+    "fixed_ips": [
+      {
+        "subnet_id": "877b5567-e8c6-4a0d-aabf-0f13da225fe5",
+        "ip_address": "10.0.10.233"
+      }
+    ],
+    "mac_address": "fa:16:3e:db:91:f6",
+    "network_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+    "tenant_id": "74610f3a5ad941998e91f076297ecf27",
+    "device_id": "",
+    "device_owner": "",
+    "security_groups": [
+      "93031677-2895-4b83-855a-637e309aa9e6"
+    ],
+    "extra_dhcp_opts": [],
+    "allowed_address_pairs": [],
+    "binding:vnic_type": "normal",
+    "binding:vif_details": {},
+    "binding:profile": {}
+  }
+}</pre>
+</li></ul>
+</li><li id="EN-US_TOPIC_0134192997__li2057452412341">Record the <span class="parmname" id="EN-US_TOPIC_0134192997__parmname1801876363175827"><b>port</b></span> ID in the response.</li></ol>
+</p></li><li id="EN-US_TOPIC_0134192997__li17388183916137"><span>Bind the NIC to the ECS.</span><p><ul id="EN-US_TOPIC_0134192997__ul202471314141615"><li id="EN-US_TOPIC_0134192997__li18247111416161">API<p id="EN-US_TOPIC_0134192997__p20261121461613"><a name="EN-US_TOPIC_0134192997__li18247111416161"></a><a name="li18247111416161"></a>URI format: POST /v2/{tenant_id}/servers/{server_id}/os-interface</p>
+<p id="EN-US_TOPIC_0134192997__p1592011235565">For details, see section "Adding a NIC to an ECS" in <em id="EN-US_TOPIC_0134192997__i8423526979148">Elastic Cloud Server API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li1261314181612">Request example<p id="EN-US_TOPIC_0134192997__p186582015363"><a name="EN-US_TOPIC_0134192997__li1261314181612"></a><a name="li1261314181612"></a>POST: https://<em id="EN-US_TOPIC_0134192997__i1143451717287">{endpoint}</em>/v2/74610f3a5ad941998e91f076297ecf27/servers/9f4d9281-95e7-4915-a126-1ee597101e2e/os-interface</p>
+<p id="EN-US_TOPIC_0134192997__p1108154512443">Obtain the endpoint from <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+<p id="EN-US_TOPIC_0134192997__p133870473612">Body</p>
+<pre class="screen" id="EN-US_TOPIC_0134192997__screen1176191933611">{
+    "interfaceAttachment": {
+        "port_id": "7bf1c36f-e7f8-478a-be3d-674b486abbc4"
+    }
+}</pre>
+</li><li id="EN-US_TOPIC_0134192997__li62611614151615">Response example<pre class="screen" id="EN-US_TOPIC_0134192997__screen187781681371">{
+  "interfaceAttachment": {
+    "port_state": "ACTIVE",
+    "fixed_ips": [
+      {
+        "subnet_id": "877b5567-e8c6-4a0d-aabf-0f13da225fe5",
+        "ip_address": "10.0.10.233"
+      }
+    ],
+    "port_id": "7bf1c36f-e7f8-478a-be3d-674b486abbc4",
+    "net_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+    "mac_addr": "fa:16:3e:db:91:f6"
+  }
+}</pre>
+</li></ul>
+</p></li><li id="EN-US_TOPIC_0134192997__li375762151510"><span>Verify the NIC binding.</span><p><ul id="EN-US_TOPIC_0134192997__ul1224212161169"><li id="EN-US_TOPIC_0134192997__li8242121651616">API<p id="EN-US_TOPIC_0134192997__p1525991614168"><a name="EN-US_TOPIC_0134192997__li8242121651616"></a><a name="li8242121651616"></a>URI format: GET /v2/{tenant_id}/servers/{server_id}/os-interface</p>
+<p id="EN-US_TOPIC_0134192997__p125364815714">For details, see section "Querying ECS NICs" in <em id="EN-US_TOPIC_0134192997__i8423526979148_1">Elastic Cloud Server API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li125991641614">Request example<p id="EN-US_TOPIC_0134192997__p19859165533718"><a name="EN-US_TOPIC_0134192997__li125991641614"></a><a name="li125991641614"></a>GET: https://<em id="EN-US_TOPIC_0134192997__i1251355672915">{endpoint}</em>/v2/74610f3a5ad941998e91f076297ecf27/servers/9f4d9281-95e7-4915-a126-1ee597101e2e/os-interface</p>
+<p id="EN-US_TOPIC_0134192997__p138649184419">Obtain the endpoint from <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+</li><li id="EN-US_TOPIC_0134192997__li1725911162169">Response example<pre class="screen" id="EN-US_TOPIC_0134192997__screen93221534123817">{
+  "interfaceAttachments": [
+    {
+      "port_state": "ACTIVE",
+      "fixed_ips": [
+        {
+          "subnet_id": "46712fe4-25bd-4eae-874b-a528abfb76be",
+          "ip_address": "192.168.0.50"
+        }
+      ],
+      "port_id": "dd706739-b696-40be-a9f4-477ce478cb18",
+      "net_id": "17251a8f-a671-4d7c-85d9-af5415962994",
+      "mac_addr": "fa:16:3e:a5:e0:3c"
+    },
+{
+      "port_state": "ACTIVE",
+      "fixed_ips": [
+        {
+          "subnet_id": "877b5567-e8c6-4a0d-aabf-0f13da225fe5",
+          "ip_address": "10.0.10.233"
+        }
+      ],
+      "port_id": "7bf1c36f-e7f8-478a-be3d-674b486abbc4",
+      "net_id": "c4a3019d-1ac0-4cfb-a838-2342eb992e6b",
+      "mac_addr": "fa:16:3e:db:91:f6"
+    }
+  ]
+}</pre>
+</li></ul>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+

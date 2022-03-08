@@ -1,0 +1,236 @@
+<a name="elb_zq_hd_0007"></a><a name="elb_zq_hd_0007"></a>
+
+<h1 class="topictitle1">Batch Updating Backend Servers</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p114937574506">This API is used to update backend servers in batches.</p>
+
+<h4 class="sectiontitle">Constraints</h4><ul id="elb_zq_hd_0007__en-us_topic_0000001129421786_ul139911872415"><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li49951862415">A maximum of 200 backend servers can be modified at a time.</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li179941810243">Two backend servers a backend server group cannot have the same private IP address or port number.</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li199418132412">The subnet specified during server creation must be in the same VPC as the subnet from which the private IP address of the load balancer is assigned.</li></ul>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p54931357115014">PUT /v2.0/lbaas/pools/{pool_id}/members</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0007__en-us_topic_0000001129421786_table191501557195012" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row3493957155012"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.3.3.2.5.1.1"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p34931657195017">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.3.3.2.5.1.2"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p149315775013">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.3.3.2.5.1.3"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1249313572505">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.00000000000001%" id="mcps1.3.3.3.2.5.1.4"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1493057135015">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row104938577503"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p17493135713508">pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1549335716503">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p15182105013264">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p134933575504">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0007__en-us_topic_0000001129421786_table918025785018" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row12493357165013"><th align="left" class="cellrowborder" valign="top" width="14.62%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1649345715012">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.020000000000001%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p134931757175014">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.98%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p104936575508">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.379999999999995%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p149395710508">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row134931657165010"><td class="cellrowborder" valign="top" width="14.62%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p74936579504">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.020000000000001%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1350917572509">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.379999999999995%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1831512045012">Lists the backend servers in the backend server group. If <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b18865123310570">action</strong> is set to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b5202103815719">add</strong> or <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b1419514219577">replace</strong>, see <a href="#elb_zq_hd_0007__en-us_topic_0000001129421786_table328016212049">Table 3</a> for details about the parameters. If <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b417481516583">action</strong> is set to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b224023165818">delete</strong>, see <a href="#elb_zq_hd_0007__en-us_topic_0000001129421786_table182591957155011">Table 4</a> for details about the parameters.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p350918572503">An empty list is supported. If <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b91061856145810">action</strong> is set to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b1466859195811">add</strong>, no backend server is added to the backend server group. If <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b01091420135917">action</strong> is set to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b693762315593">replace</strong>, all backend servers are removed from the backend cloud server group. If <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b7820185145918">action</strong> is set to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b2122165813591">delete</strong>, no backend server is removed.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row1950905715012"><td class="cellrowborder" valign="top" width="14.62%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p185091257145012">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.020000000000001%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p17509105712500">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.98%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p9509757105012">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.379999999999995%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p350945712505">Specifies the operation type. The value can be <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b842352706202920">add</strong>, <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b842352706202924">delete</strong>, or <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b842352706202928">replace</strong>. The default value is <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b15704413916">replace</strong>.</p>
+<ul id="elb_zq_hd_0007__en-us_topic_0000001129421786_ul186417203171"><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li7349723141719"><strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b561210171631">add</strong>: All backend servers in the request body are added to the backend server group in batches.</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li192865261718"><strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b27341756412">delete</strong>: All backend servers in the request are removed from the backend server group in batches.</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li178641520121720"><strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b036704919414">replace</strong>: All backend servers in the backend server group are replaced with those in the request body.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hd_0007__en-us_topic_0000001129421786_table328016212049"></a><a name="en-us_topic_0000001129421786_table328016212049"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0007__en-us_topic_0000001129421786_table328016212049" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b19767174972320">members</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row0286112115418"><th align="left" class="cellrowborder" valign="top" width="30.35303530353036%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p828719217414">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.361536153615363%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1629032115414">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.951495149514951%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p3288132119417">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.333933393339336%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p2293221846">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row5294102116414"><td class="cellrowborder" valign="top" width="30.35303530353036%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p17296221246">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.361536153615363%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p029972116412">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.951495149514951%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p82978211847">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.333933393339336%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1549137131615">Specifies the backend server name. The value is an empty character string by default.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row730152114419"><td class="cellrowborder" valign="top" width="30.35303530353036%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p430212113417">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.361536153615363%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p3305921341">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.951495149514951%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p6304132113418">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.333933393339336%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p814410103314">Specifies the private IP address of the backend server. This IP address must be in the subnet specified by <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b4131751354">subnet_id</strong>.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p734351911331">This parameter can be set only to the IP address of the primary NIC, for example, 192.168.3.11.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p790114713542">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row133101821045"><td class="cellrowborder" valign="top" width="30.35303530353036%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p93111021145">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.361536153615363%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p14314821946">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.951495149514951%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p43121721141">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.333933393339336%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p174915731618">Specifies the port used by the backend server. The port number ranges from 1 to 65535.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row143157212048"><td class="cellrowborder" valign="top" width="30.35303530353036%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p6316621141">subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.361536153615363%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p163201321445">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.951495149514951%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p9318521647">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.333933393339336%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p27021957153415">Specifies the ID of the subnet where the backend server works. The private IP address of the backend server is in this subnet.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1911951203512">IPv6 subnets are not supported.</p>
+</td>
+</tr>
+<tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row18326121747"><td class="cellrowborder" valign="top" width="30.35303530353036%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p2032819211416">weight</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.361536153615363%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p7331721840">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.951495149514951%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1832815211848">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.333933393339336%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p93020435366">Specifies the backend server weight. The value ranges from <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b136431591757">0</strong> to <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b264317595516">100</strong>.</p>
+<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p72901421173616">If the value is <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b322111260">0</strong>, the backend server will not accept new requests. The default value is <strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b1599562460">1</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hd_0007__en-us_topic_0000001129421786_table182591957155011"></a><a name="en-us_topic_0000001129421786_table182591957155011"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hd_0007__en-us_topic_0000001129421786_table182591957155011" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_hd_0007__en-us_topic_0000001129421786_b1782642613">members</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row105091857175015"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.4.2.5.1.1"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p9509115714505">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.4.2.5.1.2"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1650975735019">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.4.2.5.1.3"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1250935718505">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.00000000000001%" id="mcps1.3.4.4.2.5.1.4"><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p17509157145019">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hd_0007__en-us_topic_0000001129421786_row4509175717504"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1850914579502">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p175091857155020">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p51563567293">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p150965745019">Specifies the backend server ID.</p>
+<span class="notetitle"> NOTE: </span><ul id="elb_zq_hd_0007__en-us_topic_0000001129421786_en-us_topic_0096561555_ul1345681012434"><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_en-us_topic_0096561555_li14456151018436">The value of this parameter is not the ID of the server but an ID automatically generated for the backend server that has already associated with the load balancer.</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_en-us_topic_0096561555_li44567107434">You can obtain this value by calling the API described in <a href="elb_zq_hd_0002.html">Querying Backend Servers</a>.</li></ul>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p10509135755012">None</p>
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_hd_0007__en-us_topic_0000001129421786_ul1509105705015"><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li550915714504">Example request 1: Adding backend servers in batches<pre class="screen" id="elb_zq_hd_0007__en-us_topic_0000001129421786_screen191546317529">PUT https://{Endpoint}/v2.0/lbaas/pools/5a9a3e9e-d1aa-448e-af37-a70171f2a332/members 
+ 
+{
+    "members": [
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-1", 
+            "address": "192.168.44.11"
+        }, 
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-2", 
+            "address": "192.168.44.12"
+        }, 
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-3", 
+            "address": "192.168.44.13"
+        }
+    ], 
+    "action": "add"
+}</pre>
+</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li17509185755010">Example request 2: Updating backend servers in batches<pre class="screen" id="elb_zq_hd_0007__en-us_topic_0000001129421786_screen10826183911522">PUT https://{Endpoint}/v2.0/lbaas/pools/5a9a3e9e-d1aa-448e-af37-a70171f2a332/members 
+
+{
+    "members": [
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-1", 
+            "address": "192.168.44.11"
+        }, 
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-3", 
+            "address": "192.168.44.12"
+        }, 
+        {
+            "subnet_id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503", 
+            "protocol_port": 88, 
+            "name": "member-3", 
+            "address": "192.168.44.13"
+        }
+    ]
+}</pre>
+</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li19509857115015">Example request 3: Removing backend servers in batches<pre class="screen" id="elb_zq_hd_0007__en-us_topic_0000001129421786_screen1341974685213">PUT https://{Endpoint}/v2.0/lbaas/pools/5a9a3e9e-d1aa-448e-af37-a70171f2a332/members 
+
+{
+    "members": [
+        {
+            "id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503"
+        }, 
+        {
+            "id": "33d8b01a-bbe6-41f4-bc45-78a1d284d503"
+        }
+    ], 
+    "action": "delete"
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_hd_0007__en-us_topic_0000001129421786_ul0733104812010"><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li7734748172016">Example response 1<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p19734154812206"><a name="elb_zq_hd_0007__en-us_topic_0000001129421786_li7734748172016"></a><a name="en-us_topic_0000001129421786_li7734748172016"></a>None</p>
+</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li1673415486206">Example response 2<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p1373434832015"><a name="elb_zq_hd_0007__en-us_topic_0000001129421786_li1673415486206"></a><a name="en-us_topic_0000001129421786_li1673415486206"></a>None</p>
+</li><li id="elb_zq_hd_0007__en-us_topic_0000001129421786_li473414481203">Example response 3<p id="elb_zq_hd_0007__en-us_topic_0000001129421786_p97341348172018"><a name="elb_zq_hd_0007__en-us_topic_0000001129421786_li473414481203"></a><a name="en-us_topic_0000001129421786_li473414481203"></a>None</p>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_hd_0007__en-us_topic_0000001129421786_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">If the operation succeeds, 202 Accepted is returned. For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_hd_0000.html">Backend Server</a>
+
+
+

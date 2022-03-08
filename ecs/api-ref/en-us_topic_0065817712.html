@@ -1,0 +1,56 @@
+<a name="EN-US_TOPIC_0065817712"></a><a name="EN-US_TOPIC_0065817712"></a>
+
+<h1 class="topictitle1">Deleting a Disk (Discarded)</h1>
+<div id="body1499652824862"><div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section7187883"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p56816349">This API is used to delete a specified disk.</p>
+<p id="EN-US_TOPIC_0065817712__p17213354145610">This API has been discarded. Use the EVS API "Deleting an EVS Disk (OpenStack Cinder API v2)".</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section45347628"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_ul2200464422256"><li id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_li3542881322256">If the volume has a snapshot not deleted, the volume cannot be deleted.</li><li id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_li2141706022258">A volume that is being attached to an ECS cannot be deleted.</li><li id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_li493034642230">A volume that is being migrated cannot be deleted.</li><li id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_li55997062233">Only a volume in the available, error, error_restoring, or error_extending state can be deleted.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section64690948"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p742294318453">DELETE /v2/{project_id}/os-volumes/{volume_id}</p>
+<p id="EN-US_TOPIC_0065817712__p1560138115811">DELETE /v2.1/{project_id}/os-volumes/{volume_id}</p>
+<div class="p" id="EN-US_TOPIC_0065817712__p133077411586"><a href="#EN-US_TOPIC_0065817712__en-us_topic_0057973213_table2814978410562">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817712__en-us_topic_0057973213_table2814978410562"></a><a name="en-us_topic_0057973213_table2814978410562"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_table2814978410562" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_row4149654710562"><th align="left" class="cellrowborder" valign="top" width="33%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817712__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817712__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817712__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_row3491217610562"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p931403110562">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p1623904210562">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="44%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817712__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_row168831648104912"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p588311484495">volume_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p5883148154912">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="44%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p788310481495">Specifies the volume ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section49279283"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p11776376">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section40860363"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_p14362394">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_section32198949"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817712__screen747285613814">DELETE https://{endpoint}/v2/b84c367e4d1047fc9b54f28b400ddbc2/os-volumes/0cf90bab-c513-46df-8559-45ba6de80e3f
+DELETE https://{endpoint}/v2.1/b84c367e4d1047fc9b54f28b400ddbc2/os-volumes/0cf90bab-c513-46df-8559-45ba6de80e3f</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__section872686204113"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065817712__p17288617416">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817712__en-us_topic_0057973213_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0267427881.html">Disk Management (OpenStack Nova APIs)</a></div>
+</div>
+</div>
+

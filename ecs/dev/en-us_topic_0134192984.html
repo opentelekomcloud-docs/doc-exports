@@ -1,0 +1,239 @@
+<a name="EN-US_TOPIC_0134192984"></a><a name="EN-US_TOPIC_0134192984"></a>
+
+<h1 class="topictitle1">Request Example</h1>
+<div id="body59287744"><ol id="EN-US_TOPIC_0134192984__ol9852194218611"><li class="litext" id="EN-US_TOPIC_0134192984__li1785204217617"><a name="EN-US_TOPIC_0134192984__li1785204217617"></a><a name="li1785204217617"></a><span>Obtain a token.</span><p><ul class="subitemlist" id="EN-US_TOPIC_0134192984__ul21812826"><li id="EN-US_TOPIC_0134192984__li63827653">POST: https://<em id="EN-US_TOPIC_0134192984__i89204313559">{endpoint}</em>/v3/auth/tokens</li><li id="EN-US_TOPIC_0134192984__li23916855">Headers
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0134192984__table10584511115" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0134192984__row65849113112"><th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.1.1.2.1.2.1.2.3.1.1"><p id="EN-US_TOPIC_0134192984__p185843119117">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.1.1.2.1.2.1.2.3.1.2"><p id="EN-US_TOPIC_0134192984__p11584411717">Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0134192984__row3584416116"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.1.1.2.1.2.1.2.3.1.1 "><p id="EN-US_TOPIC_0134192984__p2230141516117">Content-Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.1.1.2.1.2.1.2.3.1.2 "><p id="EN-US_TOPIC_0134192984__p323019151218">application/json</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0134192984__li44797266">Body<pre class="screen" id="EN-US_TOPIC_0134192984__screen4732102512710">{
+    "auth":{
+        "identity":{
+            "password":{
+                "user":{
+                    "name":"testuser",
+                    "domain":{
+                        "id":"2aa29cbca17a4822abd096610e378ffa"
+                    },
+                    "password":"Test@123"
+                }
+            },
+            "methods":[
+                "password"
+            ]
+        },
+        "scope":{
+            "project":{
+                "id":"fb770eb43f934b5a8bda955642b954b9"
+            }
+        }
+    }
+}</pre>
+</li></ul>
+<p class="subitemlist" id="EN-US_TOPIC_0134192984__p2108846133113">Obtain the token (<strong id="EN-US_TOPIC_0134192984__b84235270614262">x-subject-token</strong>) in <strong id="EN-US_TOPIC_0134192984__b84235270614266">Headers</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0134192984__fig71433122328"><span class="figcap"><b>Figure 1 </b>Obtaining the token</span><br><span><img id="EN-US_TOPIC_0134192984__image849295655712" src="en-us_image_0173496405.png" title="Click to enlarge" class="imgResize"></span></div>
+</p></li><li id="EN-US_TOPIC_0134192984__li93311017335"><span>Initiate a request and access the API for viewing details about an ECS.</span><p><ul class="subitemlist" id="EN-US_TOPIC_0134192984__ul32848863"><li id="EN-US_TOPIC_0134192984__li4699961">GET: https://<em id="EN-US_TOPIC_0134192984__i0361419145816">{endpoint}</em>/v2/fb770eb43f934b5a8bda955642b954b9/servers/detail<ul id="EN-US_TOPIC_0134192984__ul1726285720355"><li id="EN-US_TOPIC_0134192984__li982513277358">URI format: GET /v2/{tenant_id}/servers/detail{?changes-since,image,flavor,name,status,limit,marker,not-tags,reservation_id,all_tenants}</li><li id="EN-US_TOPIC_0134192984__li1382117499352">tenant_id: fb770eb43f934b5a8bda955642b954b9</li><li id="EN-US_TOPIC_0134192984__li794175213510">The fields, <strong id="EN-US_TOPIC_0134192984__b49347536184016">changes-since,image,flavor,name,status,limit,marker,not-tags,reservation_id,all_tenants</strong>, following the question mark (?) are optional for viewing an ECS.</li></ul>
+</li><li id="EN-US_TOPIC_0134192984__li33475762">Headers
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0134192984__table32846409" frame="border" border="1" rules="all"><tbody><tr id="EN-US_TOPIC_0134192984__row34362675"><td class="cellrowborder" valign="top" width="50%"><p id="EN-US_TOPIC_0134192984__p31913276">Content-Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p id="EN-US_TOPIC_0134192984__p34838562">application/json</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0134192984__row45111603"><td class="cellrowborder" valign="top" width="50%"><p id="EN-US_TOPIC_0134192984__p30161198">X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p id="EN-US_TOPIC_0134192984__p27137978">Obtained in <a href="#EN-US_TOPIC_0134192984__li1785204217617">1</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li class="litext" id="EN-US_TOPIC_0134192984__li8502122014374">Response body: JSON data in UTF-8 code format<pre class="screen" id="EN-US_TOPIC_0134192984__screen171571928103816">{
+  "servers": [
+    {
+      "tenant_id": "fb770eb43f934b5a8bda955642b954b9",
+      "addresses": {
+        "196b63ba-4201-4b55-b5aa-62ab6085d884": [
+          {
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:82:2b:a0",
+            "OS-EXT-IPS:type": "fixed",
+            "addr": "192.168.1.10",
+            "version": 4
+          },
+          {
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:82:2b:a0",
+            "OS-EXT-IPS:type": "floating",
+            "addr": "192.168.213.134",
+            "version": 4
+          }
+        ]
+      },
+      "metadata": {},
+      "OS-EXT-STS:task_state": null,
+      "OS-DCF:diskConfig": "MANUAL",
+      "OS-EXT-AZ:availability_zone": "eu-de-02",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://<em id="EN-US_TOPIC_0134192984__i591414573592">xxx</em>/v2/fb770eb43f934b5a8bda955642b954b9/servers/0e56e372-31d4-40b6-8c85-d82a3cfeb05c"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://<em id="EN-US_TOPIC_0134192984__i162481241205">xxx</em>/fb770eb43f934b5a8bda955642b954b9/servers/0e56e372-31d4-40b6-8c85-d82a3cfeb05c"
+        }
+      ],
+      "OS-EXT-STS:power_state": 1,
+      "id": "0e56e372-31d4-40b6-8c85-d82a3cfeb05c",
+      "os-extended-volumes:volumes_attached": [
+        {
+          "id": "3e3fd674-a816-4602-8175-d9b2e20a65d5"
+        }
+      ],
+      "OS-EXT-SRV-ATTR:host": "pod01.eu-de-02",
+      "image": {
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://<em id="EN-US_TOPIC_0134192984__i17551627101">xxx</em>/fb770eb43f934b5a8bda955642b954b9/images/f3966520-45ce-45d3-b099-0123d1cd0043"
+          }
+        ],
+        "id": "f3966520-45ce-45d3-b099-0123d1cd0043"
+      },
+      "OS-SRV-USG:terminated_at": null,
+      "accessIPv4": "",
+      "accessIPv6": "",
+      "created": "2018-05-10T09:13:29Z",
+      "hostId": "1ee40e90e4774fc712d7e881d62ac5be9b05c9006504a69b9ab15aa0",
+      "OS-EXT-SRV-ATTR:hypervisor_hostname": "nova005@7",
+      "key_name": null,
+      "flavor": {
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://<em id="EN-US_TOPIC_0134192984__i188751741705">xxx</em>/fb770eb43f934b5a8bda955642b954b9/flavors/s2.small.1"
+          }
+        ],
+        "id": "s2.small.1"
+      },
+      "security_groups": [
+        {
+          "name": "default"
+        }
+      ],
+      "config_drive": "",
+      "OS-EXT-STS:vm_state": "active",
+      "OS-EXT-SRV-ATTR:instance_name": "instance-0009d9c4",
+      "user_id": "f79791beca3c48159ac2553fff22e166",
+      "name": "ecs-65a7",
+      "progress": 0,
+      "OS-SRV-USG:launched_at": "2018-05-10T12:11:10.803603",
+      "updated": "2018-05-10T12:11:10Z",
+      "status": "ACTIVE"
+    },
+    {
+      "tenant_id": "fb770eb43f934b5a8bda955642b954b9",
+      "addresses": {
+        "21bcff3b-3a71-4304-ab62-dad0b305890e": [
+          {
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:e8:ab:b2",
+            "OS-EXT-IPS:type": "fixed",
+            "addr": "192.168.0.79",
+            "version": 4
+          },
+          {
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:e8:ab:b2",
+            "OS-EXT-IPS:type": "floating",
+            "addr": "192.168.218.86",
+            "version": 4
+          }
+        ]
+      },
+      "metadata": {},
+      "OS-EXT-STS:task_state": null,
+      "OS-DCF:diskConfig": "MANUAL",
+      "OS-EXT-AZ:availability_zone": "eu-de-02",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://<em id="EN-US_TOPIC_0134192984__i972918211313">xxx</em>/v2/fb770eb43f934b5a8bda955642b954b9/servers/3e6388ea-3467-436e-b11f-4dddbc3dd810"
+        },
+        {
+          "rel": "bookmark",
+          "href": "https://<em id="EN-US_TOPIC_0134192984__i626717271718">xxx</em>/fb770eb43f934b5a8bda955642b954b9/servers/3e6388ea-3467-436e-b11f-4dddbc3dd810"
+        }
+      ],
+      "OS-EXT-STS:power_state": 1,
+      "id": "3e6388ea-3467-436e-b11f-4dddbc3dd810",
+      "os-extended-volumes:volumes_attached": [
+        {
+          "id": "1bb5c0f6-300d-45c9-81f0-ad41736716de"
+        }
+      ],
+      "OS-EXT-SRV-ATTR:host": "pod01.eu-de-02",
+      "image": {
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://<em id="EN-US_TOPIC_0134192984__i962012401319">xxx</em>/fb770eb43f934b5a8bda955642b954b9/images/f1d75ee7-83bc-4e43-81fb-b69b4625fdea"
+          }
+        ],
+        "id": "f1d75ee7-83bc-4e43-81fb-b69b4625fdea"
+      },
+      "OS-SRV-USG:terminated_at": null,
+      "accessIPv4": "",
+      "accessIPv6": "",
+      "created": "2018-01-27T10:01:35Z",
+      "hostId": "1ee40e90e4774fc712d7e881d62ac5be9b05c9006504a69b9ab15aa0",
+      "OS-EXT-SRV-ATTR:hypervisor_hostname": "nova005@7",
+      "key_name": null,
+      "flavor": {
+        "links": [
+          {
+            "rel": "bookmark",
+            "href": "https://<em id="EN-US_TOPIC_0134192984__i29991447614">xxx</em>/fb770eb43f934b5a8bda955642b954b9/flavors/s2.small.1"
+          }
+        ],
+        "id": "s2.small.1"
+      },
+      "security_groups": [
+        {
+          "name": "default"
+        }
+      ],
+      "config_drive": "",
+      "OS-EXT-STS:vm_state": "active",
+      "OS-EXT-SRV-ATTR:instance_name": "instance-00070c07",
+      "user_id": "f79791beca3c48159ac2553fff22e166",
+      "name": "ecs-terraformCLI",
+      "progress": 0,
+      "OS-SRV-USG:launched_at": "2018-05-10T10:19:04.709851",
+      "updated": "2018-05-10T10:19:04Z",
+      "status": "ACTIVE"
+    }
+  ]
+}</pre>
+</li></ul>
+</p></li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0134193004.html">Request Format</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,654 @@
+<a name="CreatePool"></a><a name="CreatePool"></a>
+
+<h1 class="topictitle1">Creating a Backend Server Group</h1>
+<h4 class="sectiontitle">Function</h4><p>This API is used to create a backend server group.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p>If <strong>session-persistence</strong> is specified, <strong>cookie_name</strong> is available only when <strong>type</strong> is set to <strong>APP_COOKIE</strong>.</p>
+<p>If <strong>listener_id</strong> is specified, the listener must have no backend server group associated.</p>
+
+<h4 class="sectiontitle">URI</h4><p>POST /v3/{project_id}/elb/pools</p>
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="CreatePool__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request header parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.1 "><p>X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.2.2.5.1.4 "><p>Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="CreatePool__requestParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Request body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.1 "><p>pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.3 "><p><a href="#CreatePool__request_CreatePoolOption">CreatePoolOption</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.3.2.5.1.4 "><p>Specifies the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__request_CreatePoolOption"></a><a name="request_CreatePoolOption"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__request_CreatePoolOption" frame="border" border="1" rules="all"><caption><b>Table 4 </b>CreatePoolOption</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the administrative status of the backend server group. The value can only be updated to <strong>true</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Provides supplementary information about the backend server group.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the load balancing algorithm used by the load balancer to route requests to backend servers.</p>
+<p>The value can be one of the following:</p>
+<ul><li><p><strong>ROUND_ROBIN</strong>: weighted round robin</p>
+</li><li><p><strong>LEAST_CONNECTIONS</strong>: weighted least connections</p>
+</li><li><p><strong>SOURCE_IP</strong>: source IP hash</p>
+</li></ul>
+<p>When the value is <strong>SOURCE_IP</strong>, the weights of backend servers are invalid.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the ID of the listener associated with the backend server group. Specify either <strong>listener_id</strong> or <strong>loadbalancer_id</strong>, or both of them.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>36</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the ID of the associated load balancer. Specify either <strong>listener_id</strong> or <strong>loadbalancer_id</strong>, or both of them.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>36</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the backend server group name.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the protocol used by the backend server group to receive requests. TCP, UDP, and HTTP are supported.</p>
+<ul><li><p>For UDP listeners, the protocol of the backend server group must be UDP.</p>
+</li><li><p>For TCP listeners, the protocol of the backend server group must be TCP.</p>
+</li><li><p>For HTTP or HTTPS listeners, the protocol of the backend server group must be HTTP.</p>
+</li></ul>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>session_persistence</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p><a href="#CreatePool__request_CreatePoolSessionPersistenceOption">CreatePoolSessionPersistenceOption</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies whether to enable sticky sessions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>slow_start</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p><a href="#CreatePool__request_CreatePoolSlowStartOption">CreatePoolSlowStartOption</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies whether to enable slow start. After you enable slow start, new backend servers added to the backend server group are warmed up, and the number of requests they can receive increases linearly during the configured slow start duration.</p>
+<p>This parameter can be used when the protocol of the backend server group is HTTP or HTTPS. An error will be returned if the protocol is not HTTP or HTTPS.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__request_CreatePoolSessionPersistenceOption"></a><a name="request_CreatePoolSessionPersistenceOption"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__request_CreatePoolSessionPersistenceOption" frame="border" border="1" rules="all"><caption><b>Table 5 </b>CreatePoolSessionPersistenceOption</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.5.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.1 "><p>cookie_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.5.2.5.1.4 "><p>Specifies the cookie name. This parameter will take effect only when <strong>type</strong> is set to <strong>APP_COOKIE</strong>. Otherwise, an error will be returned.</p>
+<p>The value can contain only letters, digits, hyphens (-), underscores (_), and periods (.).</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>1024</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.5.2.5.1.4 "><p>Specifies the sticky session type. The value can be <strong>SOURCE_IP</strong>, <strong>HTTP_COOKIE</strong>, or <strong>APP_COOKIE</strong>.</p>
+<ul><li><p>If the protocol of the backend server group is TCP or UDP, only <strong>SOURCE_IP</strong> takes effect.</p>
+</li><li><p>For dedicated load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can only be <strong>HTTP_COOKIE</strong>.</p>
+</li><li><p>For shared load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can be <strong>HTTP_COOKIE</strong> or <strong>APP_COOKIE</strong>.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.1 "><p>persistence_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.5.2.5.1.4 "><p>Specifies the stickiness duration, in minutes. This parameter will not take effect when <strong>type</strong> is set to <strong>APP_COOKIE</strong>.</p>
+<ul><li><p>If the protocol of the backend server group is TCP or UDP, the value ranges from <strong>1</strong> to <strong>60</strong>, and the default value is <strong>1</strong>.</p>
+</li><li><p>If the protocol of the backend server group is HTTP or HTTPS, the value ranges from <strong>1</strong> to <strong>1440</strong>, and the default value is <strong>1440</strong>.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__request_CreatePoolSlowStartOption"></a><a name="request_CreatePoolSlowStartOption"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__request_CreatePoolSlowStartOption" frame="border" border="1" rules="all"><caption><b>Table 6 </b>CreatePoolSlowStartOption</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.6.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.1 "><p>enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.6.2.5.1.4 "><p>Specifies whether to enable slow start.</p>
+<p><strong>true</strong> indicates that this function is enabled, and <strong>false</strong> indicates this function is disabled.</p>
+<p>Default: <strong>false</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.1 "><p>duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.6.2.5.1.4 "><p>Specifies the slow start duration, in seconds.</p>
+<p>The value ranges from <strong>30</strong> to <strong>1200</strong>, and the default value is <strong>30</strong>.</p>
+<p>Minimum: <strong>30</strong></p>
+<p>Maximum: <strong>1200</strong></p>
+<p>Default: <strong>30</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 201</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="CreatePool__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p><a href="#CreatePool__response_Pool">Pool</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_Pool"></a><a name="response_Pool"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_Pool" frame="border" border="1" rules="all"><caption><b>Table 8 </b>Pool</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the administrative status of the backend server group. The value can only be updated to <strong>true</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>true</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Provides supplementary information about the backend server group.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>healthmonitor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the ID of the health check configured for the backend server group.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the backend server group ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the load balancing algorithm used by the load balancer to route requests to backend servers in the backend server group.</p>
+<p>The value can be <strong>ROUND_ROBIN</strong> (weighted round robin), <strong>LEAST_CONNECTIONS</strong> (weighted least connections), or <strong>SOURCE_IP</strong> (source IP hash).</p>
+<p>When the value is <strong>SOURCE_IP</strong>, the <strong>weight</strong> parameter is invalid.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Array of <a href="#CreatePool__response_ListenerRef">ListenerRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Lists the listeners associated with the backend server group.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>loadbalancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Array of <a href="#CreatePool__response_LoadBalancerRef">LoadBalancerRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Lists the IDs of load balancers associated with the backend server group.</p>
+<p>If only <strong>listener_id</strong> is specified during the creation of the backend server group, the ID of the <strong>loadbalancers</strong> parameter in the response is the ID of the load balancer to which the listener is added.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>members</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Array of <a href="#CreatePool__response_MemberRef">MemberRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Lists the backend servers in the backend server group.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the backend server group name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the protocol used by the backend server group to receive requests. The protocol can be TCP, UDP, or HTTP.</p>
+<ul><li><p>For UDP listeners, the protocol of the backend server group must be UDP.</p>
+</li><li><p>For TCP listeners, the protocol of the backend server group must be TCP.</p>
+</li><li><p>For HTTP or HTTPS listeners, the protocol of the backend server group must be HTTP.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>session_persistence</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p><a href="#CreatePool__response_SessionPersistence">SessionPersistence</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the sticky session.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>ip_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the IP version supported by the backend server group.</p>
+<ul><li><p>Shared load balancers: The default value is <strong>v4</strong>.</p>
+</li><li><p>Dedicated load balancers: The value can be <strong>dualstack</strong>, <strong>v4</strong>, or <strong>v6</strong>.</p>
+</li></ul>
+<p>When the protocol of the backend server group is TCP or UDP, <strong>ip_version</strong> is set to <strong>dualstack</strong>, indicating that both IPv4 and IPv6 are supported.</p>
+<p>When the protocol of the backend server group is HTTP, <strong>ip_version</strong> is set to <strong>v4</strong>.</p>
+<p>IPv6 is unsupported. Only <strong>v4</strong> is returned.</p>
+<p>Default: <strong>dualstack</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>slow_start</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p><a href="#CreatePool__response_SlowStart">SlowStart</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies whether to enable slow start. After you enable slow start, new backend servers added to the backend server group are warmed up, and the number of requests they can receive increases linearly during the configured slow start duration.</p>
+<p>This parameter can be used when the protocol of the backend server group is HTTP or HTTPS. An error will be returned if the protocol is not HTTP or HTTPS.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_ListenerRef"></a><a name="response_ListenerRef"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_ListenerRef" frame="border" border="1" rules="all"><caption><b>Table 9 </b>ListenerRef</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the listener ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_LoadBalancerRef"></a><a name="response_LoadBalancerRef"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_LoadBalancerRef" frame="border" border="1" rules="all"><caption><b>Table 10 </b>LoadBalancerRef</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.6.2.4.1.3 "><p>Specifies the load balancer ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_MemberRef"></a><a name="response_MemberRef"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_MemberRef" frame="border" border="1" rules="all"><caption><b>Table 11 </b>MemberRef</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.7.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.7.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.7.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the backend server ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_SessionPersistence"></a><a name="response_SessionPersistence"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_SessionPersistence" frame="border" border="1" rules="all"><caption><b>Table 12 </b>SessionPersistence</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.8.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.8.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.8.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>cookie_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the cookie name.</p>
+<p>This parameter will take effect only when <strong>type</strong> is set to <strong>APP_COOKIE</strong>.</p>
+<p>The value can contain only letters, digits, hyphens (-), underscores (_), and periods (.).</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>1024</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the sticky session type. The value can be <strong>SOURCE_IP</strong>, <strong>HTTP_COOKIE</strong>, or <strong>APP_COOKIE</strong>.</p>
+<ul><li><p>If the protocol of the backend server group is TCP or UDP, only <strong>SOURCE_IP</strong> takes effect.</p>
+</li><li><p>For dedicated load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can only be <strong>HTTP_COOKIE</strong>.</p>
+</li><li><p>For shared load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can be <strong>HTTP_COOKIE</strong> or <strong>APP_COOKIE</strong>.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>persistence_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the stickiness duration, in minutes. This parameter will not take effect when <strong>type</strong> is set to <strong>APP_COOKIE</strong>.</p>
+<ul><li><p>If the protocol of the backend server group is TCP or UDP, the value ranges from <strong>1</strong> to <strong>60</strong>, and the default value is <strong>1</strong>.</p>
+</li><li><p>If the protocol of the backend server group is HTTP or HTTPS, the value ranges from <strong>1</strong> to <strong>1440</strong>, and the default value is <strong>1440</strong>.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="CreatePool__response_SlowStart"></a><a name="response_SlowStart"></a><table cellpadding="4" cellspacing="0" summary="" id="CreatePool__response_SlowStart" frame="border" border="1" rules="all"><caption><b>Table 13 </b>SlowStart</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.9.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.9.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.9.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.9.2.4.1.1 "><p>enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.9.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.9.2.4.1.3 "><p>Specifies whether to enable slow start.</p>
+<p><strong>true</strong> indicates that this function is enabled, and <strong>false</strong> indicates this function is disabled.</p>
+<p>Default: <strong>false</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.9.2.4.1.1 "><p>duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.9.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.9.2.4.1.3 "><p>Specifies the slow start duration, in seconds.</p>
+<p>The value ranges from <strong>30</strong> to <strong>1200</strong>, and the default value is <strong>30</strong>.</p>
+<p>Minimum: <strong>30</strong></p>
+<p>Maximum: <strong>1200</strong></p>
+<p>Default: <strong>30</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><p>Adding an HTTP backend server group</p>
+<pre class="screen">POST
+https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/pools
+
+{
+  "pool" : {
+    "name" : "My pool",
+    "lb_algorithm" : "LEAST_CONNECTIONS",
+    "listener_id" : "0b11747a-b139-492f-9692-2df0b1c87193",
+    "protocol" : "HTTP",
+    "slow_start" : {
+      "enable" : true,
+      "duration" : 50
+    }
+  }
+}</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 201</strong></p>
+<p>Successful request.</p>
+<pre class="screen">{
+  "pool" : {
+    "lb_algorithm" : "LEAST_CONNECTIONS",
+    "protocol" : "HTTP",
+    "description" : "",
+    "admin_state_up" : true,
+    "loadbalancers" : [ {
+      "id" : "098b2f68-af1c-41a9-8efd-69958722af62"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "listeners" : [ {
+      "id" : "0b11747a-b139-492f-9692-2df0b1c87193"
+    } ],
+    "members" : [ ],
+    "id" : "36ce7086-a496-4666-9064-5ba0e6840c75",
+    "name" : "My pool",
+    "ip_version" : "v4",
+    "slow_start" : {
+      "enable" : true,
+      "duration" : 50
+    }
+  },
+  "request_id" : "2d974978-0733-404d-a21a-b29204f4803a"
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="CreatePool__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.8.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.8.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.8.2.1.3.1.1 "><p>201</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.8.2.1.3.1.2 "><p>Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p>See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000006.html">Backend Server Group</a>
+
+
+

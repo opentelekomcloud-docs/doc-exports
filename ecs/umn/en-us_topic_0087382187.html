@@ -1,0 +1,27 @@
+<a name="EN-US_TOPIC_0087382187"></a><a name="EN-US_TOPIC_0087382187"></a>
+
+<h1 class="topictitle1">Why Does a Linux ECS with a SCSI Disk Attached Fails to Restart?</h1>
+<div id="body1512553843238"><div class="section" id="EN-US_TOPIC_0087382187__section3414486317516"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0087382187__p5700124917519">For a Linux <span id="EN-US_TOPIC_0087382187__text29995104281">ECS</span> with a SCSI disk attached, if you have enabled automatic SCSI disk attachment upon <span id="EN-US_TOPIC_0087382187__text143553419255">ECS</span> startup in <strong id="EN-US_TOPIC_0087382187__b995711111259">/etc/fstab</strong> and the disk drive letter (for example, <strong id="EN-US_TOPIC_0087382187__b7861920162515">/dev/sdb</strong>) is used, the <span id="EN-US_TOPIC_0087382187__text1138101217282">ECS</span> fails to restart.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0087382187__section20153596175411"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0087382187__p49024803204327">SCSI disk allocation is determined based on the ID of the slot accommodating the disk as well as the available drive letter in the <span id="EN-US_TOPIC_0087382187__text992616127288">ECS</span>. Each time you attach a disk to the <span id="EN-US_TOPIC_0087382187__text9390131442817">ECS</span>, an idle drive letter is automatically allocated in sequence. When the <span id="EN-US_TOPIC_0087382187__text398003742617">ECS</span> starts, the disks are loaded in slot sequence. Therefore, a slot ID corresponds to a drive letter.</p>
+<p id="EN-US_TOPIC_0087382187__p35478836175424">After the SCSI disk is detached from the running <span id="EN-US_TOPIC_0087382187__text0329859122611">ECS</span>, the slot sequence for disks may change, leading to the disk drive letter being changed after the <span id="EN-US_TOPIC_0087382187__text06592982715">ECS</span> is restarted. As a result, the slot IDs do not correspond to the drive letters, and the <span id="EN-US_TOPIC_0087382187__text16643151614271">ECS</span> fails to restart.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0087382187__section17730319204351"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0087382187__ol1423471920441"><li id="EN-US_TOPIC_0087382187__li3264913143132">Log in to the Linux <span id="EN-US_TOPIC_0087382187__text1259518277277">ECS</span>.</li><li id="EN-US_TOPIC_0087382187__li60940763143052">Run the following command to switch to user <strong id="EN-US_TOPIC_0087382187__b842352706163831">root</strong>:<p id="EN-US_TOPIC_0087382187__p2487307514316"><strong id="EN-US_TOPIC_0087382187__b19058516143256">sudo su -</strong></p>
+</li><li id="EN-US_TOPIC_0087382187__li2064141120446"><a name="EN-US_TOPIC_0087382187__li2064141120446"></a><a name="li2064141120446"></a>Run the following command to obtain the SCSI ID according to the drive letter of the SCSI disk:<p id="EN-US_TOPIC_0087382187__p52450484101945"><a name="EN-US_TOPIC_0087382187__li2064141120446"></a><a name="li2064141120446"></a><strong id="EN-US_TOPIC_0087382187__b1674211139193211">ll /dev/disk/by-id/|grep </strong><em id="EN-US_TOPIC_0087382187__i1914316547193211">Disk drive letter</em></p>
+<p id="EN-US_TOPIC_0087382187__p53380543101812">For example, if the drive letter of the SCSI disk is <strong id="EN-US_TOPIC_0087382187__b842352706193241">/dev/sdb</strong>, run the following command:</p>
+<p id="EN-US_TOPIC_0087382187__p1193835120454"><strong id="EN-US_TOPIC_0087382187__b24683756101858">ll /dev/disk/by-id/|grep sdb</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0087382187__screen50448685101919">CNA64_22:/opt/galax/eucalyptus/ecs_scripts # ll /dev/disk/by-id/|grep sdb
+lrwxrwxrwx 1 root root  9 Dec  6 11:26 scsi-3688860300001436b005014f890338280 -&gt; ../../sdb
+lrwxrwxrwx 1 root root  9 Dec  6 11:26 wwn-0x688860300001436b005014f890338280 -&gt; ../../sdb</pre>
+</li><li id="EN-US_TOPIC_0087382187__li34850616204510">Change the drive letter (for example, <strong id="EN-US_TOPIC_0087382187__b84235270619335">/dev/sdb</strong>) of the SCSI disk to the corresponding SCSI ID in the <strong id="EN-US_TOPIC_0087382187__b8423527061616">/etc/fstab</strong> file.<p id="EN-US_TOPIC_0087382187__p2561139102146"><strong id="EN-US_TOPIC_0087382187__b2102245510224">/dev/disk/by-id/</strong><em id="EN-US_TOPIC_0087382187__i6584711810225">SCSI ID</em></p>
+<p id="EN-US_TOPIC_0087382187__p2348772010227">For example, if the SCSI ID obtained in step <a href="#EN-US_TOPIC_0087382187__li2064141120446">3</a> is scsi-3688860300001436b005014f890338280, use the following data to replace <strong id="EN-US_TOPIC_0087382187__b84235270616231">/dev/sdb</strong>:</p>
+<p id="EN-US_TOPIC_0087382187__p12324497102143"><strong id="EN-US_TOPIC_0087382187__b43451117102154">/dev/disk/by-id/scsi-3688860300001436b005014f890338280</strong></p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,110 @@
+<a name="EN-US_TOPIC_0020212665"></a><a name="EN-US_TOPIC_0020212665"></a>
+
+<h1 class="topictitle1">Deleting NICs from an <span id="text1452516586317">ECS</span> in a Batch</h1>
+<div id="body1114082"><div class="section" id="EN-US_TOPIC_0020212665__section4187856"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212665__p23131803">This API is used to uninstall and delete one or multiple NICs from an <span id="EN-US_TOPIC_0020212665__text10429155933119">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section16704417311"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0020212665__p7975872316">The primary NIC of an <span id="EN-US_TOPIC_0020212665__text1223291865111">ECS</span> has routing rules configured and cannot be deleted.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section37690705"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212665__p4064161162618">POST /v1/{project_id}/cloudservers/{server_id}/nics/delete</p>
+<div class="p" id="EN-US_TOPIC_0020212665__p1441126425"><a href="#EN-US_TOPIC_0020212665__table42885739">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212665__table42885739"></a><a name="table42885739"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212665__table42885739" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212665__row63231703"><th align="left" class="cellrowborder" valign="top" width="16.41%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0020212665__p21494305">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.169999999999998%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0020212665__p63317164">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.42%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0020212665__p28416672">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212665__row20049059"><td class="cellrowborder" valign="top" width="16.41%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212665__p13361120">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212665__p8508925">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.42%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212665__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212665__row3613092117015"><td class="cellrowborder" valign="top" width="16.41%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212665__p1181501417024">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212665__p1749204017024">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.42%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212665__p756915117024">Specifies the <span id="EN-US_TOPIC_0020212665__text93671359154">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section3672032"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0020212665__p385792312318"><a href="#EN-US_TOPIC_0020212665__table35856517">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212665__table35856517"></a><a name="table35856517"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212665__table35856517" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212665__row15151670"><th align="left" class="cellrowborder" valign="top" width="16.36%" id="mcps1.3.4.2.2.2.5.1.1"><p id="EN-US_TOPIC_0020212665__p19325759">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.19%" id="mcps1.3.4.2.2.2.5.1.2"><p id="EN-US_TOPIC_0020212665__p21882681">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.13%" id="mcps1.3.4.2.2.2.5.1.3"><p id="EN-US_TOPIC_0020212665__p27666764">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.32%" id="mcps1.3.4.2.2.2.5.1.4"><p id="EN-US_TOPIC_0020212665__p26415391">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212665__row59271898"><td class="cellrowborder" valign="top" width="16.36%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212665__p36294438">nics</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.19%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212665__p54168362">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.13%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212665__p25561231">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.32%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212665__p44982630">Specifies the NICs to be deleted. For details, see <a href="#EN-US_TOPIC_0020212665__table43212049">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212665__table43212049"></a><a name="table43212049"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212665__table43212049" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong>nics</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212665__row13772373"><th align="left" class="cellrowborder" valign="top" width="16.35%" id="mcps1.3.4.2.3.2.5.1.1"><p id="EN-US_TOPIC_0020212665__p1687315211520">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.29%" id="mcps1.3.4.2.3.2.5.1.2"><p id="EN-US_TOPIC_0020212665__p9873021657">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.919999999999998%" id="mcps1.3.4.2.3.2.5.1.3"><p id="EN-US_TOPIC_0020212665__p9873721157">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.44%" id="mcps1.3.4.2.3.2.5.1.4"><p id="EN-US_TOPIC_0020212665__p7873102111513">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212665__row38764716"><td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212665__p52934302">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.29%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212665__p59820093">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.919999999999998%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212665__p13589360">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.44%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212665__p41640866">Specifies the port ID of the NIC.</p>
+<div class="note" id="EN-US_TOPIC_0020212665__note49262081714"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212665__p443358761714">When the ID is the same as the <span id="EN-US_TOPIC_0020212665__text458971916511">ECS</span> primary NIC ID, the system will return error code 403.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section33048293"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0020212665__p22984981">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section12428547539"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0020212665__screen17579171465316">POST https://{endpoint}/v1/{project_id}/cloudservers/{server_id}/nics/delete</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212665__screen55305066202724">{
+    "nics": [
+         {
+            "id": "d32019d3-bc6e-4319-9c1d-6722fc136a23"
+        }
+    ]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__section185132219719"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0020212665__p16302325975">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212665__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212665__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0020212665__p17531055112619">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385012.html">NIC Management</a></div>
+</div>
+</div>
+

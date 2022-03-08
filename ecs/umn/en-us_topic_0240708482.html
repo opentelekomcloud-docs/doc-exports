@@ -1,0 +1,43 @@
+<a name="EN-US_TOPIC_0240708482"></a><a name="EN-US_TOPIC_0240708482"></a>
+
+<h1 class="topictitle1">Why Am I Seeing the Error Message "Module is unknown" When I Remotely Log In to a Linux <span id="text111837387519">ECS</span>?</h1>
+<div id="body1587693768425"><div class="section" id="EN-US_TOPIC_0240708482__section010521132615"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0240708482__p47407592610">When you attempt to remotely log in to a Linux <span id="EN-US_TOPIC_0240708482__text1857613484516">ECS</span>, the system displays the error message "Module is unknown".</p>
+<div class="fignone" id="EN-US_TOPIC_0240708482__fig17499319191716"><span class="figcap"><b>Figure 1 </b>Module is unknown</span><br><span><img id="EN-US_TOPIC_0240708482__image195001719131712" src="en-us_image_0240710552.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="note" id="EN-US_TOPIC_0240708482__note16966152911612"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0240708482__ul758014561146"><li id="EN-US_TOPIC_0240708482__li4581185631418">To resolve this issue, restart the ECS and enter the rescue mode.</li><li id="EN-US_TOPIC_0240708482__li1258120563148">Restarting the <span id="EN-US_TOPIC_0240708482__text13280124310516">ECS</span> may interrupt services. Exercise caution when performing this operation.</li></ul>
+</div></div>
+<div class="section" id="EN-US_TOPIC_0240708482__section584171621515"><h4 class="sectiontitle">Root Cause</h4><p id="EN-US_TOPIC_0240708482__p13781333151818">The file in the <strong id="EN-US_TOPIC_0240708482__b353015212456">/etc/pam.d/</strong> directory was modified by mistake.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0240708482__section1269155618274"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0240708482__ol143131304288"><li id="EN-US_TOPIC_0240708482__li123131730162816">Enter the single-user mode.<div class="p" id="EN-US_TOPIC_0240708482__p54908381882"><a name="EN-US_TOPIC_0240708482__li123131730162816"></a><a name="li123131730162816"></a>The following uses CentOS 7 as an example:<ol type="a" id="EN-US_TOPIC_0240708482__ol18761251883"><li id="EN-US_TOPIC_0240708482__li48759255819">Restart the <span id="EN-US_TOPIC_0240708482__text6216550450">ECS</span> and click <strong id="EN-US_TOPIC_0240708482__b037492515210">Remote Login</strong>.</li><li id="EN-US_TOPIC_0240708482__li521915281994">Click <strong id="EN-US_TOPIC_0240708482__b764216153111">Ctrl+Alt+Del</strong> in the upper part of the remote login panel to restart the ECS.</li><li id="EN-US_TOPIC_0240708482__li187632520815">Press the up arrow key to prevent automatic system startup. When the kernels are displayed, press <strong id="EN-US_TOPIC_0240708482__b1394375224510">e</strong> to enter the editing mode.<div class="fignone" id="EN-US_TOPIC_0240708482__fig1087511256811"><span class="figcap"><b>Figure 2 </b>Entering the kernel editing mode</span><br><span><img id="EN-US_TOPIC_0240708482__image1687511251988" src="en-us_image_0240711431.png" title="Click to enlarge" class="imgResize"></span></div>
+<div class="note" id="EN-US_TOPIC_0240708482__note2876172514820"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0240708482__p287612251480">The grub file is encrypted by Euler images by default. Before entering the edit mode, you need to contact customer service to obtain username and password.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0240708482__li2912323201016">Locate the row containing <strong id="EN-US_TOPIC_0240708482__b128050179555">linux16</strong> and delete the parameters you do not require.</li><li id="EN-US_TOPIC_0240708482__li55402210504">Change <strong id="EN-US_TOPIC_0240708482__b16718172520581">ro</strong> to <strong id="EN-US_TOPIC_0240708482__b2723625105812">rw</strong> for mounting the root partition with read-write permissions.</li><li id="EN-US_TOPIC_0240708482__li7708662503">Add <strong id="EN-US_TOPIC_0240708482__b205601453175814">rd.break</strong> and press <strong id="EN-US_TOPIC_0240708482__b756615312588">Ctrl+X</strong>.<div class="fignone" id="EN-US_TOPIC_0240708482__fig1654418212503"><span class="figcap"><b>Figure 3 </b>Before the modification</span><br><span><img id="EN-US_TOPIC_0240708482__image3544422500" src="en-us_image_0260575520.png" title="Click to enlarge" class="imgResize"></span></div>
+<div class="fignone" id="EN-US_TOPIC_0240708482__fig1954412105016"><span class="figcap"><b>Figure 4 </b>After the modification</span><br><span><img id="EN-US_TOPIC_0240708482__image554414275018" src="en-us_image_0260575521.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0240708482__li1457059144112">Run the following command to go to the <strong id="EN-US_TOPIC_0240708482__b1317583413547">/sysroot</strong> directory:<p id="EN-US_TOPIC_0240708482__p9457161015412"><strong id="EN-US_TOPIC_0240708482__b7497658163515"># chroot /sysroot</strong></p>
+</li></ol>
+</div>
+</li><li id="EN-US_TOPIC_0240708482__li1631319300286">Run the following command to view the system log for error files:<div class="p" id="EN-US_TOPIC_0240708482__p0426125832819"><a name="EN-US_TOPIC_0240708482__li1631319300286"></a><a name="li1631319300286"></a><strong id="EN-US_TOPIC_0240708482__b16108195610270">grep Module /var/log/messages</strong><div class="fignone" id="EN-US_TOPIC_0240708482__fig31081356162719"><span class="figcap"><b>Figure 5 </b>System log</span><br><span><img id="EN-US_TOPIC_0240708482__image01081756162719" src="en-us_image_0240710554.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</li><li id="EN-US_TOPIC_0240708482__li1931383012286">Comment out or modify the error line in the error files displayed in the system log.<div class="p" id="EN-US_TOPIC_0240708482__p17485112202919"><a name="EN-US_TOPIC_0240708482__li1931383012286"></a><a name="li1931383012286"></a><strong id="EN-US_TOPIC_0240708482__b15108105652720">vi /etc/pam.d/login</strong><div class="fignone" id="EN-US_TOPIC_0240708482__fig11081756172711"><span class="figcap"><b>Figure 6 </b>Modifying the error information</span><br><span><img id="EN-US_TOPIC_0240708482__image010875682715" src="en-us_image_0240710555.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</li><li id="EN-US_TOPIC_0240708482__li13314430132819">Restart the <span id="EN-US_TOPIC_0240708482__text14171514518">ECS</span> and try to log in to it again.<div class="note" id="EN-US_TOPIC_0240708482__note103841544172914"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0240708482__ul7873258132914"><li id="EN-US_TOPIC_0240708482__li118731158102914">To view the modification records and check whether the modification is caused by misoperations, run the following command:<p id="EN-US_TOPIC_0240708482__p8481171814309"><a name="EN-US_TOPIC_0240708482__li118731158102914"></a><a name="li118731158102914"></a><strong id="EN-US_TOPIC_0240708482__b186861221133019">vi /root/.bash_history</strong></p>
+<p id="EN-US_TOPIC_0240708482__p1598785212290">Search for the keyword <strong id="EN-US_TOPIC_0240708482__b106741739113312">vi</strong> or <strong id="EN-US_TOPIC_0240708482__b1941342143319">login</strong>.</p>
+</li><li id="EN-US_TOPIC_0240708482__li1093117287303">Do not modify the files in the <strong id="EN-US_TOPIC_0240708482__b9189206163412">/etc/pam.d/</strong> directory. Run the following command for details about pam:<p id="EN-US_TOPIC_0240708482__p1987252162913"><strong id="EN-US_TOPIC_0240708482__b12986205217298">man pam.d</strong></p>
+</li></ul>
+</div></div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

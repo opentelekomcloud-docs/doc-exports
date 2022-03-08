@@ -1,0 +1,712 @@
+<a name="ListL7Policies"></a><a name="ListL7Policies"></a>
+
+<h1 class="topictitle1">Querying Forwarding Policies</h1>
+<h4 class="sectiontitle">Function</h4><p>This API is used to query all forwarding policies.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p>Parameters <strong>marker</strong>, <strong>limit</strong>, and <strong>page_reverse</strong> are used for pagination query.</p>
+<p>Parameters <strong>marker</strong> and <strong>page_reverse</strong> take effect only when they are used together with parameter <strong>limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p>GET /v3/{project_id}/elb/l7policies</p>
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the ID of the last record on the previous page.</p>
+<p>Note: </p>
+<ul><li><p>This parameter must be used together with <strong>limit</strong>.</p>
+</li><li><p>If this parameter is not specified, the first page will be queried.</p>
+</li><li><p>This parameter cannot be left blank or set to an invalid ID.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the number of records on each page.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>2000</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the page direction.</p>
+<p>The value can be <strong>true</strong> or <strong>false</strong>, and the default value is <strong>false</strong>.</p>
+<p>The last page in the list requested with <strong>page_reverse</strong> set to <strong>false</strong> will not contain the "next" link, and the last page in the list requested with <strong>page_reverse</strong> set to <strong>true</strong> will not contain the "previous" link.</p>
+<p>This parameter must be used together with <strong>limit</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>enterprise_project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the enterprise project ID.</p>
+<ul><li><p>If this parameter is not passed, resources in the default enterprise project are queried, and authentication is performed based on the default enterprise project.</p>
+</li><li><p>If this parameter is passed, its value can be the ID of an existing enterprise project or <strong>all_granted_eps</strong>.</p>
+</li></ul>
+<p>If the value is a specific ID, resources in the specific enterprise project are required. If the value is <strong>all_granted_eps</strong>, resources in all enterprise projects are queried.</p>
+<p>Multiple IDs can be queried in the format of <em>enterprise_project_id=xxx&amp;enterprise_project_id=xxx</em>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the forwarding policy ID.</p>
+<p>Multiple IDs can be queried in the format of <em>id=xxx&amp;id=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the forwarding policy name.</p>
+<p>Multiple names can be queried in the format of <em>name=xxx&amp;name=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Provides supplementary information about the forwarding policy.</p>
+<p>Multiple descriptions can be queried in the format of <em>description=xxx&amp;description=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the administrative status of the forwarding policy. The default value is <strong>true</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the ID of the listener to which the forwarding policy is added.</p>
+<ul><li><p>If <strong>action</strong> is set to <strong>REDIRECT_TO_POOL</strong>, the forwarding policy can be added to an HTTP or HTTPS listener.</p>
+</li><li><p>If <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>, the forwarding policy can be added to an HTTP listener.</p>
+</li></ul>
+<p>Multiple IDs can be queried in the format of <em>listener_id=xxx&amp;listener_id=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>position</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the forwarding policy priority.</p>
+<p>Multiple priorities can be queried in the format of <em>position=xxx&amp;position=xxx</em>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>action</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies where requests will be forwarded. The value can be one of the following:</p>
+<ul><li><p><strong>REDIRECT_TO_POOL</strong>: Requests will be forwarded to another backend server group.</p>
+</li><li><p><strong>REDIRECT_TO_LISTENER</strong>: Requests will be redirected to an HTTPS listener.</p>
+</li></ul>
+<p>Multiple values can be queried in the format of <em>action=xxx&amp;action=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>redirect_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the URL to which requests are forwarded.</p>
+<p>Multiple URLs can be queried in the format of <em>redirect_url=xxx&amp;redirect_url=xxx</em>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>redirect_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the ID of the backend server group to which requests are forwarded. This parameter will take effect and is mandatory when <strong>action</strong> is set to <strong>REDIRECT_TO_POOL</strong>.</p>
+<p>Multiple IDs can be queried in the format of <em>redirect_pool_id=xxx&amp;redirect_pool_id=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>redirect_listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the ID of the listener to which requests are redirected. This parameter will take effect and is mandatory when <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>.</p>
+<p>Multiple IDs can be queried in the format of <em>redirect_listener_id=xxx&amp;redirect_listener_id=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the provisioning status of the forwarding policy. The value can only be <strong>ACTIVE</strong>, indicating that the forwarding policy is provisioned successfully.</p>
+<p>Multiple provisioning statuses can be queried in the format of <em>provisioning_status=xxx&amp;provisioning_status=xxx</em>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>display_all_rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies whether to display all information about the forwarding rule in the forwarding policy. The value can be <strong>true</strong> or <strong>false</strong>.</p>
+<ul><li><p><strong>true</strong> indicates all information about the forwarding rule is displayed.</p>
+</li><li><p><strong>false</strong> indicates that only the rule ID is displayed.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>priority</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Specifies the forwarding policy priority. A smaller value indicates a higher priority.</p>
+<p>Multiple priorities can be queried in the format of <em>position=xxx&amp;position=xxx</em>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Request header parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.1 "><p>X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.2.2.5.1.4 "><p>Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>page_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p><a href="#ListL7Policies__response_PageInfo">PageInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Shows pagination information.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>l7policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>Array of <a href="#ListL7Policies__response_L7Policy">L7Policy</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Lists the forwarding policies.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListL7Policies__response_PageInfo"></a><a name="response_PageInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__response_PageInfo" frame="border" border="1" rules="all"><caption><b>Table 5 </b>PageInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>previous_marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the ID of the first record in the pagination query result. This parameter will not be returned if no query result is returned.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>next_marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Marks the start record on the next page in the pagination query result. This parameter will not be returned if there is no next page.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>current_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the number of records.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListL7Policies__response_L7Policy"></a><a name="response_L7Policy"></a><table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__response_L7Policy" frame="border" border="1" rules="all"><caption><b>Table 6 </b>L7Policy</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>action</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies where requests will be forwarded. The value can be one of the following:</p>
+<ul><li><p><strong>REDIRECT_TO_POOL</strong>: Requests will be forwarded to another backend server group.</p>
+</li><li><p><strong>REDIRECT_TO_LISTENER</strong>: Requests will be redirected to an HTTPS listener.</p>
+</li></ul>
+<p><strong>REDIRECT_TO_LISTENER</strong> has the highest priority. If requests are to be redirected to an HTTPS listener, other forwarding policies of the listener will become invalid.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the administrative status of the forwarding policy. The default value is <strong>true</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>true</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Provides supplementary information about the forwarding policy.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the forwarding policy ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the ID of the listener to which the forwarding policy is added.</p>
+<ul><li><p>If <strong>action</strong> is set to <strong>REDIRECT_TO_POOL</strong>, the forwarding policy can be added to an HTTP or HTTPS listener.</p>
+</li><li><p>If <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>, the forwarding policy can be added to an HTTP listener.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the forwarding policy name.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>position</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the forwarding policy priority. This parameter cannot be updated.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>100</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the project ID of the forwarding policy.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the provisioning status of the forwarding policy.</p>
+<p>The value can only be <strong>ACTIVE</strong>.</p>
+<p>Default: <strong>ACTIVE</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>redirect_listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the ID of the listener that requests are redirected to.</p>
+<p>This parameter is valid and mandatory only when <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>.</p>
+<p>Only HTTPS listeners are supported, and the listener cannot be any listener added to other load balancers.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>redirect_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the ID of the backend server group that requests are forwarded to.</p>
+<p>This parameter is valid and mandatory only when <strong>action</strong> is set to <strong>REDIRECT_TO_POOL</strong>.</p>
+<p>The specified backend server group cannot be the default one associated with the listener, or any backend server group associated with the forwarding policies of other listeners.</p>
+<p>This parameter cannot be specified when <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>redirect_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the URL to which requests are forwarded.</p>
+<p>Format: <em>protocol://host:port/path?query</em></p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Array of <a href="#ListL7Policies__response_RuleRef">RuleRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Lists the forwarding rules in the forwarding policy.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>redirect_url_config</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p><a href="#ListL7Policies__response_RedirectUrlConfig">RedirectUrlConfig</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the URL to which requests are forwarded.</p>
+<p>For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.</p>
+<p>For dedicated load balancers, this parameter will take effect only when advanced forwarding is enabled (<strong>enhance_l7policy_enable</strong> is set to <strong>true</strong>). If it is passed when <strong>enhance_l7policy_enable</strong> is set to <strong>false</strong>, an error will be returned.</p>
+<p>Format: <em>protocol://host:port/path?query</em></p>
+<p>At least one of the four parameters (<strong>protocol</strong>, <strong>host</strong>, <strong>port</strong>, and <strong>path</strong>) must be passed, or their values cannot be set to <strong>${xxx}</strong> at the same time. (<strong>${xxx}</strong> indicates that the value in the request will be inherited. For example, <strong>${host}</strong> indicates the host in the URL to be redirected.)</p>
+<p>The values of <strong>protocol</strong> and <strong>port</strong> cannot be the same as those of the associated listener, and either <strong>host</strong> or <strong>path</strong> must be passed or their values cannot be <strong>${xxx}</strong> at the same time.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>fixed_response_config</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p><a href="#ListL7Policies__response_FixtedResponseConfig">FixtedResponseConfig</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the configuration of the page that will be returned. This parameter will take effect when <strong>enhance_l7policy_enable</strong> is set to <strong>true</strong>. If this parameter is passed and <strong>enhance_l7policy_enable</strong> is set to <strong>false</strong>, an error will be returned. For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>priority</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the forwarding policy priority. This parameter is available only for dedicated load balancers and will take effect when <strong>enhance_l7policy_enable</strong> is set to <strong>true</strong>.</p>
+<p>A smaller value indicates a higher priority. The value must be unique for each forwarding policy of the same listener.</p>
+<p>If <strong>action</strong> is set to <strong>REDIRECT_TO_LISTENER</strong>, the value can only be <strong>0</strong>, indicating that <strong>REDIRECT_TO_LISTENER</strong> has the highest priority.</p>
+<ul><li><p>If <strong>enhance_l7policy_enable</strong> is set to <strong>false</strong>, forwarding policies are automatically prioritized based on the original sorting logic. Forwarding policy priorities are independent of each other regardless of domain names. If forwarding policies use the same domain name, their priorities follow the order of exact match (<strong>EQUAL_TO</strong>), prefix match (<strong>STARTS_WITH</strong>), and regular expression match (<strong>REGEX</strong>). If prefix match is used for matching, the longer the path, the higher the priority. If a forwarding policy contains only a domain name without a path specified, the path is <strong>/</strong>, and prefix match is used by default.</p>
+</li><li><p>If <strong>enhance_l7policy_enable</strong> is set to <strong>true</strong> and this parameter is not passed, the priority will set to a sum of 1 and the highest priority of existing forwarding policy in the same listener by default. There will be two cases: a) If the highest priority of existing forwarding policies is the maximum (10,000), the forwarding policy will fail to create because the final priority for creating the forwarding policy is the sum of 1 and 10,000, which exceeds the maximum. In this case, please specify a value or adjust the priorities of existing forwarding policies. b) If no forwarding policies exist, the highest priority of existing forwarding policies will set to 1 by default.</p>
+</li></ul>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>10000</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListL7Policies__response_RuleRef"></a><a name="response_RuleRef"></a><table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__response_RuleRef" frame="border" border="1" rules="all"><caption><b>Table 7 </b>RuleRef</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.6.2.4.1.3 "><p>Specifies the forwarding rule ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListL7Policies__response_RedirectUrlConfig"></a><a name="response_RedirectUrlConfig"></a><table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__response_RedirectUrlConfig" frame="border" border="1" rules="all"><caption><b>Table 8 </b>RedirectUrlConfig</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.7.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.7.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.7.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the protocol for redirection. The default value is <strong>${protocol}</strong>, indicating that the protocol of the request will be used.</p>
+<p>Value options:</p>
+<ul><li><p><strong>HTTP</strong></p>
+</li><li><p><strong>HTTPS</strong></p>
+</li><li><p><strong>${protocol}</strong></p>
+</li></ul>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>36</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>host</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the host name that requests are redirected to. The value can contain only letters, digits, hyphens (-), and periods (.) and must start with a letter or digit. The default value is <strong>${host}</strong>, indicating that the host of the request will be used.</p>
+<p>Default: <strong>${host}</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>128</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the port that requests are redirected to. The default value is <strong>${port}</strong>, indicating that the port of the request will be used.</p>
+<p>Default: <strong>${port}</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>16</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the path that requests are redirected to. The default value is <strong>${path}</strong>, indicating that the path of the request will be used. The value can contain only letters, digits, and special characters _-';@^- %#&amp;$.*+?,=!:|/()[]{} and must start with a slash (/).</p>
+<p>Default: <strong>${path}</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>128</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>query</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the query string set in the URL for redirection. The default value is <strong>${query}</strong>, indicating that the query string of the request will be used.</p>
+<p>For example, in the URL <strong>https://www.xxx.com:8080/elb?type=loadbalancer</strong>, <strong>${query}</strong> indicates <strong>type=loadbalancer</strong>. If this parameter is set to <strong>${query}&amp;name=my_name</strong>, the URL will be redirected to <strong>https://www.xxx.com:8080/elb?type=loadbalancer&amp;name=my_name</strong>.</p>
+<p>The value is case-sensitive and can contain only letters, digits, and special characters !$&amp;'()*+,-./:;=?@^_`</p>
+<p>Default: <strong>${query}</strong></p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>128</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p>status_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.7.2.4.1.3 "><p>Specifies the status code returned after the requests are redirected.</p>
+<p>Value options:</p>
+<ul><li><p><strong>301</strong></p>
+</li><li><p><strong>302</strong></p>
+</li><li><p><strong>303</strong></p>
+</li><li><p><strong>307</strong></p>
+</li><li><p><strong>308</strong></p>
+</li></ul>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>16</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ListL7Policies__response_FixtedResponseConfig"></a><a name="response_FixtedResponseConfig"></a><table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__response_FixtedResponseConfig" frame="border" border="1" rules="all"><caption><b>Table 9 </b>FixtedResponseConfig</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.8.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.8.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.8.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>status_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the HTTP status code configured in the forwarding policy. The value can be any integer in the range of 200–299, 400–499, or 500–599.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>16</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>content_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the format of the response body.</p>
+<p>Value options:</p>
+<ul><li><p><strong>text/plain</strong></p>
+</li><li><p><strong>text/css</strong></p>
+</li><li><p><strong>text/html</strong></p>
+</li><li><p><strong>application/javascript</strong></p>
+</li><li><p><strong>application/json</strong></p>
+</li></ul>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>32</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.1 "><p>message_body</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.8.2.4.1.3 "><p>Specifies the content of the response body.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>1024</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><pre class="screen">GET
+
+https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/l7policies?display_all_rules=true</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>Successful request.</p>
+<pre class="screen">{
+  "request_id" : "d3c67339-be91-4813-bb24-85728a5d326a",
+  "l7policies" : [ {
+    "redirect_pool_id" : "3b34340d-59e8-4c70-9ef5-b41b12023dc9",
+    "description" : "",
+    "admin_state_up" : true,
+    "rules" : [ {
+      "id" : "1e5f17df-feec-427e-a162-8e4e05e91085"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "listener_id" : "e2220d2a-3faf-44f3-8cd6-0c42952bd0ab",
+    "action" : "REDIRECT_TO_POOL",
+    "position" : 100,
+    "provisioning_status" : "ACTIVE",
+    "id" : "0d7bf316-2e03-411f-bf29-c403c04e52bf",
+    "name" : "elbv3"
+  }, {
+    "redirect_pool_id" : "3b34340d-59e8-4c70-9ef5-b41b12023dc9",
+    "description" : "",
+    "admin_state_up" : true,
+    "rules" : [ {
+      "id" : "0f5e8c34-09d1-4588-8459-f9b9add0be05"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "listener_id" : "e2220d2a-3faf-44f3-8cd6-0c42952bd0ab",
+    "action" : "REDIRECT_TO_POOL",
+    "position" : 100,
+    "provisioning_status" : "ERROR",
+    "id" : "2587d8b1-9e8d-459c-9081-7bccaa075d2b",
+    "name" : "elbv3"
+  } ],
+  "page_info" : {
+    "next_marker" : "2587d8b1-9e8d-459c-9081-7bccaa075d2b",
+    "previous_marker" : "0d7bf316-2e03-411f-bf29-c403c04e52bf",
+    "current_count" : 2
+  }
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ListL7Policies__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.8.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.8.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.8.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.8.2.1.3.1.2 "><p>Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p>See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000009.html">Forwarding Policy</a>
+
+
+

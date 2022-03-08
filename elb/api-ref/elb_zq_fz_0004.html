@@ -1,0 +1,498 @@
+<a name="elb_zq_fz_0004"></a><a name="elb_zq_fz_0004"></a>
+
+<h1 class="topictitle1">Querying the Status Tree of a Load Balancer</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0049139633_p22360170">This API is used to query the status tree of a load balancer. You can use this API to query details about the associated listeners, backend server groups, backend servers, health checks, forwarding policies, and forwarding rules, helping you understand the topology of resources associated with the load balancer.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0049139633_p17328224201312">GET /v2.0/lbaas/loadbalancers/{loadbalancer_id}/statuses</p>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table8859516183710" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row1189415166379"><th align="left" class="cellrowborder" valign="top" width="23.46765323467653%" id="mcps1.3.3.2.5.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p148945161379">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.348265173482652%" id="mcps1.3.3.2.5.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p12397022203011">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.328367163283673%" id="mcps1.3.3.2.5.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p16894816103712">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42.85571442855714%" id="mcps1.3.3.2.5.1.4"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p16894816113718">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row1089431611376"><td class="cellrowborder" valign="top" width="23.46765323467653%" headers="mcps1.3.3.2.5.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p989461633718">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.348265173482652%" headers="mcps1.3.3.2.5.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1889491623711">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.328367163283673%" headers="mcps1.3.3.2.5.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p108947162378">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.85571442855714%" headers="mcps1.3.3.2.5.1.4 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1789471633719">Specifies the load balancer ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 class="sectiontitle">Request</h4><p id="elb_zq_fz_0004__en-us_topic_0141008272_p5468572441">None</p>
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table55131118111415" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row45132185142"><th align="left" class="cellrowborder" valign="top" width="23.169999999999998%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p55136183141">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.61%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1351381841417">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.22%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1751351820147">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row1851431841417"><td class="cellrowborder" valign="top" width="23.169999999999998%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p951413181144">statuses</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.61%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p15758559163013">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.22%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p18514171861420">Specifies the status tree of a load balancer. For details, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table1112044734716">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table1112044734716"></a><a name="en-us_topic_0141008272_en-us_topic_0096561533_table1112044734716"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table1112044734716" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b82479219534">statuses</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row51584479473"><th align="left" class="cellrowborder" valign="top" width="30.303030303030305%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p615874718471">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.28282828282828%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1158134720471">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.41414141414141%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p61581247104718">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row2015874754710"><td class="cellrowborder" valign="top" width="30.303030303030305%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1015834710470">loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.28282828282828%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p159081065310">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.41414141414141%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p121589470473">Specifies the load balancer. For details, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table712410117487">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table712410117487"></a><a name="en-us_topic_0141008272_en-us_topic_0096561533_table712410117487"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_table712410117487" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_b19767174972320">loadbalancer</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row622413115489"><th align="left" class="cellrowborder" valign="top" width="34.69%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p182247110482">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.47%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p20224111114819">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.839999999999996%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p0225161116489">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row6225511164819"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p20225131117489">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p19954143318312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p2225511104811">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row122541154816"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p0225181154814">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p169305358314">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p182251711174818">Specifies the load balancer name.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p1986711136011">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row122251111104817"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p8225101115483">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1225131112487">Lists the listeners added to the load balancer. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_d0e1809">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row10225131110487"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_p1422591194819">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1153239191113">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p29157296305">Lists the backend server groups associated with the load balancer. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table99441432133413">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row1722512117481"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p727217358477">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p82761735124717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p7749242112820">This field is reserved.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p14944027589">It specifies the operating status of the load balancer. The value can be one of the following:</p>
+<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul15727914165819"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li1512655913285"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b293583154215">ONLINE</strong> (default): The load balancer is running normally.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li72371601145"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b195911813123418">DEGRADED</strong>: This status is displayed only when <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b226185923310">provisioning_status</strong> of a forwarding policy or forwarding rule added to a listener of the load balancer is set to <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b55248613349">ERROR</strong> and the API for querying the load balancer status tree is called.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li412319219613"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b6309733102819">DISABLED</strong>: This status is displayed only when <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b173221033162813">admin_state_up</strong> of the load balancer is set to <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b17322153317281">false</strong> and the API for querying the load balancer status tree is called.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561533_row1222671120487"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p930113351475">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p7305153534717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p16384122465016">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b31541961438">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p1264482345011">It specifies the provisioning status of the load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_d0e1809"></a><a name="en-us_topic_0141008272_d0e1809"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_d0e1809" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b19767174972320">listeners</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row20334451"><th align="left" class="cellrowborder" valign="top" width="22.772277227722775%" id="mcps1.3.5.5.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p36477860">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.801980198019802%" id="mcps1.3.5.5.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1916722">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.42574257425742%" id="mcps1.3.5.5.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p46651798">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row20699302"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p66030746">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p12616125515318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p43264248">Specifies the listener ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row53833912"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p65579600">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p10347360">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p44245620">Specifies the listener name.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row62666267"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p42802865">l7policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p44480011">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p8312132">Lists associated forwarding policies. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table129151528185512">Table 9</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row7700330"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p19747016">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p56004438">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p4958258">Lists the backend server groups associated with the listener. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table99441432133413">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row66074642"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p19591840114414">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p2963240164412">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1967491217583">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b10727349124314">ONLINE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p838067152">It specifies the operating status of the listener.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row62939823"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1197744013447">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1398120403443">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p862216528504">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1751818119416">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p17622195211506">It specifies the provisioning status of the listener.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_table99441432133413"></a><a name="en-us_topic_0141008272_table99441432133413"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_table99441432133413" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1507238337">pools</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row69508326348"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.5.6.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1995243214346">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p11955183293418">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.5.6.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p29591532173414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row6962193213342"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1196393233413">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p5755131993219">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p597213213348">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row16972163219349"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p5975173217344">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p209761032163418">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1097911327348">Specifies the name of the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row1698173210346"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p20724741">healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p982446">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p142523271642">Provides health check details of the backend server group. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table10522133654610">Table 7</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row49931032193418"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p19554439">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p20167161741116">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p4208190">Lists the members contained in the backend server group. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table1563417579480">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row42133393416"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p32941855144513">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p9297145517453">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1751216197585">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b174361710444">ONLINE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p245716449519">It specifies the operating status of the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row210733113412"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p2031113556456">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p33181355134517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p71581510516">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b207979225618">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p196326425118">It specifies the provisioning status of the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_table10522133654610"></a><a name="en-us_topic_0141008272_table10522133654610"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_table10522133654610" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b995539482">healthmonitor</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row155317365461"><th align="left" class="cellrowborder" valign="top" width="22.222222222222225%" id="mcps1.3.5.7.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p2053533644615">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.202020202020204%" id="mcps1.3.5.7.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p20538136204612">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.57575757575757%" id="mcps1.3.5.7.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1554113634618">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row20543113614464"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p3500861">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p195305643214">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p3139116">Specifies the health check ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row2055363654611"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p6714269">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p6984889">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p64233450">Specifies the health check name.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row556083620460"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p51307412">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p62259745">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.7.2.4.1.3 "><ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul711834416471"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li911824464712">Specifies the health check protocol.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li17118644194719">The value can be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b37719544155919">UDP_CONNECT</strong>, <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b3931576155919">TCP</strong>, or <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b842352706155831">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row1560063614465"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p166041636104612">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p16610143616463">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p460572195115">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b12948100872">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p187281920175119">It specifies the provisioning status of the health check.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_table1563417579480"></a><a name="en-us_topic_0141008272_table1563417579480"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_table1563417579480" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1547637955">members</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row2064116573481"><th align="left" class="cellrowborder" valign="top" width="22.448979591836732%" id="mcps1.3.5.8.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p964445794812">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.408163265306122%" id="mcps1.3.5.8.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p46450576480">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.14285714285714%" id="mcps1.3.5.8.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1664855774817">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row565215578482"><td class="cellrowborder" valign="top" width="22.448979591836732%" headers="mcps1.3.5.8.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p14993">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.5.8.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p348372016339">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.14285714285714%" headers="mcps1.3.5.8.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p37168116">Specifies the backend server ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row966215764815"><td class="cellrowborder" valign="top" width="22.448979591836732%" headers="mcps1.3.5.8.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p50684498">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.5.8.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p11803692">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.14285714285714%" headers="mcps1.3.5.8.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1125094518441">Specifies the private IP address of the backend server, for example, 192.168.3.11.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row146751572485"><td class="cellrowborder" valign="top" width="22.448979591836732%" headers="mcps1.3.5.8.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p66672336">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.5.8.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p31750097">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.14285714285714%" headers="mcps1.3.5.8.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p938311819816">Specifies the port used by the backend server. The port number ranges from 0 to 65535.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row969685754810"><td class="cellrowborder" valign="top" width="22.448979591836732%" headers="mcps1.3.5.8.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p6699165714811">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.5.8.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p270619570489">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.14285714285714%" headers="mcps1.3.5.8.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p18193915671">This parameter is reserved. It specifies the operating status of the backend server. The value can be one of the following:</p>
+<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul182681814182112"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li11268191418212"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b620714310495">ONLINE</strong>: The backend server is running normally.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li12681214132115"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b395038115917">NO_MONITOR</strong>: No health check is configured for the backend server group that the backend server belongs to.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li123261491604"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1914182745012">DISABLED</strong>: The backend server is not available. This status is displayed only when <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b185749477365">admin_state_up</strong> of the backend server, or the backend server group to which it belongs, or the associated load balancer is set to <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b21195545368">false</strong> and the API for querying the load balancer status tree is called.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li3268191412116"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1532961293713">OFFLINE</strong>: The cloud server used as the backend server is stopped or does not exist.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_fz_0004__en-us_topic_0141008272_p15852224222">When <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b2291115408">admin_state_up</strong> is set to <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b19303251608">false</strong> and <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b63043518016">operating_status</strong> is set to <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b930418514020">OFFLINE</strong> for a backend server, <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1830565309">DISABLED</strong> is returned for <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1530565807">operating_status</strong> of the backend server in the response of this API.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row872245794817"><td class="cellrowborder" valign="top" width="22.448979591836732%" headers="mcps1.3.5.8.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p20724457144816">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.5.8.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p9727115710489">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.14285714285714%" headers="mcps1.3.5.8.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1435993816518">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b9866738686">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p71904425120">It specifies the provisioning status of the backend server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_table129151528185512"></a><a name="en-us_topic_0141008272_table129151528185512"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_table129151528185512" frame="border" border="1" rules="all"><caption><b>Table 9 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1972275106">l7policies</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row11933172835514"><th align="left" class="cellrowborder" valign="top" width="21.782178217821784%" id="mcps1.3.5.9.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p5939102865518">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.792079207920793%" id="mcps1.3.5.9.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p794322835518">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.42574257425742%" id="mcps1.3.5.9.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p159461128155514">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row19509282550"><td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.5.9.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1935143363913">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.9.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p19407184714339">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.9.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p11481033123916">Specifies the forwarding policy ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row129595287556"><td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.5.9.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1664133312394">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.9.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p18701833123917">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.9.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p207819333393">Specifies the forwarding policy name.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row49761289556"><td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.5.9.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p888633113917">rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.9.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p159543303918">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.9.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p4104533143915">Lists the forwarding rules of the forwarding policy. For details of this parameter, see <a href="#elb_zq_fz_0004__en-us_topic_0141008272_table197162765814">Table 10</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row14996228175516"><td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.5.9.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p092371110147">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.9.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p59190112146">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.9.2.4.1.3 "><ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul284383855616"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li1284513818564">Specifies whether requests are forwarded to another backend server group or redirected to an HTTPS listener.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li13845163812566">The value can be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b33816586104655">REDIRECT_TO_POOL</strong> or <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b35913821104655">REDIRECT_TO_LISTENER</strong>.<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul49734537104721"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li7148141104736"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b43612444104736">REDIRECT_TO_POOL</strong>: Requests are forwarded to another backend server group.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li44957650104721"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b842352706103440">REDIRECT_TO_LISTENER</strong>: Requests are redirected to an HTTPS listener.</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row181542975510"><td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.5.9.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p7187291557">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.9.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p4202297559">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.42574257425742%" headers="mcps1.3.5.9.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p49801550155115">This parameter is reserved.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p1710518134108">It specifies the provisioning status of the forwarding policy. Value options:</p>
+<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul165501220141011"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li1955042051019"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1658194483716">ACTIVE</strong> (default): The forwarding policy is normal.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li13993194471018"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b14242111143810">ERROR</strong>: Another forwarding policy of the same listener has the same forwarding rule.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0004__en-us_topic_0141008272_table197162765814"></a><a name="en-us_topic_0141008272_table197162765814"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0004__en-us_topic_0141008272_table197162765814" frame="border" border="1" rules="all"><caption><b>Table 10 </b><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1175570762">rules</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row1972617735812"><th align="left" class="cellrowborder" valign="top" width="21.21212121212121%" id="mcps1.3.5.10.2.4.1.1"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1873111785814">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.21212121212121%" id="mcps1.3.5.10.2.4.1.2"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p57371476581">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.57575757575757%" id="mcps1.3.5.10.2.4.1.3"><p id="elb_zq_fz_0004__en-us_topic_0141008272_p37417719589">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0004__en-us_topic_0141008272_row27461674582"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1026672483412">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p024416556337">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.10.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p162661524153414">Specifies the forwarding rule ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row6760571587"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p17266122413414">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p1726616240348">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.10.2.4.1.3 "><ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul16514508013"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li20514405015">Specifies the match type of a forwarding rule.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li05155011019">The value can be <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b5705430310484">PATH</strong> or <strong id="elb_zq_fz_0004__en-us_topic_0141008272_b4372668510484">HOST_NAME</strong>.<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul878084010488"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li62338864104827"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b12331385104827">PATH</strong>: matches the path in the request.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li1191870010488"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b842352706103223">HOST_NAME</strong>: matches the domain name in the request.</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_fz_0004__en-us_topic_0141008272_row177958775820"><td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.1 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p107987720582">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.21212121212121%" headers="mcps1.3.5.10.2.4.1.2 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p118025719582">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.57575757575757%" headers="mcps1.3.5.10.2.4.1.3 "><p id="elb_zq_fz_0004__en-us_topic_0141008272_p3931141315213">This parameter is reserved.</p>
+<p id="elb_zq_fz_0004__en-us_topic_0141008272_p2627497522">It specifies the provisioning status of the forwarding rule. The value can be one of the following:</p>
+<ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul107031751131115"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li1029600131219"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b1891185931711">ACTIVE</strong> (default): The forwarding rule is normal.</li><li id="elb_zq_fz_0004__en-us_topic_0141008272_li12703151111110"><strong id="elb_zq_fz_0004__en-us_topic_0141008272_b657341016184">ERROR</strong>: Another forwarding policy of the same listener has the same forwarding rule.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul7905171541314"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li2905161591318">Example request<pre class="screen" id="elb_zq_fz_0004__en-us_topic_0141008272_screen13905171581319">GET https://{Endpoint}/v2.0/lbaas/loadbalancers/38278031-cfca-44be-81be-a412f618773b/statuses</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_fz_0004__en-us_topic_0141008272_ul912017211461"><li id="elb_zq_fz_0004__en-us_topic_0141008272_li15120112164610">Example response<pre class="screen" id="elb_zq_fz_0004__en-us_topic_0141008272_screen91191821134620">{
+    "statuses": {
+        "loadbalancer": {
+            "name": "lb-jy",
+            "provisioning_status": "ACTIVE",
+            "listeners": [
+                {
+                    "name": "listener-jy-1",
+                    "provisioning_status": "ACTIVE",
+                    "pools": [
+                        {
+                            "name": "pool-jy-1",
+                            "provisioning_status": "ACTIVE",
+                            "healthmonitor": {
+                                "type": "TCP",
+                                "id": "7422b51a-0ed2-4702-9429-4f88349276c6",
+                                "name": "",
+                                "provisioning_status": "ACTIVE"
+                            },
+                            "members": [
+                                {
+                                    "protocol_port": 80,
+                                    "address": "192.168.44.11",
+                                    "id": "7bbf7151-0dce-4087-b316-06c7fa17b894",
+                                    "operating_status": "ONLINE",
+                                    "provisioning_status": "ACTIVE"
+                                }
+                            ],
+                            "id": "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+                            "operating_status": "ONLINE"
+                        }
+                    ],
+                    "l7policies": [],
+                    "id": "eb84c5b4-9bc5-4bee-939d-3900fb05dc7b",
+                    "operating_status": "ONLINE"
+                }
+            ],
+            "pools": [
+                {
+                    "name": "pool-jy-1",
+                    "provisioning_status": "ACTIVE",
+                    "healthmonitor": {
+                        "type": "TCP",
+                        "id": "7422b51a-0ed2-4702-9429-4f88349276c6",
+                        "name": "",
+                        "provisioning_status": "ACTIVE"
+                    },
+                    "members": [
+                        {
+                            "protocol_port": 80,
+                            "address": "192.168.44.11",
+                            "id": "7bbf7151-0dce-4087-b316-06c7fa17b894",
+                            "operating_status": "ONLINE",
+                            "provisioning_status": "ACTIVE"
+                        }
+                    ],
+                    "id": "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+                    "operating_status": "ONLINE"
+                }
+            ],
+            "id": "38278031-cfca-44be-81be-a412f618773b",
+            "operating_status": "ONLINE"
+        }
+    }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_fz_0004__en-us_topic_0141008272_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_1102.html#elb_gc_1102">Status Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_fz_0000.html">Load Balancer</a>
+
+
+

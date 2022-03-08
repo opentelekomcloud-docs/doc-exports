@@ -1,0 +1,100 @@
+<a name="en_us_elb_03_0006"></a><a name="en_us_elb_03_0006"></a>
+
+<h1 class="topictitle1">Mutual Authentication</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="en_us_elb_03_0006__p9412144625410">In common HTTPS service scenarios, only the server certificate is required for authentication. For some mission-critical services, such as financial transactions, you need to deploy both the server certificate and the client certificate for mutual authentication.</p>
+<p id="en_us_elb_03_0006__p10709901709">This section uses self-signed certificates as an example to describe how to configure mutual authentication. Self-signed certificates do not provide all the security properties provided by certificates signed by a CA. It is recommended that you purchase certificates from other CAs.</p>
+
+<h4 class="sectiontitle">Creating a CA Certificate Using OpenSSL</h4><ol id="en_us_elb_03_0006__ol256112207105"><li id="en_us_elb_03_0006__li11561152011013">Log in to a Linux server with OpenSSL installed.</li><li id="en_us_elb_03_0006__li175618206108">Create the <strong id="en_us_elb_03_0006__b842352706164536">server</strong> directory and switch to the directory:<p id="en_us_elb_03_0006__p1614718278104"><strong id="en_us_elb_03_0006__b10774484312">mkdir ca</strong></p>
+<p id="en_us_elb_03_0006__p650582871013"><strong id="en_us_elb_03_0006__b977478736">cd ca</strong></p>
+</li><li id="en_us_elb_03_0006__li2561202014102">Create the certificate configuration file <strong id="en_us_elb_03_0006__b182092326411">ca_cert.conf</strong>. The file content is as follows:<pre class="screen" id="en_us_elb_03_0006__screen13774987319">[ req ]
+distinguished_name     = req_distinguished_name
+prompt                 = no
+ 
+[ req_distinguished_name ]
+ O                      = ELB</pre>
+</li><li id="en_us_elb_03_0006__li9561182017100">Create the CA certificate private key <strong id="en_us_elb_03_0006__b1541195017317">ca.key</strong>.<p id="en_us_elb_03_0006__p1777416812314"><strong id="en_us_elb_03_0006__b977412810314">openssl genrsa -out ca.key 2048</strong></p>
+<span class="figcap"><b>Figure 1 </b>Private key of the CA certificate</span><br><span><img id="en_us_elb_03_0006__image87743812312" src="en-us_image_0275826373.jpg"></span>
+</li><li id="en_us_elb_03_0006__li256112013109">Create the certificate signing request (CSR) file <strong id="en_us_elb_03_0006__b35364151486">ca.csr</strong> for the CA certificate.<p id="en_us_elb_03_0006__p16538778404"><strong id="en_us_elb_03_0006__b577411819312">openssl req -out ca.csr -key ca.key -new -config ./ca_cert.conf</strong></p>
+</li><li id="en_us_elb_03_0006__li1561112014101">Create the self-signed CA certificate <strong id="en_us_elb_03_0006__b818833961119">ca.crt</strong>.<p id="en_us_elb_03_0006__p57741381031"><strong id="en_us_elb_03_0006__b1777418818313">openssl x509 -req -in ca.csr -out ca.crt -sha1 -days 5000 -signkey ca.key</strong></p>
+<span class="figcap"><b>Figure 2 </b>Creating a self-signed CA certificate</span><br><span><img id="en_us_elb_03_0006__image6775781831" src="en-us_image_0275826374.jpg"></span>
+</li></ol>
+
+<a name="en_us_elb_03_0006__section780514219136"></a><a name="section780514219136"></a><h4 class="sectiontitle">Issuing a Server Certificate Using the CA Certificate</h4><p id="en_us_elb_03_0006__p2097934513817">The server certificate can be a CA signed certificate or a self-signed one. In the following steps, a self-signed certificate is used as an example to describe how to create a server certificate.</p>
+<ol id="en_us_elb_03_0006__ol873591417129"><li id="en_us_elb_03_0006__li1173591412124">Log in to the server where the CA certificate is generated.</li><li id="en_us_elb_03_0006__li18735141421210">Create a directory at the same level as the directory of the CA certificate and switch to the directory.<p id="en_us_elb_03_0006__p1035051717127"><a name="en_us_elb_03_0006__li18735141421210"></a><a name="li18735141421210"></a><strong id="en_us_elb_03_0006__b14979164514382">mkdir server</strong></p>
+<p id="en_us_elb_03_0006__p11999111710121"><strong id="en_us_elb_03_0006__b11979134520384">cd server</strong></p>
+</li><li id="en_us_elb_03_0006__li17735914181219">Create the certificate configuration file <strong id="en_us_elb_03_0006__b17806057426">server_cert.conf</strong>. The file content is as follows:<pre class="screen" id="en_us_elb_03_0006__screen2080827164111">[ req ]
+distinguished_name     = req_distinguished_name
+prompt                 = no
+ 
+[ req_distinguished_name ]
+ O                      = ELB
+ CN                     = www.test.com</pre>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p1203193419130">Set the <strong id="en_us_elb_03_0006__b14518132964219">CN</strong> field to the domain name or IP address of the Linux server.</p>
+
+</li><li id="en_us_elb_03_0006__li14735181412123">Create the server certificate private key <strong id="en_us_elb_03_0006__b717813356225">server.key</strong>.<p id="en_us_elb_03_0006__p1279052111312"><strong id="en_us_elb_03_0006__b18993145612414">openssl genrsa -out server.key 2048</strong></p>
+</li><li id="en_us_elb_03_0006__li1873541481214">Create the CSR file <strong id="en_us_elb_03_0006__b16461184610224">server.csr</strong> for the server certificate.<p id="en_us_elb_03_0006__p4878514191417"><strong id="en_us_elb_03_0006__b1371871411425">openssl req -out server.csr -key server.key -new -config ./server_cert.conf</strong></p>
+</li><li id="en_us_elb_03_0006__li5735151411214">Use the CA certificate to issue the server certificate <strong id="en_us_elb_03_0006__b1962235762212">server.crt</strong>.<p id="en_us_elb_03_0006__p14952125141512"><strong id="en_us_elb_03_0006__b1951185741418">openssl x509 -req -in server.csr -out server.crt -sha1 -CAcreateserial -days 5000</strong> <strong id="en_us_elb_03_0006__b27358196159">-CA ../ca/ca.crt -CAkey ../ca/ca.key</strong></p>
+<span class="figcap"><b>Figure 3 </b>Issuing a server certificate</span><br><span><img id="en_us_elb_03_0006__image47341819181514" src="en-us_image_0275816100.jpg"></span>
+</li></ol>
+
+<h4 class="sectiontitle">Issuing a Client Certificate Using the CA Certificate</h4><ol id="en_us_elb_03_0006__ol1570144118238"><li id="en_us_elb_03_0006__li1757024132310">Log in to the server where the CA certificate is generated.</li><li id="en_us_elb_03_0006__li257014419231">Create a directory at the same level as the directory of the CA certificate and switch to the directory.<p id="en_us_elb_03_0006__p175310513233"><a name="en_us_elb_03_0006__li257014419231"></a><a name="li257014419231"></a><strong id="en_us_elb_03_0006__b16974133112314">mkdir client</strong></p>
+<p id="en_us_elb_03_0006__p1410755319234"><strong id="en_us_elb_03_0006__b09741931122314">cd client</strong></p>
+</li><li id="en_us_elb_03_0006__li25701141152313">Create the certificate configuration file <strong id="en_us_elb_03_0006__b106927312545">client_cert.conf</strong>. The file content is as follows:<pre class="screen" id="en_us_elb_03_0006__screen09163314224">[ req ]
+distinguished_name     = req_distinguished_name
+prompt                 = no
+ 
+[ req_distinguished_name ]
+ O                      = ELB
+ CN                     = www.test.com</pre>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p151521133260">Set the <strong id="en_us_elb_03_0006__b51286152548">CN</strong> field to the domain name or IP address of the Linux server.</p>
+
+</li><li id="en_us_elb_03_0006__li1757016414232">Create the client certificate private key <strong id="en_us_elb_03_0006__b1962310464257">client.key</strong>.<p id="en_us_elb_03_0006__p12132161753119"><strong id="en_us_elb_03_0006__b11429412143114">openssl genrsa -out client.key 2048</strong></p>
+<span class="figcap"><b>Figure 4 </b>Creating a client certificate private key</span><br><span><img id="en_us_elb_03_0006__image19428171216315" src="en-us_image_0275818423.jpg"></span>
+</li><li id="en_us_elb_03_0006__li135701541122313">Create the CSR file <strong id="en_us_elb_03_0006__b8162162417291">client.csr</strong> for the client certificate.<p id="en_us_elb_03_0006__p194044843217"><strong id="en_us_elb_03_0006__b1669265810317">openssl req -out client.csr -key client.key -new -config ./client_cert.conf</strong></p>
+<span class="figcap"><b>Figure 5 </b>Creating a client certificate CSR file</span><br><span><img id="en_us_elb_03_0006__image869025815315" src="en-us_image_0275818458.jpg"></span>
+</li><li id="en_us_elb_03_0006__li135700412237">Use the CA certificate to issue the client certificate <strong id="en_us_elb_03_0006__b1125625242911">client.crt</strong>.<p id="en_us_elb_03_0006__p470210208331"><strong id="en_us_elb_03_0006__b3287455113020">openssl x509 -req -in client.csr -out client.crt -sha1 -CAcreateserial -days 5000</strong> <strong id="en_us_elb_03_0006__b13821181618337">-CA ../ca/ca.crt -CAkey ../ca/ca.key</strong></p>
+<span class="figcap"><b>Figure 6 </b>Issuing a client certificate</span><br><span><img id="en_us_elb_03_0006__image3819181623315" src="en-us_image_0275818808.jpg"></span>
+</li><li id="en_us_elb_03_0006__li2057074113232">Convert the client certificate to a <strong id="en_us_elb_03_0006__b10477174733019">.p12</strong> file that can be identified by the browser.<p id="en_us_elb_03_0006__p199533182210"><strong id="en_us_elb_03_0006__b1391333192219">openssl pkcs12 -export -clcerts -in client.crt -inkey client.key -out client.p12</strong></p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p3620124932418">A password is required during command execution. Save this password, which will be required when you import the certificate using the browser.</p>
+
+</li></ol>
+
+<h4 class="sectiontitle">Configuring the Server Certificate and Private Key</h4><ol id="en_us_elb_03_0006__ol124142026183619"><li id="en_us_elb_03_0006__li19414126113617">Log in to the management console.</li><li id="en_us_elb_03_0006__li155881882413">In the navigation pane on the left, choose <strong id="en_us_elb_03_0006__b20254194231816">Certificates</strong>.</li><li id="en_us_elb_03_0006__li7414526143620">In the navigation pane on the left, choose <strong id="en_us_elb_03_0006__b5967205317387">Certificates</strong>. On the displayed page, click <strong id="en_us_elb_03_0006__b18978853173818">Create Certificate</strong>. In the <strong id="en_us_elb_03_0006__b9978195312388">Create Certificate</strong> dialog box, select <strong id="en_us_elb_03_0006__b13979853113811">Server certificate</strong>, copy the content of server certificate <strong id="en_us_elb_03_0006__b1997915316386">server.crt</strong> to the <strong id="en_us_elb_03_0006__b16980953173817">Certificate Content</strong> area and the content of private key file <strong id="en_us_elb_03_0006__b1298145323815">server.key</strong> to the <strong id="en_us_elb_03_0006__b0981135311388">Private Key</strong> area, and click <strong id="en_us_elb_03_0006__b15982165363811">OK</strong>.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p1980202016294">Delete the last newline character before you copy the content.</p>
+
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p71231230173711">The certificate and private key must be PEM-encoded.</p>
+
+</li></ol>
+
+<h4 class="sectiontitle">Configuring the CA Certificate</h4><ol id="en_us_elb_03_0006__ol1049512327503"><li id="en_us_elb_03_0006__li01943915504"><span>Log in to the management console.</span></li><li id="en_us_elb_03_0006__li109811812103018"><span>In the navigation pane on the left, choose <strong id="en_us_elb_03_0006__b1896442851917">Certificates</strong>.</span></li><li id="en_us_elb_03_0006__li485613512307"><span>Click <strong id="en_us_elb_03_0006__b121326513172">Create Certificate</strong>. In the <strong id="en_us_elb_03_0006__b10132355174">Create Certificate</strong> dialog box, select <strong id="en_us_elb_03_0006__b1413365191717">CA certificate</strong>, copy the content of CA certificate <strong id="en_us_elb_03_0006__b10134115161711">ca.crt</strong> created in <a href="#en_us_elb_03_0006__section780514219136">Issuing a Server Certificate Using the CA Certificate</a> to the <strong id="en_us_elb_03_0006__b181359511715">Certificate Content</strong> area, and click <strong id="en_us_elb_03_0006__b1713565171713">OK</strong>.</span><p><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__en_us_elb_03_0006_p1980202016294">Delete the last newline character before you copy the content.</p>
+
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en_us_elb_03_0006__p13182195081719">The certificate must be PEM-encoded.</p>
+
+</p></li></ol>
+
+<h4 class="sectiontitle">Configuring Mutual Authentication</h4><ol id="en_us_elb_03_0006__ol5467145416381"><li id="en_us_elb_03_0006__li946812541389">Log in to the management console.</li><li id="en_us_elb_03_0006__li154681540386">Locate the load balancer and click its name. Under <strong id="en_us_elb_03_0006__b162254952418531">Listeners</strong>, click <strong id="en_us_elb_03_0006__b842352706173532">Add Listener</strong>. Select <strong id="en_us_elb_03_0006__b842352706173544">HTTPS</strong> for <strong id="en_us_elb_03_0006__b842352706173547">Frontend Protocol</strong>, enable <strong id="en_us_elb_03_0006__b139146564105119">Mutual Authentication</strong>, and select the certificate and CA certificate.<span class="figcap"><b>Figure 7 </b>Add Listener</span><br><span><img id="en_us_elb_03_0006__image61351327105810" src="en-us_image_0000001125463277.png"></span>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><ol type="a" id="en_us_elb_03_0006__ol114686548389"><li id="en_us_elb_03_0006__li54681854113812">Only <span id="en_us_elb_03_0006__ph1645535710329">shared</span> load balancer listeners support mutual authentication.</li></ol>
+
+</li></ol>
+<p id="en_us_elb_03_0006__p64293572183"><strong id="en_us_elb_03_0006__b5492042416954">Add backend servers</strong>.</p>
+<p id="en_us_elb_03_0006__p270614143194">For detailed operations, see <a href="en-us_topic_0052569729.html#en-us_topic_0052569729__section388715404610">Adding Backend Servers</a>.</p>
+
+<h4 class="sectiontitle">Importing and Testing the Client Certificate</h4><p id="en_us_elb_03_0006__p11963344172216"><strong id="en_us_elb_03_0006__b19163151510556">Method 1: Using a browser</strong></p>
+<ol id="en_us_elb_03_0006__ol817681310118"><li id="en_us_elb_03_0006__li2176213171110">Import the client certificate using a browser (Internet Explorer 11 is used as an example).<ol type="a" id="en_us_elb_03_0006__ol15175173321116"><li id="en_us_elb_03_0006__li2175153351115">Export <strong id="en_us_elb_03_0006__b365511561720">client.p12</strong> from the Linux server.</li><li id="en_us_elb_03_0006__li8175733161111">Open the browser, choose <strong id="en_us_elb_03_0006__b79018551366">Settings </strong>&gt; <strong id="en_us_elb_03_0006__b1190285523614">Internet Options</strong> and click <strong id="en_us_elb_03_0006__b18903125517361">Content</strong>.</li><li id="en_us_elb_03_0006__li1217563318119">Click <strong id="en_us_elb_03_0006__b0942651193315">Certificates</strong> and then <strong id="en_us_elb_03_0006__b7734155883319">Import</strong> to import the <strong id="en_us_elb_03_0006__b0871835344">client.p12</strong> certificate.<span class="figcap"><b>Figure 8 </b>Importing the <strong id="en_us_elb_03_0006__b203125114173">client.p12</strong> certificate</span><br><span><img id="en_us_elb_03_0006__image717573318118" src="en-us_image_0280246566.png"></span>
+</li></ol>
+</li><li id="en_us_elb_03_0006__li15175153391113">Verify the import.<a name="en_us_elb_03_0006__li15175153391113"></a><a name="li15175153391113"></a>Enter the access address in the address box of your browser. A window is displayed asking you to select the certificate. Select the client certificate and click <strong id="en_us_elb_03_0006__b842352706161823">OK</strong>. If the website can be accessed, the certificate is successfully imported.<span class="figcap"><b>Figure 9 </b>Accessing the website</span><br><span><img id="en_us_elb_03_0006__image54991910148" src="en-us_image_0280246602.png"></span>
+
+</li></ol>
+<p id="en_us_elb_03_0006__p119112452310"><strong id="en_us_elb_03_0006__b1973755125517">Method 2: Using cURL</strong></p>
+<ol id="en_us_elb_03_0006__ol2706155013117"><li id="en_us_elb_03_0006__li15706185061119">Import the client certificate.<p id="en_us_elb_03_0006__p667716161219"><a name="en_us_elb_03_0006__li15706185061119"></a><a name="li15706185061119"></a>Copy client certificate <strong id="en_us_elb_03_0006__b613363614555">client.crt</strong> and private key <strong id="en_us_elb_03_0006__b874874325516">client.key</strong> to a new directory, for example, <strong id="en_us_elb_03_0006__b193285445511">/home/client_cert</strong>.</p>
+</li><li id="en_us_elb_03_0006__li99155151112">Verify the import.<a name="en_us_elb_03_0006__li99155151112"></a><a name="li99155151112"></a>On the Shell screen, run the following command:<pre class="screen" id="en_us_elb_03_0006__screen122635237521"><strong id="en_us_elb_03_0006__b3554195514528">curl -k --cert /home/client_cert/client.crt --key /home/client_cert/client.key https://XXX.XXX.XXX.XXX:XXX/ -I</strong></pre>
+
+<p id="en_us_elb_03_0006__p216013813417">Ensure that the certificate address, private key address, IP address and listening port of the load balancer are correct. Replace <strong id="en_us_elb_03_0006__b3735204105913">https://XXX.XXX.XXX.XXX:XXX</strong> with the actual IP address and port number. If the expected response code is returned, the certificate is successfully imported.</p>
+<span class="figcap"><b>Figure 10 </b>Example of a correct response code</span><br><span><img id="en_us_elb_03_0006__image595074472413" src="en-us_image_0280169359.png"></span>
+</li></ol>
+
+
+
+
+
+
+

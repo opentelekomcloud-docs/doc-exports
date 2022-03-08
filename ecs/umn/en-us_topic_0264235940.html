@@ -1,0 +1,25 @@
+<a name="EN-US_TOPIC_0264235940"></a><a name="EN-US_TOPIC_0264235940"></a>
+
+<h1 class="topictitle1">How Can I Obtain the Permission to Remotely Log In to a Windows <span id="text2795481199">ECS</span>?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_section109471547124311"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_p8684162610415">When you connect a remote desktop to a Windows ECS, the system prompts that you need to be granted the right to sign in through Remote Desktop Services.</p>
+<div class="fignone" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_fig4498153973513"><span class="figcap"><b>Figure 1 </b>Remote login right missing.</span><br><span><img id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_image14499183916350" src="en-us_image_0288997257.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_section3956122665"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_ol76784228258"><li id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_li168881270360">Open the <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b7816883713">cmd</strong> window and enter <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b13822181079">gpedit.msc</strong>.</li><li id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_li1296751133712">Click <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b1024511116713">OK</strong> to start Local Group Policy Editor.</li><li id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_li15696342103116">Choose <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b178951218719">Computer Configuration</strong> &gt; <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b104351424379">Windows Settings</strong> &gt; <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b1638410271471">Security Settings</strong> &gt; <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b15391256871">Local Policies</strong> &gt; <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b665312599711">User Rights Assignment</strong>.<ol type="a" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_ol1215917488312"><li id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_li1360819716361">Locate and double-click <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b49003331595">Allow log on through Remote Desktop Services</strong>. Ensure that <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b10491250592">Administrators</strong> and <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b839418616101">Remote Desktop Users</strong> have been added.<div class="fignone" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_fig597875822711"><span class="figcap"><b>Figure 2 </b>Allow log on through Remote Desktop Services properties</span><br><span><img id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_image20978115832718" src="en-us_image_0288997258.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_li45490488263">Locate and double-click <strong id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_b198635211411">Deny log on through Remote Desktop Services</strong>. If the administrator account exists, delete it.<div class="fignone" id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_fig1693533120329"><span class="figcap"><b>Figure 3 </b>Deny log on through Remote Desktop Services properties</span><br><span><img id="EN-US_TOPIC_0264235940__en-us_topic_0250966366_image1393620312327" src="en-us_image_0288997259.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

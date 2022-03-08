@@ -1,0 +1,129 @@
+<a name="elb_zq_bq_0007"></a><a name="elb_zq_bq_0007"></a>
+
+<h1 class="topictitle1">Adding a Tag to a Listener</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_bq_0007__en-us_topic_0112614719_p17478947144720">This API is used to add a tag to a specific listener.</p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_zq_bq_0007__en-us_topic_0112614719_en-us_topic_0109852830_p1082815344418">You can also use this API for dedicated load balancers.</p>
+
+
+<h4 class="sectiontitle">Constraints</h4><ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul748094724712"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li2096681091119">A maximum of 20 tags can be added to a listener.</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li496641018118">Note the following when you add tags:<ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul1587111810110"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li448010474479">If there are duplicate keys in the request body, an error is reported.</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li134801947154716">If there are no duplicate keys in the request body but the key in the request body exists in the database, the key in the database is overwritten.</li></ul>
+</li></ul>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_bq_0007__en-us_topic_0112614719_p59131243122815">POST /v2.0/{project_id}/listeners/{listener_id}/tags</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0007__en-us_topic_0112614719_table33323423" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row8420641"><th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.3.3.2.5.1.1"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p10983320">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.3.3.2.5.1.2"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p17233719"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b842352706192244">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.3.3.2.5.1.3"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p4164548117122"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b842352706145623">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59%" id="mcps1.3.3.3.2.5.1.4"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p53754023">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row53906008171138"><td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p16126074171144">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p31143627171144">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p39605860171144">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p11184131">Specifies the ID of the project where the tag is used.</p>
+<p id="elb_zq_bq_0007__en-us_topic_0112614719_p8222164914610"></p>
+</td>
+</tr>
+<tr id="elb_zq_bq_0007__en-us_topic_0112614719_row6239103417284"><td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p17239163472818">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p17239173410285">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p112396344281">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p8239434172817">Specifies the ID of the listener to which a tag is to be added.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0007__en-us_topic_0112614719_table1637474717470" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row8480194774711"><th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p9480747174718">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1448004754711"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b876626836">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1948084784713"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b502566129">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p948064744719">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row124806476479"><td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p84801447114717">tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p18480104774713">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p0480144712473">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p6480204710477">Specifies the tag. For details, see <a href="#elb_zq_bq_0007__en-us_topic_0112614719_table1537216133220">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_bq_0007__en-us_topic_0112614719_table1537216133220"></a><a name="en-us_topic_0112614719_table1537216133220"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0007__en-us_topic_0112614719_table1537216133220" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b84235270695528">tag</strong> parameter description</caption><thead align="left"><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row437215623217"><th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p11372106133217">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p17372665322"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b421604635">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p537256173218"><strong id="elb_zq_bq_0007__en-us_topic_0112614719_b914741475">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1137213613211">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0007__en-us_topic_0112614719_row73726673216"><td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p15372767320">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p837212614328">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p7372364324">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1651040121818">Specifies the tag key.</p>
+<ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul5708182422218"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li19708182418226">Cannot be left blank.</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li8708122417228">Can contain a maximum of 36 characters.</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li2070822414225">Can contain only the following character types:<ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul18708824152211"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li470882422219">Uppercase letters</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li170872412229">Lowercase letters</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li1370811246224">Digits</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li157081024172213">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li11709112414226">The tag key of a listener must be unique.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_bq_0007__en-us_topic_0112614719_row153729614327"><td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p337215615329">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p63728615321">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p8372196173210">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1416194371820">Specifies the tag value.</p>
+<ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul17709124142210"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li1970982415225">Can contain a maximum of 43 characters.</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li270910242224">Can contain only the following character types:<ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul670952492214"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li7709524182210">Uppercase letters</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li2070962413226">Lowercase letters</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li15709122402215">Digits</li><li id="elb_zq_bq_0007__en-us_topic_0112614719_li187097243229">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4><p id="elb_zq_bq_0007__en-us_topic_0112614719_p1192442163215">None</p>
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul1448124714474"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li171726263308">Example request<pre class="screen" id="elb_zq_bq_0007__en-us_topic_0112614719_screen5681858017133">POST https://{Endpoint}/v2.0/6a0de1c3-7d74-4f4a-b75e-e57135bd2b97/listeners/7add33ad-11dc-4ab9-a50f-419703f13163/tags
+
+{
+    "tag": {
+        "key": "key1", 
+        "value": "value1"
+    }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_bq_0007__en-us_topic_0112614719_ul1529152320274"><li id="elb_zq_bq_0007__en-us_topic_0112614719_li195291231273">Example response<p id="elb_zq_bq_0007__en-us_topic_0112614719_p12529122382716"><a name="elb_zq_bq_0007__en-us_topic_0112614719_li195291231273"></a><a name="en-us_topic_0112614719_li195291231273"></a>None</p>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_bq_0007__en-us_topic_0112614719_p12481147154715">For details, see <a href="elb_zq_bq_0013.html#elb_zq_bq_0013">Status Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_bq_0000.html">Tag</a>
+
+
+

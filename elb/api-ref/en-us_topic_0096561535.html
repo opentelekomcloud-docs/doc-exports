@@ -1,0 +1,570 @@
+<a name="en-us_topic_0096561535"></a><a name="en-us_topic_0096561535"></a>
+
+<h1 class="topictitle1">Creating a Load Balancer</h1>
+<h4 class="sectiontitle">Function</h4><p class="msonormal" id="en-us_topic_0096561535__en-us_topic_0141008273_p16332161">This API is used to create a private network load balancer. After the load balancer is created, its details, such as load balancer ID, IP address, and subnet ID, are returned.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p14192555185511">To create a public network load balancer, you also need to call the API for assigning an EIP and associate this IP address to the port bound to the IP address of the private network load balancer.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0049139634_p1236718127185">POST /v2.0/lbaas/loadbalancers</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table55596238165" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Request parameters</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row1356016236168"><th align="left" class="cellrowborder" valign="top" width="19.388061193880613%" id="mcps1.3.3.2.2.5.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p185600235163">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.42785721427857%" id="mcps1.3.3.2.2.5.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p146831131814">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.328367163283673%" id="mcps1.3.3.2.2.5.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1756052313165">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42.85571442855714%" id="mcps1.3.3.2.2.5.1.4"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1856019234166">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row155611323101620"><td class="cellrowborder" valign="top" width="19.388061193880613%" headers="mcps1.3.3.2.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1556182321620">loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.42785721427857%" headers="mcps1.3.3.2.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p52614174114">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.328367163283673%" headers="mcps1.3.3.2.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p656218233167">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.85571442855714%" headers="mcps1.3.3.2.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p17562023141619">Specifies the load balancer. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1673416344910">Table 2</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1673416344910"></a><a name="en-us_topic_0141008273_en-us_topic_0096561535_table1673416344910"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1673416344910" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="en-us_topic_0096561535__b7362175217387">loadbalancer</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row49121038493"><th align="left" class="cellrowborder" valign="top" width="22.36%" id="mcps1.3.3.3.2.5.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p7913332497">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.74%" id="mcps1.3.3.3.2.5.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p191314384918">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.3%" id="mcps1.3.3.3.2.5.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p99131033494">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50.6%" id="mcps1.3.3.3.2.5.1.4"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p159131317492">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row159131033490"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p69131434493">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1091317364912">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p119131138496">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p12913113114915">Specifies the load balancer name.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p17232144005213">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row8913335494"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p189132374911">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1291310313496">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p12913113104913">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p179136317491">Provides supplementary information about the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p1090416424528">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row991310311495"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p20913630492">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p119131831490">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p491323104910">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p8222164914610">Specifies the ID of the project where the load balancer is used. </p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p5446154655214">The value contains a maximum of 255 characters.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p145223511764">The value must be the same as the value of <strong id="en-us_topic_0096561535__b167771034173918">project_id</strong> in the token.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row119132334911"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p13913193114915">vip_subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p891303184910">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p791363114916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p153041351121318">Specifies the ID of the subnet where the load balancer works. You can obtain the value by calling the API for querying subnets {VPC endpoint}/v2.0/subnets} using the GET method.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p1898095613614">The private IP address of the load balancer is in this subnet.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p137488581464">Only IPv4 subnets are supported. IPv6 subnets are not supported.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row191493134915"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p291463114917">provider</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p89543183618">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p209149319494">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p533933310712">Specifies the provider of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p152810351271">The value can only be <strong id="en-us_topic_0096561535__b17184123916508">vlb</strong>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row149144312495"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1091411394915">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p2091423174912">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p139147311492">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p076173714711">Specifies the private IP address of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p1386043115916">This IP address must be the one in the subnet specified by <strong id="en-us_topic_0096561535__b20257174412506">vip_subnet_id</strong>. If this parameter is not specified, an IP address is automatically assigned to the load balancer from the subnet specified by <strong id="en-us_topic_0096561535__b4466124655010">vip_subnet_id</strong>.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p1829311695315">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row159141239494"><td class="cellrowborder" valign="top" width="22.36%" headers="mcps1.3.3.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p89147319494">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.74%" headers="mcps1.3.3.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p6295202120618">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3%" headers="mcps1.3.3.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p2091483104914">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.6%" headers="mcps1.3.3.3.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p10692193313917">Specifies the administrative status of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p18576435690">This parameter is reserved. The default value is <strong id="en-us_topic_0096561535__b616917104112">true</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table10636133131611" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row6637113381614"><th align="left" class="cellrowborder" valign="top" width="23.169999999999998%" id="mcps1.3.4.2.2.4.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p763763315165">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.61%" id="mcps1.3.4.2.2.4.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p363733310161">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.22%" id="mcps1.3.4.2.2.4.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p1637733201614">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_row26373338166"><td class="cellrowborder" valign="top" width="23.169999999999998%" headers="mcps1.3.4.2.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p166371933191614">loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.61%" headers="mcps1.3.4.2.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p563833361611">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.22%" headers="mcps1.3.4.2.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_p3638153321619">Specifies the load balancer. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1857116262516">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1857116262516"></a><a name="en-us_topic_0141008273_en-us_topic_0096561535_table1857116262516"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_table1857116262516" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="en-us_topic_0096561535__en-us_topic_0141008273_b3423171181412">loadbalancer</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row6659133533816"><th align="left" class="cellrowborder" valign="top" width="34.69%" id="mcps1.3.4.3.2.4.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p96591835173819">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.47%" id="mcps1.3.4.3.2.4.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p17660123513386">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.839999999999996%" id="mcps1.3.4.3.2.4.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p4660183515387">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row156601235133818"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p10415829113311">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p155784252919">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1941513297339">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_row1758616126181"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p20415229113312">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p741592933318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1341519295331">Specifies the ID of the project where the load balancer is used.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p77281547155311">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row76601535193815"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1041552912332">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p241692918331">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p17416152919332">Specifies the load balancer name.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p076212535532">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row66605355385"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p4416102918335">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p24161129143314">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p5416142912334">Provides supplementary information about the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p157105551532">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row1166020352385"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1541618299335">vip_subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p135272044182910">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p4335125124117">Specifies the ID of the subnet where the load balancer works.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row36601435103818"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1041622923320">vip_port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p19102164614291">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p173334177415">Specifies the ID of the port bound to the private IP address of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p546634185018">When you create a load balancer, the system automatically creates a port and associates it with a security group. However, the security group will not take effect.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row1866173519389"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p174164295334">provider</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p541611290339">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p43391417194120">Specifies the provider of the load balancer.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row6661203510387"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1416829143318">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p341672912338">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p64178297334">Specifies the private IP address of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p832917316544">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row16611235163814"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1841715293336">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p10662124818106">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p7417112963311">Lists the IDs of listeners added to the load balancer. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_table107875111574">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row8661143513384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1441712910330">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p563318509102">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p104171229123313">Lists the IDs of backend server groups associated with the load balancer. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_table1566642411246">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row566114352387"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p727217358477">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p82761735124717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p12690134332417">This parameter is reserved, and its value can only be <strong id="en-us_topic_0096561535__en-us_topic_0141008273_b728184255211">ONLINE</strong>.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p101191827104613">It specifies the operating status of the load balancer.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row2661123514384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p930113351475">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p7305153534717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p17231942123313">This parameter is reserved, and its value can only be <strong id="en-us_topic_0096561535__en-us_topic_0141008273_b983018343308">ACTIVE</strong>.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p8222112819472">It specifies the provisioning status of the load balancer.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row16662935103816"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p114181329133314">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p10418172913319">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p14847443611">Specifies the administrative status of the load balancer.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_p1794055920316">This parameter is reserved. The value can be <strong id="en-us_topic_0096561535__en-us_topic_0141008273_b165949352520">true</strong> or <strong id="en-us_topic_0096561535__en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul118694033910"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1786915015393"><strong id="en-us_topic_0096561535__en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1031815323916"><strong id="en-us_topic_0096561535__en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row866215358384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p74181229133310">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p71551954161018">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p4418112919333">Lists load balancer tags.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row13900164817511"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p18781627124910">created_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p18781627204916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p578162719490">Specifies the time when the load balancer was created.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p3462240292">The UTC time is in <em id="en-us_topic_0096561535__en-us_topic_0141008273_i17481376157">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p415795413546">The value contains a maximum of 19 characters.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row4521952195114"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1541843114495">updated_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1810172112506">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p341843144919">Specifies the time when the load balancer was updated.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p52901417154816">The UTC time is in <em id="en-us_topic_0096561535__en-us_topic_0141008273_i9616154111514">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+<p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008271_p3844185817544">The value contains a maximum of 19 characters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_table107875111574"></a><a name="en-us_topic_0141008273_table107875111574"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_table107875111574" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="en-us_topic_0096561535__en-us_topic_0141008273_b157671844121518">listeners</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row984216165711"><th align="left" class="cellrowborder" valign="top" width="23.332333233323332%" id="mcps1.3.4.4.2.4.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p484219135719">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.99179917991799%" id="mcps1.3.4.4.2.4.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p98422014571">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.67586758675868%" id="mcps1.3.4.4.2.4.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p10842215572">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row1984213175716"><td class="cellrowborder" valign="top" width="23.332333233323332%" headers="mcps1.3.4.4.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_a550100555602476a968f5ccd2a21bd30">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.99179917991799%" headers="mcps1.3.4.4.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_ad5656706454749a2a1229da31098a77c">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.67586758675868%" headers="mcps1.3.4.4.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p3842161115717">Specifies the ID of the associated listener.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_table1566642411246"></a><a name="en-us_topic_0141008273_table1566642411246"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_table1566642411246" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="en-us_topic_0096561535__en-us_topic_0141008273_b688912499153">pools</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row366662462411"><th align="left" class="cellrowborder" valign="top" width="23.332333233323332%" id="mcps1.3.4.5.2.4.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p266692452420">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.99179917991799%" id="mcps1.3.4.5.2.4.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p11666924192420">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.67586758675868%" id="mcps1.3.4.5.2.4.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p6666132412242">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row146661524132419"><td class="cellrowborder" valign="top" width="23.332333233323332%" headers="mcps1.3.4.5.2.4.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p156661524182412">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.99179917991799%" headers="mcps1.3.4.5.2.4.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p66667245248">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.67586758675868%" headers="mcps1.3.4.5.2.4.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p4666122416240">Specifies the ID of the associated backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_ul1864033610391"><li id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561535_li96401836133910">Example request 1: Creating a private network load balancer<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen339812234133">POST https://{Endpoint}/v2.0/lbaas/loadbalancers 
+
+{ 
+    "loadbalancer": { 
+        "name": "loadbalancer1", 
+        "description": "simple lb", 
+        "tenant_id": "1867112d054b427e808cc6096d8193a1", 
+        "vip_subnet_id": "58077bdb-d470-424b-8c45-2e3c65060a5b", 
+        "vip_address": "192.168.0.100", 
+        "admin_state_up": true 
+    } 
+}</pre>
+</li></ul>
+
+<ul id="en-us_topic_0096561535__ul38881149341"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li98881549247">Example request 2<p id="en-us_topic_0096561535__en-us_topic_0141008273_p28881491740"><a name="en-us_topic_0096561535__en-us_topic_0141008273_li98881549247"></a><a name="en-us_topic_0141008273_li98881549247"></a>(Bind an EIP to the port that has been bound to the load balancer's private IP address. For details about the parameters, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_table88881449047">Table 7</a>.)</p>
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_table88881449047"></a><a name="en-us_topic_0141008273_table88881449047"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_table88881449047" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Request parameter</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row888954912418"><th align="left" class="cellrowborder" valign="top" width="19.388061193880613%" id="mcps1.3.6.1.2.2.5.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p108891497418">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.42785721427857%" id="mcps1.3.6.1.2.2.5.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p118897498415">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.328367163283673%" id="mcps1.3.6.1.2.2.5.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p198899493415">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42.85571442855714%" id="mcps1.3.6.1.2.2.5.1.4"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p588915498410">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row888919492041"><td class="cellrowborder" valign="top" width="19.388061193880613%" headers="mcps1.3.6.1.2.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p488919496416">publicip</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.42785721427857%" headers="mcps1.3.6.1.2.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p888912497413">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.328367163283673%" headers="mcps1.3.6.1.2.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p2889549944">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.85571442855714%" headers="mcps1.3.6.1.2.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p788954910414">Specifies the EIP. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_table16889549343">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row788912495415"><td class="cellrowborder" valign="top" width="19.388061193880613%" headers="mcps1.3.6.1.2.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p288913491346">bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.42785721427857%" headers="mcps1.3.6.1.2.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1688913493419">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.328367163283673%" headers="mcps1.3.6.1.2.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p11889164912417">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.85571442855714%" headers="mcps1.3.6.1.2.2.5.1.4 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p2088917491146">Specifies the bandwidth. For details, see <a href="#en-us_topic_0096561535__en-us_topic_0141008273_table14891249945">Table 9</a>.</p>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row11889349741"><td class="cellrowborder" valign="top" width="19.388061193880613%" headers="mcps1.3.6.1.2.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1088914494411">enterprise_project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.42785721427857%" headers="mcps1.3.6.1.2.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1288974916419">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.328367163283673%" headers="mcps1.3.6.1.2.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p68891149545">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.85571442855714%" headers="mcps1.3.6.1.2.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul888917499417"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li198895498412">Specifies the enterprise project ID. The value is <strong id="en-us_topic_0096561535__b176682034135510">0</strong> or a string that contains a maximum of 36 characters in UUID format with hyphens (-).</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1388918498411">When assigning an EIP, you need to bind an enterprise project ID to the EIP.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li12889194912419">If this parameter is not specified, the default value is <strong id="en-us_topic_0096561535__b182501141205520">0</strong>.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="en-us_topic_0096561535__en-us_topic_0141008273_p9889174919415">For more information about enterprise projects and how to obtain enterprise project IDs, see the <em id="en-us_topic_0096561535__i3309104414213">Enterprise Management User Guide</em>.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_table16889549343"></a><a name="en-us_topic_0141008273_table16889549343"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_table16889549343" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="en-us_topic_0096561535__b9788345526">publicip</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row4889104913411"><th align="left" class="cellrowborder" valign="top" width="19.468053194680536%" id="mcps1.3.6.1.3.2.5.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p988912494415">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.217878212178782%" id="mcps1.3.6.1.3.2.5.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p58898491945">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.44835516448355%" id="mcps1.3.6.1.3.2.5.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p10890949947">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42.86571342865714%" id="mcps1.3.6.1.3.2.5.1.4"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p13890184919417">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row489034910417"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p18906491142">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p48901949848">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p789018499416">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.3.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul1589012494417"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li38905491417">Specifies the EIP type.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1389018491345">Constraints:<ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul11890749544"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li8890749648">The configured value must be supported by the system.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li58904491647"><strong id="en-us_topic_0096561535__b921326235">publicip_id</strong> is an IPv4 port. If <strong id="en-us_topic_0096561535__b2323261230">publicip_type</strong> is not specified, the default value is <strong id="en-us_topic_0096561535__b12325263312">5_bgp</strong>.</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row0890124914420"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p19890949146">ip_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p208900492419">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p13890164914418">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.3.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul1989010491743"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li138903491047">Specifies the EIP version.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li15890124917410">The value can be <strong id="en-us_topic_0096561535__b191678301933">4</strong> and <strong id="en-us_topic_0096561535__b1517818301731">6</strong>. <strong id="en-us_topic_0096561535__b317918309316">4</strong> indicates an IPv4 address, and <strong id="en-us_topic_0096561535__b017917301131">6</strong> indicates an IPv6 address.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li19890144911419">Constraints:<ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul489074913410"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li16890949748">The configured value must be supported by the system.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li98901549948">If this parameter is left blank or is an empty string, an IPv4 address is assigned by default.</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row148911449943"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.3.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p18891204910410">ip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.3.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p789118491040">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.3.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p15891144915417">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.3.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul19891134919416"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li11891164915420">Specifies the EIP to be assigned. The system automatically assigns an EIP if you do not specify it.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li58919496411">The value must be a valid IPv4 address in the available IP address range.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0096561535__en-us_topic_0141008273_table14891249945"></a><a name="en-us_topic_0141008273_table14891249945"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0096561535__en-us_topic_0141008273_table14891249945" frame="border" border="1" rules="all"><caption><b>Table 9 </b><strong id="en-us_topic_0096561535__b132477517315">bandwidth</strong> parameter description</caption><thead align="left"><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row1589134918412"><th align="left" class="cellrowborder" valign="top" width="19.468053194680536%" id="mcps1.3.6.1.4.2.5.1.1"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1989113491746">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.217878212178782%" id="mcps1.3.6.1.4.2.5.1.2"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p58919491945">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.44835516448355%" id="mcps1.3.6.1.4.2.5.1.3"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p889119496411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="42.86571342865714%" id="mcps1.3.6.1.4.2.5.1.4"><p id="en-us_topic_0096561535__en-us_topic_0141008273_p168917492418">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0096561535__en-us_topic_0141008273_row1789117491044"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.4.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1891114912417">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.4.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p14891124919420">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.4.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p17891184914419">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.4.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul78911449945"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1789112495420">Specifies the bandwidth name.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li6891164910411">The value is a string of 1 to 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1289118491047">This parameter is mandatory when <strong id="en-us_topic_0096561535__b880312716410">share_type</strong> is set to <strong id="en-us_topic_0096561535__b38141271546">PER</strong>. This parameter will be ignored when <strong id="en-us_topic_0096561535__b13815878410">share_type</strong> is set to <strong id="en-us_topic_0096561535__b1981511715410">WHOLE</strong> with an ID specified.</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row18917499418"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.4.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p78911949449">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.4.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p089114491341">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.4.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1189117491244">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.4.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul1889117491446"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li58913493417">Specifies the bandwidth (Mbit/s).</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li11892104917415">The value ranges from <strong id="en-us_topic_0096561535__b4856121115419">1</strong> to <strong id="en-us_topic_0096561535__b885718111549">1000</strong> by default. (The range may vary depending on the configuration in each region. You can see the bandwidth range of each region on the management console.)</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li15892174910417">This parameter is mandatory when <strong id="en-us_topic_0096561535__b13750614443">share_type</strong> is set to <strong id="en-us_topic_0096561535__b107502147413">PER</strong>. This parameter will be ignored when <strong id="en-us_topic_0096561535__b1675110141648">share_type</strong> is set to <strong id="en-us_topic_0096561535__b15752191410412">WHOLE</strong> with an ID specified.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1892184913420">The minimum increment for bandwidth adjustment varies depending on the bandwidth range. The details are as follows:<ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul4892104916412"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li089219493415">The minimum increment is 1 Mbit/s if the allowed bandwidth ranges from 0 Mbit/s to 300 Mbit/s (with 300 Mbit/s included).</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1892049841">The minimum increment is 50 Mbit/s if the allowed bandwidth ranges from 300 Mbit/s to 1000 Mbit/s.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li118925491744">The minimum increment is 500 Mbit/s if the allowed bandwidth is greater than 1000 Mbit/s.</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row10892134915414"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.4.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p689217498416">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.4.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p98921497413">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.4.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p158921449343">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.4.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul1789212491142"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1689204915415">Specifies the bandwidth ID. You can specify an existing shared bandwidth when assigning an EIP.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1489211495417">The value can be the ID of the shared bandwidth whose type is set to <strong id="en-us_topic_0096561535__b9154183215416">WHOLE</strong>.</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row88929494412"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.4.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p128921949241">share_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.4.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p789274912410">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.4.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p98929491444">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.4.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul1689264917412"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1289274910411">Specifies the bandwidth type.</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li19892249645">The value is <strong id="en-us_topic_0096561535__b129711387411">PER</strong>, indicating that the bandwidth is dedicated.</li></ul>
+</td>
+</tr>
+<tr id="en-us_topic_0096561535__en-us_topic_0141008273_row128926491444"><td class="cellrowborder" valign="top" width="19.468053194680536%" headers="mcps1.3.6.1.4.2.5.1.1 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p28926491411">charge_mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.217878212178782%" headers="mcps1.3.6.1.4.2.5.1.2 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1489214491420">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.44835516448355%" headers="mcps1.3.6.1.4.2.5.1.3 "><p id="en-us_topic_0096561535__en-us_topic_0141008273_p1489219490415">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="42.86571342865714%" headers="mcps1.3.6.1.4.2.5.1.4 "><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul188931249245"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1389310493415">If the value is <strong id="en-us_topic_0096561535__b5796339951">traffic</strong>, the bandwidth is billed by traffic.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+<ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul08931249747"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li189314491443">Step 1: Apply for an EIP.<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen58937491441">POST https://{VPCEndpoint}/v1/8b7e35ad379141fc9df3e178bd64f55c/publicips
+
+{
+    "publicip": {
+        "type": "5_bgp",
+        "ip_version": 4
+    },
+    "bandwidth": {
+        "name": "bandwidth123",
+        "size": 10,
+        "share_type": "PER"
+    }
+}</pre>
+</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li4893134914410"><a name="en-us_topic_0096561535__en-us_topic_0141008273_li4893134914410"></a><a name="en-us_topic_0141008273_li4893134914410"></a>Example response<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen1589319499417">{
+    "publicip": {
+        "id": "f588ccfa-8750-4d7c-bf5d-2ede24414706",
+        "status": "PENDING_CREATE",
+        "type": "5_bgp",
+        "public_ip_address": "139.9.204.183",
+        "tenant_id": "8b7e35ad379141fc9df3e178bd64f55c",
+        "ip_version": 4,
+        "create_time": "2019-06-29 06:45:32",
+        "bandwidth_size": 1
+        
+    }
+}</pre>
+</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li38941495419">Step 2: Bind the EIP. (The value of <strong id="en-us_topic_0096561535__b1525074615515">public_id</strong> is the same as that in the <a href="#en-us_topic_0096561535__en-us_topic_0141008273_li4893134914410">▪ Example response</a>, and the value of <strong id="en-us_topic_0096561535__b202628468519">port_id</strong> is the same as that of <strong id="en-us_topic_0096561535__b102631461455">vip_port_id</strong> in <a href="#en-us_topic_0096561535__en-us_topic_0141008273_li4893134914410">Example response 1</a>.)<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen10894949545">PUT /v1/8b7e35ad379141fc9df3e178bd64f55c/publicips/f588ccfa-8750-4d7c-bf5d-2ede24414706
+
+{
+    "publicip": {
+        "port_id": "a7ecbdb5-5a63-41dd-a830-e16c0a7e04a7"
+    }
+}</pre>
+</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li178946490413">Example response<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen38948491544">{
+  "publicip": {
+    "id": "f588ccfa-8750-4d7c-bf5d-2ede24414706",
+    "status": "ACTIVE",
+    "type": "5_bgp",
+    "port_id": "a7ecbdb5-5a63-41dd-a830-e16c0a7e04a7",
+    "public_ip_address": "139.9.204.183",
+    "private_ip_address": "192.168.1.131",
+    "tenant_id": "8b7e35ad379141fc9df3e178bd64f55c",
+    "create_time": "2019-06-29 07:33:18",
+    "bandwidth_size": 1,
+    "ip_version": 4
+  }
+}</pre>
+</li><li id="en-us_topic_0096561535__en-us_topic_0141008273_li138943494414"><span id="en-us_topic_0096561535__ph24371517711">After the preceding steps are complete, the load balancer has the capability of accessing the public network. You can access the load balancer using 139.9.204.183, the value of parameter <strong id="en-us_topic_0096561535__b542115771">public_ip_address</strong>.</span></li></ul>
+
+</li></ul>
+<h4 class="sectiontitle">Example Response</h4><ul id="en-us_topic_0096561535__en-us_topic_0141008273_ul18709144315192"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li170912435191">Example response 1<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen1709543141918">{
+    "loadbalancer": {
+        "description": "simple lb",
+        "provisioning_status": "ACTIVE",
+        "tenant_id": "1867112d054b427e808cc6096d8193a1",
+        "created_at": "2019-01-19T05:32:56",
+        "admin_state_up": true,
+        "updated_at": "2019-01-19T05:32:57",
+        "id": "ea2843da-4026-49ec-8338-8fa015b067fc",
+        "pools": [],
+        "listeners": [],
+        "vip_port_id": "a7ecbdb5-5a63-41dd-a830-e16c0a7e04a7",
+        "operating_status": "ONLINE",
+        "vip_address": "192.168.0.100",
+        "vip_subnet_id": "58077bdb-d470-424b-8c45-2e3c65060a5b",
+        "provider": "vlb",
+        "tags": [],
+        "name": "loadbalancer1"
+    }
+}</pre>
+</li></ul>
+
+<ul id="en-us_topic_0096561535__ul1782171316620"><li id="en-us_topic_0096561535__en-us_topic_0141008273_li1978214131569">Example response 2<pre class="screen" id="en-us_topic_0096561535__en-us_topic_0141008273_screen147826131614">POST https://{Endpoint}/v2.0/lbaas/loadbalancers 
+
+{ 
+    "loadbalancer": { 
+        "name": "loadbalancer1", 
+        "description": "simple lb", 
+        "tenant_id": "1867112d054b427e808cc6096d8193a1", 
+        "vip_subnet_id": "58077bdb-d470-424b-8c45-2e3c65060a5b", 
+        "vip_address": "192.168.0.100", 
+        "admin_state_up": true 
+    } 
+}</pre>
+</li></ul>
+<p id="en-us_topic_0096561535__p1894201710715"><span id="en-us_topic_0096561535__en-us_topic_0141008273_ph1233119521813">After the preceding steps are complete, the load balancer has the capability of accessing the public network. You can access the load balancer using 139.9.204.183, the value of parameter <strong id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0141008273_b46412489574">public_ip_address</strong>.</span></p>
+<h4 class="sectiontitle">Status Codes</h4><p id="en-us_topic_0096561535__en-us_topic_0141008273_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">See <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_fz_0000.html">Load Balancer</a>
+
+
+

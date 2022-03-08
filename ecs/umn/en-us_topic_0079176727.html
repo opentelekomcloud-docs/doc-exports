@@ -1,0 +1,29 @@
+<a name="EN-US_TOPIC_0079176727"></a><a name="EN-US_TOPIC_0079176727"></a>
+
+<h1 class="topictitle1">How Can I Set the Validity Period of the Image Password?</h1>
+<div id="body1507549559209"><p id="EN-US_TOPIC_0079176727__p29336849194742">If an <span id="EN-US_TOPIC_0079176727__text69911837202815">ECS</span> cannot be logged in because of expired image password, you can contact the administrator for handling.</p>
+<p id="EN-US_TOPIC_0079176727__p62705052194742">If the <span id="EN-US_TOPIC_0079176727__text87671838112820">ECS</span> can still be logged in, you can perform the following operations to set the password validity period.</p>
+<div class="section" id="EN-US_TOPIC_0079176727__section3242177619526"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0079176727__p7042076195210">The following operations use EulerOS 2.2 as an example.</p>
+</div>
+<ol id="EN-US_TOPIC_0079176727__ol27474563194742"><li id="EN-US_TOPIC_0079176727__li8288519195343">Log in to the <span id="EN-US_TOPIC_0079176727__text446420341117">ECS</span>.</li><li id="EN-US_TOPIC_0079176727__li45944477194742">Run the following command to check the password validity period:<p id="EN-US_TOPIC_0079176727__p30515195194742"><a name="EN-US_TOPIC_0079176727__li45944477194742"></a><a name="li45944477194742"></a><strong id="EN-US_TOPIC_0079176727__b6201304194742">vi /etc/login.defs</strong></p>
+<p id="EN-US_TOPIC_0079176727__p55811741194742">The value of parameter <strong id="EN-US_TOPIC_0079176727__b8423527069240">PASS_MAX_DAYS</strong> is the password validity period.</p>
+</li><li id="EN-US_TOPIC_0079176727__li32543628194742">Run the following command to change the value of parameter <strong id="EN-US_TOPIC_0079176727__b296782437111149">PASS_MAX_DAYS</strong>:<p id="EN-US_TOPIC_0079176727__p18788175194742"><strong id="EN-US_TOPIC_0079176727__b34875855194742">chage -M</strong> <em id="EN-US_TOPIC_0079176727__i45447244194742">99999 user_name</em></p>
+<p id="EN-US_TOPIC_0079176727__p21504994195639"><em id="EN-US_TOPIC_0079176727__i534243209318">99999</em> is the password validity period, and <em id="EN-US_TOPIC_0079176727__i14615922829334">user_name</em> is the system user, for example, user <strong id="EN-US_TOPIC_0079176727__b8423527069353">root</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0079176727__note4498767520418"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0079176727__p223589620418">You are advised to configure the password validity period as needed and change it at a regular basis.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0079176727__li65078660194742">Run command <strong id="EN-US_TOPIC_0079176727__b10576932629124">vi /etc/login.defs</strong> to verify that the configuration has taken effect.<div class="fignone" id="EN-US_TOPIC_0079176727__fig36880073194742"><span class="figcap"><b>Figure 1 </b>Configuration verification</span><br><span><img id="EN-US_TOPIC_0079176727__image34495914194742" src="en-us_image_0079177144.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0105215483.html">Passwords and Key Pairs</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

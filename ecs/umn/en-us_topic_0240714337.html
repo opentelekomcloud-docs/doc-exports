@@ -1,0 +1,42 @@
+<a name="EN-US_TOPIC_0240714337"></a><a name="EN-US_TOPIC_0240714337"></a>
+
+<h1 class="topictitle1">What Should I Do If Error Message "read: Connection reset by peer" Is Displayed When I Remotely Log In to a Linux <span id="text1450012104521">ECS</span>?</h1>
+<div id="body1587694864971"><div class="section" id="EN-US_TOPIC_0240714337__section118312613216"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0240714337__p10616143120711">When I attempted to remotely log in to a Linux <span id="EN-US_TOPIC_0240714337__text1579413864815">ECS</span>, the system displayed error message "read: Connection reset by peer".</p>
+<div class="fignone" id="EN-US_TOPIC_0240714337__fig5631046188"><span class="figcap"><b>Figure 1 </b>read: Connection reset by peer</span><br><span><img id="EN-US_TOPIC_0240714337__image7591143882217" src="en-us_image_0240714761.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0240714337__section1851618545810"><h4 class="sectiontitle">Possible Causes</h4><ul id="EN-US_TOPIC_0240714337__ul1749294411255"><li id="EN-US_TOPIC_0240714337__li04921344192518">The remote login port is not permitted in the security group.</li><li id="EN-US_TOPIC_0240714337__li1849213445252">The firewall is enabled on the ECS, but the remote login port is blocked by the firewall.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0240714337__section18860584278"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0240714337__p041820128278">Perform the following operations for troubleshooting:</p>
+<ul id="EN-US_TOPIC_0240714337__ul198321425163513"><li id="EN-US_TOPIC_0240714337__li1783217256350"><strong id="EN-US_TOPIC_0240714337__b13756402229">Check security group rules.</strong><ul id="EN-US_TOPIC_0240714337__ul814634383510"><li id="EN-US_TOPIC_0240714337__li249516302350">Inbound: Add the remote login port. The default port 22 is used as an example.</li></ul>
+<ul id="EN-US_TOPIC_0240714337__ul15984113518357"><li id="EN-US_TOPIC_0240714337__li15984735133511">Outbound: Outbound rules allow network traffic to be out of specified ports.</li></ul>
+</li><li id="EN-US_TOPIC_0240714337__li1181617103613"><strong id="EN-US_TOPIC_0240714337__b423123616214">Add a port to the ECS firewall exception.</strong><p id="EN-US_TOPIC_0240714337__p192201858103615">The following uses Ubuntu as an example:</p>
+<ol id="EN-US_TOPIC_0240714337__ol12777162319376"><li id="EN-US_TOPIC_0240714337__li13777523163715">Run the following command to view the firewall status:<p id="EN-US_TOPIC_0240714337__p710619300377"><a name="EN-US_TOPIC_0240714337__li13777523163715"></a><a name="li13777523163715"></a><strong id="EN-US_TOPIC_0240714337__b1223918290422">sudo ufw status</strong></p>
+<p id="EN-US_TOPIC_0240714337__p383974110377">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0240714337__screen153211339133718">Status: active</pre>
+</li><li id="EN-US_TOPIC_0240714337__li157441555143717">Add a port to the firewall exception, taking the default port 22 as an example.<p id="EN-US_TOPIC_0240714337__p145331725163813"><a name="EN-US_TOPIC_0240714337__li157441555143717"></a><a name="li157441555143717"></a><strong id="EN-US_TOPIC_0240714337__b18761429123819">ufw allow 22</strong></p>
+<p id="EN-US_TOPIC_0240714337__p5909315174114"><strong id="EN-US_TOPIC_0240714337__b112641187411">Rule added</strong></p>
+<p id="EN-US_TOPIC_0240714337__p1750310137419"><strong id="EN-US_TOPIC_0240714337__b12265718184111">Rule added (v6)</strong></p>
+</li><li id="EN-US_TOPIC_0240714337__li9389642144211">Run following command to check the firewall status again:<p id="EN-US_TOPIC_0240714337__p1156171710425"><a name="EN-US_TOPIC_0240714337__li9389642144211"></a><a name="li9389642144211"></a><strong id="EN-US_TOPIC_0240714337__b82333218429">sudo ufw status</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0240714337__screen192084104429">Status: active
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere
+22 (v6)                    ALLOW       Anywhere (v6)</pre>
+<p id="EN-US_TOPIC_0240714337__p9426193820385">Try to remotely log in to the <span id="EN-US_TOPIC_0240714337__text11886174344016">ECS</span> again.</p>
+</li></ol>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

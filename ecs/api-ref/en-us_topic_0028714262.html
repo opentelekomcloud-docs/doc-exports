@@ -1,0 +1,84 @@
+<a name="EN-US_TOPIC_0028714262"></a><a name="EN-US_TOPIC_0028714262"></a>
+
+<h1 class="topictitle1">Confirming <span id="text724511417467">ECS</span> Specifications Modification</h1>
+<div id="body1460104995674"><div class="section" id="EN-US_TOPIC_0028714262__section14742295165029"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0028714262__p53275210165029">This API is used to confirm the specifications modification of an <span id="EN-US_TOPIC_0028714262__text15265194219469">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section54952513173158"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0028714262__p86891671176">Before calling this API, ensure that the <span id="EN-US_TOPIC_0028714262__text8229174318463">ECS</span> status (which can be queried using the API for querying details about the <span id="EN-US_TOPIC_0028714262__text29817871910">ECS</span>) meets the following requirements:</p>
+<p id="EN-US_TOPIC_0028714262__p1562313532174">OS-EXT-STS:vm_state=resized</p>
+<p id="EN-US_TOPIC_0028714262__p12921191372418">OS-EXT-STS:task_state=""</p>
+<p id="EN-US_TOPIC_0028714262__p19932519181814">status=VERIFY_RESIZE</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section9714850165029"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0028714262__p1758327182411">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0028714262__p1112119356328">POST /v2/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0028714262__p163721342112416"><a href="#EN-US_TOPIC_0028714262__table54458463165029">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0028714262__table54458463165029"></a><a name="table54458463165029"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0028714262__table54458463165029" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0028714262__row24545956165029"><th align="left" class="cellrowborder" valign="top" width="16.6%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0028714262__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.16%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0028714262__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.24%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0028714262__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0028714262__row42809334165029"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0028714262__p45004064165029">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0028714262__p21450595165029">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.24%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0028714262__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0028714262__row1118615165029"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0028714262__p23498973165029">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0028714262__p24368697165029">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.24%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0028714262__p27707408165029">Specifies the <span id="EN-US_TOPIC_0028714262__text103781816141918">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section48040086165029"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0028714262__p139881615257"><a href="#EN-US_TOPIC_0028714262__table47783938165029">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0028714262__table47783938165029"></a><a name="table47783938165029"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0028714262__table47783938165029" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0028714262__row60288789165029"><th align="left" class="cellrowborder" valign="top" width="18.6%" id="mcps1.3.4.2.2.2.5.1.1"><p id="EN-US_TOPIC_0028714262__en-us_topic_0057973030_p1494644">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.48%" id="mcps1.3.4.2.2.2.5.1.2"><p id="EN-US_TOPIC_0028714262__p11164206213">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.78%" id="mcps1.3.4.2.2.2.5.1.3"><p id="EN-US_TOPIC_0028714262__en-us_topic_0057973030_p53957349">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.13999999999999%" id="mcps1.3.4.2.2.2.5.1.4"><p id="EN-US_TOPIC_0028714262__en-us_topic_0057973030_p14912584">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0028714262__row50942237165029"><td class="cellrowborder" valign="top" width="18.6%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0028714262__p32680571165029">confirmResize</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.48%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0028714262__p1164140102115">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.78%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0028714262__p29880605165029">Null</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.13999999999999%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0028714262__p60747468165029">Confirms the modification to <span id="EN-US_TOPIC_0028714262__text11666134544615">ECS</span> specifications.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section4596622165029"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0028714262__p36782116165029">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section1194124632513"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0028714262__screen678215334314">POST https://{endpoint}/v2/{project_id}/servers/{server_id}/action
+POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0028714262__screen37778741195432">{
+    "confirmResize" : null
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section1233763710102"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0028714262__p193099423105">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714262__section62603593165029"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0028714262__p37726250165029">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385016.html">Status Management</a></div>
+</div>
+</div>
+

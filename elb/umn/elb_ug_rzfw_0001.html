@@ -1,0 +1,87 @@
+<a name="elb_ug_rzfw_0001"></a><a name="elb_ug_rzfw_0001"></a>
+
+<h1 class="topictitle1">Access Logging</h1>
+<p id="elb_ug_rzfw_0001__p1943913213301">Access logs record HTTP and HTTPS requests made to load balancers, and these logs are stored in an OBS bucket. Only public network classic load balancers support access logging.</p>
+<p id="elb_ug_rzfw_0001__p16411155942215">Before configuring access logging, ensure that you have created a load balancer and OBS bucket. For details, see "Creating a Bucket" in the <em id="elb_ug_rzfw_0001__i842352697145133">Object Storage Service User Guide</em>.</p>
+<ol id="elb_ug_rzfw_0001__ol68657312319"><li id="elb_ug_rzfw_0001__li186533102317">Grant read and write permissions to the ELB administrator.<ol type="a" id="elb_ug_rzfw_0001__ol198810319233"><li id="elb_ug_rzfw_0001__li1488112302313">Log in to the management console. On the <strong id="elb_ug_rzfw_0001__b842352706162756">Object Storage Service</strong> page, click the name of the destination bucket.</li><li id="elb_ug_rzfw_0001__li1388112312318">In the navigation pane on the left, choose <strong id="elb_ug_rzfw_0001__en-us_topic_0013748707_b842352706142914">Permissions</strong>.</li><li id="elb_ug_rzfw_0001__li157771867135">On the displayed page, click <strong id="elb_ug_rzfw_0001__b563270862">Bucket ACLs</strong>.</li><li id="elb_ug_rzfw_0001__li1888119315237">Click <strong id="elb_ug_rzfw_0001__b842352706172436">Add</strong> and set the parameters.</li></ol>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_ug_rzfw_0001__table38812372310" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_ug_rzfw_0001__row688153202311"><th align="left" class="cellrowborder" valign="top" width="23.56%" id="mcps1.3.3.1.2.2.4.1.1"><p id="elb_ug_rzfw_0001__p158811032235"><strong id="elb_ug_rzfw_0001__b842352706114331">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.81%" id="mcps1.3.3.1.2.2.4.1.2"><p id="elb_ug_rzfw_0001__p13881173112319"><strong id="elb_ug_rzfw_0001__b8423527061772">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.63%" id="mcps1.3.3.1.2.2.4.1.3"><p id="elb_ug_rzfw_0001__p688110316235"><strong id="elb_ug_rzfw_0001__b842352706185219">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_rzfw_0001__row208811311236"><td class="cellrowborder" valign="top" width="23.56%" headers="mcps1.3.3.1.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p188811631233">Account</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.81%" headers="mcps1.3.3.1.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p16881103112313">Specifies the account ID or account name of the ELB administrator.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.63%" headers="mcps1.3.3.1.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p13881163192316">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_rzfw_0001__row15542195681517"><td class="cellrowborder" valign="top" width="23.56%" headers="mcps1.3.3.1.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p254275601515">Access to Bucket</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.81%" headers="mcps1.3.3.1.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p153423531617">Specifies the permissions to read data from or write data to an OBS bucket.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.63%" headers="mcps1.3.3.1.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p12343852163">Read/Write</p>
+</td>
+</tr>
+<tr id="elb_ug_rzfw_0001__row4750142981615"><td class="cellrowborder" valign="top" width="23.56%" headers="mcps1.3.3.1.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p175122931613">Access to ACL</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.81%" headers="mcps1.3.3.1.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p1474814394356">Allows the authorized user to read or write the bucket ACL.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.63%" headers="mcps1.3.3.1.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p12748203913356">Read/Write</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<ol type="a" start="5" id="elb_ug_rzfw_0001__ol1998722320189"><li id="elb_ug_rzfw_0001__li12987823181819">Click <strong id="elb_ug_rzfw_0001__b842352706174343">Save</strong>.</li></ol>
+</li><li id="elb_ug_rzfw_0001__li1188120312319">Associate the bucket with a load balancer.<ol type="a" id="elb_ug_rzfw_0001__ol5881432231"><li id="elb_ug_rzfw_0001__li198813319236">Locate the load balancer and click <strong id="elb_ug_rzfw_0001__b119994694648">More</strong> in the <strong id="elb_ug_rzfw_0001__b842352706141950">Operation</strong> column.</li><li id="elb_ug_rzfw_0001__li11881339239">Select <strong id="elb_ug_rzfw_0001__b842352706102428">Configure Access Log</strong>.</li><li id="elb_ug_rzfw_0001__li3881153192312">In the <strong id="elb_ug_rzfw_0001__b152953020017">Configure Access Log</strong> dialog box, enable access logging.</li><li id="elb_ug_rzfw_0001__li089593112313">Select the associated OBS bucket and configure log information.<span class="figcap"><b>Figure 1 </b>Configure Access Log</span><br><span><img id="elb_ug_rzfw_0001__image124931536144014" src="en-us_image_0152872722.png"></span>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_ug_rzfw_0001__table389515316230" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_ug_rzfw_0001__row089593132313"><th align="left" class="cellrowborder" valign="top" width="26.94269426942694%" id="mcps1.3.3.2.1.4.2.2.4.1.1"><p id="elb_ug_rzfw_0001__p689520342319"><strong id="elb_ug_rzfw_0001__b153452556">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.24472447244724%" id="mcps1.3.3.2.1.4.2.2.4.1.2"><p id="elb_ug_rzfw_0001__p68954362315"><strong id="elb_ug_rzfw_0001__b1098068875">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.81258125812581%" id="mcps1.3.3.2.1.4.2.2.4.1.3"><p id="elb_ug_rzfw_0001__p789514302312"><strong id="elb_ug_rzfw_0001__b842352706194150">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_rzfw_0001__row277023594914"><td class="cellrowborder" valign="top" width="26.94269426942694%" headers="mcps1.3.3.2.1.4.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p12770133517497">Enable Logging</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.24472447244724%" headers="mcps1.3.3.2.1.4.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p977043524915">Whether to enable access logging</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81258125812581%" headers="mcps1.3.3.2.1.4.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p677013355491">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_rzfw_0001__row1489583132317"><td class="cellrowborder" valign="top" width="26.94269426942694%" headers="mcps1.3.3.2.1.4.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p19895638231">Backup Interval (min)</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.24472447244724%" headers="mcps1.3.3.2.1.4.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p489593192314">Log backup interval in minutes, which is 60 minutes by default</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81258125812581%" headers="mcps1.3.3.2.1.4.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p168950352315">60</p>
+</td>
+</tr>
+<tr id="elb_ug_rzfw_0001__row10895139239"><td class="cellrowborder" valign="top" width="26.94269426942694%" headers="mcps1.3.3.2.1.4.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p10895538239">OBS Bucket</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.24472447244724%" headers="mcps1.3.3.2.1.4.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p489510312239">Destination bucket with read and write permissions</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81258125812581%" headers="mcps1.3.3.2.1.4.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p1289563132316">obs01</p>
+</td>
+</tr>
+<tr id="elb_ug_rzfw_0001__row389593132313"><td class="cellrowborder" valign="top" width="26.94269426942694%" headers="mcps1.3.3.2.1.4.2.2.4.1.1 "><p id="elb_ug_rzfw_0001__p1089513372319">Prefix</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.24472447244724%" headers="mcps1.3.3.2.1.4.2.2.4.1.2 "><p id="elb_ug_rzfw_0001__p3666621194749">Log storage directory</p>
+<p id="elb_ug_rzfw_0001__p4073177194758">If this field is left blank, logs will be saved to the root directory of the destination bucket.</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81258125812581%" headers="mcps1.3.3.2.1.4.2.2.4.1.3 "><p id="elb_ug_rzfw_0001__p189533182311">log01</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ol>
+</li></ol>
+
+
+

@@ -1,0 +1,380 @@
+<a name="elb_ug_jt_0022"></a><a name="elb_ug_jt_0022"></a>
+
+<h1 class="topictitle1">Security Policy</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_jt_0022__p1919703916417">When you add HTTPS listeners, you can select desired security policies to improve service security. A security policy is a combination of TLS protocols and cipher suites.</p>
+
+<h4 class="sectiontitle">Adding a Security Policy</h4><ol id="elb_ug_jt_0022__ol855184116118"><li id="elb_ug_jt_0022__li677391520332">Log in to the management console.</li><li id="elb_ug_jt_0022__li675519100420">In the upper left corner of the page, click <span><img id="elb_ug_jt_0022__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_jt_0022__li83736197297">Hover on <span><img id="elb_ug_jt_0022__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="elb_ug_jt_0022__li12618112113106">Locate the load balancer and click its name.</li><li id="elb_ug_jt_0022__li1227202961019">Under <strong id="elb_ug_jt_0022__b2758637620441">Listeners</strong>, click <strong id="elb_ug_jt_0022__b4695079320441">Add Listener</strong>.</li><li id="elb_ug_jt_0022__li1735219372106">In the <strong id="elb_ug_jt_0022__b0203205816493">Add Listener</strong> dialog, expand <strong id="elb_ug_jt_0022__b314619258507">Advanced Settings</strong>, and select a security policy. <a href="#elb_ug_jt_0022__table1247813103533">Table 1</a> lists the parameters to be configured.
+.. _elb_ug_jt_0022__table1247813103533:
+
+<a name="elb_ug_jt_0022__table1247813103533"></a><a name="table1247813103533"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0022__table1247813103533" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Security policy parameters</caption><thead align="left"><tr id="elb_ug_jt_0022__row204784101539"><th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.2.2.6.4.2.5.1.1"><p id="elb_ug_jt_0022__p147851075312"><strong id="elb_ug_jt_0022__b1492643133813">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="29.292929292929294%" id="mcps1.3.2.2.6.4.2.5.1.2"><p id="elb_ug_jt_0022__p175102389132"><strong id="elb_ug_jt_0022__b1453215452384">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.2.2.6.4.2.5.1.3"><p id="elb_ug_jt_0022__p2478181015313"><strong id="elb_ug_jt_0022__b3480115312385">TLS Version</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="36.36363636363637%" id="mcps1.3.2.2.6.4.2.5.1.4"><p id="elb_ug_jt_0022__p5478131085310"><strong id="elb_ug_jt_0022__b159426569382">Cipher Suite</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0022__row125843182408"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.2.6.4.2.5.1.1 "><p id="elb_ug_jt_0022__p12584131812401">TLS-1-0</p>
+</td>
+<td class="cellrowborder" valign="top" width="29.292929292929294%" headers="mcps1.3.2.2.6.4.2.5.1.2 "><p id="elb_ug_jt_0022__p030111715443">TLS 1.0, TLS 1.1, and TLS 1.2 and supported cipher suites (high compatibility and moderate security)</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.2.6.4.2.5.1.3 "><p id="elb_ug_jt_0022__p44847408439">TLS 1.2</p>
+<p id="elb_ug_jt_0022__p2086324219439">TLS 1.1</p>
+<p id="elb_ug_jt_0022__p1358411811405">TLS 1.0</p>
+</td>
+<td class="cellrowborder" rowspan="3" valign="top" width="36.36363636363637%" headers="mcps1.3.2.2.6.4.2.5.1.4 "><p id="elb_ug_jt_0022__p152111143203617">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-SHA:AES256-SHA</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1250119222406"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.1 "><p id="elb_ug_jt_0022__p050232216409">TLS-1-1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.2 "><p id="elb_ug_jt_0022__p13015716444">TLS 1.1 and TLS 1.2 and supported cipher suites (moderate compatibility and moderate security)</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.3 "><p id="elb_ug_jt_0022__p4920104413437">TLS 1.2</p>
+<p id="elb_ug_jt_0022__p185021822194019">TLS 1.1</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row19159426144017"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.1 "><p id="elb_ug_jt_0022__p31598266400">TLS-1-2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.2 "><p id="elb_ug_jt_0022__p830177164415">TLS 1.2 and supported cipher suites (moderate compatibility and high security)</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.6.4.2.5.1.3 "><p id="elb_ug_jt_0022__p315914265406">TLS 1.2</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row148501331204010"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.2.6.4.2.5.1.1 "><p id="elb_ug_jt_0022__p18850153164010">TLS-1-2-Strict</p>
+</td>
+<td class="cellrowborder" valign="top" width="29.292929292929294%" headers="mcps1.3.2.2.6.4.2.5.1.2 "><p id="elb_ug_jt_0022__p1130114715442">Strict TLS 1.2 and supported cipher suites (low compatibility and ultra-high security)</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.2.6.4.2.5.1.3 "><p id="elb_ug_jt_0022__p3850531104014">TLS 1.2</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.36363636363637%" headers="mcps1.3.2.2.6.4.2.5.1.4 "><p id="elb_ug_jt_0022__p12274148203711">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="elb_ug_jt_0022__li81376551123">Click <strong id="elb_ug_jt_0022__b6526151617413">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Differences Between Security Policies</h4>
+.. _elb_ug_jt_0022__table8551776916:
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0022__table8551776916" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Differences among the four types of security policies</caption><thead align="left"><tr id="elb_ug_jt_0022__row13551373910"><th align="left" class="cellrowborder" valign="top" width="31.296870312968707%" id="mcps1.3.3.2.2.7.1.1"><p id="elb_ug_jt_0022__p35521577913">Security Policy</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.838816118388163%" id="mcps1.3.3.2.2.7.1.2"><p id="elb_ug_jt_0022__p2055217710914">TLS-1-0</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.378862113788621%" id="mcps1.3.3.2.2.7.1.3"><p id="elb_ug_jt_0022__p135521471298">TLS-1-1</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.828817118288173%" id="mcps1.3.3.2.2.7.1.4"><p id="elb_ug_jt_0022__p18552776911">TLS-1-2</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.738126187381262%" id="mcps1.3.3.2.2.7.1.5"><p id="elb_ug_jt_0022__p155521275917">TLS-1-2-Strict</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.918508149185081%" id="mcps1.3.3.2.2.7.1.6"><p id="elb_ug_jt_0022__p4783428301">TLS-1-2-FS</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0022__row192841349699"><td class="cellrowborder" colspan="6" valign="top" headers="mcps1.3.3.2.2.7.1.1 mcps1.3.3.2.2.7.1.2 mcps1.3.3.2.2.7.1.3 mcps1.3.3.2.2.7.1.4 mcps1.3.3.2.2.7.1.5 mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p1828519491096">TLS versions</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row555220713915"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p185526717911">Protocol-TLS 1.3</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p1355220714910">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p105521714911">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p19552771797">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p15521071091">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p14821133623118">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row35521772910"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p18552975911">Protocol-TLS 1.2</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p59831217204016">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p9983161715407">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p598301784013">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p1098381724018">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p1782183693118">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row25531978914"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p18553575913">Protocol-TLS 1.1</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p034151014401">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p163591012404">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p13531054016">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p1135161074014">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p10821113693119">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1553571696"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p1755316718920">Protocol-TLS 1.0</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p7313195211398">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p10313125273919">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p1631395233911">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p1431315243914">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p118211036173110">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1755467591"><td class="cellrowborder" colspan="6" valign="top" headers="mcps1.3.3.2.2.7.1.1 mcps1.3.3.2.2.7.1.2 mcps1.3.3.2.2.7.1.3 mcps1.3.3.2.2.7.1.4 mcps1.3.3.2.2.7.1.5 mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p12554971490">Cipher suites</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row15551971396"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p2055514719915">EDHE-RSA-AES128-GCM-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p1255510713915">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p955507792">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p18555371392">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p8555187499">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p9407911173211">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row15555187791"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p105551872097">ECDHE-RSA-AES256-GCM-SHA384</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p10555137892">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p1655517717915">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p12555371911">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p12555175916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p9407161119325">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row855527691"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p14555971596">ECDHE-RSA-AES128-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p8555071891">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p2555157695">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p4555127794">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p5555271999">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p340711183212">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row5556779916"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p12556471294">ECDHE-RSA-AES256-SHA384</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p155613717916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p135561177915">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p95561071599">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p185561671695">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p14407111113214">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row05569713910"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p555617790">AES128-GCM-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p18556197992">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p16559197295">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p3560177196">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p16560167491">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p204075110328">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row19560771699"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p185601874919">AES256-GCM-SHA384</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p756037097">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p1856017720918">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p85601671790">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p75601671599">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p140717111322">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row35601871598"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p75601979914">AES128-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p2056014716917">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p356057696">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p95605713917">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p4560207695">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p1840761153216">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row156112711917"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p11561471498">AES256-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p11561107791">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p19561474919">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p145611971393">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p55615710911">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p6408811153216">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row185611175916"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p19561078912">ECDHE-RSA-AES128-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p3561187591">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p556137598">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p18561171095">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p8561471397">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p8408141143217">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row65611971894"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p1456137096">ECDHE-RSA-AES256-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p6561671896">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p1456267393">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p175621571999">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p7562471692">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p8408181112323">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row75621471492"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p35622071199">AES128-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p756247795">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p8562172918">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p175621971798">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p15562771091">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p13227143043218">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1656237594"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p7562371996">AES256-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p19562674913">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p125625717912">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p856215719912">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p25635713912">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p15227113018326">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1656316717918"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p1256310710910">ECDHE-ECDSA-AES128-GCM-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p125631878914">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p135631472911">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p1756314710912">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p15631070912">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p1222712308323">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row18563371191"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p2056320713910">ECDHE-ECDSA-AES128-SHA256</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p256319715911">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p185631771493">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p115631479914">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p8563971594">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p122793020321">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row1156420718912"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p95642717916">ECDHE-ECDSA-AES128-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p65642719916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p956419715916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p25641879916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p125641377918">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p11228133017328">-</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row13564147993"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p165641374918">ECDHE-ECDSA-AES256-GCM-SHA384</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p11564371499">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p8564873917">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p1564871997">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p15564371298">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p4228430153219">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row175651978918"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p1156510715913">ECDHE-ECDSA-AES256-SHA384</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p205658718916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p1156516710910">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p95651771910">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p656515720916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p9228930103210">√</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0022__row13565671091"><td class="cellrowborder" valign="top" width="31.296870312968707%" headers="mcps1.3.3.2.2.7.1.1 "><p id="elb_ug_jt_0022__p1356519710918">ECDHE-ECDSA-AES256-SHA</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.838816118388163%" headers="mcps1.3.3.2.2.7.1.2 "><p id="elb_ug_jt_0022__p25651175917">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.378862113788621%" headers="mcps1.3.3.2.2.7.1.3 "><p id="elb_ug_jt_0022__p55651875913">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.828817118288173%" headers="mcps1.3.3.2.2.7.1.4 "><p id="elb_ug_jt_0022__p1356514719910">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.738126187381262%" headers="mcps1.3.3.2.2.7.1.5 "><p id="elb_ug_jt_0022__p1956517712918">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.918508149185081%" headers="mcps1.3.3.2.2.7.1.6 "><p id="elb_ug_jt_0022__p27842211302">-</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Modifying a Security Policy</h4><p id="elb_ug_jt_0022__p118142368357">When you modify a security policy, ensure that the security group containing backend servers allows access from 100.125.0.0/16 and allows ICMP packets for UDP health checks. Otherwise, backend servers will be considered unhealthy, and routing will be affected.</p>
+<ol id="elb_ug_jt_0022__ol75444161375"><li id="elb_ug_jt_0022__li118941841105219">Log in to the management console.</li><li id="elb_ug_jt_0022__li108947412526">In the upper left corner of the page, click <span><img id="elb_ug_jt_0022__en-us_topic_0240829509_image177714713415_1" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_jt_0022__li17301740102218">Hover on <span><img id="elb_ug_jt_0022__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="elb_ug_jt_0022__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="elb_ug_jt_0022__li15822710124">Locate the load balancer and click its name.</li><li id="elb_ug_jt_0022__li8663153321216">Locate the listener and click <span><img id="elb_ug_jt_0022__en-us_topic_0015479923_image19437432195519" src="en-us_image_0238408794.png"></span> on the right of its name.</li><li id="elb_ug_jt_0022__li830315390127">On the <strong id="elb_ug_jt_0022__b184238114720">Modify Listener</strong> page, expand <strong id="elb_ug_jt_0022__b469724211472">Advanced Settings</strong> and modify the security policy.</li><li id="elb_ug_jt_0022__li15189845111214">Click <strong id="elb_ug_jt_0022__b1161315874713">OK</strong>.</li></ol>
+
+
+
+
+
+
+

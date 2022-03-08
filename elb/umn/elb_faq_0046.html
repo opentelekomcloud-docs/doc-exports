@@ -1,0 +1,11 @@
+<a name="elb_faq_0046"></a><a name="elb_faq_0046"></a>
+
+<h1 class="topictitle1">How Do I Check If Sticky Sessions Fail to Take Effect?</h1>
+<ol id="elb_faq_0046__ol627910268405"><li id="elb_faq_0046__li0279112615402">Check whether sticky sessions are enabled for the backend server group. If sticky sessions are enabled, go to the next step.</li><li id="elb_faq_0046__li327913260407">Check the health check result of the backend server. If the health check result is <strong id="elb_faq_0046__b579774331811">Unhealthy</strong>, traffic is routed to other backend servers and sticky sessions become invalid.</li><li id="elb_faq_0046__li1727982616408">If you select the source IP hash algorithm, check whether the IP address of the request changes before the load balancer receives the request.</li><li id="elb_faq_0046__li122791326124013">If an HTTP or HTTPS listener is configured with sticky sessions enabled, check whether the request carries a cookie. If yes, check whether the cookie value changes (because load balancing at Layer 7 uses cookies to maintain sessions).</li></ol>
+
+
+
+<strong>Parent topic:</strong> <a href="elb_faq_0190.html">Sticky Session</a>
+
+
+

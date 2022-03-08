@@ -1,0 +1,360 @@
+<a name="EN-US_TOPIC_0035550301"></a><a name="EN-US_TOPIC_0035550301"></a>
+
+<h1 class="topictitle1">Memory-optimized ECSs</h1>
+<div id="body1471253099740"><div class="section" id="EN-US_TOPIC_0035550301__section25374905172644"><h4 class="sectiontitle">Overview</h4><ul id="EN-US_TOPIC_0035550301__ul1315174813178"><li id="EN-US_TOPIC_0035550301__li1297251416311">M4 ECSs use second-generation Intel&reg; Xeon&reg; Scalable processors with technologies optimized to offer powerful and stable computing performance. Using 25GE high-speed intelligent NICs, M4 ECSs provide a maximum memory size of 512 GiB based on DDR4 for memory-intensive applications with high requirements on network bandwidth and Packets Per Second (PPS).</li><li id="EN-US_TOPIC_0035550301__li12151948171720">M3 ECSs are developed based on the KVM virtualization platform and designed for processing large-scale data sets in the memory. They use Intel&reg; Xeon&reg; Scalable processors, network acceleration engines, and DPDK rapid packet processing mechanism to provide higher network performance and up to 512 GiB of DDR4 memory for memory-intensive computing applications.</li><li id="EN-US_TOPIC_0035550301__li16154487176">M2 ECSs use Intel Xeon E5-2690 v4 CPUs and are designed for memory-optimized applications.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0035550301__section83746578616"><h4 class="sectiontitle">Specifications</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035550301__table285612469463" frame="border" border="1" rules="all"><caption><b>Table 1 </b>M4 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035550301__row1885610463467"><th align="left" class="cellrowborder" valign="top" width="14.729999999999999%" id="mcps1.3.2.2.2.10.1.1"><p id="EN-US_TOPIC_0035550301__p28572464465">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.25%" id="mcps1.3.2.2.2.10.1.2"><p id="EN-US_TOPIC_0035550301__p16857114674620">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.89%" id="mcps1.3.2.2.2.10.1.3"><p id="EN-US_TOPIC_0035550301__p1585714614610">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.94%" id="mcps1.3.2.2.2.10.1.4"><p id="EN-US_TOPIC_0035550301__p11857246124612">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.62%" id="mcps1.3.2.2.2.10.1.5"><p id="EN-US_TOPIC_0035550301__p18578467465">Maximum PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.58%" id="mcps1.3.2.2.2.10.1.6"><p id="EN-US_TOPIC_0035550301__p1285744613465">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.55%" id="mcps1.3.2.2.2.10.1.7"><p id="EN-US_TOPIC_0035550301__p926764714467">Maximum NICs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.17%" id="mcps1.3.2.2.2.10.1.8"><p id="EN-US_TOPIC_0035550301__p1285719467467">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.27%" id="mcps1.3.2.2.2.10.1.9"><p id="EN-US_TOPIC_0035550301__p19782258123210">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035550301__row7857154615465"><td class="cellrowborder" valign="top" width="14.729999999999999%" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p774119397477">m4.large.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.25%" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p167411139144718">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.89%" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p18741153917479">16</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.94%" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p995124674713">4/1.2</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.62%" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p324335634715">40</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.58%" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p3664153114817">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.55%" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p17267947114615">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.17%" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p6858146204619">KVM</p>
+</td>
+<td class="cellrowborder" rowspan="8" valign="top" width="12.27%" headers="mcps1.3.2.2.2.10.1.9 "><p id="EN-US_TOPIC_0035550301__p67827580329">CPU: Intel&reg; Xeon&reg; Cascade Lake 6266</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row9858164615465"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p1074133914470">m4.xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p147411839124719">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p974143914710">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p295114614478">8/2.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p19243115617473">80</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p1566443204817">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p14267114704612">3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p08591746114617">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row1285920462467"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p27411839154714">m4.2xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p1574223904714">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p17742163917476">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p17951134615477">15/4.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p42431756124718">150</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p066418314489">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p16267154794614">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p1685918469467">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row28601746184612"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p9742203944715">m4.3xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p97427399473">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p5742239104718">96</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p995111463479">17/7</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p18243125615476">200</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p8664103134818">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p9267447194619">6</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p118606463468">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row78601946124612"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p207427399478">m4.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p97421939124711">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p6742143994712">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p2951144644718">20/9</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p14243125614715">280</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p1166443134819">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p1526719479461">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p13861174664618">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row1086164620464"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p13742539164712">m4.6xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p074223974710">24</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p13742839174710">192</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p1695184610479">25/14</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p8243115674712">400</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p76654318484">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p9267547184613">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p6862346144617">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row4491162314473"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p2074293934718">m4.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p274215393472">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p3742173984713">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p109511464470">30/18</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p1524315617470">550</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p86651364814">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p1126744716466">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p179161987483">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row1728916261472"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p10742539204719">m4.16xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p47421139204713">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p4742133914479">512</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p69511946194711">40/36</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p624325654714">1000</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p66653311481">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p13267154710467">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p139162812483">KVM</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035550301__table10833218224040" frame="border" border="1" rules="all"><caption><b>Table 2 </b>M3 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035550301__row5178155224040"><th align="left" class="cellrowborder" valign="top" width="14.731473147314727%" id="mcps1.3.2.3.2.10.1.1"><p id="EN-US_TOPIC_0035550301__p42611119415">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.940794079407939%" id="mcps1.3.2.3.2.10.1.2"><p id="EN-US_TOPIC_0035550301__p910503163011">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.301030103010298%" id="mcps1.3.2.3.2.10.1.3"><p id="EN-US_TOPIC_0035550301__p6641941163011">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.17131713171317%" id="mcps1.3.2.3.2.10.1.4"><p id="EN-US_TOPIC_0035550301__p91221927543">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.091209120912088%" id="mcps1.3.2.3.2.10.1.5"><p id="EN-US_TOPIC_0035550301__p191233274415">Maximum PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9.55095509550955%" id="mcps1.3.2.3.2.10.1.6"><p id="EN-US_TOPIC_0035550301__p1312312271849">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.520752075207521%" id="mcps1.3.2.3.2.10.1.7"><p id="EN-US_TOPIC_0035550301__p188851824174714">Maximum NICs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.52115211521152%" id="mcps1.3.2.3.2.10.1.8"><p id="EN-US_TOPIC_0035550301__p35021151114316">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.17131713171317%" id="mcps1.3.2.3.2.10.1.9"><p id="EN-US_TOPIC_0035550301__p14784128153317">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035550301__row57282794203215"><td class="cellrowborder" valign="top" width="14.731473147314727%" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p127913415">m3.large.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.940794079407939%" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p17443704203215">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.301030103010298%" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p59515798203733">16</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.17131713171317%" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p1580915914419">1.5/0.6</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.091209120912088%" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p436210511245">30</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.55095509550955%" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p29745453416">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.520752075207521%" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p10885182414471">12</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.52115211521152%" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p185081351134319">KVM</p>
+</td>
+<td class="cellrowborder" rowspan="6" valign="top" width="13.17131713171317%" headers="mcps1.3.2.3.2.10.1.9 "><p id="EN-US_TOPIC_0035550301__p1440219361335">CPU: Intel&reg; Xeon&reg; Skylake 6151</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row57168339203215"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p1927017411">m3.xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p1115135203215">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p61879054203733">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p118091591847">3/1.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p16363651144">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p7974154513415">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p8885182454718">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p2511051104316">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row41647057203220"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p102719119419">m3.2xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p27498652203220">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p16852482203733">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p78092595410">5/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p2036312511412">90</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p139747453418">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p3885162444714">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p151613519433">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row30442359203220"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p627171442">m3.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p46554934203220">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p30368433203733">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p13809195920420">10/4.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p036316518419">130</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p16974164518418">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p1388532410475">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p1951914514430">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row64039116203220"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p20281211646">m3.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p43855233203220">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p13904994203733">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p1080914595414">15/9</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p18363851342">260</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p0974245546">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p98856246475">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p125252516438">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row19105347203636"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035550301__p12813112413">m3.15xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035550301__p36263685203636">60</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035550301__p51677410203636">512</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035550301__p9810175916418">17/17</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035550301__p16363175111415">500</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035550301__p197411458412">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035550301__p138853242472">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035550301__p1172594794317">KVM</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035550301__table38605135203957" frame="border" border="1" rules="all"><caption><b>Table 3 </b>M2 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035550301__row66310215203957"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.2.4.2.9.1.1"><p id="EN-US_TOPIC_0035550301__p1640540629">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9%" id="mcps1.3.2.4.2.9.1.2"><p id="EN-US_TOPIC_0035550301__p61667870203957">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.2.4.2.9.1.3"><p id="EN-US_TOPIC_0035550301__p29041564203957">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.2.4.2.9.1.4"><p id="EN-US_TOPIC_0035550301__p96871257623">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.2.4.2.9.1.5"><p id="EN-US_TOPIC_0035550301__p186875571321">Maximum PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.2.4.2.9.1.6"><p id="EN-US_TOPIC_0035550301__p11687185711216">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.2.4.2.9.1.7"><p id="EN-US_TOPIC_0035550301__p84271148153813">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.2.4.2.9.1.8"><p id="EN-US_TOPIC_0035550301__p1537185515334">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035550301__row789562392814"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.2.4.2.9.1.1 "><p id="EN-US_TOPIC_0035550301__p20896623192815">m2.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="9%" headers="mcps1.3.2.4.2.9.1.2 "><p id="EN-US_TOPIC_0035550301__p489602312815">16</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.9.1.3 "><p id="EN-US_TOPIC_0035550301__p1789692372813">128</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.4.2.9.1.4 "><p id="EN-US_TOPIC_0035550301__p789614236287">8/5</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.2.4.2.9.1.5 "><p id="EN-US_TOPIC_0035550301__p18896112313287">40</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.4.2.9.1.6 "><p id="EN-US_TOPIC_0035550301__p16896523132819">4</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.2.4.2.9.1.7 "><p id="EN-US_TOPIC_0035550301__p1089662382819">KVM</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="14.000000000000002%" headers="mcps1.3.2.4.2.9.1.8 "><p id="EN-US_TOPIC_0035550301__p7371125517334">CPU: Intel&reg; Xeon&reg; Processor E5-2690 v4</p>
+<p id="EN-US_TOPIC_0035550301__p19371555113315"></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035550301__row19640006203957"><td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.1 "><p id="EN-US_TOPIC_0035550301__p240617015219">m2.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.2 "><p id="EN-US_TOPIC_0035550301__p9062754203957">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.3 "><p id="EN-US_TOPIC_0035550301__p62994446203957">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.4 "><p id="EN-US_TOPIC_0035550301__p142297281321">13/8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.5 "><p id="EN-US_TOPIC_0035550301__p65394301724">60</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.6 "><p id="EN-US_TOPIC_0035550301__p1549582519216">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.4.2.9.1.7 "><p id="EN-US_TOPIC_0035550301__p843412484380">KVM</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0035550301__section2976132851911"><h4 class="sectiontitle">Scenarios</h4><ul id="EN-US_TOPIC_0035550301__ul19668133819196"><li id="EN-US_TOPIC_0035550301__li2667173812198">High-performance relational (MySQL) and NoSQL (MongoDB and Cassandra) databases</li><li id="EN-US_TOPIC_0035550301__li06671038111912">Distributed web scale cache stores that provide in-memory caching of key-value type data (Memcached and Redis)</li><li id="EN-US_TOPIC_0035550301__li5668138111918">Applications processing big unstructured data in real time (financial services, Hadoop/Spark clusters)</li><li id="EN-US_TOPIC_0035550301__li156684383193">High-performance computing (HPC) and electronic design automation (EDA)</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0132345719.html">ECS Specifications and Types</a></div>
+</div>
+</div>
+

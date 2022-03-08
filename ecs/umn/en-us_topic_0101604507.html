@@ -1,0 +1,47 @@
+<a name="EN-US_TOPIC_0101604507"></a><a name="EN-US_TOPIC_0101604507"></a>
+
+<h1 class="topictitle1">How Can I Configure Port Redirection?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_section381714910816"><h4 class="sectiontitle">Requirement</h4><p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p3646320484">It is expected that the <span id="EN-US_TOPIC_0101604507__text1925154410547">EIP</span> and port on <span id="EN-US_TOPIC_0101604507__text9669850165314">ECS</span> 1 accessed from the Internet can be automatically redirected to the <span id="EN-US_TOPIC_0101604507__text19717851205412">EIP</span> and port on <span id="EN-US_TOPIC_0101604507__text8357195515317">ECS</span> 2.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0101604507__section615920110279"><h4 class="sectiontitle">Windows</h4><p id="EN-US_TOPIC_0101604507__p12593125513117">For example, to redirect port 8080 on <span id="EN-US_TOPIC_0101604507__text172131417175316">ECS</span> 1 bound with EIP 192.168.10.43 to port 18080 on <span id="EN-US_TOPIC_0101604507__text921152155316">ECS</span> 2 bound with EIP 192.168.10.222, perform the following operations on <span id="EN-US_TOPIC_0101604507__text713332515317">ECS</span> 1.</p>
+<div class="note" id="EN-US_TOPIC_0101604507__note477691519341"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0101604507__p2729748101117">Ensure that the desired ports have been enabled on the <span id="EN-US_TOPIC_0101604507__text1431894210442">ECS</span> security group and firewall.</p>
+</div></div>
+<ol id="EN-US_TOPIC_0101604507__ol4998161594110"><li id="EN-US_TOPIC_0101604507__li1599891510417">Open the <strong id="EN-US_TOPIC_0101604507__b6758181333617">cmd</strong> window on the ECS and run the following command: The ECS running Windows Server 2012 is used as an example.<p id="EN-US_TOPIC_0101604507__p96891517174116"><strong id="EN-US_TOPIC_0101604507__b875219463337">netsh interface portproxy add v4tov4  listenaddress=192.168.10.43 listenport=8080 connectaddress=192.168.10.222  connectport=18080</strong></p>
+<p id="EN-US_TOPIC_0101604507__p8691111814110">To cancel port redirection, run the following command:</p>
+<p id="EN-US_TOPIC_0101604507__p23231198412"><strong id="EN-US_TOPIC_0101604507__b19109612183616">netsh interface  portproxy delete v4tov4 listenaddress=192.168.10.43  listenport=8080</strong></p>
+</li><li id="EN-US_TOPIC_0101604507__li10610245415">Run the following command to view all port redirections configured on the ECS:<p id="EN-US_TOPIC_0101604507__p20282325104112"><a name="EN-US_TOPIC_0101604507__li10610245415"></a><a name="li10610245415"></a><strong id="EN-US_TOPIC_0101604507__b959295183819">netsh interface  portproxy show  v4tov4</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604507__en-us_topic_0206596992_en-us_topic_0206596992_fig147071411162911"><span class="figcap"><b>Figure 1 </b>Port redirections on Windows</span><br><span><img id="EN-US_TOPIC_0101604507__image195891559174711" src="en-us_image_0267133745.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_section047317331198"><h4 class="sectiontitle">Linux</h4><p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p187611053151217">For example, to redirect port 1080 on <span id="EN-US_TOPIC_0101604507__text33221225145716">ECS</span> 1 to port 22 on <span id="EN-US_TOPIC_0101604507__text12324142585711">ECS</span> 2 with the following configurations:</p>
+<p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p653819111118">Private IP address and EIP of <span id="EN-US_TOPIC_0101604507__text19421912205410">ECS</span> 1: 192.168.72.10 and 123.xxx.xxx.456</p>
+<p id="EN-US_TOPIC_0101604507__p6275122516276">Private IP address of <span id="EN-US_TOPIC_0101604507__text13414201605418">ECS</span> 2: 192.168.72.20</p>
+<div class="note" id="EN-US_TOPIC_0101604507__note1761084866"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0101604507__ul94115144617"><li id="EN-US_TOPIC_0101604507__li174112141869">Ensure that the desired ports have been enabled on the <span id="EN-US_TOPIC_0101604507__text775144793613">ECS</span> security group and firewall.</li><li id="EN-US_TOPIC_0101604507__li104171415610">Ensure that the source/destination check function is disabled.<p id="EN-US_TOPIC_0101604507__p8610124661"><a name="EN-US_TOPIC_0101604507__li104171415610"></a><a name="li104171415610"></a>On the ECS details page, click <strong id="EN-US_TOPIC_0101604507__b12809758183620">NICs</strong> and disable <strong id="EN-US_TOPIC_0101604507__b2815058123619">Source/Destination Check</strong>.</p>
+<p id="EN-US_TOPIC_0101604507__p7610194766">By default, the source/destination check is enabled, and the system checks whether source IP addresses contained in the packets sent by ECSs are correct. If the IP addresses are incorrect, the system does not allow the ECSs to send the packets. This mechanism prevents packet spoofing, thereby improving system security. However, this mechanism prevents the packet sender from receiving returned packets. Therefore, disable the source/destination check.</p>
+</li></ul>
+</div></div>
+<ol id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_ol1656164315914"><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li15231733174012"><span>Log in to Linux <span id="EN-US_TOPIC_0101604507__text1262022405217">ECS</span> 1.</span><p><ol type="a" id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_ol1258917391406"><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li84522574376">Run the following command to modify the configuration file:<p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p8150162016407"><a name="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li84522574376"></a><a name="en-us_topic_0096689841_li84522574376"></a><strong id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_b14440463404">vi /etc/sysctl.conf</strong></p>
+</li><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li121757412">Add <strong id="EN-US_TOPIC_0101604507__b842352706121018">net.ipv4.ip_forward = 1</strong> to the file.</li><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li1456054312913">Run the following command to complete the modification:<p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p895821311417"><a name="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li1456054312913"></a><a name="en-us_topic_0096689841_li1456054312913"></a><strong id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_b884613287415">sysctl -p /etc/sysctl.conf</strong></p>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li1119144116144"><span>Run the following commands to add rules to the <strong id="EN-US_TOPIC_0101604507__b11332102191212">nat</strong> table in <strong id="EN-US_TOPIC_0101604507__b429612595117">iptables</strong> so that the access to port 1080 on <span id="EN-US_TOPIC_0101604507__text10348101113523">ECS</span> 1 can be redirected to port 22 on <span id="EN-US_TOPIC_0101604507__text31221613411">ECS</span> 2:</span><p><p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p11242459143"><strong id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_b19859521174312">iptables -t nat -A PREROUTING -d 192.168.72.10 -p tcp --dport 1080 -j DNAT --to-destination 192.168.72.20:22</strong></p>
+<p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p8424154715146"><strong id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_b8862152114315">iptables -t nat -A POSTROUTING -d 192.168.72.20 -p tcp --dport 22 -j SNAT --to 192.168.72.10</strong></p>
+</p></li><li id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_li2077523131518"><span>Run the following command to log in to port 1080 on <span id="EN-US_TOPIC_0101604507__text162819505217">ECS</span> 1 for check:</span><p><p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p145505974615"><strong id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_b15726315105516">ssh -p 1080 123.xxx.xxx.456</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604507__fig11283122115016"><span class="figcap"><b>Figure 2 </b>Port redirections on Linux</span><br><span><img id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_image186867114610" src="en-us_image_0121682390.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_p4869157134617">Enter the password to log in to <span id="EN-US_TOPIC_0101604507__text109781004512">ECS</span> 2 with hostname <strong id="EN-US_TOPIC_0101604507__b196631218259">ecs-inner</strong>.</p>
+<div class="fignone" id="EN-US_TOPIC_0101604507__fig19311141225012"><span class="figcap"><b>Figure 3 </b>Logging in to <span id="EN-US_TOPIC_0101604507__text671615155010">ECS</span> 2</span><br><span><img id="EN-US_TOPIC_0101604507__en-us_topic_0096689841_image1686918711464" src="en-us_image_0121682392.png"></span></div>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,186 @@
+<a name="en-us_topic_0052569729"></a><a name="en-us_topic_0052569729"></a>
+
+<h1 class="topictitle1">Adding or Removing Backend Servers (Shared Load Balancers)</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="en-us_topic_0052569729__p1355663292611">A backend server group has at least a healthy backend server. If incoming traffic increases, you need to add more backend <span id="en-us_topic_0052569729__text1919713316">server</span>s.</p>
+<p id="en-us_topic_0052569729__p1855623222610">After a backend <span id="en-us_topic_0052569729__text351062212817">server</span> is removed, it cannot receive requests from the load balancer. You can add it back to the backend <span id="en-us_topic_0052569729__text9970193118816">server</span> group when the traffic goes up again.</p>
+<p id="en-us_topic_0052569729__p1055614327266">If the load balancer is associated with an AS group, instances in the AS group are automatically added to the backend <span id="en-us_topic_0052569729__text533140191417">server</span> group of the load balancer. If instances are removed from the AS group, they will be automatically removed from the backend <span id="en-us_topic_0052569729__text114617041418">server</span> group.</p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_topic_0052569729__p12135154085012">Backend servers can reside in different subnets of the same VPC.</p>
+</div>
+
+<a name="en-us_topic_0052569729__section388715404610"></a><a name="section388715404610"></a><h4 class="sectiontitle">Adding Backend Servers</h4><ol id="en-us_topic_0052569729__en-us_topic_0091131437_ol26166317185930"><li id="en-us_topic_0052569729__li677391520332">Log in to the management console.</li><li id="en-us_topic_0052569729__li675519100420">In the upper left corner of the page, click <span><img id="en-us_topic_0052569729__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0052569729__li59941052152319">Hover on <span><img id="en-us_topic_0052569729__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li53888274153842">Locate the load balancer and click its name.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li413535319478">Click <strong id="en-us_topic_0052569729__b1413012416820">Backend Server Groups</strong>, locate the backend <span id="en-us_topic_0052569729__text171304419811">server</span> group, and click its name.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li198752301453">In the <strong id="en-us_topic_0052569729__b842352706182529">Basic Information</strong> area, click <strong id="en-us_topic_0052569729__b842352706182536">Add</strong> in the upper left corner of the server list. Select the subnet where the backend <span id="en-us_topic_0052569729__en-us_topic_0091131437_text10548181418329">server</span>s reside, select the backend <span id="en-us_topic_0052569729__text192711861804">server</span>s you want to add, and click <strong id="en-us_topic_0052569729__b773611615218">Next</strong>.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><ul id="en-us_topic_0052569729__ul16301152245112"><li id="en-us_topic_0052569729__li18301322165113">If a backend <span id="en-us_topic_0052569729__text1837611457816">server</span> has multiple NICs, you can only select the subnet where the primary NIC resides and use the primary NIC to add the backend <span id="en-us_topic_0052569729__text183760451815">server</span>.</li><li id="en-us_topic_0052569729__li73011522185110">Backend servers cannot use virtual IP addresses.</li></ul>
+</div>
+</li><li id="en-us_topic_0052569729__li5167205194111">Set the weights and ports of backend <span id="en-us_topic_0052569729__text116113497812">server</span> and click <strong id="en-us_topic_0052569729__b16611449983">Finish</strong>.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_topic_0052569729__p172794329110">In the <strong id="en-us_topic_0052569729__b155743364317">Backend Port</strong> text box, enter the port used by each backend <span id="en-us_topic_0052569729__text11279193215119">server</span>. If multiple backend <span id="en-us_topic_0052569729__text1722810341404">server</span>s use the same port, you can batch add the port in the <strong id="en-us_topic_0052569729__b5471141674813">Batch Add Port</strong> text box and then click <strong id="en-us_topic_0052569729__b6135923124616">OK</strong>.</p>
+</div>
+</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li10285245164836">Click <strong id="en-us_topic_0052569729__b84235270610535_3">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Removing Backend Servers</h4><ol id="en-us_topic_0052569729__en-us_topic_0091131437_ol9404234171026"><li id="en-us_topic_0052569729__li17750357105318">Log in to the management console.</li><li id="en-us_topic_0052569729__li19750125735317">In the upper left corner of the page, click <span><img id="en-us_topic_0052569729__en-us_topic_0240829509_image177714713415_1" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0052569729__li775553217363">Hover on <span><img id="en-us_topic_0052569729__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li5833303919287">Locate the load balancer and click its name.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li1958516018597">Click <strong id="en-us_topic_0052569729__b94701455788">Backend Server Groups</strong>, locate the backend <span id="en-us_topic_0052569729__text14703557810">server</span> group, and click its name.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li1783730708">In the <strong id="en-us_topic_0052569729__b139585587814">Basic Information</strong> area, click <strong id="en-us_topic_0052569729__b995810581387">Remove</strong> in the <strong id="en-us_topic_0052569729__b1595917581581">Operation</strong> column to remove a backend <span id="en-us_topic_0052569729__text39593581788">server</span>. To remove multiple backend <span id="en-us_topic_0052569729__text7960165819810">server</span>s, select the backend <span id="en-us_topic_0052569729__text19601358888">server</span>s you want to remove and click <strong id="en-us_topic_0052569729__b99600585813">Remove</strong> above the server list.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li10435905193052">Click <strong id="en-us_topic_0052569729__b33448116912">Yes</strong>.</li></ol>
+
+<h4 class="sectiontitle">Adding a Backend Server Group</h4><ol id="en-us_topic_0052569729__en-us_topic_0091131437_ol30157915195653"><li id="en-us_topic_0052569729__li1089010111545">Log in to the management console.</li><li id="en-us_topic_0052569729__li8890191113540">In the upper left corner of the page, click <span><img id="en-us_topic_0052569729__en-us_topic_0240829509_image177714713415_2" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0052569729__li18513114913620">Hover on <span><img id="en-us_topic_0052569729__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_2" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b9121102522212_2">Service List</strong> and choose <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b61222025142217_2">Network</strong> &gt; <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b4124425142210_2">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li61016710195653">Locate the load balancer and click its name.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li57581661227">Under <strong id="en-us_topic_0052569729__b8514121593220">Backend Server Groups</strong>, click <strong id="en-us_topic_0052569729__b125151015113210">Add Backend Server Group</strong>.</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li41101049195717">In the <strong id="en-us_topic_0052569729__b157661622203219">Add Backend Server Group</strong> dialog box, configure the parameters.<p id="en-us_topic_0052569729__en-us_topic_0091131437_p530313111597">Configure the parameters based on <a href="#en-us_topic_0052569729__table299811529239">Table 1</a> and <a href="#en-us_topic_0052569729__table1022053182319">Table 2</a>.</p>
+
+<a name="en-us_topic_0052569729__table299811529239"></a><a name="table299811529239"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0052569729__table299811529239" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for configuring a backend server group</caption><thead align="left"><tr id="en-us_topic_0052569729__row99989528236"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.6.3.2.4.1.1"><p id="en-us_topic_0052569729__p1799985232319">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64%" id="mcps1.3.4.2.6.3.2.4.1.2"><p id="en-us_topic_0052569729__p49994524234"><strong id="en-us_topic_0052569729__b1473341119333">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.6.3.2.4.1.3"><p id="en-us_topic_0052569729__p17999145292310"><strong id="en-us_topic_0052569729__b125001112123317">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0052569729__row20853182317"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p160105318236">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p12011538239">Specifies the name of the backend <span id="en-us_topic_0052569729__text14707161119920">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p309533232">server_group-sq4v</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row170953142319"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p1701353152312">Backend Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p170153182312">Specifies the protocol used by backend servers to receive requests.</p>
+<p id="en-us_topic_0052569729__p603535234">The backend protocol can be TCP, UDP, or HTTP.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p10145322312">HTTP</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row17055311233"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p10085392317">Load Balancing Algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p2001153142314">Specifies the algorithm used by the load balancer to distribute traffic. The following options are available:</p>
+<ul id="en-us_topic_0052569729__ul8075372314"><li id="en-us_topic_0052569729__li170153122315"><strong id="en-us_topic_0052569729__b1836352017917">Weighted round robin</strong>: Requests are routed to different servers based on their weights, which indicate server processing performance. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests.</li><li id="en-us_topic_0052569729__li7055372317"><strong id="en-us_topic_0052569729__b35161438105713">Weighted least connections</strong>: In addition to the number of active connections established with each backend server, each server is assigned a weight based on their processing capability. Requests are routed to the server with the lowest connections-to-weight ratio.</li><li id="en-us_topic_0052569729__li17017535237"><strong id="en-us_topic_0052569729__b2076184716104">Source IP hash</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hashing key, and all backend servers are numbered. The generated key is used to allocate the client to a particular server. This allows requests from different clients to be routed based on source IP addresses and ensures that a client is directed to the same server that it was using previously.</li></ul>
+<span class="notetitle"> NOTE: </span><ul id="en-us_topic_0052569729__ul61125382312"><li id="en-us_topic_0052569729__li19113537231">Choose an appropriate algorithm based on your requirements for better traffic distribution.</li><li id="en-us_topic_0052569729__li61853142313">For <strong id="en-us_topic_0052569729__b101483580109">Weighted round robin</strong> or <strong id="en-us_topic_0052569729__b11149165841020">Weighted least connections</strong>, no requests will be routed to a server with a weight of 0.</li></ul>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p811253132310">Weighted round robin</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row121653202313"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p111155320235">Sticky Session</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p1714537236">Specifies whether to enable sticky sessions. If you enable sticky sessions, all requests from a client are sent to the same backend <span id="en-us_topic_0052569729__text1749218215119">server</span>.</p>
+<span class="notetitle"> NOTE: </span><p id="en-us_topic_0052569729__p9185352315">You can enable sticky sessions only if you select <strong id="en-us_topic_0052569729__b24499416118">Weighted round robin</strong> for <strong id="en-us_topic_0052569729__b14450049118">Load Balancing Algorithm</strong>.</p>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p5105318231">-</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row3114532233"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p8442128111419">Sticky Session Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p10442118111413">After you enable the sticky session feature, select a sticky session type:</p>
+<ul id="en-us_topic_0052569729__ul1644211881416"><li id="en-us_topic_0052569729__li344219801415"><strong id="en-us_topic_0052569729__b159412311368">Source IP address</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hashing key, and all backend servers are numbered. The system allocates the client to a particular server based on the generated key. This enables requests from different clients to be routed and ensures that a client is directed to the same server that it was using previously.</li><li id="en-us_topic_0052569729__li14442387145"><strong id="en-us_topic_0052569729__elb_ug_jt_0004_b19659101662811">Load balancer cookie</strong>: The load balancer generates a cookie after receiving a request from the client. All subsequent requests with the same cookie are then routed to the same backend server.</li><li id="en-us_topic_0052569729__li104421831414"><strong id="en-us_topic_0052569729__elb_ug_jt_0004_b716812231288">Application cookie</strong>: The application deployed on the backend server generates a cookie after receiving the first request from the client. All requests with the same cookie generated by backend application are then routed to the same backend server.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="en-us_topic_0052569729__elb_ug_jt_0011_p375831210472">Choose an appropriate sticky session type to better distribute requests and improve load balancing.</p>
+<ul id="en-us_topic_0052569729__elb_ug_jt_0011_ul67056312135"><li id="en-us_topic_0052569729__elb_ug_jt_0011_li1285321975510">Sticky sessions at Layer 4 (for TCP or UDP listeners): only <strong id="en-us_topic_0052569729__elb_ug_jt_0011_b6885112984711">Source IP address</strong></li><li id="en-us_topic_0052569729__elb_ug_jt_0011_li8538354164612">Sticky sessions at Layer 7 (for HTTP or HTTPS listeners): <strong id="en-us_topic_0052569729__elb_ug_jt_0011_b2041065474719">Load balancer cookie</strong> and <strong id="en-us_topic_0052569729__elb_ug_jt_0011_b148311492477">Application cookie</strong></li></ul>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p1144315831417">Load balancer cookie</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row92891118165010"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p109368575114">Cookie Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p593625195113">Specifies the cookie name. If you select <strong id="en-us_topic_0052569729__b2246104213349">Application cookie</strong>, enter a cookie name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p1893615135112">cookieName-qsps</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row1121853132319"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p828535239">Stickiness Duration (min)</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p122175352319">Specifies the minutes that sticky sessions are maintained. You can enable sticky sessions only if you select <strong id="en-us_topic_0052569729__b191552016121119">Weighted round robin</strong> or <strong id="en-us_topic_0052569729__b141555163116">Weighted least connections</strong> for <strong id="en-us_topic_0052569729__b2156171611119">Load Balancing Algorithm</strong>.</p>
+<ul id="en-us_topic_0052569729__ul1821153202318"><li id="en-us_topic_0052569729__li82165316238">Stickiness duration at Layer 4: <strong id="en-us_topic_0052569729__b14319131718118">1</strong> to <strong id="en-us_topic_0052569729__b16320171771116">60</strong></li><li id="en-us_topic_0052569729__li2211533238">Stickiness duration at Layer 7: <strong id="en-us_topic_0052569729__b1497019191117">1</strong> to <strong id="en-us_topic_0052569729__b1998131920119">1440</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p1213539232">20</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row112115352317"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.1 "><p id="en-us_topic_0052569729__p102153102318">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.3.2.4.1.2 "><p id="en-us_topic_0052569729__p2225372319">Provides supplementary information about the backend <span id="en-us_topic_0052569729__text85851521101110">server</span> group.</p>
+<p id="en-us_topic_0052569729__p20225332314">You can enter a maximum of 255 characters.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.3.2.4.1.3 "><p id="en-us_topic_0052569729__p3295392318">-</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="en-us_topic_0052569729__table1022053182319"></a><a name="table1022053182319"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0052569729__table1022053182319" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters for configuring a health check</caption><thead align="left"><tr id="en-us_topic_0052569729__row183253192312"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.6.4.2.4.1.1"><p id="en-us_topic_0052569729__p3335332313">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64%" id="mcps1.3.4.2.6.4.2.4.1.2"><p id="en-us_topic_0052569729__p1039539238"><strong id="en-us_topic_0052569729__b1844656700">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.6.4.2.4.1.3"><p id="en-us_topic_0052569729__p12310533238"><strong id="en-us_topic_0052569729__b537119723518">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0052569729__row193105314234"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p193145315234">Enable Health Check</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p123165316239">Specifies whether to enable health checks.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p1961553162318">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row16645332313"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p20719538230">Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><ul id="en-us_topic_0052569729__ul1667622755610"><li id="en-us_topic_0052569729__li146763279563">If the frontend protocol is TCP, HTTP or HTTPS, the health check protocol can be TCP or HTTP. The health check protocol cannot be changed once it is set.</li><li id="en-us_topic_0052569729__li367682765618">If the frontend protocol is UDP, the health check protocol is UDP by default.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p47953122315">HTTP</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row5816465414"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p16237545554">Domain Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p17231354165514">Specifies the domain name that will be used for health checks.</p>
+<p id="en-us_topic_0052569729__p72365420558">The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. The field is left blank by default and is available only when the health check protocol is HTTP.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p1223155420552">www.elb.com</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row127091533562"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p137185319231">Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p1171535239">Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.</p>
+<span class="notetitle"> NOTE: </span><p id="en-us_topic_0052569729__p14719228373">If you do not specify a health check port, the backend port will be used for health checks by default. If you specify a port, it will be used for health checks.</p>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p148115318234">80</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row3885362315"><td class="cellrowborder" colspan="3" valign="top" headers="mcps1.3.4.2.6.4.2.4.1.1 mcps1.3.4.2.6.4.2.4.1.2 mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p58185318238">Advanced Settings</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row15855342319"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p1280535238">Interval (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p3815538233">Specifies the maximum time between health checks, in seconds.</p>
+<p id="en-us_topic_0052569729__p14815362320">The interval ranges from <strong id="en-us_topic_0052569729__b48734487366">1</strong> to <strong id="en-us_topic_0052569729__b3873144810369">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p1087537234">5</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row1581153152313"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p17945311234">Timeout (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p59165342319">Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from <strong id="en-us_topic_0052569729__b7907174218117">1</strong> to <strong id="en-us_topic_0052569729__b8908114221110">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p1297536239">3</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row167077358544"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p10124827195610">Check Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p1112415275561">Specifies the destination path for health checks. Configure this parameter only if you have set <strong id="en-us_topic_0052569729__b1520924517115">Protocol</strong> to <strong id="en-us_topic_0052569729__b22095450114">HTTP</strong>. The path can contain 1 to 80 characters and <span id="en-us_topic_0052569729__ph1315434741113">must start with a slash (/)</span>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p16124152725616">/index.html</p>
+</td>
+</tr>
+<tr id="en-us_topic_0052569729__row3915314238"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.1 "><p id="en-us_topic_0052569729__p1995311231">Maximum Retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.6.4.2.4.1.2 "><p id="en-us_topic_0052569729__p51019539239">Specifies the maximum number of health check retries. The value ranges from <strong id="en-us_topic_0052569729__b1832193935617">1</strong> to <strong id="en-us_topic_0052569729__b15322123975619">10</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.6.4.2.4.1.3 "><p id="en-us_topic_0052569729__p121018539233">3</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="en-us_topic_0052569729__en-us_topic_0091131437_li10349104816303">Click <strong id="en-us_topic_0052569729__b5776816195720">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Modifying a Backend Server Group</h4><ol id="en-us_topic_0052569729__ol185401329437"><li id="en-us_topic_0052569729__li2016307546">Log in to the management console.</li><li id="en-us_topic_0052569729__li150193045412">In the upper left corner of the page, click <span><img id="en-us_topic_0052569729__en-us_topic_0240829509_image177714713415_3" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0052569729__li2056416814373">Hover on <span><img id="en-us_topic_0052569729__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_3" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b9121102522212_3">Service List</strong> and choose <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b61222025142217_3">Network</strong> &gt; <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b4124425142210_3">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0052569729__li1379615339436">Locate the load balancer and click its name.</li><li id="en-us_topic_0052569729__li84318512118">Click <strong id="en-us_topic_0052569729__b16538155111111">Backend Server Groups</strong>, locate the backend <span id="en-us_topic_0052569729__text85391251121119">server</span> group, and click <span><img id="en-us_topic_0052569729__image4540125116113" src="en-us_image_0238408794.png"></span> on the right of its name.</li><li id="en-us_topic_0052569729__li1892218586914">Modify the parameters as needed and click <strong id="en-us_topic_0052569729__b473323713572">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Deleting a Backend Server Group</h4><ol id="en-us_topic_0052569729__ol10940073201316"><li id="en-us_topic_0052569729__li81672045205412">Log in to the management console.</li><li id="en-us_topic_0052569729__li18167184517547">In the upper left corner of the page, click <span><img id="en-us_topic_0052569729__en-us_topic_0240829509_image177714713415_4" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0052569729__li192351223183716">Hover on <span><img id="en-us_topic_0052569729__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_4" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b9121102522212_4">Service List</strong> and choose <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b61222025142217_4">Network</strong> &gt; <strong id="en-us_topic_0052569729__en-us_topic_0052569751_b4124425142210_4">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0052569729__li10486424201316">Locate the load balancer and click its name.</li><li id="en-us_topic_0052569729__li27268956201316">Click <strong id="en-us_topic_0052569729__b1177045619111">Backend Server Groups</strong>, locate the backend <span id="en-us_topic_0052569729__text37711256161110">server</span> group, and click <span><img id="en-us_topic_0052569729__image18771056151111" src="en-us_image_0169513446.png"></span> on the right of its name.</li><li id="en-us_topic_0052569729__li1582615893515">Click <strong id="en-us_topic_0052569729__b1441113243118">Yes</strong>.</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_ug_hd_0000.html">Backend Server</a>
+
+
+

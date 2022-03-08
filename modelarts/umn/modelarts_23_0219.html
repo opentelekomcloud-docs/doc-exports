@@ -1,0 +1,43 @@
+<a name="modelarts_23_0219"></a><a name="modelarts_23_0219"></a>
+
+<h1 class="topictitle1">Specifications for Custom Images Used for Importing Models</h1>
+<div id="body8662426"><p id="modelarts_23_0219__en-us_topic_0212179953_p10835147194616">When creating an image using locally developed models, ensure that they meet the specifications defined by ModelArts.</p>
+<div class="section" id="modelarts_23_0219__en-us_topic_0212179953_section9418389323"><h4 class="sectiontitle">Specifications for Custom Images Used for Model Management</h4><ul id="modelarts_23_0219__en-us_topic_0212179953_ul219710389375"><li class="SourceCode" id="modelarts_23_0219__en-us_topic_0212179953_li15477141395013">Custom images cannot contain malicious code.</li><li id="modelarts_23_0219__en-us_topic_0212179953_li879422612288">The size of a custom image cannot exceed 30 GB.</li><li id="modelarts_23_0219__en-us_topic_0212179953_li519813803710"><strong id="modelarts_23_0219__en-us_topic_0212179953_b5744105416544">External port of images</strong><p id="modelarts_23_0219__en-us_topic_0212179953_p113524168338">The external service port of the image must be <strong id="modelarts_23_0219__en-us_topic_0212179953_b142199014551">8080</strong>. The inference interface must be consistent with the URL defined by <strong id="modelarts_23_0219__en-us_topic_0212179953_b22207012556">apis</strong> in the <strong id="modelarts_23_0219__en-us_topic_0212179953_b22218065514">config.json</strong> file. The inference interface can be directly accessed when the image is started. The following is an example of accessing the <strong id="modelarts_23_0219__en-us_topic_0212179953_b157431029555">mnist</strong> image. The image contains the model trained with the <strong id="modelarts_23_0219__en-us_topic_0212179953_b874418285514">mnist</strong> dataset. The model can identify handwritten digits in images. In this example, <em id="modelarts_23_0219__en-us_topic_0212179953_i198621857112915">listen_ip</em> indicates the IP address of the container.</p>
+<ul id="modelarts_23_0219__en-us_topic_0212179953_ul83521716113316"><li id="modelarts_23_0219__en-us_topic_0212179953_li1535215163338">Sample request: <b><span class="cmdname" id="modelarts_23_0219__en-us_topic_0212179953_cmdname166491049163317">curl -X POST \ http://{listen_ip}:8080/ \ -F images=@seven.jpg</span></b></li><li id="modelarts_23_0219__en-us_topic_0212179953_li89591030103410">Sample response<pre class="screen" id="modelarts_23_0219__en-us_topic_0212179953_screen11140192533418">{"mnist_result": 7}</pre>
+</li></ul>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li1198133815376"><strong id="modelarts_23_0219__en-us_topic_0212179953_b86251085557">Health check port</strong><p id="modelarts_23_0219__en-us_topic_0212179953_p13521216123313">A custom image must provide a health check interface for ModelArts to call. The health check interface is configured in the <strong id="modelarts_23_0219__en-us_topic_0212179953_b209791810125518">config.json</strong> file. For details, see the model configuration file compilation description. A sample health check interface is as follows:</p>
+<ul id="modelarts_23_0219__en-us_topic_0212179953_ul0352141615333"><li id="modelarts_23_0219__en-us_topic_0212179953_li453841919374">URI<pre class="screen" id="modelarts_23_0219__en-us_topic_0212179953_screen1428383063717">GET /health</pre>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li1735331633315">Sample request: <b><span class="cmdname" id="modelarts_23_0219__en-us_topic_0212179953_cmdname13341548344">curl -X GET \ http://{listen_ip}:8080/health</span></b></li><li id="modelarts_23_0219__en-us_topic_0212179953_li32562280362">Sample response<pre class="screen" id="modelarts_23_0219__en-us_topic_0212179953_screen12631163943612">{"health": "true"}</pre>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li1935361610338">Status code
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0219__en-us_topic_0212179953_table19701134515351" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Status code</caption><thead align="left"><tr id="modelarts_23_0219__en-us_topic_0212179953_row3702134520355"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.2.2.4.3.4.1.2.4.1.1"><p id="modelarts_23_0219__en-us_topic_0212179953_p77029457355">Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.2.2.4.3.4.1.2.4.1.2"><p id="modelarts_23_0219__en-us_topic_0212179953_p2070215454355">Message</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.2.2.4.3.4.1.2.4.1.3"><p id="modelarts_23_0219__en-us_topic_0212179953_p1670264511356">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0219__en-us_topic_0212179953_row147021745123516"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.2.2.4.3.4.1.2.4.1.1 "><p id="modelarts_23_0219__en-us_topic_0212179953_p117027452353">200</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.2.2.4.3.4.1.2.4.1.2 "><p id="modelarts_23_0219__en-us_topic_0212179953_p17702174511350">OK</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.2.2.4.3.4.1.2.4.1.3 "><p id="modelarts_23_0219__en-us_topic_0212179953_p970224510351">Successful request</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li2198183814376"><strong id="modelarts_23_0219__en-us_topic_0212179953_b17973267561">Log file output</strong><p id="modelarts_23_0219__en-us_topic_0212179953_p193533167336">To ensure that the log content can be displayed normally, the logs must be standard output.</p>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li1719863863712"><strong id="modelarts_23_0219__en-us_topic_0212179953_b6301101195712">Image boot file</strong><p id="modelarts_23_0219__en-us_topic_0212179953_p135316165330">To deploy a batch service, set the boot file of an image to <span class="filepath" id="modelarts_23_0219__en-us_topic_0212179953_filepath1223424145712"><b>/home/run.sh</b></span> and use CMD to set the default boot path. The following is a sample <strong id="modelarts_23_0219__en-us_topic_0212179953_b623620485710">Dockerfile</strong>.</p>
+<p id="modelarts_23_0219__en-us_topic_0212179953_li1719863863712p1"><b><span class="cmdname" id="modelarts_23_0219__en-us_topic_0212179953_cmdname4185195311364">CMD /bin/sh /home/run.sh</span></b></p>
+</li><li id="modelarts_23_0219__en-us_topic_0212179953_li20198173883718"><strong id="modelarts_23_0219__en-us_topic_0212179953_b1875069175710">Image dependencies</strong><p id="modelarts_23_0219__en-us_topic_0212179953_p11353916123314">To deploy a batch service, install component packages such as Python, JRE/JDK, and ZIP in the image.</p>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0218.html">For Importing Models</a></div>
+</div>
+</div>
+

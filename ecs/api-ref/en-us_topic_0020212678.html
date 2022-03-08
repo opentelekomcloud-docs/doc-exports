@@ -1,0 +1,238 @@
+<a name="EN-US_TOPIC_0020212678"></a><a name="EN-US_TOPIC_0020212678"></a>
+
+<h1 class="topictitle1">Creating and Importing an SSH Key Pair</h1>
+<div id="body41179664"><div class="section" id="EN-US_TOPIC_0020212678__section52930837"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212678__p41726230121933">This API is used to create an SSH key pair or import a public key to generate a key pair.</p>
+<p id="EN-US_TOPIC_0020212678__p28958703195740">After a private SSH key is created, download the private key to a local directory. Then, you can use this private key to log in to the <span id="EN-US_TOPIC_0020212678__text1050144095310">ECS</span>. To ensure <span id="EN-US_TOPIC_0020212678__text1730587553">ECS</span> security, the private key can be downloaded only once. Keep it secure.</p>
+<p id="EN-US_TOPIC_0020212678__p8914714187">Only the user that created the key pair can view it. If the key pair is created by an IAM user, the IAM account of the user and the other users of the same account cannot view the key pair.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section6615485"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212678__p729816165351">POST /v2.1/{project_id}/os-keypairs</p>
+<p id="EN-US_TOPIC_0020212678__p09978115145">POST /v2/{project_id}/os-keypairs</p>
+<div class="p" id="EN-US_TOPIC_0020212678__p17242244121110"><a href="#EN-US_TOPIC_0020212678__table909717">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212678__table909717"></a><a name="table909717"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212678__table909717" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212678__row9180116"><th align="left" class="cellrowborder" valign="top" width="16.79%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0020212678__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.37%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0020212678__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.84%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0020212678__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212678__row67029240"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p60659387">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p14463294">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.84%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section59539371"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0020212678__p924514371318"><a href="#EN-US_TOPIC_0020212678__table8287277">Table 2</a> describes the request parameters.<div class="note" id="EN-US_TOPIC_0020212678__note18136983192041"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0020212678__p56070973192054">When creating an SSH key, you only need to configure <strong id="EN-US_TOPIC_0020212678__b84235270618444">name</strong>. When importing an SSH key, you must configure <strong id="EN-US_TOPIC_0020212678__b842352706184442">public_key</strong>.</p>
+</div></div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212678__table8287277"></a><a name="table8287277"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212678__table8287277" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212678__row6478825"><th align="left" class="cellrowborder" valign="top" width="16.73%" id="mcps1.3.3.2.3.2.5.1.1"><p id="EN-US_TOPIC_0020212678__p55022811">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.11%" id="mcps1.3.3.2.3.2.5.1.2"><p id="EN-US_TOPIC_0020212678__p27662693">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.16%" id="mcps1.3.3.2.3.2.5.1.3"><p id="EN-US_TOPIC_0020212678__p26085680">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.3.2.3.2.5.1.4"><p id="EN-US_TOPIC_0020212678__p32565348">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212678__row20547495"><td class="cellrowborder" valign="top" width="16.73%" headers="mcps1.3.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212678__p53734436">keypair</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212678__p57522049">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.16%" headers="mcps1.3.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212678__p28774374">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212678__p38553569">Specifies the created or imported SSH key pair. For details, see <a href="#EN-US_TOPIC_0020212678__table54046809">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212678__table54046809"></a><a name="table54046809"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212678__table54046809" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0020212678__b6699296094725">keypair</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212678__row66830726"><th align="left" class="cellrowborder" valign="top" width="16.73%" id="mcps1.3.3.2.4.2.5.1.1"><p id="EN-US_TOPIC_0020212678__p47584422136">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.11%" id="mcps1.3.3.2.4.2.5.1.2"><p id="EN-US_TOPIC_0020212678__p47581425137">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.16%" id="mcps1.3.3.2.4.2.5.1.3"><p id="EN-US_TOPIC_0020212678__p187581542191314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.3.2.4.2.5.1.4"><p id="EN-US_TOPIC_0020212678__p197587425136">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212678__row4961980"><td class="cellrowborder" valign="top" width="16.73%" headers="mcps1.3.3.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212678__p66376082">public_key</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.3.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212678__p7753598">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.16%" headers="mcps1.3.3.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212678__p24061669">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.3.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212678__p189241054111414">Specifies the imported public key.</p>
+<p id="EN-US_TOPIC_0020212678__p52054505113323">It is recommended that the length of the imported public key be less than or equal to 1024 bytes.</p>
+<div class="note" id="EN-US_TOPIC_0020212678__note6540161717279"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212678__p354119176278">If the length of the public key to be imported exceeds 1024 bytes, importing the public key will fail.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row82031036195016"><td class="cellrowborder" valign="top" width="16.73%" headers="mcps1.3.3.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212678__p920333685015">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.3.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212678__p9203836135020">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.16%" headers="mcps1.3.3.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212678__p1420310367501">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.3.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212678__p142031336145018">Specifies the key type. The value is <span class="parmvalue" id="EN-US_TOPIC_0020212678__parmvalue154570505291950"><b>ssh</b></span> or <span class="parmvalue" id="EN-US_TOPIC_0020212678__parmvalue162052459691954"><b>x509</b></span>.</p>
+<p id="EN-US_TOPIC_0020212678__p11201175716463">This parameter is supported in microversion 2.2 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row28567114"><td class="cellrowborder" valign="top" width="16.73%" headers="mcps1.3.3.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212678__p32234903">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.3.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212678__p60890369">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.16%" headers="mcps1.3.3.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212678__p33172847">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.3.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212678__p23814811">Specifies the key pair name.</p>
+<p id="EN-US_TOPIC_0020212678__p3185261315290">The new key pair name cannot be the same as an existing one.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row22241550192311"><td class="cellrowborder" valign="top" width="16.73%" headers="mcps1.3.3.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212678__p14224450172312">user_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.3.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212678__p167344512420">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.16%" headers="mcps1.3.3.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212678__p1022419500232">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.3.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212678__p1622411505237">Specifies the user ID of the key.</p>
+<p id="EN-US_TOPIC_0020212678__p141914504713">This parameter is supported in microversion 2.10 and later.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section66092295"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0020212678__p43241962149"><a href="#EN-US_TOPIC_0020212678__table51598880">Table 4</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212678__table51598880"></a><a name="table51598880"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212678__table51598880" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212678__row44903457"><th align="left" class="cellrowborder" valign="top" width="16.66%" id="mcps1.3.4.2.2.2.4.1.1"><p id="EN-US_TOPIC_0020212678__p52863116">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.29%" id="mcps1.3.4.2.2.2.4.1.2"><p id="EN-US_TOPIC_0020212678__p16299242">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.05%" id="mcps1.3.4.2.2.2.4.1.3"><p id="EN-US_TOPIC_0020212678__p45170224">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212678__row23474126"><td class="cellrowborder" valign="top" width="16.66%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p22356031">keypair</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.29%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p45057304">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.05%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p30540622">Specifies the SSH key pair. For details, see <a href="#EN-US_TOPIC_0020212678__table51079899">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212678__table51079899"></a><a name="table51079899"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212678__table51079899" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0020212678__b1732405253">keypair</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212678__row66208776"><th align="left" class="cellrowborder" valign="top" width="16.79%" id="mcps1.3.4.2.3.2.4.1.1"><p id="EN-US_TOPIC_0020212678__p1117813381339">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.04%" id="mcps1.3.4.2.3.2.4.1.2"><p id="EN-US_TOPIC_0020212678__p1517883853320">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.17%" id="mcps1.3.4.2.3.2.4.1.3"><p id="EN-US_TOPIC_0020212678__p13178153853317">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212678__row27729526"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p31499108">fingerprint</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p37455857">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p59121255">Specifies fingerprint information about the key pair.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row62329248"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p15504345">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p54079315">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p30917775">Specifies the key pair name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row9824527"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p57589242">public_key</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p20116657">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p35311297">Specifies information about the public key.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row16629746121557"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p4832208121557">private_key</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p55864542121557">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p28734020121557">Specifies information about the private key.</p>
+<ul id="EN-US_TOPIC_0020212678__ul53408548183356"><li id="EN-US_TOPIC_0020212678__li48601030183356">The information about the private key is contained in the response for creating an SSH key.</li><li id="EN-US_TOPIC_0020212678__li19850370183359">The information about the private key is not contained in the response for importing an SSH key.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row49366219"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p39240784">user_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p29185940">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p3041091">Specifies the ID of the user to which the key pair belongs.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212678__row97681950172617"><td class="cellrowborder" valign="top" width="16.79%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212678__p1076825012260">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.04%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212678__p1768150152614">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.17%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212678__p121861283275">Specifies the key type. The value is <span class="parmvalue" id="EN-US_TOPIC_0020212678__parmvalue1136804288"><b>ssh</b></span> or <span class="parmvalue" id="EN-US_TOPIC_0020212678__parmvalue842263443"><b>x509</b></span>.</p>
+<p id="EN-US_TOPIC_0020212678__p2812534719">This parameter is supported in microversion 2.2 and later.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section1176153117145"><h4 class="sectiontitle">Example Request (Importing an SSH Key)</h4><pre class="screen" id="EN-US_TOPIC_0020212678__screen127810379277">POST https://{endpoint}/v2/{project_id}/os-keypairs
+POST https://{endpoint}/v2.1/{project_id}/os-keypairs</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212678__screen61701025153949">{
+    "keypair": {
+        "public_key": "ssh-rsaAAAAB3NzaC1yc2EAAAADAQABAAABAQDWNgTxQYeBzK9LYy4IakX7IsIl5j5zqR6BU2GJaEg3RK6dlS7rKFQhvy/V/1emK+GT/7P8up9VsMZ9Dx6PBOLow5p+2/wGsMlwDJpWiQ8zNnEMg+u/Ar/ZhYHAMyKEAOOJxIcnPoUgxfNdj/eiXV98AabsBdUA7QD30Og8F4Bmn2lii/WD9KbQQVjb7kbB3gNIJpGTUcoX73arorqkq/ppaLRmmwMJ7bTIGl8/0MWU2Dy+eTByOaDMb2htbB+j8ZXyEu7Oooy0NaSd+PNHv3PZ9OIVO7gd1lyoTRvCMK/F346+zmZtk5EASSOx5RifnSwk3NtugVjXs9GMJfFLBRibGenerated-by-Nova\\n\n",
+        "type": "ssh",
+        "name": "demo1",
+        "user_id": "fake"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section17825152411017"><h4 class="sectiontitle">Example Request (Creating an SSH Key)</h4><pre class="screen" id="EN-US_TOPIC_0020212678__screen128258241107">POST https://{endpoint}/v2/{project_id}/os-keypairs
+POST https://{endpoint}/v2.1/{project_id}/os-keypairs</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212678__screen28266247015">{
+    "keypair": {
+        "name": "demo"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section8681151155119"><h4 class="sectiontitle">Example Response (Importing an SSH Key)</h4><pre class="screen" id="EN-US_TOPIC_0020212678__screen13176153112142">{
+    "keypair": {
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWNgTxQYeBzK9LYy4IakX7IsIl5j5zqR6BU2GJaEg3RK6dlS7rKFQhvy/V/1emK+GT/7P8up9VsMZ9Dx6PBOLow5p+2/wGsMlwDJpWiQ8zNnEMg+u/Ar/ZhYHAMyKEAOOJxIcnPoUgxfNdj/eiXV98AabsBdUA7QD30Og8F4Bmn2lii/WD9KbQQVjb7kbB3gNIJpGTUcoX73arorqkq/ppaLRmmwMJ7bTIGl8/0MWU2Dy+eTByOaDMb2htbB+j8ZXyEu7Oooy0NaSd+PNHv3PZ9OIVO7gd1lyoTRvCMK/F346+zmZtk5EASSOx5RifnSwk3NtugVjXs9GMJfFLBRib Generated-by-Nova\\n\n",
+        "user_id": "6fc0d2cbbfab40b199874b97097e913d",
+        "name": "demo1",
+        "fingerprint": "fc:47:b5:c3:7d:25:32:d5:d2:0c:19:f9:62:ac:8c:5a"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section97601124125214"><h4 class="sectiontitle">Example Response (Creating an SSH Key)</h4><pre class="screen" id="EN-US_TOPIC_0020212678__screen617693111419">{
+    "keypair": {
+        "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWNgTxQYeBzK9LYy4IakX7IsIl5j5zqR6BU2GJaEg3RK6dlS7rKFQhvy/V/1emK+GT/7P8up9VsMZ9Dx6PBOLow5p+2/wGsMlwDJpWiQ8zNnEMg+u/Ar/ZhYHAMyKEAOOJxIcnPoUgxfNdj/eiXV98AabsBdUA7QD30Og8F4Bmn2lii/WD9KbQQVjb7kbB3gNIJpGTUcoX73arorqkq/ppaLRmmwMJ7bTIGl8/0MWU2Dy+eTByOaDMb2htbB+j8ZXyEu7Oooy0NaSd+PNHv3PZ9OIVO7gd1lyoTRvCMK/F346+zmZtk5EASSOx5RifnSwk3NtugVjXs9GMJfFLBRib Generated-by-Nova\n",
+        "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEA1jYE8UGHgcyvS2MuCGpF+yLCJeY+c6kegVNhiWhIN0SunZUu\n6yhUIb8v1f9Xpivhk/+z/LqfVbDGfQ8ejwTi6MOaftv8BrDJcAyaVokPMzZxDIPr\nvwK/2YWBwDMihADjicSHJz6FIMXzXY/3ol1ffAGm7AXVAO0A99DoPBeAZp9pYov1\ng/Sm0EFY2+5Gwd4DSCaRk1HKF+92q6K6pKv6aWi0ZpsDCe20yBpfP9DFlNg8vnkw\ncjmgzG9obWwfo/GV8hLuzqKMtDWknfjzR79z2fTiFTu4HdZcqE0bwjCvxd+Ovs5m\nbZORAEkjseUYn50sJNzbboFY17PRjCXxSwUYmwIDAQABAoIBADNKQ+ywUA3YQLDA\nUqlZKOB09h+0/YccG13D5TrNaV0yaMz6h31u7pYV/RI0TXxQTXbuZt5AoR4Xca9I\nC30bImmxTDDL45CGi/T0T5AgyS7t/iuM+smFkwI2YVbv53fL7q9yCxpucdnjC95/\nNj/+M3qxupIQ42uRVAYCU1jwF6J6YLy/9UamrmVd4bWFRtT19O7uszUhHLqJOZXq\n3ItqnMyD5bSMkzMN+RxmZVXAPkBOonGVeBBInCjvHv23REkngX38zcUSc543H3Di\n4673helqSdMnI0/TgyfLQcNuOsfQcD02ABWlGBe0nCTqP8pTRo86nzK1+AoCUp72\nIsTeviECgYEA8yHKeo/eZw25eDb3YTJovbgzA61n6AYQlDQv7rBGQDwKKQHdEqhR\nP0PbScaoT7wSeLtYV0vxxA6qjEEuHhZIk/t2wEILu+AH4AK88SUbUn6ZoYu+XmTA\nx26e2QRo8Ngi/KtIfeOGXx1PM/H2/OjEN3XjkfwJsj5bB+HjpF/wsnUCgYEA4Yxg\nWJYNrvSkmvXmDgxHwdxfUpVAcp40bvomNgYpKn9R2TyjMCSDIw8vVC6cGCFB9/Pc\nG0pr8RN2SvbTaPo/96DkKdHz7NAWkzUSChD4Oy7ZNXw6GK3x1tGwMWeTs1hQDHhO\nrjS+E3bV2jC4EIvLLBxCNCbhtmQwlGUj7ZhgHM8CgYEA14UGpWpOrW8/D086LpCu\nxC46GnJmfwiRPa6dJqpfO6V9JCigvV8y1i/ifR16KWP/w8HeZ1PMtgyCJd3JcaYz\nI+pus7JYEGxgzrPepKxN8eyDZu4nDCmnsaFfceQ02fnd2bhDhERh4oJqqRM966ax\n+K+p0MhoF/aqXuxgDF93T9kCgYEAw7TsfLFnGiJJGfS4NARP11UCmUPMcif4UztX\nIJVj7u4e9SJ6bvGfoDIy3Ra8duuUtDOzDzMaSkqa4B0f//z0uEew8uCsiRVeIUlx\nZ66l1aSm8JPkTTnRmJbGDXhUXtAIVWmmy94T+AurL/IKJMFH//RdNadvPrXcuUax\nUB5hd10CgYEA3JBuX4BriSk6Bii0kYniqFM/1tEgVelAP6DT6uePvzTFdSJ0dMQo\nzwgWNmm43CyoKW/rw8yIbtIQZKBfHudSNx72nSmnBKaf3QPB40xsCip90ZUTfZdn\nLJzX1t4clg1wNsN4mJDwiYM9k3rB/8EY1fh9gUYI84X6xFAHllkv0To=\n-----END RSA PRIVATE KEY-----\n",
+        "user_id": "6fc0d2cbbfab40b199874b97097e913d",
+        "type": "ssh",
+        "name": "demo",
+        "fingerprint": "fc:47:b5:c3:7d:25:32:d5:d2:0c:19:f9:62:ac:8c:5a"
+   }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212678__section57959746"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212678__p45001781">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212675.html">Key and Password Management</a></div>
+</div>
+</div>
+

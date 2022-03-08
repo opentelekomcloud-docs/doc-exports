@@ -1,0 +1,129 @@
+<a name="EN-US_TOPIC_0000001127879251"></a><a name="EN-US_TOPIC_0000001127879251"></a>
+
+<h1 class="topictitle1">Creating a Dedicated Load Balancer and Binding a New EIP to It</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0000001127879251__p396912337414">Call APIs to create a dedicated load balancer and bind a new EIP to it.</p>
+
+<h4 class="sectiontitle">Prerequisites</h4><p id="EN-US_TOPIC_0000001127879251__p10132193342216">You have created a VPC and a subnet.</p>
+
+<h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0000001127879251__ol789014336369"><li id="EN-US_TOPIC_0000001127879251__li693163653915">Query the subnet you have created.<ol type="a" id="EN-US_TOPIC_0000001127879251__ol4525743153913"><li id="EN-US_TOPIC_0000001127879251__li1552624319391">Send <strong id="EN-US_TOPIC_0000001127879251__b164962092401">GET https://</strong><em id="EN-US_TOPIC_0000001127879251__i450817944019">{vpc_endpoint}</em><strong id="EN-US_TOPIC_0000001127879251__b1250815914408">/v1/</strong><em id="EN-US_TOPIC_0000001127879251__i9509189104017">{project_id}</em><strong id="EN-US_TOPIC_0000001127879251__b25098904019">/subnets</strong>. <em id="EN-US_TOPIC_0000001127879251__i150910984017">project_id</em> indicates the project ID.</li><li id="EN-US_TOPIC_0000001127879251__li187231552394">Add <strong id="EN-US_TOPIC_0000001127879251__b1393101124016">X-Auth-Token</strong> to the request header.</li><li id="EN-US_TOPIC_0000001127879251__li16571891407">Check the response.<ul id="EN-US_TOPIC_0000001127879251__ul8705210172817"><li id="EN-US_TOPIC_0000001127879251__li97051010182820">The request is successful if the following response is displayed:<pre class="screen" id="EN-US_TOPIC_0000001127879251__screen1830283316">{
+    "subnets": [
+	{
+            "id": "0535759e-8104-49d9-902c-a05185a94bdf", // Subnet ID
+            "name": "subnet-001", // Subnet name
+            "description": "",
+            "cidr": "172.16.66.0/24", //IPv4 address range
+            "dnsList": [
+                "100.125.4.6"
+            ],
+            "status": "ACTIVE",
+            "vpc_id": "44789a9f-3e80-451a-ac03-0818f99b6cdd", // VPC ID
+            "ipv6_enable": true,
+            "gateway_ip_v6": "2001:db8:a583:37c::1",
+            "cidr_v6": "2001:db8:a583:37c::/64",
+            "gateway_ip": "172.16.66.1",
+            "dhcp_enable": true,
+            "primary_dns": "100.125.4.6",
+            "availability_zone": "eu-de-01", //AZ of the subnet
+            "neutron_network_id": "0535759e-8104-49d9-902c-a05185a94bdf", // Network ID
+            "neutron_subnet_id": "1492f0ba-cfce-4e2c-86f7-561d757dfeee", // IPv4 subnet ID
+            "neutron_subnet_id_v6": "3c052475-b50b-49b9-abb1-558bad45e592",
+            "extra_dhcp_opts": [
+                {
+                    "opt_value": "8760h",
+                    "opt_name": "addresstime"
+                }
+            ]
+        }
+    ]
+}
+</pre>
+</li><li id="EN-US_TOPIC_0000001127879251__li13710710182818">If the request is abnormal, locate the fault by referring to <a href="errorcode.html">HTTP Status Codes for Dedicated Load Balancers</a>.</li></ul>
+</li></ol>
+</li><li id="EN-US_TOPIC_0000001127879251__li19710910192810">Create a dedicated load balancer and bind a new EIP to it.<ol type="a" id="EN-US_TOPIC_0000001127879251__ol16710810152814"><li id="EN-US_TOPIC_0000001127879251__li197105105282">Send <strong id="EN-US_TOPIC_0000001127879251__b463004810400">POST https://</strong><em id="EN-US_TOPIC_0000001127879251__i1664211484408">{elb_endpoint}</em><strong id="EN-US_TOPIC_0000001127879251__b12645164820405">/v3/</strong><em id="EN-US_TOPIC_0000001127879251__i2646174815405">{project_id}</em><strong id="EN-US_TOPIC_0000001127879251__b1664614812402">/elb/loadbalancers</strong>. <em id="EN-US_TOPIC_0000001127879251__i6647154884017">project_id</em> indicates the project ID.</li><li id="EN-US_TOPIC_0000001127879251__li171091082816">Add <strong id="EN-US_TOPIC_0000001127879251__b132517577403">X-Auth-Token</strong> to the request header.</li><li id="EN-US_TOPIC_0000001127879251__li7710410122817">Ensure that the following parameters, including <strong id="EN-US_TOPIC_0000001127879251__b10614487428">publicip</strong>, are passed in the request body:<pre class="screen" id="EN-US_TOPIC_0000001127879251__screen1697543293113">{
+	"loadbalancer": {
+            "vpc_id": "e5a892ff-3c33-44ef-ada5-b713eb1f7a8b",
+            "availability_zone_list": [
+                "br-iaas-odin1a"
+            ],
+            "admin_state_up": true,
+            "vip_subnet_cidr_id": "1800b6b8-a69f-4719-813d-24d62aaf32bd",
+            "name": "elb-ipv4",
+            "publicip": {
+               "network_type": "5_bgp",
+               "bandwidth": {
+                   "size": 2,
+                   "share_type": "PER",
+                   "charge_mode": "bandwidth",
+                   "name": "elb_eip_bandwidth"
+               }
+          }
+    }
+}
+</pre>
+</li><li id="EN-US_TOPIC_0000001127879251__li2711141092814">Check the response.<ul id="EN-US_TOPIC_0000001127879251__ul147115109283"><li id="EN-US_TOPIC_0000001127879251__li1071151018288">The request is successful if the following response is displayed:<pre class="screen" id="EN-US_TOPIC_0000001127879251__screen162291142133118">{
+    "request_id": "21177eb184c52c5a4540c78dc7fdaee4",
+    "loadbalancer": {
+        "id": "a2556f92-3310-4173-a6d1-0b2d0bb68478",
+        "project_id": "060576782980d5762f9ec014dd2f1148",
+        "name": "elb-ipv4",
+        "description": "",
+        "vip_port_id": "fff961a9-4514-4469-84d4-a2bc4fbdfbeb",
+        "vip_address": "192.168.0.162",
+        "admin_state_up": true,
+        "provisioning_status": "ACTIVE",
+        "operating_status": "ONLINE",
+        "listeners": [],
+        "pools": [],
+        "tags": [],
+        "provider": "vlb",
+        "created_at": "2021-02-23T08:50:19Z",
+        "updated_at": "2021-02-23T08:50:19Z",
+        "vpc_id": "e5a892ff-3c33-44ef-ada5-b713eb1f7a8b",
+        "enterprise_project_id": "0",
+        "availability_zone_list": [
+            "br-iaas-odin1a"
+        ],
+        "ipv6_vip_address": null,
+        "ipv6_vip_virsubnet_id": null,
+        "ipv6_vip_port_id": null,
+        "ipv6_bandwidth": null,
+        "publicips": [
+            {
+                "publicip_id": "12cba100-764e-476c-bf3f-8aba98782cf5",
+                "publicip_address": "10.246.173.188",
+                "ip_version": 4
+            }
+        ],
+        "elb_virsubnet_ids": [
+            "4df3e391-5ebf-4300-b614-cf5a4e793666"
+        ],
+        "elb_virsubnet_type": "dualstack",
+        "ip_target_enable": false,
+        "frozen_scene": null,
+        "eips": [
+            {
+                "eip_id": "12cba100-764e-476c-bf3f-8aba98782cf5",
+                "eip_address": "10.246.173.188",
+                "ip_version": 4
+            }
+        ],
+        "guaranteed": true,
+        "billing_info": null,
+        "l4_flavor_id": null,
+        "l4_scale_flavor_id": null,
+        "l7_flavor_id": null,
+        "l7_scale_flavor_id": null,
+        "vip_subnet_cidr_id": "1800b6b8-a69f-4719-813d-24d62aaf32bd"
+    }
+}</pre>
+</li><li id="EN-US_TOPIC_0000001127879251__li15711121014289">If the request is abnormal, locate the fault by referring to <a href="errorcode.html">HTTP Status Codes for Dedicated Load Balancers</a>.</li></ul>
+</li></ol>
+</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_eg_v3_0000.html">Examples</a>
+
+
+

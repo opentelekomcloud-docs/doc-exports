@@ -1,0 +1,187 @@
+<a name="EN-US_TOPIC_0175597846"></a><a name="EN-US_TOPIC_0175597846"></a>
+
+<h1 class="topictitle1">Querying <span id="text719938134114">ECS</span> Groups</h1>
+<div id="body1560936331291"><div class="section" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_section14574577"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p47391365">This API is used to query <span id="EN-US_TOPIC_0175597846__text13394911134618">ECS</span> groups.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_section64062336"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p17835728145012">GET /v1/{project_id}/cloudservers/os-server-groups?limit={limit}&amp;marker={marker}</p>
+<div class="p" id="EN-US_TOPIC_0175597846__p660020526546"><a href="#EN-US_TOPIC_0175597846__table566015531780">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0175597846__table566015531780"></a><a name="table566015531780"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0175597846__table566015531780" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0175597846__row176601553084"><th align="left" class="cellrowborder" valign="top" width="20.092009200920092%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0175597846__p1575513591787">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.16191619161916%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0175597846__p107556591788">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60.746074607460756%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0175597846__p207553591582">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0175597846__row1666015531688"><td class="cellrowborder" valign="top" width="20.092009200920092%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__p17551591282">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.16191619161916%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__p97551459887">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.746074607460756%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__p137558591986">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_table7928881" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row34501696"><th align="left" class="cellrowborder" valign="top" width="15.701570157015702%" id="mcps1.3.3.2.5.1.1"><p id="EN-US_TOPIC_0175597846__en-us_topic_0057972670_p57733603">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.26132613261326%" id="mcps1.3.3.2.5.1.2"><p id="EN-US_TOPIC_0175597846__p19939153975911">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.591559155915593%" id="mcps1.3.3.2.5.1.3"><p id="EN-US_TOPIC_0175597846__en-us_topic_0057972670_p45910260">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.44554455445545%" id="mcps1.3.3.2.5.1.4"><p id="EN-US_TOPIC_0175597846__en-us_topic_0057972670_p32634650">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row17737581155526"><td class="cellrowborder" valign="top" width="15.701570157015702%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p38572533155554">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.26132613261326%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0175597846__p109392393599">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.591559155915593%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p37367484155554">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.44554455445545%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0175597846__p174904281112">Specifies the upper limit on the number of returned server groups. The maximum value is 1000.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row32002897155535"><td class="cellrowborder" valign="top" width="15.701570157015702%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p40273197155554">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.26132613261326%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0175597846__p1993913945912">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.591559155915593%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p40903559155554">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.44554455445545%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0175597846__p1549052811115">Specifies the marker that points to the ECS group. The query starts from the next piece of data indexed by this parameter.</p>
+<p id="EN-US_TOPIC_0175597846__p33154220558">Parameters marker and limit must be used together.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__section7792390713"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0175597846__p1012718156552">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_section10175274"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0175597846__p9185206175612"><a href="#EN-US_TOPIC_0175597846__table696924014912">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0175597846__table696924014912"></a><a name="table696924014912"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0175597846__table696924014912" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0175597846__row199701540598"><th align="left" class="cellrowborder" valign="top" width="22.712271227122713%" id="mcps1.3.5.2.2.2.4.1.1"><p id="EN-US_TOPIC_0175597846__p0727154419914">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.372237223722376%" id="mcps1.3.5.2.2.2.4.1.2"><p id="EN-US_TOPIC_0175597846__p1172716446915">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54.915491549154915%" id="mcps1.3.5.2.2.2.4.1.3"><p id="EN-US_TOPIC_0175597846__p472714441593">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0175597846__row15970540799"><td class="cellrowborder" valign="top" width="22.712271227122713%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__p187278441991">server_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.372237223722376%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__p27278441591">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.915491549154915%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__p1272719444918">Specifies <span id="EN-US_TOPIC_0175597846__text1272764412917">ECS</span> groups. For details, see <a href="#EN-US_TOPIC_0175597846__en-us_topic_0057973158_table47937085">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__row1256031711454"><td class="cellrowborder" valign="top" width="22.712271227122713%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__p6927441433">page_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.372237223722376%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__p1692134494318">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.915491549154915%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__p8922443431">If the pagination function is enabled, the UUID of the last ECS group on the current page is returned. For details, see <a href="#EN-US_TOPIC_0175597846__table139805663519">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0175597846__en-us_topic_0057973158_table47937085"></a><a name="en-us_topic_0057973158_table47937085"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_table47937085" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_b842352706165936">server_groups</strong> parameter information</caption><thead align="left"><tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row65811616"><th align="left" class="cellrowborder" valign="top" width="25.907409259074093%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0175597846__p6654124612269">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.86801319868013%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0175597846__p1865454611261">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54.224577542245775%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0175597846__p6654446102616">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row33147825"><td class="cellrowborder" valign="top" width="25.907409259074093%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p619317">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.86801319868013%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p50164680">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.224577542245775%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p28602690">Specifies the <span id="EN-US_TOPIC_0175597846__text10143155694610">ECS</span> group UUID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row56097620"><td class="cellrowborder" valign="top" width="25.907409259074093%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p47613365">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.86801319868013%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p31477322">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.224577542245775%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p28736562">Specifies the <span id="EN-US_TOPIC_0175597846__text1393021210475">ECS</span> group name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row29632828"><td class="cellrowborder" valign="top" width="25.907409259074093%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p51448853">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.86801319868013%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p6607563">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.224577542245775%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p67004395">Specifies the <span id="EN-US_TOPIC_0175597846__text11610306476">ECS</span>s contained in an <span id="EN-US_TOPIC_0175597846__text191611144124710">ECS</span> group.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row66168651"><td class="cellrowborder" valign="top" width="25.907409259074093%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p58060511">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.86801319868013%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p5280980">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.224577542245775%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p20340992">Specifies the <span id="EN-US_TOPIC_0175597846__text13905351124714">ECS</span> group metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_row146121548185317"><td class="cellrowborder" valign="top" width="25.907409259074093%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p11612848145317">policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.86801319868013%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p961210488537">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.224577542245775%" headers="mcps1.3.5.3.2.4.1.3 "><div class="p" id="EN-US_TOPIC_0175597846__p11241458144516">Specifies the policies associated with the <span id="EN-US_TOPIC_0175597846__text758612218483">ECS</span> group. Options:<ul id="EN-US_TOPIC_0175597846__en-us_topic_0057973153_ul1237514118527"><li id="EN-US_TOPIC_0175597846__en-us_topic_0057973153_li1374711155217"><strong id="EN-US_TOPIC_0175597846__b76011237203011">anti-affinity</strong>: <span id="EN-US_TOPIC_0175597846__text1785413315485">ECS</span>s in this group must be deployed on different hosts.</li><li id="EN-US_TOPIC_0175597846__en-us_topic_0057973153_li1737571119527"><strong id="EN-US_TOPIC_0175597846__b4871144110485">affinity</strong>: <span id="EN-US_TOPIC_0175597846__text687194412482">ECS</span>s in this group must be deployed on the same host.</li><li id="EN-US_TOPIC_0175597846__en-us_topic_0057973153_li1737581117523"><strong id="EN-US_TOPIC_0175597846__b433245743011">soft-anti-affinity</strong>: <span id="EN-US_TOPIC_0175597846__text835751124912">ECS</span>s in this group are deployed on different hosts if possible. If the <span id="EN-US_TOPIC_0175597846__text32033812494">ECS</span>s cannot be deployed on different hosts, deploy them based on the actual condition for successful <span id="EN-US_TOPIC_0175597846__text864834674916">ECS</span> creation.</li><li id="EN-US_TOPIC_0175597846__li1242314524457"><strong id="EN-US_TOPIC_0175597846__b1613110294319">soft-affinity</strong>: <span id="EN-US_TOPIC_0175597846__text011256154913">ECS</span>s in this group are deployed on the same host if possible. If the <span id="EN-US_TOPIC_0175597846__text123571944501">ECS</span>s cannot be deployed on the same host, deploy them based on the actual condition for successful <span id="EN-US_TOPIC_0175597846__text105961918501">ECS</span> creation.</li></ul>
+<div class="note" id="EN-US_TOPIC_0175597846__note491055682116"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0175597846__p79101256112114">Only anti-affinity policies are supported. You are not advised to use other policies. If other policies are used, creating the ECS group will fail.</p>
+</div></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0175597846__table139805663519"></a><a name="table139805663519"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0175597846__table139805663519" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0175597846__b10591237124019">page_info</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0175597846__row1839805617353"><th align="left" class="cellrowborder" valign="top" width="20.82208220822082%" id="mcps1.3.5.4.2.4.1.1"><p id="EN-US_TOPIC_0175597846__p7255803374">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.462346234623464%" id="mcps1.3.5.4.2.4.1.2"><p id="EN-US_TOPIC_0175597846__p1625515013713">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.71557155715572%" id="mcps1.3.5.4.2.4.1.3"><p id="EN-US_TOPIC_0175597846__p52554073720">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0175597846__row1939813565354"><td class="cellrowborder" valign="top" width="20.82208220822082%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0175597846__p1139885618358">next_marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.462346234623464%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0175597846__p1339816565351">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.71557155715572%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0175597846__p36927302066">Specifies an ECS group UUID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_section24468610"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_screen38355038203359">GET https://{endpoint}/v1/{project_id}/cloudservers/os-server-groups</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__section17791204310358"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0175597846__screen10798134312354">{
+    "server_groups": [
+        {
+            "id": "616fb98f-46ca-475e-917e-2563e5a8cd19",
+            "name": "test",
+            "policies": ["anti-affinity"],
+            "members": [],
+            "metadata": {}
+        }
+    ],
+    "page_info": {
+        "next_marker": "616fb98f-46ca-475e-917e-2563e5a8cd19"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_section1220312142315"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0175597846__en-us_topic_0057973158_p1219552234817">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0175597846__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0175597846__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0161097717.html">ECS Group Management</a></div>
+</div>
+</div>
+

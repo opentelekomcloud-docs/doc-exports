@@ -1,0 +1,258 @@
+<a name="elb_zq_bm_0002"></a><a name="elb_zq_bm_0002"></a>
+
+<h1 class="topictitle1">Querying Whitelists</h1>
+<h4 class="sectiontitle">Function</h4><p class="msonormal" id="elb_zq_bm_0002__en-us_topic_0143878052_p51830066">This API is used to query the whitelists. Filter query and pagination query are supported. Unless otherwise specified, exact match is applied.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_p1425263917142">Parameters <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b842352706173057">marker</strong>, <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b84235270617310">limit</strong>, and <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b84235270617314">page_reverse</strong> are used for pagination query. Parameters <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b842352706173217">marker</strong> and <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b842352706173221">page_reverse</strong> take effect only when they are used together with parameter <strong id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0141008270_b842352706173232">limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p class="msonormal" id="elb_zq_bm_0002__en-us_topic_0143878052_p37485819">GET /v2.0/lbaas/whitelists</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bm_0002__en-us_topic_0143878052_table57586824" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row30755174"><th align="left" class="cellrowborder" valign="top" width="24.717528247175284%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p8141195">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.478352164783523%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p62838551">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.108689131086889%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p55457081">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="45.695430456954305%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p2035876173816">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row33982084"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p1085411">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p7847228">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p127181511386">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p4235152211344">Specifies the ID of the whitelist from which pagination query starts, that is, the ID of the last whitelist on the previous page.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p06221826143418">This parameter must be used together with <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1135115312501">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row51375689"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p681306">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p40870010">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p55185864">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p163282306342">Specifies the number of whitelists on each page. If this parameter is not set, all whitelists are queried by default.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row48229068"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p14240444">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p16016049">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p12625296">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p15227113913341">Specifies the page direction. The value can be <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b390065817354">true</strong> or <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1290075819353">false</strong>, and the default value is <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b15901155813351">false</strong>. The last page in the list requested with <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b5902135812359">page_reverse</strong> set to <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b17902858113520">false</strong> will not contain the "next" link, and the last page in the list requested with <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b190375818355">page_reverse</strong> set to <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b99031858183513">true</strong> will not contain the "previous" link.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p5244104243413">This parameter must be used together with <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b77778512509">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row33569718"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p34792670">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p37463366">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p15526337193815">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p14633815">Specifies the whitelist ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row64595475"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p64851000">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p17215303">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p18439633">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p40275672">Specifies the ID of the project where the whitelist is used.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row598411"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p48471335">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p58634288">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p6640940193810">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p24747384">Specifies the ID of the listener to which the whitelist is added.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row63159007"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p15605948">enable_whitelist</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p49611956">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p56122294">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p31687177">Specifies whether to enable access control.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p07333135114"><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b111775845010">true</strong>: Access control is enabled.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p57393175115"><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b864165905011">false</strong>: Access control is disabled.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row62547480"><td class="cellrowborder" valign="top" width="24.717528247175284%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p33181137">whitelist</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.478352164783523%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p285771">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p3317546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.695430456954305%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p61076600">Specifies the IP addresses in the whitelist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bm_0002__en-us_topic_0143878052_table51071350" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row44858696"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p9675774">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p45540236">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p64880539">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row20832339"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p9697883">whitelists</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p892419588196">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p8608636">Lists the whitelists. For details, see <a href="#elb_zq_bm_0002__en-us_topic_0143878052_table10368864">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row597716332292"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p11769034192919">whitelists_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p167691234162913">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p187691234192916">Provides links to the previous or next page during pagination query, respectively.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p147691634172920">This parameter exists only in the response body of pagination query.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p14769434192912">For details, see <a href="#elb_zq_bm_0002__en-us_topic_0143878052_table24944072">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_bm_0002__en-us_topic_0143878052_table10368864"></a><a name="en-us_topic_0143878052_table10368864"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bm_0002__en-us_topic_0143878052_table10368864" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b19767174972320">whitelist</strong> parameter description</caption><thead align="left"><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row37967333"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p55455104">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p62678444">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p43789200">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row57264341"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p7900067">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p133511948124317">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p62933377">Specifies the whitelist ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row17352883"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p63406273">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p35634492">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p1927617501235">Specifies the ID of the project where the whitelist is used.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p630013400352">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row6414438"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p49807439">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p7870720">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p1627615010317">Specifies the ID of the listener to which the whitelist is added.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row33501748"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p29287106">enable_whitelist</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p23445396">Bool</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p72761950830">Specifies whether to enable access control.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p202761501737"><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1819373155120">true</strong>: Access control is enabled.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p92762509318"><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1814373216517">false</strong>: Access control is disabled.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row46042798"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p38479195">whitelist</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p29807080">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p1627714507313">Specifies the IP addresses in the whitelist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_bm_0002__en-us_topic_0143878052_table24944072"></a><a name="en-us_topic_0143878052_table24944072"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bm_0002__en-us_topic_0143878052_table24944072" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1608777999">whitelists_links</strong> parameter description</caption><thead align="left"><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row49248941"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p29741298">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p60234923">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_bm_0002__en-us_topic_0143878052_p47190593">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bm_0002__en-us_topic_0143878052_row64341659"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p44291873">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p156227148448">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_en-us_topic_0096561531_p1653852193312">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="elb_zq_bm_0002__en-us_topic_0143878052_row24216442"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p15374808">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p37399910">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_bm_0002__en-us_topic_0143878052_p1772113411218">Specifies the prompt of the previous or next page.</p>
+<p id="elb_zq_bm_0002__en-us_topic_0143878052_p422510443113">The value can be <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b10782114918516">next</strong> or <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b57831049185110">previous</strong>. The value <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b137025114515">next</strong> indicates the href containing the URL of the next page, and <strong id="elb_zq_bm_0002__en-us_topic_0143878052_b1571175145112">previous</strong> indicates the href containing the URL of the previous page.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_bm_0002__en-us_topic_0143878052_ul7000775"><li id="elb_zq_bm_0002__en-us_topic_0143878052_li63006983">Example request 1: Querying all whitelists<pre class="screen" id="elb_zq_bm_0002__en-us_topic_0143878052_screen30191941">GET https://{Endpoint}/v2.0/lbaas/whitelists</pre>
+</li><li id="elb_zq_bm_0002__en-us_topic_0143878052_li4981547101612">Example request 2: Querying the whitelists added to listener eabfefa3fd1740a88a47ad98e132d230<pre class="screen" id="elb_zq_bm_0002__en-us_topic_0143878052_screen1991663414157">GET https://{Endpoint}/v2.0/lbaas/whitelists?listener_id=eabfefa3fd1740a88a47ad98e132d230</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_bm_0002__en-us_topic_0143878052_ul33773380338"><li id="elb_zq_bm_0002__en-us_topic_0143878052_li15377153883313">Example response 1<pre class="screen" id="elb_zq_bm_0002__en-us_topic_0143878052_screen7377133818337">{ 
+    "whitelists": [ 
+        { 
+            "id": "eabfefa3fd1740a88a47ad98e132d238",  
+            "listener_id": "eabfefa3fd1740a88a47ad98e132d238",  
+            "tenant_id": "eabfefa3fd1740a88a47ad98e132d238",  
+            "enable_whitelist": true,  
+            "whitelist": "192.168.11.1,192.168.0.1/24,192.168.201.18/8,100.164.0.1/24" 
+        },  
+        { 
+            "id": "eabfefa3fd1740a88a47ad98e132d326",  
+            "listener_id": "eabfefa3fd1740a88a47ad98e132d327",  
+            "tenant_id": "eabfefa3fd1740a88a47ad98e132d436",  
+            "enable_whitelist": true,  
+            "whiltelist": "192.168.12.1,192.168.1.1/24,192.168.203.18/8,100.164.5.1/24" 
+        } 
+    ] 
+}</pre>
+</li><li id="elb_zq_bm_0002__en-us_topic_0143878052_li33781438123312">Example response 2<pre class="screen" id="elb_zq_bm_0002__en-us_topic_0143878052_screen637833873315">{ 
+    "whitelists": [ 
+        { 
+            "id": "eabfefa3fd1740a88a47ad98e132d238",  
+            "listener_id": "eabfefa3fd1740a88a47ad98e132d230",  
+            "tenant_id": "eabfefa3fd1740a88a47ad98e132d239",  
+            "enable_whitelist": true,  
+            "whitelist": "192.168.11.1,192.168.0.1/24,192.168.201.18/8,100.164.0.1/24" 
+        },  
+        { 
+            "id": "eabfefa3fd1740a88a47ad98e132d326",  
+            "listener_id": "eabfefa3fd1740a88a47ad98e132d327",  
+            "tenant_id": "eabfefa3fd1740a88a47ad98e132d439",  
+            "enable_whitelist": true,  
+            "whiltelist": "192.168.12.1,192.168.1.1/24,192.168.203.18/8,100.164.5.1/24" 
+        } 
+    ] 
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p class="msonormal" id="elb_zq_bm_0002__en-us_topic_0143878052_p35342882">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_bm_0000.html">Whitelist</a>
+
+
+

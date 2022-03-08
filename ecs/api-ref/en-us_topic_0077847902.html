@@ -1,0 +1,113 @@
+<a name="EN-US_TOPIC_0077847902"></a><a name="EN-US_TOPIC_0077847902"></a>
+
+<h1 class="topictitle1">Configuring <span id="text175021211529">ECS</span> Metadata</h1>
+<div id="body1505999606735"><div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section2604713"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p2350590">This API is used to configure <span id="EN-US_TOPIC_0077847902__text1731631310220">ECS</span> metadata.</p>
+<p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p342242084814">When you call this API, all the metadata of this <span id="EN-US_TOPIC_0077847902__text4178151715919">ECS</span> will be deleted, and the <span id="EN-US_TOPIC_0077847902__text511135717201">ECS</span> uses the value configured in the request.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section9655225"><h4 class="sectiontitle">Constraints</h4><p class="litext" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p17990589">An <span id="EN-US_TOPIC_0077847902__text1096419153210">ECS</span> must be in active, stopped, paused, or suspended state, which is specified by <strong id="EN-US_TOPIC_0077847902__b864972117216">OS-EXT-STS:vm_state</strong>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section23442424"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p17816132418199">PUT /v2.1/{project_id}/servers/{server_id}/metadata</p>
+<p id="EN-US_TOPIC_0077847902__p163753510590">PUT /v2/{project_id}/servers/{server_id}/metadata</p>
+<div class="p" id="EN-US_TOPIC_0077847902__p1231115020165"><a href="#EN-US_TOPIC_0077847902__en-us_topic_0057973166_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table32475667"></a><a name="en-us_topic_0057973166_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row44937496"><th align="left" class="cellrowborder" valign="top" width="22.24%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0077847902__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.87%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0077847902__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.88999999999999%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0077847902__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row1664874"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0077847902__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row41565035"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p11324657">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p44882061">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p11568292">Specifies the <span id="EN-US_TOPIC_0077847902__text1670772411219">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section43875778"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0077847902__p122671718171718"><a href="#EN-US_TOPIC_0077847902__en-us_topic_0057973166_table58874912">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table58874912"></a><a name="en-us_topic_0057973166_table58874912"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table58874912" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request</caption><thead align="left"><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row60391117"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p59842305">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.709999999999997%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p15388566">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.29%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p38514356">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p32655106">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row27817896"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p38657103">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.709999999999997%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p44217630">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.29%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p24858302">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p26317995185333">Specifies the user-defined metadata key-value pair.</p>
+<p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p19894192011457">For a metadata key:</p>
+<p id="EN-US_TOPIC_0077847902__p17759105616304">A key contains a maximum of 255 Unicode characters and cannot be empty. A key can contain uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), underscores (_), colons (:), and periods (.).</p>
+<p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p999582373317">For a metadata value:</p>
+<p id="EN-US_TOPIC_0077847902__p148375116318">A value contains a maximum of 255 Unicode characters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section59337683"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0077847902__p3272192712187"><a href="#EN-US_TOPIC_0077847902__en-us_topic_0057973166_table52843024">Table 3</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table52843024"></a><a name="en-us_topic_0057973166_table52843024"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_table52843024" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row1967448"><th align="left" class="cellrowborder" valign="top" width="30.79%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p25145612">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30.79%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p23528655">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.42%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p21124521">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_row33364622"><td class="cellrowborder" valign="top" width="30.79%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p951875545516">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.79%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p63283858">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.42%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_p1434720105613">Specifies the user-defined metadata key-value pair.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_section64277099"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0077847902__screen1454897242">PUT https://{endpoint}/v2/{project_id}/servers/{server_id}/metadata
+PUT https://{endpoint}/v2.1/{project_id}/servers/{server_id}/metadata</pre>
+<pre class="screen" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_screen1307140817211">{
+    "metadata": {
+            "key1": "value1",
+            "key2": "value2"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__section22101537134219"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0077847902__screen22195378428">{
+    "metadata": {
+            "key1": "value1",
+            "key2": "value2"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0077847902__en-us_topic_0057973166_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065817681.html">Metadata Management</a></div>
+</div>
+</div>
+

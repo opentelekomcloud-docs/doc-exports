@@ -1,0 +1,78 @@
+<a name="EN-US_TOPIC_0036068717"></a><a name="EN-US_TOPIC_0036068717"></a>
+
+<h1 class="topictitle1">Why Is the NIC Not Working?</h1>
+<div id="body1471770752787"><div class="section" id="EN-US_TOPIC_0036068717__section17904250171325"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0036068717__p25923488171328">The NIC equipped on a disk-intensive or large-memory ECS does not work.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0036068717__section50053646171330"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0036068717__p38116016171335">The NIC driver has not been correctly installed.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0036068717__section38560614171337"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0036068717__p6175026194024">Disk-intensive and large-memory ECSs use passthrough NICs to improve network performance. You must install the passthrough NIC driver on the ECSs or the image that is used for creating the ECSs.</p>
+<div class="note" id="EN-US_TOPIC_0036068717__note13717883194024"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0036068717__p4717571414506">If you mount the CD/DVD-ROM driver over a VPN, ensure that the VPN bandwidth is greater than 8 Mbit/s.</p>
+</div></div>
+<p id="EN-US_TOPIC_0036068717__p56292370154841">To install the passthrough NICE driver, do as follows:</p>
+<ol id="EN-US_TOPIC_0036068717__ol10077261174432"><li id="EN-US_TOPIC_0036068717__li38329906174432"><span>Obtain the passthrough NIC driver.</span><p><p id="EN-US_TOPIC_0036068717__p33280564174432">Passthrough NIC driver versions vary depending on the OS. For details, see <a href="#EN-US_TOPIC_0036068717__table39612229174432">Table 1</a>.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0036068717__table39612229174432"></a><a name="table39612229174432"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0036068717__table39612229174432" frame="border" border="1" rules="all"><caption><b>Table 1 </b>NIC driver versions and OSs</caption><thead align="left"><tr id="EN-US_TOPIC_0036068717__row4221119174432"><th align="left" class="cellrowborder" valign="top" width="21.68%" id="mcps1.3.3.5.1.2.2.2.4.1.1"><p id="EN-US_TOPIC_0036068717__p35195222174432">NIC Driver Version</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.24%" id="mcps1.3.3.5.1.2.2.2.4.1.2"><p id="EN-US_TOPIC_0036068717__p32240719174432">OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="34.08%" id="mcps1.3.3.5.1.2.2.2.4.1.3"><p id="EN-US_TOPIC_0036068717__p61361445174432">How to Obtain</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0036068717__row40188444174432"><td class="cellrowborder" rowspan="2" valign="top" width="21.68%" headers="mcps1.3.3.5.1.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0036068717__p6366341174432">ixgbevf 2.16.4</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.24%" headers="mcps1.3.3.5.1.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0036068717__p45911649174432">CentOS 7.2 64bit</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="34.08%" headers="mcps1.3.3.5.1.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0036068717__p49377918174432"><a href="https://sourceforge.net/projects/e1000/files/ixgbevf stable/2.16.4/" target="_blank" rel="noopener noreferrer">https://sourceforge.net/projects/e1000/files/ixgbevf%20stable/2.16.4/</a></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036068717__row37911098174432"><td class="cellrowborder" valign="top" headers="mcps1.3.3.5.1.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0036068717__p26151677174432">Red Hat Enterprise Linux 7.2 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036068717__row34222271174432"><td class="cellrowborder" valign="top" width="21.68%" headers="mcps1.3.3.5.1.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0036068717__p5655568174432">ixgbevf 2.16.1</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.24%" headers="mcps1.3.3.5.1.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0036068717__p55447863174432">SUSE Linux Enterprise Server 11 SP3 64bit</p>
+<p id="EN-US_TOPIC_0036068717__p29268722174432">SUSE Linux Enterprise Server 11 SP4 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="34.08%" headers="mcps1.3.3.5.1.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0036068717__p63388838174432"><a href="https://sourceforge.net/projects/e1000/files/ixgbevf stable/2.16.1/" target="_blank" rel="noopener noreferrer">https://sourceforge.net/projects/e1000/files/ixgbevf%20stable/2.16.1/</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="EN-US_TOPIC_0036068717__li25214666174432"><span>Log in to the ECS.</span><p><p id="EN-US_TOPIC_0036068717__p17714710174432">For more details, see <a href="en-us_topic_0013771089.html">Login Overview</a>.</p>
+</p></li><li id="EN-US_TOPIC_0036068717__li60772019174432"><span id="EN-US_TOPIC_0036068717__p1085213201859">Install the passthrough NIC driver on the ECS. In this procedure, Red Hat Enterprise Linux 7.2 64bit is used as an example.</span><p><ol type="a" id="EN-US_TOPIC_0036068717__ol50819110174442"><li id="EN-US_TOPIC_0036068717__li54718812174442">Configure the passthrough NIC.<div class="p" id="EN-US_TOPIC_0036068717__p30042656175419"><a name="EN-US_TOPIC_0036068717__li54718812174442"></a><a name="li54718812174442"></a>Not all ECS OSs identify passthrough NICs using the standard NIC naming rule of <strong id="EN-US_TOPIC_0036068717__b84235270619589">eth</strong><em id="EN-US_TOPIC_0036068717__i842352697103219">x</em>, where <em id="EN-US_TOPIC_0036068717__i397172215103238">x</em> is a number. If this is the case, you must configure the ECS so that it can identify the passthrough NIC. The procedure is as follows:<ol class="substepthirdol" id="EN-US_TOPIC_0036068717__ol35405014175415"><li id="EN-US_TOPIC_0036068717__li50209671175415">Run the following command to view all NICs on the ECS and identify the passthrough NIC:<p id="EN-US_TOPIC_0036068717__p21174591175532"><a name="EN-US_TOPIC_0036068717__li50209671175415"></a><a name="li50209671175415"></a><strong id="EN-US_TOPIC_0036068717__b11157447175530">ifconfig -a</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li40451590175415">Run the following command to switch to the directory where configuration files are stored:<p id="EN-US_TOPIC_0036068717__p16412066175736"><a name="EN-US_TOPIC_0036068717__li40451590175415"></a><a name="li40451590175415"></a><strong id="EN-US_TOPIC_0036068717__b20057758175733">cd /etc/sysconfig/network-scripts/</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li55353390175415">Run the following command to create a configuration file for the passthrough NIC:<p id="EN-US_TOPIC_0036068717__p5096763920343"><a name="EN-US_TOPIC_0036068717__li55353390175415"></a><a name="li55353390175415"></a><strong id="EN-US_TOPIC_0036068717__b3535160420355">cp ifcfg-eth0 ifcfg-</strong><em id="EN-US_TOPIC_0036068717__i5428923120355">NIC_name</em></p>
+<p id="EN-US_TOPIC_0036068717__p5259768820337">In the preceding command, <em id="EN-US_TOPIC_0036068717__i174261190920238">NIC_name</em> specifies the name of the passthrough NIC.</p>
+</li><li id="EN-US_TOPIC_0036068717__li47530646175415">Use the vi editor to edit this configuration file:<p id="EN-US_TOPIC_0036068717__p25122635175415"><a name="EN-US_TOPIC_0036068717__li47530646175415"></a><a name="li47530646175415"></a><strong id="EN-US_TOPIC_0036068717__b1264771972193955">vi ifcfg-</strong><em id="EN-US_TOPIC_0036068717__i430299622193958">NIC_name</em></p>
+</li><li id="EN-US_TOPIC_0036068717__li24177345175916">Set the <strong id="EN-US_TOPIC_0036068717__b84235270620557">DEVICE</strong> parameter in the configuration file to the name of the passthrough NIC. The following is an example configuration:<pre class="screen" id="EN-US_TOPIC_0036068717__screen4745216318128">DEVICE="<em id="EN-US_TOPIC_0036068717__i51249041814">NIC_name</em>"
+BOOTPROTO="dhcp"
+ONBOOT="yes"
+STARTMODE="onboot"</pre>
+</li><li id="EN-US_TOPIC_0036068717__li98705111823">Run the following command to restart the network service and allow the configuration to take effect:<p id="EN-US_TOPIC_0036068717__p6124275418222"><a name="EN-US_TOPIC_0036068717__li98705111823"></a><a name="li98705111823"></a><strong id="EN-US_TOPIC_0036068717__b5985917718220">service network restart</strong></p>
+</li></ol>
+</div>
+</li><li id="EN-US_TOPIC_0036068717__li6083773118254">Upload the obtained passthrough NIC driver to a directory on the ECS, for example, <strong id="EN-US_TOPIC_0036068717__b84235270620913">/home</strong>.</li><li id="EN-US_TOPIC_0036068717__li1066867018254">Switch to user <strong id="EN-US_TOPIC_0036068717__b84235270620935">root</strong> on the ECS CLI and open the target directory.<p class="litext" id="EN-US_TOPIC_0036068717__p2890917318254">In this example, the passthrough NIC driver is stored in the <strong id="EN-US_TOPIC_0036068717__b385673582201230">/home</strong> directory. Run the <strong id="EN-US_TOPIC_0036068717__b599955481225233">cd</strong> <em id="EN-US_TOPIC_0036068717__i1389941003225233">/home</em> command to switch to the target directory.</p>
+</li><li id="EN-US_TOPIC_0036068717__li260406118254">Run the following command to decompress the software package. (In this procedure, ixgbevf version 2.16.4 is used as an example.)<p class="litext" id="EN-US_TOPIC_0036068717__p2343655418254"><a name="EN-US_TOPIC_0036068717__li260406118254"></a><a name="li260406118254"></a><strong id="EN-US_TOPIC_0036068717__b960239918254">tar -zxvf ixgbevf-2.16.4.tar.gz</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li1931273418254">Run the following command to switch to the generated <strong id="EN-US_TOPIC_0036068717__b842352706201657">src</strong> directory:<p class="litext" id="EN-US_TOPIC_0036068717__p3959687818254"><strong id="EN-US_TOPIC_0036068717__b2082758518254">cd ixgbevf-2.16.4/src</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li5323054518254">Run the following commands to install the driver:<p id="EN-US_TOPIC_0036068717__p1670689718254"><a name="EN-US_TOPIC_0036068717__li5323054518254"></a><a name="li5323054518254"></a><strong id="EN-US_TOPIC_0036068717__b1614434718254">make</strong></p>
+<p id="EN-US_TOPIC_0036068717__p6592324018459"><strong id="EN-US_TOPIC_0036068717__b809545118459">make install</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li122396041855">Run the following command to restart the ECS to make the drive take effect:<p id="EN-US_TOPIC_0036068717__p37216835142755"><a name="EN-US_TOPIC_0036068717__li122396041855"></a><a name="li122396041855"></a><strong id="EN-US_TOPIC_0036068717__b56388153142757">reboot</strong></p>
+</li><li id="EN-US_TOPIC_0036068717__li410387481855">Switch to user <strong id="EN-US_TOPIC_0036068717__b842352706201814">root</strong> on the ECS CLI and open the <strong id="EN-US_TOPIC_0036068717__b1817063799201841">src</strong> directory, for example, by running the <strong id="EN-US_TOPIC_0036068717__b1493021695225347">cd</strong> <em id="EN-US_TOPIC_0036068717__i1751436482225347">/home/ixgbevf-2.16.4/src</em> command. Then, run the following commands to check whether the driver has been installed:<p id="EN-US_TOPIC_0036068717__p540786218543"><strong id="EN-US_TOPIC_0036068717__b3125422718254">rmmod ixgbevf</strong></p>
+<p id="EN-US_TOPIC_0036068717__p6091311218544"><strong id="EN-US_TOPIC_0036068717__b4856442118254">insmod ./ixgbevf.ko</strong></p>
+<p id="EN-US_TOPIC_0036068717__p40607765194024"><strong id="EN-US_TOPIC_0036068717__b1506555027201944">ethtool -i </strong><em id="EN-US_TOPIC_0036068717__i382226212201949">NIC_name</em></p>
+<p id="EN-US_TOPIC_0036068717__p1846447518550">In the preceding command, <em id="EN-US_TOPIC_0036068717__i995026207201951">NIC_name</em> specifies the passthrough NIC name, for example, <strong id="EN-US_TOPIC_0036068717__b842352706202012">ens5</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0036068717__note2249824518615"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0036068717__ul4784383818624"><li id="EN-US_TOPIC_0036068717__li2794136518624">After you run the <strong id="EN-US_TOPIC_0036068717__b1268837858202034">rmmod ixgbevf</strong> command, the system may display an error message. This message does not affect the installation of the passthrough NIC driver and can be ignored.</li><li id="EN-US_TOPIC_0036068717__li4865810218624"><em id="EN-US_TOPIC_0036068717__i63319589155538">NIC_name</em> specifies the passthrough NIC name, for example, <strong id="EN-US_TOPIC_0036068717__b60334116155540">ens5.</strong></li></ul>
+</div></div>
+</li><li id="EN-US_TOPIC_0036068717__li3866767218639">Check the driver status based on the displayed information.<p id="EN-US_TOPIC_0036068717__p13122137202441"><a name="EN-US_TOPIC_0036068717__li3866767218639"></a><a name="li3866767218639"></a>In this example, the driver is installed if <strong id="EN-US_TOPIC_0036068717__b842352706202333">driver</strong> is <strong id="EN-US_TOPIC_0036068717__b842352706202343">ixgbevf</strong> and <strong id="EN-US_TOPIC_0036068717__b842352706202351">version</strong> is <strong id="EN-US_TOPIC_0036068717__b842352706202413">2.16.4</strong>.</p>
+</li></ol>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+

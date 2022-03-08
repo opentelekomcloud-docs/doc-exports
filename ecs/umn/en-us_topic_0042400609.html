@@ -1,0 +1,376 @@
+<a name="EN-US_TOPIC_0042400609"></a><a name="EN-US_TOPIC_0042400609"></a>
+
+<h1 class="topictitle1">Obtaining Metadata</h1>
+<div id="body1479386611522"><div class="section" id="EN-US_TOPIC_0042400609__section1271521344918"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0042400609__p41251172817"><span id="EN-US_TOPIC_0042400609__text154121576429">ECS</span> metadata includes basic information of an <span id="EN-US_TOPIC_0042400609__text1320814325458">ECS</span> on the cloud platform, such as the <span id="EN-US_TOPIC_0042400609__text132161547154518">ECS</span> ID, hostname, and network information. <span id="EN-US_TOPIC_0042400609__text19323859144219">ECS</span> metadata can be obtained using either OpenStack or EC2 compatible APIs, as shown in <a href="#EN-US_TOPIC_0042400609__table273552371680">Table 1</a>. The following describes the URI and methods of using the supported <span id="EN-US_TOPIC_0042400609__text15496156124220">ECS</span> metadata.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section3652133520518"><h4 class="sectiontitle">Notes</h4><p id="EN-US_TOPIC_0042400609__p1386413519519">If the metadata contains sensitive data, take appropriate measures to protect the sensitive data, for example, controlling access permissions and encrypting the data.</p>
+<p id="EN-US_TOPIC_0042400609__p15571334125210">Perform the following configuration on the firewall:</p>
+<ul id="EN-US_TOPIC_0042400609__ul11467527526"><li id="EN-US_TOPIC_0042400609__li44655225219">Windows<p id="EN-US_TOPIC_0042400609__p080923316537"><a name="EN-US_TOPIC_0042400609__li44655225219"></a><a name="li44655225219"></a>If you need to assign permissions to only the administrator to access custom data, enable the firewall as an administrator and run the following commands in PowerShell:</p>
+<p id="EN-US_TOPIC_0042400609__p17810233105315"><strong id="EN-US_TOPIC_0042400609__b137611149115316">PS C:\&gt;$RejectPrincipal = New-Object -TypeName System.Security.Principal.NTAccount ("Everyone")</strong></p>
+<p id="EN-US_TOPIC_0042400609__p781023312536"><strong id="EN-US_TOPIC_0042400609__b12772049185311">PS C:\&gt;$RejectPrincipalSID = $RejectPrincipal.Translate([System.Security.Principal.SecurityIdentifier]).Value</strong></p>
+<p id="EN-US_TOPIC_0042400609__p58102033155319"><strong id="EN-US_TOPIC_0042400609__b978754915312">PS C:\&gt;$ExceptPrincipal = New-Object -TypeName System.Security.Principal.NTAccount ("Administrator")</strong></p>
+<p id="EN-US_TOPIC_0042400609__p481015337533"><strong id="EN-US_TOPIC_0042400609__b1178894985315">PS C:\&gt;$ExceptPrincipalSID = $ExceptPrincipal.Translate([System.Security.Principal.SecurityIdentifier]).Value</strong></p>
+<p id="EN-US_TOPIC_0042400609__p19810733115320"><strong id="EN-US_TOPIC_0042400609__b16788144955316">PS C:\&gt;$PrincipalSDDL = "O:LSD:(D;;CC;;;$ExceptPrincipalSID)(A;;CC;;;$RejectPrincipalSID)"</strong></p>
+<p id="EN-US_TOPIC_0042400609__p15810033135311"><strong id="EN-US_TOPIC_0042400609__b378854911530">PS C:\&gt;New-NetFirewallRule -DisplayName "Reject metadata service for $($RejectPrincipal.Value), exception: $($ExceptPrincipal.Value)" -Action block -Direction out -Protocol TCP -RemoteAddress 169.254.169.254 -LocalUser $PrincipalSDDL</strong></p>
+</li><li id="EN-US_TOPIC_0042400609__li6460521528">Linux<p id="EN-US_TOPIC_0042400609__p9471158175219"><a name="EN-US_TOPIC_0042400609__li6460521528"></a><a name="li6460521528"></a>If you need to assign permissions to only user <strong id="EN-US_TOPIC_0042400609__b4420743184912">root</strong> to access custom data, run the following command as user <strong id="EN-US_TOPIC_0042400609__b9598162310502">root</strong>:</p>
+<p id="EN-US_TOPIC_0042400609__p174711158135216"><strong id="EN-US_TOPIC_0042400609__b72843209530">iptables --append OUTPUT --proto tcp --destination 169.254.169.254 --match owner ! --uid-owner root --jump REJECT</strong></p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section318043315019"><h4 class="sectiontitle"><span id="EN-US_TOPIC_0042400609__text10409143713507">ECS</span> Metadata Types</h4><p id="EN-US_TOPIC_0042400609__p4228549122410"><a href="#EN-US_TOPIC_0042400609__table273552371680">Table 1</a> does not contain metadata items ami-id, ami-launch-index, ami-manifest-path, block-device-mapping/, instance-action, instance-id and reservation-id. These metadata items are not compatible with EC2 and are not recommended.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0042400609__table273552371680"></a><a name="table273552371680"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0042400609__table273552371680" frame="border" border="1" rules="all"><caption><b>Table 1 </b><span id="EN-US_TOPIC_0042400609__text127811113135116">ECS</span> metadata types</caption><thead align="left"><tr id="EN-US_TOPIC_0042400609__row459785021680"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.3.3.2.4.1.1"><p id="EN-US_TOPIC_0042400609__p1611763716833">Metadata Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24%" id="mcps1.3.3.3.2.4.1.2"><p id="EN-US_TOPIC_0042400609__p304933271680">Metadata Item</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.3.3.2.4.1.3"><p id="EN-US_TOPIC_0042400609__p213207321680">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0042400609__row378821081680"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p809695916822">OpenStack</p>
+<p id="EN-US_TOPIC_0042400609__p4474193825112"></p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p175787921680">/meta_data.json</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p426193551680">Displays <span id="EN-US_TOPIC_0042400609__text25115134316">ECS</span> metadata.</p>
+<p id="EN-US_TOPIC_0042400609__p63391215141014">For the key fields in the ECS metadata, see <a href="#EN-US_TOPIC_0042400609__table2373623012315">Table 2</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row292374981680"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p14586175618015">OpenStack</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p163874991680">/password</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p409248351680">Displays the password for logging in to an <span id="EN-US_TOPIC_0042400609__text1731195174317">ECS</span>.</p>
+<p id="EN-US_TOPIC_0042400609__p661917247101">This metadata is used by Cloudbase-Init to store ciphertext passwords during initialization of key-pair-authenticated Windows <span id="EN-US_TOPIC_0042400609__text2045114713437">ECS</span>s.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row104562411680"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p55862056100">OpenStack</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p11850321680">/user_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p98983401680">Displays ECS user data.</p>
+<p id="EN-US_TOPIC_0042400609__p465163616106">This metadata allows you to specify scripts and configuration files for initializing <span id="EN-US_TOPIC_0042400609__text1142815910436">ECS</span>s. For details, see <a href="en-us_topic_0032380449.html">Passing User Data to ECSs</a>.</p>
+<p id="EN-US_TOPIC_0042400609__p865193611107">For password-authenticated Linux ECSs, this metadata is used to save password injection scripts.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row216681141680"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p958665610017">OpenStack</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p21457114512">/network_data.json</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p31455115119">Displays <span id="EN-US_TOPIC_0042400609__text114991810194314">ECS</span> network information.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row19335028144551"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p1358645613014">OpenStack</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p714571205111">/securitykey</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p17145915518">Obtains temporary AKs and SKs.</p>
+<p id="EN-US_TOPIC_0042400609__p11608355141017">Before enabling an <span id="EN-US_TOPIC_0042400609__text0115151134314">ECS</span> to obtain a temporary AK and SK, make sure that the <strong id="EN-US_TOPIC_0042400609__b18716105412536">op_svc_ecs</strong> account has been authorized on IAM and that the desired <span id="EN-US_TOPIC_0042400609__text1912142155410">ECS</span> resources have been authorized for management.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row16772135161746"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p4373564516822">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p10396761161746">/meta-data/hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p45518664161746">Displays the name of the host accommodating an <span id="EN-US_TOPIC_0042400609__text12349212114318">ECS</span>.</p>
+<p id="EN-US_TOPIC_0042400609__p138091329218">To remove the suffix <strong id="EN-US_TOPIC_0042400609__b6997434125411">.novalocal</strong> from an <span id="EN-US_TOPIC_0042400609__text19071612194310">ECS</span>, see:</p>
+<p id="EN-US_TOPIC_0042400609__p1117557174416"><a href="en-us_topic_0094874138.html">Is an ECS Hostname with Suffix .novalocal Normal?</a></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row626017883320"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p311815113332">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p511861153314">/meta-data/local-hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p1026012814330">The meaning of this field is the same as that of hostname.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row111091554123515"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p469495617355">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p569419563359">/meta-data/public-hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p5109154103510">The meaning of this field is the same as that of hostname.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row35033331161746"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p09481981416">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p24758917161746">/meta-data/instance-type</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p21785021161746">Displays an <span id="EN-US_TOPIC_0042400609__text4332716144310">ECS</span> flavor.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row25345840161746"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p1422119101117">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p177222426305">/meta-data/local-ipv4</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p39741144528">Displays the fixed IP address of an <span id="EN-US_TOPIC_0042400609__text395631674313">ECS</span>.</p>
+<p id="EN-US_TOPIC_0042400609__p15298182161746">If there are multiple NICs, only the IP address of the primary NIC is displayed.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row898531716190"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p06947101818">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p2079227616190">/meta-data/placement/availability-zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p1219338216190">Displays the AZ accommodating an <span id="EN-US_TOPIC_0042400609__text3571101744315">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row1017501716190"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p51571711513">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p631251216190">/meta-data/public-ipv4</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p1836582505313">Displays the EIP bound to an <span id="EN-US_TOPIC_0042400609__text39871811433">ECS</span>.</p>
+<p id="EN-US_TOPIC_0042400609__p308179816190">If there are multiple NICs, only the EIP of the primary NIC is displayed.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row6185333416190"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p669071115111">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p158411821163117">/meta-data/public-keys/0/openssh-key</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p2942083216190">Displays the public key of an <span id="EN-US_TOPIC_0042400609__text1265116182433">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row2268075016190"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p53236121111">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p4362812316190">/user-data</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p5919884816190">Displays ECS user data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row3380124162159"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p8890712413">EC2</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.3.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p21312452162159">/meta-data/security-groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p7578912162159">Displays the security group to which an <span id="EN-US_TOPIC_0042400609__text6691121974319">ECS</span> belongs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0042400609__table2373623012315"></a><a name="table2373623012315"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0042400609__table2373623012315" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Metadata key fields</caption><thead align="left"><tr id="EN-US_TOPIC_0042400609__row4787810512315"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.3.4.2.4.1.1"><p id="EN-US_TOPIC_0042400609__p135337462439">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24%" id="mcps1.3.3.4.2.4.1.2"><p id="EN-US_TOPIC_0042400609__p2054974617431">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.3.4.2.4.1.3"><p id="EN-US_TOPIC_0042400609__p75495461436">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0042400609__row1717815342412"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.4.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p91796345418">uuid</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.4.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p1438181511138">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.4.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p138151561316">Specifies an <span id="EN-US_TOPIC_0042400609__text144031120114314">ECS</span> ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row7197172751211"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.4.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p171982279122">availability_zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.4.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p131981527161214">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.4.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p819818276124">Specifies the AZ where an <span id="EN-US_TOPIC_0042400609__text1297122014315">ECS</span> locates.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row1961315241786"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.4.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p156131424089">meta</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.4.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p66147241387">Dict</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.4.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p11614124384">Specifies the metadata information, including the image name, image ID, and VPC ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0042400609__row4117204012123"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.3.4.2.4.1.1 "><p id="EN-US_TOPIC_0042400609__p8117040181218">hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.3.4.2.4.1.2 "><p id="EN-US_TOPIC_0042400609__p51174405125">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.3.4.2.4.1.3 "><p id="EN-US_TOPIC_0042400609__p1555373117469">Specifies the name of the host accommodating an <span id="EN-US_TOPIC_0042400609__text873062184317">ECS</span>.</p>
+<p id="EN-US_TOPIC_0042400609__p144362417139">To remove the suffix <strong id="EN-US_TOPIC_0042400609__b1476817121416">.novalocal</strong> from an <span id="EN-US_TOPIC_0042400609__text20930122312430">ECS</span>, see:</p>
+<p id="EN-US_TOPIC_0042400609__p139015188431"><a href="en-us_topic_0094874138.html">Is an ECS Hostname with Suffix .novalocal Normal?</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section36703712181817"><h4 class="sectiontitle">Prerequisites</h4><ul id="EN-US_TOPIC_0042400609__ul9343141011371"><li id="EN-US_TOPIC_0042400609__li1934321018371">The target <span id="EN-US_TOPIC_0042400609__text1541528124315">ECS</span> has been logged in.</li><li id="EN-US_TOPIC_0042400609__li3501613173718">Security group rules in the outbound direction meet the following requirements:<ul id="EN-US_TOPIC_0042400609__ul24730372153157"><li id="EN-US_TOPIC_0042400609__li4991456153157"><strong id="EN-US_TOPIC_0042400609__b84235270617418">Protocol</strong>: <strong id="EN-US_TOPIC_0042400609__b842352706174111">TCP</strong></li><li id="EN-US_TOPIC_0042400609__li5391447153614"><strong id="EN-US_TOPIC_0042400609__b842352706174117">Port</strong>: <strong id="EN-US_TOPIC_0042400609__b842352706174120">80</strong></li><li id="EN-US_TOPIC_0042400609__li57518749153625"><strong id="EN-US_TOPIC_0042400609__b7921153132519">Destination</strong>: <strong id="EN-US_TOPIC_0042400609__b1492117320252">169.254.0.0/16</strong></li></ul>
+<div class="note" id="EN-US_TOPIC_0042400609__note2229256715423"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0042400609__p6641537815423">If you use the default security group rules for the outbound direction, the preceding requirements are met. Then, the metadata can be accessed. Default security group rules for the outbound direction are as follows:</p>
+<ul id="EN-US_TOPIC_0042400609__ul57158436154418"><li id="EN-US_TOPIC_0042400609__li43613116154418"><strong id="EN-US_TOPIC_0042400609__b842352706174746">Protocol</strong>: <strong id="EN-US_TOPIC_0042400609__b842352706174748">All</strong></li><li id="EN-US_TOPIC_0042400609__li62494343154423"><strong id="EN-US_TOPIC_0042400609__b842352706174753">Port</strong>: <strong id="EN-US_TOPIC_0042400609__b842352706174755">All</strong></li><li id="EN-US_TOPIC_0042400609__li45129043154435"><strong id="EN-US_TOPIC_0042400609__b84235270617480">Destination</strong>: <strong id="EN-US_TOPIC_0042400609__b84235270617483">0.0.0.0/0</strong></li></ul>
+</div></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section29573104171554"><h4 class="sectiontitle">Metadata (OpenStack Metadata API)</h4><p id="EN-US_TOPIC_0042400609__p31080634174749">Displays <span id="EN-US_TOPIC_0042400609__text19755172815432">ECS</span> metadata.</p>
+<ul id="EN-US_TOPIC_0042400609__ul59617153172854"><li id="EN-US_TOPIC_0042400609__li30888617172917">URI<p id="EN-US_TOPIC_0042400609__p32562171172943"><a name="EN-US_TOPIC_0042400609__li30888617172917"></a><a name="li30888617172917"></a>/169.254.169.254/openstack/latest/meta_data.json</p>
+</li><li id="EN-US_TOPIC_0042400609__li64325637172923">Usage method<p id="EN-US_TOPIC_0042400609__p17989373172953"><a name="EN-US_TOPIC_0042400609__li64325637172923"></a><a name="li64325637172923"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li64044148172854">Example<p id="EN-US_TOPIC_0042400609__p37237672172215"><a name="EN-US_TOPIC_0042400609__li64044148172854"></a><a name="li64044148172854"></a>To use cURL to view Linux <span id="EN-US_TOPIC_0042400609__text842802912433">ECS</span> metadata, run the following command:</p>
+<p id="EN-US_TOPIC_0042400609__en-us_topic_0042400609_p3674377020548"><strong id="EN-US_TOPIC_0042400609__en-us_topic_0042400609_b46779135205411">curl http://169.254.169.254/openstack/latest/meta_data.json</strong></p>
+<p id="EN-US_TOPIC_0042400609__p1915741217290">To use Invoke-RestMethod to view Windows <span id="EN-US_TOPIC_0042400609__text1246515516319">ECS</span> metadata, run the following command:</p>
+<p id="EN-US_TOPIC_0042400609__p7711354143118"><strong id="EN-US_TOPIC_0042400609__b156436364327">Invoke-RestMethod http://169.254.169.254/openstack/latest/meta_data.json | ConvertTo-Json</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen18173151518716">{
+    "random_seed": "rEocCViRS+dNwlYdGIxJHUp+00poeUsAdBFkbPbYQTmpNwpoEb43k9z+96TyrekNKS+iLYDdRNy4kKGoNPEVBCc05Hg1TcDblAPfJwgJS1okqEtlcofUhKmL3K0fto+5KXEDU3GNuGwyZXjdVb9HQWU+E1jztAJjjqsahnU+g/tawABTVySLBKlAT8fMGax1mTGgArucn/WzDcy19DGioKPE7F8ILtSQ4Ww3VClK5VYB/h0x+4r7IVHrPmYX/bi1Yhm3Dc4rRYNaTjdOV5gUOsbO3oAeQkmKwQ/NO0N8qw5Ya4l8ZUW4tMav4mOsRySOOB35v0bvaJc6p+50DTbWNeX5A2MLiEhTP3vsPrmvk4LRF7CLz2J2TGIM14OoVBw7LARwmv9cz532zHki/c8tlhRzLmOTXh/wL36zFW10DeuReUGmxth7IGNmRMQKV6+miI78jm/KMPpgAdK3vwYF/GcelOFJD2HghMUUCeMbwYnvijLTejuBpwhJMNiHA/NvlEsxJDxqBCoss/Jfe+yCmUFyxovJ+L8oNkTzkmtCNzw3Ra0hiKchGhqK3BIeToV/kVx5DdF081xrEA+qyoM6CVyfJtEoz1zlRRyoo9bJ65Eg6JJd8dj1UCVsDqRY1pIjgzE/Mzsw6AaaCVhaMJL7u7YMVdyKzA6z65Xtvujz0Vo=",
+    "uuid": "ca9e8b7c-f2be-4b6d-a639-f10b4d994d04",
+    "availability_zone": "lt-test-1c",
+    "hostname": "ecs-ddd4-l00349281.novalocal",
+    "launch_index": 0,
+    "meta": {
+        "metering.image_id": "3a64bd37-955e-40cd-ab9e-129db56bc05d",
+        "metering.imagetype": "gold",
+        "metering.resourcespeccode": "s3.medium.1.linux",
+        "image_name": "CentOS 7.6 64bit",
+        "os_bit": "64",
+        "vpc_id": "3b6c201f-aeb3-4bce-b841-64756e66cb49",
+        "metering.resourcetype": "1",
+        "cascaded.instance_extrainfo": "pcibridge:2",
+        "os_type": "Linux",
+        "charging_mode": "0"
+    },
+    "project_id": "6e8b0c94265645f39c5abbe63c4113c6",
+    "name": "ecs-ddd4-l00349281"
+}</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section51339028173755"><h4 class="sectiontitle">User Data (OpenStack Metadata API)</h4><p id="EN-US_TOPIC_0042400609__p3102430417439">Displays <span id="EN-US_TOPIC_0042400609__text3811731174315">ECS</span> user data. The value is configured only when you create an <span id="EN-US_TOPIC_0042400609__text9300133218439">ECS</span>. It cannot be changed after the configuration.</p>
+<ul id="EN-US_TOPIC_0042400609__ul6116086217388"><li id="EN-US_TOPIC_0042400609__li22569917388">URI<p id="EN-US_TOPIC_0042400609__p28707765173835"><a name="EN-US_TOPIC_0042400609__li22569917388"></a><a name="li22569917388"></a>/169.254.169.254/openstack/latest/user_data</p>
+</li><li id="EN-US_TOPIC_0042400609__li3657077173813">Usage method<p id="EN-US_TOPIC_0042400609__p45679428173912"><a name="EN-US_TOPIC_0042400609__li3657077173813"></a><a name="li3657077173813"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li14044809173816">Example<p id="EN-US_TOPIC_0042400609__p20898539103311"><a name="EN-US_TOPIC_0042400609__li14044809173816"></a><a name="li14044809173816"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p1646023816332"><strong id="EN-US_TOPIC_0042400609__b1046013382331">curl http://169.254.169.254/openstack/latest/user_data</strong></p>
+<p id="EN-US_TOPIC_0042400609__p11388154910332">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p113401158193315"><strong id="EN-US_TOPIC_0042400609__b1733791013413">Invoke-RestMethod</strong> <strong id="EN-US_TOPIC_0042400609__b1930051563410">http://169.254.169.254/openstack/latest/user_data</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen64601738203315">ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2ggYSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4uLnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNvbnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3csIHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==</pre>
+<div class="note" id="EN-US_TOPIC_0042400609__note114601938123310"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><div class="p" id="EN-US_TOPIC_0042400609__p1746083813333">If user data was not passed to the ECS during <span id="EN-US_TOPIC_0042400609__text10131236131516">ECS</span> creation, the query result is 404.<div class="fignone" id="EN-US_TOPIC_0042400609__fig124601338153316"><span class="figcap"><b>Figure 1 </b>404 Not Found</span><br><span><img id="EN-US_TOPIC_0042400609__image1746013893317" src="en-us_image_0166755236.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+</div></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section374011381441"><h4 class="sectiontitle">Network Data (OpenStack Metadata API)</h4><p id="EN-US_TOPIC_0042400609__p9160132110456">Displays information about all NICs attached to an ECS, including their DNS server addresses, network bandwidth, IDs, private IP addresses, EIPs, and MAC addresses.</p>
+<ul id="EN-US_TOPIC_0042400609__ul55102293454"><li id="EN-US_TOPIC_0042400609__li14510172919455">URI<p id="EN-US_TOPIC_0042400609__p651015293454"><a name="EN-US_TOPIC_0042400609__li14510172919455"></a><a name="li14510172919455"></a>/openstack/latest/network_data.json</p>
+</li><li id="EN-US_TOPIC_0042400609__li851092924520">Usage method<p id="EN-US_TOPIC_0042400609__p1510112924513"><a name="EN-US_TOPIC_0042400609__li851092924520"></a><a name="li851092924520"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li14510122964513">Example<div class="note" id="EN-US_TOPIC_0042400609__note1192114501298"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0042400609__p8921205012914"><strong id="EN-US_TOPIC_0042400609__b1843052315586">instance_max_bandwidth</strong> and <strong id="EN-US_TOPIC_0042400609__b12388306585">instance_min_bandwidth</strong> are in the unit of Mbit/s. If the value is <strong id="EN-US_TOPIC_0042400609__b599741214015">-1</strong>, the bandwidth is not limited.</p>
+</div></div>
+<p id="EN-US_TOPIC_0042400609__p3688203410344">Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p1421220322344"><strong id="EN-US_TOPIC_0042400609__b192121932163415">curl http://169.254.169.254/openstack/<strong id="EN-US_TOPIC_0042400609__b421220327346">latest</strong>/network_data.json</strong></p>
+<p id="EN-US_TOPIC_0042400609__p83431384344">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p14224164603416"><strong id="EN-US_TOPIC_0042400609__b1856761016357">Invoke-RestMethod http://169.254.169.254/openstack/latest/network_data.json | ConvertTo-Json</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen9212632153414">{
+    "services": [{
+        "type": "dns",
+        "address": "xxx.xx.x.x"
+    },
+    {
+        "type": "dns",
+        "address": "100.1
+25.21.250"
+    }],
+    "networks": [{
+        "network_id": "67dc10ce-441f-4592-9a80-cc709f6436e7",
+        "type": "i
+pv4_dhcp",
+        "link": "tap68a9272d-71",
+        "id": "network0"
+    }],
+    "links": [{
+        "type": "cascading",
+        "vif_id": "68a9272d-7152-4ae7-a138-3ef53af669e7",
+        "ethernet_mac_address": "fa:16:3e:f7:c1:47",
+        "id": "tap68a9272d-71",
+        "mtu": null
+
+    }],
+    "qos":{
+        "instance_max_bandwidth": 1200,
+        "instance_min_bandwidth": 4000
+    }
+}</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section921029416614"><h4 class="sectiontitle">Security Key (OpenStack Metadata API)</h4><p id="EN-US_TOPIC_0042400609__p38342039161132">Obtains temporary AKs and SKs.</p>
+<div class="note" id="EN-US_TOPIC_0042400609__note8594053165018"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0042400609__ul8608738165031"><li id="EN-US_TOPIC_0042400609__li1032135541617">If an ECS needs to obtain a temporary AK and SK, go to the ECS details page, and configure <strong id="EN-US_TOPIC_0042400609__b9860626211">Agency</strong> for the ECS in the <strong id="EN-US_TOPIC_0042400609__b1364103316113">Management Information</strong> area so that the ECS is authorized on IAM.</li><li id="EN-US_TOPIC_0042400609__li48880997165031">The validity period of a temporary AK and SK is one hour. The temporary AK and SK are updated 10 minutes ahead of the expiration time. During the 10 minutes, both the new and old temporary AKs and SKs can be used.</li><li id="EN-US_TOPIC_0042400609__li21802073165031">When using temporary AKs and SKs, add <strong id="EN-US_TOPIC_0042400609__b842352706202446">'X-Security-Token':{securitytoken}</strong> in the message header. <strong id="EN-US_TOPIC_0042400609__b84235270620252">securitytoken</strong> is the value returned when a call is made to the API.</li></ul>
+</div></div>
+<ul id="EN-US_TOPIC_0042400609__ul6007050416845"><li id="EN-US_TOPIC_0042400609__li4325039816845">URI<p id="EN-US_TOPIC_0042400609__p3107564816911"><a name="EN-US_TOPIC_0042400609__li4325039816845"></a><a name="li4325039816845"></a>/openstack/latest/securitykey</p>
+</li><li id="EN-US_TOPIC_0042400609__li3227703316849">Usage method<p id="EN-US_TOPIC_0042400609__p5875656116919"><a name="EN-US_TOPIC_0042400609__li3227703316849"></a><a name="li3227703316849"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li6217689516854">Examples<p id="EN-US_TOPIC_0042400609__p157471206378"><a name="EN-US_TOPIC_0042400609__li6217689516854"></a><a name="li6217689516854"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p17471405374"><strong id="EN-US_TOPIC_0042400609__b5722313116110">curl http://169.254.169.254/openstack/<strong id="EN-US_TOPIC_0042400609__b9331152523717">latest</strong>/securitykey</strong></p>
+<p id="EN-US_TOPIC_0042400609__p17474013371">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p107479083710"><strong id="EN-US_TOPIC_0042400609__b97471104376">Invoke-RestMethod http://169.254.169.254/openstack/latest/securitykey</strong></p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section1526795182322"><h4 class="sectiontitle">User Data (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p11678368182359">Displays <span id="EN-US_TOPIC_0042400609__text10625134116119">ECS</span> user data. The value is configured only when you create an <span id="EN-US_TOPIC_0042400609__text9377936856">ECS</span>. It cannot be changed after the configuration.</p>
+<ul id="EN-US_TOPIC_0042400609__ul37996454182359"><li id="EN-US_TOPIC_0042400609__li6423774182359">URI<p id="EN-US_TOPIC_0042400609__p58171718182435"><a name="EN-US_TOPIC_0042400609__li6423774182359"></a><a name="li6423774182359"></a>/169.254.169.254/latest/user-data</p>
+</li><li id="EN-US_TOPIC_0042400609__li50563660182359">Usage method<p id="EN-US_TOPIC_0042400609__p52419756182359"><a name="EN-US_TOPIC_0042400609__li50563660182359"></a><a name="li50563660182359"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li2015762182359">Example<p id="EN-US_TOPIC_0042400609__p1564429377"><a name="EN-US_TOPIC_0042400609__li2015762182359"></a><a name="li2015762182359"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p165634273717"><strong id="EN-US_TOPIC_0042400609__b8419148183720">curl http://169.254.169.254/latest/user-data</strong></p>
+<p id="EN-US_TOPIC_0042400609__p165634273714">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p4562429375"><strong id="EN-US_TOPIC_0042400609__b95664215378">Invoke-RestMethod http://169.254.169.254/latest/user-data</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen16208203115013">ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2ggYSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4uLnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNvbnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3csIHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section370431618033"><h4 class="sectiontitle">Hostname (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p6479502918044">Displays the name of the host accommodating an <span id="EN-US_TOPIC_0042400609__text107889378434">ECS</span>. The .novalocal suffix will be added later.</p>
+<ul id="EN-US_TOPIC_0042400609__ul5379770718152"><li id="EN-US_TOPIC_0042400609__li1441732118152">URI<p id="EN-US_TOPIC_0042400609__p6264702918152"><a name="EN-US_TOPIC_0042400609__li1441732118152"></a><a name="li1441732118152"></a>/169.254.169.254/latest/meta-data/hostname</p>
+</li><li id="EN-US_TOPIC_0042400609__li2695235218152">Usage method<p id="EN-US_TOPIC_0042400609__p4124457918152"><a name="EN-US_TOPIC_0042400609__li2695235218152"></a><a name="li2695235218152"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li3565689518152">Example<p id="EN-US_TOPIC_0042400609__p1262718493910"><a name="EN-US_TOPIC_0042400609__li3565689518152"></a><a name="li3565689518152"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p06276423910"><strong id="EN-US_TOPIC_0042400609__b106275443914">curl http://169.254.169.254/latest/meta-data/hostname</strong></p>
+<p id="EN-US_TOPIC_0042400609__p196271247397">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p462718483912"><strong id="EN-US_TOPIC_0042400609__b562711413910">Invoke-RestMethod http://169.254.169.254/latest/meta-data/hostname</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen2274666918152">vm-test.novalocal</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section5678065318623"><h4 class="sectiontitle">Instance Type (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p3959627418633">Displays an <span id="EN-US_TOPIC_0042400609__text67711738184310">ECS</span> flavor.</p>
+<ul id="EN-US_TOPIC_0042400609__ul277406018653"><li id="EN-US_TOPIC_0042400609__li2496654318653">URI<p id="EN-US_TOPIC_0042400609__p649993741879"><a name="EN-US_TOPIC_0042400609__li2496654318653"></a><a name="li2496654318653"></a>/169.254.169.254/latest/meta-data/instance-type</p>
+</li><li id="EN-US_TOPIC_0042400609__li902414018653">Usage method<p id="EN-US_TOPIC_0042400609__p1410839918653"><a name="EN-US_TOPIC_0042400609__li902414018653"></a><a name="li902414018653"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li5986672918653">Example<p id="EN-US_TOPIC_0042400609__p154516241397"><a name="EN-US_TOPIC_0042400609__li5986672918653"></a><a name="li5986672918653"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p55451524123920"><strong id="EN-US_TOPIC_0042400609__b854582473918">curl http://169.254.169.254/latest/meta-data/instance-type</strong></p>
+<p id="EN-US_TOPIC_0042400609__p1545324123915">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p954517248398"><strong id="EN-US_TOPIC_0042400609__b15451224123915">Invoke-RestMethod http://169.254.169.254/latest/meta-data/instance-type</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen2208403618653">s3.medium.1</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section3229992918750"><h4 class="sectiontitle">Local IPv4 (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p1420695118810">Displays the fixed IP address of an <span id="EN-US_TOPIC_0042400609__text86795241275">ECS</span>. If there are multiple NICs, only the IP address of the primary NIC is displayed.</p>
+<ul id="EN-US_TOPIC_0042400609__ul4974336918830"><li id="EN-US_TOPIC_0042400609__li4503714318830">URI<p id="EN-US_TOPIC_0042400609__p187792418841"><a name="EN-US_TOPIC_0042400609__li4503714318830"></a><a name="li4503714318830"></a>/169.254.169.254/latest/meta-data/local-ipv4</p>
+</li><li id="EN-US_TOPIC_0042400609__li2412995518830">Usage method<p id="EN-US_TOPIC_0042400609__p1584300318830"><a name="EN-US_TOPIC_0042400609__li2412995518830"></a><a name="li2412995518830"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li836929918830">Example<p id="EN-US_TOPIC_0042400609__p167771444153917"><a name="EN-US_TOPIC_0042400609__li836929918830"></a><a name="li836929918830"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p167771544173914"><strong id="EN-US_TOPIC_0042400609__b8777244193911">curl http://169.254.169.254/latest/meta-data/local-ipv4</strong></p>
+<p id="EN-US_TOPIC_0042400609__p1977724415394">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p877764483915"><strong id="EN-US_TOPIC_0042400609__b1577714433916">Invoke-RestMethod http://169.254.169.254/latest/meta-data/local-ipv4</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen5413912818914">192.1.1.2</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section4087782618925"><h4 class="sectiontitle">Availability Zone (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p3029541418948">Displays the AZ accommodating an <span id="EN-US_TOPIC_0042400609__text107362328716">ECS</span>.</p>
+<ul id="EN-US_TOPIC_0042400609__ul212824718107"><li id="EN-US_TOPIC_0042400609__li1915422318107">URI<p id="EN-US_TOPIC_0042400609__p56249785181032"><a name="EN-US_TOPIC_0042400609__li1915422318107"></a><a name="li1915422318107"></a>/169.254.169.254/latest/meta-data/placement/availability-zone</p>
+</li><li id="EN-US_TOPIC_0042400609__li798819218107">Usage method<p id="EN-US_TOPIC_0042400609__p478486718107"><a name="EN-US_TOPIC_0042400609__li798819218107"></a><a name="li798819218107"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li4306381018107">Example<p id="EN-US_TOPIC_0042400609__p46839810407"><a name="EN-US_TOPIC_0042400609__li4306381018107"></a><a name="li4306381018107"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p768312864019"><strong id="EN-US_TOPIC_0042400609__b46831186407">curl http://169.254.169.254/latest/meta-data/placement/availability-zone</strong></p>
+<p id="EN-US_TOPIC_0042400609__p16832874014">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p56837814401"><strong id="EN-US_TOPIC_0042400609__b16683108104011">Invoke-RestMethod http://169.254.169.254/latest/meta-data/placement/availability-zone</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen5367824218107">az1.dc1</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section5999198518129"><h4 class="sectiontitle">Public IPv4 (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p2283136181232">Displays the EIP bound to an <span id="EN-US_TOPIC_0042400609__text16321418712">ECS</span>. If there are multiple NICs, only the EIP of the primary NIC is displayed.</p>
+<ul id="EN-US_TOPIC_0042400609__ul55990006181427"><li id="EN-US_TOPIC_0042400609__li34148012181427">URI<p id="EN-US_TOPIC_0042400609__p28745692181456"><a name="EN-US_TOPIC_0042400609__li34148012181427"></a><a name="li34148012181427"></a>/169.254.169.254/latest/meta-data/public-ipv4</p>
+</li><li id="EN-US_TOPIC_0042400609__li14525587181427">Usage method<p id="EN-US_TOPIC_0042400609__p63621422181427"><a name="EN-US_TOPIC_0042400609__li14525587181427"></a><a name="li14525587181427"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li35721890181427">Example<p id="EN-US_TOPIC_0042400609__p11711012184018"><a name="EN-US_TOPIC_0042400609__li35721890181427"></a><a name="li35721890181427"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p1711612184011"><strong id="EN-US_TOPIC_0042400609__b571151218401">curl http://169.254.169.254/latest/meta-data/public-ipv4</strong></p>
+<p id="EN-US_TOPIC_0042400609__p117114129401">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p1711812194010"><strong id="EN-US_TOPIC_0042400609__b27115123405">Invoke-RestMethod http://169.254.169.254/latest/meta-data/public-ipv4</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen25381810181520">46.1.1.2</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section51581190181532"><h4 class="sectiontitle">Public Keys (EC2 Compatible API)</h4><p id="EN-US_TOPIC_0042400609__p25869135181541">Displays the public key of an <span id="EN-US_TOPIC_0042400609__text16547340164316">ECS</span>.</p>
+<ul id="EN-US_TOPIC_0042400609__ul2469263318167"><li id="EN-US_TOPIC_0042400609__li2090711118167">URI<p id="EN-US_TOPIC_0042400609__p6606363181619"><a name="EN-US_TOPIC_0042400609__li2090711118167"></a><a name="li2090711118167"></a>/169.254.169.254/latest/meta-data/public-keys/0/openssh-key</p>
+</li><li id="EN-US_TOPIC_0042400609__li1575439618167">Usage method<p id="EN-US_TOPIC_0042400609__p757183718167"><a name="EN-US_TOPIC_0042400609__li1575439618167"></a><a name="li1575439618167"></a>Supports GET requests.</p>
+</li><li id="EN-US_TOPIC_0042400609__li103767718167">Example<p id="EN-US_TOPIC_0042400609__p4192247144014"><a name="EN-US_TOPIC_0042400609__li103767718167"></a><a name="li103767718167"></a>Linux:</p>
+<p id="EN-US_TOPIC_0042400609__p11192144784017"><strong id="EN-US_TOPIC_0042400609__b21921347104013">curl http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key</strong></p>
+<p id="EN-US_TOPIC_0042400609__p2192194714019">Windows:</p>
+<p id="EN-US_TOPIC_0042400609__p131921047134019"><strong id="EN-US_TOPIC_0042400609__b719212478405">Invoke-RestMethod http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0042400609__screen14246164315511">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI5Fw5k8Fgzajn1zJwLoV3+wMP+6CyvsSiIc/hioggSnYu/AD0Yqm8vVO0kWlun1rFbdO+QUZKyVr/OPUjQSw4SRh4qsTKf/+eFoWTjplFvd1WCBZzS/WRenxIwR00KkczHSJro763+wYcwKieb4eKRxaQoQvoFgVjLBULXAjH4eKoKTVNtMXAvPP9aMy2SLgsJNtMb9ArfziAiblQynq7UIfLnN3VclzPeiWrqtzjyOp6CPUXnL0lVPTvbLe8sUteBsJZwlL6K4i+Y0lf3ryqnmQgC21yW4Dzu+kwk8FVT2MgWkCwiZd8gQ/+uJzrJFyMfUOBIklOBfuUENIJUhAB Generated-by-Nova</pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0042400609__section63251811173020"><h4 class="sectiontitle">Helpful Links</h4><p id="EN-US_TOPIC_0042400609__p12367152012308"><a href="en-us_topic_0000001138811177.html">Why Can't My Linux ECS Obtain Metadata?</a></p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0140313879.html">Obtaining Metadata and Passing User Data</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

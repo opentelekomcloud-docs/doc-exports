@@ -1,0 +1,526 @@
+<a name="elb_zq_fz_0002"></a><a name="elb_zq_fz_0002"></a>
+
+<h1 class="topictitle1">Querying Load Balancers</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0049139631_p62644428">This API is used to query load balancers and display them in a list. Filter query and pagination query are supported. Unless otherwise specified, exact match is applied.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1425263917142">Parameters <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706173057">marker</strong>, <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b84235270617310">limit</strong>, and <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b84235270617314">page_reverse</strong> are used for pagination query. Parameters <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706173217">marker</strong> and <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706173221">page_reverse</strong> take effect only when they are used together with parameter <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706173232">limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0049139631_p171151924185616">GET /v2.0/lbaas/loadbalancers</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_table173202435716" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_row2997023165716"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_p14996132375711">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_p129971623125717"><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_b842352706192244">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_p6996112319573">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_fz_0002__en-us_topic_0141008270_p19997123155717">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_row59971323145714"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p129979231573">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p199976234571">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17997123165717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p4235152211344">Specifies the ID of the load balancer from which pagination query starts, that is, the ID of the last load balancer on the previous page.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p06221826143418">This parameter must be used together with <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b1557913100515">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row1799772355718"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p79972234578">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p2099722319571">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p09971123185715">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p163282306342">Specifies the number of load balancers on each page.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row11997152313578"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p599717234572">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p79974232578">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p0997162312577">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p15227113913341">Specifies the page direction. The value can be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b123101411515">true</strong> or <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b14328149512">false</strong>, and the default value is <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b53218149517">false</strong>. The last page in the list requested with <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b18337149517">page_reverse</strong> set to <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b1133314195117">false</strong> will not contain the "next" link, and the last page in the list requested with <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b834141425112">page_reverse</strong> set to <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b534151465114">true</strong> will not contain the "previous" link.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p5244104243413">This parameter must be used together with <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b175751415185110">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row899882319573"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p59971723185718">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1899718234571">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p2997112318575">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p499914591415">Specifies the ID of the project where the load balancer is used.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p8222164914610"></p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row099812230578"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1799811232573">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1099817237571">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p899872385713">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p399819238571">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row59991623185712"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1199892312578">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p8998162315578">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p3998172312575">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p15998152315573">Provides supplementary information about the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p3290102225719">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row3999192385710"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1099911237570">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p09991723165710">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p899917231579">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17999123195714">Specifies the load balancer name.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p1057013242577">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row120192455712"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p09991723135710">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p109991223175719">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p9999152314575">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p15793105442410">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b653919513810">ONLINE</strong>.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p820316353555">It specifies the operating status of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row211124155719"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p701424175719">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p80112445710">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p16016249572">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p6765938144912">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b438631110557">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p135290391532">It specifies the provisioning status of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row1165861515274"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561535_p89147319494">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_a7e70864829e241b2a1f11b68e46aad7d">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_a3d521a25ce9a402b9c86c3cb216effde">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p11683222331">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b2717836144015">true</strong>.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p1524352615426">It specifies the administrative status of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row10152418573"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17112245570">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17112405715">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p201424175713">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p31824165715">Specifies the private IP address of the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p13202733195720">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row16112244576"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p14119244570">vip_port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p12132412573">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p4723204915910">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p171112485712">Specifies the ID of the port bound to the private IP address of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row721424155710"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p81112415576">vip_subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1012024125713">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17766451692">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p14217247579">Specifies the ID of the subnet where the load balancer works.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row16232465714"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p329245573">member_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p9212249573">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p10540553499">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p10282413574">Specifies the IP address of the backend server associated with the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row14372415579"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p16232485711">member_device_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1821424115714">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1022510551190">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p102324125717">Specifies the ID of the cloud server used as the backend server associated with the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row133102445718"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p43152465714">vpc_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p4320245571">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p102317571898">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p23192410578">Specifies the ID of the VPC where the load balancer works.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table1491517497282" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_row16917204932819"><th align="left" class="cellrowborder" valign="top" width="22.17778222177782%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p591874912286">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.8071192880712%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p1991913496283">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.01509849015099%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p89213491280">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_row1592214918289"><td class="cellrowborder" valign="top" width="22.17778222177782%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p39241549122817">loadbalancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.8071192880712%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p5925184911281">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.01509849015099%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p0926194942810">Lists the load balancers. For details, see <a href="#elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table10274202983318">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_row171917301808"><td class="cellrowborder" valign="top" width="22.17778222177782%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p17192300014">loadbalancers_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.8071192880712%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p19719203010016">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.01509849015099%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1271912301509">Provides links to the previous or next page during pagination query, respectively. This parameter exists only in the response body of pagination query. For details, see <a href="#elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table661975283313">Table 6</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table10274202983318"></a><a name="en-us_topic_0141008270_en-us_topic_0096561531_table10274202983318"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table10274202983318" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b3423171181412">loadbalancer</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row6659133533816"><th align="left" class="cellrowborder" valign="top" width="34.69%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p96591835173819">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.47%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p17660123513386">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.839999999999996%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_p4660183515387">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row156601235133818"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p10415829113311">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p155784252919">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1941513297339">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_row1758616126181"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p20415229113312">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p741592933318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1341519295331">Specifies the ID of the project where the load balancer is used.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p77281547155311">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row76601535193815"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1041552912332">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p241692918331">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p17416152919332">Specifies the load balancer name.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p076212535532">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row66605355385"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p4416102918335">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p24161129143314">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p5416142912334">Provides supplementary information about the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p157105551532">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row1166020352385"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1541618299335">vip_subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p135272044182910">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p4335125124117">Specifies the ID of the subnet where the load balancer works.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row36601435103818"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1041622923320">vip_port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p19102164614291">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p173334177415">Specifies the ID of the port bound to the private IP address of the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p546634185018">When you create a load balancer, the system automatically creates a port and associates it with a security group. However, the security group will not take effect.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row1866173519389"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p174164295334">provider</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p541611290339">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p43391417194120">Specifies the provider of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row6661203510387"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1416829143318">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p341672912338">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p64178297334">Specifies the private IP address of the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p832917316544">The value contains a maximum of 64 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row16611235163814"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1841715293336">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p10662124818106">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p7417112963311">Lists the IDs of listeners added to the load balancer. For details, see <a href="#elb_zq_fz_0002__en-us_topic_0141008270_table107875111574">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row8661143513384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1441712910330">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p563318509102">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p104171229123313">Lists the IDs of backend server groups associated with the load balancer. For details, see <a href="#elb_zq_fz_0002__en-us_topic_0141008270_table1566642411246">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row566114352387"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p727217358477">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p82761735124717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p12690134332417">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b728184255211">ONLINE</strong>.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p101191827104613">It specifies the operating status of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row2661123514384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p930113351475">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p7305153534717">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p17231942123313">This parameter is reserved, and its value can only be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b983018343308">ACTIVE</strong>.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p8222112819472">It specifies the provisioning status of the load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row16662935103816"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p114181329133314">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p10418172913319">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p14847443611">Specifies the administrative status of the load balancer.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p1794055920316">This parameter is reserved. The value can be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_ul118694033910"><li id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row866215358384"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p74181229133310">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p71551954161018">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p4418112919333">Lists load balancer tags.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row13900164817511"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p18781627124910">created_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p18781627204916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p578162719490">Specifies the time when the load balancer was created.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p3462240292">The UTC time is in <em id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_i17481376157">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p415795413546">The value contains a maximum of 19 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561532_row4521952195114"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1541843114495">updated_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p1810172112506">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_en-us_topic_0096561531_p341843144919">Specifies the time when the load balancer was updated.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p52901417154816">The UTC time is in <em id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_i9616154111514">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_en-us_topic_0141008271_p3844185817544">The value contains a maximum of 19 characters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_table107875111574" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b157671844121518">listeners</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_row984216165711"><th align="left" class="cellrowborder" valign="top" width="23.332333233323332%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p484219135719">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.99179917991799%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p98422014571">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.67586758675868%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p10842215572">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_row1984213175716"><td class="cellrowborder" valign="top" width="23.332333233323332%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_a550100555602476a968f5ccd2a21bd30">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.99179917991799%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_ad5656706454749a2a1229da31098a77c">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.67586758675868%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p3842161115717">Specifies the ID of the associated listener.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_table1566642411246" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_b688912499153">pools</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_row366662462411"><th align="left" class="cellrowborder" valign="top" width="23.332333233323332%" id="mcps1.3.5.5.2.4.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p266692452420">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.99179917991799%" id="mcps1.3.5.5.2.4.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p11666924192420">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.67586758675868%" id="mcps1.3.5.5.2.4.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p6666132412242">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_row146661524132419"><td class="cellrowborder" valign="top" width="23.332333233323332%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p156661524182412">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.99179917991799%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p66667245248">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.67586758675868%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0141008273_p4666122416240">Specifies the ID of the associated backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table661975283313"></a><a name="en-us_topic_0141008270_en-us_topic_0096561531_table661975283313"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_table661975283313" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_b19767174972320">loadbalancers_links</strong> parameter description</caption><thead align="left"><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_row12653175213336"><th align="left" class="cellrowborder" valign="top" width="34.69%" id="mcps1.3.5.6.2.4.1.1"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p15653195215335">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.47%" id="mcps1.3.5.6.2.4.1.2"><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p065315253310">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.839999999999996%" id="mcps1.3.5.6.2.4.1.3"><p id="elb_zq_fz_0002__en-us_topic_0141008270_p12802125811616">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_row206531152103314"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p1465311528337">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p12653952113318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p1653852193312">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_row186535529338"><td class="cellrowborder" valign="top" width="34.69%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p1065325215337">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.47%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_p165305243318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.839999999999996%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_fz_0002__en-us_topic_0141008270_p1772113411218">Specifies the prompt of the previous or next page.</p>
+<p id="elb_zq_fz_0002__en-us_topic_0141008270_p422510443113">The value can be <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706175823">next</strong> or <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b842352706175826">previous</strong>. The value <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b8423527062079">next</strong> indicates the Hypertext Reference (href) containing the URL of the next page, and <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b84235270620752">previous</strong> indicates the href containing the URL of the previous page.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_fz_0002__en-us_topic_0141008270_ul14389101041013"><li id="elb_zq_fz_0002__en-us_topic_0141008270_li11389171019106">Example request 1: Querying all load balancers<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen10389191017109">GET https://{Endpoint}/v2.0/lbaas/loadbalancers</pre>
+</li><li id="elb_zq_fz_0002__en-us_topic_0141008270_li9390101061013">Example request 2: Querying load balancers by page (Each page contains one load balancer. The ID of the start load balancer is <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b320394519565">165b6a38-5278-4569-b747-b2ee65ea84a4</strong>. The load balancer after <strong id="elb_zq_fz_0002__en-us_topic_0141008270_b620494575613">165b6a38-5278-4569-b747-b2ee65ea84a4</strong> is the queried load balancer.)<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen1390101061017">GET https://{Endpoint}/v2.0/lbaas/loadbalancers?limit=1&amp;marker=165b6a38-5278-4569-b747-b2ee65ea84a4</pre>
+</li><li id="elb_zq_fz_0002__en-us_topic_0141008270_li2391410181015">Example request 3: Querying the load balancer using the IP address of a backend server (192.168.0.191)<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen2391131017100">GET https://{Endpoint}/v2.0/lbaas/loadbalancers?member_address=192.168.0.181</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_ul36345619277"><li id="elb_zq_fz_0002__en-us_topic_0141008270_li132053414327">Example response 1<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen1332020341320">{
+    "loadbalancers": [
+        {
+            "description": "simple lb",
+            "admin_state_up": true,
+            "tenant_id": "1a3e005cf9ce40308c900bcb08e5320c",
+ 
+            "provisioning_status": "ACTIVE",
+            "vip_subnet_id": "5328f1e6-ce29-44f1-9493-b128a5653350",
+            "listeners": [
+                {
+                    "id": "45196943-2907-4369-87b1-c009b1d7ac35"
+                }
+            ],
+            "vip_address": "10.0.0.2",
+            "vip_port_id": "cbced4fe-6f6f-4fd6-9348-0c3d1219d6ca",
+            "provider": "vlb",
+            "pools": [
+                {
+                    "id": "21d49cf7-4fd3-4cb6-8c48-b7fc6c259aab"
+            }
+            ],
+            "id": "a9729389-6147-41a3-ab22-a24aed8692b2",
+            "operating_status": "ONLINE",
+            "tags": [],
+            "name": "loadbalancer1",
+            "created_at": "2018-07-25T01:54:13", 
+            "updated_at": "2018-07-25T01:54:14"
+        }
+    ]
+}</pre>
+</li><li id="elb_zq_fz_0002__en-us_topic_0141008270_li1432863453215">Example response 2<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen13282034173212">{
+    "loadbalancers": [
+        {
+            "description": "",
+            "provisioning_status": "ACTIVE",
+            "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+  
+            "admin_state_up": true,
+            "provider": "vlb",
+            "pools": [
+                {
+                    "id": "b13dba4c-a44c-4c40-8f6e-ce7a162b9f22"
+                },
+                {
+                    "id": "4b9e765f-82ee-4128-911b-0a2d9ebc74c7"
+                }
+            ],
+            "listeners": [
+                {
+                    "id": "21c41336-d0d3-4349-8641-6e82b4a4d097"
+                }
+            ],
+            "vip_port_id": "44ac5d9b-b0c0-4810-9a9d-c4dbf541e47e",
+            "operating_status": "ONLINE",
+            "vip_address": "192.168.0.234",
+            "vip_subnet_id": "9d60827e-0e5c-490a-8183-0b6ebf9084ca",
+            "id": "e79a7dd6-3a38-429a-95f9-c7f78b346cbe",
+            "tags": [],
+            "name": "elb-robot",
+            "created_at": "2018-07-25T01:54:13", 
+            "updated_at": "2018-07-25T01:54:14"
+        }
+    ],
+    "loadbalancers_links": [
+        {
+            "href": "https://network.Region.dc1.domainname.com/v2.0/lbaas/loadbalancers?limit=10&amp;marker=e79a7dd6-3a38-429a-95f9-c7f78b346cbe&amp;page_reverse=True",
+              "rel": "previous"
+        }
+    ]
+}</pre>
+</li></ul>
+
+<ul id="elb_zq_fz_0002__en-us_topic_0141008270_ul153301234163217"><li id="elb_zq_fz_0002__en-us_topic_0141008270_li183301334183214">Example response 3<pre class="screen" id="elb_zq_fz_0002__en-us_topic_0141008270_screen7330133453218">{
+    "loadbalancers": [
+        {
+            "description": "",
+            "provisioning_status": "ACTIVE",
+            "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+ 
+            "created_at": "2018-11-29T13:55:20",
+            "admin_state_up": true,
+            "update_at": "2018-11-29T13:55:21",
+            "id": "c1127125-64a9-4394-a08a-ef3be8f7ef9c",
+            "pools": [
+                {
+                    "id": "2f6895be-019b-4c82-9b53-c4a2ac009e20"
+                }
+            ],
+            "listeners": [
+                {
+                    "id": "5c63d176-444f-4c75-9cfe-bcb8a05a845c"
+                }
+            ],
+            "vip_port_id": "434ac600-b779-4428-b7a7-830e047511f1",
+            "operating_status": "ONLINE",
+            "vip_address": "192.168.0.181",
+            "vip_subnet_id": "9a303536-417c-45dc-a6db-1234b9e1c2b2",
+            "provider": "vlb",
+            "tags": [],
+            "name": "elb-ftci"
+
+        }
+    ]
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_fz_0002__en-us_topic_0141008270_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_1102.html#elb_gc_1102">Status Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_fz_0000.html">Load Balancer</a>
+
+
+

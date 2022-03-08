@@ -1,0 +1,22 @@
+<a name="elb_ug_jt_0021"></a><a name="elb_ug_jt_0021"></a>
+
+<h1 class="topictitle1">SNI Certificate (for HTTPS Listeners)</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_jt_0021__p17824824204311">If you have an application that can be accessed through multiple domain names and each domain name uses a different certificate, you can enable SNI when you add an HTTPS listener. </p>
+<p id="elb_ug_jt_0021__p139095471312">SNI is an extension to TLS and enables a server to present multiple certificates on the same IP address and TCP port number. This allows multiple secure (HTTPS) websites (or any other service over TLS) to be served by the same IP address without requiring all websites to use the same certificate. SNI allows the client to submit the domain name information while sending an SSL handshake request. Once the load balancer receives the request, it queries the right certificate based on the domain name and returns the corresponding certificate to the client. If no certificate is found, the load balancer will return a default certificate.</p>
+<p id="elb_ug_jt_0021__p2343111201">A maximum of 30 SNI certificates can be configured for each listener.</p>
+
+<h4 class="sectiontitle">Prerequisites</h4><p id="elb_ug_jt_0021__p1372694211111">You have created a certificate by performing the operations in <a href="en-us_elb_03_0005.html">Creating and Managing a Certificate</a>.</p>
+<ul id="elb_ug_jt_0021__ul389830145612"><li id="elb_ug_jt_0021__li1489630115613"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_ug_jt_0021__p951413581412">Only one domain name can be specified for each certificate. Wildcard-domain certificates are supported.</p>
+</div>
+</li></ul>
+
+<h4 class="sectiontitle">Procedure</h4><ol id="elb_ug_jt_0021__ol26196503175216"><li id="elb_ug_jt_0021__li677391520332">Log in to the management console.</li><li id="elb_ug_jt_0021__li675519100420">In the upper left corner of the page, click <span><img id="elb_ug_jt_0021__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_jt_0021__li83736197297">Hover on <span><img id="elb_ug_jt_0021__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_jt_0021__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="elb_ug_jt_0021__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="elb_ug_jt_0021__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li></ol><ol start="4" id="elb_ug_jt_0021__ol26079305588"><li id="elb_ug_jt_0021__li10261739175313">Locate the load balancer and click its name.</li><li id="elb_ug_jt_0021__li475294174319">Click <strong id="elb_ug_jt_0021__b965795917345">Listeners</strong>.<ul id="elb_ug_jt_0021__ul124372032185517"><li id="elb_ug_jt_0021__li543763255519">For <span id="elb_ug_jt_0021__ph14980183614423">a shared</span> load balancer, locate the listener and click <strong id="elb_ug_jt_0021__b0953145563413">Configure</strong> on the right of <strong id="elb_ug_jt_0021__b156822018123516">SNI</strong>.</li><li id="elb_ug_jt_0021__li12437132115511">For a classic load balancer, click <strong id="elb_ug_jt_0021__b412411203710">Listeners</strong>, locate the listener, and click <strong id="elb_ug_jt_0021__b168462515357">Modify</strong> in the <strong id="elb_ug_jt_0021__b18847175113518">Operation</strong> column. In the <strong id="elb_ug_jt_0021__b1284718553510">Modify Listener</strong> dialog box, modify the parameters as needed.</li></ul>
+</li><li id="elb_ug_jt_0021__li62825140118">Enable SNI and select the SNI certificate to be used.</li><li id="elb_ug_jt_0021__li973382313214">Click <strong id="elb_ug_jt_0021__b16797184586">OK</strong>.</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_ug_jt_0013.html">Advanced Features of HTTP/HTTPS Listeners</a>
+
+
+

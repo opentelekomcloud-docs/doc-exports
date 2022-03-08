@@ -1,0 +1,30 @@
+<a name="EN-US_TOPIC_0263806054"></a><a name="EN-US_TOPIC_0263806054"></a>
+
+<h1 class="topictitle1">How Can I Use FTP to Transfer Files Between a Local Linux Computer and a Linux <span id="text74797189144">ECS</span>?</h1>
+<div id="body1595408161730"><div class="section" id="EN-US_TOPIC_0263806054__section145801229121516"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0263806054__p242143341510">You want to use FTP on a local Linux computer to transfer files between the computer and a Linux <span id="EN-US_TOPIC_0263806054__text14709164734010">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0263806054__section03701453154"><h4 class="sectiontitle">Prerequisites</h4><p id="EN-US_TOPIC_0263806054__p536310491159">You have enabled FTP on the target <span id="EN-US_TOPIC_0263806054__text19721940101415">ECS</span>. If you have not enabled FTP, check the following links to know how to set up an FTP site:</p>
+
+</div>
+<div class="section" id="EN-US_TOPIC_0263806054__section1152091415132"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0263806054__ol156966514148"><li id="EN-US_TOPIC_0263806054__li2696651141411">Install FTP on the local Linux computer.<p id="EN-US_TOPIC_0263806054__p194719611712"><a name="EN-US_TOPIC_0263806054__li2696651141411"></a><a name="li2696651141411"></a>Take CentOS 7.6 as an example. Run the following command to install FTP:</p>
+<p id="EN-US_TOPIC_0263806054__p196141022151712"><strong id="EN-US_TOPIC_0263806054__b2635132521713">yum -y install ftp</strong></p>
+</li><li id="EN-US_TOPIC_0263806054__li19253135815152">Run the following command to access the <span id="EN-US_TOPIC_0263806054__text10958163161514">ECS</span>:<p id="EN-US_TOPIC_0263806054__p65201136202314"><strong id="EN-US_TOPIC_0263806054__b1974784652313">ftp </strong><em id="EN-US_TOPIC_0263806054__i16998040195513"><span id="EN-US_TOPIC_0263806054__text1098981914154">EIP</span> bound to the <span id="EN-US_TOPIC_0263806054__text28629917151">ECS</span></em></p>
+<div class="p" id="EN-US_TOPIC_0263806054__p1034415171195">Enter the username and password as prompted for login.<ul id="EN-US_TOPIC_0263806054__ul1953281702310"><li id="EN-US_TOPIC_0263806054__li35321617142319"><strong id="EN-US_TOPIC_0263806054__b13451924195714">Uploading files</strong><p id="EN-US_TOPIC_0263806054__p17532141719239">Run the following command to upload local files to the <span id="EN-US_TOPIC_0263806054__text958112810150">ECS</span>:</p>
+<p id="EN-US_TOPIC_0263806054__p145321117122312"><strong id="EN-US_TOPIC_0263806054__b20599363618">put</strong> <em id="EN-US_TOPIC_0263806054__i1394102913362">Path in which files are stored on the local computer</em></p>
+<p id="EN-US_TOPIC_0263806054__p85321517152312">For example, to upload the <strong id="EN-US_TOPIC_0263806054__b1131854423618">/home/test.txt</strong> file on the local Linux computer to the <span id="EN-US_TOPIC_0263806054__text38351912114217">ECS</span>, run the following command:</p>
+<p id="EN-US_TOPIC_0263806054__p45321617112316"><strong id="EN-US_TOPIC_0263806054__b553231782312">put /home/test.txt</strong></p>
+</li><li id="EN-US_TOPIC_0263806054__li353221782312"><strong id="EN-US_TOPIC_0263806054__b677083012572">Downloading files</strong><p id="EN-US_TOPIC_0263806054__p1953251762318">Run the following command to download files on the <span id="EN-US_TOPIC_0263806054__text1911642034215">ECS</span> to the local computer:</p>
+<p id="EN-US_TOPIC_0263806054__p17532217162316"><strong id="EN-US_TOPIC_0263806054__b1753511193315">get</strong> <em id="EN-US_TOPIC_0263806054__i205621143163315">Path in which the files are stored on the <span id="EN-US_TOPIC_0263806054__text1022772411423">ECS</span> Path in which the files are to be stored on the local computer</em></p>
+<p id="EN-US_TOPIC_0263806054__p1153212170239">For example, to download the <strong id="EN-US_TOPIC_0263806054__b3679143318373">test.txt</strong> file on the <span id="EN-US_TOPIC_0263806054__text1927015286424">ECS</span> to the local Linux computer, run the following command:</p>
+<p id="EN-US_TOPIC_0263806054__p1053201710233"><strong id="EN-US_TOPIC_0263806054__b4532617142312">get /home/test.txt</strong></p>
+</li></ul>
+</div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0170135967.html">File Upload/Data Transfer</a></div>
+</div>
+</div>
+

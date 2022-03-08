@@ -1,0 +1,35 @@
+<a name="EN-US_TOPIC_0074752335"></a><a name="EN-US_TOPIC_0074752335"></a>
+
+<h1 class="topictitle1">(Optional) Configuring Mapping Between Hostnames and IP Addresses</h1>
+<div id="body1504143034331"><p id="EN-US_TOPIC_0074752335__p12851934143217"><span id="EN-US_TOPIC_0074752335__text7700141844418">ECS</span>s in the same VPC can communicate with each other using hostnames. In such a case, you are required to configure the mapping between hostnames and IP addresses. The communication using hostnames is more convenient than that using IP addresses.</p>
+<div class="section" id="EN-US_TOPIC_0074752335__section1399111463019"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0074752335__p511416521805">This method applies only to Linux <span id="EN-US_TOPIC_0074752335__text1325335613412">ECS</span>s.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0074752335__section4184679493755"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0074752335__p1131981985817">For example, there are two <span id="EN-US_TOPIC_0074752335__text0172142013449">ECS</span>s in a VPC, ecs-01 and ecs-02. Perform the following operations to enable communication using hostnames between ecs-01 and ecs-02:</p>
+<ol id="EN-US_TOPIC_0074752335__ol320630549475"><li id="EN-US_TOPIC_0074752335__li633621819475"><span>Log in to ecs-01 and ecs-02 and obtain their private IP addresses.</span><p><ol type="a" id="EN-US_TOPIC_0074752335__ol368664049475"><li id="EN-US_TOPIC_0074752335__li3490190117228">Log in to the management console.</li><li id="EN-US_TOPIC_0074752335__li3926836094723">Under <strong id="EN-US_TOPIC_0074752335__b7378458123915"><span id="EN-US_TOPIC_0074752335__text33731458103919">Computing</span></strong>, click <strong id="EN-US_TOPIC_0074752335__b1737955819399">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0074752335__li894662794740">On the <strong id="EN-US_TOPIC_0074752335__b35571753437">Elastic Cloud Server</strong> page, obtain the private IP address in the <strong id="EN-US_TOPIC_0074752335__b163001011134315">IP Address</strong> column.<p id="EN-US_TOPIC_0074752335__p73307141939">For example, the obtained private IP addresses are as follows:</p>
+<p id="EN-US_TOPIC_0074752335__p1660520216315">ecs-01: 192.168.0.1</p>
+<p id="EN-US_TOPIC_0074752335__p10836144314316">ecs-02: 192.168.0.2</p>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0074752335__li333887239475"><span>Obtain the hostnames for the two <span id="EN-US_TOPIC_0074752335__text626732464414">ECS</span>s.</span><p><ol type="a" id="EN-US_TOPIC_0074752335__ol10416410211"><li id="EN-US_TOPIC_0074752335__li93748410211">Log in to an <span id="EN-US_TOPIC_0074752335__text16784153110439">ECS</span>.</li><li id="EN-US_TOPIC_0074752335__li2591826510221">Run the following command to view the <span id="EN-US_TOPIC_0074752335__text6811132514419">ECS</span> hostname:<p id="EN-US_TOPIC_0074752335__p3408723810252"><strong id="EN-US_TOPIC_0074752335__b6296354610255">sudo hostname</strong></p>
+<p id="EN-US_TOPIC_0074752335__p19865113411418">For example, the obtained hostnames are as follows:</p>
+<p id="EN-US_TOPIC_0074752335__p172505015316">ecs-01: hostname01</p>
+<p id="EN-US_TOPIC_0074752335__p13805105518418">ecs-02: hostname02</p>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0074752335__li4542469810328"><span>Create mapping between the hostnames and IP addresses and add information about other <span id="EN-US_TOPIC_0074752335__text255042664420">ECS</span>s in the same VPC.</span><p><ol type="a" id="EN-US_TOPIC_0074752335__ol46431634101930"><li id="EN-US_TOPIC_0074752335__li896614532516">Log in to ecs-01.</li><li id="EN-US_TOPIC_0074752335__li6087483710276"><a name="EN-US_TOPIC_0074752335__li6087483710276"></a><a name="li6087483710276"></a>Run the following command to switch to user <strong id="EN-US_TOPIC_0074752335__b8423527061531">root</strong>:<p id="EN-US_TOPIC_0074752335__p63381808102730"><strong id="EN-US_TOPIC_0074752335__b53977324102733">sudo su -</strong></p>
+</li><li id="EN-US_TOPIC_0074752335__li53098502101927">Run the following command to edit the hosts configuration file:<p id="EN-US_TOPIC_0074752335__p13194383102015"><a name="EN-US_TOPIC_0074752335__li53098502101927"></a><a name="li53098502101927"></a><strong id="EN-US_TOPIC_0074752335__b54906486102018">vi /etc/hosts</strong></p>
+</li><li id="EN-US_TOPIC_0074752335__li38588055102022">Press <strong>i</strong> to enter editing mode.</li><li id="EN-US_TOPIC_0074752335__li56620583102034">Add the statement in the following format to set up the mapping:<p id="EN-US_TOPIC_0074752335__p19475431102136"><a name="EN-US_TOPIC_0074752335__li56620583102034"></a><a name="li56620583102034"></a><em id="EN-US_TOPIC_0074752335__i842352697151839">Private IP address hostname</em></p>
+<p id="EN-US_TOPIC_0074752335__p155944910222">For example, add the following statement:</p>
+<p id="EN-US_TOPIC_0074752335__p24320870102533">192.168.0.1 hostname01</p>
+<p id="EN-US_TOPIC_0074752335__p1583385115614">192.168.0.2 hostname02</p>
+</li><li id="EN-US_TOPIC_0074752335__li5695172510266">Press <strong id="EN-US_TOPIC_0074752335__b28803554191533">Esc</strong> to exit editing mode.</li><li id="EN-US_TOPIC_0074752335__li64061240102622"><a name="EN-US_TOPIC_0074752335__li64061240102622"></a><a name="li64061240102622"></a>Run the following command to save the configuration and exit:<p id="EN-US_TOPIC_0074752335__p38578715102646"><a name="EN-US_TOPIC_0074752335__li64061240102622"></a><a name="li64061240102622"></a><strong id="EN-US_TOPIC_0074752335__b12549253102648">:wq</strong></p>
+</li><li id="EN-US_TOPIC_0074752335__li1098563789">Log in to ecs-02.</li><li id="EN-US_TOPIC_0074752335__li1355231319811">Repeat <a href="#EN-US_TOPIC_0074752335__li6087483710276">3.b</a> to <a href="#EN-US_TOPIC_0074752335__li64061240102622">3.g</a>.</li></ol>
+</p></li><li id="EN-US_TOPIC_0074752335__li14556351699"><span>Check whether the ECSs can communicate with each other using hostnames.</span><p><p id="EN-US_TOPIC_0074752335__p16902179151118">Log in to an <span id="EN-US_TOPIC_0074752335__text143871428114411">ECS</span> in the same VPC, run the following command to ping the added host, and check whether the operation is successful:</p>
+<p id="EN-US_TOPIC_0074752335__p1837615224118"><strong id="EN-US_TOPIC_0074752335__b773442113125432">ping </strong><em id="EN-US_TOPIC_0074752335__i1258019257125435">Hostname</em></p>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0013771097.html">Instances</a></div>
+</div>
+</div>
+

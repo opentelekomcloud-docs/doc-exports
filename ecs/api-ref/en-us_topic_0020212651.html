@@ -1,0 +1,140 @@
+<a name="EN-US_TOPIC_0020212651"></a><a name="EN-US_TOPIC_0020212651"></a>
+
+<h1 class="topictitle1">Stopping <span id="text18399103411264">ECS</span>s in a Batch</h1>
+<div id="body66592127"><div class="section" id="EN-US_TOPIC_0020212651__section14270750"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212651__p25253189">This API is used to stop <span id="EN-US_TOPIC_0020212651__text1162923512261">ECS</span>s in a batch based on the specified <span id="EN-US_TOPIC_0020212651__text275813480146">ECS</span> ID list. A maximum of 1000 <span id="EN-US_TOPIC_0020212651__text1418218511145">ECS</span>s can be stopped at a time.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section61327894"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212651__p65852633155046">POST /v1/{project_id}/cloudservers/action</p>
+<div class="p" id="EN-US_TOPIC_0020212651__p823913315267"><a href="#EN-US_TOPIC_0020212651__table66418347">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212651__table66418347"></a><a name="table66418347"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212651__table66418347" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212651__row49507636"><th align="left" class="cellrowborder" valign="top" width="16.61%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0020212651__p50695543">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.54%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0020212651__p12698356">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.85%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0020212651__p21933905">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212651__row31815862"><td class="cellrowborder" valign="top" width="16.61%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212651__p26948044">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.54%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212651__p35307962">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.85%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212651__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section15080136"><h4 class="sectiontitle">Request</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212651__table12156768" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212651__row44143566"><th align="left" class="cellrowborder" valign="top" width="16.54%" id="mcps1.3.3.2.2.5.1.1"><p id="EN-US_TOPIC_0020212651__p18859061">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.669999999999998%" id="mcps1.3.3.2.2.5.1.2"><p id="EN-US_TOPIC_0020212651__p51188993">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.98%" id="mcps1.3.3.2.2.5.1.3"><p id="EN-US_TOPIC_0020212651__p52667802">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.81%" id="mcps1.3.3.2.2.5.1.4"><p id="EN-US_TOPIC_0020212651__p38233575">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212651__row9911889"><td class="cellrowborder" valign="top" width="16.54%" headers="mcps1.3.3.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212651__p64665535">os-stop</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212651__p3416986">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.98%" headers="mcps1.3.3.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212651__p8340425">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.81%" headers="mcps1.3.3.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212651__p40372317">Specifies the operation to stop the <span id="EN-US_TOPIC_0020212651__text1430403715264">ECS</span>. For details, see <a href="#EN-US_TOPIC_0020212651__table51053190162024">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212651__table51053190162024"></a><a name="table51053190162024"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212651__table51053190162024" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0020212651__b84235270620940">os-stop</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212651__row27328423162024"><th align="left" class="cellrowborder" valign="top" width="16.54%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0020212651__p6705171622715">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.669999999999998%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0020212651__p14705171632717">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.98%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0020212651__p17705151615277">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.81%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0020212651__p570511161274">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212651__row21953637162024"><td class="cellrowborder" valign="top" width="16.54%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212651__p33414178162024">servers</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212651__p22193916162024">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.98%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212651__p52876762162024">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.81%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212651__p26671950162024">Specifies <span id="EN-US_TOPIC_0020212651__text1735341914157">ECS</span> IDs. For details, see <a href="#EN-US_TOPIC_0020212651__table48932206">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212651__row8227700141926"><td class="cellrowborder" valign="top" width="16.54%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212651__p62463948141926">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212651__p26415004141926">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.98%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212651__p59240589141926">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.81%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212651__p33758406141926">Specifies an ECS stop type. The default value is <strong id="EN-US_TOPIC_0020212651__b84235270612825">SOFT</strong>.</p>
+<p id="EN-US_TOPIC_0020212651__p28853449141951"><strong id="EN-US_TOPIC_0020212651__b84235270617736">SOFT</strong>: normal ECS stop (default)</p>
+<p id="EN-US_TOPIC_0020212651__p18774459142010"><strong id="EN-US_TOPIC_0020212651__b8423527061788">HARD</strong>: forcible ECS stop</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212651__table48932206"></a><a name="table48932206"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212651__table48932206" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong>servers</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212651__row2750866"><th align="left" class="cellrowborder" valign="top" width="16.54%" id="mcps1.3.3.4.2.5.1.1"><p id="EN-US_TOPIC_0020212651__p1530882182711">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.669999999999998%" id="mcps1.3.3.4.2.5.1.2"><p id="EN-US_TOPIC_0020212651__p1930815213276">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.98%" id="mcps1.3.3.4.2.5.1.3"><p id="EN-US_TOPIC_0020212651__p1230815218276">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.81%" id="mcps1.3.3.4.2.5.1.4"><p id="EN-US_TOPIC_0020212651__p3308132152717">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212651__row46555465"><td class="cellrowborder" valign="top" width="16.54%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212651__p12896286">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212651__p37966223">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.98%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212651__p55365254">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.81%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212651__p28842926">Specifies the <span id="EN-US_TOPIC_0020212651__text18580162811155">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section1503503"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0020212651__p54575646">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section78042033102712"><h4 class="sectiontitle">Example Request</h4><div class="p" id="EN-US_TOPIC_0020212651__p1070212407536">In the request parameters, the request for stopping the <span id="EN-US_TOPIC_0020212651__text1578143972619">ECS</span> must be issued with field <strong id="EN-US_TOPIC_0020212651__b159725111510">os-stop</strong>, as shown in the example request.<pre class="screen" id="EN-US_TOPIC_0020212651__screen1515224184910">POST https://{endpoint}/v1/{project_id}/cloudservers/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212651__screen41547899194556">{
+    "os-stop": {
+        "type":"HARD",
+        "servers": [
+            {
+                "id": "616fb98f-46ca-475e-917e-2563e5a8cd19"
+            },
+            {
+                "id": "726fb98f-46ca-475e-917e-2563e5a8cd20"
+            }
+
+        ]
+    }
+}</pre>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section14343105213539"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0020212651__p1484610115415">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section27037160"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212651__p23224207">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212651__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0020212651__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0167816247.html">Batch Operations</a></div>
+</div>
+</div>
+

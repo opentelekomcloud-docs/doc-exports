@@ -1,0 +1,40 @@
+<a name="EN-US_TOPIC_0105130173"></a><a name="EN-US_TOPIC_0105130173"></a>
+
+<h1 class="topictitle1">Why Can't I Use DHCP to Obtain a Private IP Address?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_section52359121017"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p787772313110">You attempt to use DHCP to obtain a private IP address, but you cannot obtain the IP address.</p>
+<ul id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ul127699192139"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li16769181991318">For Linux, a private IP address cannot be assigned.</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li2769219111312">For Windows, a private IP address is changed to an IP address in the 169.254 network segment, which is different from the private IP address displayed on the <span id="EN-US_TOPIC_0105130173__text247101652210">ECS</span> console.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_section834015459186"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ol19128730640"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li51252030346"><span>Check whether dhclient is running in the <span id="EN-US_TOPIC_0105130173__text137402114227">ECS</span>.</span><p><ol type="a" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ol1812519305417"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li1411717301746">Log in to the <span id="EN-US_TOPIC_0105130173__text1775712514222">ECS</span> and run the following command:<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p111172303414"><strong id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_b2117830143">ps -ef | grep dhclient</strong></p>
+</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li171251301541">If the process is not running, log in to the <span id="EN-US_TOPIC_0105130173__text85181630122210">ECS</span>, and restart the <span id="EN-US_TOPIC_0105130173__text385210271479">ECS</span> NIC or initiate a DHCP request.<ul id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ul121251301742"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li2012319301442">Linux<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p61222301149"><a name="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li2012319301442"></a><a name="en-us_topic_0096302299_li2012319301442"></a>Run the <strong id="EN-US_TOPIC_0105130173__b765011355441">dhclient eth0</strong>, <strong id="EN-US_TOPIC_0105130173__b6985545114418">ifdown eth0 + ifup eth0</strong>, or <strong id="EN-US_TOPIC_0105130173__b948915374415">dhcpcd eth0</strong> command.</p>
+</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li51241630246">Windows<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p165907376298"><a name="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li51241630246"></a><a name="en-us_topic_0096302299_li51241630246"></a>Right-click a local area connection and choose <strong id="EN-US_TOPIC_0105130173__b16612733184516">Disable</strong> from the shortcut menu. Then, choose <strong id="EN-US_TOPIC_0105130173__b1137615438454">Enable</strong>.</p>
+<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p41255300412"><span><img id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_image1512473020413" src="en-us_image_0121682580.png"></span></p>
+</li></ul>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li111277304416"><span>Handle the issue if the DHCP client fails to work for a long time (for example, the issue recurs after the NIC is restarted).</span><p><ol type="a" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ol201261730146"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li12126430041">Configure a static IP address.<ul id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ul141271230347"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li7127153016410">Windows<ol class="substepthirdol" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ol1915512474415"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li10118178253">Right-click <strong id="EN-US_TOPIC_0105130173__b1417154475013">Local Area Connection</strong> and choose <strong id="EN-US_TOPIC_0105130173__b205631155115">Properties</strong> from the shortcut menu.</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li1915513474411">In the displayed dialog box, select <strong id="EN-US_TOPIC_0105130173__b1350610195521">Internet Protocol Version 4 (TCP/IPv4)</strong>, click <strong id="EN-US_TOPIC_0105130173__b1799617175317">Properties</strong>, and modify parameter settings.<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p89136233714"><span><img id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_image291111238718" src="en-us_image_0121682602.png" title="Click to enlarge" class="imgResize"></span></p>
+</li></ol>
+</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li6544256087">Linux<ol class="substepthirdol" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_ol19600104011103"><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li860014402102">Log in to the <span id="EN-US_TOPIC_0105130173__text14253750102215">ECS</span> and run the following command to modify parameter settings:<p id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_p115932286181"><strong id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_b359332819182">v</strong><strong id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_b185934285186">i /etc/sysconfig/network-scripts/ifcfg-eth0</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_screen14593192819185">BOOTPROTO=static
+IPADDR=192.168.1.100 #IP address (modified)
+NETMASK=255.255.255.0 #Mask (modified)
+GATEWAY=192.168.1.1 #Gateway IP address (modified)</pre>
+</li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li132141917151810">Restart the ECS to make the network settings take effect.</li></ol>
+</li></ul>
+</li><li id="EN-US_TOPIC_0105130173__li763612392012">Select an image in which DHCP runs stably.<p id="EN-US_TOPIC_0105130173__p175038255518"><a name="EN-US_TOPIC_0105130173__li763612392012"></a><a name="li763612392012"></a>Use the public images, which support DHCP, provided on the management console.</p>
+<p id="EN-US_TOPIC_0105130173__p7226344175717">DHCP needs to be configured only when Network is used for network management. DHCP does not need to be configured when NetworkManager is used for network management.</p>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li1672118435231"><span>If the fault persists, obtain the messages in <strong id="EN-US_TOPIC_0105130173__b69431751192511">/var/log/messages</strong> on the affected <span id="EN-US_TOPIC_0105130173__text1067812578222">ECS</span>, use the MAC address of the affected NIC to filter the desired log, and check whether there is any process that prevents DHCP from obtaining an IP address.</span></li><li id="EN-US_TOPIC_0105130173__en-us_topic_0096302299_li481889162513"><span>If the fault persists, contact customer service for technical support.</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

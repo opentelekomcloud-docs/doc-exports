@@ -1,0 +1,286 @@
+<a name="EN-US_TOPIC_0058758453"></a><a name="EN-US_TOPIC_0058758453"></a>
+
+<h1 class="topictitle1">Enabling NIC Multi-Queue</h1>
+<div id="body1494039174618"><div class="section" id="EN-US_TOPIC_0058758453__section2585561135"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0058758453__p2521155410457">Single-core CPU performance cannot meet the requirement of processing NIC interruptions incurred with the increase of network I/O bandwidth. NIC multi-queue enables multiple CPUs to process <span id="EN-US_TOPIC_0058758453__text87696062320">ECS</span> NIC interruptions, thereby improving PPS and I/O performance.</p>
+</div>
+<p id="EN-US_TOPIC_0058758453__p522717232538">The <span id="EN-US_TOPIC_0058758453__text112789182319">ECS</span> described in this section is assumed to comply with the requirements on specifications and virtualization type.</p>
+<ul id="EN-US_TOPIC_0058758453__ul18339124413523"><li id="EN-US_TOPIC_0058758453__li93409442529">If the <span id="EN-US_TOPIC_0058758453__text123671732152610">ECS</span> was created using a public image listed in <a href="#EN-US_TOPIC_0058758453__section892862210138">Support of NIC Multi-Queue</a>, NIC multi-queue has been enabled on the <span id="EN-US_TOPIC_0058758453__text192036472266">ECS</span> by default. Therefore, you do not need to perform the operations described in this section.</li><li id="EN-US_TOPIC_0058758453__li1895904011918">If the ECS was created using a private image and the OS of the external image file is listed in <a href="#EN-US_TOPIC_0058758453__section892862210138">Support of NIC Multi-Queue</a>, perform the following operations to enable NIC multi-queue:<ol id="EN-US_TOPIC_0058758453__ol17110762810"><li id="EN-US_TOPIC_0058758453__li1112713287"><a href="#EN-US_TOPIC_0058758453__section1659682611504">Importing the External Image File to the IMS Console</a></li><li id="EN-US_TOPIC_0058758453__li53532712283"><a href="#EN-US_TOPIC_0058758453__section1949113217282">Setting NIC Multi-Queue for the Image</a></li><li id="EN-US_TOPIC_0058758453__li8105536102818"><a href="#EN-US_TOPIC_0058758453__section1841681225617">Creating an ECS Using a Private Image</a></li><li id="EN-US_TOPIC_0058758453__li19115173516"><a href="#EN-US_TOPIC_0058758453__section214227201118">Enabling NIC Multi-Queue</a></li></ol>
+</li></ul>
+<div class="section" id="EN-US_TOPIC_0058758453__section892862210138"><a name="EN-US_TOPIC_0058758453__section892862210138"></a><a name="section892862210138"></a><h4 class="sectiontitle">Support of NIC Multi-Queue</h4><p id="EN-US_TOPIC_0058758453__p1813542419615">NIC multi-queue can be enabled on an <span id="EN-US_TOPIC_0058758453__text10250582313">ECS</span> only when the <span id="EN-US_TOPIC_0058758453__text5960131412718">ECS</span> specifications, virtualization type, and image OS meet the requirements described in this section.</p>
+<ul id="EN-US_TOPIC_0058758453__ul16287543717"><li id="EN-US_TOPIC_0058758453__li1357793002014">For details about the ECS specifications that support NIC multi-queue, see <a href="en-us_topic_0132345719.html">ECS Specifications and Types</a>.<div class="note" id="EN-US_TOPIC_0058758453__note105772301203"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0058758453__p75776303202">If the number of NIC queues is greater than 1, NIC multi-queue is supported.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0058758453__li15287546717">The virtualization type must be KVM.</li><li id="EN-US_TOPIC_0058758453__li6990243163614">The Linux public images listed in <a href="#EN-US_TOPIC_0058758453__table1572993710538">Table 2</a> support NIC multi-queue.<div class="note" id="EN-US_TOPIC_0058758453__note1099084343617"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0058758453__ul395563414619"><li id="EN-US_TOPIC_0058758453__li157643965">Windows public images have not supported NIC multi-queue. If you enable NIC multi-queue in a Windows public image, starting an ECS created using such an image may be slow.</li><li id="EN-US_TOPIC_0058758453__li10294640361">It is a good practice to upgrade the kernel version of the Linux ECS to 2.6.35 or later. Otherwise, NIC multi-queue is not supported.<p id="EN-US_TOPIC_0058758453__p1029434015618"><a name="EN-US_TOPIC_0058758453__li10294640361"></a><a name="li10294640361"></a>Run the <strong id="EN-US_TOPIC_0058758453__b12001614193418">uname -r</strong> command to obtain the kernel version. If the kernel version is earlier than 2.6.35, contact customer service to upgrade the kernel.</p>
+</li></ul>
+</div></div>
+</li></ul>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0058758453__table732581623820" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Support of NIC multi-queue for Linux <span id="EN-US_TOPIC_0058758453__text355345882710">ECS</span>s</caption><thead align="left"><tr id="EN-US_TOPIC_0058758453__row63275359382"><th align="left" class="cellrowborder" valign="top" width="58.830000000000005%" id="mcps1.3.4.4.2.4.1.1"><p id="EN-US_TOPIC_0058758453__p9131937123817">Image</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.11%" id="mcps1.3.4.4.2.4.1.2"><p id="EN-US_TOPIC_0058758453__p71343783812">Support of NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.06%" id="mcps1.3.4.4.2.4.1.3"><p id="EN-US_TOPIC_0058758453__p41393712383">NIC Multi-Queue Enabled by Default</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0058758453__row193267169388"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p932601653813">Ubuntu 14.04/16.04/18.04/20.04 server 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p232671618383">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p1832681633810">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row132612165385"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p532621643810">OpenSUSE 42.2/15.* 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p932641603817">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p143261016143820">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row532612163386"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p732691619388">SUSE Enterprise 12 SP1/SP2 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p73261816183811">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p18326141693815">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row732671614387"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p17326181610387">CentOS 6.8/6.9/7.*/8.* 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p12326121614389">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p9326111623820">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row8326101613819"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p9327191614383">Debian 8.0.0/8.8.0/8.9.0/9.0.0/10.0.0/10.2.0 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p1332781683812">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p13327181683816">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row832781617388"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p332717164383">Fedora 24/25/30 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p153271616183819">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p132718165389">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row2327171612388"><td class="cellrowborder" valign="top" width="58.830000000000005%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p8327191612381">EulerOS 2.2/2.3/2.5 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.11%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p332715165381">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.06%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p2327121653815">Yes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0058758453__table1572993710538"></a><a name="table1572993710538"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0058758453__table1572993710538" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Support of NIC multi-queue for KVM <span id="EN-US_TOPIC_0058758453__text395331517281">ECS</span>s</caption><thead align="left"><tr id="EN-US_TOPIC_0058758453__row972943718537"><th align="left" class="cellrowborder" valign="top" width="15.7%" id="mcps1.3.4.5.2.4.1.1"><p id="EN-US_TOPIC_0058758453__p38709187544">OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.27%" id="mcps1.3.4.5.2.4.1.2"><p id="EN-US_TOPIC_0058758453__p5147627165419">Image</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.03%" id="mcps1.3.4.5.2.4.1.3"><p id="EN-US_TOPIC_0058758453__p17291137195315">Status</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0058758453__row972916372532"><td class="cellrowborder" rowspan="4" valign="top" width="15.7%" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p28700187548">Windows</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.27%" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p472171412162">Windows Server 2008 Web R2 64-bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.4.5.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p2886168192713">Supported using private images</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row972953755310"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p1647133215570">Windows Server 2008 R2 Standard/DataCenter/Enterprise 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p557419131446">Supported using private images</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row272913785318"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p265223212579">Windows Server 2012 R2 Standard/DataCenter 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p15781139411">Supported using private images</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row1936855185619"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p236185520564">Windows Server 2016 Standard/DataCenter 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p13581213344">Supported using private images</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row193625510561"><td class="cellrowborder" rowspan="7" valign="top" width="15.7%" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p10611235104510">Linux</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.27%" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p11761032144514">Ubuntu 14.04/16.04 server 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.4.5.2.4.1.3 "><p id="EN-US_TOPIC_0058758453__p1760618505216">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row48211412576"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p317611322451">OpenSUSE 42.2 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p26102501217">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row128212165720"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p71761432124513">SUSE Enterprise 12 SP1/SP2 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p146144501229">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row382318120575"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p317643234518">CentOS 6.8/6.9/7.0/7.1/7.2/7.3/7.4/7.5/7.6 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p4616155017215">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row1823101135717"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p41761732134519">Debian 8.0.0/8.8.0/8.9.0/9.0.0 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p261865018213">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row198238116573"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p1517793244513">Fedora 24/25 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p12621135019218">Supported</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0058758453__row131071919135712"><td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0058758453__p20177123211453">EulerOS 2.2 64bit</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0058758453__p562713501924">Supported</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0058758453__section1659682611504"><a name="EN-US_TOPIC_0058758453__section1659682611504"></a><a name="section1659682611504"></a><h4 class="sectiontitle">Importing the External Image File to the IMS Console</h4><p id="EN-US_TOPIC_0058758453__p17965328192814">For details, see "Registering an Image File as a Private Image" in <em id="EN-US_TOPIC_0058758453__i962630947">Image Management Service User Guide</em>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0058758453__section1949113217282"><a name="EN-US_TOPIC_0058758453__section1949113217282"></a><a name="section1949113217282"></a><h4 class="sectiontitle">Setting NIC Multi-Queue for the Image</h4><p id="EN-US_TOPIC_0058758453__p58271414183619">Windows OSs have not commercially supported NIC multi-queue. If you enable NIC multi-queue in a Windows image, starting an ECS created using such an image may be slow.</p>
+<p id="EN-US_TOPIC_0058758453__en-us_topic_0029124501_p50557625103330">Use one of the following methods to set the NIC multi-queue attribute:</p>
+<div class="p" id="EN-US_TOPIC_0058758453__p1221514712570"><strong id="EN-US_TOPIC_0058758453__b154571917185510">Method 1:</strong><ol id="EN-US_TOPIC_0058758453__ol174625171552"><li id="EN-US_TOPIC_0058758453__li3490190117228">Log in to the management console.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_li11022506103357">Under <span id="EN-US_TOPIC_0058758453__text0648024173217">Computing</span>, click <strong id="EN-US_TOPIC_0058758453__b19744104910">Image Management Service</strong>.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_li20407780103357">Click the <strong id="EN-US_TOPIC_0058758453__b173271529104811">Private Images</strong> tab, locate the row containing the target image, click <strong id="EN-US_TOPIC_0058758453__b1167751384911">Modify</strong> in the <strong id="EN-US_TOPIC_0058758453__b15949168114916">Operation</strong> column.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li378927794156">Set the NIC multi-queue attribute of the image.</li></ol>
+</div>
+<div class="p" id="EN-US_TOPIC_0058758453__p922216711571"><strong id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_b13742552103330">Method 2:</strong><ol id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_ol16137803103357"><li id="EN-US_TOPIC_0058758453__li2071611735319">Log in to the management console.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_li1172310710368">Under <span id="EN-US_TOPIC_0058758453__text112091829113219">Computing</span>, click <strong id="EN-US_TOPIC_0058758453__b10480325134911">Image Management Service</strong>.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_en-us_topic_0029124501_li1004764310368">Click the <strong id="EN-US_TOPIC_0058758453__b198686015502">Private Images</strong> tab. In the image list, click the name of the target image to switch to the page providing details about the image.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li23556791144955">Click <strong id="EN-US_TOPIC_0058758453__b1922010615219">Modify</strong> in the upper right corner. In the displayed <strong id="EN-US_TOPIC_0058758453__b1622313612211">Modify Image</strong> dialog box, set the NIC multi-queue attribute.</li></ol>
+</div>
+<p id="EN-US_TOPIC_0058758453__p83661859131217"><strong id="EN-US_TOPIC_0058758453__b84235270614342">Method 3:</strong> Add <strong id="EN-US_TOPIC_0058758453__b842352706143543">hw_vif_multiqueue_enabled</strong> to an image through the API.</p>
+<ol id="EN-US_TOPIC_0058758453__ol35807599162643"><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li13762086162643"><a name="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li13762086162643"></a><a name="en-us_topic_0085214115_li13762086162643"></a>For instructions about how to obtain the token, see <a href="https://docs.otc.t-systems.com/en-us/api/apiug/apig-en-api-180328003.html" target="_blank" rel="noopener noreferrer">Token Authentication</a>.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li13555124724017">For instructions about how to call an API to update image information, see "Updating Image Information (Native OpenStack API)" in <em id="EN-US_TOPIC_0058758453__i167322057123816">Image Management Service API Reference</em>.</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li63700435163736">Add <strong id="EN-US_TOPIC_0058758453__b842352706145152">X-Auth-Token</strong> to the request header.<p id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p29351077163738">The value of <strong id="EN-US_TOPIC_0058758453__b2007658833145216">X-Auth-Token</strong> is the token obtained in step <a href="#EN-US_TOPIC_0058758453__en-us_topic_0085214115_li13762086162643">1</a>.</p>
+</li><li id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_li36302288163835">Add <strong id="EN-US_TOPIC_0058758453__b842352706145236">Content-Type</strong> to the request header.<p id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p22307608163837">The value of <strong id="EN-US_TOPIC_0058758453__b842352706145254">Content-Type</strong> is <strong id="EN-US_TOPIC_0058758453__b84235270614537">application/openstack-images-v2.1-json-patch</strong>.</p>
+<p id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p4104139183719">The request URI is in the following format:</p>
+<p class="litext" id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p54858994162643">PATCH /v2/images/{image_id}</p>
+<div class="p" id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p98841941173712">The request body is as follows:<pre class="screen" id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_screen57557647163613">[       
+         { 
+          "op":"add",
+          "path":"/hw_vif_multiqueue_enabled", 
+          "value": "true" 
+         } 
+ ]</pre>
+</div>
+<p id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_p49078250162643"><a href="#EN-US_TOPIC_0058758453__en-us_topic_0085214115_fig3215821216479">Figure 1</a> shows an example request body for modifying the NIC multi-queue attribute.</p>
+<div class="fignone" id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_fig3215821216479"><a name="EN-US_TOPIC_0058758453__en-us_topic_0085214115_fig3215821216479"></a><a name="en-us_topic_0085214115_fig3215821216479"></a><span class="figcap"><b>Figure 1 </b>Example request body</span><br><span><img id="EN-US_TOPIC_0058758453__en-us_topic_0085214115_image34454435162643" src="en-us_image_0193026956.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+<p id="EN-US_TOPIC_0058758453__p1971624101317"></p>
+</div>
+<div class="section" id="EN-US_TOPIC_0058758453__section1841681225617"><a name="EN-US_TOPIC_0058758453__section1841681225617"></a><a name="section1841681225617"></a><h4 class="sectiontitle">Creating an <span id="EN-US_TOPIC_0058758453__text316151522317">ECS</span> Using a Private Image</h4><div class="p" id="EN-US_TOPIC_0058758453__p1518372618317">Create an <span id="EN-US_TOPIC_0058758453__text1541214215710">ECS</span> using a registered private image. For details, see <a href="en-us_topic_0021831611.html">Creating an ECS</a>. Note the following when setting the parameters:<ul id="EN-US_TOPIC_0058758453__ul107151117143111"><li id="EN-US_TOPIC_0058758453__li8715181711317"><strong id="EN-US_TOPIC_0058758453__b6863538144511">Region</strong>: Select the region where the private image is located.</li><li id="EN-US_TOPIC_0058758453__li12715717193114"><strong id="EN-US_TOPIC_0058758453__b412094054516">Image</strong>: Select <strong id="EN-US_TOPIC_0058758453__b6120194014453">Private image</strong> and then the desired image from the drop-down list.</li></ul>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0058758453__section214227201118"><a name="EN-US_TOPIC_0058758453__section214227201118"></a><a name="section214227201118"></a><h4 class="sectiontitle">Enabling NIC Multi-Queue</h4><p id="EN-US_TOPIC_0058758453__p9725123784">KVM Windows <span id="EN-US_TOPIC_0058758453__text16625933172318">ECS</span>s use private images to support NIC multi-queue. For details, see "How Do I Set NIC Multi-queue Feature of an Image?" in <em id="EN-US_TOPIC_0058758453__i84235269717829">Image Management Service User Guide</em>.</p>
+<p id="EN-US_TOPIC_0058758453__p9318183410819">This section uses a Linux <span id="EN-US_TOPIC_0058758453__text14112180203311">ECS</span> running CentOS 7.4 as an example to describe how to enable NIC multi-queue.</p>
+<ol id="EN-US_TOPIC_0058758453__ol41027736113457"><li id="EN-US_TOPIC_0058758453__li4624260011355"><span>Enable NIC multi-queue.</span><p><ol type="a" id="EN-US_TOPIC_0058758453__ol62715012113521"><li id="EN-US_TOPIC_0058758453__li34865984113457">Log in to the <span id="EN-US_TOPIC_0058758453__text1735075193313">ECS</span>.</li><li id="EN-US_TOPIC_0058758453__li28927525126">Run the following command to obtain the number of queues supported by the NIC and the number of queues with NIC multi-queue enabled:<p id="EN-US_TOPIC_0058758453__p204360431313"><a name="EN-US_TOPIC_0058758453__li28927525126"></a><a name="li28927525126"></a><strong id="EN-US_TOPIC_0058758453__b1929372084910">ethtool -l </strong><em id="EN-US_TOPIC_0058758453__i1128094827155321">NIC</em></p>
+</li><li id="EN-US_TOPIC_0058758453__li0892103111410">Run the following command to configure the number of queues used by the NIC:<p id="EN-US_TOPIC_0058758453__p1190933113144"><a name="EN-US_TOPIC_0058758453__li0892103111410"></a><a name="li0892103111410"></a><strong id="EN-US_TOPIC_0058758453__b4347828171813">ethtool -L</strong> <em id="EN-US_TOPIC_0058758453__i488875603213550">NIC</em> <strong id="EN-US_TOPIC_0058758453__b86403912182">combined</strong> <em id="EN-US_TOPIC_0058758453__i1370762022213550">Number of queues</em></p>
+</li></ol>
+<p id="EN-US_TOPIC_0058758453__p1136115216163">An example is provided as follows:</p>
+<pre class="screen" id="EN-US_TOPIC_0058758453__screen1353702613178">[root@localhost ~]# ethtool -l eth0  #View the number of queues used by NIC <strong id="EN-US_TOPIC_0058758453__b842352706155441">eth0</strong>.
+Channel parameters for eth0:
+Pre-set maximums:
+RX:               0
+TX:               0
+Other:                  0
+Combined: 4  #Indicates that a maximum of four queues can be enabled for the NIC.
+Current hardware settings:
+RX:               0
+TX:               0
+Other:                  0
+Combined: 1 #Indicates that one queue has been enabled.
+
+[root@localhost ~]# ethtool -L eth0 combined 4 #Enable four queues on NIC <strong id="EN-US_TOPIC_0058758453__b842352706155631">eth0</strong>.</pre>
+</p></li><li id="EN-US_TOPIC_0058758453__li1154278811588"><span>(Optional) Enable irqbalance so that the system automatically allocates NIC interrupts on multiple vCPUs.</span><p><ol type="a" id="EN-US_TOPIC_0058758453__ol31951226115858"><li id="EN-US_TOPIC_0058758453__li60975254115855">Run the following command to enable irqbalance:<p id="EN-US_TOPIC_0058758453__p6635817812740"><a name="EN-US_TOPIC_0058758453__li60975254115855"></a><a name="li60975254115855"></a><strong id="EN-US_TOPIC_0058758453__b12595102052214">service irqbalance start</strong></p>
+</li><li id="EN-US_TOPIC_0058758453__li47520713121436">Run the following command to view the irqbalance status:<p id="EN-US_TOPIC_0058758453__p1110910518221"><a name="EN-US_TOPIC_0058758453__li47520713121436"></a><a name="li47520713121436"></a><strong id="EN-US_TOPIC_0058758453__b158342056142214">service irqbalance status</strong></p>
+<p id="EN-US_TOPIC_0058758453__p1348814142237">If the <strong id="EN-US_TOPIC_0058758453__b842352706155829">Active</strong> value in the command output contains <strong id="EN-US_TOPIC_0058758453__b842352706155846">active (running)</strong>, irqbalance has been enabled.</p>
+<div class="fignone" id="EN-US_TOPIC_0058758453__fig165114253253"><span class="figcap"><b>Figure 2 </b>Enabled irqbalance</span><br><span><img id="EN-US_TOPIC_0058758453__image168660172515" src="en-us_image_0126402833.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0058758453__li291742912267"><span>(Optional) Enable interrupt binding.</span><p><p id="EN-US_TOPIC_0058758453__p19328134519341">Enabling irqbalance allows the system to automatically allocate NIC interrupts, improving network performance. If the improved network performance still fails to meet your requirements, manually configure interrupt affinity on the <span id="EN-US_TOPIC_0058758453__text141307364239">ECS</span>.</p>
+<p id="EN-US_TOPIC_0058758453__p2853943193511">To do so, perform the following operations:</p>
+<p id="EN-US_TOPIC_0058758453__p9378147183616">Configure the following script so that one <span id="EN-US_TOPIC_0058758453__text38718479338">ECS</span> vCPU serves the interrupt requests initialized by one queue. One queue corresponds to one interrupt, and one interrupt binds to one vCPU.</p>
+<pre class="screen" id="EN-US_TOPIC_0058758453__screen1391211386387">#!/bin/bash
+service irqbalance stop
+
+eth_dirs=$(ls -d /sys/class/net/eth*)
+if [ $? -ne 0 ];then
+    echo "Failed to find eth*  , sleep 30" &gt;&gt; $ecs_network_log
+    sleep 30
+    eth_dirs=$(ls -d /sys/class/net/eth*)
+fi
+
+for eth in $eth_dirs
+do
+    cur_eth=$(basename $eth)
+    cpu_count=`cat /proc/cpuinfo| grep "processor"| wc -l`
+    virtio_name=$(ls -l /sys/class/net/"$cur_eth"/device/driver/ | grep pci |awk {'print $9'})
+
+    affinity_cpu=0
+    virtio_input="$virtio_name""-input"
+    irqs_in=$(grep "$virtio_input" /proc/interrupts | awk -F ":" '{print $1}')
+    for irq in ${irqs_in[*]}
+    do
+        echo $((affinity_cpu%cpu_count)) &gt; /proc/irq/"$irq"/smp_affinity_list
+        affinity_cpu=$[affinity_cpu+2]
+    done
+
+    affinity_cpu=1
+    virtio_output="$virtio_name""-output"
+    irqs_out=$(grep "$virtio_output" /proc/interrupts | awk -F ":" '{print $1}')
+    for irq in ${irqs_out[*]}
+    do
+        echo $((affinity_cpu%cpu_count)) &gt; /proc/irq/"$irq"/smp_affinity_list
+        affinity_cpu=$[affinity_cpu+2]
+    done
+done</pre>
+</p></li><li id="EN-US_TOPIC_0058758453__li181014524403"><span>(Optional) Enable XPS and RPS.</span><p><p id="EN-US_TOPIC_0058758453__p216617293411">XPS allows the system with NIC multi-queue enabled to select a queue by vCPU when sending a data packet.</p>
+<pre class="screen" id="EN-US_TOPIC_0058758453__screen11412151094212">#!/bin/bash
+# enable XPS feature
+cpu_count=$(grep -c processor /proc/cpuinfo)
+dec2hex(){
+  echo $(printf "%x" $1)
+}
+eth_dirs=$(ls -d /sys/class/net/eth*)
+if [ $? -ne 0 ];then
+    echo "Failed to find eth* , sleep 30" &gt;&gt; $ecs_network_log
+    sleep 30
+    eth_dirs=$(ls -d /sys/class/net/eth*)
+fi
+for eth in $eth_dirs
+do
+    cpu_id=1
+    cur_eth=$(basename $eth)
+    cur_q_num=$(ethtool -l $cur_eth | grep -iA5 current | grep -i combined | awk {'print $2'})
+    for((i=0;i&lt;cur_q_num;i++))
+    do
+        if [ $i -eq $cpu_count ];then
+            cpu_id=1
+        fi
+        xps_file="/sys/class/net/${cur_eth}/queues/tx-$i/xps_cpus"
+        rps_file="/sys/class/net/${cur_eth}/queues/rx-$i/rps_cpus"
+        cpuset=$(dec2hex "$cpu_id")
+        echo $cpuset &gt; $xps_file
+        echo $cpuset &gt; $rps_file
+        let cpu_id=cpu_id*2
+    done
+done</pre>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0092497777.html">NICs</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,11 @@
+<a name="elb_faq_0052"></a><a name="elb_faq_0052"></a>
+
+<h1 class="topictitle1">What Do I Do If a Load Balancer Fails the Stress Test?</h1>
+<ol id="elb_faq_0052__ol140474553419"><li id="elb_faq_0052__li640464543416">Check the load of backend servers. If their CPU usage reaches 100%, applications may have performance bottlenecks.</li><li id="elb_faq_0052__li1640419457346">Check the incoming traffic. If the incoming traffic exceeds the maximum bandwidth set for the EIP, a large number of packets will be lost and requests will not be responded to, thereby affecting the load balancer's performance.</li><li id="elb_faq_0052__li791993451610">Check the number of short connections in the <strong id="elb_faq_0052__b1531518182445">time_wait</strong> state on the clients. A possible cause is that there are insufficient client ports.</li><li id="elb_faq_0052__li1140474503412">The listening queue backlog of the backend servers is full. As a result, the backend server does not respond to SYN ACK packets, and the client times out. You can increase the upper limit of the backlog by adjusting the <strong id="elb_faq_0052__b8423527061595">net.core.somaxconn</strong> parameter.</li></ol>
+
+
+
+<strong>Parent topic:</strong> <a href="elb_faq_0127.html">Service Performance and Load</a>
+
+
+

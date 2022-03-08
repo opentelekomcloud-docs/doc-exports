@@ -1,0 +1,566 @@
+<a name="ShowLoadBalancerStatus"></a><a name="ShowLoadBalancerStatus"></a>
+
+<h1 class="topictitle1">Querying the Status Tree of a Load Balancer</h1>
+<h4 class="sectiontitle">Function</h4><p>This API is used to query the status tree of a load balancer and show information about all resources associated with the load balancer.</p>
+<p>When <strong>admin_state_up</strong> is set to <strong>false</strong> and <strong>operating_status</strong> to <strong>OFFLINE</strong> for a backend server, <strong>DISABLED</strong> is returned for <strong>operating_status</strong> of the backend server in the response of this API.</p>
+
+<h4 class="sectiontitle">URI</h4><p>GET /v3/{project_id}/elb/loadbalancers/{loadbalancer_id}/statuses</p>
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Specifies the load balancer ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request header parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>statuses</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p><a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusResult">LoadBalancerStatusResult</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Provides information about the load balancer status tree.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusResult"></a><a name="response_LoadBalancerStatusResult"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusResult" frame="border" border="1" rules="all"><caption><b>Table 4 </b>LoadBalancerStatusResult</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p><a href="#ShowLoadBalancerStatus__response_LoadBalancerStatus">LoadBalancerStatus</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Specifies the statuses of the load balancer and its associated resources.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatus"></a><a name="response_LoadBalancerStatus"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatus" frame="border" border="1" rules="all"><caption><b>Table 5 </b>LoadBalancerStatus</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Specifies the load balancer name.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Specifies the provisioning status of the load balancer.</p>
+<p>The value can only be <strong>ACTIVE</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusListener">LoadBalancerStatusListener</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Lists the listeners added to the load balancer.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusPool">LoadBalancerStatusPool</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Lists the backend server groups associated with the load balancer.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Specifies the operating status of the load balancer.</p>
+<p>The value can only be one of the following:</p>
+<ul><li><p><strong>ONLINE</strong> (default): The load balancer is running normally.</p>
+</li><li><p><strong>DEGRADED</strong>: This status is displayed only when <strong>operating_status</strong> is set to <strong>OFFLINE</strong> for a backend server associated with the load balancer and the API for querying the load balancer status tree is called.</p>
+</li><li><p><strong>DISABLED</strong>: This status is displayed only when <strong>admin_state_up</strong> of the load balancer is set to <strong>false</strong> and the API for querying the load balancer status tree is called.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusListener"></a><a name="response_LoadBalancerStatusListener"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusListener" frame="border" border="1" rules="all"><caption><b>Table 6 </b>LoadBalancerStatusListener</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the name of the listener added to the load balancer.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the provisioning status of the listener. The value can only be <strong>ACTIVE</strong>.</p>
+<p>Default: <strong>ACTIVE</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusPool">LoadBalancerStatusPool</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the operating status of the backend server group associated with the listener.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>l7policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusPolicy">LoadBalancerStatusPolicy</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the operating status of the forwarding policy added to the listener.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the listener ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Specifies the operating status of the listener.</p>
+<p>The value can only be one of the following:</p>
+<ul><li><p><strong>ONLINE</strong> (default): The listener is running normally.</p>
+</li><li><p><strong>DISABLED</strong>: This status is displayed only when <strong>admin_state_up</strong> of the load balancer or the listener is set to <strong>false</strong> and the API for querying the load balancer status tree is called.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusPolicy"></a><a name="response_LoadBalancerStatusPolicy"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusPolicy" frame="border" border="1" rules="all"><caption><b>Table 7 </b>LoadBalancerStatusPolicy</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.7.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>action</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Specifies whether requests are forwarded to another backend server group or redirected to an HTTPS listener. The value can be <strong>REDIRECT_TO_POOL</strong> or <strong>REDIRECT_TO_LISTENER</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Specifies the policy ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Specifies the provisioning status of the forwarding policy.</p>
+<p>The value can only be <strong>ACTIVE</strong>.</p>
+<p>Default: <strong>ACTIVE</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Specifies the policy name.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusL7Rule">LoadBalancerStatusL7Rule</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Specifies the forwarding rule.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusL7Rule"></a><a name="response_LoadBalancerStatusL7Rule"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusL7Rule" frame="border" border="1" rules="all"><caption><b>Table 8 </b>LoadBalancerStatusL7Rule</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.8.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Specifies the ID of the forwarding rule.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Specifies the provisioning status of the forwarding rule.</p>
+<p>The value can only be <strong>ACTIVE</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Specifies the match content. The value can be <strong>HOST_NAME</strong> or <strong>PATH</strong>.</p>
+<p><strong>HOST_NAME</strong> indicates that the domain name will be used for matching, and <strong>PATH</strong> indicates that the URL will be used for matching.</p>
+<p>The <strong>type</strong> value must be unique for each forwarding rule in a forwarding policy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusPool"></a><a name="response_LoadBalancerStatusPool"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusPool" frame="border" border="1" rules="all"><caption><b>Table 9 </b>LoadBalancerStatusPool</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.9.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the provisioning status of the backend server group. The value can only be <strong>ACTIVE</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the name of the backend server group.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p><a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusHealthMonitor">LoadBalancerStatusHealthMonitor</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the health check results of backend servers in the load balancer status tree.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>members</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>Array of <a href="#ShowLoadBalancerStatus__response_LoadBalancerStatusMember">LoadBalancerStatusMember</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the backend server.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Specifies the operating status of the backend server group.</p>
+<p>The value can be one of the following:</p>
+<ul><li><p><strong>ONLINE</strong>: The backend server group is running normally.</p>
+</li><li><p><strong>DEGRADED</strong>: This status is displayed only when <strong>operating_status</strong> of a backend server in the group is set to <strong>OFFLINE</strong> and the API for querying the load balancer status tree is called.</p>
+</li><li><p><strong>DISABLED</strong>: This status is displayed only when <strong>admin_state_up</strong> of the backend server group or the associated load balancer is set to <strong>false</strong> and the API for querying the load balancer status tree is called.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusHealthMonitor"></a><a name="response_LoadBalancerStatusHealthMonitor"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusHealthMonitor" frame="border" border="1" rules="all"><caption><b>Table 10 </b>LoadBalancerStatusHealthMonitor</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.10.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Specifies the health check protocol. The value can be <strong>TCP</strong>, <strong>UDP_CONNECT</strong>, or <strong>HTTP</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Specifies the health check ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Specifies the health check name.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Specifies the provisioning status of the health check. The value can only be <strong>ACTIVE</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="ShowLoadBalancerStatus__response_LoadBalancerStatusMember"></a><a name="response_LoadBalancerStatusMember"></a><table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__response_LoadBalancerStatusMember" frame="border" border="1" rules="all"><caption><b>Table 11 </b>LoadBalancerStatusMember</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.11.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.11.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.11.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Specifies the provisioning status of the backend server. The value can only be <strong>ACTIVE</strong>.</p>
+<p>Default: <strong>ACTIVE</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Specifies the IP address of the backend server.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Specifies the port used by the backend server to receive requests. The port number ranges from 1 to 65535.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Specifies the backend server ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Specifies the operating status of the backend server.</p>
+<p>The value can be one of the following:</p>
+<ul><li><p><strong>ONLINE</strong>: The backend server is running normally.</p>
+</li><li><p><strong>NO_MONITOR</strong>: No health check is configured for the backend server group to which the backend server belongs.</p>
+</li><li><p><strong>DISABLED</strong>: The backend server is not available. This status is displayed only when <strong>admin_state_up</strong> of the backend server, or the backend server group to which it belongs, or the associated load balancer is set to <strong>false</strong> and the API for querying the load balancer status tree is called.</p>
+</li><li><p><strong>OFFLINE</strong>: The cloud server used as the backend server is stopped or does not exist.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><p>Querying the status tree of a load balancer</p>
+<pre class="screen">GET
+
+https://{ELB_Endpoint}/v3/{project_id}/elb/loadbalancers/38278031-cfca-44be-81be-a412f618773b/statuses</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>Successful request.</p>
+<pre class="screen">{
+  "statuses" : {
+    "loadbalancer" : {
+      "name" : "lb-jy",
+      "provisioning_status" : "ACTIVE",
+      "listeners" : [ {
+        "name" : "listener-jy-1",
+        "provisioning_status" : "ACTIVE",
+        "pools" : [ {
+          "name" : "pool-jy-1",
+          "provisioning_status" : "ACTIVE",
+          "healthmonitor" : {
+            "type" : "TCP",
+            "id" : "7422b51a-0ed2-4702-9429-4f88349276c6",
+            "name" : "",
+            "provisioning_status" : "ACTIVE"
+          },
+          "members" : [ {
+            "protocol_port" : 80,
+            "address" : "192.168.44.11",
+            "id" : "7bbf7151-0dce-4087-b316-06c7fa17b894",
+            "operating_status" : "ONLINE",
+            "provisioning_status" : "ACTIVE"
+          } ],
+          "id" : "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+          "operating_status" : "ONLINE"
+        } ],
+        "l7policies" : [ ],
+        "id" : "eb84c5b4-9bc5-4bee-939d-3900fb05dc7b",
+        "operating_status" : "ONLINE"
+      } ],
+      "pools" : [ {
+        "name" : "pool-jy-1",
+        "provisioning_status" : "ACTIVE",
+        "healthmonitor" : {
+          "type" : "TCP",
+          "id" : "7422b51a-0ed2-4702-9429-4f88349276c6",
+          "name" : "",
+          "provisioning_status" : "ACTIVE"
+        },
+        "members" : [ {
+          "protocol_port" : 80,
+          "address" : "192.168.44.11",
+          "id" : "7bbf7151-0dce-4087-b316-06c7fa17b894",
+          "operating_status" : "ONLINE",
+          "provisioning_status" : "ACTIVE"
+        } ],
+        "id" : "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+        "operating_status" : "ONLINE"
+      } ],
+      "id" : "38278031-cfca-44be-81be-a412f618773b",
+      "operating_status" : "ONLINE"
+    }
+  }
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="ShowLoadBalancerStatus__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p>See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000003.html">Load Balancer</a>
+
+
+

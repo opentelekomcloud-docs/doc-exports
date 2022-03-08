@@ -1,0 +1,485 @@
+<a name="elb_jd_jt_0001"></a><a name="elb_jd_jt_0001"></a>
+
+<h1 class="topictitle1">Adding a Listener</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p9482175102258">This API is used to add a listener to a load balancer.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p24749807">POST /v1.0/{project_id}/elbaas/listeners</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_table57434139" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row461342"><th align="left" class="cellrowborder" valign="top" width="27.44725527447255%" id="mcps1.3.2.3.2.5.1.1"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p37368736">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.37826217378262%" id="mcps1.3.2.3.2.5.1.2"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6968762"><strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706192244">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.188381161883807%" id="mcps1.3.2.3.2.5.1.3"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p586113175312"><strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706145623">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.986101389861005%" id="mcps1.3.2.3.2.5.1.4"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p27598869">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row1569185811300"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p1399071505415">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6162677511304">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p557643211309">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p35845144113012">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row20915929"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p16468652">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p58892473">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p47475220175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul6107094191929"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li57991158112925">Specifies the listener name.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li2214816191929">The value can contain 1 to 64 characters that consist of letters, digits, underscores (_), and hyphens (-).</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row39070558"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p10598606">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p53180767">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p32682146175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul5649167191936"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li12725156112938">Provides supplementary information about the listener.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li53047520191936">The value contains 0 to 128 characters and cannot contain angle brackets (&lt; and &gt;).</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row46067993"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p40519951">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p60890569">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p30008174175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p3957675">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row35619075"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p66572856">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p23692278">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p14743026175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul62362923191953"><li id="elb_jd_jt_0001__en-us_topic_0096561506_li2399147213">Specifies the protocol used by the listener.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_li4379256191711">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b2293730619131">HTTP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b3656174719131">TCP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1179611865155419">HTTPS</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172428">SSL</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706155440">UDP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_li7311276191551">A UDP listener cannot be added to a private network load balancer.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row53954942"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p8274172">port</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p66228199">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p53334487175312">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul6053553519201"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li34378817113210">Specifies the port used by the listener.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li5627174119201">The port number ranges from 1 to 65535.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row6993202"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p29578451">backend_protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p47044325">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25126213175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul27512692192012"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li42836158113220">Specifies the backend ECS protocol.<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p49981105113220"><a name="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li42836158113220"></a><a name="en-us_topic_0096561506_en-us_topic_0020100158_li42836158113220"></a>If <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706155857">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b55874956102559">UDP</strong>, the value of this parameter can only be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1008091204155914">UDP</strong>.</p>
+<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p902425621319">If <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b11808038155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b39163482155919">SSL</strong>, the value of this parameter can only be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b16927020155919">TCP</strong>.</p>
+</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li22381387192012">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b37719544155919">HTTP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b3931576155919">TCP</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706155831">UDP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row16049999"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p24981566">backend_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p10240961">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p21957347175312">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul42500047192029"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li40903357192029">Specifies the port used by backend ECSs.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li28717494192029">The port number ranges from 1 to 65535.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row567760"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p45988614">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p34090260">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p33714649175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul9465338192037"><li id="elb_jd_jt_0001__en-us_topic_0096561506_li3929161818419">Specifies the load balancing algorithm.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li5209369192037">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1191925123418">roundrobin</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b3100251349">leastconn</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b171114255348">source</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row26602077"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p7284614">session_sticky</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p53182860">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p10999535175312">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul61391383192047"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li23102675192047">Specifies whether to enable the sticky session feature.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_li131471032943">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b10547672195810">true</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b46350686195813">false</strong>. The feature is enabled when the value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b88931724113813">true</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li65541332184246">If <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706171718">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706171721">SSL</strong>, the sticky session feature is not supported and the parameter is invalid.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li65542336184257">If <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616318">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616325">HTTP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616332">HTTPS</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270615430">TCP</strong> and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b8423527061649">lb_algorithm</strong> is not <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616422">roundrobin</strong>, the value of this parameter can only be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616439">false</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row35416756"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p50184984">sticky_session_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p38451933">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p18547167175312">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p16233481539">Specifies where the cookie is from. The only value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b8463746126">insert</strong>, indicating that the cookie is inserted by the load balancer.</p>
+<ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul1811738819212"><li id="elb_jd_jt_0001__en-us_topic_0096561506_li183435319216">This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b74117531210">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b164155316217">HTTP</strong> and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b114117531022">session_sticky</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b741853621">true</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li2400307919212">This parameter is invalid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b667609043165942">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1478565795165942">TCP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b118101115125914">SSL</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b2360121102648">UDP</strong>, which means that the parameter is unavailable or its value is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b85221350135815">null</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row54041329"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p15271547">cookie_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p29035785">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25925576175312">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul77840192112"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li1500502011335">Specifies the cookie timeout duration. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b52388588717153">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b178090614117153">HTTP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b27246866155919">session_sticky</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b43895205155919">true</strong>, and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b59512528155919">sticky_session_type</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b65850708155919">insert</strong>. This parameter is invalid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b121408947117235">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270618547">TCP</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706185317">SSL</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706185323">UDP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li12119810192112">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1213636123810">1</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b169251340163813">1440</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row4399929622116"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p53567632221110">tcp_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p44010958221110">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p8117820221110">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul63770335192147"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li42484656113348">Specifies the TCP session timeout duration. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b9885729155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b182340233017235">TCP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li60564217192147">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1087218533381">1</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b745155918382">1440</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3860219515041"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5269499415041">tcp_draining</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p4043609715041">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p73514931518">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul17090437192140"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li828079811340">Specifies whether to maintain TCP connections to a backend ECS that has been removed. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270616396">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706163915">TCP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li31545229192140">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1845444702162720">true</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b673679985162720">false</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row6394145615041"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6329001715041">tcp_draining_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p2621771615041">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p504630031518">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul30806154192129"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li30591518113411">Specifies the timeout duration for maintaining TCP connections to a backend ECS that has been removed in the unit of minute.<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6888206113411"><a name="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li30591518113411"></a><a name="en-us_topic_0096561506_en-us_topic_0020100158_li30591518113411"></a>This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270617553">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b8423527061761">TCP</strong> and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270617611">tcp_draining</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270617620">true</strong>.</p>
+</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li62862534192129">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b2334127175620">0</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b4580171005614">60</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row65993381192220"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p2379924192224">certificate_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p58556147192224">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p45427491192224">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul54736270192236"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li32506248113436">Specifies the certificate ID. This parameter is mandatory when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172418">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172421">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172433">SSL</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li53198941192236">The ID can be obtained from the certificate list.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row9223301184817"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p9916930184827">certificates</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p65073860184827">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p36491294184827">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul3004857184827"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li27043718184827">Lists the certificate IDs if <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172631">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706172635">HTTPS</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_li27814765191711">This parameter is mandatory in the SNI scenario and is valid only when the load balancer is a public network load balancer.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3798661103850"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p39256153103850">udp_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25631825103850">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p62911958103850">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul45042833103952"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li20818491113451">Specifies the UDP session timeout duration. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b58034056155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b52544458155919">UDP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li2732320103952">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b5190103610399">1</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b6456183963919">1440</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row45819259155333"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p9702520155436">ssl_protocols</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p47706695155436">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p39037119155436">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul7890055155436"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li3901632155436">Specifies the supported SSL/TLS protocol version. This parameter is available only when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706203214">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706203232">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706173557">SSL</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li35114695155436">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1290717259348">TLS 1.2</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1223413314343">TLS 1.2 TLS 1.1 TLS 1.0</strong>, and the default value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b685146163414">TLS 1.2</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row59770759155338"><td class="cellrowborder" valign="top" width="27.44725527447255%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p30135916155436">ssl_ciphers</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.37826217378262%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25090145155436">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.188381161883807%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p19035850155436">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.986101389861005%" headers="mcps1.3.2.3.2.5.1.4 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul65508880155436"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li52709009155436">Specifies the cipher suites supported by a specific SSL/TLS protocol version. This parameter is available only when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b488923883203421">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b2038318649203421">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706173551">SSL</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li4619034155436">The value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706102954">Default</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706101415">Extended</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706103022">Strict</strong>.<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p41571308155436">The value of <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1592461146101451">Default</strong> is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270610151">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256</strong>.</p>
+<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p38597456155436">The value of <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1679441012203631">Extended</strong> is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706203650">ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-SHA:AES256-SHA:DHE-DSS-AES128-SHA:CAMELLIA128-SHA:EDH-RSA-DES-CBC3-SHA:DES-CBC3-SHA:ECDHE-RSA-RC4-SHA:RC4-SHA:DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-CAMELLIA256-SHA:DHE-DSS-CAMELLIA256-SHA:CAMELLIA256-SHA:EDH-DSS-DES-CBC3-SHA:DHE-RSA-CAMELLIA128-SHA:DHE-DSS-CAMELLIA128-SHA</strong>.</p>
+<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25420824101613">The value of <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706103424">Strict</strong> is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706103456">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256</strong>.</p>
+<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p11832792155436">The default value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b38905168155919">Default</strong>. When <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1055911112357">ssl_protocols</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b163116156357">TLS 1.2 TLS 1.1 TLS 1.0</strong>, this parameter can only be set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b16583202011358">Extended</strong>.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4><ul id="elb_jd_jt_0001__en-us_topic_0096561506_ul14640111064018"><li id="elb_jd_jt_0001__en-us_topic_0096561506_li76402010134019">Request parameters<p id="elb_jd_jt_0001__en-us_topic_0096561506_p4470514174120"><a name="elb_jd_jt_0001__en-us_topic_0096561506_li76402010134019"></a><a name="en-us_topic_0096561506_li76402010134019"></a>None</p>
+</li></ul>
+<ul id="elb_jd_jt_0001__en-us_topic_0096561506_ul11296519134018"><li id="elb_jd_jt_0001__en-us_topic_0096561506_li929611924012">Example request<pre class="screen" id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_screen53393129215745">{
+    "name": "listener1",
+    "description": "",
+    "loadbalancer_id": "0b07acf06d243925bc24a0ac7445267a",
+    "protocol": "HTTP",
+    "port": 88,
+    "backend_protocol": "HTTP",
+    "backend_port": 80,
+    "lb_algorithm": "roundrobin",
+    "session_sticky": true,
+    "sticky_session_type": "insert",
+    "cookie_timeout": 100,
+    "tcp_draining": true,
+    "tcp_draining_timeout": 5
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Response</h4><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul9327452154613"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li16838206154613">Response parameters
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_table21717427154613" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row14831958154613"><th align="left" class="cellrowborder" valign="top" width="30.520000000000003%" id="mcps1.3.4.2.1.1.2.4.1.1"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p60537982154613">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.87%" id="mcps1.3.4.2.1.1.2.4.1.2"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p56002375174110">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.61%" id="mcps1.3.4.2.1.1.2.4.1.3"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p39444710154613">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row54920009105559"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p19335774105559">update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p22693884105559">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p26265290105559">Specifies the time when the listener was updated.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row18853328112435"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p61871354112435">backend_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p45523776112435">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p63547210112435">Specifies the port used by backend ECSs.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row33344085112451"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p1611443112451">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p63418047112451">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p36588143112451">Specifies the listener ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3132217011256"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p4791064611256">backend_protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5555709011256">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p383046711256">Specifies the protocol used by backend ECSs.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row55939016112520"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p49640788112520">sticky_session_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p61480912112520">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p650285517815">Specifies where the cookie is from. The only value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1833462017910">insert</strong>, indicating that the cookie is inserted by the load balancer. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b141157415910">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b10120341291">HTTP </strong>and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b012434120911">session_sticky</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1112914112912">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row599332112531"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p4592171112531">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p36421590112531">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p64467690112531">Provides supplementary information about the listener.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row25347929112539"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p51496117112539">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p10435921112539">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p40003298112539">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row529666112553"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p53216976112553">create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p15607836112553">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p56275171112553">Specifies the time when the listener was created.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row5813313811266"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p435933911266">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p1756217311266">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p1324989511266">Specifies the listener status. The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270693852">ACTIVE</strong>, <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270693858">PENDING_CREATE</strong>, or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b8423527069394">ERROR</strong>.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row23256810112620"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p12891195112620">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p37553845112620">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p21962587112620">Specifies the protocol used for load balancing at Layer 4 or Layer 7.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row23310338112631"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p39880824112631">port</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p9121275112631">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p625848112631">Specifies the port used by the listener.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row62566796112640"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p65083069112640">cookie_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p37237251112640">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul32758886114017"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li45994666114017">Specifies the cookie timeout duration in the unit of minute. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b22338460155919">session_sticky</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b66828420155919">true</strong> and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b64584873155919">sticky_session_type</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b44392948155919">insert</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li63414099114020">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b12522477399">1</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b17837195016396">1440</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row12943832112654"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p41617568112654">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p15579875112654">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul43214919122310"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li53389953122310">Specifies the administrative status of the load balancer.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li10747536122310">Two options are available:<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p29618964122310"><a name="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li10747536122310"></a><a name="en-us_topic_0096561506_en-us_topic_0020100158_li10747536122310"></a><strong id="elb_jd_jt_0001__en-us_topic_0096561506_b84235270615441">false</strong>: The load balancer is disabled.</p>
+<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5417219112300"><strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706154416">true</strong>: The load balancer is running properly.</p>
+</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3479764711276"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6289229911276">session_sticky</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6111147611276">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5108249311276">Specifies whether to enable the sticky session feature. The feature is enabled when the value is <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b4076309155919">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row4627360112726"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p37159682112726">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p57144240112726">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p65280694112726">Specifies the load balancing algorithm.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row48184499112748"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p28728206112748">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p45283315112748">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p44069876112748">Specifies the listener name.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row733305615859"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5106616415859">tcp_draining</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p3765702915859">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul27127532192359"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li35046114040">Specifies whether to maintain TCP connections to a backend ECS that has been removed. This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b60818144155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b10492386155919">TCP</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li58155701192359">The value can be <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b8815401155919">true</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b12229752155919">false</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row6046710715859"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p2215775615859">tcp_draining_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p1924037015859">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul57494889192412"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li13646481114058">Specifies the timeout duration for maintaining TCP connections to a backend ECS that has been removed in the unit of minute.<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p55709469114058"><a name="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li13646481114058"></a><a name="en-us_topic_0096561506_en-us_topic_0020100158_li13646481114058"></a>This parameter is valid when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b51490896155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b60764881155919">TCP</strong> and <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b10013022155919">tcp_draining</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b23008334155919">true</strong>.</p>
+</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li34231664192412">The value ranges from <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b115441723135612">0</strong> to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b10725182615565">60</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3950876919312"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p4592700819328">ssl_protocols</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p2910020719328">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul516171213255"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li62432228213258">Specifies the supported SSL/TLS protocol version.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li35779204213255">This parameter is available only when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706173219">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706173222">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b842352706181923">SSL</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row6340712519315"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p1571312819328">ssl_ciphers</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6480388419328">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul2094040721332"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li675278321335">Specifies the cipher suite of an encryption protocol.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li5038687821332">This parameter is available only when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b65909934155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b56318499155919">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b65504537155919">SSL</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row3421333519319"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5715067519328">certificate_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p6580199019328">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul43113047213310"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li19127616213313">Specifies the default certificate ID.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li52883455213310">This parameter is available only when <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b1768828155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b15919455155919">HTTPS</strong> or <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b14407493155919">SSL</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row5877129719322"><td class="cellrowborder" valign="top" width="30.520000000000003%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p560472819328">certificates</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.87%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5132986019328">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.61%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul47134914213235"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li59306231213235">Lists the certificate IDs if <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b62757485155919">protocol</strong> is set to <strong id="elb_jd_jt_0001__en-us_topic_0096561506_b27946455155919">HTTPS</strong>.</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li66331846213238">This parameter is mandatory in the SNI scenario.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+
+<ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul39696553"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li21724664">Example response<pre class="screen" id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_screen19272345215818">{
+    "update_time": "2015-09-15 07:41:17",
+    "backend_port": 80,
+    "tcp_draining": true,
+    "id": "248425d7b97dc26920eb23720115e068",
+    "backend_protocol": "HTTP",
+    "sticky_session_type": "insert",
+    "description": "",
+    "loadbalancer_id": "0b07acf06d243925bc24a0ac7445267a",
+    "create_time": "2015-09-15 07:41:17",
+    "status": "ACTIVE",
+    "protocol": "TCP",
+    "port": 88,
+    "cookie_timeout": 100,
+    "admin_state_up": true,
+    "session_sticky": true,
+    "lb_algorithm": "roundrobin",
+    "name": "listener1",
+    "tcp_draining": true,
+    "tcp_draining_timeout": 5
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Status Code</h4><ul id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_ul16639474"><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li15537542">Normal<p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p5620158"><a name="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li15537542"></a><a name="en-us_topic_0096561506_en-us_topic_0020100158_li15537542"></a>200</p>
+</li><li id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_li50581426">Error
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_table55746241151444" frame="border" border="1" rules="all"><thead align="left"><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row2933765151444"><th align="left" class="cellrowborder" valign="top" width="12.26%" id="mcps1.3.6.2.2.1.1.4.1.1"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p36308450151444">Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.5%" id="mcps1.3.6.2.2.1.1.4.1.2"><p id="elb_jd_jt_0001__en-us_topic_0096561506_p20658614155915">Message</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.239999999999995%" id="mcps1.3.6.2.2.1.1.4.1.3"><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p55303327151444">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row50384484151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p54611418151444">400</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p570624225916">badRequest</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p61448744151444">Request error.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row16167792151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p34522807151444">401</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p570711427599">unauthorized</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p44883945151444">Authentication failed.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row1302327151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p38379639151444">403</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p197071142175919">userDisabled</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p21743064151444">You do not have the permission to perform the operation.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row61469852151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p13002129151444">404</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p117074428598">Not Found</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p46539514151444">The requested page does not exist.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row16202446151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p37329729151444">500</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p147073421594">authFault</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p3809180151444">System error.</p>
+</td>
+</tr>
+<tr id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_row34282624151444"><td class="cellrowborder" valign="top" width="12.26%" headers="mcps1.3.6.2.2.1.1.4.1.1 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p25429196151444">503</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.5%" headers="mcps1.3.6.2.2.1.1.4.1.2 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_p147075427593">serviceUnavailable</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.2.2.1.1.4.1.3 "><p id="elb_jd_jt_0001__en-us_topic_0096561506_en-us_topic_0020100158_p46498963151444">The service is unavailable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_jd_jt_0000.html">Listener</a>
+
+
+

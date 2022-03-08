@@ -1,0 +1,32 @@
+<a name="EN-US_TOPIC_0107412162"></a><a name="EN-US_TOPIC_0107412162"></a>
+
+<h1 class="topictitle1">What Should I Do If Error "command &acute;gcc&acute; failed with exit status 1" Occurs During PIP-based Software Installation</h1>
+<div id="body1524042999874"><div class="section" id="EN-US_TOPIC_0107412162__section4545101482614"><h4 class="sectiontitle">Symptom</h4><div class="p" id="EN-US_TOPIC_0107412162__p12474358175810">When installing the Python library software, you need to configure the PIP source. Take the official image source as an example:<pre class="screen" id="EN-US_TOPIC_0107412162__screen41611522185914">[root@test home]# cat /root/.pip/pip.conf 
+[global]
+index-url = https://pypi.python.org/simple
+trusted-host = pypi.python.org</pre>
+</div>
+<p id="EN-US_TOPIC_0107412162__p1070105710531">During the installation, the system displays the message "command &acute;gcc&acute; failed with exit status 1". However, GCC has been installed by running the yum command before the Python library software is installed using the PIP.</p>
+<div class="fignone" id="EN-US_TOPIC_0107412162__fig15547217122815"><span class="figcap"><b>Figure 1 </b>Installation error</span><br><span><img id="EN-US_TOPIC_0107412162__image125471017122819" src="en-us_image_0107414257.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0107412162__section2028651416307"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0107412162__p5172917143016">openssl-devel is not supported.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0107412162__section12023073012"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0107412162__p553516464812">The following operations use psutil as an example:</p>
+<ol id="EN-US_TOPIC_0107412162__ol7574134353216"><li id="EN-US_TOPIC_0107412162__li1157454323217">Run the following command to install openssl-devel:<p id="EN-US_TOPIC_0107412162__p77038212344"><a name="EN-US_TOPIC_0107412162__li1157454323217"></a><a name="li1157454323217"></a><strong id="EN-US_TOPIC_0107412162__b3479276346">yum install gcc libffi-devel python-devel openssl-devel -y</strong></p>
+</li><li id="EN-US_TOPIC_0107412162__li0970158113213">Use PIP to install the Python library software again. The error message is cleared.<div class="fignone" id="EN-US_TOPIC_0107412162__fig850134793413"><span class="figcap"><b>Figure 2 </b>Successful installation</span><br><span><img id="EN-US_TOPIC_0107412162__image155064718349" src="en-us_image_0107415055.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0096170524.html">Troubleshooting</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

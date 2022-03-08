@@ -1,0 +1,57 @@
+<a name="modelarts_05_0161"></a><a name="modelarts_05_0161"></a>
+
+<h1 class="topictitle1">How Do I Describe the Dependencies Between Installation Packages and Model Configuration Files When a Model Is Imported?</h1>
+<div id="body8662426"><div class="section" id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_section105648123316"><h4 class="sectiontitle">Symptom</h4><p id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_p5233345163312">When importing a model from OBS or a container image, compile a model configuration file. The model configuration file describes the model usage, computing framework, precision, inference code dependency package, and model API. The configuration file must be in JSON format. In the configuration file, <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b034215149597">dependencies</strong> indicates the packages that the model inference code depends on. Model developers need to provide the package name, installation mode, and version constraints. For details about the parameters, see . The dependency structure array needs to be set for the <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b14111830313">dependencies</strong> parameter.</p>
+</div>
+<div class="section" id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_section780161652817"><h4 class="sectiontitle">Solution</h4><p id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_p612716551465">When the installation package has dependency relationships, the <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b437812437511">dependencies</strong> parameter in the model configuration file supports multiple <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b63848431654">dependency</strong> structure arrays, which are entered in list format.</p>
+<p id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_p1644913249281">The dependencies in list format must be installed in sequence. For example, install <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b13763133313318">Cython</strong>, <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b4764103320338">pytest-runner</strong>, and <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b9765433103310">pytest</strong> before installing <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b17765133133311">mmcv-full</strong>. When entering the installation packages in list format in the configuration file, write <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b1977085013515">Cython</strong>, <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b67704501359">pytest-runner</strong>, and <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b97701150256">pytest</strong> in front of the <strong id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_b1077015501755">mmcv-full</strong> structure array.</p>
+<p id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_p13819100328">Example:</p>
+<pre class="screen" id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_screen1412763553217">"dependencies": [
+    {
+    "installer": "pip",
+    "packages": [
+        {
+            "package_name": "Cython"
+        },
+        {
+            "package_name": "pytest-runner"
+        },
+        {
+            "package_name": "pytest"
+        }]
+    },
+
+    {
+    "installer": "pip",
+    "packages": [
+        {
+            "restraint": "ATLEAST",
+            "package_version": "5.0.0",
+            "package_name": "Pillow"
+        },
+        {
+            "restraint": "ATLEAST",
+            "package_version": "1.4.0",
+            "package_name": "torch"
+        },
+        {
+            "restraint": "ATLEAST",
+            "package_version": "1.19.1",
+            "package_name": "numpy"
+        },
+        {
+            "restraint": "ATLEAST",
+            "package_version": "1.2.0",
+            "package_name": "mmcv-full"
+        }]
+    }
+]</pre>
+</div>
+<p id="modelarts_05_0161__en-us_topic_0000001115014129_en-us_topic_0297079667_p17276154981915"></p>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_05_0017.html">Service Deployment</a></div>
+</div>
+</div>
+

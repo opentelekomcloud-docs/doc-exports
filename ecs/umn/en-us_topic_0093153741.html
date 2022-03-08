@@ -1,0 +1,64 @@
+<a name="EN-US_TOPIC_0093153741"></a><a name="EN-US_TOPIC_0093153741"></a>
+
+<h1 class="topictitle1">Why Is the Memory of an <span id="text816463316279">ECS</span> Obtained by Running the <strong id="b654694918579">free</strong> Command Inconsistent with the Actual Memory?</h1>
+<div id="body1516003266434"><div class="section" id="EN-US_TOPIC_0093153741__section12699135717311"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0093153741__p887193512918">After you create an <span id="EN-US_TOPIC_0093153741__text1840175612575">ECS</span>, you run the <strong id="EN-US_TOPIC_0093153741__b84235270692723">free -m</strong> command to view the <span id="EN-US_TOPIC_0093153741__text14280141145810">ECS</span> memory. The ECS memory is less than the memory configured during <span id="EN-US_TOPIC_0093153741__text103382065588">ECS</span> creation.</p>
+<p id="EN-US_TOPIC_0093153741__p129499543564">An example is provided as follows:</p>
+<p id="EN-US_TOPIC_0093153741__p58221101142">For example, you configure the memory as 4,194,304 KB (4,096 MB) when you create the ECS. After the ECS is created, you run the <strong id="EN-US_TOPIC_0093153741__b186794282691849">free -m</strong> command to view its memory. The command output is as follows:</p>
+<pre class="screen" id="EN-US_TOPIC_0093153741__screen152411931111112">[root@localhost ~]# free -m
+total used free shared buff/cache available
+Mem: 3790 167 3474 8 147 3414
+Swap: 1022 0 1022</pre>
+<p id="EN-US_TOPIC_0093153741__p54041052101016">The memory in the command output is 3790 MB, which is less than the configured 4096 MB.</p>
+<p id="EN-US_TOPIC_0093153741__p20416134231911">Run the <strong id="EN-US_TOPIC_0093153741__b22016838891946">dmidecode -t memory</strong> command to check the actual memory configured for the ECS. The command output is as follows:</p>
+<pre class="screen" id="EN-US_TOPIC_0093153741__screen1332674842420">[root@localhost ~]# dmidecode -t memory
+# dmidecode 3.0
+Getting SMBIOS data from sysfs.
+SMBIOS 2.8 present.
+
+Handle 0x1000, DMI type 16, 23 bytes
+Physical Memory Array
+Location: Other
+Use: System Memory
+Error Correction Type: Multi-bit ECC
+Maximum Capacity: 4 GB
+Error Information Handle: Not Provided
+Number Of Devices: 1
+
+Handle 0x1100, DMI type 17, 40 bytes
+Memory Device
+Array Handle: 0x1000
+Error Information Handle: Not Provided
+Total Width: Unknown
+Data Width: Unknown
+Size: 4096 MB
+Form Factor: DIMM
+Set: None
+Locator: DIMM 0
+Bank Locator: Not Specified
+Type: RAM
+Type Detail: Other
+Speed: Unknown
+Manufacturer: QEMU
+Serial Number: Not Specified
+Asset Tag: Not Specified
+Part Number: Not Specified
+Rank: Unknown
+Configured Clock Speed: Unknown
+Minimum Voltage: Unknown
+Maximum Voltage: Unknown
+Configured Voltage: Unknown</pre>
+<p id="EN-US_TOPIC_0093153741__p8590123412209">The memory in the command output is the same as that configured during ECS creation.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0093153741__section6131161331214"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0093153741__p1897413712122">When the OS is started, related devices are initialized, which occupies memory. In addition, when the kernel is started, it also occupies memory. The memory occupied by kdump can be set. Unless otherwise specified, do not change the memory size occupied by kdump.</p>
+<p id="EN-US_TOPIC_0093153741__p1554317159452">The command output of <strong id="EN-US_TOPIC_0093153741__b66643776292218">free -m</strong> shows the available memory of the <span id="EN-US_TOPIC_0093153741__text955275618265">ECS</span>, and that of <strong id="EN-US_TOPIC_0093153741__b180314871592236">dmidecode -t memory</strong> shows the hardware memory.</p>
+<p id="EN-US_TOPIC_0093153741__p198044944012">Therefore, the memory obtained by running the <strong id="EN-US_TOPIC_0093153741__b9023914429290">free -m</strong> command is less than the memory configured for the ECS. This is a normal phenomenon.</p>
+<div class="note" id="EN-US_TOPIC_0093153741__note0116831471"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0093153741__p811710394715">This is a normal phenomenon even for physical servers.</p>
+</div></div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+

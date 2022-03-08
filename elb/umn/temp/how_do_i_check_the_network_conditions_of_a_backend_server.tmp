@@ -1,0 +1,14 @@
+<a name="elb_faq_0039"></a><a name="elb_faq_0039"></a>
+
+<h1 class="topictitle1">How Do I Check the Network Conditions of a Backend Server?</h1>
+<ol id="elb_faq_0039__en-us_topic_0100578534_ol43143701174341"><li id="elb_faq_0039__en-us_topic_0100578534_li62098667174341">Verify that an IP address has been assigned to the server's primary NIC.<ol type="a" id="elb_faq_0039__en-us_topic_0100578534_ol58104270174422"><li id="elb_faq_0039__en-us_topic_0100578534_li26117718174419">Log in to the server. (An ECS is used as an example here.)</li><li id="elb_faq_0039__en-us_topic_0100578534_li63468792174419">Run the <strong id="elb_faq_0039__en-us_topic_0100578534_b84235270614498">ifconfig</strong> or <strong id="elb_faq_0039__en-us_topic_0100578534_b842352706144912">ip address</strong> command to view the IP address.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_faq_0039__en-us_topic_0100578534_p40184371174333">For Windows ECSs, run <strong id="elb_faq_0039__en-us_topic_0100578534_b842352706145011">ipconfig</strong> on the CLI to view their IP addresses.</p>
+
+</li></ol>
+</li><li id="elb_faq_0039__en-us_topic_0100578534_li44262848174829">Ping the gateway of the subnet where the ECS resides to check basic network communication.<ol type="a" id="elb_faq_0039__en-us_topic_0100578534_ol8442521174940"><li id="elb_faq_0039__en-us_topic_0100578534_li44715074174835">On the VPC details page, locate the subnet and view the gateway address in the <strong id="elb_faq_0039__b136011758174">Gateway</strong> column. Generally, the gateway address ends with <strong id="elb_faq_0039__b17295732101712">.1</strong>.</li><li id="elb_faq_0039__en-us_topic_0100578534_li234301174759">Ping the gateway from the ECS. If the gateway cannot be pinged, check the networks at Layer 2 and Layer 3.</li></ol>
+</li></ol>
+
+
+
+
+
+

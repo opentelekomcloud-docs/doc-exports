@@ -1,0 +1,258 @@
+<a name="EN-US_TOPIC_0032380449"></a><a name="EN-US_TOPIC_0032380449"></a>
+
+<h1 class="topictitle1">Passing User Data to ECSs</h1>
+<div id="body1467085023077"><div class="section" id="EN-US_TOPIC_0032380449__section59120639141539"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0032380449__p24042474141539">Use the <strong id="EN-US_TOPIC_0032380449__b86131613201213">User Data</strong> function to pass user data to <span id="EN-US_TOPIC_0032380449__text14911342114312">ECS</span>s to:</p>
+<ul id="EN-US_TOPIC_0032380449__ul15055679141539"><li id="EN-US_TOPIC_0032380449__li1283390141539">Simplify <span id="EN-US_TOPIC_0032380449__text1411194334318">ECS</span> configuration.</li><li id="EN-US_TOPIC_0032380449__li11550510141539">Initialize the ECS OS configuration.</li><li id="EN-US_TOPIC_0032380449__li36845729141539">Upload your scripts to <span id="EN-US_TOPIC_0032380449__text4619104374314">ECS</span>s during <span id="EN-US_TOPIC_0032380449__text153911725151113">ECS</span> creation.</li><li id="EN-US_TOPIC_0032380449__li63176113141539">Perform other tasks using scripts.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section31714110141539"><h4 class="sectiontitle">Use Restrictions</h4><ul id="EN-US_TOPIC_0032380449__ul18706107141539"><li id="EN-US_TOPIC_0032380449__li34137237141539">Linux<ul id="EN-US_TOPIC_0032380449__ul38799680141539"><li id="EN-US_TOPIC_0032380449__li13652806141539">The image that is used to create <span id="EN-US_TOPIC_0032380449__text846734413437">ECS</span>s must have Cloud-Init installed.</li></ul>
+<ul id="EN-US_TOPIC_0032380449__ul26687693155234"><li id="EN-US_TOPIC_0032380449__li60821898155237">The user data to be specified must be less than or equal to 32 KB.</li><li id="EN-US_TOPIC_0032380449__li61185299114924">If user data is uploaded as text, the data can contain only ASCII characters. If user data is uploaded using a file, the file can contain any characters and the file size cannot exceed 32 KB.</li><li id="EN-US_TOPIC_0032380449__li1463173314135">The image that is used to create ECSs must be a public image, a private image created based on a public image, or a private image with Cloud-Init installed.</li><li id="EN-US_TOPIC_0032380449__li4341126101513">The format of the customized scripts must be supported by Linux <span id="EN-US_TOPIC_0032380449__text1798913445433">ECS</span>s.</li><li id="EN-US_TOPIC_0032380449__li3521582222">DHCP must be enabled on the VPC network, and port 80 must be enabled for the security group in the outbound direction.</li></ul>
+</li><li id="EN-US_TOPIC_0032380449__li64074315141539">Windows<ul id="EN-US_TOPIC_0032380449__ul39797925141539"><li id="EN-US_TOPIC_0032380449__li6037764014327">The image that is used to create <span id="EN-US_TOPIC_0032380449__text461115167135">ECS</span>s must have Cloudbase-Init installed.</li><li id="EN-US_TOPIC_0032380449__li9100967143223">The user data to be specified must be less than or equal to 32 KB.</li><li id="EN-US_TOPIC_0032380449__li22637011141539">If user data is uploaded as text, the data can contain only ASCII characters. If user data is uploaded using a file, the file can contain any characters and the file size cannot exceed 32 KB.</li><li id="EN-US_TOPIC_0032380449__li1694018467271">The image that is used to create ECSs must be a public image, a private image created based on a public image, or a private image with Cloudbase-Init installed.</li><li id="EN-US_TOPIC_0032380449__li0940184842813">DHCP must be enabled on the VPC network, and port 80 must be enabled for the security group in the outbound direction.</li></ul>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section60709488141539"><h4 class="sectiontitle">Passing User Data</h4><ol id="EN-US_TOPIC_0032380449__ol18521496141539"><li id="EN-US_TOPIC_0032380449__li32475741141539">Create a user data script, the format of which complies with user data script specifications. For details, see <a href="#EN-US_TOPIC_0032380449__section54344118153243">Helpful Links</a>.</li><li id="EN-US_TOPIC_0032380449__li23846221141539">When creating an <span id="EN-US_TOPIC_0032380449__text18907114520431">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b84235270617635">Advanced Options</strong> to <strong id="EN-US_TOPIC_0032380449__b84235270617642">Configure now</strong>, and paste the content of the user data script to the <strong id="EN-US_TOPIC_0032380449__b8423527061776">User Data</strong> text box or upload the user data file.<div class="note" id="EN-US_TOPIC_0032380449__note134396321492"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__p34391532194910">You can pass user data to an ECS as text or as a file.</p>
+<p id="EN-US_TOPIC_0032380449__p171001518501">Text: Copy the content of the user data script to the text box.</p>
+<p id="EN-US_TOPIC_0032380449__p13738826205014">File: Save the user data script to a text file and then upload the file.</p>
+</div></div>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig87313493915"><span class="figcap"><b>Figure 1 </b>User Data</span><br><span><img id="EN-US_TOPIC_0032380449__image77279117286" src="en-us_image_0237026761.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0032380449__li19867939143532">The created <span id="EN-US_TOPIC_0032380449__text10396124611434">ECS</span> automatically runs Cloud-Init/Cloudbase-Init and reads the user data script upon startup.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section0609912614"><h4 class="sectiontitle">User Data Scripts of Linux ECSs</h4><p id="EN-US_TOPIC_0032380449__p21391511365">Customized user data scripts of Linux <span id="EN-US_TOPIC_0032380449__text2715114718439">ECS</span>s are based on the open-source Cloud-Init architecture. This architecture uses <span id="EN-US_TOPIC_0032380449__text2480141510154">ECS</span> metadata as the data source for automatically configuring the <span id="EN-US_TOPIC_0032380449__text29461951512">ECS</span>s. The customized script types are compatible with open-source Cloud-Init. For details about Cloud-Init, see <a href="http://cloudinit.readthedocs.io/en/latest/topics/format.html" target="_blank" rel="noopener noreferrer">http://cloudinit.readthedocs.io/en/latest/topics/format.html</a>.</p>
+<ul id="EN-US_TOPIC_0032380449__ul33791011153614"><li id="EN-US_TOPIC_0032380449__li1379171118363">Script execution time: A customized user data script is executed after the time when the status of the target <span id="EN-US_TOPIC_0032380449__text8859348164312">ECS</span> changes to <strong id="EN-US_TOPIC_0032380449__b18338451191519">Running</strong> and before the time when <strong id="EN-US_TOPIC_0032380449__b8889125681519">/etc/init</strong> is executed.<div class="note" id="EN-US_TOPIC_0032380449__note99119444431"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__p18911134417436">By default, the scripts are executed as user <strong id="EN-US_TOPIC_0032380449__b842352706151636">root</strong>.</p>
+</div></div>
+</li></ul>
+<ul id="EN-US_TOPIC_0032380449__ul1398151511364"><li id="EN-US_TOPIC_0032380449__li4398151516364">Script type: Both user-data scripts and Cloud-Config data scripts are supported.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0032380449__table039994053718" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Linux ECS script types</caption><thead align="left"><tr id="EN-US_TOPIC_0032380449__row4399194017376"><th align="left" class="cellrowborder" valign="top" width="17.648235176482352%" id="mcps1.3.4.4.1.1.2.4.1.1"><p id="EN-US_TOPIC_0032380449__p1239916402370">-</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.125587441255874%" id="mcps1.3.4.4.1.1.2.4.1.2"><p id="EN-US_TOPIC_0032380449__p1939914407374">User-Data Script</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.226177382261774%" id="mcps1.3.4.4.1.1.2.4.1.3"><p id="EN-US_TOPIC_0032380449__p1439913405374">Cloud-Config Data Script</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0032380449__row3399194012374"><td class="cellrowborder" valign="top" width="17.648235176482352%" headers="mcps1.3.4.4.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p3399174019374">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.125587441255874%" headers="mcps1.3.4.4.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p239984053714">Scripts, such as Shell and Python scripts, are used for custom configurations.</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p839964053718">Methods pre-defined in Cloud-Init, such as the Yum source and SSH key, are used for configuring certain ECS applications.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0032380449__row73991405372"><td class="cellrowborder" valign="top" width="17.648235176482352%" headers="mcps1.3.4.4.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p1399174073719">Format</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.125587441255874%" headers="mcps1.3.4.4.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p7604786420">A script must be started with <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue25671095321313"><b>#!</b></span>, for example, <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue1569820674213056"><b>#!/bin/bash</b></span> and <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue982854425213127"><b>#!/usr/bin/env python</b></span>.</p>
+<p id="EN-US_TOPIC_0032380449__p173991540123716">When a script is started for the first time, it will be executed at the rc.local-like level, indicating a low priority in the boot sequence.</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p113991340193713">The first line must be <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue65262554154555"><b>#cloud-config</b></span>, and no space is allowed in front of it.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0032380449__row3399114093716"><td class="cellrowborder" valign="top" width="17.648235176482352%" headers="mcps1.3.4.4.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p73991440103715">Constraint</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.125587441255874%" headers="mcps1.3.4.4.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p7399104013377">Before Base64 encoding, the size of the script, including the first line, cannot exceed 32 KB.</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p5400134023711">Before Base64 encoding, the size of the script, including the first line, cannot exceed 32 KB.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0032380449__row11400540123715"><td class="cellrowborder" valign="top" width="17.648235176482352%" headers="mcps1.3.4.4.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p7599171419383">Frequency</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.125587441255874%" headers="mcps1.3.4.4.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p144004404378">The script is executed only once when the <span id="EN-US_TOPIC_0032380449__text3547134918436">ECS</span> is started for the first time.</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p7400164012372">The execution frequency varies according to the applications configured on the ECS.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0032380449__li197019582536">How can I view the customized user data passed to a Linux <span id="EN-US_TOPIC_0032380449__text1238185010435">ECS</span>?<ol id="EN-US_TOPIC_0032380449__ol19239162920819"><li id="EN-US_TOPIC_0032380449__li523912298820">Log in to the <span id="EN-US_TOPIC_0032380449__text1220027191719">ECS</span>.</li><li id="EN-US_TOPIC_0032380449__li11239132911812">Run the following command to view the customized user data as user <strong id="EN-US_TOPIC_0032380449__b84235270615499">root</strong>:<p id="EN-US_TOPIC_0032380449__p3347267915"><strong id="EN-US_TOPIC_0032380449__b985913591312">curl http://169.254.169.254/openstack/latest/user_data</strong></p>
+</li></ol>
+</li><li id="EN-US_TOPIC_0032380449__li132392682720">Script usage examples<p id="EN-US_TOPIC_0032380449__p18428028142717"><a name="EN-US_TOPIC_0032380449__li132392682720"></a><a name="li132392682720"></a>This section describes how to inject scripts in different formats into Linux <span id="EN-US_TOPIC_0032380449__text9555165114438">ECS</span>s and view script execution results.</p>
+<p id="EN-US_TOPIC_0032380449__p1324412329387"><strong id="EN-US_TOPIC_0032380449__b842352706155134">Example 1: Inject a user-data script.</strong></p>
+<p id="EN-US_TOPIC_0032380449__p8493112718388">When creating an <span id="EN-US_TOPIC_0032380449__text443105212436">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b91451449201717">User Data</strong> to <strong id="EN-US_TOPIC_0032380449__b185218531177">As text</strong> and enter the customized user data script.</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen4756349124010">#!/bin/bash
+echo "Hello, the time is now $(date -R)" | tee /root/output.txt</pre>
+<p id="EN-US_TOPIC_0032380449__p316665544119">After the <span id="EN-US_TOPIC_0032380449__text1654745284317">ECS</span> is created, start it and run the <strong id="EN-US_TOPIC_0032380449__b741518589424">cat </strong><em id="EN-US_TOPIC_0032380449__i39973094314">[file]</em> command to check the script execution result.</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen353671394316">[root@XXXXXXXX ~]# cat /root/output.txt
+Hello, the time is now Mon, 16 Jul 2016 16:03:18+0800</pre>
+<p id="EN-US_TOPIC_0032380449__p1849372719381"><strong id="EN-US_TOPIC_0032380449__b1619186626">Example 2: Inject a Cloud-Config data script.</strong></p>
+<p id="EN-US_TOPIC_0032380449__p104921296416">When creating an <span id="EN-US_TOPIC_0032380449__text231733611919">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b83221136111911">User Data</strong> to <strong id="EN-US_TOPIC_0032380449__b632319362193">As text</strong> and enter the customized user data script.</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen188011505456">#cloud-config
+bootcmd:
+- echo 192.168.1.130 us.archive.ubuntu.com &gt;&gt; /etc/hosts</pre>
+<p id="EN-US_TOPIC_0032380449__p7219194013568">After the <span id="EN-US_TOPIC_0032380449__text1595580172011">ECS</span> is created, start it and run the <strong id="EN-US_TOPIC_0032380449__b1461067526">cat /etc/hosts</strong> command to check the script execution result.</p>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig1787242875415"><span class="figcap"><b>Figure 2 </b>Viewing operating results</span><br><span><img id="EN-US_TOPIC_0032380449__image46892355573" src="en-us_image_0115931570.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section104417127157"><h4 class="sectiontitle">User Data Scripts of Windows ECSs</h4><p id="EN-US_TOPIC_0032380449__p958010323152">Customized user data scripts of Windows <span id="EN-US_TOPIC_0032380449__text7651125504312">ECS</span>s are based on the open-source Cloudbase-Init architecture. This architecture uses <span id="EN-US_TOPIC_0032380449__text9221211211">ECS</span> metadata as the data source for initializing and automatically configuring the <span id="EN-US_TOPIC_0032380449__text17997516132110">ECS</span>s. The customized script types are compatible with open-source Cloudbase-Init. For details about Cloudbase-Init, see <a href="https://cloudbase-init.readthedocs.io/en/latest/userdata.html" target="_blank" rel="noopener noreferrer">https://cloudbase-init.readthedocs.io/en/latest/userdata.html</a>.</p>
+<ul id="EN-US_TOPIC_0032380449__ul126143942014"><li id="EN-US_TOPIC_0032380449__li1161639142019">Script type: Both batch-processing program scripts and PowerShell scripts are supported.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0032380449__table17839134102219" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Windows ECS script types</caption><thead align="left"><tr id="EN-US_TOPIC_0032380449__row168401412224"><th align="left" class="cellrowborder" valign="top" width="17.18%" id="mcps1.3.5.3.1.1.2.4.1.1"><p id="EN-US_TOPIC_0032380449__p9840194120228">-</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.870000000000005%" id="mcps1.3.5.3.1.1.2.4.1.2"><p id="EN-US_TOPIC_0032380449__p1584013415223">Batch-Processing Program Script</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.949999999999996%" id="mcps1.3.5.3.1.1.2.4.1.3"><p id="EN-US_TOPIC_0032380449__p884014192212">PowerShell Script</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0032380449__row1384019418223"><td class="cellrowborder" valign="top" width="17.18%" headers="mcps1.3.5.3.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p784064142212">Format</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.870000000000005%" headers="mcps1.3.5.3.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p984016414220">The script must be started with <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue76648425916272"><b>rem cmd</b></span>, which is the first line of the script. No space is allowed at the beginning of the first line.</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.949999999999996%" headers="mcps1.3.5.3.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p138409411221">The script must be started with <span class="parmvalue" id="EN-US_TOPIC_0032380449__parmvalue975646085162756"><b>#ps1</b></span>, which is the first line of the script. No space is allowed at the beginning of the first line.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0032380449__row11840841202215"><td class="cellrowborder" valign="top" width="17.18%" headers="mcps1.3.5.3.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p1840174162220">Constraint</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.870000000000005%" headers="mcps1.3.5.3.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p19840184112223">Before Base64 encoding, the size of the script, including the first line, cannot exceed 32 KB.</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.949999999999996%" headers="mcps1.3.5.3.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p384017415229">Before Base64 encoding, the size of the script, including the first line, cannot exceed 32 KB.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0032380449__li7370111017918">How can I view the customized user data passed into a Windows <span id="EN-US_TOPIC_0032380449__text1543157184318">ECS</span>?<ol id="EN-US_TOPIC_0032380449__ol6372151011917"><li id="EN-US_TOPIC_0032380449__li1337316101297">Log in to the <span id="EN-US_TOPIC_0032380449__text161847452218">ECS</span>.</li><li id="EN-US_TOPIC_0032380449__li9375121010912">Access the following URL in the address box of the browser and view the user data:<p id="EN-US_TOPIC_0032380449__p7378131017917"><a name="EN-US_TOPIC_0032380449__li9375121010912"></a><a name="li9375121010912"></a><strong id="EN-US_TOPIC_0032380449__b1335715546911">http://169.254.169.254/openstack/latest/user_data</strong></p>
+</li></ol>
+</li><li id="EN-US_TOPIC_0032380449__li1047663395819">Script usage examples<p id="EN-US_TOPIC_0032380449__p91423302595"><a name="EN-US_TOPIC_0032380449__li1047663395819"></a><a name="li1047663395819"></a>This section describes how to inject scripts in different formats into Windows <span id="EN-US_TOPIC_0032380449__text54031158114317">ECS</span>s and view script execution results.</p>
+<p id="EN-US_TOPIC_0032380449__p1854214317111"><strong id="EN-US_TOPIC_0032380449__b842352706163128">Example 1: Inject a batch-processing program script.</strong></p>
+<p id="EN-US_TOPIC_0032380449__p179469421824">When creating an <span id="EN-US_TOPIC_0032380449__text1196753102213">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b19968123132219">User Data</strong> to <strong id="EN-US_TOPIC_0032380449__b896818392210">As text</strong> and enter the customized user data script.</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen74421683411">rem cmd
+echo "Hello, BAT Test" &gt; C:\1111.txt</pre>
+<p id="EN-US_TOPIC_0032380449__p195203336410">After the <span id="EN-US_TOPIC_0032380449__text8267359184313">ECS</span> is created, start it and check the script execution result. In this example, a text file named <strong id="EN-US_TOPIC_0032380449__b84235270618248">1111</strong> is added to disk C:\.</p>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig8622411077"><span class="figcap"><b>Figure 3 </b>Creating text file (Batch)</span><br><span><img id="EN-US_TOPIC_0032380449__image2671053466" src="en-us_image_0115932123.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0032380449__p15865152820109">To view the user data passed to the Windows <span id="EN-US_TOPIC_0032380449__text58431459154312">ECS</span>, log in at http://169.254.169.254/openstack/latest/user_data.</p>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig14281122141212"><span class="figcap"><b>Figure 4 </b>Viewing user data (Batch)</span><br><span><img id="EN-US_TOPIC_0032380449__image5135134121219" src="en-us_image_0115932873.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0032380449__p1659920321717"><strong id="EN-US_TOPIC_0032380449__b842352706163425">Example 2: Inject a PowerShell script.</strong></p>
+<p id="EN-US_TOPIC_0032380449__p98918311634">When creating an <span id="EN-US_TOPIC_0032380449__text1887831212315">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b688391272315">User Data</strong> to <strong id="EN-US_TOPIC_0032380449__b19883121202310">As text</strong> and enter the customized user data script.</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen513912312149">#ps1
+echo "Hello, Powershell Test" &gt; C:\aaaa.txt</pre>
+<p id="EN-US_TOPIC_0032380449__p1264110811418">After the <span id="EN-US_TOPIC_0032380449__text14771180134411">ECS</span> is created, start it and check the script execution result. In this example, a text file named <strong id="EN-US_TOPIC_0032380449__b84235270618422">aaaa</strong> is added to disk C:\.</p>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig103618447159"><span class="figcap"><b>Figure 5 </b>Creating text file (PowerShell)</span><br><span><img id="EN-US_TOPIC_0032380449__image18329152315154" src="en-us_image_0115933029.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0032380449__p1433752314165">To view the user data passed to the Windows <span id="EN-US_TOPIC_0032380449__text3633353132314">ECS</span>, log in at http://169.254.169.254/openstack/latest/user_data.</p>
+<div class="fignone" id="EN-US_TOPIC_0032380449__fig124617204176"><span class="figcap"><b>Figure 6 </b>Viewing user data (PowerShell)</span><br><span><img id="EN-US_TOPIC_0032380449__image1779081310172" src="en-us_image_0115934291.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section24296060141539"><h4 class="sectiontitle">Case 1</h4><p id="EN-US_TOPIC_0032380449__p53448248181022">This case illustrates how to use the user data passing function to simplify Linux <span id="EN-US_TOPIC_0032380449__text105881913444">ECS</span> configuration.</p>
+<p id="EN-US_TOPIC_0032380449__p11272187181022">In this example, vim is configured to enable syntax highlighting, display line numbers, and set the tab stop to <strong id="EN-US_TOPIC_0032380449__b84235270614505">4</strong>. The .vimrc configuration file is created and injected into the <strong id="EN-US_TOPIC_0032380449__b842352706145017">/root/.vimrc</strong> directory during ECS creation. After the ECS is created, vim is automatically configured based on your requirements. This improves <span id="EN-US_TOPIC_0032380449__text1773853362519">ECS</span> configuration efficiency, especially in batch <span id="EN-US_TOPIC_0032380449__text38292363258">ECS</span> creation scenarios.</p>
+<p id="EN-US_TOPIC_0032380449__p3850392814395">User data example:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen65596078144036">#cloud-config
+write_files:
+  - path: /root/.vimrc
+    content: |
+      syntax on
+      set tabstop=4
+      set number      </pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section378450257"><h4 class="sectiontitle">Case 2</h4><p id="EN-US_TOPIC_0032380449__p184231338132617">This case illustrates how to use the user data passing function to set the password for logging in to a Linux <span id="EN-US_TOPIC_0032380449__text0595729441">ECS</span>.</p>
+<div class="note" id="EN-US_TOPIC_0032380449__note74231438112616"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__p642417382263">The new password must meet the password complexity requirements listed in <a href="#EN-US_TOPIC_0032380449__en-us_topic_0021426802_table4381109318958">Table 3</a>.</p>
+</div></div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0032380449__en-us_topic_0021426802_table4381109318958"></a><a name="en-us_topic_0021426802_table4381109318958"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0032380449__en-us_topic_0021426802_table4381109318958" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Password complexity requirements</caption><thead align="left"><tr id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row925712618958"><th align="left" class="cellrowborder" valign="top" width="18.000000000000004%" id="mcps1.3.7.4.2.4.1.1"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p1162970218958">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.910000000000004%" id="mcps1.3.7.4.2.4.1.2"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p248177818958">Requirement</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.090000000000003%" id="mcps1.3.7.4.2.4.1.3"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6680635518958">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row4260571318958"><td class="cellrowborder" valign="top" width="18.000000000000004%" headers="mcps1.3.7.4.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p2851073918958">Password</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.910000000000004%" headers="mcps1.3.7.4.2.4.1.2 "><ul id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul5961106018958"><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li6376657018958">Consists of 8 to 26 characters. </li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li52807732181018">Contains at least three of the following character types:<ul id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul24583583181022"><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li30443664181018">Uppercase letters</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li4078050181018">Lowercase letters</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li29325375181018">Digits</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_li132021431143219">Special characters: $!@%-_=+[]:./^,{}?</li></ul>
+</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li38450401173547">Cannot contain the username or the username spelled backwards.</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li531840181018">Cannot contain more than two consecutive characters in the same sequence as they appear in the username. (This requirement applies only to Windows <span id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_text153189271104">ECS</span>s.)</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.090000000000003%" headers="mcps1.3.7.4.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6481855218958">YNbUwp!dUc9MClnv</p>
+<div class="note" id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_note18511011891"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_p351011796">The example password is generated randomly. Do not use it.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0032380449__p88331362714">User data example:</p>
+<ul id="EN-US_TOPIC_0032380449__ul19621835103412"><li id="EN-US_TOPIC_0032380449__li2448840133414">Using a ciphertext password (recommended)<pre class="screen" id="EN-US_TOPIC_0032380449__screen129561436162716">#!/bin/bash 
+echo 'root:$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig' | chpasswd -e;</pre>
+<p id="EN-US_TOPIC_0032380449__p5537154415278">In the preceding command output, <strong>$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig</strong> is the ciphertext password, which can be generated as follows:</p>
+<ol id="EN-US_TOPIC_0032380449__ol1848725423417"><li id="EN-US_TOPIC_0032380449__li34871541346">Run the following command to generate an encrypted ciphertext value:<p id="EN-US_TOPIC_0032380449__p470413414213"><a name="EN-US_TOPIC_0032380449__li34871541346"></a><a name="li34871541346"></a><strong id="EN-US_TOPIC_0032380449__b4944159164218">python -c "import crypt, getpass, pwd;print crypt.mksalt()"</strong></p>
+<p id="EN-US_TOPIC_0032380449__p1344124117433">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen196052012423">$6$V6azyeLwcD3CHlpY</pre>
+</li><li id="EN-US_TOPIC_0032380449__li4115243514">Run the following command to generate a ciphertext password based on the salt value:<p id="EN-US_TOPIC_0032380449__p3210165044214"><a name="EN-US_TOPIC_0032380449__li4115243514"></a><a name="li4115243514"></a><strong id="EN-US_TOPIC_0032380449__b9210145034219">python -c "import crypt, getpass, pwd;print crypt.crypt('Cloud.1234','\$6\$V6azyeLwcD3CHlpY')"</strong></p>
+<p id="EN-US_TOPIC_0032380449__p391044184313">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen954165416428">$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig</pre>
+</li></ol>
+</li></ul>
+<p id="EN-US_TOPIC_0032380449__p166423531271">After the <span id="EN-US_TOPIC_0032380449__text1114833164416">ECS</span> is created, you can use the password to log in to it.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section852885517018"><h4 class="sectiontitle">Case 3</h4><p id="EN-US_TOPIC_0032380449__p77511313110">This case illustrates how to use the user data passing function to reset the password for logging in to a Linux <span id="EN-US_TOPIC_0032380449__text668419318447">ECS</span>.</p>
+<p id="EN-US_TOPIC_0032380449__p363812529110">In this example, the password of user <strong id="EN-US_TOPIC_0032380449__b842352706184551">root</strong> is reset to <strong id="EN-US_TOPIC_0032380449__b842352706193319">******</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0032380449__note6949121514213"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__p094911512213">The new password must meet the password complexity requirements listed in <a href="#EN-US_TOPIC_0032380449__table580060101120">Table 4</a>.</p>
+</div></div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0032380449__table580060101120"></a><a name="table580060101120"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0032380449__table580060101120" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Password complexity requirements</caption><thead align="left"><tr id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row925712618958_1"><th align="left" class="cellrowborder" valign="top" width="18.000000000000004%" id="mcps1.3.8.5.2.4.1.1"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p1162970218958_1">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.910000000000004%" id="mcps1.3.8.5.2.4.1.2"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p248177818958_1">Requirement</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.090000000000003%" id="mcps1.3.8.5.2.4.1.3"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6680635518958_1">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row4260571318958_1"><td class="cellrowborder" valign="top" width="18.000000000000004%" headers="mcps1.3.8.5.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p2851073918958_1">Password</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.910000000000004%" headers="mcps1.3.8.5.2.4.1.2 "><ul id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul5961106018958_1"><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li6376657018958_1">Consists of 8 to 26 characters. </li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li52807732181018_1">Contains at least three of the following character types:<ul id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul24583583181022_1"><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li30443664181018_1">Uppercase letters</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li4078050181018_1">Lowercase letters</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li29325375181018_1">Digits</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_li132021431143219_1">Special characters: $!@%-_=+[]:./^,{}?</li></ul>
+</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li38450401173547_1">Cannot contain the username or the username spelled backwards.</li><li id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li531840181018_1">Cannot contain more than two consecutive characters in the same sequence as they appear in the username. (This requirement applies only to Windows <span id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_text153189271104_1">ECS</span>s.)</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.090000000000003%" headers="mcps1.3.8.5.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6481855218958_1">YNbUwp!dUc9MClnv</p>
+<div class="note" id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_note18511011891_1"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__en-us_topic_0035643949_p351011796_1">The example password is generated randomly. Do not use it.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0032380449__p416014531593">User data example (Retain the indentation in the following script):</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen26618235171532">#cloud-config
+chpasswd:
+  list: |
+    root:******
+  expire: False</pre>
+<p id="EN-US_TOPIC_0032380449__p10194236191817">After the <span id="EN-US_TOPIC_0032380449__text72850410442">ECS</span> is created, you can use the reset password to log in to it. To ensure system security, change the password of user <strong id="EN-US_TOPIC_0032380449__b123418412290">root</strong> after logging in to the <span id="EN-US_TOPIC_0032380449__text32916511440">ECS</span> for the first time.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section2212289417182"><h4 class="sectiontitle">Case 4</h4><p id="EN-US_TOPIC_0032380449__p5481947217187">This case illustrates how to use the user data passing function to create a user on a Windows <span id="EN-US_TOPIC_0032380449__text782719511442">ECS</span> and configure the password for the user.</p>
+<p id="EN-US_TOPIC_0032380449__p50689042171929">In this example, the user's username is <strong id="EN-US_TOPIC_0032380449__b842352706184940">abc</strong>, its password is <strong id="EN-US_TOPIC_0032380449__b842352706193357">******</strong>, and the user is added to the <strong id="EN-US_TOPIC_0032380449__b842352706185038">administrators</strong> user group.</p>
+<div class="note" id="EN-US_TOPIC_0032380449__note31967495174642"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0032380449__p50998690183356">The new password must meet the password complexity requirements listed in <a href="#EN-US_TOPIC_0032380449__table580060101120">Table 4</a>.</p>
+</div></div>
+<p id="EN-US_TOPIC_0032380449__p22010831172048">User data example:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen54668898172153">rem cmd
+net user abc ****** /add
+net localgroup administrators abc /add</pre>
+<p id="EN-US_TOPIC_0032380449__p26626704172119">After the <span id="EN-US_TOPIC_0032380449__text436514612444">ECS</span> is created, you can use the created username and password to log in to it.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section19429115512011"><h4 class="sectiontitle">Case 5</h4><p id="EN-US_TOPIC_0032380449__p184321337118">This case illustrates how to use the user data passing function to update system software packages for a Linux <span id="EN-US_TOPIC_0032380449__text1589187154410">ECS</span> and enable the HTTPd service. After the user data is passed to an ECS, you can use the HTTPd service.</p>
+<p id="EN-US_TOPIC_0032380449__p2336121811210">User data example:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen315917359217">#!/bin/bash
+yum update -y
+service httpd start
+chkconfig httpd on</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section22603169194910"><h4 class="sectiontitle">Case 6</h4><p id="EN-US_TOPIC_0032380449__p9825061194923">This case illustrates how to use the user data passing function to assign user <strong id="EN-US_TOPIC_0032380449__b842352706161711">root</strong> permission for remotely logging in to a Linux <span id="EN-US_TOPIC_0032380449__text18635981445">ECS</span>. After passing the file to an ECS, you can log in to the <span id="EN-US_TOPIC_0032380449__text131631798442">ECS</span> as user <strong id="EN-US_TOPIC_0032380449__b164085211300">root</strong> using SSH key pair authentication.</p>
+<p id="EN-US_TOPIC_0032380449__p30989470195145">User data example:</p>
+<pre class="screen" id="EN-US_TOPIC_0032380449__screen5840641219527">#cloud-config
+disable_root: false
+runcmd:
+- sed -i 's/^PermitRootLogin.*$/PermitRootLogin without-password/' /etc/ssh/sshd_config
+- sed -i '/^KexAlgorithms.*$/d' /etc/ssh/sshd_config
+- service sshd restart</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0032380449__section54344118153243"><a name="EN-US_TOPIC_0032380449__section54344118153243"></a><a name="section54344118153243"></a><h4 class="sectiontitle">Helpful Links</h4><p id="EN-US_TOPIC_0032380449__p24604151162458">For more information about user data passing cases, visit the official Cloud-init/Cloudbase-init website:</p>
+<ul id="EN-US_TOPIC_0032380449__ul35593680162545"><li id="EN-US_TOPIC_0032380449__li21136905162545"><a href="https://cloudinit.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">https://cloudinit.readthedocs.io/en/latest/</a></li></ul>
+</div>
+<ul id="EN-US_TOPIC_0032380449__ul64515859162545"><li id="EN-US_TOPIC_0032380449__li54637302162545"><a href="https://cloudbase-init.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">https://cloudbase-init.readthedocs.io/en/latest/</a></li></ul>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0140313879.html">Obtaining Metadata and Passing User Data</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,117 @@
+<a name="EN-US_TOPIC_0078300750"></a><a name="EN-US_TOPIC_0078300750"></a>
+
+<h1 class="topictitle1">How Can I Add the Empty Partition of an Expanded System Disk to the Non-end Root Partition Online?</h1>
+<div id="body1506342233051"><div class="section" id="EN-US_TOPIC_0078300750__section17790838205214"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0078300750__p11448970215419">If the capacity of system disk partitions is inconsistent with the actual system disk capacity after an <span id="EN-US_TOPIC_0078300750__text07931559142617">ECS</span> is created, you can add the empty partition to the root partition of the system disk.</p>
+<p id="EN-US_TOPIC_0078300750__p4240675922811">This section describes how to add the empty partition to the non-end root partition online.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0078300750__section10675306212436"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0078300750__p12996400212820">In the following operations, the ECS that runs CentOS 6.5 64bit and has a 100 GB system disk is used as an example. The system disk has two partitions, <strong id="EN-US_TOPIC_0078300750__b1875729730154345">/dev/xvda1: root</strong> and <strong id="EN-US_TOPIC_0078300750__b84235270615445">/dev/xvda2: swap</strong>, and the root partition is not the end partition.</p>
+<ol id="EN-US_TOPIC_0078300750__ol9682146212842"><li id="EN-US_TOPIC_0078300750__li41172996212842">Run the following command to view disk partitions:<div class="p" id="EN-US_TOPIC_0078300750__p48618490212937"><a name="EN-US_TOPIC_0078300750__li41172996212842"></a><a name="li41172996212842"></a><strong id="EN-US_TOPIC_0078300750__b42023482212940">parted -l /dev/xvda</strong><pre class="screen" id="EN-US_TOPIC_0078300750__screen36479420212924">[root@sluo-ecs-a611 ~]# parted -l /dev/xvda
+Disk /dev/xvda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system     Flags
+ 1      1049kB  41.0GB  40.9GB  primary  ext4            boot
+ 2      41.0GB  42.9GB  2000MB  primary  linux-swap(v1)</pre>
+</div>
+<p id="EN-US_TOPIC_0078300750__p7171478213116">The first is the root partition, and the second is the swap partition.</p>
+</li><li id="EN-US_TOPIC_0078300750__li62859035213150">View and edit the fstab partition table to delete the swap partition attaching information.<ol type="a" id="EN-US_TOPIC_0078300750__ol42266014213912"><li id="EN-US_TOPIC_0078300750__li4775305921399">Run the following command to view the fstab partition table:<p id="EN-US_TOPIC_0078300750__p28800390213618"><a name="EN-US_TOPIC_0078300750__li4775305921399"></a><a name="li4775305921399"></a><strong id="EN-US_TOPIC_0078300750__b22915096213621">tail -n 3 /etc/fstab</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0078300750__screen61981928213937">[root@sluo-ecs-a611 ~]# tail -n 3 /etc/fstab 
+#
+UUID=7c4fce5d-f8f7-4ed6-8463-f2bd22d0ddea /                       ext4    defaults        1 1
+UUID=5de3cf2c-30c6-4fb2-9e63-830439d4e674 swap                    swap    defaults        0 0</pre>
+</li><li id="EN-US_TOPIC_0078300750__li8378685213950">Run the following command to edit the fstab partition table and delete the swap partition attaching information.<p id="EN-US_TOPIC_0078300750__p40847481213816"><a name="EN-US_TOPIC_0078300750__li8378685213950"></a><a name="li8378685213950"></a><strong id="EN-US_TOPIC_0078300750__b51108536213823">vi /etc/fstab</strong></p>
+<div class="p" id="EN-US_TOPIC_0078300750__p46334769213830"><strong id="EN-US_TOPIC_0078300750__b31686589213833">tail -n 3 /etc/fstab</strong><pre class="screen" id="EN-US_TOPIC_0078300750__screen11802050213245">[root@sluo-ecs-a611 ~]# vi /etc/fstab 
+[root@sluo-ecs-a611 ~]# tail -n 3 /etc/fstab 
+#
+UUID=7c4fce5d-f8f7-4ed6-8463-f2bd22d0ddea /                       ext4    defaults        1 1</pre>
+</div>
+</li></ol>
+</li><li id="EN-US_TOPIC_0078300750__li43865436213637">Run the following command to disable the swap partition:<p id="EN-US_TOPIC_0078300750__p3686615021424"><a name="EN-US_TOPIC_0078300750__li43865436213637"></a><a name="li43865436213637"></a><strong id="EN-US_TOPIC_0078300750__b1786489821426">swapoff -a</strong></p>
+</li><li id="EN-US_TOPIC_0078300750__li61422518214225">Delete the swap partition.<ol type="a" id="EN-US_TOPIC_0078300750__ol66577730215114"><li id="EN-US_TOPIC_0078300750__li31656548215055">Run the following command to view the partition:<div class="p" id="EN-US_TOPIC_0078300750__p7556914214416"><a name="EN-US_TOPIC_0078300750__li31656548215055"></a><a name="li31656548215055"></a><strong id="EN-US_TOPIC_0078300750__b12427874214418">parted /dev/xvda</strong><pre class="screen" id="EN-US_TOPIC_0078300750__screen55622084214317">[root@sluo-ecs-a611 ~]# parted /dev/xvda
+GNU Parted 3.1
+Using /dev/xvda
+Welcome to GNU Parted! Type &acute;help&acute; to view a list of commands.
+(parted) help                                                             
+  align-check TYPE N                        check partition N for TYPE(min|opt) alignment
+  help [COMMAND]                           print general help, or help on COMMAND
+  mklabel,mktable LABEL-TYPE               create a new disklabel (partition table)
+  mkpart PART-TYPE [FS-TYPE] START END     make a partition
+  name NUMBER NAME                         name partition NUMBER as NAME
+  print [devices|free|list,all|NUMBER]     display the partition table, available devices, free space, all found partitions, or a
+        particular partition
+  quit                                     exit program
+  rescue START END                         rescue a lost partition near START and END
+  rm NUMBER                                delete partition NUMBER
+  select DEVICE                            choose the device to edit
+  disk_set FLAG STATE                      change the FLAG on selected device
+  disk_toggle [FLAG]                       toggle the state of FLAG on selected device
+  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER
+  toggle [NUMBER [FLAG]]                   toggle the state of FLAG on partition NUMBER
+  unit UNIT                                set the default unit to UNIT
+  version                                  display the version number and copyright information of GNU Parted
+(parted)                                                         </pre>
+</div>
+</li><li id="EN-US_TOPIC_0078300750__li22057179215124">Press <strong id="EN-US_TOPIC_0078300750__b842352706191514">p</strong>.<pre class="screen" id="EN-US_TOPIC_0078300750__screen65417621214614">Disk /dev/xvda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system     Flags
+ 1      1049kB  41.0GB  40.9GB  primary  ext4            boot
+ 2      41.0GB  42.9GB  2000MB  primary  linux-swap(v1)
+                                                       </pre>
+</li><li id="EN-US_TOPIC_0078300750__li54378568215144">Run the following command to delete the partition:<div class="p" id="EN-US_TOPIC_0078300750__p5030907214657"><a name="EN-US_TOPIC_0078300750__li54378568215144"></a><a name="li54378568215144"></a><strong id="EN-US_TOPIC_0078300750__b16396120214843">rm 2</strong><pre class="screen" id="EN-US_TOPIC_0078300750__screen35875301214756">(parted) rm2   </pre>
+</div>
+</li><li id="EN-US_TOPIC_0078300750__li26950077215149">Press <strong id="EN-US_TOPIC_0078300750__b338202050">p</strong>.<pre class="screen" id="EN-US_TOPIC_0078300750__screen21544574214739">(parted) p 
+Disk /dev/xvda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system  Flags
+ 1      1049kB  41.0GB  40.9GB  primary  ext4         boot</pre>
+</li><li id="EN-US_TOPIC_0078300750__li20629417215159">Run the following command to edit the fstab partition table:<div class="p" id="EN-US_TOPIC_0078300750__p11166333214925"><a name="EN-US_TOPIC_0078300750__li20629417215159"></a><a name="li20629417215159"></a><strong id="EN-US_TOPIC_0078300750__b36237215214926">quit</strong><pre class="screen" id="EN-US_TOPIC_0078300750__screen1513620214939">(parted) quit                                                     
+Information: You may need to update /etc/fstab.</pre>
+</div>
+</li></ol>
+</li><li id="EN-US_TOPIC_0078300750__li38246064215233">Run the following command to view partition after the swap partition is deleted:<p id="EN-US_TOPIC_0078300750__p3679362821534"><a name="EN-US_TOPIC_0078300750__li38246064215233"></a><a name="li38246064215233"></a><strong id="EN-US_TOPIC_0078300750__b4086968521537">parted -l /dev/xvda</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0078300750__screen44773220215316">[root@sluo-ecs-a611 ~]# parted -l /dev/xvda
+Disk /dev/xvda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system  Flags
+ 1      1049kB  41.0GB  40.9GB  primary  ext4         boot</pre>
+</li><li id="EN-US_TOPIC_0078300750__li44906183215344">Run the following command to install the growpart tool:<p id="EN-US_TOPIC_0078300750__p25312539215410"><a name="EN-US_TOPIC_0078300750__li44906183215344"></a><a name="li44906183215344"></a>This tool may be integrated in the <strong id="EN-US_TOPIC_0078300750__b842352706184515">cloud-utils-growpart/cloud-utils/cloud-initramfs-tools/cloud-init</strong> package. Run the <strong id="EN-US_TOPIC_0078300750__b1254711349184542">yum install cloud-*</strong> command to ensure it is available.</p>
+<p id="EN-US_TOPIC_0078300750__p40040357215429"><strong id="EN-US_TOPIC_0078300750__b60022311215435">yum install cloud-utils-growpart</strong></p>
+</li><li id="EN-US_TOPIC_0078300750__li34540801215443">Run the following command to expand the root partition (the first partition) using growpart:<p id="EN-US_TOPIC_0078300750__p65544863215532"><a name="EN-US_TOPIC_0078300750__li34540801215443"></a><a name="li34540801215443"></a><strong id="EN-US_TOPIC_0078300750__b31329573215536">growpart /dev/xvda 1</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0078300750__screen64893040215542">[root@sluo-ecs-a611 ~]# growpart /dev/xvda 1
+CHANGED: partition=1 start=2048 old: size=79978496 end=79980544 new: size=209710462,end=209712510</pre>
+</li><li id="EN-US_TOPIC_0078300750__li50718369215550">Run the following command to verify that online capacity expansion is successful:<pre class="screen" id="EN-US_TOPIC_0078300750__screen58994818215721">[root@sluo-ecs-a611 ~]# parted -l /dev/xvda
+Disk /dev/xvda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End    Size   Type     File system  Flags
+ 1      1049kB  107GB  107GB  primary  ext4         boot</pre>
+</li><li id="EN-US_TOPIC_0078300750__li5293954222555">Run the following command to expand the capacity of the file system:<p id="EN-US_TOPIC_0078300750__p47069251222830"><a name="EN-US_TOPIC_0078300750__li5293954222555"></a><a name="li5293954222555"></a><strong id="EN-US_TOPIC_0078300750__b53986387222837">resize2fs -f <em id="EN-US_TOPIC_0078300750__i3840178222833">$Partition name</em></strong></p>
+<p id="EN-US_TOPIC_0078300750__p28323080222839">Suppose the partition name is <strong id="EN-US_TOPIC_0078300750__b84235270610726">/dev/xvda1</strong>, run the following command:</p>
+<pre class="screen" id="EN-US_TOPIC_0078300750__screen43921678222934">[root@sluo-ecs-a611 ~]# resize2fs -f /dev/xvda1
+resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/xvda1 is mounted on /; on-line resizing required
+old_desc_blocks = 3, new_desc_blocks = 3
+....
+[root@sluo-ecs-a611 ~] # df -hT     //Check file system capacity expansion</pre>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+

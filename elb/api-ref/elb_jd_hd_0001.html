@@ -1,0 +1,164 @@
+<a name="elb_jd_hd_0001"></a><a name="elb_jd_hd_0001"></a>
+
+<h1 class="topictitle1">Adding Backend ECSs</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p49566493102754">This API is used to add backend ECSs to a listener for monitoring.</p>
+<p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p53794938142335">To add backend ECSs to a UDP listener, IP addresses can be pinged and UDP services must be enabled.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p5316174317497">POST /v1.0/{project_id}/elbaas/listeners/{listener_id}/members</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_table43741849" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row37304191"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.2.3.2.5.1.1"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p1740610">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.2.3.2.5.1.2"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p6771693">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.2.3.2.5.1.3"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p3486881217106">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.2.3.2.5.1.4"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p11636265">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row3013405"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p581271111018">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p40949840">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p580152017106">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p28602718">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row56097870"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p47633640">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p33119622">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p16114117106">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p65443729">Specifies the listener ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row52122650"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p61185139">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p57049196">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p1305248317106">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p48477080">Specifies the backend ECS ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row33640543"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.5.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p40529449">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.2.3.2.5.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p61659956">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.2.3.2.5.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p5061817717106">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.3.2.5.1.4 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p54278376">Specifies the private IP address of the backend ECS.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4><ul id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_ul14640111064018"><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li76402010134019">Request parameters<p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p46956512453"><a name="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li76402010134019"></a><a name="en-us_topic_0096561517_en-us_topic_0020100170_li76402010134019"></a>None</p>
+</li></ul>
+<ul id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_ul11296519134018"><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li929611924012">Example request<pre class="screen" id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_screen1791844710544">[
+    {
+        "server_id": "dbecb618-2259-405f-ab17-9b68c4f541b0",
+        "address": "172.16.0.31"
+    }
+]</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Response</h4><ul id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_ul1408093"><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li5850091215485">Response parameters
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_table5674616315485" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row5776705315485"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.1.1.2.4.1.1"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p4861969415485">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.1.1.2.4.1.2"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p54243921194143">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="70%" id="mcps1.3.4.2.1.1.2.4.1.3"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p2538749515485">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row4312123015485"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p315877015485">uri</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p3467534319420">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p5516315115485">Specifies the URI of the job for adding a backend ECS. It is returned by Combined API.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row2670631315485"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.1.1.2.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p1572777215485">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.1.1.2.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p4539238919420">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.4.2.1.1.2.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p4358967415485">Specifies the unique ID assigned to the job for adding a backend ECS in Combined API.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li12672845">Example response<pre class="screen" id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_screen2008822510619">{
+    "uri": "/v1/55300f3c8f764c06b1a32e2302edc305/jobs/4010b39b4fd3d5ff014fd3ec3ed8002d",
+    "job_id": "4010b39b4fd3d5ff014fd3ec3ed8002d"
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><ul id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_ul16222495"><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li11784733">Normal<p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p38953736"><a name="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li11784733"></a><a name="en-us_topic_0096561517_en-us_topic_0020100170_li11784733"></a>200</p>
+</li><li id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_li15039305">Error
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_table61845484151557" frame="border" border="1" rules="all"><thead align="left"><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row50942692151557"><th align="left" class="cellrowborder" valign="top" width="12.13%" id="mcps1.3.5.2.2.1.1.4.1.1"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p32717378151557">Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.63%" id="mcps1.3.5.2.2.1.1.4.1.2"><p id="elb_jd_hd_0001__en-us_topic_0096561517_p1716210441164">Message</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.239999999999995%" id="mcps1.3.5.2.2.1.1.4.1.3"><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p32861965151557">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row44573484151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p53682440151557">400</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p5319115621611">badRequest</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p53310344151557">Request error.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row10031049151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p7208635151557">401</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p1431965661612">unauthorized</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p47028549151557">Authentication failed.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row20603763151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p58292117151557">403</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p19319456111614">userDisabled</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p24041060151557">You do not have the permission to perform the operation.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row15042951151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p10519556151557">404</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p031916561161">Not Found</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p46777697151557">The requested page does not exist.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row18346091151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p9638396151557">500</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p1631925611616">authFault</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p42512577151557">System error.</p>
+</td>
+</tr>
+<tr id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_row47068874151557"><td class="cellrowborder" valign="top" width="12.13%" headers="mcps1.3.5.2.2.1.1.4.1.1 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p54482489151557">503</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.63%" headers="mcps1.3.5.2.2.1.1.4.1.2 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_p1531965691616">serviceUnavailable</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.5.2.2.1.1.4.1.3 "><p id="elb_jd_hd_0001__en-us_topic_0096561517_en-us_topic_0020100170_p51005521151557">The service is unavailable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_jd_hd_0000.html">Backend ECS</a>
+
+
+

@@ -1,0 +1,155 @@
+<a name="EN-US_TOPIC_0087680813"></a><a name="EN-US_TOPIC_0087680813"></a>
+
+<h1 class="topictitle1">How Can I Obtain the Mapping Between Disk Partitions and Disk Devices on a Windows <span id="text73391684272">ECS</span>?</h1>
+<div id="body1512635926651"><p id="EN-US_TOPIC_0087680813__p40688502172831">This section uses an <span id="EN-US_TOPIC_0087680813__text29001644114615">ECS</span> running Windows Server 2008 R2 64bit as an example to describe how to obtain the mapping between disk partitions and disk devices.</p>
+<ol id="EN-US_TOPIC_0087680813__ol1083532517296"><li id="EN-US_TOPIC_0087680813__li193267017296">Log in to the Windows <span id="EN-US_TOPIC_0087680813__text68381845114619">ECS</span>.</li><li id="EN-US_TOPIC_0087680813__li57759729191910">Click <strong id="EN-US_TOPIC_0087680813__b842352706102847">Start</strong> in the lower left corner of the desktop.</li><li id="EN-US_TOPIC_0087680813__li51817229191934">Choose <strong id="EN-US_TOPIC_0087680813__b84235270610303">Control Panel</strong> &gt; <strong id="EN-US_TOPIC_0087680813__b842352706103010">Administrative Tools</strong> &gt; <strong id="EN-US_TOPIC_0087680813__b842352706103015">Computer Management</strong>.</li><li id="EN-US_TOPIC_0087680813__li53132958192052">In the navigation pane on the left, choose <strong>Storage</strong> &gt; <strong>Disk Management</strong>.<div class="fignone" id="EN-US_TOPIC_0087680813__fig63278226101115"><a name="EN-US_TOPIC_0087680813__fig63278226101115"></a><a name="fig63278226101115"></a><span class="figcap"><b>Figure 1 </b>Disk Management</span><br><span><img id="EN-US_TOPIC_0087680813__image25262680101115" src="en-us_image_0087906013.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0087680813__li33577405192437">Taking disk 1 marked in <a href="#EN-US_TOPIC_0087680813__fig63278226101115">Figure 1</a> as an example, view the disk device for disk 1.<ol type="a" id="EN-US_TOPIC_0087680813__ol31210625194041"><li id="EN-US_TOPIC_0087680813__li12460170194041">Right-click the gray area where disk 1 is located, as shown in the red box in <a href="#EN-US_TOPIC_0087680813__fig63278226101115">Figure 1</a>.</li><li id="EN-US_TOPIC_0087680813__li22254979194333">Click <strong id="EN-US_TOPIC_0087680813__b842352706112032">Properties</strong>.<p id="EN-US_TOPIC_0087680813__p64358887194641">The <strong id="EN-US_TOPIC_0087680813__b84235270610350">SCSI Disk Device Properties</strong> dialog box is displayed, as shown in <a href="#EN-US_TOPIC_0087680813__fig22437283101545">Figure 2</a>.</p>
+<div class="fignone" id="EN-US_TOPIC_0087680813__fig22437283101545"><a name="EN-US_TOPIC_0087680813__fig22437283101545"></a><a name="fig22437283101545"></a><span class="figcap"><b>Figure 2 </b>Disk properties</span><br><span><img id="EN-US_TOPIC_0087680813__image5480633101545" src="en-us_image_0087906055.png"></span></div>
+</li><li id="EN-US_TOPIC_0087680813__li46803875194616">Click the <strong id="EN-US_TOPIC_0087680813__b842352706103541">Details</strong> tab and set <strong id="EN-US_TOPIC_0087680813__b84235270610361">Property</strong> to <strong id="EN-US_TOPIC_0087680813__b84235270610367">Parent</strong>.<div class="fignone" id="EN-US_TOPIC_0087680813__fig2821199710173"><span class="figcap"><b>Figure 3 </b>Disk device details</span><br><span><img id="EN-US_TOPIC_0087680813__image347043510173" src="en-us_image_0087906067.png"></span></div>
+</li><li id="EN-US_TOPIC_0087680813__li57820116194747">Record the digits following <span class="parmvalue" id="EN-US_TOPIC_0087680813__parmvalue2144338170105047"><b>&amp;</b></span> in the parameter value, for example, <strong id="EN-US_TOPIC_0087680813__b842352706103735">51776</strong>, which is the master and slave device number corresponding to the disk partition.</li><li id="EN-US_TOPIC_0087680813__li2970478820457">Obtain the disk device according to the information listed in <a href="#EN-US_TOPIC_0087680813__table2257401020521">Table 1</a>.<div class="p" id="EN-US_TOPIC_0087680813__p494649262083">The disk device corresponding to <strong id="EN-US_TOPIC_0087680813__b842352706104036">51776</strong> is <strong id="EN-US_TOPIC_0087680813__b842352706104043">xvde</strong>. The disk device used by disk 1 is xvde.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0087680813__table2257401020521"></a><a name="table2257401020521"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0087680813__table2257401020521" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Mapping between disk partitions and disk devices</caption><thead align="left"><tr id="EN-US_TOPIC_0087680813__row3849274020521"><th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.2.5.2.5.2.3.2.3.1.1"><p id="EN-US_TOPIC_0087680813__p970281020521">Master and Slave Device Number for a Disk Partition</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.2.5.2.5.2.3.2.3.1.2"><p id="EN-US_TOPIC_0087680813__p4773015520521">Disk Device</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0087680813__row2691821520521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p3450267120732">51712</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p4325299020732">xvda</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row2027256120521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p5737281420732">51728</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p1668634720732">xvdb</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row5366127520521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p1764277420732">51744</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p1977855520732">xvdc</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row3256032420521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p5726985920732">51760</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p834703520732">xvdd</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row5277246420521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p4519097220732">51776</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p3659014420732">xvde</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row400362392070"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p3199633320732">51792</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p4156621520732">xvdf</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row633352432070"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p3567367620732">51808</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p388661420732">xvdg</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row1351782070"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p1476952420732">51824</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p5548079220732">xvdh</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row2827831620521"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p4596186720732">51840</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p3192378020732">xvdi</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row5750996020720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p5276908720732">51856</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p4643765420732">xvdj</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row5353100120720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p3018259620732">51872</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p2887118720732">xvdk</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row1042597020720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p4202114320732">51888</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p4826938420732">xvdl</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row1711351020720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p2333650820732">51904</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p1120903420732">xvdm</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row510996920720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p5121369920732">51920</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p5466891820732">xvdn</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row558482020720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p5808556620732">51936</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p731038620732">xvdo</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row1933641220720"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p2767143520732">51952</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p2679376920732">xvdp</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row22290127103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p66393420103632">268439552</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p9157974103632">xvdq</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row6676146103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p60085315103632">268439808</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p35072375103632">xvdr</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row23614195103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p11201170103632">268440064</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p34879610103632">xvds</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row31586991103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p15847469103632">268440320</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p8576578103632">xvdt</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row3791880103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p34126925103632">268440576</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p12817530103632">xvdu</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row29071593103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p60317750103632">268440832</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p53899605103632">xvdv</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row52532677103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p3032052103632">268441088</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p44269646103632">xvdw</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087680813__row21619288103632"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0087680813__p60355865103632">268441344</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.5.2.5.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0087680813__p56986857103632">xvdx</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</li></ol>
+</li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

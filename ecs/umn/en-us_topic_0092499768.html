@@ -1,0 +1,56 @@
+<a name="EN-US_TOPIC_0092499768"></a><a name="EN-US_TOPIC_0092499768"></a>
+
+<h1 class="topictitle1">Overview</h1>
+<div id="body1515569313581"><div class="section" id="EN-US_TOPIC_0092499768__section1577285115210"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0092499768__p773716268254">A tag identifies an ECS. Adding tags to an ECS facilitates ECS identification and management.</p>
+<p id="EN-US_TOPIC_0092499768__p47140198252">You can add a tag to an ECS during the ECS creation or after the ECS creation (<strong id="EN-US_TOPIC_0092499768__b842352706182438">Tags</strong> tab on the page providing details about the ECS). Up to 10 tags can be added to an ECS.</p>
+<div class="note" id="EN-US_TOPIC_0092499768__note1798410534153"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0092499768__p148884548229">Tags added during ECS creation will also be added to the created EIP and EVS disks (including the system disk and data disks) of the ECS. If the ECS uses an existing EIP, the tags will not be added to the EIP.</p>
+<p id="EN-US_TOPIC_0092499768__p7984195314159">After creating the ECS, you can view the tags on the pages providing details about the ECS, EIP, and EVS disks.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0092499768__section1855512613159"><h4 class="sectiontitle">Basics of Tags</h4><p id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_p57263417106">Tags are used to identify cloud resources. When you have many cloud resources of the same type, you can use tags to classify cloud resources by dimension (for example, use, owner, or environment).</p>
+<div class="fignone" id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_fig81911042564"><a name="EN-US_TOPIC_0092499768__en-us_topic_0157874334_fig81911042564"></a><a name="en-us_topic_0157874334_fig81911042564"></a><span class="figcap"><b>Figure 1 </b>Example tags</span><br><span><img class="imgResize" id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_image1919115455619" src="en-us_image_0157904965.png" title="Click to enlarge"></span></div>
+<p id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_p141861820161913"><a href="#EN-US_TOPIC_0092499768__en-us_topic_0157874334_fig81911042564">Figure 1</a> shows how tags work. In this example, you assign two tags to each cloud resource. Each tag contains a key and a value that you define. The key of one tag is <strong id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_b6396202451814">Owner</strong>, and the key of another tag is <strong id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_b63781430101816">Use</strong>. Each tag has a value.</p>
+<p id="EN-US_TOPIC_0092499768__en-us_topic_0157874334_p18672420131917">You can quickly search for and filter specific cloud resources based on the tags added to them. For example, you can define a set of tags for cloud resources in an account to track the owner and usage of each cloud resource, making resource management easier.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0092499768__section992912468317"><h4 class="sectiontitle">Tag Naming Rules</h4><ul id="EN-US_TOPIC_0092499768__ul10691214597"><li id="EN-US_TOPIC_0092499768__li176324819185">Each tag consists of a key-value pair.</li><li id="EN-US_TOPIC_0092499768__li11543121941911">Each ECS supports adding up to 10 tags.</li><li id="EN-US_TOPIC_0092499768__li674913410201">For each resource, a tag key must be unique and can have only one tag value.</li><li id="EN-US_TOPIC_0092499768__li1350918490208">A tag consists of a tag key and a tag value. <a href="#EN-US_TOPIC_0092499768__table197401426182516">Table 1</a> lists the tag key and value requirements.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0092499768__table197401426182516"></a><a name="table197401426182516"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0092499768__table197401426182516" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Tag key and value requirements</caption><thead align="left"><tr id="EN-US_TOPIC_0092499768__row374112610252"><th align="left" class="cellrowborder" valign="top" width="18.54%" id="mcps1.3.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0092499768__p674122692511">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.769999999999996%" id="mcps1.3.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0092499768__p47412026172519">Requirement</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.69%" id="mcps1.3.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0092499768__p074152682511">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0092499768__row77477265250"><td class="cellrowborder" valign="top" width="18.54%" headers="mcps1.3.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0092499768__p37471326142512">Key</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.769999999999996%" headers="mcps1.3.3.2.4.2.2.4.1.2 "><ul id="EN-US_TOPIC_0092499768__ul207505264257"><li id="EN-US_TOPIC_0092499768__li8750726112517">Cannot be left blank.</li><li id="EN-US_TOPIC_0092499768__li8750172616258">The key value must be unique for an ECS.</li><li id="EN-US_TOPIC_0092499768__li147506269251">Can contain a maximum of 36 characters.</li><li id="EN-US_TOPIC_0092499768__li107481355164619">Can only consist of digits, letters, hyphens (-), and underscores (_).</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="24.69%" headers="mcps1.3.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0092499768__p157536266259">Organization</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0092499768__row4754926182519"><td class="cellrowborder" valign="top" width="18.54%" headers="mcps1.3.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0092499768__p37542260253">Value</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.769999999999996%" headers="mcps1.3.3.2.4.2.2.4.1.2 "><ul id="EN-US_TOPIC_0092499768__ul107561326102518"><li id="EN-US_TOPIC_0092499768__li1275616267253">Can contain a maximum of 43 characters.</li><li id="EN-US_TOPIC_0092499768__li1398191944915">Can only consist of digits, letters, hyphens (-), and underscores (_).</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="24.69%" headers="mcps1.3.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0092499768__p47581826192520">Apache</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0183019668.html">Tag Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

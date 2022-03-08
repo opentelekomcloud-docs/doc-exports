@@ -1,0 +1,191 @@
+<a name="elb_ug_hd_0003"></a><a name="elb_ug_hd_0003"></a>
+
+<h1 class="topictitle1">Adding or Removing Backend Servers (Dedicated Load Balancers)</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_hd_0003__en-us_topic_0237163437_p885734911310">When you use ELB, ensure that at least a healthy backend server is in the backend server group associated with your load balancer. If incoming traffic increases, you need to add more backend <span id="elb_ug_hd_0003__en-us_topic_0236111263_en-us_topic_0052569729_text1919713316">server</span>s.</p>
+<p id="elb_ug_hd_0003__en-us_topic_0237163437_p14672198046">After a backend <span id="elb_ug_hd_0003__en-us_topic_0236111263_en-us_topic_0052569729_text3729143983110">server</span> is removed, it cannot receive requests from the load balancer. You can add it back to the backend <span id="elb_ug_hd_0003__text325215421105">server</span> group when the traffic goes up again.</p>
+<p id="elb_ug_hd_0003__en-us_topic_0237163437_p147921630749">If the load balancer is associated with an AS group, instances in the AS group are automatically added to the backend <span id="elb_ug_hd_0003__text921415818105">server</span> group associated with the load balancer. If instances are removed from the AS group, they will be automatically removed from the backend <span id="elb_ug_hd_0003__text159815318119">server</span> group.</p>
+
+
+<h4 class="sectiontitle">Adding Backend Servers</h4><ol id="elb_ug_hd_0003__en-us_topic_0237163437_ol144631231121417"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li677391520332">Log in to the management console.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li675519100420">In the upper left corner of the page, click <span><img id="elb_ug_hd_0003__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0003__li59941052152319">Hover on <span><img id="elb_ug_hd_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li53888274153842">Locate the load balancer and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li03519091511">On the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b920654609">Backend Server Groups</strong> tab page, click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b023318182515">Add Backend Server</strong> under <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b2616622659">Backend Servers</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li17947163642312">Perform the following operations based on the type of the backend servers:<ul id="elb_ug_hd_0003__en-us_topic_0237163437_ul1518596182413"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li61859622411">Backend servers in the same VPC as the load balancer: In the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b2827116155710">Add Backend Server</strong> dialog box, select the subnet where the backend servers reside, select the backend servers to be added, and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b582851618573">Next</strong>. Set the server weights and backend ports, and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b158291416115718">Finish</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li1111204718558">Cross-VPC backend servers: In the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b116836323596">Add Cross-VPC Backend Server</strong> dialog box, specify the IP addresses, ports, and weights, and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b0684332135918">OK</strong>.</li></ul>
+</li></ol>
+
+<h4 class="sectiontitle">Removing Backend Servers</h4><ol id="elb_ug_hd_0003__en-us_topic_0237163437_ol20431313181710"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li14584111682313">Log in to the management console.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li1584161632317">In the upper left corner of the page, click <span><img id="elb_ug_hd_0003__en-us_topic_0240829509_image177714713415_1" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0003__li1756713437349">Hover on <span><img id="elb_ug_hd_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li943111139173">Locate the load balancer and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li8431111381719">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b148654935818">Backend Server Groups</strong>, locate the backend server group, and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li1343212139174">In the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b15252822155815">Basic Information</strong> area, locate the target backend server and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b19253322175816">Remove</strong> in the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b10253192212584">Operation</strong> column. To remove multiple backend servers, select the backend servers you want to remove and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b132546228585">Remove</strong> above the server list.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li1043261313172">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b10174164675819">Yes</strong>.</li></ol>
+
+<h4 class="sectiontitle">Adding a Backend Server Group</h4><ol id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_ol30157915195653"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li163243294232">Log in to the management console.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li1532415291230">In the upper left corner of the page, click <span><img id="elb_ug_hd_0003__en-us_topic_0240829509_image177714713415_2" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0003__li890713523510">Hover on <span><img id="elb_ug_hd_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_2" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b9121102522212_2">Service List</strong> and choose <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b61222025142217_2">Network</strong> &gt; <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b4124425142210_2">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li61016710195653">Locate the load balancer and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li57581661227">Under <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b818844519256">Backend Server Groups</strong>, click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b1397833125914">Add Backend Server Group</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li41101049195717">In the <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b479316675919">Add Backend Server Group</strong> dialog box, configure the parameters.<p id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_p530313111597">Configure the parameters based on <a href="#elb_ug_hd_0003__table299811529239">Table 1</a> and <a href="#elb_ug_hd_0003__table1022053182319">Table 2</a>.</p>
+
+<a name="elb_ug_hd_0003__table299811529239"></a><a name="table299811529239"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_hd_0003__table299811529239" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for adding a backend server group</caption><thead align="left"><tr id="elb_ug_hd_0003__row99989528236"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.5.2.6.3.2.4.1.1"><p id="elb_ug_hd_0003__p1799985232319">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63%" id="mcps1.3.5.2.6.3.2.4.1.2"><p id="elb_ug_hd_0003__p49994524234">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.2.6.3.2.4.1.3"><p id="elb_ug_hd_0003__p17999145292310">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_hd_0003__row20853182317"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p160105318236">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p12011538239">Specifies the name of the backend <span id="elb_ug_hd_0003__text9956151311532">server</span> group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p309533232">server_group-sq4v</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row170953142319"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p1701353152312">Backend Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p170153182312">Specifies the protocol used by backend servers to receive requests.</p>
+<p id="elb_ug_hd_0003__p603535234">The backend protocol can be TCP, UDP, HTTP, or HTTPS.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p10145322312">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row17055311233"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p10085392317">Load Balancing Algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p2001153142314">Specifies the algorithm used by the load balancer to distribute traffic. The following options are available:</p>
+<ul id="elb_ug_hd_0003__ul8075372314"><li id="elb_ug_hd_0003__li170153122315"><strong id="elb_ug_hd_0003__b1112510406190">Weighted round robin</strong>: Requests are routed to different servers based on their weights, which indicate server processing performance. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests.</li><li id="elb_ug_hd_0003__li7055372317"><strong id="elb_ug_hd_0003__b3703944105617">Weighted least connections</strong>: In addition to the number of active connections established with each backend server, each server is assigned a weight based on their processing capability. Requests are routed to the server with the lowest connections-to-weight ratio.</li><li id="elb_ug_hd_0003__li17017535237"><strong id="elb_ug_hd_0003__b8909152462016">Source IP hash</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hashing key, and all backend servers are numbered. The generated key is used to allocate the client to a particular server. This allows requests from different clients to be routed based on source IP addresses and ensures that a client is directed to the same server that it was using previously.</li></ul>
+<span class="notetitle"> NOTE: </span><ul id="elb_ug_hd_0003__ul61125382312"><li id="elb_ug_hd_0003__li19113537231">Choose an appropriate algorithm based on your requirements for better traffic distribution.</li><li id="elb_ug_hd_0003__li61853142313">For <strong id="elb_ug_hd_0003__b17439657162015">Weighted round robin</strong> or <strong id="elb_ug_hd_0003__b10440105742013">Weighted least connections</strong>, no requests will be routed to a server with a weight of 0.</li></ul>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p811253132310">Weighted round robin</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row121653202313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p111155320235">Sticky Session</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p1714537236">Specifies whether to enable sticky sessions. If you enable sticky sessions, all requests from a client are sent to the same backend <span id="elb_ug_hd_0003__text6416114210">server</span>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_hd_0003__p9185352315">You can enable sticky sessions only if you select <strong id="elb_ug_hd_0003__b97632122113">Weighted round robin</strong> for <strong id="elb_ug_hd_0003__b378525213">Load Balancing Algorithm</strong>.</p>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p5105318231">-</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row3114532233"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p8442128111419">Sticky Session Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p10442118111413">After you enable the sticky session feature, select a sticky session type:</p>
+<ul id="elb_ug_hd_0003__ul1644211881416"><li id="elb_ug_hd_0003__li344219801415"><strong id="elb_ug_hd_0003__b772185910187">Source IP address</strong>: The source IP address of each request is calculated using the consistent hashing algorithm to obtain a unique hashing key, and all backend servers are numbered. The system allocates the client to a particular server based on the generated key. This enables requests from different clients to be routed and ensures that a client is directed to the same server that it was using previously.</li><li id="elb_ug_hd_0003__li14442387145"><strong id="elb_ug_hd_0003__elb_ug_jt_0004_b19659101662811">Load balancer cookie</strong>: The load balancer generates a cookie after receiving a request from the client. All subsequent requests with the same cookie are then routed to the same backend server.</li><li id="elb_ug_hd_0003__li104421831414"><strong id="elb_ug_hd_0003__elb_ug_jt_0004_b716812231288">Application cookie</strong>: The application deployed on the backend server generates a cookie after receiving the first request from the client. All requests with the same cookie generated by backend application are then routed to the same backend server.</li></ul>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_hd_0003__elb_ug_jt_0011_p375831210472">Choose an appropriate sticky session type to better distribute requests and improve load balancing.</p>
+<ul id="elb_ug_hd_0003__elb_ug_jt_0011_ul67056312135"><li id="elb_ug_hd_0003__elb_ug_jt_0011_li1285321975510">Sticky sessions at Layer 4 (for TCP or UDP listeners): only <strong id="elb_ug_hd_0003__elb_ug_jt_0011_b6885112984711">Source IP address</strong></li><li id="elb_ug_hd_0003__elb_ug_jt_0011_li8538354164612">Sticky sessions at Layer 7 (for HTTP or HTTPS listeners): <strong id="elb_ug_hd_0003__elb_ug_jt_0011_b2041065474719">Load balancer cookie</strong> and <strong id="elb_ug_hd_0003__elb_ug_jt_0011_b148311492477">Application cookie</strong></li></ul>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p1144315831417">Load balancer cookie</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row1121853132319"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p828535239">Stickiness Duration (min)</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p122175352319">Specifies the minutes that sticky sessions are maintained. You can enable sticky sessions only if you select <strong id="elb_ug_hd_0003__b258048192116">Weighted round robin</strong> or <strong id="elb_ug_hd_0003__b175811583219">Weighted least connections</strong> for <strong id="elb_ug_hd_0003__b158168132113">Load Balancing Algorithm</strong>.</p>
+<ul id="elb_ug_hd_0003__ul1821153202318"><li id="elb_ug_hd_0003__li82165316238">Stickiness duration at Layer 4: <strong id="elb_ug_hd_0003__b87585916215">1</strong> to <strong id="elb_ug_hd_0003__b875959102117">60</strong></li><li id="elb_ug_hd_0003__li2211533238">Stickiness duration at Layer 7: <strong id="elb_ug_hd_0003__b139031210152115">1</strong> to <strong id="elb_ug_hd_0003__b1990391032115">1440</strong></li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p1213539232">20</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row67542248421"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p157551024174219">Slow Start</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p547341064412">Specifies whether to enable slow start, which is disabled by default.</p>
+<p id="elb_ug_hd_0003__p187551524114214">After you enable slow start, the load balancer linearly increases the proportion of requests to send to backend servers in this mode. When the slow start duration elapses, the load balancer sends full share of requests to backend servers and exits the slow start mode. For details, see <a href="elb_ug_hd_0006.html">Configuring Slow Start (Dedicated Load Balancers)</a>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p1575552414216">-</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row1854222017435"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p2542102034316">Slow Start Duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p1542112012435">Specifies how long the slow start will last.</p>
+<p id="elb_ug_hd_0003__p176131551174510">The duration ranges from <strong id="elb_ug_hd_0003__b1529761914215">30</strong> to <strong id="elb_ug_hd_0003__b42984195214">1200</strong>, in seconds, and the default value is <strong id="elb_ug_hd_0003__b1029861912112">30</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p754212054314">30</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row112115352317"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.3.2.4.1.1 "><p id="elb_ug_hd_0003__p102153102318">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.3.2.4.1.2 "><p id="elb_ug_hd_0003__p2225372319">Provides supplementary information about the backend <span id="elb_ug_hd_0003__text10555132714210">server</span> group.</p>
+<p id="elb_ug_hd_0003__p20225332314">You can enter a maximum of 255 characters.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.3.2.4.1.3 "><p id="elb_ug_hd_0003__p3295392318">-</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_ug_hd_0003__table1022053182319"></a><a name="table1022053182319"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_ug_hd_0003__table1022053182319" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters for configuring a health check</caption><thead align="left"><tr id="elb_ug_hd_0003__row183253192312"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.5.2.6.4.2.4.1.1"><p id="elb_ug_hd_0003__p3335332313">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63%" id="mcps1.3.5.2.6.4.2.4.1.2"><p id="elb_ug_hd_0003__p1039539238">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.2.6.4.2.4.1.3"><p id="elb_ug_hd_0003__p12310533238">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_hd_0003__row193105314234"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p193145315234">Enable Health Check</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p123165316239">Specifies whether to enable health checks.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p1961553162318">N/A</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row16645332313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p20719538230">Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p187165332317">Specifies the protocol used by the load balancer to perform health checks on backend servers. You can select either TCP or HTTP. A selected protocol cannot be changed.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p47953122315">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row5816465414"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p16237545554">Domain Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p17231354165514">Specifies the domain name that will be used for health checks.</p>
+<p id="elb_ug_hd_0003__p72365420558">The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. The field is left blank by default and is available only when the health check protocol is HTTP.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p1223155420552">www.elb.com</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row127091533562"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p137185319231">Port</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p1171535239">Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_ug_hd_0003__p14719228373">If you do not specify a health check port, the backend port will be used for health checks by default. If you specify a port, it will be used for health checks.</p>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p148115318234">80</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row3885362315"><td class="cellrowborder" colspan="3" valign="top" headers="mcps1.3.5.2.6.4.2.4.1.1 mcps1.3.5.2.6.4.2.4.1.2 mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p58185318238">Advanced Settings</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row15855342319"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p1280535238">Interval (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p3815538233">Specifies the maximum time between health checks, in seconds.</p>
+<p id="elb_ug_hd_0003__p14815362320">The interval ranges from <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b1818417271020">1</strong> to <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b91841627129">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p1087537234">5</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row1581153152313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p17945311234">Timeout (s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p59165342319">Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from <strong id="elb_ug_hd_0003__b94911546220">1</strong> to <strong id="elb_ug_hd_0003__b104911482216">50</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p1297536239">3</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row167077358544"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p10124827195610">Check Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p1112415275561">Specifies the destination path for health checks. Configure this parameter only if you have set <strong id="elb_ug_hd_0003__b1964486172217">Protocol</strong> to <strong id="elb_ug_hd_0003__b16452611221">HTTP</strong>. The path can contain 1 to 80 characters and <span id="elb_ug_hd_0003__ph674747132218">must start with a slash (/)</span>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p16124152725616">/index.html</p>
+</td>
+</tr>
+<tr id="elb_ug_hd_0003__row3915314238"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.6.4.2.4.1.1 "><p id="elb_ug_hd_0003__p1995311231">Maximum Retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.2.6.4.2.4.1.2 "><p id="elb_ug_hd_0003__p51019539239">Specifies the maximum number of health check retries. The value ranges from <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b15307193915215">1</strong> to <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b4307143913213">10</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.6.4.2.4.1.3 "><p id="elb_ug_hd_0003__p121018539233">3</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li10349104816303">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b143990611319">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Modifying a Backend Server Group</h4><ol id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_ol185401329437"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li18991200242">Log in to the management console.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li10899002244">In the upper left corner of the page, click <span><img id="elb_ug_hd_0003__en-us_topic_0240829509_image177714713415_3" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0003__li1484904073517">Hover on <span><img id="elb_ug_hd_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_3" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b9121102522212_3">Service List</strong> and choose <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b61222025142217_3">Network</strong> &gt; <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b4124425142210_3">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li1379615339436">Locate the load balancer and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li84318512118">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b146816225310">Backend Server Groups</strong>, locate the backend <span id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_text48690501102">server</span> group, and click <span><img id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_image111401415717" src="en-us_image_0000001205955477.png"></span> on the right of its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li1892218586914">Modify the parameters as needed and click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b126958251835">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Deleting a Backend Server Group</h4><ol id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_ol10940073201316"><li id="elb_ug_hd_0003__en-us_topic_0237163437_li18634131119249">Log in to the management console.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_li14635161110244">In the upper left corner of the page, click <span><img id="elb_ug_hd_0003__en-us_topic_0240829509_image177714713415_4" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0003__li118478018361">Hover on <span><img id="elb_ug_hd_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_4" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b9121102522212_4">Service List</strong> and choose <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b61222025142217_4">Network</strong> &gt; <strong id="elb_ug_hd_0003__en-us_topic_0052569751_b4124425142210_4">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li10486424201316">Locate the load balancer and click its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li27268956201316">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b133211561638">Backend Server Groups</strong>, locate the backend server group, and click <span><img id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_image1347163801816" src="en-us_image_0000001206035439.png"></span> on the right of its name.</li><li id="elb_ug_hd_0003__en-us_topic_0237163437_en-us_topic_0052569729_li1582615893515">Click <strong id="elb_ug_hd_0003__en-us_topic_0237163437_b549944318418">Yes</strong>.</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_ug_hd_0000.html">Backend Server</a>
+
+
+

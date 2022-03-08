@@ -1,0 +1,72 @@
+<a name="EN-US_TOPIC_0275383051"></a><a name="EN-US_TOPIC_0275383051"></a>
+
+<h1 class="topictitle1">Logging In to a Windows <span id="text51551517382">ECS</span> from a Linux Computer</h1>
+<div id="body1599529050893"><div class="section" id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_section119451029135512"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_p2051937011921">This section describes how to log in to a Windows <span id="EN-US_TOPIC_0275383051__text1255143573817">ECS</span> from a Linux computer.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_section30111449112059"><h4 class="sectiontitle">Prerequisites</h4><ul id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_ul23108310112059"><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li18354497116">The target <span id="EN-US_TOPIC_0275383051__text67755565384">ECS</span> is running.</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li6648204112059">You have bound an EIP to the <span id="EN-US_TOPIC_0275383051__text169431501395">ECS</span>.</li></ul>
+<ul id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_ul59833840112059"><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li1633651112059">Access to port 3389 is allowed in the inbound direction of the security group to which the <span id="EN-US_TOPIC_0275383051__text294312117536">ECS</span> belongs.</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li39291782164659">Data can be exchanged between the login tool and the target <span id="EN-US_TOPIC_0275383051__text3138151063911">ECS</span>. For example, the default port 3389 is not blocked by the firewall.</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li1180914813562">RDP has been enabled on the target <span id="EN-US_TOPIC_0275383051__text199672016123912">ECS</span>. By default, RDP has been enabled on the <span id="EN-US_TOPIC_0275383051__text183485914558">ECS</span>s created using a public image. For instructions about how to enable RDP, see <a href="#EN-US_TOPIC_0275383051__section65216898112059">Enabling RDP</a>.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0275383051__section10475316119"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0275383051__p1014725515367">To log in to a Windows ECS from a local Linux computer, use a remote access tool, such as rdesktop.</p>
+<ol id="EN-US_TOPIC_0275383051__ol11297332124711"><li id="EN-US_TOPIC_0275383051__li1886913517241">Run the following command to check whether rdesktop has been installed on the <span id="EN-US_TOPIC_0275383051__text18151433193914">ECS</span>:<p id="EN-US_TOPIC_0275383051__p1144119589248"><strong id="EN-US_TOPIC_0275383051__b7102100162513">rdesktop</strong></p>
+<p id="EN-US_TOPIC_0275383051__p1869019292516">If the message "command not found" is displayed, rdesktop is not installed. In such a case, obtain the rdesktop installation package at the <a href="http://www.rdesktop.org/" target="_blank" rel="noopener noreferrer">official rdesktop website</a>.</p>
+</li><li id="EN-US_TOPIC_0275383051__li10225538135210">Run the following command to log in to the <span id="EN-US_TOPIC_0275383051__text1667103610407">ECS</span>:<p id="EN-US_TOPIC_0275383051__p8587152775410"><strong id="EN-US_TOPIC_0275383051__b119550615119">rdesktop -u</strong> <em id="EN-US_TOPIC_0275383051__i2955116315">Username</em> <strong id="EN-US_TOPIC_0275383051__b09561661214">-p</strong> <em id="EN-US_TOPIC_0275383051__i1495686912">Password</em> <strong id="EN-US_TOPIC_0275383051__b109562065115">-g</strong> <em id="EN-US_TOPIC_0275383051__i595656111">Resolution</em> <em id="EN-US_TOPIC_0275383051__i995666315">EIP</em></p>
+<p id="EN-US_TOPIC_0275383051__p1490419281124">For example, run <strong id="EN-US_TOPIC_0275383051__b676411419125">rdesktop -u administrator -p password -g 1024*720 121.xx.xx.xx</strong>.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0275383051__table522016385618" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters in the remote login command</caption><thead align="left"><tr id="EN-US_TOPIC_0275383051__row10220131567"><th align="left" class="cellrowborder" valign="top" width="18.85%" id="mcps1.3.3.3.2.4.2.3.1.1"><p id="EN-US_TOPIC_0275383051__p1422063175611">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="81.15%" id="mcps1.3.3.3.2.4.2.3.1.2"><p id="EN-US_TOPIC_0275383051__p22201931564">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0275383051__row422018365611"><td class="cellrowborder" valign="top" width="18.85%" headers="mcps1.3.3.3.2.4.2.3.1.1 "><p id="EN-US_TOPIC_0275383051__p151081031580">-u</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.15%" headers="mcps1.3.3.3.2.4.2.3.1.2 "><p id="EN-US_TOPIC_0275383051__p181082375811">Username, which defaults to <strong id="EN-US_TOPIC_0275383051__b1761419441614">Administrator</strong> for Windows ECSs</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0275383051__row922117310569"><td class="cellrowborder" valign="top" width="18.85%" headers="mcps1.3.3.3.2.4.2.3.1.1 "><p id="EN-US_TOPIC_0275383051__p12108331586">-p</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.15%" headers="mcps1.3.3.3.2.4.2.3.1.2 "><p id="EN-US_TOPIC_0275383051__p1410893145811">Password for logging in to the Windows ECS</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0275383051__row92211335563"><td class="cellrowborder" valign="top" width="18.85%" headers="mcps1.3.3.3.2.4.2.3.1.1 "><p id="EN-US_TOPIC_0275383051__p201086395817">-f</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.15%" headers="mcps1.3.3.3.2.4.2.3.1.2 "><p id="EN-US_TOPIC_0275383051__p210810325811">Full screen by default, which can be switched using <strong id="EN-US_TOPIC_0275383051__b598918626">Ctrl+Alt+Enter</strong></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0275383051__row122215314561"><td class="cellrowborder" valign="top" width="18.85%" headers="mcps1.3.3.3.2.4.2.3.1.1 "><p id="EN-US_TOPIC_0275383051__p201091033582">-g</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.15%" headers="mcps1.3.3.3.2.4.2.3.1.2 "><p id="EN-US_TOPIC_0275383051__p141098317582">Resolution, which uses an asterisk (*) to separate numbers. This parameter is optional. If it is not specified, the remote desktop is displayed in full screen by default, for example, <strong id="EN-US_TOPIC_0275383051__b10895163017715">1024*720</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0275383051__row7221133125617"><td class="cellrowborder" valign="top" width="18.85%" headers="mcps1.3.3.3.2.4.2.3.1.1 "><p id="EN-US_TOPIC_0275383051__p510920315586">EIP</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.15%" headers="mcps1.3.3.3.2.4.2.3.1.2 "><p id="EN-US_TOPIC_0275383051__p6109437589">EIP of the Windows ECS to be remotely logged in. Replace it with the EIP bound to your Windows ECS.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0275383051__section65216898112059"><a name="EN-US_TOPIC_0275383051__section65216898112059"></a><a name="section65216898112059"></a><h4 class="sectiontitle">Enabling RDP</h4><div class="p" id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_p48077410112059">When you log in to an <span id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_text2434113501216">ECS</span> for the first time, log in to it using VNC, enable RDP, and access the <span id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_text289711014567">ECS</span> using MSTSC.<div class="note" id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_note5638113513711"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_p1527414171983">By default, RDP has been enabled on the ECSs created using a public image.</p>
+</div></div>
+<ol id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_ol32949349111118"><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li56723037111118">Log in to the Windows <span id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_text34341437111211">ECS</span> using VNC.<p id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_p2050535911424">For details, see <a href="en-us_topic_0027268511.html">Login Using VNC</a>.</p>
+</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li27377399113414">Click <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706141917">Start</strong> in the task bar and choose <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b84235270614388">Control Panel</strong> &gt; <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706143812">System and Security</strong> &gt; <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706143816">System</strong> &gt; <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706143824">Remote settings</strong>.<p id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_p12062548113415">The <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706144010">System Properties</strong> dialog box is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_fig276023113838"><span class="figcap"><b>Figure 1 </b>System Properties</span><br><span><img id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_image22357863113838" src="en-us_image_0049287308.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li23748224113443">Click the <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706144047">Remote</strong> tab and select <strong id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_b842352706144218">Allow remote connections to this computer</strong>.</li><li id="EN-US_TOPIC_0275383051__en-us_topic_0017955381_li34570216113530">Click <strong>OK</strong>.</li></ol>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030888079.html">Logging In to a Windows ECS</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

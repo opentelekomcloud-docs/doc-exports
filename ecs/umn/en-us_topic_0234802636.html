@@ -1,0 +1,72 @@
+<a name="EN-US_TOPIC_0234802636"></a><a name="EN-US_TOPIC_0234802636"></a>
+
+<h1 class="topictitle1">GPU Driver</h1>
+<div id="body1585540628984"><div class="section" id="EN-US_TOPIC_0234802636__section126211918812"><h4 class="sectiontitle">Overview</h4><p id="EN-US_TOPIC_0234802636__p2062695813">Before using a GPU-accelerated ECS, make sure that a GPU driver has been installed on the ECS for GPU acceleration.</p>
+<p id="EN-US_TOPIC_0234802636__p14626914811">GPU-accelerated ECSs support GRID and Tesla drivers.</p>
+<ul id="EN-US_TOPIC_0234802636__ul662595815"><li id="EN-US_TOPIC_0234802636__li1062199086">To use graphics acceleration, such as OpenGL, DirectX, or Vulkan, install a GRID driver and separately purchase and configure a GRID license. The GRID driver with a vDWS license also supports CUDA for both computing and graphics acceleration.<ul id="EN-US_TOPIC_0234802636__ul186210917810"><li id="EN-US_TOPIC_0234802636__li96209483">A graphics-accelerated (G series) ECS created using a Windows public image has had a GRID driver of a specified version installed by default, but the GRID license must be purchased and configured separately. Before using such an ECS, check whether the desired driver has been installed on it and whether the version of the installed driver meets service requirements.</li><li id="EN-US_TOPIC_0234802636__li824916276106">A graphics-accelerated (G series) ECS created using a Linux public image does not have a GRID driver installed by default. To install a GRID driver, see <a href="en-us_topic_0149610914.html">Installing a GRID Driver on a GPU-accelerated ECS</a>.</li><li id="EN-US_TOPIC_0234802636__li0621791284">To install a GRID driver on a GPU-accelerated ECS created using a private image, see <a href="en-us_topic_0149610914.html">Installing a GRID Driver on a GPU-accelerated ECS</a>.</li></ul>
+</li><li id="EN-US_TOPIC_0234802636__li15627917810">To use computing acceleration, install a Tesla driver.<ul id="EN-US_TOPIC_0234802636__ul2062791089"><li id="EN-US_TOPIC_0234802636__li1162798819">A computing-accelerated (P series) ECS created using a Windows public image has had a Tesla driver of a specified version installed by default.</li><li id="EN-US_TOPIC_0234802636__li14903316131110">A computing-accelerated (P series) ECS created using a Linux public image does not have a Tesla driver installed by default. To install a Tesla driver, see <a href="en-us_topic_0149470468.html">Installing a Tesla Driver and CUDA Toolkit on a GPU-accelerated ECS</a>.</li><li id="EN-US_TOPIC_0234802636__li1462992082">To install a Tesla driver on a GPU-accelerated ECS created using a private image, see <a href="en-us_topic_0149470468.html">Installing a Tesla Driver and CUDA Toolkit on a GPU-accelerated ECS</a>.</li></ul>
+</li></ul>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0234802636__table13621791684" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Acceleration supported by GPU drivers</caption><thead align="left"><tr id="EN-US_TOPIC_0234802636__row11621590812"><th align="left" class="cellrowborder" valign="top" width="7.000000000000001%" id="mcps1.3.1.5.2.9.1.1"><p id="EN-US_TOPIC_0234802636__p96229281">Driver</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9%" id="mcps1.3.1.5.2.9.1.2"><p id="EN-US_TOPIC_0234802636__p16628911811">License</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.1.5.2.9.1.3"><p id="EN-US_TOPIC_0234802636__p562109982">CUDA</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.1.5.2.9.1.4"><p id="EN-US_TOPIC_0234802636__p17626914817">OpenGL</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.1.5.2.9.1.5"><p id="EN-US_TOPIC_0234802636__p1662129788">DirectX</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.1.5.2.9.1.6"><p id="EN-US_TOPIC_0234802636__p116279684">Vulkan</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.1.5.2.9.1.7"><p id="EN-US_TOPIC_0234802636__p1462591789">Application Scenario</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24%" id="mcps1.3.1.5.2.9.1.8"><p id="EN-US_TOPIC_0234802636__p0627913812">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0234802636__row11629918811"><td class="cellrowborder" valign="top" width="7.000000000000001%" headers="mcps1.3.1.5.2.9.1.1 "><p id="EN-US_TOPIC_0234802636__p7621891183">GRID</p>
+</td>
+<td class="cellrowborder" valign="top" width="9%" headers="mcps1.3.1.5.2.9.1.2 "><p id="EN-US_TOPIC_0234802636__p1762991087">Required</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.3 "><p id="EN-US_TOPIC_0234802636__p2621498814">Supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.4 "><p id="EN-US_TOPIC_0234802636__p196219085">Supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.5 "><p id="EN-US_TOPIC_0234802636__p12621094817">Supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.6 "><p id="EN-US_TOPIC_0234802636__p76216920819">Supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.1.5.2.9.1.7 "><p id="EN-US_TOPIC_0234802636__p1362291286">3D rendering, graphics workstation, and game acceleration</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.1.5.2.9.1.8 "><p id="EN-US_TOPIC_0234802636__p1962791481">The GRID driver must be paid and requires a license to accelerate graphics and image applications.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0234802636__row116239381"><td class="cellrowborder" valign="top" width="7.000000000000001%" headers="mcps1.3.1.5.2.9.1.1 "><p id="EN-US_TOPIC_0234802636__p116239681">Tesla</p>
+</td>
+<td class="cellrowborder" valign="top" width="9%" headers="mcps1.3.1.5.2.9.1.2 "><p id="EN-US_TOPIC_0234802636__p1262991583">Not required</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.3 "><p id="EN-US_TOPIC_0234802636__p1162391381">Supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.4 "><p id="EN-US_TOPIC_0234802636__p106218910812">Not supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.5 "><p id="EN-US_TOPIC_0234802636__p6621292083">Not supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.5.2.9.1.6 "><p id="EN-US_TOPIC_0234802636__p1862495820">Not supported</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.1.5.2.9.1.7 "><p id="EN-US_TOPIC_0234802636__p1062296817">Scientific computing, deep learning training, and inference</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.1.5.2.9.1.8 "><p id="EN-US_TOPIC_0234802636__p1362199682">The Tesla driver is downloaded free of charge and usually used with NVIDIA CUDA SDKs to accelerate general computing applications.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0133513874.html">(Optional) Installing a Driver and Toolkit</a></div>
+</div>
+</div>
+

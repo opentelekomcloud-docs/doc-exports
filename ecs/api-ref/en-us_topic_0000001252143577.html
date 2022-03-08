@@ -1,0 +1,137 @@
+<a name="EN-US_TOPIC_0000001252143577"></a><a name="EN-US_TOPIC_0000001252143577"></a>
+
+<h1 class="topictitle1">Adding Tags to an ECS in a Batch (Discarded)</h1>
+<div id="body0000001252143577"><div class="section" id="EN-US_TOPIC_0000001252143577__section35847011245"><h4 class="sectiontitle">Function</h4><ul id="EN-US_TOPIC_0000001252143577__ul333921351517"><li id="EN-US_TOPIC_0000001252143577__li1633941310159">This API is used to add tags to a specified ECS in a batch.</li><li id="EN-US_TOPIC_0000001252143577__li33395132153">The Tag Management Service (TMS) uses this API to batch manage the tags of an ECS.</li></ul>
+<div class="note" id="EN-US_TOPIC_0000001252143577__note6662104110429"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0000001252143577__p1470485294218">This API has been discarded. Use the API described in <a href="en-us_topic_0167811963.html">Adding Tags to an ECS in a Batch</a>.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section2179161873415"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0000001252143577__ul10518141417130"><li id="EN-US_TOPIC_0000001252143577__li451611401312">An ECS allows a maximum of 10 tags.</li><li id="EN-US_TOPIC_0000001252143577__li124985462297">This API is idempotent.<p id="EN-US_TOPIC_0000001252143577__p173849568315"><a name="EN-US_TOPIC_0000001252143577__li124985462297"></a><a name="li124985462297"></a>During tag creation, if a tag exists (both the key and value are the same as those of an existing tag), the tag is successfully processed by default.</p>
+</li><li id="EN-US_TOPIC_0000001252143577__li1556118431293">A new tag will overwrite the original one if their keys are the same and values are different.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section16695164917340"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0000001252143577__p156349323354">POST /v1/{project_id}/servers/{server_id}/tags/action</p>
+<div class="p" id="EN-US_TOPIC_0000001252143577__p4999161574415"><a href="#EN-US_TOPIC_0000001252143577__table19484740133714">Table 1</a> lists the parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0000001252143577__table19484740133714"></a><a name="table19484740133714"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001252143577__table19484740133714" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0000001252143577__row1351554013716"><th align="left" class="cellrowborder" valign="top" width="32.89%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0000001252143577__p7707213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.37%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0000001252143577__p20304554">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.74%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0000001252143577__p34056167">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001252143577__row251512409371"><td class="cellrowborder" valign="top" width="32.89%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0000001252143577__p8515164093713">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.37%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0000001252143577__p18515240143717">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.74%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0000001252143577__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001252143577__row14515124013712"><td class="cellrowborder" valign="top" width="32.89%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0000001252143577__p13531204014371">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.37%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0000001252143577__p3531540183718">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.74%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0000001252143577__p17531340143714">Specifies the ECS ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section36878128386"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0000001252143577__p15501244174419"><a href="#EN-US_TOPIC_0000001252143577__table1349994618388">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0000001252143577__table1349994618388"></a><a name="table1349994618388"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001252143577__table1349994618388" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0000001252143577__row1563944663818"><th align="left" class="cellrowborder" valign="top" width="19.801980198019802%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0000001252143577__p17639246103812">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.801980198019802%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0000001252143577__p363934610388">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.792079207920793%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0000001252143577__p1763913462389">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.603960396039604%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0000001252143577__p176391446163812">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001252143577__row8639846173815"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0000001252143577__p4639144663820">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0000001252143577__p4639154616385">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0000001252143577__p6639144619381">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.603960396039604%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0000001252143577__p8639114673812">Specifies tags.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001252143577__row18639194633819"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0000001252143577__p963954619387">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0000001252143577__p1963912460389">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0000001252143577__p1663974615386">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.603960396039604%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0000001252143577__p196391465384">Specifies the operation (only lowercase letters are supported). For example, <strong id="EN-US_TOPIC_0000001252143577__b842352706152944">create</strong> indicates the creation operation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001252143577__table1751454617383" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0000001252143577__b84235270695528">resource_tag</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0000001252143577__row363954653815"><th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.4.2.5.1.1"><p id="EN-US_TOPIC_0000001252143577__p29592023184516">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.4.2.5.1.2"><p id="EN-US_TOPIC_0000001252143577__p15959182310455">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.4.4.2.5.1.3"><p id="EN-US_TOPIC_0000001252143577__p895912318450">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48%" id="mcps1.3.4.4.2.5.1.4"><p id="EN-US_TOPIC_0000001252143577__p995918231454">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001252143577__row15639164653810"><td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0000001252143577__p163934643813">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0000001252143577__p11639104643815">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0000001252143577__p1863919468382">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0000001252143577__p191321456154119">Specifies the tag key.</p>
+<ul id="EN-US_TOPIC_0000001252143577__ul14506057219"><li id="EN-US_TOPIC_0000001252143577__li4506195821">Cannot be left blank.</li><li id="EN-US_TOPIC_0000001252143577__li10506151027">Must be unique for each resource.</li><li id="EN-US_TOPIC_0000001252143577__li7506358215">Contains a maximum of 36 characters.</li><li id="EN-US_TOPIC_0000001252143577__li75061957210">Contains only digits, letters, hyphens (-), and underscores (_).</li><li id="EN-US_TOPIC_0000001252143577__li1850615516219">Must be unique and cannot be left blank.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001252143577__row963964620389"><td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0000001252143577__p66391146173815">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0000001252143577__p1863917461382">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0000001252143577__p106396466385">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0000001252143577__p822413895013">Specifies the tag value.</p>
+<ul id="EN-US_TOPIC_0000001252143577__ul91211113214"><li id="EN-US_TOPIC_0000001252143577__li181215118212">Contains a maximum of 43 characters.</li><li id="EN-US_TOPIC_0000001252143577__li181212111026">Contains only digits, letters, hyphens (-), and underscores (_).</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section08601336145413"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0000001252143577__p16657154145416">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section105681635543"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0000001252143577__screen19771926184815">POST https://{endpoint}/v1/{project_id}/servers/{server_id}/tags/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0000001252143577__screen1863904613817">{
+    "action": "create",
+    "tags": [
+        {
+            "key": "key1",
+            "value": "value1"
+        },
+        {
+            "key": "key2",
+            "value": "value3"
+        }
+    ]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__section14437257173813"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0000001252143577__p1592117023915">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0000001252143577__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001252143577__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0000001252143577__p1553315114515">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0000001207303618.html">Tag Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,58 @@
+<a name="en-us_topic_0118840332"></a><a name="en-us_topic_0118840332"></a>
+
+<h1 class="topictitle1">HTTP Redirection to HTTPS</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="en-us_topic_0118840332__p1919494215518">HTTPS is an extension of HTTP. HTTPS encrypts data between a web server and a browser.</p>
+<p id="en-us_topic_0118840332__p219111352213">If you enable redirection, all HTTP requests to your website are transmitted over HTTPS connections to improve service security.</p>
+<span class="cautiontitle"><img src="public_sys-resources/caution_3.0-en-us.png"> </span><p id="en-us_topic_0118840332__p1513392717114">HTTP requests are forwarded to the HTTPS listener as HTTPS requests, which are then routed to backend servers over HTTP.</p>
+</div>
+
+<h4 class="sectiontitle">Prerequisites</h4><ul id="en-us_topic_0118840332__ul179051318519"><li id="en-us_topic_0118840332__li1590113195118">An HTTPS listener has been added.</li><li id="en-us_topic_0118840332__li9900133512">An HTTP listener has been added.</li></ul>
+
+<h4 class="sectiontitle">Creating a Redirect</h4><ol id="en-us_topic_0118840332__ol6929211526"><li id="en-us_topic_0118840332__li677391520332">Log in to the management console.</li><li id="en-us_topic_0118840332__li675519100420">In the upper left corner of the page, click <span><img id="en-us_topic_0118840332__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0118840332__li83736197297">Hover on <span><img id="en-us_topic_0118840332__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0118840332__li17925265212">Locate the load balancer and click its name.</li><li id="en-us_topic_0118840332__li2929215216">Click <strong id="en-us_topic_0118840332__b84235270616430">Listeners</strong>, locate the HTTP listener, and click its name.</li><li id="en-us_topic_0118840332__li17924214528">Click <strong id="en-us_topic_0118840332__b842352706124123">Redirects</strong> and then <strong id="en-us_topic_0118840332__b842352706124210">Create</strong> on the right.
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0118840332__table5765638104311" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for configuring redirection</caption><thead align="left"><tr id="en-us_topic_0118840332__row16766173884314"><th align="left" class="cellrowborder" valign="top" width="22.772277227722775%" id="mcps1.3.3.2.6.3.2.4.1.1"><p id="en-us_topic_0118840332__p16337205034318"><strong id="en-us_topic_0118840332__b129781819155518">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.51485148514851%" id="mcps1.3.3.2.6.3.2.4.1.2"><p id="en-us_topic_0118840332__p2033814509436"><strong id="en-us_topic_0118840332__b8423527061772">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.71287128712871%" id="mcps1.3.3.2.6.3.2.4.1.3"><p id="en-us_topic_0118840332__p9339165064318"><strong id="en-us_topic_0118840332__b842352706194150">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0118840332__row37661383435"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.3.2.6.3.2.4.1.1 "><p id="en-us_topic_0118840332__p133414501436">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.51485148514851%" headers="mcps1.3.3.2.6.3.2.4.1.2 "><p id="en-us_topic_0118840332__p73421750174316">Specifies the redirect name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.71287128712871%" headers="mcps1.3.3.2.6.3.2.4.1.3 "><p id="en-us_topic_0118840332__p143171818484">redirect-g8h9</p>
+</td>
+</tr>
+<tr id="en-us_topic_0118840332__row9766113813431"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.3.2.6.3.2.4.1.1 "><p id="en-us_topic_0118840332__p19345250184318">Redirected To</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.51485148514851%" headers="mcps1.3.3.2.6.3.2.4.1.2 "><p id="en-us_topic_0118840332__p3347150204315">Specifies the HTTPS listener to which requests are redirected.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.71287128712871%" headers="mcps1.3.3.2.6.3.2.4.1.3 "><p id="en-us_topic_0118840332__p85582571488">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0118840332__row1176663812438"><td class="cellrowborder" valign="top" width="22.772277227722775%" headers="mcps1.3.3.2.6.3.2.4.1.1 "><p id="en-us_topic_0118840332__p16350450104312">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.51485148514851%" headers="mcps1.3.3.2.6.3.2.4.1.2 "><p id="en-us_topic_0118840332__p935219504434">Provides supplementary information about the redirect.</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.71287128712871%" headers="mcps1.3.3.2.6.3.2.4.1.3 "><p id="en-us_topic_0118840332__p9352155014316">N/A</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="en-us_topic_0118840332__li10921729528">Click <strong id="en-us_topic_0118840332__b1382918391553">OK</strong>.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><ul id="en-us_topic_0118840332__ul711518185496"><li id="en-us_topic_0118840332__li1311519186494">If you create a redirect for an HTTP listener, its settings will not take effect except access control.</li><li id="en-us_topic_0118840332__li6115191864914"><span id="en-us_topic_0118840332__ph1339882145319">If you create a redirect for an HTTP listener, the load balancer will return HTTP 301 Move Permanently to the clients.</span></li></ul>
+</div>
+</li></ol>
+
+<h4 class="sectiontitle">Modifying a Redirect</h4><ol id="en-us_topic_0118840332__ol4746835105614"><li id="en-us_topic_0118840332__li1985252614503">Log in to the management console.</li><li id="en-us_topic_0118840332__li128537268501">In the upper left corner of the page, click <span><img id="en-us_topic_0118840332__en-us_topic_0240829509_image177714713415_1" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0118840332__li17301740102218">Hover on <span><img id="en-us_topic_0118840332__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_1" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b9121102522212_1">Service List</strong> and choose <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b61222025142217_1">Network</strong> &gt; <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b4124425142210_1">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0118840332__li147461535205617">Locate the load balancer and click its name.</li><li id="en-us_topic_0118840332__li274693525620">Click <strong id="en-us_topic_0118840332__b393014971">Listeners</strong>, locate the HTTP listener, and click its name.</li><li id="en-us_topic_0118840332__li1574673585616">Click <strong id="en-us_topic_0118840332__b830369408">Redirects</strong>, locate the redirect, and click <strong id="en-us_topic_0118840332__b84235270614407">Modify</strong> in the <strong id="en-us_topic_0118840332__b842352706143554">Operation</strong> column.</li><li id="en-us_topic_0118840332__li1275403515568">In the <strong id="en-us_topic_0118840332__b84235270618392">Modify Redirect</strong> dialog box, modify the redirect name or description, or select another listener, and click <strong id="en-us_topic_0118840332__b17292192619532">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Deleting a Redirect</h4><ol id="en-us_topic_0118840332__ol1275190185510"><li id="en-us_topic_0118840332__li11682338145016">Log in to the management console.</li><li id="en-us_topic_0118840332__li768211389508">In the upper left corner of the page, click <span><img id="en-us_topic_0118840332__en-us_topic_0240829509_image177714713415_2" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0118840332__li0839203002214">Hover on <span><img id="en-us_topic_0118840332__en-us_topic_0052569751_en-us_topic_0052569751_image616618613_2" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b9121102522212_2">Service List</strong> and choose <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b61222025142217_2">Network</strong> &gt; <strong id="en-us_topic_0118840332__en-us_topic_0052569751_b4124425142210_2">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0118840332__li3474171185518">Locate the load balancer and click its name.</li><li id="en-us_topic_0118840332__li4474111145517">Click <strong id="en-us_topic_0118840332__b572300724">Listeners</strong>, locate the listener, and click its name.</li><li id="en-us_topic_0118840332__li77876213555">Click <strong id="en-us_topic_0118840332__b842352706144159">Redirects</strong>, locate the redirect, and click <strong id="en-us_topic_0118840332__b842352706144237">Delete</strong> in the <strong id="en-us_topic_0118840332__b842352706144240">Operation</strong> column.</li><li id="en-us_topic_0118840332__li1750161655619">In the <strong id="en-us_topic_0118840332__b575614817">Delete Redirect</strong> dialog box, click <strong id="en-us_topic_0118840332__b975141418112">Yes</strong>.</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_ug_jt_0013.html">Advanced Features of HTTP/HTTPS Listeners</a>
+
+
+

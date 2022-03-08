@@ -1,0 +1,136 @@
+<a name="EN-US_TOPIC_0020212679"></a><a name="EN-US_TOPIC_0020212679"></a>
+
+<h1 class="topictitle1">Deleting <span id="text099555552211">ECS</span>s</h1>
+<div id="body59650110"><div class="section" id="EN-US_TOPIC_0020212679__section61511739"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212679__p7120111454714">This API is used to delete <span id="EN-US_TOPIC_0020212679__text129391856162216">ECS</span>s based on a specified <span id="EN-US_TOPIC_0020212679__text15110029153011">ECS</span> ID list.</p>
+<p id="EN-US_TOPIC_0020212679__p66929645">You can delete a single <span id="EN-US_TOPIC_0020212679__text1020335811226">ECS</span> or multiple <span id="EN-US_TOPIC_0020212679__text19842144618300">ECS</span>s in a batch. A maximum of 1000 <span id="EN-US_TOPIC_0020212679__text164866518309">ECS</span>s can be deleted in a batch.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section16734741"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212679__p50237013152238">POST /v1/{project_id}/cloudservers/delete</p>
+<div class="p" id="EN-US_TOPIC_0020212679__p182688151487"><a href="#EN-US_TOPIC_0020212679__table52652517">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212679__table52652517"></a><a name="table52652517"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212679__table52652517" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212679__row61945077"><th align="left" class="cellrowborder" valign="top" width="16.42%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0020212679__p51495331">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.36%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0020212679__p10372286">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.22%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0020212679__p34848813">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212679__row4181593"><td class="cellrowborder" valign="top" width="16.42%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212679__p3164713">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212679__p55015173">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.22%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212679__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section16394943"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0020212679__p495714358498"><a href="#EN-US_TOPIC_0020212679__table8361976">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212679__table8361976"></a><a name="table8361976"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212679__table8361976" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212679__row2187155"><th align="left" class="cellrowborder" valign="top" width="16.348365163483656%" id="mcps1.3.3.2.2.2.5.1.1"><p id="EN-US_TOPIC_0020212679__p42941906">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.548245175482453%" id="mcps1.3.3.2.2.2.5.1.2"><p id="EN-US_TOPIC_0020212679__p55742394">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.748525147485253%" id="mcps1.3.3.2.2.2.5.1.3"><p id="EN-US_TOPIC_0020212679__p18840050">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.35486451354865%" id="mcps1.3.3.2.2.2.5.1.4"><p id="EN-US_TOPIC_0020212679__p49649058">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212679__row62150771"><td class="cellrowborder" valign="top" width="16.348365163483656%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212679__p1047692">servers</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.548245175482453%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212679__p17754262">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.748525147485253%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212679__p28809145">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.35486451354865%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212679__p63901309">Specifies the <span id="EN-US_TOPIC_0020212679__text172112232318">ECS</span>s to be deleted. For details, see <a href="#EN-US_TOPIC_0020212679__table32603030">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212679__row2098702122911"><td class="cellrowborder" valign="top" width="16.348365163483656%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212679__p91331882916">delete_publicip</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.548245175482453%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212679__p59877214295">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.748525147485253%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212679__p7987192102915">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.35486451354865%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212679__p592249548">Specifies whether to delete the EIP bound to the <span id="EN-US_TOPIC_0020212679__text440163615187">ECS</span> when deleting the <span id="EN-US_TOPIC_0020212679__text144014367186">ECS</span>. If you do not want to delete the EIP, the system only unbinds the EIP from the ECS and reserves the IP address.</p>
+<p id="EN-US_TOPIC_0020212679__p69218435417">The value can be <strong id="EN-US_TOPIC_0020212679__b18551185619563">true</strong> or <strong id="EN-US_TOPIC_0020212679__b35569567565">false</strong>.</p>
+<ul id="EN-US_TOPIC_0020212679__ul49220485417"><li id="EN-US_TOPIC_0020212679__li199214416544"><strong id="EN-US_TOPIC_0020212679__b813894811445">true</strong>: When an <span id="EN-US_TOPIC_0020212679__text17929415546">ECS</span> is deleted, the EIP bound to the <span id="EN-US_TOPIC_0020212679__text11883111145618">ECS</span> is also released regardless of whether <strong id="EN-US_TOPIC_0020212679__b92037126532">delete_on_termination</strong> of the EIP is <strong id="EN-US_TOPIC_0020212679__b138185142547">true</strong> or <strong id="EN-US_TOPIC_0020212679__b73281220165418">false</strong>.</li><li id="EN-US_TOPIC_0020212679__li199217415415"><strong id="EN-US_TOPIC_0020212679__b730017910495">false</strong>: When an <span id="EN-US_TOPIC_0020212679__text5926412545">ECS</span> is deleted, the EIP is only unbound from the <span id="EN-US_TOPIC_0020212679__text177483617581">ECS</span> and will not be released regardless of whether <strong id="EN-US_TOPIC_0020212679__b168904355591">delete_on_termination</strong> of the EIP is <strong id="EN-US_TOPIC_0020212679__b46345492590">true</strong> or <strong id="EN-US_TOPIC_0020212679__b9634124914598">false</strong>.</li></ul>
+<div class="note" id="EN-US_TOPIC_0020212679__note1626841916112"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212679__p16269519014">If <strong id="EN-US_TOPIC_0020212679__b36842373111">delete_publicip</strong> is not specified, the <strong id="EN-US_TOPIC_0020212679__b1928953595020">delete_on_termination</strong> value of the EIP decides whether the EIP is released when the <span id="EN-US_TOPIC_0020212679__text3749191819517">ECS</span> is deleted.</p>
+<ul id="EN-US_TOPIC_0020212679__ul113577481635"><li id="EN-US_TOPIC_0020212679__li10357184815311">If <strong id="EN-US_TOPIC_0020212679__b165195121866">delete_on_termination</strong> is <strong id="EN-US_TOPIC_0020212679__b379112617616">true</strong> and <strong id="EN-US_TOPIC_0020212679__b905331664">delete_public</strong> is <strong id="EN-US_TOPIC_0020212679__b11997735361">null</strong>, the EIP is released when the <span id="EN-US_TOPIC_0020212679__text17423361782">ECS</span> is deleted.</li><li id="EN-US_TOPIC_0020212679__li1035719481930">If <strong id="EN-US_TOPIC_0020212679__b7328835717">delete_on_termination</strong> is <strong id="EN-US_TOPIC_0020212679__b6328531716">false</strong> and <strong id="EN-US_TOPIC_0020212679__b03281231171">delete_public</strong> is <strong id="EN-US_TOPIC_0020212679__b11328183473">null</strong>, the EIP is only unbound from the <span id="EN-US_TOPIC_0020212679__text91415151981">ECS</span> and will not be released when the <span id="EN-US_TOPIC_0020212679__text861932611388">ECS</span> is deleted.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212679__row812619181914"><td class="cellrowborder" valign="top" width="16.348365163483656%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212679__p5796201231911">delete_volume</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.548245175482453%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212679__p1679661217194">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.748525147485253%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212679__p8796101219193">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.35486451354865%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212679__p169818388196">Specifies whether to delete the data disks attached to an <span id="EN-US_TOPIC_0020212679__text19810174545717">ECS</span> when deleting the <span id="EN-US_TOPIC_0020212679__text187695724616">ECS</span>. If you set the parameter value to <strong id="EN-US_TOPIC_0020212679__b188501459104816">false</strong>, the system only detaches the disks from the <span id="EN-US_TOPIC_0020212679__text158111345135715">ECS</span> and reserves the disks. The default value is <strong id="EN-US_TOPIC_0020212679__b11609105181811">false</strong>.</p>
+<ul id="EN-US_TOPIC_0020212679__ul10698103831919"><li id="EN-US_TOPIC_0020212679__li3698183851913"><strong id="EN-US_TOPIC_0020212679__b1940512183185">true</strong>: indicates to delete the data disks attached to the <span id="EN-US_TOPIC_0020212679__text194108185186">ECS</span> when deleting the <span id="EN-US_TOPIC_0020212679__text9410161871816">ECS</span>.</li><li id="EN-US_TOPIC_0020212679__li1869811386190"><strong id="EN-US_TOPIC_0020212679__b106271223101810">false</strong>: indicates only to detach the data disks attached to the <span id="EN-US_TOPIC_0020212679__text7632723171814">ECS</span> when deleting the <span id="EN-US_TOPIC_0020212679__text2632923101817">ECS</span>.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212679__table32603030"></a><a name="table32603030"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212679__table32603030" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong>servers</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212679__row25141347"><th align="left" class="cellrowborder" valign="top" width="16.35%" id="mcps1.3.3.2.3.2.5.1.1"><p id="EN-US_TOPIC_0020212679__p3065418507">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.48%" id="mcps1.3.3.2.3.2.5.1.2"><p id="EN-US_TOPIC_0020212679__p100135425018">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.85%" id="mcps1.3.3.2.3.2.5.1.3"><p id="EN-US_TOPIC_0020212679__p170854105015">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.32%" id="mcps1.3.3.2.3.2.5.1.4"><p id="EN-US_TOPIC_0020212679__p816115445017">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212679__row53999455"><td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212679__p11879716">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.48%" headers="mcps1.3.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212679__p22732954">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85%" headers="mcps1.3.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212679__p29429992">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.32%" headers="mcps1.3.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212679__p35019191">Specifies the ID of the <span id="EN-US_TOPIC_0020212679__text8316191222318">ECS</span> to be deleted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section112357236514"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0020212679__p13277162618519">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section159261353165117"><h4 class="sectiontitle">Example Request</h4><div class="p" id="EN-US_TOPIC_0020212679__p173492423329">Example request<pre class="screen" id="EN-US_TOPIC_0020212679__screen05408764217">POST https://{endpoint}/v1/{project_id}/cloudservers/delete</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212679__screen526562355119">{
+    "servers": [
+        {
+            "id": "616fb98f-46ca-475e-917e-2563e5a8cd19"
+        }
+    ], 
+    "delete_publicip": false, 
+    "delete_volume": false
+   }</pre>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section5373174623216"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0020212679__screen24271946143218">{
+    "job_id": "70a599e0-31e7-49b7-b260-868f441e862b"
+}</pre>
+<p id="EN-US_TOPIC_0020212679__p15427946203217">Or</p>
+<pre class="screen" id="EN-US_TOPIC_0020212679__screen042719461325">{
+    "error": {
+        "message": "request body is illegal.", 
+        "code": "Ecs.0005"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section12571834"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212679__p1627121972213">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212679__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0020212679__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212657.html">Lifecycle Management</a></div>
+</div>
+</div>
+

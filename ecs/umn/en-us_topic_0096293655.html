@@ -1,0 +1,35 @@
+<a name="EN-US_TOPIC_0096293655"></a><a name="EN-US_TOPIC_0096293655"></a>
+
+<h1 class="topictitle1">Attaching an EVS Disk to an ECS</h1>
+<div id="body1517915606595"><div class="section" id="EN-US_TOPIC_0096293655__section159718590193"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0096293655__p1814265943120">If the existing disks of an <span id="EN-US_TOPIC_0096293655__text754420348381">ECS</span> fail to meet service requirements, for example, due to insufficient disk space or poor disk performance, you can attach more available EVS disks to the <span id="EN-US_TOPIC_0096293655__text1329195955218">ECS</span>, or create more disks (<strong id="EN-US_TOPIC_0096293655__b20498164115317">Storage</strong> &gt; <strong id="EN-US_TOPIC_0096293655__b14689944205314">Elastic Volume Service</strong>) and attach them to the <span id="EN-US_TOPIC_0096293655__text19154115012533">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0096293655__section3374323231"><h4 class="sectiontitle">Prerequisites</h4><ul id="EN-US_TOPIC_0096293655__ul89241491543"><li id="EN-US_TOPIC_0096293655__li19241491843">EVS disks are available.<p id="EN-US_TOPIC_0096293655__p33901229132713"><a name="EN-US_TOPIC_0096293655__li19241491843"></a><a name="li19241491843"></a>For instructions about how to create an EVS disk, see "Creating an EVS Disk" in <em id="EN-US_TOPIC_0096293655__i842352697215930">Elastic Volume Service User Guide</em>.</p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0096293655__section188614152411"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0096293655__ol5143115983115"><li id="EN-US_TOPIC_0096293655__li3490190117228">Log in to the management console.</li><li id="EN-US_TOPIC_0096293655__li464234814566">Click <span><img id="EN-US_TOPIC_0096293655__en-us_topic_0014250631_image1862675853202121" src="en-us_image_0210779229.png"></span> in the upper left corner and select your region and project.</li><li id="EN-US_TOPIC_0096293655__li1514345963117">Under <strong id="EN-US_TOPIC_0096293655__b132051843171914"><span id="EN-US_TOPIC_0096293655__text21991143101911">Computing</span></strong>, click <strong id="EN-US_TOPIC_0096293655__b8205114317197">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0096293655__li17143459143113">In the search box above the upper right corner of the <span id="EN-US_TOPIC_0096293655__text570533014396">ECS</span> list, enter the <span id="EN-US_TOPIC_0096293655__text15990111018551">ECS</span> name, IP address, or ID for search.</li><li id="EN-US_TOPIC_0096293655__li4144155920313">Click the name of the target <span id="EN-US_TOPIC_0096293655__text657784293913">ECS</span>.<p id="EN-US_TOPIC_0096293655__p18144205916319">The page providing details about the <span id="EN-US_TOPIC_0096293655__text2293724185518">ECS</span> is displayed.</p>
+</li><li id="EN-US_TOPIC_0096293655__li1114425923112">Click the <strong id="EN-US_TOPIC_0096293655__b3166031238574">Disks</strong> tab. Then, click <strong id="EN-US_TOPIC_0096293655__b62538178185745">Attach Disk</strong>.<p id="EN-US_TOPIC_0096293655__p3144159153115">The <strong id="EN-US_TOPIC_0096293655__b84235270622427">Attach Disk</strong> dialog box is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0096293655__fig1332144315348"><span class="figcap"><b>Figure 1 </b>Attach Disk</span><br><span><img id="EN-US_TOPIC_0096293655__image3523175193412" src="en-us_image_0096298046.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0096293655__li19144105919315">Select the target disk, specify the disk as the system disk or data disk.<div class="note" id="EN-US_TOPIC_0096293655__note105791934312"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0096293655__ul1557913920439"><li id="EN-US_TOPIC_0096293655__li105793912435">If no EVS disks are available, click <strong id="EN-US_TOPIC_0096293655__b1042302387">Create Disk</strong> in the lower part of the list.</li><li id="EN-US_TOPIC_0096293655__li85798934317">For details about restrictions on attaching a disk, see <a href="en-us_topic_0040863659.html">What Are the Requirements for Attaching an EVS Disk to an ECS?</a></li><li id="EN-US_TOPIC_0096293655__li057959184316">The device names for the local disks and EVS disks mounted to a disk-intensive ECS comply with the following rules:<ul id="EN-US_TOPIC_0096293655__ul357969164315"><li id="EN-US_TOPIC_0096293655__li1357989174314">System disk: Use sda or vda.</li><li id="EN-US_TOPIC_0096293655__li155793934315">Local disk: Use the device name following sda or vda in alphabetical order.</li><li id="EN-US_TOPIC_0096293655__li10579179194315">EVS disk: Use the device name added in alphabetical order following those used by local disks.</li></ul>
+</li></ul>
+</div></div>
+</li><li id="EN-US_TOPIC_0096293655__li378881832719">Click <strong id="EN-US_TOPIC_0096293655__b84235270611586">OK</strong>.<p id="EN-US_TOPIC_0096293655__p27881518102716">After the disk is attached, you can view the information about it on the <strong id="EN-US_TOPIC_0096293655__b84235270694114">Disks</strong> tab.</p>
+<div class="fignone" id="EN-US_TOPIC_0096293655__fig18788918132718"><span class="figcap"><b>Figure 2 </b>Viewing the newly attached disk</span><br><span><img id="EN-US_TOPIC_0096293655__image108323391162" src="en-us_image_0096298123.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0096293655__section76311616163518"><h4 class="sectiontitle">Follow-up Procedure</h4><p id="EN-US_TOPIC_0096293655__p2977174934812">If the attached disk is newly created, the disk can be used only after it is initialized.</p>
+<p id="EN-US_TOPIC_0096293655__p1114119113519">For instructions about how to initialize a data disk, see <a href="en-us_topic_0030831623.html">Scenarios and Disk Partitions</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0092499770.html">EVS Disks</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,26 @@
+<a name="EN-US_TOPIC_0018124779"></a><a name="EN-US_TOPIC_0018124779"></a>
+
+<h1 class="topictitle1">Why Does an ECS Fail to Be Remotely Connected Using RDP and Internal Error Code 4 Is Displayed?</h1>
+<div id="body1437661772647"><div class="section" id="EN-US_TOPIC_0018124779__section13643150163817"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0018124779__p31517411381">An internal error is displayed when you log in to a Windows ECS and you fail to connect to the ECS remotely. Generally, this problem occurs because the Remote Desktop Services is busy.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0018124779__section2025503792516"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0018124779__p13981141172518">The Remote Desktop Services is busy.</p>
+<p id="EN-US_TOPIC_0018124779__p338757203417">The remote desktop is disconnected after login but is not logged out. To prevent this problem, log out of the ECS if you do not need to remotely connect to it.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0018124779__section14549015238"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0018124779__en-us_topic_0250947106_ol24311821171219"><li id="EN-US_TOPIC_0018124779__li8921424267">Use VNC provided by the management console to remotely log in to the ECS.</li><li id="EN-US_TOPIC_0018124779__en-us_topic_0250947106_li15608759122819">Open the Windows search box, enter <strong id="EN-US_TOPIC_0018124779__b15844649153217">services</strong>, and select <strong id="EN-US_TOPIC_0018124779__b7851124933213">Services</strong>.</li><li id="EN-US_TOPIC_0018124779__en-us_topic_0250947106_li198634731616">In the <strong id="EN-US_TOPIC_0018124779__b14815154712111">Services</strong> window, restart <strong id="EN-US_TOPIC_0018124779__b1681524792112">Remote Desktop Services</strong>. Ensure that <strong id="EN-US_TOPIC_0018124779__b68163473218">Remote Desktop Services</strong> is in the <strong id="EN-US_TOPIC_0018124779__b581610472213">Running</strong> status.<div class="fignone" id="EN-US_TOPIC_0018124779__en-us_topic_0250947106_fig1355354132417"><span class="figcap"><b>Figure 1 </b>Remote Desktop Services</span><br><span><img id="EN-US_TOPIC_0018124779__en-us_topic_0250947106_image8553134102416" src="en-us_image_0000001100835050.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0018124779__li115811494811">Remotely connect to the ECS again.<p id="EN-US_TOPIC_0018124779__p19829138104919"><a name="EN-US_TOPIC_0018124779__li115811494811"></a><a name="li115811494811"></a>If the connection still fails, run the cmd command on the local server as the administrator, run the <strong id="EN-US_TOPIC_0018124779__b1217244318517">netsh winsock reset</strong> command to restore the default network connection configurations, and then retry the remote connection.</p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

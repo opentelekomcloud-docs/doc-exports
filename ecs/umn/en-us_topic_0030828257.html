@@ -1,0 +1,86 @@
+<a name="EN-US_TOPIC_0030828257"></a><a name="EN-US_TOPIC_0030828257"></a>
+
+<h1 class="topictitle1">Network</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0030828257__section16625011109"><h4 class="sectiontitle">VPC</h4><p id="EN-US_TOPIC_0030828257__p12501740113420">Virtual Private Cloud (VPC) allows you to create customized virtual networks in your logically isolated AZ. Such networks are dedicated zones that are logically isolated, providing secure network environments for your <span id="EN-US_TOPIC_0030828257__text169521139133911">ECS</span>s. You can define security groups, virtual private networks (VPNs), IP address segments, and bandwidth for a VPC. This facilitates internal network configuration and management and allows you to change your network in a secure and convenient network manner. You can also customize the <span id="EN-US_TOPIC_0030828257__text154395318404">ECS</span> access rules within a security group and between security groups to improve <span id="EN-US_TOPIC_0030828257__text1623224113588">ECS</span> security.</p>
+<p id="EN-US_TOPIC_0030828257__p129093206352">For more information about VPC, see <em id="EN-US_TOPIC_0030828257__i8262088249214">Virtual Private Cloud User Guide</em>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0030828257__section537721521012"><h4 class="sectiontitle">Subnet</h4><p id="EN-US_TOPIC_0030828257__a70be88776ec8467d878acfcb6df54f5e">A subnet is a range of IP addresses in your VPC and provides IP address management and DNS resolution functions for <span id="EN-US_TOPIC_0030828257__text1380816367403">ECS</span>s in it. The IP addresses of all <span id="EN-US_TOPIC_0030828257__text8271443940">ECS</span>s in a subnet belong to the subnet.</p>
+<p id="EN-US_TOPIC_0030828257__p3595664516364">By default, <span id="EN-US_TOPIC_0030828257__text1058405751">ECS</span>s in all subnets of the same VPC can communicate with each other, while <span id="EN-US_TOPIC_0030828257__text173651210656">ECS</span>s in different VPCs cannot.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0030828257__section15617142420109"><h4 class="sectiontitle">Security Group</h4><p id="EN-US_TOPIC_0030828257__p1868655417918">A security group is a collection of access control rules for <span id="EN-US_TOPIC_0030828257__text486184914404">ECS</span>s that have the same security protection requirements and that are mutually trusted. By adding an <span id="EN-US_TOPIC_0030828257__text668484810556">ECS</span> to a security group, you apply all the rules defined for this security group to this <span id="EN-US_TOPIC_0030828257__text45111827819">ECS</span>.</p>
+<p id="EN-US_TOPIC_0030828257__p1388113065018">Your account automatically comes with a default security group. The default security group allows all outbound data, denies all inbound data, and allows all data between <span id="EN-US_TOPIC_0030828257__text192935571406">ECS</span>s in the group. Your <span id="EN-US_TOPIC_0030828257__text148441317613">ECS</span>s in the security group can communicate with each other without the need to add rules.</p>
+<div class="fignone" id="EN-US_TOPIC_0030828257__fig11890174421819"><span class="figcap"><b>Figure 1 </b>Default security group</span><br><span><img class="imgResize" id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_image22171236172514" src="en-us_image_0000001230120807.png" title="Click to enlarge"></span></div>
+<p id="EN-US_TOPIC_0030828257__p511784554512"></p>
+<p id="EN-US_TOPIC_0030828257__p14738751115618"><a href="#EN-US_TOPIC_0030828257__table1580115155277">Table 1</a> describes default security group rules.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0030828257__table1580115155277"></a><a name="table1580115155277"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0030828257__table1580115155277" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Default security group rules</caption><thead align="left"><tr id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_row12930145141920"><th align="left" class="cellrowborder" valign="top" width="11.83%" id="mcps1.3.3.7.2.6.1.1"><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p3930145118194">Direction</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.97%" id="mcps1.3.3.7.2.6.1.2"><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p129301851131913">Protocol</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.3.7.2.6.1.3"><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p093075141919">Port/Range</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.22%" id="mcps1.3.3.7.2.6.1.4"><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p149306511191">Source/Destination</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="35.980000000000004%" id="mcps1.3.3.7.2.6.1.5"><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p99301851161916">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_row17931125111193"><td class="cellrowborder" valign="top" width="11.83%" headers="mcps1.3.3.7.2.6.1.1 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p1593111518191">Outbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.97%" headers="mcps1.3.3.7.2.6.1.2 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p19931105117191">All</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.7.2.6.1.3 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p15931651181920">All</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.22%" headers="mcps1.3.3.7.2.6.1.4 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p179318515196">Destination: 0.0.0.0/0</p>
+</td>
+<td class="cellrowborder" valign="top" width="35.980000000000004%" headers="mcps1.3.3.7.2.6.1.5 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p49315518196">Allows all outbound traffic.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_row109311451131911"><td class="cellrowborder" valign="top" width="11.83%" headers="mcps1.3.3.7.2.6.1.1 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p1293111513193">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.97%" headers="mcps1.3.3.7.2.6.1.2 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p1493105115194">All</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.7.2.6.1.3 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p1593155181920">All</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.22%" headers="mcps1.3.3.7.2.6.1.4 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p593115141917">Source: the current security group (for example, sg-<em id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_i2138146127154428">xxxxx</em>)</p>
+</td>
+<td class="cellrowborder" valign="top" width="35.980000000000004%" headers="mcps1.3.3.7.2.6.1.5 "><p id="EN-US_TOPIC_0030828257__en-us_topic_0118534003_p2931151121912">Allows communications among ECSs within the security group and denies all inbound traffic (incoming data packets).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0030828257__section2264152918101"><h4 class="sectiontitle"><span id="EN-US_TOPIC_0030828257__text5851112763816">EIP</span></h4><p id="EN-US_TOPIC_0030828257__p1018119273218">The Elastic IP (EIP) service enables your cloud resources to communicate with the Internet using static public IP addresses and scalable bandwidths. EIPs can be bound to or unbound from <span id="EN-US_TOPIC_0030828257__text81121517193911">ECS</span>s, BMSs, virtual IP addresses, NAT gateways, or load balancers. </p>
+<p id="EN-US_TOPIC_0030828257__p218822964617">Each <span id="EN-US_TOPIC_0030828257__text20178162819399">EIP</span> can be used by only one cloud resource at a time.</p>
+<div class="fignone" id="EN-US_TOPIC_0030828257__fig15314318474"><span class="figcap"><b>Figure 2 </b>Accessing the Internet using an EIP</span><br><span><img class="imgResize" id="EN-US_TOPIC_0030828257__image2143713355" src="en-us_image_0178890066.png" title="Click to enlarge"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0030828257__section9843135016217"><h4 class="sectiontitle">Network QoS</h4><p id="EN-US_TOPIC_0030828257__p2719863452">Network QoS uses basic technologies to improve the quality of network communication. A network with QoS enabled offers predictable network performance and effectively allocates network bandwidth to use network resources.</p>
+<p id="EN-US_TOPIC_0030828257__p177731525134614">To obtain the QoS data of an ECS flavor, including the maximum bandwidth, assured bandwidth, maximum PPS, and NIC multi-queue, see <a href="en-us_topic_0177512565.html">ECS Specifications</a>.</p>
+<div class="p" id="EN-US_TOPIC_0030828257__p835110576352">The intranet bandwidth and PPS of an ECS are determined by its flavor.<ul id="EN-US_TOPIC_0030828257__ul123521357113516"><li id="EN-US_TOPIC_0030828257__li17352957153514">Assured intranet bandwidth: indicates the guaranteed bandwidth allocated to an ECS</li><li id="EN-US_TOPIC_0030828257__li20352457113514">Maximum intranet bandwidth: indicates the maximum bandwidth that can be allocated to an ECS</li><li id="EN-US_TOPIC_0030828257__li2352195783519">Maximum intranet PPS: indicates the maximum ECS capability in transmitting and receiving packets.</li><li id="EN-US_TOPIC_0030828257__li192851238163616">NIC multi-queue: allocates NIC interrupt requests to multiple vCPUs for higher PPS performance and bandwidth.<div class="note" id="EN-US_TOPIC_0030828257__note187491138374"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0030828257__ul1274915137378"><li id="EN-US_TOPIC_0030828257__li6749121316378">For instructions about how to test PPS, see <a href="en-us_topic_0115820205.html">How Can I Test Network Performance?</a></li><li id="EN-US_TOPIC_0030828257__li18749413163714">For instructions about how to enable NIC multi-queue, see <a href="en-us_topic_0058758453.html">Enabling NIC Multi-Queue</a>.</li></ul>
+</div></div>
+</li></ul>
+</div>
+<p id="EN-US_TOPIC_0030828257__p147501395207"><strong id="EN-US_TOPIC_0030828257__b148987235718">Use case of network QoS:</strong></p>
+<p id="EN-US_TOPIC_0030828257__p137509992014">All ECSs of the same hypervisor share the network QoS. There is a hypervisor bucket within the host between the ECS and the hypervisor. So packets from ECSs pass through the bucket to the hypervisor. The bucket size (GB) is determined by the ECS flavor.</p>
+<p id="EN-US_TOPIC_0030828257__p16750498203">For example, if the maximum bandwidth of a hypervisor bucket is 10 Gbit/s and will be shared by ECS 1 and ECS 2, the assured bandwidth of ECS 1 is 5 Gbit/s and that of ECS 2 is 1 Gbit/s. ECS 1 and ECS 2 share the bandwidth of 10 Gbit/s.</p>
+<ul id="EN-US_TOPIC_0030828257__ul9750189162010"><li id="EN-US_TOPIC_0030828257__li10750149122011">If the bandwidth required by ECS 1 is 10 Gbit/s and that required by ECS 2 is 0 Gbit/s, all bandwidths are allocated to ECS 1.</li><li id="EN-US_TOPIC_0030828257__li167507911204">If the bandwidth required by ECS 1 is 10 Gbit/s and that required by ECS 2 is 1 Gbit/s, the bandwidth allocated to ECS 1 is 9 Gbit/s and that allocated to ECS 2 is 1 Gbit/s.</li><li id="EN-US_TOPIC_0030828257__li0750696207">If the total bandwidth required by ECS 1 and ECS 2 exceeds the bandwidth of the hypervisor bucket, the assured bandwidth will be allocated to the ECSs first, that is the bandwidth for ECS 1 is 5 Gbit/s and that for ECS 2 is 1 Gbit/s. The remaining 4 Gbit/s of bandwidth will be randomly used by the two ECSs.</li></ul>
+<p id="EN-US_TOPIC_0030828257__p1090254810254">Network QoS:</p>
+<ul id="EN-US_TOPIC_0030828257__ul19122163912615"><li id="EN-US_TOPIC_0030828257__li19122539122614">The maximum/assured bandwidth is completely independent of the EIP bandwidth.</li><li id="EN-US_TOPIC_0030828257__li81227395265">ECSs of the same hypervisor share the total bandwidth of the hypervisor.</li><li id="EN-US_TOPIC_0030828257__li8892630135718">Network QoS applies for both internal and external bandwidth.</li><li id="EN-US_TOPIC_0030828257__li2122133962610">Network QoS has been applied to the existing KVM-based ECSs.</li><li id="EN-US_TOPIC_0030828257__li1212293916263">ECSs of the same hypervisor are preferentially allocated with assured bandwidths. Only when other ECSs of the same hypervisor are not in use, an ECS in use in the hypervisor can have the maximum bandwidth.</li></ul>
+<div class="note" id="EN-US_TOPIC_0030828257__note1375018911201"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0030828257__ul475039142012"><li id="EN-US_TOPIC_0030828257__li63063428315">Network QoS applies to any program running on an ECS.</li><li id="EN-US_TOPIC_0030828257__li887516485416">Network QoS applies for both internal and external bandwidth.</li><li id="EN-US_TOPIC_0030828257__li1214495615412">The EIP bandwidth limits the external bandwidth, and the network QoS limits the internal bandwidth.</li></ul>
+</div></div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0092494580.html">Service Overview</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

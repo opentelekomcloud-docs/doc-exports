@@ -1,0 +1,289 @@
+<a name="EN-US_TOPIC_0093263550"></a><a name="EN-US_TOPIC_0093263550"></a>
+
+<h1 class="topictitle1">Login Using VNC</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0093263550__section1657615471270"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p38310930111459">This section describes how to use VNC provided on the management console to log in to an ECS. This function applies to emergency O&amp;M. In other scenarios, you are advised to log in to ECSs using SSH or MSTSC.</p>
+<p id="EN-US_TOPIC_0093263550__p1019865211284">For instructions about how to copy and paste data on VNC pages after the ECS login, see <a href="#EN-US_TOPIC_0093263550__section322133015286">Follow-up Procedure</a>.</p>
+<div class="note" id="EN-US_TOPIC_0093263550__note1728413194713"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_p1388918398504">Before using remote login (VNC) provided on the management console to log in to a Linux <span id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_text826712810134">ECS</span> authenticated using a key pair, log in to the ECS <a href="en-us_topic_0017955380.html">using an SSH key</a> and set a login password.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section19897287191525"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ul43850825142914"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li25396503142914">The remote login function is implemented using customized ports. Therefore, before attempting to log in remotely, ensure that the port to be used is not blocked by the firewall. For example, if the remote login link is xxx:8002, ensure that port 8002 is not blocked by the firewall.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li27241935142914">If the client OS uses a local proxy and the firewall port cannot be configured on the local proxy, disable the proxy mode and then try logging in remotely.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section3272280121431"><h4 class="sectiontitle">Login Notes</h4><ol id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ol60125854214516"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li31499299214613">When you log in to the ECS using VNC, four types of keyboards will be used, as described in <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table10692372181721">Table 1</a>.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table10692372181721"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_table10692372181721"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table10692372181721" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Keyboard types</caption><thead align="left"><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row53137814181721"><th align="left" class="cellrowborder" valign="top" width="21.62%" id="mcps1.3.3.2.1.2.2.4.1.1"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p30908407181721">Keyboard Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="43.79%" id="mcps1.3.3.2.1.2.2.4.1.2"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p37714767181721">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="34.589999999999996%" id="mcps1.3.3.2.1.2.2.4.1.3"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p757482181721">Keyboard Language</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row42556453181721"><td class="cellrowborder" valign="top" width="21.62%" headers="mcps1.3.3.2.1.2.2.4.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p38862229181721">Physical keyboard</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79%" headers="mcps1.3.3.2.1.2.2.4.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p42383623181721">Used by the terminal and allows terminal data input.</p>
+</td>
+<td class="cellrowborder" valign="top" width="34.589999999999996%" headers="mcps1.3.3.2.1.2.2.4.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p51975930181721">Selected by users locally.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row18005491181721"><td class="cellrowborder" valign="top" width="21.62%" headers="mcps1.3.3.2.1.2.2.4.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p12192092181721">Input method keyboard on the terminal</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79%" headers="mcps1.3.3.2.1.2.2.4.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p56742150181721">Used for logging in to the management console from a terminal, such as a computer. The keyboard input method of the terminal must comply with the physical keyboard language type. In this way, the entered data can be correctly transferred from the physical keyboard to the VNC client.</p>
+</td>
+<td class="cellrowborder" valign="top" width="34.589999999999996%" headers="mcps1.3.3.2.1.2.2.4.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p52047219181721">Selected by users locally.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row29768537181721"><td class="cellrowborder" valign="top" width="21.62%" headers="mcps1.3.3.2.1.2.2.4.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p4356315181721">VNC keyboard</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79%" headers="mcps1.3.3.2.1.2.2.4.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p46406878181721">Used for VNC logins. The VNC keyboard input method must comply with the physical keyboard language type. In this way, the entered data can be correctly transferred from the VNC client to the ECS OS.</p>
+<div class="note" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_note1570793894248"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p4859993494248">The English keyboard is used by default. The system also supports other keyboard languages.</p>
+</div></div>
+</td>
+<td class="cellrowborder" valign="top" width="34.589999999999996%" headers="mcps1.3.3.2.1.2.2.4.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p70096579373">Can be configured through the management console.</p>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p4116452181721">For instructions about how to select a VNC keyboard language, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section46750509111459">Logging In to an ECS Using an English Keyboard</a> and <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section5982347111459">Logging In to an ECS Using a Non-English Keyboard</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row25012200181721"><td class="cellrowborder" valign="top" width="21.62%" headers="mcps1.3.3.2.1.2.2.4.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p59196322181721">ECS OS keyboard</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79%" headers="mcps1.3.3.2.1.2.2.4.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p6445544610506">Input method keyboard configured in the ECS OS. Ensure that this input method complies with the physical keyboard language type for correct response to the entered data transferred from the VNC client.</p>
+<div class="note" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_note17013726105332"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_ul4327783510508"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li2767046105010">The default OS keyboard language of an ECS created using a public image is English. For additional information, see <em id="EN-US_TOPIC_0093263550__i323077165211"><a href="https://docs.otc.t-systems.com/en-us/ims/index.html" target="_blank" rel="noopener noreferrer">Public Images Introduction</a></em>.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li1242727710508">The OS keyboard language of an ECS created using a private image is customized.</li></ul>
+</div></div>
+</td>
+<td class="cellrowborder" valign="top" width="34.589999999999996%" headers="mcps1.3.3.2.1.2.2.4.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p49626590181721">Configured by users locally.</p>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p20720990181721">For instructions about how to change an ECS OS keyboard language, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section66962382111459">Changing the OS Keyboard Language</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li1276149171710">When you log in to the ECS using VNC, ensure that your configured keyboard language is correct.<div class="p" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p2519480511612"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li1276149171710"></a><a name="en-us_topic_0027268511_li1276149171710"></a>The entered data is as expected only if the input method keyboard on the terminal, the VNC keyboard, and the ECS OS keyboard languages are the same as the physical keyboard language. For details about language configuration in the four types of keyboards, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table31240733181814">Table 2</a>.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table31240733181814"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_table31240733181814"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table31240733181814" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Language configuration in the four types of keyboards</caption><thead align="left"><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row7187309181814"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.1.2.2.6.1.1"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p55421616181814">Physical Keyboard</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.1.2.2.6.1.2"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p23271888181814">Input Method Keyboard on the Terminal</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.05%" id="mcps1.3.3.2.2.1.2.2.6.1.3"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p43044593181814">VNC Keyboard</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.95%" id="mcps1.3.3.2.2.1.2.2.6.1.4"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p33575573181814">ECS OS Keyboard</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.1.2.2.6.1.5"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p56577338181814">Supported or Not</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row61810526182231"><td class="cellrowborder" rowspan="8" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p26481438182231">English</p>
+</td>
+<td class="cellrowborder" rowspan="4" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p48583343182231">English</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="16.05%" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p25476291182231">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.95%" headers="mcps1.3.3.2.2.1.2.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p27720152182231">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.5 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p55366256182231">Yes</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row55112854181814"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p8676484181814">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p53450661181814">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row19041350181814"><td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p35663203181814">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p22664992181814">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p53223387181814">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row11541330181814"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p48305560181814">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p58514702181814">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row26308419182924"><td class="cellrowborder" rowspan="4" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p15985449182924">German</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p55258849182942">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p16417465183032">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p28085585183043">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row45219031182924"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p40442689183032">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p61478188183043">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row4466119182924"><td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p65516692182945">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p12275038183032">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p50765805183043">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row27668196182924"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p21489343183032">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p33405417183049">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row1648328818311"><td class="cellrowborder" rowspan="8" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p4886474918318">German</p>
+</td>
+<td class="cellrowborder" rowspan="4" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p6349176418318">English</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="16.05%" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p2040204618318">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.95%" headers="mcps1.3.3.2.2.1.2.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p479456918318">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.1.2.2.6.1.5 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5390415118318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row5764100418311"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5613255118318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5928237818318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row1303258718311"><td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5993276918318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p3697029718318">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p6244405018318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row5117229618311"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p6565458018318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p2689824318318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row1581944118311"><td class="cellrowborder" rowspan="4" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p609063618318">German</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5603480018318">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p1994018118318">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p3869497318318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row801999018311"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p1848781218318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p56854418318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row6689709618311"><td class="cellrowborder" rowspan="2" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p3070590318318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p1851465718318">English</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p2980232418318">No</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row3970959018311"><td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p1577780518318">German</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.3.2.2.1.2.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p216114218318">Yes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li48438585164848">If the password used when you create the ECS is entered using the English keyboard, you must use the English keyboard to enter the password when logging in to the ECS later.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section46750509111459"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section46750509111459"></a><a name="en-us_topic_0027268511_section46750509111459"></a><h4 class="sectiontitle">Logging In to an ECS Using an English Keyboard</h4><ol id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ol28694912111459"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li56927618111459">Log in to the management console.</li><li id="EN-US_TOPIC_0093263550__li464234814566">Click <span><img id="EN-US_TOPIC_0093263550__en-us_topic_0014250631_image1862675853202121" src="en-us_image_0210779229.png"></span> in the upper left corner and select your region and project.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li38109735111614">Under <strong id="EN-US_TOPIC_0093263550__b1857510535715">Computing</strong>, click <strong id="EN-US_TOPIC_0093263550__b7575115317713">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li26955662111459">In the search box above the upper right corner of the ECS list, enter the ECS name and click <span><img id="EN-US_TOPIC_0093263550__image770443928104314" src="en-us_image_0128851444.png"></span> for search.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li16881493111459">Locate the row containing the ECS and click <strong id="EN-US_TOPIC_0093263550__b27882506151141">Remote Login</strong> in the <strong id="EN-US_TOPIC_0093263550__b49615964151141">Operation</strong> column.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li17715715111459"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li17715715111459"></a><a name="en-us_topic_0027268511_li17715715111459"></a>In the displayed <strong id="EN-US_TOPIC_0093263550__b1064769323195924">Configure Keyboard Layout for Remote Login</strong> dialog box, select the English keyboard.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_fig25223713111459"><span class="figcap"><b>Figure 1 </b>Keyboard layout configuration</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_image198214318316" src="en-us_image_0030874270.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li258703111459">Click <strong id="EN-US_TOPIC_0093263550__b842352706112241">Remote Login</strong>.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li2328327111459">(Optional) If you have changed the system language, in the dialog box that is displayed, click <strong id="EN-US_TOPIC_0093263550__b2144786640211514">Start Remote Login</strong>.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_fig54376817111459"><span class="figcap"><b>Figure 2 </b>Remote Login</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_image42446047111459" src="en-us_image_0030874271.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li9384301192014">(Optional) When the system displays "Press CTRL+ALT+DELETE to log on", click <strong id="EN-US_TOPIC_0093263550__b842352706201616">Send CtrlAltDel</strong> in the upper part of the remote login page to log in to the ECS.<div class="fignone" id="EN-US_TOPIC_0093263550__fig51941916112020"><span class="figcap"><b>Figure 3 </b>Send CtrlAltDel</span><br><span><img id="EN-US_TOPIC_0093263550__image14194191614209" src="en-us_image_0201100229.png"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li8128490194410">(Optional) If you need your cursor to be displayed on the remote login page, click <strong id="EN-US_TOPIC_0093263550__b1433582633116">Local Cursor</strong>.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_fig3022163194924"><span class="figcap"><b>Figure 4 </b>Local Cursor</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0036067988_image5640621116424" src="en-us_image_0093469181.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li46470107111459">Enter the ECS password as prompted.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section5982347111459"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section5982347111459"></a><a name="en-us_topic_0027268511_section5982347111459"></a><h4 class="sectiontitle">Logging In to an ECS Using a Non-English Keyboard</h4><ol id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ol14808116111459"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li66164181111459">Log in to the management console.</li><li id="EN-US_TOPIC_0093263550__li132914364171">Click <span><img id="EN-US_TOPIC_0093263550__en-us_topic_0014250631_image1862675853202121_1" src="en-us_image_0210779229.png"></span> in the upper left corner and select your region and project.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li17452565111640">Under <strong id="EN-US_TOPIC_0093263550__b858013531875">Computing</strong>, click <strong id="EN-US_TOPIC_0093263550__b658045311715">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li49523598111459">In the search box above the upper right corner of the ECS list, enter the ECS name, IP address, or ID, and click <span><img id="EN-US_TOPIC_0093263550__image246119121104258" src="en-us_image_0128851405.png"></span> for search.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li50214528111459">Locate the row containing the ECS and click <strong id="EN-US_TOPIC_0093263550__b387864163">Remote Login</strong> in the <strong id="EN-US_TOPIC_0093263550__b1233009196">Operation</strong> column.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li49277573111459">In the displayed <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_b1064769323195924">Configure Keyboard Layout for Remote Login</strong> dialog box, select the English keyboard.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_fig25223713111459"><span class="figcap"><b>Figure 5 </b>Keyboard layout configuration</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_image198214318316" src="en-us_image_0030874270.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol><ol start="7" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ol65873268111459"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li55988502111459">Click <strong id="EN-US_TOPIC_0093263550__b915388366">Remote Login</strong>.</li><li id="EN-US_TOPIC_0093263550__li10982133714714">(Optional) If you have changed the system language, in the dialog box that is displayed, click <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_b2144786640211514">Start Remote Login</strong>.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_fig54376817111459"><span class="figcap"><b>Figure 6 </b>Remote Login</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_image42446047111459" src="en-us_image_0030874271.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li56190747193213">(Optional) When the system displays "Press CTRL+ALT+DELETE to log on", click <strong id="EN-US_TOPIC_0093263550__b340030145">Send CtrlAltDel</strong> in the upper part of the remote login page to log in to the ECS.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0027290684_fig22996848191913"><span class="figcap"><b>Figure 7 </b>Send CtrlAltDel</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0027290684_image50805371191913" src="en-us_image_0201103161.png"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__li149651810480">(Optional) If you need your cursor to be displayed on the remote login page, click <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_b1433582633116">Local Cursor</strong>.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_fig3022163194924"><span class="figcap"><b>Figure 8 </b>Local Cursor</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0093263550_en-us_topic_0027268511_en-us_topic_0036067988_image5640621116424" src="en-us_image_0093469181.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li58839855111459">Enter the ECS password as prompted.<ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ul59796655111459"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li1298990111459">When logging in to the ECS using VNC for the first time, use the English keyboard to enter the password. After you have logged in to the ECS, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section66962382111459">Changing the OS Keyboard Language</a> to change the keyboard language of the ECS OS. You can then select the keyboard language and enter the password the next time you log in.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li38109398111459">If you have changed the keyboard language of the ECS OS, ensure that the keyboard language in use, the keyboard language selected in step <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_li17715715111459">6</a>, and the changed OS keyboard language are all the same.</li></ul>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section66962382111459"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section66962382111459"></a><a name="en-us_topic_0027268511_section66962382111459"></a><h4 class="sectiontitle">Changing the OS Keyboard Language</h4><p id="EN-US_TOPIC_0093263550__p1414717120227">If the ECS is running Linux, run the following command:</p>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p45565903111459"><strong id="EN-US_TOPIC_0093263550__b114878315194611">loadkeys </strong><em id="EN-US_TOPIC_0093263550__i1497118939194615">keymapfile</em></p>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p65764848111459">The <em id="EN-US_TOPIC_0093263550__i1767502584151233">keymapfile</em> parameter indicates the name of the file containing the mappings between the keys and displayed characters.</p>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p55012722111459">For example, if the name of a German keyboard mapping file is <strong id="EN-US_TOPIC_0093263550__b990111010264">de</strong>, run the <strong id="EN-US_TOPIC_0093263550__b1282532171711">loadkeys de</strong> command.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section11831862125315"><h4 class="sectiontitle">Configuration Example</h4><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p20409542113040"><strong id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_b64673786113045">Scenarios</strong></p>
+<div class="p" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p2178817114150">If you attempt to log in to an ECS created using a public image for the first time, the languages of the four types of keyboards before the configuration are as follows (<strong id="EN-US_TOPIC_0093263550__b84235270616383">Before configuration</strong> row in <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132">Table 3</a>):<ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ul65627595141548"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li21693868141548">Physical keyboard: German</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li24708317141548">Input method keyboard on the terminal: English</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li47257838141548">VNC keyboard: English</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li16872059141548">ECS OS keyboard: English</li></ul>
+</div>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p35665740111410">In this case, you must change the languages of the other three types of keyboards to the same language as the physical keyboard for expected data entering. For details, see the <strong id="EN-US_TOPIC_0093263550__b842352706164126">Solution 1</strong> row in <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132">Table 3</a>.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Languages in the four types of keyboards</caption><thead align="left"><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row9068515113132"><th align="left" class="cellrowborder" valign="top" width="12.479999999999999%" id="mcps1.3.7.5.2.6.1.1"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p14582234113132">-</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.110000000000001%" id="mcps1.3.7.5.2.6.1.2"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p42361586113132">Physical Keyboard</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="27.71%" id="mcps1.3.7.5.2.6.1.3"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p27977739113132">Input Method Keyboard on the Terminal</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.560000000000002%" id="mcps1.3.7.5.2.6.1.4"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p334247113132">VNC Keyboard</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="27.139999999999997%" id="mcps1.3.7.5.2.6.1.5"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p28450884113132">ECS OS Keyboard</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row66463964113132"><td class="cellrowborder" valign="top" width="12.479999999999999%" headers="mcps1.3.7.5.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p35901676113132">Before configuration</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.110000000000001%" headers="mcps1.3.7.5.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p39567167113132">German</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.71%" headers="mcps1.3.7.5.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p4754515113132">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.560000000000002%" headers="mcps1.3.7.5.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p10285226113132">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.139999999999997%" headers="mcps1.3.7.5.2.6.1.5 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p60540098113132">English</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_row51666207113132"><td class="cellrowborder" valign="top" width="12.479999999999999%" headers="mcps1.3.7.5.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p55039631141644">Solution 1</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.110000000000001%" headers="mcps1.3.7.5.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p37520760113132">German</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.71%" headers="mcps1.3.7.5.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p57919400113132">German</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.560000000000002%" headers="mcps1.3.7.5.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p59003866113132">German</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.139999999999997%" headers="mcps1.3.7.5.2.6.1.5 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p32027277113132">German</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_row2539012014327"><td class="cellrowborder" valign="top" width="12.479999999999999%" headers="mcps1.3.7.5.2.6.1.1 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p3256759814327">Solution 2</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.110000000000001%" headers="mcps1.3.7.5.2.6.1.2 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p3263481314327">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.71%" headers="mcps1.3.7.5.2.6.1.3 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p3872257314327">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.560000000000002%" headers="mcps1.3.7.5.2.6.1.4 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p2451625614327">English</p>
+</td>
+<td class="cellrowborder" valign="top" width="27.139999999999997%" headers="mcps1.3.7.5.2.6.1.5 "><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p5598411614327">English</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p20156482113734"><strong id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_b27242384113744">Procedure</strong></p>
+<ol id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_ol44606711114331"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li55865773114331"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li55865773114331"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_li55865773114331"></a>Locally configure the language, for example, German, in the input method keyboard on the terminal.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li47959195114426">Set the VNC keyboard language to English.<div class="note" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_note46283957115247"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p50975605115247">When you log in to the ECS using VNC for the first time, the default ECS OS keyboard language is English. Therefore, you must set the VNC keyboard language to English.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li60650291114437">Log in to the ECS and change the ECS OS language to German.<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p5704689115115"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li60650291114437"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_li60650291114437"></a>For details, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section66962382111459">Changing the OS Keyboard Language</a>.</p>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148"></a>Change the VNC keyboard language to German.<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p50534388115449"><a name="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148"></a><a name="en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148"></a>For details, see <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_section5982347111459">Logging In to an ECS Using a Non-English Keyboard</a>.</p>
+</li></ol>
+<p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_p38927118115614">To set the languages on the four types of keyboards to all be the same, perform <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li55865773114331">1</a> to <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_li62706781115148">4</a>.</p>
+<div class="note" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_note5042802112452"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p49314527143010">During the configuration, if English characters cannot be entered using the current physical keyboard, use the English soft keyboard to modify the configuration described in the <strong id="EN-US_TOPIC_0093263550__b842352706195613">Solution 2</strong> row of <a href="#EN-US_TOPIC_0093263550__en-us_topic_0027268511_en-us_topic_0039525621_table18256759113132">Table 3</a>. In such a case, you only need to use the English soft keyboard to enter characters.</p>
+<ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ul53844149143541"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li61469907143541">To enable the Windows English soft keyboard, choose <strong id="EN-US_TOPIC_0093263550__b842352706165242">Start</strong> &gt; <strong id="EN-US_TOPIC_0093263550__b842352706165247">Run</strong>, enter <strong id="EN-US_TOPIC_0093263550__b84235270616531">osk</strong>, and press <strong id="EN-US_TOPIC_0093263550__b84235270616535">Enter</strong>.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li593443214360">The method of enabling the Linux English soft keyboard varies depending on the OS version and is not described in this document.</li></ul>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__section322133015286"><a name="EN-US_TOPIC_0093263550__section322133015286"></a><a name="section322133015286"></a><h4 class="sectiontitle">Follow-up Procedure</h4><p id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_p1872825133511">Local commands can be copied to an <span id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_text18523141121311">ECS</span>. To do so, perform the following operations:</p>
+<ol id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_ol1824159183516"><li id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_li1548882414353">Log in to the <span id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_text1218761331315">ECS</span> using VNC.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_li16605658204011">Click <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_b8423527069437">Input Commands</strong> in the upper right corner of the page.<div class="fignone" id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_fig18993162320449"><span class="figcap"><b>Figure 9 </b>Input Commands</span><br><span><img id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_image5993223194420" src="en-us_image_0109039483.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_li1314712426457">Press <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_b84235270623837">Ctrl+C</strong> to copy data from the local computer.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_li17666163468">Press <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_b84235270623850">Ctrl+V</strong> to paste the local data to the <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_b8423527062397">Copy Commands</strong> window.</li><li id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_li178243913511">Click <strong id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_b1510277420753">Send</strong>.<p id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_p8923959104711">Send the copied data to the CLI.</p>
+</li></ol>
+<div class="note" id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_note19608163210499"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_p9610143214915">There is a low probability that data is lost when you use Input Commands on the VNC page of a GUI-based Linux <span id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_text21651614121311">ECS</span>. This is because the number of <span id="EN-US_TOPIC_0093263550__en-us_topic_0093263548_text14899131471317">ECS</span> vCPUs fails to meet GUI requirements. In such a case, it is a good practice to send a maximum of 5 characters at a time or switch from GUI to CLI (also called text interface), and then use the command input function.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_section32612662143917"><h4 class="sectiontitle">Helpful Links</h4><p id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_p17726252143925">For FAQs about VNC-based ECS logins, see the following links:</p>
+<ul id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_ul33321957144054"><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li26028066104756"><a href="en-us_topic_0035233718.html">What Browser Version Is Required to Remotely Log In to an ECS?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li5592759144054"><a href="en-us_topic_0030932496.html">What Should I Do If I Cannot Use the German Keyboard to Enter Characters When I Log In to a Linux ECS Using VNC?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li4070763104824"><a href="en-us_topic_0047624368.html">Why Cannot I Use the MAC Keyboard to Enter Lowercase Characters When I Log In to an ECS Using VNC?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li14384327144117"><a href="en-us_topic_0030932497.html">What Should I Do If the Page Does not Respond After I Log In to an ECS Using VNC and Do Not Perform Any Operation for a Long Period of Time?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li4139946144138"><a href="en-us_topic_0030932499.html">What Should I Do If I Cannot View Data After Logging In to an ECS Using VNC?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li2990662014422"><a href="en-us_topic_0030932500.html">Why Are Characters Entered Through VNC Still Incorrect After the Keyboard Language Is Switched?</a></li><li id="EN-US_TOPIC_0093263550__en-us_topic_0027268511_li36765598144248"><a href="en-us_topic_0032850906.html">Why Does a Blank Screen Appear While the System Displays a Message Indicating Successful Authentication After I Attempted to Log In to an ECS Using VNC?</a></li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030831990.html">Logging In to a Linux ECS</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

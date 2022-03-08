@@ -1,0 +1,308 @@
+<a name="EN-US_TOPIC_0065817695"></a><a name="EN-US_TOPIC_0065817695"></a>
+
+<h1 class="topictitle1">Querying Images (Discarded)</h1>
+<div id="body1499652824861"><div class="section" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_section36920527"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p41396372">This API is used to query all images.</p>
+<p id="EN-US_TOPIC_0065817695__p781215411426">This API has been discarded. Use the API described in "Querying Images (Native OpenStack API)".</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_section63849294"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817695__p1748818543356">GET /v2/{project_id}/images?name={name}&amp;status={status}&amp;changes-since={changes-since}&amp;minRam={minRam}&amp;minDisk={inDisk}</p>
+<p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_en-us_topic_0020212650_p0312111422114">GET /v2.1/{project_id}/images?name={name}&amp;status={status}&amp;changes-since={changes-since}&amp;minRam={minRam}&amp;minDisk={inDisk}</p>
+<div class="p" id="EN-US_TOPIC_0065817695__p1430003333210"><a href="#EN-US_TOPIC_0065817695__table15332113010326">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817695__table15332113010326"></a><a name="table15332113010326"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__table15332113010326" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__row033216300323"><th align="left" class="cellrowborder" valign="top" width="21.64216421642164%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817695__p1599113811320">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.592659265926592%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817695__p185998387328">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.76517651765175%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817695__p10599138163213">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__row16332163014329"><td class="cellrowborder" valign="top" width="21.64216421642164%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817695__p25994384325">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.592659265926592%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817695__p106004383325">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.76517651765175%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817695__p1560010383322">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p26533798">Parameters in the following table can be used as URI parameters to filter query results. Usage: /v2/{project_id}/images? name ={name}&amp;status={status}</p>
+<p id="EN-US_TOPIC_0065817695__p6198125675514"><a href="#EN-US_TOPIC_0065817695__table21481517103310">Table 2</a> describes the query parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817695__table21481517103310"></a><a name="table21481517103310"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__table21481517103310" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__row16148617123319"><th align="left" class="cellrowborder" valign="top" width="22.067793220677935%" id="mcps1.3.5.2.5.1.1"><p id="EN-US_TOPIC_0065817695__p1570135523316">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.34856514348565%" id="mcps1.3.5.2.5.1.2"><p id="EN-US_TOPIC_0065817695__p1370125553313">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.118388161183884%" id="mcps1.3.5.2.5.1.3"><p id="EN-US_TOPIC_0065817695__p270195533316">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.465253474652535%" id="mcps1.3.5.2.5.1.4"><p id="EN-US_TOPIC_0065817695__p137015558334">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__row6148617113314"><td class="cellrowborder" valign="top" width="22.067793220677935%" headers="mcps1.3.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p127075593310">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.34856514348565%" headers="mcps1.3.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p197095583312">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.118388161183884%" headers="mcps1.3.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p1070355133317">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.465253474652535%" headers="mcps1.3.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p19706553339">Specifies the image name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row1714881718334"><td class="cellrowborder" valign="top" width="22.067793220677935%" headers="mcps1.3.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p127020555335">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.34856514348565%" headers="mcps1.3.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p14705555333">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.118388161183884%" headers="mcps1.3.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p070175563315">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.465253474652535%" headers="mcps1.3.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p10701855203314">Specifies the image status.</p>
+<p id="EN-US_TOPIC_0065817695__p1970205516333">You cannot query images when the value is set to <strong id="EN-US_TOPIC_0065817695__en-us_topic_0057973097_b1786951984314">deleted</strong>. The value depends on the status in Glance. <a href="#EN-US_TOPIC_0065817695__table7740622133418">Table 3</a> shows the mapping relationship of image status in Nova and Glance.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row13148141783311"><td class="cellrowborder" valign="top" width="22.067793220677935%" headers="mcps1.3.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p1470185593319">changes-since</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.34856514348565%" headers="mcps1.3.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p270955193312">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.118388161183884%" headers="mcps1.3.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p270195503320">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.465253474652535%" headers="mcps1.3.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p15701355143312">Specifies the images modified after the <strong id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_b42863276">changes-since</strong> time point. The parameter is in ISO 8601 time format, for example, 2013-06-09T06:42:18Z.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row0148151793316"><td class="cellrowborder" valign="top" width="22.067793220677935%" headers="mcps1.3.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p470125512335">minRam</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.34856514348565%" headers="mcps1.3.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p170455163318">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.118388161183884%" headers="mcps1.3.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p7701655193319">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.465253474652535%" headers="mcps1.3.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p187095563319">Specifies the minimum memory size in MB required by the image.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row15148117123319"><td class="cellrowborder" valign="top" width="22.067793220677935%" headers="mcps1.3.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p871155193312">minDisk</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.34856514348565%" headers="mcps1.3.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p137105593318">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.118388161183884%" headers="mcps1.3.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p14716559336">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.465253474652535%" headers="mcps1.3.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p16711055143310">Specifies the minimum disk size in GB required by the image.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817695__table7740622133418"></a><a name="table7740622133418"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__table7740622133418" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Mapping relationship of image status in Nova and Glance</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__row19740142243411"><th align="left" class="cellrowborder" valign="top" width="38.940000000000005%" id="mcps1.3.6.2.3.1.1"><p id="EN-US_TOPIC_0065817695__p183692029163410">Image Status in Glance</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="61.06%" id="mcps1.3.6.2.3.1.2"><p id="EN-US_TOPIC_0065817695__p16369729133419">Image Status in Nova</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__row1174012213414"><td class="cellrowborder" valign="top" width="38.940000000000005%" headers="mcps1.3.6.2.3.1.1 "><p id="EN-US_TOPIC_0065817695__p8369529163413">queued</p>
+</td>
+<td class="cellrowborder" valign="top" width="61.06%" headers="mcps1.3.6.2.3.1.2 "><p id="EN-US_TOPIC_0065817695__p183691329113411">saving</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row474022283412"><td class="cellrowborder" valign="top" width="38.940000000000005%" headers="mcps1.3.6.2.3.1.1 "><p id="EN-US_TOPIC_0065817695__p1336952953415">saving</p>
+</td>
+<td class="cellrowborder" valign="top" width="61.06%" headers="mcps1.3.6.2.3.1.2 "><p id="EN-US_TOPIC_0065817695__p63691329173412">saving</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row474092213342"><td class="cellrowborder" valign="top" width="38.940000000000005%" headers="mcps1.3.6.2.3.1.1 "><p id="EN-US_TOPIC_0065817695__p936982963413">active</p>
+</td>
+<td class="cellrowborder" valign="top" width="61.06%" headers="mcps1.3.6.2.3.1.2 "><p id="EN-US_TOPIC_0065817695__p17369122916344">active</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row187401522113418"><td class="cellrowborder" valign="top" width="38.940000000000005%" headers="mcps1.3.6.2.3.1.1 "><p id="EN-US_TOPIC_0065817695__p936912918349">deleted</p>
+</td>
+<td class="cellrowborder" valign="top" width="61.06%" headers="mcps1.3.6.2.3.1.2 "><p id="EN-US_TOPIC_0065817695__p20369142933412">deleted</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__section333218375418"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817695__p05217379548">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_section21690089"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817695__p837831105819"><a href="#EN-US_TOPIC_0065817695__table199957019352">Table 4</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817695__table199957019352"></a><a name="table199957019352"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__table199957019352" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__row299570113516"><th align="left" class="cellrowborder" valign="top" width="19.21%" id="mcps1.3.8.3.2.5.1.1"><p id="EN-US_TOPIC_0065817695__p494820108354">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.97%" id="mcps1.3.8.3.2.5.1.2"><p id="EN-US_TOPIC_0065817695__p89481103350">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.529999999999998%" id="mcps1.3.8.3.2.5.1.3"><p id="EN-US_TOPIC_0065817695__p494881017357">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.290000000000006%" id="mcps1.3.8.3.2.5.1.4"><p id="EN-US_TOPIC_0065817695__p794841083514">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__row1699513003518"><td class="cellrowborder" valign="top" width="19.21%" headers="mcps1.3.8.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p1794861033516">images</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.97%" headers="mcps1.3.8.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p15948191063520">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.529999999999998%" headers="mcps1.3.8.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p494812107351">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.290000000000006%" headers="mcps1.3.8.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p1994817109352">Specifies the image information.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__row99956014355"><td class="cellrowborder" valign="top" width="19.21%" headers="mcps1.3.8.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__p1094811053519">images_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.97%" headers="mcps1.3.8.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__p394841033519">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.529999999999998%" headers="mcps1.3.8.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__p79484101358">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.290000000000006%" headers="mcps1.3.8.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__p139489106356">Specifies the information about the next page when you query images in pages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_table512095" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_b3668723518653">images</strong> information</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row64402537"><th align="left" class="cellrowborder" valign="top" width="19.689999999999998%" id="mcps1.3.9.2.5.1.1"><p id="EN-US_TOPIC_0065817695__p54273401584">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.120000000000001%" id="mcps1.3.9.2.5.1.2"><p id="EN-US_TOPIC_0065817695__p74271940125814">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.27%" id="mcps1.3.9.2.5.1.3"><p id="EN-US_TOPIC_0065817695__p144271405585">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.92%" id="mcps1.3.9.2.5.1.4"><p id="EN-US_TOPIC_0065817695__p17427174011580">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row60927756"><td class="cellrowborder" valign="top" width="19.689999999999998%" headers="mcps1.3.9.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p36201180">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.120000000000001%" headers="mcps1.3.9.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p17676294">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.27%" headers="mcps1.3.9.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p46614477">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.92%" headers="mcps1.3.9.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p22493744">Specifies the image ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row1117111"><td class="cellrowborder" valign="top" width="19.689999999999998%" headers="mcps1.3.9.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p23377165">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.120000000000001%" headers="mcps1.3.9.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p33826157">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.27%" headers="mcps1.3.9.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p14502183">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.92%" headers="mcps1.3.9.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p55564233">Specifies the shortcut link of the image.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row30316049"><td class="cellrowborder" valign="top" width="19.689999999999998%" headers="mcps1.3.9.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p39680934">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.120000000000001%" headers="mcps1.3.9.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p31329554">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.27%" headers="mcps1.3.9.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p60039108">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.92%" headers="mcps1.3.9.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p54665912">Specifies the image name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_table65862751" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_b84235270604410">images_links</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row21566624"><th align="left" class="cellrowborder" valign="top" width="19.57%" id="mcps1.3.10.2.5.1.1"><p id="EN-US_TOPIC_0065817695__p12843114319589">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.24%" id="mcps1.3.10.2.5.1.2"><p id="EN-US_TOPIC_0065817695__p14859114355811">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.27%" id="mcps1.3.10.2.5.1.3"><p id="EN-US_TOPIC_0065817695__p0859343135810">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.92%" id="mcps1.3.10.2.5.1.4"><p id="EN-US_TOPIC_0065817695__p10859164395813">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row7960749"><td class="cellrowborder" valign="top" width="19.57%" headers="mcps1.3.10.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p40840956">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.24%" headers="mcps1.3.10.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p58930111">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.27%" headers="mcps1.3.10.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p19783135">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.92%" headers="mcps1.3.10.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p8609667">Specifies the URL of the next page when you query images in pages.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row10378142"><td class="cellrowborder" valign="top" width="19.57%" headers="mcps1.3.10.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p35323188">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.24%" headers="mcps1.3.10.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p28532881">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.27%" headers="mcps1.3.10.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p42605986">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.92%" headers="mcps1.3.10.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p29462057">Specifies the query direction when you query images in pages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_table1949017543515" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_b842352706145746">links</strong> parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row54901254195115"><th align="left" class="cellrowborder" valign="top" width="19.97%" id="mcps1.3.11.2.5.1.1"><p id="EN-US_TOPIC_0065817695__p131661047125817">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.43%" id="mcps1.3.11.2.5.1.2"><p id="EN-US_TOPIC_0065817695__p15166194715818">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.3%" id="mcps1.3.11.2.5.1.3"><p id="EN-US_TOPIC_0065817695__p10166194719587">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.300000000000004%" id="mcps1.3.11.2.5.1.4"><p id="EN-US_TOPIC_0065817695__p91661478589">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row1549185415113"><td class="cellrowborder" valign="top" width="19.97%" headers="mcps1.3.11.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p1449195414513">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.43%" headers="mcps1.3.11.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p1449195455118">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.3%" headers="mcps1.3.11.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p449195425114">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.300000000000004%" headers="mcps1.3.11.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p18491754135111">Specifies the link of the corresponding resource.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row16491145435118"><td class="cellrowborder" valign="top" width="19.97%" headers="mcps1.3.11.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p4491155415518">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.43%" headers="mcps1.3.11.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p2491185485110">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.3%" headers="mcps1.3.11.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p1449165411514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.300000000000004%" headers="mcps1.3.11.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p44540131181624">The value can be:</p>
+<ul id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_ul50320171175059"><li id="EN-US_TOPIC_0065817695__li36094530175059"><strong id="EN-US_TOPIC_0065817695__b11003816175111">self</strong>: A self link contains a version link to the resource. Use these links when the link is followed immediately.</li><li id="EN-US_TOPIC_0065817695__li65166619175136"><strong id="EN-US_TOPIC_0065817695__b60630642175154">bookmark</strong>: A bookmark link provides a permanent link to a resource, which is suitable for long term storage.</li><li id="EN-US_TOPIC_0065817695__li46931809175232"><strong id="EN-US_TOPIC_0065817695__b28772520175321">alternate</strong>: An alternate link can contain an alternate representation of the resource. For example, an OpenStack Compute image may have an alternate representation in the OpenStack image service.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_row15491195465112"><td class="cellrowborder" valign="top" width="19.97%" headers="mcps1.3.11.2.5.1.1 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p149145411510">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.43%" headers="mcps1.3.11.2.5.1.2 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p1949195405118">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.3%" headers="mcps1.3.11.2.5.1.3 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p649155425114">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.300000000000004%" headers="mcps1.3.11.2.5.1.4 "><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_p1671811201581">The type attribute provides a hint as to the type of representation to expect when following the link.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_section60993073"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817695__screen18662030165917">GET https://{endpoint}/v2/9c53a566cb3443ab910cf0daebca90c4/images
+GET https://{endpoint}/v2.1/9c53a566cb3443ab910cf0daebca90c4/images</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__section1857017201151"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065817695__screen16602162041516">{
+    "images": [
+        {
+            "id": "ee10f19c-503c-44af-af2f-73d5e42f7a17",
+            "links": [
+                {
+                    "href": "http://172.25.150.84:8774/v2/d9ebe43510414ef590a4aa158605329e/images/ee10f19c-503c-44af-af2f-73d5e42f7a17",
+                    "rel": "self"
+                },
+                {
+                    "href": "http://172.25.150.84:8774/d9ebe43510414ef590a4aa158605329e/images/ee10f19c-503c-44af-af2f-73d5e42f7a17",
+                    "rel": "bookmark"
+                },
+                {
+                    "href": "http://172.25.150.84:9292/d9ebe43510414ef590a4aa158605329e/images/ee10f19c-503c-44af-af2f-73d5e42f7a17",
+                    "rel": "alternate",
+                    "type": "application/vnd.openstack.image"
+                }
+            ],
+            "name": "image1"
+        }
+    ]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_section41491842"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817695__en-us_topic_0057973086_en-us_topic_0057972976_p5693111841619">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065817680.html">Image Management (OpenStack Nova APIs)</a></div>
+</div>
+</div>
+

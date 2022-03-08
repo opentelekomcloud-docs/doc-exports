@@ -1,0 +1,700 @@
+<a name="EN-US_TOPIC_0020212668"></a><a name="EN-US_TOPIC_0020212668"></a>
+
+<h1 class="topictitle1">Creating an <span id="text18117181111218">ECS</span></h1>
+<div id="body38061996"><div class="section" id="EN-US_TOPIC_0020212668__section61372619"><a name="EN-US_TOPIC_0020212668__section61372619"></a><a name="section61372619"></a><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212668__p63122796">This API is used to create one or more ECSs.</p>
+<p id="EN-US_TOPIC_0020212668__p131101754194812">This is an asynchronous API. After the ECS creation request is issued, the system will return <strong id="EN-US_TOPIC_0020212668__en-us_topic_0093055772_b138245744912">job_id</strong>. The ECS creation is still in progress. Therefore, you need to call the API described in <a href="en-us_topic_0022225398.html">Querying Task Execution Status</a> to obtain the task status. When the status changes to <strong id="EN-US_TOPIC_0020212668__en-us_topic_0093055772_b16235337165014">SUCCESS</strong>, the ECS has been created.</p>
+</div>
+<p id="EN-US_TOPIC_0020212668__p688492443210">Before calling this API, you need to obtain <a href="https://docs.otc.t-systems.com/en-us/endpoint/index.html" target="_blank" rel="noopener noreferrer">Regions and Endpoints</a>.</p>
+<p id="EN-US_TOPIC_0020212668__p599644618118">Logging in to an <span id="EN-US_TOPIC_0020212668__text9312133810452">ECS</span> can be authenticated using either a key pair or password. For security purposes, you are advised to use key pair authentication.</p>
+<ul id="EN-US_TOPIC_0020212668__en-us_topic_0013859510_ul48963016215158"><li id="EN-US_TOPIC_0020212668__en-us_topic_0013859510_li38304700215158">Key pair<p id="EN-US_TOPIC_0020212668__en-us_topic_0013859510_p37613652183921"><a name="EN-US_TOPIC_0020212668__en-us_topic_0013859510_li38304700215158"></a><a name="en-us_topic_0013859510_li38304700215158"></a>A key pair is used for <span id="EN-US_TOPIC_0020212668__text398420394455">ECS</span> login authentication.</p>
+<p id="EN-US_TOPIC_0020212668__p240161911714">Method of calling APIs: Use the <strong id="EN-US_TOPIC_0020212668__b18371121611519">key_name</strong> field to specify the key file used for logging in to the <span id="EN-US_TOPIC_0020212668__text725734116452">ECS</span>.</p>
+</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0013859510_li64799030183852">Password<p id="EN-US_TOPIC_0020212668__en-us_topic_0013859510_p6641315318409"><a name="EN-US_TOPIC_0020212668__en-us_topic_0013859510_li64799030183852"></a><a name="en-us_topic_0013859510_li64799030183852"></a>If you choose the initial password for authentication in an <span id="EN-US_TOPIC_0020212668__text1949794264510">ECS</span>, you can log in to the <span id="EN-US_TOPIC_0020212668__text48639579168">ECS</span> using the username and its initial password. The initial password of user <strong id="EN-US_TOPIC_0020212668__b161984407415209">root</strong> is used for authentication in Linux, while that of user <strong id="EN-US_TOPIC_0020212668__b30029153015209">Administrator</strong> is used for authentication in Windows.</p>
+<div class="p" id="EN-US_TOPIC_0020212668__p115739361915">Method of calling APIs: Use the <strong id="EN-US_TOPIC_0020212668__b171961350193610">adminPass </strong>field to specify the initial login password of the administrator account. For details about how to use the <strong id="EN-US_TOPIC_0020212668__b1336945213612">adminPass</strong> field, see <a href="#EN-US_TOPIC_0020212668__table761103195216">Table 3</a>. If an encrypted password is required for logging in to a Linux <span id="EN-US_TOPIC_0020212668__text16435192610213">ECS</span> that is created using an image with Cloud-Init installed, you can use the <strong id="EN-US_TOPIC_0020212668__b12808645126">user_data</strong> field to inject the password. For details, see <a href="#EN-US_TOPIC_0020212668__table761103195216">Table 3</a>.<div class="note" id="EN-US_TOPIC_0020212668__note481424942414"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p1081594982420">If the <strong id="EN-US_TOPIC_0020212668__b68157211739">user_data</strong> field is specified for a Linux <span id="EN-US_TOPIC_0020212668__text613292962111">ECS</span> that is created using an image with Cloud-Init installed, the <strong id="EN-US_TOPIC_0020212668__b1581510215315">adminPass</strong> field becomes invalid.</p>
+</div></div>
+</div>
+</li><li id="EN-US_TOPIC_0020212668__li452864023912">Image password<p id="EN-US_TOPIC_0020212668__p681875194112"><a name="EN-US_TOPIC_0020212668__li452864023912"></a><a name="li452864023912"></a>If you use a Linux private image to create an ECS, you can use the image password for login authentication.</p>
+<p id="EN-US_TOPIC_0020212668__p12823195517424">Method of calling APIs: If the image password is used, the <strong id="EN-US_TOPIC_0020212668__b12355423181717">key_name</strong> and <strong id="EN-US_TOPIC_0020212668__b63551623171710">adminPass</strong> fields do not need to be specified.</p>
+</li></ul>
+<div class="section" id="EN-US_TOPIC_0020212668__section15482662"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212668__p66228246145352">POST /v1/{project_id}/cloudservers</p>
+<div class="p" id="EN-US_TOPIC_0020212668__p98566196355"><a href="#EN-US_TOPIC_0020212668__table55945983">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__table55945983"></a><a name="table55945983"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table55945983" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__row11302482"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.3.2.2.4.1.1"><p id="EN-US_TOPIC_0020212668__p43085863">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.5.3.2.2.4.1.2"><p id="EN-US_TOPIC_0020212668__p294000">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.5.3.2.2.4.1.3"><p id="EN-US_TOPIC_0020212668__p23814038">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row49888896"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212668__p14468758">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.5.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212668__p31118786">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.5.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212668__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212668__section5126234"><a name="EN-US_TOPIC_0020212668__section5126234"></a><a name="section5126234"></a><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0020212668__p3320856183512"><strong id="EN-US_TOPIC_0020212668__b3649127123711">Request parameters</strong></p>
+<p id="EN-US_TOPIC_0020212668__p201561419366"><a href="#EN-US_TOPIC_0020212668__en-us_topic_0057972661_table40519951">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__en-us_topic_0057972661_table40519951"></a><a name="en-us_topic_0057972661_table40519951"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_table40519951" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_row35619075"><th align="left" class="cellrowborder" valign="top" width="13.990099009900991%" id="mcps1.3.6.4.2.5.1.1"><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p66572856">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.138613861386139%" id="mcps1.3.6.4.2.5.1.2"><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p23692278">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.910891089108908%" id="mcps1.3.6.4.2.5.1.3"><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p40026340">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.96039603960396%" id="mcps1.3.6.4.2.5.1.4"><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p20908074">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_row15832433"><td class="cellrowborder" valign="top" width="13.990099009900991%" headers="mcps1.3.6.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p7358688">server</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.138613861386139%" headers="mcps1.3.6.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p59182880">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.910891089108908%" headers="mcps1.3.6.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p29083993">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.96039603960396%" headers="mcps1.3.6.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__en-us_topic_0057972661_p6993202">Specifies the <span id="EN-US_TOPIC_0020212668__text2464154414511">ECS</span> information. For details, see <a href="#EN-US_TOPIC_0020212668__table761103195216">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1127773764718"><td class="cellrowborder" valign="top" width="13.990099009900991%" headers="mcps1.3.6.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p531711654214">dry_run</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.138613861386139%" headers="mcps1.3.6.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p123174168425">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.910891089108908%" headers="mcps1.3.6.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5317111619420">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.96039603960396%" headers="mcps1.3.6.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p935233824220">Specifies whether to check the request and create the ECS.</p>
+<ul id="EN-US_TOPIC_0020212668__ul7754184810426"><li id="EN-US_TOPIC_0020212668__li686813556427"><strong id="EN-US_TOPIC_0020212668__b498744917315">true</strong>: indicates that only the request is sent, but the ECS will not be created. Check items include mandatory parameters and request format.<ul id="EN-US_TOPIC_0020212668__ul11514160124320"><li id="EN-US_TOPIC_0020212668__li975404864216">If the check fails, the system returns an error.</li><li id="EN-US_TOPIC_0020212668__li6754648124219">If the check is successful, the system returns status code 202.</li></ul>
+</li><li id="EN-US_TOPIC_0020212668__li1535135815425"><strong id="EN-US_TOPIC_0020212668__b15743212414">false</strong>: indicates that the request is sent and the ECS will be created if the check result is as expected.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__table761103195216"></a><a name="table761103195216"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table761103195216" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameters for creating an <span id="EN-US_TOPIC_0020212668__text14620193382112">ECS</span></caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__row6501318520"><th align="left" class="cellrowborder" valign="top" width="16.666666666666668%" id="mcps1.3.6.5.2.5.1.1"><p id="EN-US_TOPIC_0020212668__p107278674213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.686274509803921%" id="mcps1.3.6.5.2.5.1.2"><p id="EN-US_TOPIC_0020212668__p13742669429">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.76470588235294%" id="mcps1.3.6.5.2.5.1.3"><p id="EN-US_TOPIC_0020212668__p1874212611429">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.882352941176464%" id="mcps1.3.6.5.2.5.1.4"><p id="EN-US_TOPIC_0020212668__p77581261423">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row145143105220"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p450031105218">imageRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p25133117527">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p155173185218">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p15183125212">Specifies the ID of the system image used for creating <span id="EN-US_TOPIC_0020212668__text18270358214">ECS</span>s. The ID is in Universally Unique Identifier (UUID) format.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note20483193115317"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__en-us_topic_0068473331_ul185629592115"><li id="EN-US_TOPIC_0020212668__en-us_topic_0068473331_li155622595111">Certain <span id="EN-US_TOPIC_0020212668__text417674519457">ECS</span> flavors cannot support all public images provided on the public cloud platform. To obtain the images supported by an <span id="EN-US_TOPIC_0020212668__text58721945174511">ECS</span> flavor, log in to the management console, view the images displayed on the <strong id="EN-US_TOPIC_0020212668__b842352706185454">Create <span id="EN-US_TOPIC_0020212668__text83349437215">ECS</span></strong> page, and obtain the image IDs on the <strong id="EN-US_TOPIC_0020212668__b842352706185522">Image Management Service</strong> page.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0068473331_li16562859217">If the creation fails, modify the parameter settings.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row155233165214"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p5515317522">flavorRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p45113165219">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5510313525">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p124996526158">Specifies the flavor ID of the <span id="EN-US_TOPIC_0020212668__text197803388219">ECS</span> to be created.</p>
+<p id="EN-US_TOPIC_0020212668__p14521031105216">For details about the flavors that have been released, see "Instances" in <em id="EN-US_TOPIC_0020212668__i842352697151722">Elastic Cloud Server User Guide</em>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1652163155219"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p852153118529">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p652123195218">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p352203120525">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p12521231135217">Specifies the <span id="EN-US_TOPIC_0020212668__text187331744143219">ECS</span> name.</p>
+<p id="EN-US_TOPIC_0020212668__p195216316527">Value requirements:</p>
+<ul id="EN-US_TOPIC_0020212668__ul652163175211"><li id="EN-US_TOPIC_0020212668__li102951015473">Consists of 1 to 64 characters, including letters, digits, underscores (_), hyphens (-), periods (.).</li><li id="EN-US_TOPIC_0020212668__li35203114525">If more than one <span id="EN-US_TOPIC_0020212668__text1124754320213">ECS</span> is to be created (the <strong id="EN-US_TOPIC_0020212668__b842352706144014">count</strong> value is greater than <strong id="EN-US_TOPIC_0020212668__b842352706144025">1</strong>), the system automatically adds a hyphen followed by a four-digit incremental number, such as <strong id="EN-US_TOPIC_0020212668__b842352706104944">-0000</strong>, to the end of each <span id="EN-US_TOPIC_0020212668__text0180124452116">ECS</span> name. If you specify a number, the name of the first new ECS will start from the specified number. In this case, the <span id="EN-US_TOPIC_0020212668__text34651521183512">ECS</span> name contains a maximum of 59 characters.<div class="note" id="EN-US_TOPIC_0020212668__note1631304619446"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p1313546134412"><span id="EN-US_TOPIC_0020212668__text4988244182115">ECS</span> hostnames comply with <a href="https://tools.ietf.org/html/rfc952" target="_blank" rel="noopener noreferrer">RFC952</a> and <a href="https://tools.ietf.org/html/rfc1123" target="_blank" rel="noopener noreferrer">RFC1123</a> naming rules. It is recommended that you configure hostnames using digits, letters (case sensitive), and hyphens (-). Underscores (_) are converted into hyphens (-) by default.</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row17782101981517"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p1148283018154">user_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p248253012159">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p34981630181517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p124835165514">Specifies the user data to be injected to the ECS during the creation. Text and text files can be injected.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note1076765671813"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__ul749201611912"><li id="EN-US_TOPIC_0020212668__li67541847182119">The content of <strong id="EN-US_TOPIC_0020212668__b105319366545">user_data</strong> must be encoded with base64.</li><li id="EN-US_TOPIC_0020212668__li84921116141913">The maximum size of the content to be injected (before encoding) is 32 KB.</li></ul>
+</div></div>
+<p id="EN-US_TOPIC_0020212668__p151383081516">For more information about the user data to be injected, see "Injecting User Data into ECSs" in <em id="EN-US_TOPIC_0020212668__i24557219106">Elastic Cloud Server User Guide</em>.</p>
+<p id="EN-US_TOPIC_0020212668__p1633783620117">Examples</p>
+<p id="EN-US_TOPIC_0020212668__p12545313524">Before base64 encoding:</p>
+<ul id="EN-US_TOPIC_0020212668__ul13541314520"><li id="EN-US_TOPIC_0020212668__li13546312528">Linux<pre class="screen" id="EN-US_TOPIC_0020212668__screen16541531125220">#! /bin/bash
+echo user_test &gt;&gt; /home/user.txt</pre>
+</li><li id="EN-US_TOPIC_0020212668__li0541731105219">Windows<pre class="screen" id="EN-US_TOPIC_0020212668__screen35418316520">rem cmd
+echo 111 &gt; c:\aaa.txt</pre>
+</li></ul>
+<p id="EN-US_TOPIC_0020212668__p16762152318318">After base64 encoding:</p>
+<ul id="EN-US_TOPIC_0020212668__ul2069415489311"><li id="EN-US_TOPIC_0020212668__li126941548163113">Linux<pre class="screen" id="EN-US_TOPIC_0020212668__screen1769415480317">IyEgL2Jpbi9iYXNoDQplY2hvIHVzZXJfdGVzdCAmZ3Q7Jmd0OyAvaG9tZS91c2VyLnR4dA==</pre>
+</li><li id="EN-US_TOPIC_0020212668__li06941485319">Windows<pre class="screen" id="EN-US_TOPIC_0020212668__screen1969444873114">cmVtIGNtZA0KZWNobyAxMTEgJmd0OyBjOlxhYWEudHh0</pre>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row155573112522"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p165493165214">adminPass</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p20541531105217">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p64471619514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p12995174416219">Specifies the initial login password of the administrator account for logging in to an <span id="EN-US_TOPIC_0020212668__text31809013224">ECS</span> using password authentication. The Linux administrator is <strong id="EN-US_TOPIC_0020212668__b8423527068404">root</strong>, and the Windows administrator is <strong id="EN-US_TOPIC_0020212668__b84235270684012">Administrator</strong>. For details, see <a href="#EN-US_TOPIC_0020212668__section61372619">Function</a>.</p>
+<div class="p" id="EN-US_TOPIC_0020212668__p1152014504224">Password complexity requirements:<ul id="EN-US_TOPIC_0020212668__ul52104519219"><li id="EN-US_TOPIC_0020212668__li1025452217">Consists of 8 to 26 characters.</li><li id="EN-US_TOPIC_0020212668__li142114510215">The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@$%^-_=+[{}]:,./?~#*).</li><li id="EN-US_TOPIC_0020212668__li15244511217">The password cannot contain the username or the username in reverse.</li><li id="EN-US_TOPIC_0020212668__li192114592111">The Windows ECS password cannot contain the username, the username in reverse, or more than two consecutive characters in the username.</li></ul>
+</div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row155573175215"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p855531175218">key_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p16551131155216">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p1455163111526">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p055153115217">Specifies the name of the SSH key used for logging in to the <span id="EN-US_TOPIC_0020212668__text4452161102213">ECS</span>.</p>
+<p id="EN-US_TOPIC_0020212668__p01371615133414">Keys can be created using the key creating API (<a href="en-us_topic_0020212678.html">Creating and Importing an SSH Key Pair</a>) or obtained using the SSH key query API (<a href="en-us_topic_0020212676.html">Querying SSH Key Pairs</a>).</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row13551231195216"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p14551831185218">vpcid</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p2551031195211">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p55543155218">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p5551731125218">Specifies the ID of the VPC to which the <span id="EN-US_TOPIC_0020212668__text79086218229">ECS</span> belongs. The value is in the format of the UUID.</p>
+<p id="EN-US_TOPIC_0020212668__p56133115171910">You can obtain the VPC ID from the management console or by following the instructions provided in "Querying VPCs" in <em id="EN-US_TOPIC_0020212668__i4550823153416">Virtual Private Cloud API Reference</em>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row156133118524"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p1055123135212">nics</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p35518315528">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p856731205215">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p1756731175216">Specifies the NIC information of the <span id="EN-US_TOPIC_0020212668__text104131061221">ECS</span>. For details, see <a href="#EN-US_TOPIC_0020212668__table9120223">Table 4</a>.</p>
+<p id="EN-US_TOPIC_0020212668__p13561731175218">Constraints:</p>
+<ul id="EN-US_TOPIC_0020212668__ul14713548182"><li id="EN-US_TOPIC_0020212668__li975871645213">The value must be the ID of the subnet created in the VPC specified by <strong id="EN-US_TOPIC_0020212668__b84235270617196">vpcid</strong> and in the format of the UUID.</li></ul>
+<ul id="EN-US_TOPIC_0020212668__ul125617317523"><li id="EN-US_TOPIC_0020212668__li20641181310319">A maximum of 12 NICs can be attached to an <span id="EN-US_TOPIC_0020212668__text94286752216">ECS</span>.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row45603125217"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p95618318528">publicip</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p7563318521">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p75611317526">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p17561731155214">Specifies the EIP of the <span id="EN-US_TOPIC_0020212668__text5493108192211">ECS</span>, which can be configured in the following ways:</p>
+<ul id="EN-US_TOPIC_0020212668__ul1456133105216"><li id="EN-US_TOPIC_0020212668__li105693165211">Do not use: In such a case, this field is unavailable.</li><li id="EN-US_TOPIC_0020212668__li155653119529">Automatically assign: The system will automatically assign an EIP to your <span id="EN-US_TOPIC_0020212668__text146395171013">ECS</span>.</li><li id="EN-US_TOPIC_0020212668__li195663175219">Use existing: You need to specify an existing EIP for your <span id="EN-US_TOPIC_0020212668__text624151011018">ECS</span>.</li></ul>
+<p id="EN-US_TOPIC_0020212668__p76591419152310">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table2785183710710">Table 1</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1457831155216"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p165613120523">count</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p175711312521">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p105793165216">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p1157203120522">Specifies the number of <span id="EN-US_TOPIC_0020212668__text545219916220">ECS</span>s to be created.</p>
+<p id="EN-US_TOPIC_0020212668__p195712318525">Constraints:</p>
+<ul id="EN-US_TOPIC_0020212668__ul557183145214"><li id="EN-US_TOPIC_0020212668__li1557133105219">If this parameter is not specified, the default value is <strong id="EN-US_TOPIC_0020212668__b842352706165622">1</strong>.</li><li id="EN-US_TOPIC_0020212668__li1657183114526">If the quota is sufficient, the maximum value is <strong id="EN-US_TOPIC_0020212668__b842352706165647">500</strong>.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row25753155216"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p1457531155213">root_volume</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p857031115213">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p157331165217">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p17571031115215">Specifies <span id="EN-US_TOPIC_0020212668__text538119128221">ECS</span> system disk configurations.</p>
+<p id="EN-US_TOPIC_0020212668__p59971231202312">For details, see <a href="#EN-US_TOPIC_0020212668__table53188122">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1458183112527"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p1557203125216">data_volumes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p4571931185219">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p25733117524">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p4581031115217">Specifies <span id="EN-US_TOPIC_0020212668__text1458721342218">ECS</span> data disk configurations. Each data structure represents a data disk to be created.</p>
+<p id="EN-US_TOPIC_0020212668__p45833113521">An <span id="EN-US_TOPIC_0020212668__text193561914192214">ECS</span> can be attached with a maximum of 59 data disks (certain flavors support only 23 data disks).</p>
+<p id="EN-US_TOPIC_0020212668__p269855113235">For details, see <a href="#EN-US_TOPIC_0020212668__table66739923">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1659631185215"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p10581312525">security_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p2581931185218">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p145813185212">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p1059123112521">Specifies the security groups of the <span id="EN-US_TOPIC_0020212668__text515571517226">ECS</span>.</p>
+<p id="EN-US_TOPIC_0020212668__p1159831155218">If this parameter is left blank, the default security group is bound to the <span id="EN-US_TOPIC_0020212668__text615711619221">ECS</span> by default.</p>
+<p id="EN-US_TOPIC_0020212668__p118678147244">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table1698566599">Table 2</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row185993115219"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p155933145215">availability_zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p1959143115529">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p2059133165210">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p1059113114525">Specifies the name of the AZ where the <span id="EN-US_TOPIC_0020212668__text24489012406">ECS</span> is located.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note51771717152814"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p13206134310279">If this parameter is not specified, the system automatically selects an AZ.</p>
+</div></div>
+<p id="EN-US_TOPIC_0020212668__p15187154018230">See <a href="en-us_topic_0065817728.html">Querying AZs</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1259123185210"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p1959193111524">extendparam</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p459931115218">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p559143112527">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p759143185217">Provides the supplementary information about the <span id="EN-US_TOPIC_0020212668__text386761772217">ECS</span> to be created.</p>
+<p id="EN-US_TOPIC_0020212668__p1763154062412">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table1137234112314">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row160631105219"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p5595317524">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p460131185220">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p1662104714508">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p1460173115527">Specifies the metadata of the <span id="EN-US_TOPIC_0020212668__text11268921102218">ECS</span> to be created.</p>
+<p id="EN-US_TOPIC_0020212668__p57411157124216">You can use metadata to customize key-value pairs.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_note4876141782613"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_ul49971332368"><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li109981336365">A maximum of 10 key-value pairs can be injected.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li7998173314367">A metadata key consists of 1 to 255 characters and contains only uppercase letters, lowercase letters, digits, hyphens (-), underscores (_), colons (:), and decimal points (.).</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li199981133153617">A metadata value consists of a maximum of 255 characters.</li></ul>
+</div></div>
+<p id="EN-US_TOPIC_0020212668__p7572223145718">For details about reserved key-value pairs, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table2373623012315">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1460731155214"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p66010319528">os:scheduler_hints</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p8601331145214">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p176073116528">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p116011319521">Schedules <span id="EN-US_TOPIC_0020212668__text3916225221">ECS</span>s, for example, by configuring an ECS group.</p>
+<p id="EN-US_TOPIC_0020212668__p2052872152610">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table24430409172542">Table 9</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row361143135218"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p106083115213">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.686274509803921%" headers="mcps1.3.6.5.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p186193120522">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p661153112520">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p20611731185211">Specifies <span id="EN-US_TOPIC_0020212668__text18511254174517">ECS</span> tags.</p>
+<p id="EN-US_TOPIC_0020212668__p9613318525">A tag is in the format of "key.value", where the maximum lengths of <strong id="EN-US_TOPIC_0020212668__b84235270692310">key</strong> and <strong id="EN-US_TOPIC_0020212668__b84235270692313">value</strong> are 36 and 43 characters, respectively.</p>
+<p id="EN-US_TOPIC_0020212668__p166173115522">When adding a tag to an ECS, ensure that the tag complies with the following requirements:</p>
+<ul id="EN-US_TOPIC_0020212668__ul10612319523"><li id="EN-US_TOPIC_0020212668__li136272742413">The key of the tag can contain only uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).</li><li id="EN-US_TOPIC_0020212668__li157462742415">The value of the tag can contain only uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).</li></ul>
+<div class="note" id="EN-US_TOPIC_0020212668__note126123110526"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__ul5578110122215"><li id="EN-US_TOPIC_0020212668__li1357801022216">When you create <span id="EN-US_TOPIC_0020212668__text889612543456">ECS</span>s, one <span id="EN-US_TOPIC_0020212668__text17653142651520">ECS</span> supports up to 10 tags.</li></ul>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__table9120223"></a><a name="table9120223"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table9120223" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0020212668__b97758416625213">nics</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__row45607220"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.6.6.2.5.1.1"><p id="EN-US_TOPIC_0020212668__p1577344054216">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.6.6.2.5.1.2"><p id="EN-US_TOPIC_0020212668__p97891040194210">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.6.6.2.5.1.3"><p id="EN-US_TOPIC_0020212668__p1478994020422">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.00000000000001%" id="mcps1.3.6.6.2.5.1.4"><p id="EN-US_TOPIC_0020212668__p0804144018428">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row56761457"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.6.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p34275314">subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.6.6.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p24837051">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.6.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p65644149">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.6.6.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p52170790174229">Specifies the subnet of the <span id="EN-US_TOPIC_0020212668__text1290819290226">ECS</span>.</p>
+<p id="EN-US_TOPIC_0020212668__p43287089174217">The value must be the ID of the subnet created in the VPC specified by <strong id="EN-US_TOPIC_0020212668__b2109650251">vpcid</strong> and in the format of the UUID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row11285618104313"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.6.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p34461706104313">ip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.6.6.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p39934810104313">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.6.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p13494158104313">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.6.6.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p28930193174245">Specifies the IP address of the NIC used by the <span id="EN-US_TOPIC_0020212668__text186606305226">ECS</span>. The value is an IPv4 address.</p>
+<p id="EN-US_TOPIC_0020212668__p59045150174245">Constraints:</p>
+<ul id="EN-US_TOPIC_0020212668__ul61644302174245"><li id="EN-US_TOPIC_0020212668__li17927812174245">If this parameter is left blank or set to <strong id="EN-US_TOPIC_0020212668__b842352706173944">""</strong>, an unused IP address in the subnet is automatically assigned as the IP address of the NIC.</li><li id="EN-US_TOPIC_0020212668__li64125911174254">If this parameter is specified, its value must be an unused IP address in the network segment of the subnet.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row48292797201232"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.6.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p31981994201232">binding:profile</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.6.6.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p40404711201232">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.6.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p95441454989">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.6.6.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p55491053202324">Allows you to customize data. Configure this parameter when creating a HANA <span id="EN-US_TOPIC_0020212668__text1750863110226">ECS</span>.</p>
+<p id="EN-US_TOPIC_0020212668__p9341758182610">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table42451440577">Table 11</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row16036609201232"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.6.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p10111755201232">extra_dhcp_opts</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.6.6.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p13745865201232">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.6.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p019211151690">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.6.6.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p65187435417">Indicates extended DHCP options.</p>
+<p id="EN-US_TOPIC_0020212668__p145881020172710">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table93959401279">Table 12</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__table53188122"></a><a name="table53188122"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table53188122" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0020212668__b58171566625213">root_volume</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__row56379492"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.6.7.2.5.1.1"><p id="EN-US_TOPIC_0020212668__p748555484218">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.85148514851485%" id="mcps1.3.6.7.2.5.1.2"><p id="EN-US_TOPIC_0020212668__p1948517542420">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.881188118811881%" id="mcps1.3.6.7.2.5.1.3"><p id="EN-US_TOPIC_0020212668__p55012544426">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.43564356435643%" id="mcps1.3.6.7.2.5.1.4"><p id="EN-US_TOPIC_0020212668__p1451675411422">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row3514615"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.6.7.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p16248438">volumetype</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85148514851485%" headers="mcps1.3.6.7.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p41055134">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.6.7.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p37131542">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p54864902">Specifies the <span id="EN-US_TOPIC_0020212668__text9318163212218">ECS</span> system disk type, which must be one of available disk types.</p>
+<div class="p" id="EN-US_TOPIC_0020212668__p12887229134510">Currently, the value can be <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164929">SSD</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164932">SAS</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164937">SATA</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164941">co-p1</strong>, or <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164944">uh-l1</strong>.<ul id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_ul11489121916439"><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li15488111934310"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706165021">SSD</strong>: specifies the ultra-high I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li0488119194318"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b1784237562165049">SAS</strong>: specifies the high I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li348881917438"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b3295367816515">SATA</strong>: specifies the common I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li848817193433"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b141033785">co-p1</strong>: specifies the high I/O (performance-optimized I) disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li548917194430"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b1336833005">uh-l1</strong>: specifies the ultra-high I/O (latency-optimized) disk type.<p id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_p14488819154320">Disks of the <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b108664633815116">co-p1</strong> and <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b104594858115116">uh-l1</strong> types are used exclusively for HPC ECSs and SAP HANA ECSs.</p>
+</li></ul>
+</div>
+<p id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_p62741351184614">If the specified disk type is not available in the AZ, the disk will fail to create.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_note21808274104217"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_ul5307015718498"><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li51745800123738">When the disk is created from a backup:<p id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_p60300043123750"><a name="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li51745800123738"></a><a name="en-us_topic_0044524833_li51745800123738"></a>If the type of the backup's source disk is <strong id="EN-US_TOPIC_0020212668__b1064772518574">SSD</strong>, <strong id="EN-US_TOPIC_0020212668__b1464742517575">SAS</strong>, or <strong id="EN-US_TOPIC_0020212668__b15648192555720">SATA</strong>, you can create disks of any of these types.</p>
+<p id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_p59443049123759">If the type of the backup's source disk is <strong id="EN-US_TOPIC_0020212668__b527157175814">co-p1</strong> or <strong id="EN-US_TOPIC_0020212668__b5344713586">uh-l1</strong>, you can create disks of any of the two types.</p>
+</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li1553612312507">For details about disk types, see <strong id="EN-US_TOPIC_0020212668__b14295122517">Disk Types and Disk Performance</strong> in the <em id="EN-US_TOPIC_0020212668__i829514212118">Elastic Volume Service User Guide</em>.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row60160519142638"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.6.7.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p11049419142649">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85148514851485%" headers="mcps1.3.6.7.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p22587748142649">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.6.7.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p17668334142649">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p21848977142649">Specifies the system disk size, in GB. The value ranges from 1 to 1024.</p>
+<p id="EN-US_TOPIC_0020212668__p9898211364">Constraints:</p>
+<ul id="EN-US_TOPIC_0020212668__ul13190271969"><li id="EN-US_TOPIC_0020212668__li91901771968">The system disk size must be greater than or equal to the minimum system disk size supported by the image (<strong id="EN-US_TOPIC_0020212668__b842352706191837">min_disk</strong> attribute of the image).</li><li id="EN-US_TOPIC_0020212668__li21901673612">If this parameter is not specified or is set to <strong id="EN-US_TOPIC_0020212668__b842352706191921">0</strong>, the default system disk size is the minimum value of the system disk in the image (<strong id="EN-US_TOPIC_0020212668__b842352706191942">min_disk</strong> attribute of the image).<div class="note" id="EN-US_TOPIC_0020212668__note995775414129"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p1427920232184">To obtain the minimum system disk size (<strong id="EN-US_TOPIC_0020212668__b84235270613130">min_disk</strong>) of an image, click the image on the management console for its details. Alternatively, call the native OpenStack API for querying details about an image. For details, see "Querying Image Details (Native OpenStack)" in <em id="EN-US_TOPIC_0020212668__i842352697142054">Image Management Service API Reference</em>.</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1960625122419"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.6.7.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p9710802420">hw:passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85148514851485%" headers="mcps1.3.6.7.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p107208152412">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.6.7.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p147212852417">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p157213814240">Pay attention to this parameter if your ECS is SDI-compliant. If the value of this parameter is <strong id="EN-US_TOPIC_0020212668__b2211171682615">true</strong>, the created disk is of SCSI type.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note187211802410"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p167298132410">This parameter is of boolean type. If a non-boolean character is imported, the parameter value is set to <strong id="EN-US_TOPIC_0020212668__b709517254143436">false</strong>.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1595642172110"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.6.7.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p108721243102120">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85148514851485%" headers="mcps1.3.6.7.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p16872104382119">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.6.7.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p4872194362118">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p7872543152110">Specifies the EVS disk metadata. Ensure that <strong id="EN-US_TOPIC_0020212668__b84235270622512">key</strong> and <strong id="EN-US_TOPIC_0020212668__b84235270622517">value</strong> in the metadata contain at most 255 bytes.</p>
+<p id="EN-US_TOPIC_0020212668__p88721643172116">This field is used only when an encrypted disk is created.</p>
+<p id="EN-US_TOPIC_0020212668__p16872164314213">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__section1228814491353">metadata Field Description for Creating Disks</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212668__table66739923"></a><a name="table66739923"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table66739923" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="EN-US_TOPIC_0020212668__b127215751725213">data_volumes</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212668__row64470080"><th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.6.8.2.5.1.1"><p id="EN-US_TOPIC_0020212668__p11191618194312">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.6.8.2.5.1.2"><p id="EN-US_TOPIC_0020212668__p911916181439">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.6.8.2.5.1.3"><p id="EN-US_TOPIC_0020212668__p16135171819439">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.55555555555556%" id="mcps1.3.6.8.2.5.1.4"><p id="EN-US_TOPIC_0020212668__p2135131811433">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row11410990"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p51874972">volumetype</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p41123170">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p42642473">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p31488280">Specifies the type of the <span id="EN-US_TOPIC_0020212668__text11963737192218">ECS</span> data disk, which must be one of available disk types.</p>
+<div class="p" id="EN-US_TOPIC_0020212668__p10193181553812">Currently, the value can be <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164929_1">SSD</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164932_1">SAS</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164937_1">SATA</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164941_1">co-p1</strong>, or <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706164944_1">uh-l1</strong>.<ul id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_ul11489121916439_1"><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li15488111934310_1"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b842352706165021_1">SSD</strong>: specifies the ultra-high I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li0488119194318_1"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b1784237562165049_1">SAS</strong>: specifies the high I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li348881917438_1"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b3295367816515_1">SATA</strong>: specifies the common I/O disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li848817193433_1"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b141033785_1">co-p1</strong>: specifies the high I/O (performance-optimized I) disk type.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_li548917194430_1"><strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b1336833005_1">uh-l1</strong>: specifies the ultra-high I/O (latency-optimized) disk type.<p id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_p14488819154320_1">Disks of the <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b108664633815116_1">co-p1</strong> and <strong id="EN-US_TOPIC_0020212668__en-us_topic_0094124248_b104594858115116_1">uh-l1</strong> types are used exclusively for HPC ECSs and SAP HANA ECSs.</p>
+</li></ul>
+</div>
+<p id="EN-US_TOPIC_0020212668__p1113813325419">If the specified disk type is not available in the AZ, the disk will fail to create.</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note213803220415"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_ul5307015718498"><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_li51745800123738">When the disk is created from a backup:<p id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_p60300043123750"><a name="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_li51745800123738"></a><a name="en-us_topic_0020212668_en-us_topic_0044524833_li51745800123738"></a>If the type of the backup's source disk is <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b1064772518574">SSD</strong>, <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b1464742517575">SAS</strong>, or <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b15648192555720">SATA</strong>, you can create disks of any of these types.</p>
+<p id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_p59443049123759">If the type of the backup's source disk is <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b527157175814">co-p1</strong> or <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b5344713586">uh-l1</strong>, you can create disks of any of the two types.</p>
+</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_en-us_topic_0044524833_li1553612312507">For details about disk types, see <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b14295122517">Disk Types and Disk Performance</strong> in the <em id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_i829514212118">Elastic Volume Service User Guide</em>.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row14959071"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p3725214">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p33306906">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p13504826">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p5562853216262">Specifies the data disk size, in GB. The value ranges from 10 to 32768.</p>
+<p id="EN-US_TOPIC_0020212668__p17031848195810">When you use a data disk image to create a data disk, ensure that the value of this parameter is greater than or equal to the size of the source data disk that is used to create the data disk image.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row36319805104741"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p58442796104741">shareable</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p36246068104741">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p50250380104741">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p340879331257">Specifies whether the disk is shared. The value can be <strong id="EN-US_TOPIC_0020212668__b1234733726161036">true</strong> (specifies a shared disk) or <strong id="EN-US_TOPIC_0020212668__b441872521161041">false</strong> (a common EVS disk).</p>
+<div class="note" id="EN-US_TOPIC_0020212668__note3759105212439"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p277515212439">This field has been discarded. Use <strong id="EN-US_TOPIC_0020212668__b84235270610834">multiattach</strong>.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row5795350214188"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p5181947414188">multiattach</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p3662789014188">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p1406913114188">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p6585779614188">Specifies the shared disk information.</p>
+<ul id="EN-US_TOPIC_0020212668__ul303285995535"><li id="EN-US_TOPIC_0020212668__li3845249295535"><strong id="EN-US_TOPIC_0020212668__b84235270620220">true</strong>: indicates that the created disk is a shared disk.</li><li id="EN-US_TOPIC_0020212668__li2458486295535"><strong id="EN-US_TOPIC_0020212668__b84235270620526">false</strong>: indicates that the created disk is a common EVS disk.</li></ul>
+<div class="note" id="EN-US_TOPIC_0020212668__note6690690095624"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p6529118995624">The <strong id="EN-US_TOPIC_0020212668__b84235270620621">shareable</strong> field is not used anymore. If both <strong id="EN-US_TOPIC_0020212668__b174806763820640">shareable</strong> and <strong id="EN-US_TOPIC_0020212668__b8423527062091">multiattach</strong> must be used, ensure that the values of the two fields are the same. If this parameter is not specified, common EVS disks are created by default.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row1051569714183"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p2753241214183">hw:passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p1553286914183">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5020283814183">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p4088945310517">Indicates whether the data volume uses a SCSI lock.</p>
+<ul id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_ul14462208141855"><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li16942218141855">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b84235270620365">true</strong>, the disk device type is SCSI, which allows ECS OSs to directly access the underlying storage media. SCSI reservation commands are supported.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li42055621173515">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b203367810216">false</strong>, the disk device type is VBD, which supports only simple SCSI read/write commands.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li922714915316">If this parameter does not appear, the disk device type is VBD.</li></ul>
+<div class="note" id="EN-US_TOPIC_0020212668__note1279613227324"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p679712229326">This parameter is of boolean type. If a non-boolean character is imported, the parameter value is set to <strong id="EN-US_TOPIC_0020212668__b2049735345">false</strong>.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row26398748122322"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p48878066122327">extendparam</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p66809250122327">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p42840179122327">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p24869108122327">Provides the disk information.</p>
+<p id="EN-US_TOPIC_0020212668__p182541631152818">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table7562101331712">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row62177020217"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p5036340620217">data_image_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p5290411520217">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5737494520217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p37344069202225">Specifies ID of the data image. The value is in UUID format.</p>
+<p id="EN-US_TOPIC_0020212668__p844532810467">If data disks are created using a data disk image, this parameter is mandatory and it does not support metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212668__row17444062585"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.8.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p164461462581">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.6.8.2.5.1.2 "><p id="EN-US_TOPIC_0020212668__p174476613587">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p296112276588">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p544756135816">Specifies the EVS disk metadata. Ensure that <strong id="EN-US_TOPIC_0020212668__b2126998557">key</strong> and <strong id="EN-US_TOPIC_0020212668__b1460789502">value</strong> in the metadata contain at most 255 bytes.</p>
+<p id="EN-US_TOPIC_0020212668__p5568103611379">This field is used only when an encrypted disk is created.</p>
+<p id="EN-US_TOPIC_0020212668__p1815264144920">If data disks are created using a data disk image, this field cannot be used.</p>
+<p id="EN-US_TOPIC_0020212668__p16970151531615">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__section1228814491353">metadata Field Description for Creating Disks</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212668__section46136113"><h4 class="sectiontitle">Response</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212668__table2824153181913" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0020212668__row11825193111915"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.7.2.1.4.1.1"><p id="EN-US_TOPIC_0020212668__p135632102272">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.82178217821782%" id="mcps1.3.7.2.1.4.1.2"><p id="EN-US_TOPIC_0020212668__p55632010102714">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.34653465346535%" id="mcps1.3.7.2.1.4.1.3"><p id="EN-US_TOPIC_0020212668__p125631410152717">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212668__row382615381910"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.7.2.1.4.1.1 "><p id="EN-US_TOPIC_0020212668__p1882713151914">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.7.2.1.4.1.2 "><p id="EN-US_TOPIC_0020212668__p1182723161913">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.34653465346535%" headers="mcps1.3.7.2.1.4.1.3 "><p id="EN-US_TOPIC_0020212668__p12827133121914">Specifies the returned task ID after delivering the task. You can query the task progress using this ID. For details about how to query the task execution status based on <strong id="EN-US_TOPIC_0020212668__b176813401213">job_id</strong>, see <a href="en-us_topic_0022225397.html">Task Status Management</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0020212668__p930619377222">For details about abnormal responses, see <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212668__section755512111436"><h4 class="sectiontitle">Example Request</h4><p id="EN-US_TOPIC_0020212668__p165385214436">The public cloud platform provides various <span id="EN-US_TOPIC_0020212668__text74184918221">ECS</span> types. The flavor name/ID varies depending on <span id="EN-US_TOPIC_0020212668__text7318195553612">ECS</span> types and specifications. When you use APIs to create <span id="EN-US_TOPIC_0020212668__text19688810375">ECS</span>s with different specifications, the request bodies are the same. You only need to change the parameter values in the following request example based on the parameters described in <a href="#EN-US_TOPIC_0020212668__section5126234">Request</a>.</p>
+<ul id="EN-US_TOPIC_0020212668__ul15938190403"><li id="EN-US_TOPIC_0020212668__li1693810910400">Example URL request<pre class="screen" id="EN-US_TOPIC_0020212668__screen27636168409">POST https://<em id="EN-US_TOPIC_0020212668__i5452131772714">{endpoint}</em>/v1/{project_id}/cloudservers</pre>
+</li></ul>
+</div>
+<ul id="EN-US_TOPIC_0020212668__ul6110122211309"><li id="EN-US_TOPIC_0020212668__li191181837123013">An <span id="EN-US_TOPIC_0020212668__text1553017528228">ECS</span> with flavor ID <strong id="EN-US_TOPIC_0020212668__b522578792">m3.larger</strong> is to be created, where the image ID is <strong id="EN-US_TOPIC_0020212668__b1592193504">imageid_123</strong>, disk type is <strong id="EN-US_TOPIC_0020212668__b1756672973">SSD</strong>, and VPC ID is <strong id="EN-US_TOPIC_0020212668__b377024615">0dae26c9-9a70-4392-93f3-87d53115d171</strong>. An example request is as follows:<pre class="screen" id="EN-US_TOPIC_0020212668__screen0770128355">{
+    "server": {
+        "availability_zone":"az1-dc1",
+        "name": "newserver", 
+        "imageRef": "imageid_123", 
+        "root_volume": {
+            "volumetype": "SSD"
+        }, 
+        "data_volumes": [
+            {
+                "volumetype": "SSD", 
+                "size": 100
+            }, 
+            {
+                "volumetype": "SSD", 
+                "size": 100,
+                "multiattach": true,
+                "hw:passthrough": true
+            }
+        ], 
+        "flavorRef": "m3.larger", 
+        "vpcid": "0dae26c9-9a70-4392-93f3-87d53115d171", 
+        "security_groups": [
+            {
+                "id": "507ca48f-814c-4293-8706-300564d54620"
+            }
+        ], 
+        "nics": [
+            {
+                "subnet_id": "157ee789-03ea-45b1-a698-76c92660dd83", 
+                "extra_dhcp_opts":[
+                     {
+                           "opt_value": 8888, 
+                           "opt_name": "26"
+                     }
+                ]
+            }
+        ], 
+        "publicip": {
+            "eip": {
+                "iptype": "5_bgp",
+                "bandwidth": {
+                    "size": 10, 
+                    "sharetype": "PER"
+                }
+            }
+        }, 
+        "key_name": "sshkey-123", 
+        "count": 1 
+    }
+}</pre>
+</li></ul>
+<ul id="EN-US_TOPIC_0020212668__ul61457188454"><li id="EN-US_TOPIC_0020212668__li53019517307">An ECS is to be created using a full-ECS image, in which two data disks are contained. The disk settings of the newly created ECS are as follows:<ul id="EN-US_TOPIC_0020212668__ul1924214555303"><li id="EN-US_TOPIC_0020212668__li16145121816457">The system disk is encrypted.</li><li id="EN-US_TOPIC_0020212668__li161771917193810">For the two data disks to be restored, one uses default settings, and the other uses the changed settings, SSD, 100 GB.</li><li id="EN-US_TOPIC_0020212668__li85991327104514">In addition to the two data disks to be restored, a new data disk is to be attached to the <span id="EN-US_TOPIC_0020212668__text763417519464">ECS</span>, and the settings of the disk are SSD, 50 GB.</li></ul>
+<div class="p" id="EN-US_TOPIC_0020212668__p1056994518563">An example request is as follows:<pre class="screen" id="EN-US_TOPIC_0020212668__screen13269424193610">{
+    "server": {
+        "availability_zone":"az1-dc1", 
+        "name": "wholeImageServer", 
+        "imageRef": "ff49b1f1-3e3e-4913-89c6-a026041661e8", 
+        "root_volume": {
+            "volumetype": "SSD",
+            "metadata": {
+                 "__system__encrypted": "1",
+                 "__system__cmkid": "83cdb52d-9ebf-4469-9cfa-e7b5b80da846"
+             }
+        }, 
+        "data_volumes": [
+            {
+                "volumetype": "SSD", 
+                "size": 100,
+                "extendparam":{
+                    "snapshotId": "ef020653-9742-4d24-8672-10af42c9702b"
+                }
+            }, 
+            {
+                "volumetype": "SSD", 
+                "size": 50
+            }
+        ], 
+        "flavorRef": "s2.large.2", 
+        "vpcid": "0dae26c9-9a70-4392-93f3-87d53115d171", 
+        "security_groups": [
+            {
+                "id": "507ca48f-814c-4293-8706-300564d54620"
+            }
+        ], 
+        "nics": [
+            {
+                "subnet_id": "157ee789-03ea-45b1-a698-76c92660dd83"
+            }
+        ],
+        "key_name": "sshkey-123"
+    }
+}</pre>
+</div>
+</li><li id="EN-US_TOPIC_0020212668__li8526148115111">An example pre-verification request body is as follows:<pre class="screen" id="EN-US_TOPIC_0020212668__screen46185445414">{
+    "dry_run": true 
+    "server": {
+        "availability_zone":"az1-dc1",
+        "name": "newserver", 
+        "imageRef": "1189efbf-d48b-46ad-a823-94b942e2a000", 
+        "root_volume": {
+            "volumetype": "SSD"
+        }, 
+        "data_volumes": [ ], 
+        "flavorRef": "s3.xlarge.2", 
+        "vpcid": "0dae26c9-9a70-4392-93f3-87d53115d171", 
+        "security_groups": [
+            {
+                "id": "507ca48f-814c-4293-8706-300564d54620"
+            }
+        ], 
+        "nics": [
+            {
+                "subnet_id": "157ee789-03ea-45b1-a698-76c92660dd83"
+            }
+        ], 
+        "key_name": "sshkey-123", 
+        "count": 1
+    }
+}</pre>
+</li></ul>
+<div class="section" id="EN-US_TOPIC_0020212668__section584343712331"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0020212668__screen9688175613318">{
+    "job_id": "93c82933d6b7827d3016b8771f2070873"
+}</pre>
+<p id="EN-US_TOPIC_0020212668__p633417471729">Or</p>
+<pre class="screen" id="EN-US_TOPIC_0020212668__screen1391512577212">{
+    "error": {
+        "code": "request body is illegal.", 
+        "message": "Ecs.0005"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212668__section3394154515224"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212668__p11579229172415">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212668__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0020212668__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212657.html">Lifecycle Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,115 @@
+<a name="EN-US_TOPIC_0076210995"></a><a name="EN-US_TOPIC_0076210995"></a>
+
+<h1 class="topictitle1">How Can I Adjust System Disk Partitions?</h1>
+<div id="body1505110571867"><div class="section" id="EN-US_TOPIC_0076210995__section2442470814170"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0076210995__p11448970215419">If the capacity of system disk partitions is inconsistent with the actual system disk capacity after an <span id="EN-US_TOPIC_0076210995__text198481936182516">ECS</span> is created, you can manually adjust the partitions to expand the system disk.</p>
+<p id="EN-US_TOPIC_0076210995__p58933697195825">There are two ways to expand a system disk:</p>
+<ul id="EN-US_TOPIC_0076210995__ul64614970195827"><li id="EN-US_TOPIC_0076210995__li5128804720129">Consider the empty partition as a new partition and attach this partition to a directory in the root partition after formatting it. For details, see this section.</li><li id="EN-US_TOPIC_0076210995__li47485387195827">Add the empty partition to the root partition to be expanded. For detailed operations, see the following:<ul id="EN-US_TOPIC_0076210995__ul3567896720273"><li id="EN-US_TOPIC_0076210995__li56207042091"><a href="en-us_topic_0078300749.html">How Can I Add the Empty Partition of an Expanded System Disk to the End Root Partition Online?</a></li><li id="EN-US_TOPIC_0076210995__li32803099202725"><a href="en-us_topic_0078300750.html">How Can I Add the Empty Partition of an Expanded System Disk to the Non-end Root Partition Online?</a></li></ul>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0076210995__section2876888014177"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0076210995__p67068323215931">This section uses an <span id="EN-US_TOPIC_0076210995__text634832918514">ECS</span> running CentOS 7.3 64bit as an example. A 60 GB system disk was created with the <span id="EN-US_TOPIC_0076210995__text144861818161217">ECS</span>. However, the capacity of the system disk partition is displayed as only 40 GB.</p>
+<p id="EN-US_TOPIC_0076210995__p8092395175751">To use the 20 GB capacity, performing the following operations:</p>
+<ol id="EN-US_TOPIC_0076210995__ol47552483144827"><li id="EN-US_TOPIC_0076210995__li32220420144827"><span>View disk partitions.</span><p><ol type="a" id="EN-US_TOPIC_0076210995__ol64415844142740"><li id="EN-US_TOPIC_0076210995__li3264913143132">Log in to the Linux <span id="EN-US_TOPIC_0076210995__text1480643818469">ECS</span>.</li><li id="EN-US_TOPIC_0076210995__li60940763143052">Run the following command to switch to user <strong id="EN-US_TOPIC_0076210995__b842352706163831">root</strong>:<p id="EN-US_TOPIC_0076210995__p2487307514316"><strong id="EN-US_TOPIC_0076210995__b19058516143256">sudo su -</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li61504051143249">Run the following command to view details about the ECS disk:<p id="EN-US_TOPIC_0076210995__p5740610414433"><a name="EN-US_TOPIC_0076210995__li61504051143249"></a><a name="li61504051143249"></a><strong id="EN-US_TOPIC_0076210995__b1263614614437">fdisk -l</strong></p>
+<p id="EN-US_TOPIC_0076210995__p2202233514434">In the following command output, <strong id="EN-US_TOPIC_0076210995__b84235270616228">/dev/xvda</strong> or <strong id="EN-US_TOPIC_0076210995__b842352706162213">/dev/vda</strong> indicates the system disk.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig30207295194414"><span class="figcap"><b>Figure 1 </b>Viewing details about the disk</span><br><span><img id="EN-US_TOPIC_0076210995__image50841153201035" src="en-us_image_0076540987.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li389323291004">Run the following command to view disk partitions:<p id="EN-US_TOPIC_0076210995__p1133651510120"><a name="EN-US_TOPIC_0076210995__li389323291004"></a><a name="li389323291004"></a><strong id="EN-US_TOPIC_0076210995__b6448612210123">parted -l /dev/xvda</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig61751392489"><span class="figcap"><b>Figure 2 </b>Viewing disk partitions</span><br><span><img id="EN-US_TOPIC_0076210995__image4557256310022" src="en-us_image_0076598858.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0076210995__li29836593144842"><span>Create a partition for the expanded system disk capacity.</span><p><ol type="a" id="EN-US_TOPIC_0076210995__ol61679266145127"><li id="EN-US_TOPIC_0076210995__li474469915219">Run the following command to switch to the fdisk mode (taking <strong id="EN-US_TOPIC_0076210995__b145622915120">/dev/xvda</strong> as an example):<p id="EN-US_TOPIC_0076210995__p5363699415238"><strong id="EN-US_TOPIC_0076210995__b822379215243">fdisk /dev/xvda</strong></p>
+<p id="EN-US_TOPIC_0076210995__p1237071315719">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0076210995__screen52767221574">[root@ecs-8d6c ]# fdisk /dev/xvda
+Welcome to fdisk (util-linux 2.23.2).
+
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Command (m for help):</pre>
+</li><li id="EN-US_TOPIC_0076210995__li4975231515749">Enter <strong>n</strong> and press <strong>Enter</strong> to create a new partition.<p id="EN-US_TOPIC_0076210995__p5208868815222">Because the system disk has two existing partitions, the system automatically creates the third one.</p>
+<p id="EN-US_TOPIC_0076210995__p45302299152217">Information similar to the following is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig8903145214811"><span class="figcap"><b>Figure 3 </b>Creating a new partition</span><br><span><img id="EN-US_TOPIC_0076210995__image42082379201138" src="en-us_image_0076540988.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li59908857152449">Enter the new partition's start cylinder number and press <strong id="EN-US_TOPIC_0076210995__b842352706184147">Enter</strong>.<p id="EN-US_TOPIC_0076210995__p1415882415289">The start cylinder number must be greater than the end cylinder numbers of existing partitions. In this example, use the default value for the new partition's start cylinder number and press <strong id="EN-US_TOPIC_0076210995__b342661145163512">Enter</strong>. Information similar to the following is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig181891453491"><span class="figcap"><b>Figure 4 </b>Specifying the new partition's start cylinder number</span><br><span><img id="EN-US_TOPIC_0076210995__image6222521293635" src="en-us_image_0076595619.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li4311853153154">Enter the new partition's end cylinder number and press <strong id="EN-US_TOPIC_0076210995__b205539341">Enter</strong>.<p id="EN-US_TOPIC_0076210995__p390345115348">In this example, use the default value for the new partition's end cylinder number and press <strong id="EN-US_TOPIC_0076210995__b493287401">Enter</strong>. Information similar to the following is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig1575842424919"><span class="figcap"><b>Figure 5 </b>Specifying the new partition's end cylinder number</span><br><span><img id="EN-US_TOPIC_0076210995__image5960716193714" src="en-us_image_0076595620.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li57566208153538">Enter <strong id="EN-US_TOPIC_0076210995__b43545514131720">p</strong> and press <strong id="EN-US_TOPIC_0076210995__b56365313131720">Enter</strong> to view the created partition.<p id="EN-US_TOPIC_0076210995__p18517787153613">Information similar to the following is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig313793614917"><span class="figcap"><b>Figure 6 </b>Viewing the created partition</span><br><span><img id="EN-US_TOPIC_0076210995__image3524038393851" src="en-us_image_0076596029.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li25007609181032">Enter <strong id="EN-US_TOPIC_0076210995__b842352706163631">w</strong> and press <strong id="EN-US_TOPIC_0076210995__b842352706163635">Enter</strong>. The system saves and exits the partition.<p id="EN-US_TOPIC_0076210995__p375388181033">The system automatically writes the partition result into the partition list. Then, the partition is created.</p>
+<p id="EN-US_TOPIC_0076210995__p5924897516410">Information similar to the following is displayed.</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig31177535493"><span class="figcap"><b>Figure 7 </b>Completing the partition creation</span><br><span><img id="EN-US_TOPIC_0076210995__image2929243594244" src="en-us_image_0076596326.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li229862371034">Run the following command to view disk partitions:<p id="EN-US_TOPIC_0076210995__p6359092610318"><a name="EN-US_TOPIC_0076210995__li229862371034"></a><a name="li229862371034"></a><strong id="EN-US_TOPIC_0076210995__b730100910321">parted -l /dev/xvda</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig1821920725014"><span class="figcap"><b>Figure 8 </b>Viewing disk partitions</span><br><span><img id="EN-US_TOPIC_0076210995__image6590393910535" src="en-us_image_0076600080.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0076210995__li4868138016107"><span>Run the following command to synchronize the modifications in the partition list with the OS:</span><p><p id="EN-US_TOPIC_0076210995__p42050334161056"><strong id="EN-US_TOPIC_0076210995__b33447567161059">partprobe</strong></p>
+</p></li><li id="EN-US_TOPIC_0076210995__li6670885316118"><span>Configure the type of the new partition file system.</span><p><ol type="a" id="EN-US_TOPIC_0076210995__ol43977510201337"><li id="EN-US_TOPIC_0076210995__li60253271201337">Run the following command to view the type of the file system:<p id="EN-US_TOPIC_0076210995__p30836018201427"><a name="EN-US_TOPIC_0076210995__li60253271201337"></a><a name="li60253271201337"></a><strong id="EN-US_TOPIC_0076210995__b58376764201425">df -TH</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig0499732105012"><span class="figcap"><b>Figure 9 </b>Viewing the file system type</span><br><span><img id="EN-US_TOPIC_0076210995__image36662221201436" src="en-us_image_0076541187.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0076210995__li41185236201444">Run the following command to format the partition (taking the <strong id="EN-US_TOPIC_0076210995__b842352706164420">ext4</strong> type as an example):<p id="EN-US_TOPIC_0076210995__p20225200161221"><strong id="EN-US_TOPIC_0076210995__b17883750202339">mkfs -t ext4 /dev/xvda3</strong></p>
+<div class="note" id="EN-US_TOPIC_0076210995__note28039730161229"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0076210995__p51030986161229">Formatting the partition requires a period of time. During this time, observe the system running status and do not exit the system.</p>
+</div></div>
+<p id="EN-US_TOPIC_0076210995__p4308930816132">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0076210995__screen53509348161918">[root@ecs-86dc ]# mkfs -t ext4 /dev/xvda3
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+1790544 inodes, 7156992 blocks
+357849 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=2155872256
+219 block groups
+32768 blocks per group, 32768 fragments per group
+8176 inodes per group
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+        4096000
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done</pre>
+</li></ol>
+</p></li><li id="EN-US_TOPIC_0076210995__li6401494216517"><span>Mount the new partition to the target directory.</span><p><p id="EN-US_TOPIC_0076210995__p19219108201219">If you mount the new partition to a directory that is not empty, the subdirectories and files in the directory will be hidden. It is a good practice to mount the new partition to an empty directory or a newly created directory. If you want to mount the new partition to a directory that is not empty, temporarily move the subdirectories and files in the directory to another directory. After the partition is mounted, move the subdirectories and files back.</p>
+<div class="p" id="EN-US_TOPIC_0076210995__p13220793201234">Take the newly created directory <strong id="EN-US_TOPIC_0076210995__b84235270616551">/root/new</strong> as an example.<ol type="a" id="EN-US_TOPIC_0076210995__ol466603216208"><li id="EN-US_TOPIC_0076210995__li5733462820107">Run the following command to create the <strong id="EN-US_TOPIC_0076210995__b34334685216560">/root/new</strong> directory:<p id="EN-US_TOPIC_0076210995__p7563376201119"><strong id="EN-US_TOPIC_0076210995__b5892255201124">mkdir /root/new</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li4199429416208">Run the following command to mount the new partition to the <strong id="EN-US_TOPIC_0076210995__b20857287202335">/root/new</strong> directory:<p id="EN-US_TOPIC_0076210995__p25321218162146"><strong id="EN-US_TOPIC_0076210995__b11012056202434">mount /dev/xvda3 /root/new</strong></p>
+<p id="EN-US_TOPIC_0076210995__p8333463162148">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0076210995__screen39795756162156">[root@ecs-86dc ]# mount /dev/xvda3 /root/new
+[root@ecs-86dc ]#</pre>
+</li><li id="EN-US_TOPIC_0076210995__li19482764162229">Run the following command to view the mounted file systems:<p id="EN-US_TOPIC_0076210995__p4413107616258"><a name="EN-US_TOPIC_0076210995__li19482764162229"></a><a name="li19482764162229"></a><strong id="EN-US_TOPIC_0076210995__b717025316256">df -TH</strong></p>
+<p id="EN-US_TOPIC_0076210995__p29704201162511">Information similar to the following is displayed:</p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig71852049155012"><span class="figcap"><b>Figure 10 </b>Viewing the mounted file systems</span><br><span><img id="EN-US_TOPIC_0076210995__image21148334202928" src="en-us_image_0076543500.jpg" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+</p></li><li id="EN-US_TOPIC_0076210995__li7419997162620"><span>Determine whether to set automatic mounting upon system startup for the new disk.</span><p><div class="p" id="EN-US_TOPIC_0076210995__p436639651074">If you do not set automatic mounting upon system startup, you must mount the new partition to the specified directory again after the <span id="EN-US_TOPIC_0076210995__text7775103944615">ECS</span> is restarted.<ul id="EN-US_TOPIC_0076210995__ul62863569162651"><li id="EN-US_TOPIC_0076210995__li31762333162651">If automatic mounting is required, go to <a href="#EN-US_TOPIC_0076210995__li51885379162851">7</a>.</li><li id="EN-US_TOPIC_0076210995__li35401015162655">If automatic mounting is not required, no further action is required.</li></ul>
+</div>
+</p></li><li id="EN-US_TOPIC_0076210995__li51885379162851"><a name="EN-US_TOPIC_0076210995__li51885379162851"></a><a name="li51885379162851"></a><span>Set automatic mounting upon system startup for the new disk.</span><p><div class="note" id="EN-US_TOPIC_0076210995__note144095141718"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0076210995__p440931411119">Do not set automatic mounting upon system startup for unformatted disks because this will cause <span id="EN-US_TOPIC_0076210995__text26076411136">ECS</span> startup failures.</p>
+</div></div>
+<ol type="a" id="EN-US_TOPIC_0076210995__ol4052297162857"><li id="EN-US_TOPIC_0076210995__li60270210113848">Run the following command to obtain the file system type and UUID:<p id="EN-US_TOPIC_0076210995__p501717213736"><a name="EN-US_TOPIC_0076210995__li60270210113848"></a><a name="li60270210113848"></a><strong id="EN-US_TOPIC_0076210995__b1638305713738">blkid</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0076210995__fig124697122517"><span class="figcap"><b>Figure 11 </b>Viewing the file system type</span><br><span><img id="EN-US_TOPIC_0076210995__image47716856202956" src="en-us_image_0076543501.jpg" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0076210995__p3846573113840">According to the preceding figure, the UUID of the new partition is 96e5e028-b0fb-4547-a82a-35ace1086c4f.</p>
+</li><li id="EN-US_TOPIC_0076210995__li55385639162725">Run the following command to open the <strong id="EN-US_TOPIC_0076210995__b842352706172029">fstab</strong> file using the vi editor:<p id="EN-US_TOPIC_0076210995__p49216427162833"><strong id="EN-US_TOPIC_0076210995__b14512863163034">vi /etc/fstab</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li17019243163053">Press <strong>i</strong> to enter editing mode.</li><li id="EN-US_TOPIC_0076210995__li1992729416318">Move the cursor to the end of the file and press <strong id="EN-US_TOPIC_0076210995__b1084837140102256">Enter</strong>. Then, add the following information:<p id="EN-US_TOPIC_0076210995__p17864072163410"><strong id="EN-US_TOPIC_0076210995__b1539433820313">UUID=96e5e028-b0fb-4547-a82a-35ace1086c4f /root/new ext4 defaults 0 0</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li18299015163419">Press <strong id="EN-US_TOPIC_0076210995__b842352706172436">Esc</strong>, run the following command, and press <strong id="EN-US_TOPIC_0076210995__b842352706172448">Enter</strong>. The system saves the configurations and exits the vi editor.<p id="EN-US_TOPIC_0076210995__p6621241916357"><strong id="EN-US_TOPIC_0076210995__b6234662516359">:wq</strong></p>
+</li></ol>
+<div class="note" id="EN-US_TOPIC_0076210995__note3819227316569"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0076210995__p818613716569">If you want to detach a new disk for which automatic mounting upon system startup has been set, you must delete the automatic mounting configuration before you detach the disk. Otherwise, the <span id="EN-US_TOPIC_0076210995__text717128131414">ECS</span> cannot be started after you detach the disk. To delete the automatic mounting configuration, perform the following operations:</p>
+<ol type="a" id="EN-US_TOPIC_0076210995__ol15507860181142"><li id="EN-US_TOPIC_0076210995__li44944070181150">Run the following command to open the <strong id="EN-US_TOPIC_0076210995__b252364186">fstab</strong> file using the vi editor:<p id="EN-US_TOPIC_0076210995__p1843449181150"><strong id="EN-US_TOPIC_0076210995__b16591042181150">vi /etc/fstab</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li15101650181150">Press <strong>i</strong> to enter editing mode.</li><li id="EN-US_TOPIC_0076210995__li1697122181150">Delete the following statement:<p id="EN-US_TOPIC_0076210995__p15274099181150"><a name="EN-US_TOPIC_0076210995__li1697122181150"></a><a name="li1697122181150"></a><strong id="EN-US_TOPIC_0076210995__b21031390203113">UUID=96e5e028-b0fb-4547-a82a-35ace1086c4f /root/new ext4 defaults 0 0</strong></p>
+</li><li id="EN-US_TOPIC_0076210995__li29242501181150">Press <strong id="EN-US_TOPIC_0076210995__b97395841">Esc</strong>, run the following command, and press <strong id="EN-US_TOPIC_0076210995__b541414721">Enter</strong>. The system saves the configurations and exits the vi editor.<p id="EN-US_TOPIC_0076210995__p61855919181150"><strong id="EN-US_TOPIC_0076210995__b19832367181150">:wq</strong></p>
+</li></ol>
+</div></div>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

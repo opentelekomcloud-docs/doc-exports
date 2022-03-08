@@ -1,0 +1,50 @@
+<a name="EN-US_TOPIC_0078300749"></a><a name="EN-US_TOPIC_0078300749"></a>
+
+<h1 class="topictitle1">How Can I Add the Empty Partition of an Expanded System Disk to the End Root Partition Online?</h1>
+<div id="body1506342233051"><div class="section" id="EN-US_TOPIC_0078300749__section17790838205214"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0078300749__p11448970215419">If the capacity of system disk partitions is inconsistent with the actual system disk capacity after an <span id="EN-US_TOPIC_0078300749__text139101057132619">ECS</span> is created, you can add the empty partition to the root partition of the system disk.</p>
+<p id="EN-US_TOPIC_0078300749__p4240675922811">This section describes how to add the empty partition to the end root partition online.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0078300749__section2534605521644"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0078300749__p18776511211333">In the following operations, the ECS that runs CentOS 6.5 64bit and has a 50 GB system disk is used as an example. The system disk has two partitions, <strong id="EN-US_TOPIC_0078300749__b1875729730154345">/dev/xvda1: swap</strong> and <strong id="EN-US_TOPIC_0078300749__b84235270615445">/dev/xvda2: root</strong>, and the root partition is the end partition.</p>
+<ol id="EN-US_TOPIC_0078300749__ol5742836821655"><li id="EN-US_TOPIC_0078300749__li5274060021655">Run the following command to view disk partitions:<p id="EN-US_TOPIC_0078300749__p41708771211418"><a name="EN-US_TOPIC_0078300749__li5274060021655"></a><a name="li5274060021655"></a><strong id="EN-US_TOPIC_0078300749__b16530380211421">parted -l /dev/xvda</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0078300749__screen4477587721151">[root@sluo-ecs-5e7d ~]# parted -l /dev/xvda
+Disk /dev/xvda: 53.7GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start   End     Size    Type     File system     Flags
+ 1      1049kB  4296MB  4295MB  primary  linux-swap(v1)
+ 2      4296MB  42.9GB  38.7GB  primary  ext4            boot</pre>
+</li><li id="EN-US_TOPIC_0078300749__li60270210113848">Run the following command to obtain the file system type and UUID:<p id="EN-US_TOPIC_0078300749__p501717213736"><a name="EN-US_TOPIC_0078300749__li60270210113848"></a><a name="li60270210113848"></a><strong id="EN-US_TOPIC_0078300749__b1638305713738">blkid</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0078300749__screen38770694211644">/dev/xvda1: UUID="25ec3bdb-ba24-4561-bcdc-802edf42b85f" TYPE="swap" 
+/dev/xvda2: UUID="1a1ce4de-e56a-4e1f-864d-31b7d9dfb547" TYPE="ext4" </pre>
+</li><li id="EN-US_TOPIC_0078300749__li44525917211655">Run the following command to install the growpart tool:<p id="EN-US_TOPIC_0078300749__p50244350211838"><a name="EN-US_TOPIC_0078300749__li44525917211655"></a><a name="li44525917211655"></a>This tool may be integrated in the <strong id="EN-US_TOPIC_0078300749__b842352706184515">cloud-utils-growpart/cloud-utils/cloud-initramfs-tools/cloud-init</strong> package. Run the <strong id="EN-US_TOPIC_0078300749__b1254711349184542">yum install cloud-*</strong> command to ensure it is available.</p>
+<p id="EN-US_TOPIC_0078300749__p5375870121184"><strong id="EN-US_TOPIC_0078300749__b4734090211813">yum install cloud-utils-growpart</strong></p>
+</li><li id="EN-US_TOPIC_0078300749__li56535554212054">Run the following command to expand the root partition (the second partition) using growpart:<div class="p" id="EN-US_TOPIC_0078300749__p64678915212152"><a name="EN-US_TOPIC_0078300749__li56535554212054"></a><a name="li56535554212054"></a><strong id="EN-US_TOPIC_0078300749__b46438525212155">growpart /dev/xvda 2</strong><pre class="screen" id="EN-US_TOPIC_0078300749__screen44298458212141">[root@sluo-ecs-5e7d ~]# growpart /dev/xvda 2
+CHANGED: partition=2 start=8390656 old: size=75495424 end=83886080 new: size=96465599,end=104856255</pre>
+</div>
+</li><li id="EN-US_TOPIC_0078300749__li36709858212228">Run the following command to verify that online capacity expansion is successful:<div class="p" id="EN-US_TOPIC_0078300749__p54102011212343"><a name="EN-US_TOPIC_0078300749__li36709858212228"></a><a name="li36709858212228"></a><strong id="EN-US_TOPIC_0078300749__b65519734212345">parted -l /dev/xvda</strong><pre class="screen" id="EN-US_TOPIC_0078300749__screen33772718212334">[root@sluo-ecs-5e7d ~]# parted -l /dev/xvda
+Disk /dev/xvda: 53.7GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start   End     Size    Type     File system     Flags
+ 1      1049kB  4296MB  4295MB  primary  linux-swap(v1)
+ 2      4296MB  53.7GB  49.4GB  primary  ext4            boot</pre>
+</div>
+</li><li id="EN-US_TOPIC_0078300749__li16322559223217">Run the following command to expand the capacity of the file system:<p id="EN-US_TOPIC_0078300749__p47069251222830"><a name="EN-US_TOPIC_0078300749__li16322559223217"></a><a name="li16322559223217"></a><strong id="EN-US_TOPIC_0078300749__b167100930810658">resize2fs -f <em id="EN-US_TOPIC_0078300749__i84364717410658">$Partition name</em></strong></p>
+<p id="EN-US_TOPIC_0078300749__p28323080222839">Suppose the partition name is <strong id="EN-US_TOPIC_0078300749__b84235270610726">/dev/xvda2</strong>, run the following command:</p>
+<pre class="screen" id="EN-US_TOPIC_0078300749__screen59398220223327">[root@sluo-ecs-a611 ~]# resize2fs -f /dev/xvda2
+resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/xvda2 is mounted on /; on-line resizing required
+old_desc_blocks = 3, new_desc_blocks = 3
+....
+[root@sluo-ecs-a611 ~] # df -hT    //Check file system capacity expansion</pre>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+

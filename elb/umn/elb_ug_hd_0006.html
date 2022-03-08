@@ -1,0 +1,33 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Configuring Slow Start (Dedicated Load Balancers)">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="elb_ug_hd_0006">
+<meta name="DC.Language" content="en-us">
+<title>Configuring Slow Start (Dedicated Load Balancers)</title>
+</head>
+<body><a name="elb_ug_hd_0006"></a><a name="elb_ug_hd_0006"></a>
+
+<h1 class="topictitle1">Configuring Slow Start (Dedicated Load Balancers)</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_hd_0006__en-us_topic_0237163437_p147921630749">You can enable slow start for HTTP or HTTPS listeners. After you enable it, the load balancer linearly increases the proportion of requests to send to backend servers in this mode. When the slow start duration elapses, the load balancer sends full share of requests to backend servers and exits the slow start mode. Slow start gives applications time to warm up and respond to requests with optimal performance. When the health check function is enabled, slow start takes effect after backend servers are detected healthy. If the health check is not working normally during the slow start, the slow start duration will not stop.</p>
+<p id="elb_ug_hd_0006__p1138512540424">Backend servers will exit slow start in either of the following cases:</p>
+<ol id="elb_ug_hd_0006__ol1544416577588"><li id="elb_ug_hd_0006__li14444175712581">The slow start duration elapses.</li><li id="elb_ug_hd_0006__li2044418571582">Backend servers become unhealthy during the slow start duration.</li></ol>
+<p id="elb_ug_hd_0006__p11385954144210">If an unhealthy backend server exits slow start, it will enter slow start again once it is detected healthy.</p>
+
+<h4 class="sectiontitle">Prerequisites</h4><ul id="elb_ug_hd_0006__ul168591719105413"><li id="elb_ug_hd_0006__li16788122212543">You have created a dedicated load balancer.</li><li id="elb_ug_hd_0006__li1012984835415">You have added an HTTP or HTTPS listener to the dedicated load balancer.</li></ul>
+
+<h4 class="sectiontitle">Procedure</h4><ol id="elb_ug_hd_0006__en-us_topic_0237163437_ol144631231121417"><li id="elb_ug_hd_0006__li677391520332">Log in to the management console.</li><li id="elb_ug_hd_0006__li675519100420">In the upper left corner of the page, click <span><img id="elb_ug_hd_0006__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="elb_ug_hd_0006__li83736197297">Hover on <span><img id="elb_ug_hd_0006__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="elb_ug_hd_0006__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="elb_ug_hd_0006__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="elb_ug_hd_0006__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="elb_ug_hd_0006__en-us_topic_0237163437_en-us_topic_0052569729_en-us_topic_0091131437_li53888274153842">On the <strong id="elb_ug_hd_0006__b171136415249">Load Balancers</strong> page, locate the dedicated load balancer that you have created and click its name.</li><li id="elb_ug_hd_0006__en-us_topic_0237163437_li03519091511">In the <strong id="elb_ug_hd_0006__b136661943162519">Backend Server Groups</strong> tab, click <strong id="elb_ug_hd_0006__b17500315142612">Add Backend Server Group</strong>. </li><li id="elb_ug_hd_0006__li62068351776">Enable <strong id="elb_ug_hd_0006__b1572219214273">Slow Start</strong> and set the slow start duration. Set other parameters based on service requirements.</li><li id="elb_ug_hd_0006__li1842516191820">Click <strong id="elb_ug_hd_0006__b12727112202415">OK</strong>.</li></ol>
+
+<h4 class="sectiontitle">Follow-Up Operations</h4><ul id="elb_ug_hd_0006__ul0879174355316"><li id="elb_ug_hd_0006__li1087974315531">For an existing backend server group, you can click <span><img id="elb_ug_hd_0006__image184611716311" src="en-us_image_0291965517.png"></span> on the right of the backend server group on the <strong id="elb_ug_hd_0006__b1938445716289">Backend Server Groups</strong> tab page to enable slow start.</li><li id="elb_ug_hd_0006__li65287505535">Add backend <span id="elb_ug_hd_0006__ph283894595415">server</span>s to the newly added backend <span id="elb_ug_hd_0006__ph110513818553">server</span> group by performing the operations in <a href="elb_ug_hd_0003.html">Adding or Removing Backend Servers (Dedicated Load Balancers)</a>.</li></ul>
+
+
+
+</body>
+</html>

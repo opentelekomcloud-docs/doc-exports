@@ -1,0 +1,37 @@
+<a name="en-us_topic_0015479966"></a><a name="en-us_topic_0015479966"></a>
+
+<h1 class="topictitle1">What Is ELB?</h1>
+<p id="en-us_topic_0015479966__p155161438811">Elastic Load Balancing (ELB) automatically distributes incoming traffic across multiple backend <span id="en-us_topic_0015479966__text651633810110">server</span>s based on the listening rules you configure. ELB expands the service capabilities of your applications and improves their availability by eliminating single points of failure (SPOFs).</p>
+<p id="en-us_topic_0015479966__p4757131412811"><span><img class="vsd" id="en-us_topic_0015479966__image575751415289" src="en-us_image_0198606126.png"></span></p>
+<a name="en-us_topic_0015479966__section031725010213"></a><a name="section031725010213"></a><h4 class="sectiontitle">ELB Components</h4><p id="en-us_topic_0015479966__p5191164432114">ELB consists of the following components:</p>
+<ul id="en-us_topic_0015479966__ul3441162342"><li id="en-us_topic_0015479966__li13225125413234">Load balancer: distributes incoming traffic across backend <span id="en-us_topic_0015479966__ph13113824134911">server</span>s in one or more availability zones (AZs).</li><li id="en-us_topic_0015479966__li154418614342">Listener: uses the protocol and port you specify to check for requests from clients and route the requests to associated backend servers based on the listening rules you define. You can add one or more listeners to a load balancer.</li><li id="en-us_topic_0015479966__li194371355">Backend server group: routes requests from the load balancer to one or more backend servers. You need to add at least one backend server to a backend server group.<p id="en-us_topic_0015479966__p68121737152213"><a name="en-us_topic_0015479966__li194371355"></a><a name="li194371355"></a>You can set a weight for each backend server based on their performance.</p>
+<p id="en-us_topic_0015479966__p53218810368">You can also configure health checks for a backend server group to check the health of each backend <span id="en-us_topic_0015479966__text19376251166">server</span>. When a backend <span id="en-us_topic_0015479966__text5315720579">server</span> is unhealthy, the load balancer stops routing new requests to this <span id="en-us_topic_0015479966__text7578182983418">server</span>.</p>
+</li></ul>
+
+<span class="figcap"><b>Figure 1 </b>ELB components</span><br><span><img class="vsd" id="en-us_topic_0015479966__image136601248162510" src="en-us_image_0202311381.png"></span>
+<h4 class="sectiontitle">Load Balancer Type</h4><p id="en-us_topic_0015479966__p1914416561296">ELB provides the following types of load balancers: classic load balancer, dedicated load balancer, and <span id="en-us_topic_0015479966__ph34977345260">shared</span> load balancer. Dedicated load balancer and <span id="en-us_topic_0015479966__ph1995223855516">shared</span> load balancer are called elastic load balancers collectively.</p>
+<ul id="en-us_topic_0015479966__ul12641111520119"><li id="en-us_topic_0015479966__li2598204262615">Dedicated load balancers have exclusive use of underlying resources, so that the performance of a dedicated load balancer is not affected by other load balancers. In addition, there are a wide range of specifications available for selection.</li></ul>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_topic_0015479966__en-us_topic_0242751126_p154433010355">Currently, dedicated load balancers are supported only in the <strong id="en-us_topic_0015479966__en-us_topic_0242751126_b26751356154914">eu-nl</strong> region.</p>
+
+<p id="en-us_topic_0015479966__p118316454112"></p>
+<ul id="en-us_topic_0015479966__ul4956122720526"><li id="en-us_topic_0015479966__li1434419205316"><span id="en-us_topic_0015479966__ph15170164618279">Shared</span> load balancers are suitable for web services with heavy traffic. Requests are forwarded based on domain names or URLs, making request routing more flexible. <span id="en-us_topic_0015479966__ph109384831912">Shared load balancers were previously named enhanced load balancers.</span></li><li id="en-us_topic_0015479966__li6413115617533">Classic load balancers can handle simple, light-traffic web services.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_topic_0015479966__p1129116891613">Classic load balancers can no longer be created on the management console. Use shared load balancers or dedicated load balancers instead.</p>
+
+</li></ul>
+<p id="en-us_topic_0015479966__p1965110261438">For details, see <a href="elb_pro_0004.html">Differences Between Dedicated and Shared Load Balancers</a>.</p>
+<p id="en-us_topic_0015479966__p161311836142312">For details, see <a href="en-us_elb_01_0007.html">Differences Between Shared and Classic Load Balancers</a>.</p>
+
+<a name="en-us_topic_0015479966__section17818164132517"></a><a name="section17818164132517"></a><h4 class="sectiontitle">Accessing ELB</h4><p id="en-us_topic_0015479966__p176220543351">You can use either of the following methods to access ELB:</p>
+<ul id="en-us_topic_0015479966__ul522965881114"><li id="en-us_topic_0015479966__li1229115816118">Management console<p id="en-us_topic_0015479966__p162302585117"><a name="en-us_topic_0015479966__li1229115816118"></a><a name="li1229115816118"></a>Log in to the management console and choose <strong id="en-us_topic_0015479966__b17764113352313">Network</strong> &gt; <strong id="en-us_topic_0015479966__b1830321615712">Elastic Load Balancing (ELB)</strong>.</p>
+</li></ul>
+<ul id="en-us_topic_0015479966__ul20796174653117"><li id="en-us_topic_0015479966__li679674614311">APIs<p id="en-us_topic_0015479966__p17504173865613"><a name="en-us_topic_0015479966__li679674614311"></a><a name="li679674614311"></a>You can call APIs to access ELB. For details, see the <em id="en-us_topic_0015479966__i37311034143319">Elastic Load Balancing API Reference</em>.</p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="en-us_topic_0015479966__p1699181671613">By default, load balancers created in the <strong id="en-us_topic_0015479966__b14413153295617">eu-de</strong> region are shared load balancers. APIs for shared load balancers are available only in this region.</p>
+<p id="en-us_topic_0015479966__p572116322404">By default, load balancers created in the <strong id="en-us_topic_0015479966__b742475533515">eu-nl</strong> region are dedicated load balancers. APIs for dedicated load balancers are available only in this region.</p>
+
+</li></ul>
+
+
+
+
+
+
+

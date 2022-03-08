@@ -1,0 +1,54 @@
+<a name="EN-US_TOPIC_0092494943"></a><a name="EN-US_TOPIC_0092494943"></a>
+
+<h1 class="topictitle1">Login Overview</h1>
+<div id="body1515568554882"><div class="section" id="EN-US_TOPIC_0092494943__section2984424226"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0092494943__ul863525411220"><li id="EN-US_TOPIC_0092494943__li1635654172217">Only a running <span id="EN-US_TOPIC_0092494943__text5133205714112">ECS</span> can be logged in.</li><li id="EN-US_TOPIC_0092494943__li041110543018">Login usernames, passwords, and constraints vary depending on OSs running on the ECSs created using a public image. For details, see <em id="EN-US_TOPIC_0092494943__i147081744174413"><a href="https://docs.otc.t-systems.com/en-us/ims/index.html" target="_blank" rel="noopener noreferrer">Public Images Introduction</a></em>.</li><li id="EN-US_TOPIC_0092494943__li1492786142512">If an <span id="EN-US_TOPIC_0092494943__text17417113115492">ECS</span> uses key pair authentication, use the password obtaining function available on the management console to decrypt the private key used during <span id="EN-US_TOPIC_0092494943__text18418153110495">ECS</span> creation to obtain a password.</li><li id="EN-US_TOPIC_0092494943__li7510320142811">Certain G series of ECSs do not support remote login provided by the management console. If you need to remotely log in to the ECSs, install the VNC server on them. For details, see <a href="en-us_topic_0097289624.html">GPU-accelerated ECSs</a>. You are suggested to log in to the ECSs using MSTSC.</li><li id="EN-US_TOPIC_0092494943__li1568612254520">If you log in to a GPU-accelerated <span id="EN-US_TOPIC_0092494943__text12764861420">ECS</span> using MSTSC, GPU acceleration will fail. This is because MSTSC replaces the WDDM GPU driver with a non-accelerated remote desktop display driver. In such a case, you must use other methods to log in to the ECS, such as VNC. If the remote login function available on the management console fails to meet your service requirements, you must install a suitable remote login tool on the <span id="EN-US_TOPIC_0092494943__text1238635161017">ECS</span>, such as TightVNC.<p id="EN-US_TOPIC_0092494943__p156863251659">To download TightVNC, log in at <a href="https://www.tightvnc.com/download.php" target="_blank" rel="noopener noreferrer">https://www.tightvnc.com/download.php</a>.</p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0092494943__section15582182172010"><h4 class="sectiontitle">Login Modes</h4><p id="EN-US_TOPIC_0092494943__p4384182792315">Select a login mode as required and log in to the target <span id="EN-US_TOPIC_0092494943__text526311338199">ECS</span>.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0092494943__table8494562024" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Windows login modes</caption><thead align="left"><tr id="EN-US_TOPIC_0092494943__row11506561722"><th align="left" class="cellrowborder" valign="top" width="15.591559155915593%" id="mcps1.3.2.3.2.5.1.1"><p id="EN-US_TOPIC_0092494943__p1450135618213"><span id="EN-US_TOPIC_0092494943__text11850182442011">ECS</span> OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.541454145414543%" id="mcps1.3.2.3.2.5.1.2"><p id="EN-US_TOPIC_0092494943__p15501256426">Local OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="45.474547454745476%" id="mcps1.3.2.3.2.5.1.3"><p id="EN-US_TOPIC_0092494943__p650756827">Connection Method</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.392439243924393%" id="mcps1.3.2.3.2.5.1.4"><p id="EN-US_TOPIC_0092494943__p185010561229">Requirement</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0092494943__row050156328"><td class="cellrowborder" rowspan="3" valign="top" width="15.591559155915593%" headers="mcps1.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0092494943__p1050175618210">Windows</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.541454145414543%" headers="mcps1.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0092494943__p205015611211">Windows</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.474547454745476%" headers="mcps1.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0092494943__p165014566215">Use MSTSC.</p>
+<p id="EN-US_TOPIC_0092494943__p1050756222">Click <strong id="EN-US_TOPIC_0092494943__b15632122643814">Start</strong> on the local computer. In the <strong id="EN-US_TOPIC_0092494943__b13632226123818">Search programs and files</strong> text box, enter <strong id="EN-US_TOPIC_0092494943__b56335262386">mstsc</strong> to open the <strong id="EN-US_TOPIC_0092494943__b1563362618389">Remote Desktop Connection</strong> dialog box.</p>
+<p id="EN-US_TOPIC_0092494943__p105017561120">For details, see <a href="en-us_topic_0017955381.html">Login Using MSTSC</a>.</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="24.392439243924393%" headers="mcps1.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0092494943__p05012563217">The target <span id="EN-US_TOPIC_0092494943__text16711194145210">ECS</span> has had an <span id="EN-US_TOPIC_0092494943__text1371154110526">EIP</span> bound.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0092494943__row25014568220"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0092494943__p145015612210">Linux</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0092494943__p115015611213">Install a remote connection tool, for example, rdesktop.</p>
+<p id="EN-US_TOPIC_0092494943__p85011561627">For details, see <a href="en-us_topic_0275383051.html">Logging In to a Windows ECS from a Linux Computer</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0092494943__row185065618215"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0092494943__p750956423">Windows</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0092494943__p2501756524">Through the management console.</p>
+<p id="EN-US_TOPIC_0092494943__p1156211563320">For details, see <a href="en-us_topic_0027268511.html">Login Using VNC</a>.</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0092494943__p45095615211">No <span id="EN-US_TOPIC_0092494943__text232435810397">EIP</span> is required.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030888079.html">Logging In to a Windows ECS</a></div>
+</div>
+</div>
+

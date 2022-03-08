@@ -1,0 +1,485 @@
+<a name="elb_zq_zf_0001"></a><a name="elb_zq_zf_0001"></a>
+
+<h1 class="topictitle1">Adding a Forwarding Policy</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_zf_0001__en-us_topic_0136295317_p83688616152">This API is used to add a forwarding policy. The listener and forwarding policy determine how traffic is forwarded to backend servers.</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul19847192403"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li1684713217015">By matching the URL or domain name specified in the forwarding policy when <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b15310121116812">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b151418156811">REDIRECT_TO_POOL</strong>, the load balancer distributes the traffic to backend servers in a specific backend server group.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li133796620019">When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b113161391094">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b12574184218918">REDIRECT_TO_LISTENER</strong>, the HTTP listener is redirected to an HTTPS listener, and requests are routed by the HTTPS listener.</li></ul>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5791101155617">Currently, only redirects from an HTTP listener to an HTTPS listener are supported. When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b0424155810127">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b99327861312">REDIRECT_TO_LISTENER</strong>, the listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b13678142711132">listener_id</strong> can only be an HTTP listener, and the listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b89051012146">redirect_listener_id</strong> can only be an HTTPS listener.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1095392495618">The load balancer of the HTTPS listener to which traffic is redirected must be the same as that of the HTTP listener.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5255557327">POST /v2.0/lbaas/l7policies</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table1035231812353" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row635281817359"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1635211819357">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p15352718153512">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p12352191883510">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="61%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p4837101211345">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row43521918163516"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p123521718143516">l7policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p135231893520">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p9352111810352">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="61%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1335211811358">Specifies the forwarding policy. For details, see <a href="#elb_zq_zf_0001__en-us_topic_0136295317_table173601118133515">Table 2</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zf_0001__en-us_topic_0136295317_table173601118133515"></a><a name="en-us_topic_0136295317_table173601118133515"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table173601118133515" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b19767174972320">l7policy</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row17352191883513"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p153521618133514">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p835291853517">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p163521218193510">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1035261883519">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row19352191816350"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p13352518133510">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p13352131893510">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p16352218143518">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5295183141813">Specifies the ID of the project where the forwarding policy is used.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p8222164914610"></p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p2038118462238">The value must be the same as the value of <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b139265135504">tenant_id</strong> in the token.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1636071814351"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p15352141853516">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1436061833510">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p3360918113515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p3360718183517">Specifies the forwarding policy name.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p882413511911">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row336061812351"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p16360111817356">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p14360918133510">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5360171813353">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p189741017613">Specifies the administrative status of the forwarding policy.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p136141610163013">This parameter is reserved, and the default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row183601318123514"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p183601518203517">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p15360618143518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p4360181823519">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1336061815356">Provides supplementary information about the forwarding policy.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p172902106193">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row16360171816350"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1360181812350">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1836011833513">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1736094314351">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p960104714116">Specifies the ID of the listener to which the forwarding policy is added.</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul9510181216216"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li0713173211">When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b15223586117941">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b15784773317941">REDIRECT_TO_POOL</strong>, forwarding policies can be added to a listener with <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b842352706112543">protocol</strong> set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b842352706144254">HTTP</strong> or <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b842352706144258">TERMINATED_HTTPS</strong>.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li13510612620">When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b8423527061795">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b8423527061792">REDIRECT_TO_LISTENER</strong>, forwarding policies can be added to a listener with <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b784108613171052">protocol</strong> set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b125496110171052">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row14360161883515"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1536091823514">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p16360111853518">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p10360518183516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p19912991832">Specifies whether requests are forwarded to another backend server group or redirected to an HTTPS listener.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p136925473311">The value can be one of the following:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul1141318491933"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li1694118581035"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b10603036195113">REDIRECT_TO_POOL</strong>: Requests are forwarded to the backend server group specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b1345619091711">redirect_pool_id</strong>.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li641311492039"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b258813201554">REDIRECT_TO_LISTENER</strong>: Requests are redirected from the HTTP listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b18600182085515">listener_id</strong> to the HTTPS listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b5603192045511">redirect_listener_id</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row143601718123515"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p236041814356">redirect_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p4360201814351">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p847312467354">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p115216211498">Specifies the ID of the backend server group to which traffic is forwarded. The default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b575971416528">null</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1832361213715">This parameter is mandatory when <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b9321202216207">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b444192722010">REDIRECT_TO_POOL</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p4166102318919">This parameter cannot be specified when <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b842352706171557">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b84235270617161">REDIRECT_TO_LISTENER</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p92041223986">The backend server group must meet the following requirements:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul15235151117108"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li687851431018">Cannot be the default backend server group of the listener.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li20235131111011">Cannot be the backend server group used by forwarding policies of other listeners.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row18360171893519"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1136013182352">redirect_listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1036091813514">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1957194910353">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p687911951310">Specifies the ID of the listener to which the traffic is redirected. The default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b219213305541">null</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p9265143314376">This parameter cannot be specified when <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b1327023314379">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b827612332379">REDIRECT_TO_POOL</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1736695021210">This parameter is mandatory when <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b51302201227">action</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b1561125152211">REDIRECT_TO_LISTENER</strong>, and the listener must meet the following requirements:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul17360181816359"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li2017912118316">Can only be an HTTPS listener.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li1236051893513">Can only be a listener of the same load balancer.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row8360181814351"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p15360718143516">redirect_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1736011181355">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p436081843519">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p20989131710327">Specifies the URL to which traffic is redirected. The default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b545922715564">null</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p18576435690">This parameter is reserved.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1550221541916">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1136081823514"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1360151853516">position</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p10360318183511">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p18360161815354">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p844522318322">Specifies the forwarding priority. The value ranges from <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b118068292566">1</strong> to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b15806629205617">100</strong>. The default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b4151203111566">100</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1611226143220">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row76931613201414"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1769314133149">rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5694913111415">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p10359836172919">Lists the forwarding rules of the forwarding policy. For details, see <a href="#elb_zq_zf_0001__en-us_topic_0136295317_table16998194317143">Table 3</a>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1840114378293">The list contains a maximum of two rules, and the <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b3477145524111">type</strong> parameter of each rule must be unique.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zf_0001__en-us_topic_0136295317_table16998194317143"></a><a name="en-us_topic_0136295317_table16998194317143"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table16998194317143" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b18802142416565">rules</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row1813794914585"><th align="left" class="cellrowborder" valign="top" width="24.19%" id="mcps1.3.4.4.2.5.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p18137204925818"><strong>Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.469999999999999%" id="mcps1.3.4.4.2.5.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p3137449195820"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b8423527061798">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.34%" id="mcps1.3.4.4.2.5.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p15137104917584"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b84235270610412">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.4.2.5.1.4"><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p7137349185814"><strong>Description</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row61371149115814"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p113714490586">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p17137164945815">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p151371449135815">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p189741017613">Specifies the administrative status of the forwarding rule.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p1685165224811">This parameter is reserved, and the default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b7386530455_1">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row1213718492586"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1513719494585">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p131371749155817">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p181371749135814">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1161972619482">Specifies the match type of a forwarding rule.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p9536114413489">The value range varies depending on the protocol of the backend server group:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_ul3525953124817"><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li145711056184813"><strong>HOST_NAME</strong>: matches the domain name in the request.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li3527145320480"><strong>PATH</strong>: matches the path in the request.</li></ul>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p15285166489">The match type of forwarding rules in a forwarding policy must be unique.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row91371498580"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p8137249165813">compare_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p513714497583">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p513794918587">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p51371649125820">Specifies the match mode. The options are as follows:</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p10794420115116">When <strong>type</strong> is set to <strong>HOST_NAME</strong>, the value of this parameter can only be the following:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_ul15305619145114"><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li1630531925110"><strong>EQUAL_TO</strong>: indicates exact match.</li></ul>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p13663103020517">When <strong>type</strong> is set to <strong>PATH</strong>, the value of this parameter can be one of the following:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_ul17531436125112"><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li16531153615514"><strong>REGEX</strong>: indicates regular expression match.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li28489482511"><strong>STARTS_WITH</strong>: indicates prefix match.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li16998845175115"><strong>EQUAL_TO</strong>: indicates exact match.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row1946012463715"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p7401231193715">invert</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p19401153118372">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p154011731133717">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1238515351377">Specifies whether reverse matching is supported.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1938543553715">The value can be <strong>true</strong> or <strong>false</strong>. The default value is <strong>false</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p183851435173713">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row1413713493580"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p5137649185812">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p131371549135810">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1013794914584">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p82048119202">Specifies the key of the match content. The default value is <strong>null</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1747128122016">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_row18137184955815"><td class="cellrowborder" valign="top" width="24.19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p121375495589">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.469999999999999%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p1413718493586">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.34%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p141372496586">String</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p20577532174810"></p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_p16872195212010">Specifies the value of the match content. The value cannot contain spaces.</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_ul75251828131120"><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li99921336131720">When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b1279312397192">type</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b4795143919197">HOST_NAME</strong>, the value can contain a maximum of 100 characters that contain only letters, digits, hyphens (-), and periods (.), and must start with a letter or digit.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0116649236_li1412114281718">When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b1768414791612">type</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b869924761615">PATH</strong>, the value can contain a maximum of 128 characters. When <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b181871132010">compare_type</strong> is set to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b6199143408">STARTS_WITH</strong> or <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b192005319015">EQUAL_TO</strong>, the value must start with a slash (/) and can contain only letters, digits, and special characters _~';@^-%#&amp;$.*+?,=!:|\/()[]{}</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table107875111574" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row984216165711"><th align="left" class="cellrowborder" valign="top" width="24%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p484219135719">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p98422014571">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p10842215572">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1984213175716"><td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_a550100555602476a968f5ccd2a21bd30">l7policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_ad5656706454749a2a1229da31098a77c">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p3842161115717">Specifies the forwarding policy. For details, see <a href="#elb_zq_zf_0001__en-us_topic_0136295317_table1251155618376">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zf_0001__en-us_topic_0136295317_table1251155618376"></a><a name="en-us_topic_0136295317_table1251155618376"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table1251155618376" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b583673790">l7policy</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row10701165673714"><th align="left" class="cellrowborder" valign="top" width="23.23%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1470214562375">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.18%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p2702105618372">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.589999999999996%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p770265613371">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1170211562375"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p37021956163715">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p154311194575">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p87022056103715">Specifies the forwarding policy ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row5702175643718"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p12491330111414">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1949510305143">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p5927193621418">Specifies the ID of the project where the forwarding policy is used.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row67026562371"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p97021056173713">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p9702105619373">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p57021564370">Specifies the forwarding policy name.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row17021156193714"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1570220562375">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p270220563373">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p935075494818">Specifies the administrative status of the forwarding policy.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p12321226400">This parameter is reserved. The value can be <strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul032182610010"><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row87021656103712"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p147021156163720">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p2702105663711">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p163501654104816">Provides supplementary information about the forwarding policy.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1970325673717"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p207031656133714">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1851734175713">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p183501454194816">Specifies the ID of the listener to which the forwarding policy is added.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1970317567371"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p17703115614375">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1170365623715">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p2351954164814">Specifies whether requests are forwarded to another backend server group or redirected to an HTTPS listener.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p13351145412483">The value can be one of the following:</p>
+<ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul203511354204814"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li03511954184812"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b17722184917467">REDIRECT_TO_POOL</strong>: Requests are forwarded to the backend server group specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b372316496462">redirect_pool_id</strong>.</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li1735185410487"><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b856317562543">REDIRECT_TO_LISTENER</strong>: Requests are redirected from the HTTP listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b856410565545">listener_id</strong> to the HTTPS listener specified by <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b5564195611542">redirect_listener_id</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row77039560374"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p6703195611375">redirect_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p9983113655710">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p142211521194918">Specifies the ID of the backend server group to which traffic is forwarded.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row461412820402"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p35992015134018">redirect_listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p859901512401">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p722113215492">Specifies the ID of the listener to which the traffic is redirected.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row9703135610377"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p18703195613712">redirect_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p18703155693720">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1714910214509">Specifies the URL to which traffic is redirected.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p914972185020">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row5703956183715"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p18703155613719">rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1970375611378">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1870195534814">Lists the forwarding rules of the forwarding policy. For details, see <a href="#elb_zq_zf_0001__en-us_topic_0136295317_table129777459104">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row1970312566375"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p770375663720">position</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1870319564378">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p0275145775019">Specifies the forwarding priority. The value ranges from <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b2339175913554">1</strong> to <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b43407596558">100</strong>. The default value is <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b842352706165234">100</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p122771157115019">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zf_0001__en-us_topic_0136295317_row870395643716"><td class="cellrowborder" valign="top" width="23.23%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p6704256183713">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p170405683718">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.589999999999996%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p2471334205212">This parameter is reserved, and its value can only be <strong id="elb_zq_zf_0001__en-us_topic_0136295317_b105491047271">ACTIVE</strong>.</p>
+<p id="elb_zq_zf_0001__en-us_topic_0136295317_p14704205693714">It specifies the provisioning status of the forwarding policy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zf_0001__en-us_topic_0136295317_table129777459104"></a><a name="en-us_topic_0136295317_table129777459104"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zf_0001__en-us_topic_0136295317_table129777459104" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="elb_zq_zf_0001__en-us_topic_0136295317_b324116472217">rules</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row59771458101"><th align="left" class="cellrowborder" valign="top" width="23.332333233323332%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1097714518101">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.99179917991799%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p797764517106">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.67586758675868%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_zf_0001__en-us_topic_0136295317_p1977154571013">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zf_0001__en-us_topic_0136295317_row19977204501015"><td class="cellrowborder" valign="top" width="23.332333233323332%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p14978445121011">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.99179917991799%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p14978164521019">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.67586758675868%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_zf_0001__en-us_topic_0136295317_p19978104510102">Lists the IDs of the forwarding rules in the forwarding policy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul16360818203520"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li18657125113519">Example request 1: Adding a forwarding policy<pre class="screen" id="elb_zq_zf_0001__en-us_topic_0136295317_screen252653314366">POST https://{Endpoint}/v2.0/lbaas/l7policies 
+
+{
+    "l7policy": {
+        "name": "niubiao_yaqing_api-2", 
+        "listener_id": "3e24a3ca-11e5-4aa3-abd4-61ba0a8a18f1", 
+        "action": "REDIRECT_TO_POOL", 
+        "redirect_pool_id": "6460f13a-76de-43c7-b776-4fefc06a676e", 
+        "rules": [
+            {
+                "type": "PATH", 
+                "compare_type": "EQUAL_TO", 
+                "value": "/test"
+            }, 
+            {
+                "type": "HOST_NAME", 
+                "compare_type": "EQUAL_TO", 
+                "value": "www.test.com"
+            }
+        ]
+    }
+}</pre>
+</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li332941119363">Example request 2: Creating a redirect<pre class="screen" id="elb_zq_zf_0001__en-us_topic_0136295317_screen9329171133614">POST https://{Endpoint}/v2.0/lbaas/l7policies
+
+{
+    "l7policy": {
+        "action": "REDIRECT_TO_LISTENER", 
+        "listener_id": "4ef8553e-9ef7-4859-a42d-919feaf89d60", 
+        "redirect_listener_id": "3ee10199-a7b4-4784-93cd-857afe9d0890", 
+        "name": "redirect-test"
+    }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_zf_0001__en-us_topic_0136295317_ul12469435162817"><li id="elb_zq_zf_0001__en-us_topic_0136295317_li546943511284">Example response 1<pre class="screen" id="elb_zq_zf_0001__en-us_topic_0136295317_screen1146923532813">{
+    "l7policy": {
+        "redirect_pool_id": "6460f13a-76de-43c7-b776-4fefc06a676e", 
+        "description": "", 
+        "admin_state_up": true, 
+        "rules": [
+            {
+                "id": "742600d9-2a14-4808-af69-336883dbb590"
+            }, 
+            {
+                "id": "3251ed77-0d52-412b-9310-733636bb3fbf"
+            }
+        ], 
+        "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+        "listener_id": "3e24a3ca-11e5-4aa3-abd4-61ba0a8a18f1", 
+        "redirect_url": null, 
+        "redirect_listener_id": null, 
+        "action": "REDIRECT_TO_POOL", 
+        "position": 100, 
+        "provisioning_status": "ACTIVE", 
+ 
+        "id": "65d6e115-f179-4bcd-9bbb-1484e5f8ee81", 
+        "name": "niubiao_yaqing-_api-2"
+    }
+}</pre>
+</li><li id="elb_zq_zf_0001__en-us_topic_0136295317_li647014351289">Example response 2<pre class="screen" id="elb_zq_zf_0001__en-us_topic_0136295317_screen14470123562814">{
+    "l7policy": {
+        "redirect_pool_id": null, 
+        "description": "", 
+        "admin_state_up": true, 
+        "rules": [ ], 
+        "tenant_id": "573d73c9f90e48d0bddfa0eb202b25c2", 
+        "listener_id": "4ef8553e-9ef7-4859-a42d-919feaf89d60", 
+        "redirect_url": null, 
+        "redirect_listener_id": "3ee10199-a7b4-4784-93cd-857afe9d0890", 
+        "action": "REDIRECT_TO_LISTENER", 
+        "position": 100, 
+        "provisioning_status": "ACTIVE", 
+        "id": "bc4e4338-480f-4a98-8245-5bb1964f0e1d", 
+        "name": "redirect-test"
+    }
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_zf_0001__en-us_topic_0136295317_p2359131215810">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_zf_0000.html">Forwarding Policy</a>
+
+
+

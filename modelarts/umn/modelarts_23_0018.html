@@ -1,0 +1,75 @@
+<a name="modelarts_23_0018"></a><a name="modelarts_23_0018"></a>
+
+<h1 class="topictitle1">Publishing a Dataset</h1>
+<div id="body8662426"><p id="modelarts_23_0018__en-us_topic_0170886812_p5580123617510">ModelArts distinguishes data of the same source according to versions labeled at different time, which facilitates the selection of dataset versions during subsequent model building and development. After labeling the data, you can publish the dataset to generate a new dataset version.</p>
+<div class="section" id="modelarts_23_0018__en-us_topic_0170886812_section38541340654"><a name="modelarts_23_0018__en-us_topic_0170886812_section38541340654"></a><a name="en-us_topic_0170886812_section38541340654"></a><h4 class="sectiontitle">About Dataset Versions</h4><ul id="modelarts_23_0018__en-us_topic_0170886812_ul571110451786"><li id="modelarts_23_0018__en-us_topic_0170886812_li27118451188">For a newly created dataset (before publishing), there is no dataset version information. The dataset must be published before being used for model development or training.</li><li id="modelarts_23_0018__en-us_topic_0170886812_li1573413481488">The default naming rules of dataset versions are V001 and V002 in ascending order. You can customize the version number during publishing.</li><li id="modelarts_23_0018__en-us_topic_0170886812_li12833559689">You can set any version to the current directory. Then the details of the version are displayed on the dataset details page.</li><li id="modelarts_23_0018__en-us_topic_0170886812_li181123113389">You can obtain the dataset in the manifest file format corresponding to each dataset version based on the value of <span class="parmname" id="modelarts_23_0018__en-us_topic_0170886812_parmname1364214143818"><b>Storage Path</b></span>. The dataset can be used when you import data or filter hard examples.</li><li id="modelarts_23_0018__en-us_topic_0170886812_li12940153191813">The version of a table dataset cannot be changed.</li></ul>
+</div>
+<div class="section" id="modelarts_23_0018__en-us_topic_0170886812_section1811135818517"><h4 class="sectiontitle">Publishing a Dataset</h4><ol id="modelarts_23_0018__en-us_topic_0170886812_ol1869143154915"><li id="modelarts_23_0018__en-us_topic_0170886812_li1584153519620">Log in to the ModelArts management console. In the left navigation pane, choose <strong id="modelarts_23_0018__en-us_topic_0170886812_b1818171425012">Data Management</strong> &gt; <span class="parmname" id="modelarts_23_0018__en-us_topic_0170886812_parmname11181131445010"><b>Datasets</b></span>. The <span class="wintitle" id="modelarts_23_0018__en-us_topic_0170886812_wintitle1718119143505"><b>Datasets</b></span> page is displayed.</li><li id="modelarts_23_0018__en-us_topic_0170886812_li8930211182019">In the dataset list, click <span class="uicontrol" id="modelarts_23_0018__en-us_topic_0170886812_uicontrol293213111202"><b>Publish</b></span> in the <strong id="modelarts_23_0018__en-us_topic_0170886812_b63092831516">Operation</strong> column.<p id="modelarts_23_0018__en-us_topic_0170886812_p89911418102015">Alternatively, you can click the dataset name to go to the <span class="wintitle" id="modelarts_23_0018__en-us_topic_0170886812_wintitle1655016108159"><b>Dashboard</b></span> tab page of the dataset, and click <span class="uicontrol" id="modelarts_23_0018__en-us_topic_0170886812_uicontrol1155361018155"><b>Publish</b></span> in the upper right corner.</p>
+</li><li id="modelarts_23_0018__en-us_topic_0170886812_li75067272497">In the displayed dialog box, set the parameters and click <strong id="modelarts_23_0018__en-us_topic_0170886812_b02671633162611">OK</strong>.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0018__en-us_topic_0170886812_table856411819131" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for publishing a dataset</caption><thead align="left"><tr id="modelarts_23_0018__en-us_topic_0170886812_row13564141817132"><th align="left" class="cellrowborder" valign="top" width="19.39%" id="mcps1.3.3.2.3.2.2.3.1.1"><p id="modelarts_23_0018__en-us_topic_0170886812_p956401811319">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="80.61%" id="mcps1.3.3.2.3.2.2.3.1.2"><p id="modelarts_23_0018__en-us_topic_0170886812_p1656419183133">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0018__en-us_topic_0170886812_row14564171810135"><td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.2.3.2.2.3.1.1 "><p id="modelarts_23_0018__en-us_topic_0170886812_p356491871319">Version Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="80.61%" headers="mcps1.3.3.2.3.2.2.3.1.2 "><p id="modelarts_23_0018__en-us_topic_0170886812_p8564201810135">The naming rules of V001 and V002 in ascending order are used by default. A version name can be customized. Only letters, digits, hyphens (-), and underscores (_) are allowed.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0018__en-us_topic_0170886812_row20564618181315"><td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.2.3.2.2.3.1.1 "><p id="modelarts_23_0018__en-us_topic_0170886812_p115641018101313">Format</p>
+</td>
+<td class="cellrowborder" valign="top" width="80.61%" headers="mcps1.3.3.2.3.2.2.3.1.2 "><p id="modelarts_23_0018__en-us_topic_0170886812_p9564191814131"></p>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p15286115911116">Only table datasets support version format setting. Available values are <span class="parmname" id="modelarts_23_0018__en-us_topic_0170886812_parmname10188934194"><b>CSV</b></span> and <span class="parmname" id="modelarts_23_0018__en-us_topic_0170886812_parmname106819537186"><b>CarbonData</b></span>.</p>
+<div class="note" id="modelarts_23_0018__en-us_topic_0170886812_note476610121359"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="modelarts_23_0018__en-us_topic_0170886812_p14766612123516">If the exported CSV file contains any command starting with =, +, -, or @, ModelArts automatically adds the Tab setting and escapes the double quotation marks (") for security purposes.</p>
+</div></div>
+</td>
+</tr>
+<tr id="modelarts_23_0018__en-us_topic_0170886812_row1756410184135"><td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.2.3.2.2.3.1.1 "><p id="modelarts_23_0018__en-us_topic_0170886812_p8564151811314">Splitting</p>
+</td>
+<td class="cellrowborder" valign="top" width="80.61%" headers="mcps1.3.3.2.3.2.2.3.1.2 "><p id="modelarts_23_0018__en-us_topic_0170886812_p1221319118211">Only image classification, object detection, text classification, and sound classification datasets support data splitting.</p>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p10259102031412">By default, this function is disabled. After this function is enabled, you need to set the training and validation ratios.</p>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p1156418186138">Enter a value ranging from 0 to 1 for <strong id="modelarts_23_0018__en-us_topic_0170886812_b108871212338">Training Set Ratio</strong>. After the training set ratio is set, the validation set ratio is determined. The sum of the training set ratio and the validation set ratio is 1.</p>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p920771051414">The training set ratio is the ratio of sample data used for model training. The validation set ratio is the ratio of the sample data used for model validation. The training and validation ratios affect the performance of training templates.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0018__en-us_topic_0170886812_row194690539135"><td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.2.3.2.2.3.1.1 "><p id="modelarts_23_0018__en-us_topic_0170886812_p114690535136">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="80.61%" headers="mcps1.3.3.2.3.2.2.3.1.2 "><p id="modelarts_23_0018__en-us_topic_0170886812_p1846925361314">Description of the current dataset version.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p17523105011134">After the version is published, you can go to the <strong id="modelarts_23_0018__en-us_topic_0170886812_b1214594684618">Version Manager</strong> tab page to view the detailed information. By default, the system sets the latest version to the current directory.</p>
+</li></ol>
+</div>
+<div class="section" id="modelarts_23_0018__en-us_topic_0170886812_section125341142131112"><h4 class="sectiontitle">Directory Structure of Related Files After the Dataset Is Published</h4><p id="modelarts_23_0018__en-us_topic_0170886812_p3826111764518">Datasets are managed based on OBS directories. After a new version is published, the directory is generated based on the new version in the output dataset path.</p>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p897723681416">Take an image classification dataset as an example. After the dataset is published, the directory structure of related files generated in OBS is as follows:</p>
+<pre class="screen" id="modelarts_23_0018__en-us_topic_0170886812_screen448372919413">|-- user-specified-output-path
+    |-- DatasetName-datasetId
+        |-- annotation
+            |-- VersionMame1
+                |-- VersionMame1.manifest
+            |-- VersionMame2
+                ...
+            |-- ...</pre>
+<p id="modelarts_23_0018__en-us_topic_0170886812_p1926414819111">The following uses object detection as an example. If a manifest file is imported to the dataset, the following provides the directory structure of related files after the dataset is published:</p>
+<pre class="screen" id="modelarts_23_0018__en-us_topic_0170886812_screen618195617123">|-- user-specified-output-path 
+    |-- DatasetName-datasetId 
+        |-- annotation 
+            |-- VersionMame1 
+                |-- VersionMame1.manifest 
+                |-- annotation
+                   |-- file1.xml 
+            |-- VersionMame2
+                ...
+            |-- ...</pre>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0002.html">Data Management</a></div>
+</div>
+</div>
+

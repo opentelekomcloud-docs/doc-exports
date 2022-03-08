@@ -1,0 +1,36 @@
+<a name="EN-US_TOPIC_0102391480"></a><a name="EN-US_TOPIC_0102391480"></a>
+
+<h1 class="topictitle1">Why Does It Take Longer to Create ECSs When I Use a Full-ECS Image?</h1>
+<div id="body1521257009971"><div class="section" id="EN-US_TOPIC_0102391480__section949111527416"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0102391480__p74283211493">When you use a full-ECS image that was created using a CSBS backup to create ECSs, the process is time-consuming or the system displays a message indicating that the image cannot be used to rapidly create ECSs.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0102391480__section1463615352495"><h4 class="sectiontitle">Cause Analysis</h4><p id="EN-US_TOPIC_0102391480__p11643835184913">If your full-ECS image is in the old backup format provided by CSBS, this issue occurs.</p>
+</div>
+<div class="note" id="EN-US_TOPIC_0102391480__note2644235124918"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0102391480__ul127815369195"><li id="EN-US_TOPIC_0102391480__li378173616194">CSBS has a new backup format. You can rapidly create ECSs if the full-ECS image is in this format</li><li id="EN-US_TOPIC_0102391480__li127811936121919">This issue does not occur if a full-ECS image is created using a CBR backup.</li></ul>
+</div></div>
+<div class="section" id="EN-US_TOPIC_0102391480__section599094765813"><h4 class="sectiontitle">Solution Using CBR</h4><p id="EN-US_TOPIC_0102391480__p14990204710581">If you want to use a full-ECS image to rapidly create ECSs, ensure that the full-ECS image is created using a CSBS backup in the new format. The procedure is as follows:</p>
+<ul id="EN-US_TOPIC_0102391480__ul499017470585"><li id="EN-US_TOPIC_0102391480__li139901547125815">Scenario 1: The ECS based on which the target CSBS backup is created is available.<p id="EN-US_TOPIC_0102391480__p1499010475588"><a name="EN-US_TOPIC_0102391480__li139901547125815"></a><a name="li139901547125815"></a>In such a case, use the ECS to create a CBR backup and use this backup to create a full-ECS image. You can use this full-ECS image to rapidly create ECSs.</p>
+<ul id="EN-US_TOPIC_0102391480__ul299084755813"><li id="EN-US_TOPIC_0102391480__li1699064711584">For instructions about how to back up an ECS, see <em id="EN-US_TOPIC_0102391480__i56640356113132">Cloud Backup and Recovery User Guide</em>.</li><li id="EN-US_TOPIC_0102391480__li999024710589">For instructions about how create a full-ECS image, see <em id="EN-US_TOPIC_0102391480__i842352697125241">Image Management Service User Guide</em>.</li></ul>
+</li></ul>
+<ul id="EN-US_TOPIC_0102391480__ul199901476584"><li id="EN-US_TOPIC_0102391480__li19990747105813">Scenario 2: The ECS based on which the target CSBS backup is created is unavailable.<ol id="EN-US_TOPIC_0102391480__ol199014473583"><li id="EN-US_TOPIC_0102391480__li699014705812">Use the full-ECS image to create a new ECS.</li><li id="EN-US_TOPIC_0102391480__li099017478584">Use an ECS to create a CBR backup.<p id="EN-US_TOPIC_0102391480__p1990114745812"><a name="EN-US_TOPIC_0102391480__li099017478584"></a><a name="li099017478584"></a>For details, see <em id="EN-US_TOPIC_0102391480__i153231552141610">Cloud Backup and Recovery User Guide</em>.</p>
+</li><li id="EN-US_TOPIC_0102391480__li1499010478580">Use the CBR backup to create a full-ECS image.<p id="EN-US_TOPIC_0102391480__p20990104710580"><a name="EN-US_TOPIC_0102391480__li1499010478580"></a><a name="li1499010478580"></a>For details, see <em id="EN-US_TOPIC_0102391480__i842352697151026_3">Image Management Service User Guide</em>.</p>
+<p id="EN-US_TOPIC_0102391480__p199016475584">You can use the full-ECS image to rapidly create ECSs.</p>
+</li></ol>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0102391480__section14961317195115"><h4 class="sectiontitle">Solution( Using CSBS)</h4><p id="EN-US_TOPIC_0102391480__p28711224514">If you want to use a full-ECS image to rapidly create ECSs, ensure that the full-ECS image is created using a CSBS backup in the new format. The procedure is as follows:</p>
+<ul id="EN-US_TOPIC_0102391480__ul166513190191"><li id="EN-US_TOPIC_0102391480__li186651319131919">Scenario 1: The ECS based on which the target CSBS backup is created is available.<p id="EN-US_TOPIC_0102391480__p1026216201317"><a name="EN-US_TOPIC_0102391480__li186651319131919"></a><a name="li186651319131919"></a>Back up the original ECS on the <strong id="EN-US_TOPIC_0102391480__b8423527061149">Cloud Server Backup Service</strong> page and use the new format to create a full-ECS image. You can use this full-ECS image to rapidly create ECSs.</p>
+<ul id="EN-US_TOPIC_0102391480__ul91931836192114"><li id="EN-US_TOPIC_0102391480__li4149153112112">For instructions about how to back up an ECS, see <em id="EN-US_TOPIC_0102391480__i240967991">Cloud Server Backup Service User Guide</em>.</li><li id="EN-US_TOPIC_0102391480__li41537319218">For instructions about how create a full-ECS image, see <em id="EN-US_TOPIC_0102391480__i151351474">Image Management Service User Guide</em>.</li></ul>
+</li></ul>
+<ul id="EN-US_TOPIC_0102391480__ul141385220198"><li id="EN-US_TOPIC_0102391480__li1813820227195">Scenario 2: The ECS based on which the target CSBS backup is created is unavailable.<ol id="EN-US_TOPIC_0102391480__ol1845874832218"><li id="EN-US_TOPIC_0102391480__li114581548182218">Use the full-ECS image to create a new ECS.</li><li id="EN-US_TOPIC_0102391480__li327065016236">Back up the ECS.<p id="EN-US_TOPIC_0102391480__p1313815118263"><a name="EN-US_TOPIC_0102391480__li327065016236"></a><a name="li327065016236"></a>For details, see <em id="EN-US_TOPIC_0102391480__i84235269716819">Cloud Server Backup Service User Guide</em>.</p>
+</li><li id="EN-US_TOPIC_0102391480__li17866102192611">Use the CSBS backup to create a full-ECS image.<p id="EN-US_TOPIC_0102391480__p148516351273"><a name="EN-US_TOPIC_0102391480__li17866102192611"></a><a name="li17866102192611"></a>For details, see <em id="EN-US_TOPIC_0102391480__i719341880">Image Management Service User Guide</em>.</p>
+<p id="EN-US_TOPIC_0102391480__p17185175532719">You can use the full-ECS image to rapidly create ECSs.</p>
+</li></ol>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018073208.html">Creation and Deletion</a></div>
+</div>
+</div>
+

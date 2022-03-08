@@ -1,0 +1,288 @@
+<a name="EN-US_TOPIC_0065817703"></a><a name="EN-US_TOPIC_0065817703"></a>
+
+<h1 class="topictitle1">Creating a Security Group Rule (Discarded)</h1>
+<div id="body1499652824861"><div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_section60900816"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p66668934">This API is used to create a security group rule.</p>
+<p id="EN-US_TOPIC_0065817703__en-us_topic_0057972662_p1146061620560">This API has been discarded. Use the API described in section "Security Group (OpenStack Neutron APIs) &gt; Creating a Security Group Rule" in <em id="EN-US_TOPIC_0065817703__i4469203711279">Virtual Private Network API Reference</em>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_section11236435"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817703__p20104131734312">POST /v2/{project_id}/os-security-group-rules</p>
+<p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p17816132418199">POST /v2.1/{project_id}/os-security-group-rules</p>
+<div class="p" id="EN-US_TOPIC_0065817703__p103721730134018"><a href="#EN-US_TOPIC_0065817703__en-us_topic_0057972667_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table32475667"></a><a name="en-us_topic_0057972667_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row44937496"><th align="left" class="cellrowborder" valign="top" width="22.24%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817703__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.87%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817703__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.88999999999999%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817703__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row1664874"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817703__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_section37736068"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817703__p16147543104012"><a href="#EN-US_TOPIC_0065817703__en-us_topic_0057972667_table58520811">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table58520811"></a><a name="en-us_topic_0057972667_table58520811"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table58520811" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row6215498"><th align="left" class="cellrowborder" valign="top" width="21.44%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0065817703__en-us_topic_0058745339_p39560242204918">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.770000000000001%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0065817703__p11437144313220">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.81%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0065817703__en-us_topic_0058745339_p50263001204918">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.98%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0065817703__en-us_topic_0058745339_p2596798204918">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row16540805"><td class="cellrowborder" valign="top" width="21.44%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p64736823">security_group_rule</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.770000000000001%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1743794310327">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.81%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p9191297">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.98%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p40344576">Specifies the security group rule, which is configured in the message body. For details, see <a href="#EN-US_TOPIC_0065817703__en-us_topic_0057972667_table46685187">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table46685187"></a><a name="en-us_topic_0057972667_table46685187"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table46685187" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Objects of request parameter <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b842352706144721">security_group_rule</strong></caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row533144"><th align="left" class="cellrowborder" valign="top" width="20.982098209820983%" id="mcps1.3.3.4.2.5.1.1"><p id="EN-US_TOPIC_0065817703__p73882475137">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.09130913091309%" id="mcps1.3.3.4.2.5.1.2"><p id="EN-US_TOPIC_0065817703__p1317554715321">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.71257125712571%" id="mcps1.3.3.4.2.5.1.3"><p id="EN-US_TOPIC_0065817703__p13388114771314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.21402140214022%" id="mcps1.3.3.4.2.5.1.4"><p id="EN-US_TOPIC_0065817703__p74041747181311">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row51313205"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p62728917">parent_group_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p12175164783214">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p47877526">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p54967961">Specifies the associated security group ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row24949608"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p7652366">ip_protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p617644720328">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p15861880">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p51057338">Specifies the IP protocol, which can be <strong id="EN-US_TOPIC_0065817703__b40841205105128">icmp</strong>, <strong id="EN-US_TOPIC_0065817703__b38036492105132">tcp</strong>, or <strong id="EN-US_TOPIC_0065817703__b58731381105136">udp</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row42003681"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p46855021">from_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p141761947173219">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p37160390">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p3798072492826">Specifies the start port. The value ranges from 1 to 65,535 and is no greater than the value of <strong id="EN-US_TOPIC_0065817703__b3778963692826">to_port</strong>.</p>
+<p id="EN-US_TOPIC_0065817703__p9270301194649">If the value of <strong id="EN-US_TOPIC_0065817703__b165497995692024">ip_protocol</strong> is <strong id="EN-US_TOPIC_0065817703__b27413749992024">icmp</strong>, this parameter specifies the ICMP type. The value ranges from <strong id="EN-US_TOPIC_0065817703__b842352706105229">0</strong> to <strong id="EN-US_TOPIC_0065817703__b842352706105232">255</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row25376232"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p42208903">to_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1417617474328">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p63478007">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p1102684392845">Specifies the end port. The value ranges from <strong id="EN-US_TOPIC_0065817703__b51538573105155">1</strong> to <strong id="EN-US_TOPIC_0065817703__b9752629105159">65,535</strong> and cannot be less than <strong id="EN-US_TOPIC_0065817703__b2044497892845">from_port</strong>.</p>
+<p id="EN-US_TOPIC_0065817703__p21363554194649">If <strong id="EN-US_TOPIC_0065817703__b190639977692113">ip_protocol</strong> is <strong id="EN-US_TOPIC_0065817703__b21927365292113">icmp</strong>, this parameter specifies the ICMP code. The value ranges from 0 to 255. If both <strong id="EN-US_TOPIC_0065817703__b39304013292126">from_port</strong> and <strong id="EN-US_TOPIC_0065817703__b122500104592126">to_port</strong> are <strong id="EN-US_TOPIC_0065817703__b156348073092126">-1</strong>, any ICMP packet can be transmitted.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row14387121"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p24506125">cidr</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p7176114733219">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p38839134">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p11207934">Specifies the IP address range. The address is in CIDR format, such as 192.168.0.0/24.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row33762549"><td class="cellrowborder" valign="top" width="20.982098209820983%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p50411912">group_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.09130913091309%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1317624711327">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.71257125712571%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p56833109">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__p17452544194649">Specifies the source security group ID. If both<strong id="EN-US_TOPIC_0065817703__b29346720"> group_id</strong> and <strong id="EN-US_TOPIC_0065817703__b62793889">cidr</strong> are set, <strong id="EN-US_TOPIC_0065817703__b28274094">group_id</strong> is used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_section4080300"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817703__p1398551225115"><a href="#EN-US_TOPIC_0065817703__en-us_topic_0057972667_table37057034">Table 4</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table37057034"></a><a name="en-us_topic_0057972667_table37057034"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table37057034" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row15913018"><th align="left" class="cellrowborder" valign="top" width="22.33223322332233%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0065817703__p6740115110138">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.5014501450145%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0065817703__p18721161611336">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.952295229522953%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0065817703__p12740205119137">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.21402140214022%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0065817703__p10740195191319">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row18911189"><td class="cellrowborder" valign="top" width="22.33223322332233%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p55411339">security_group_rule</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.5014501450145%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p127215168331">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.952295229522953%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p59133445">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p18191719">Specifies the security group rule, which is configured in the message body. For details, see <a href="#EN-US_TOPIC_0065817703__en-us_topic_0057972667_table64243102">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table64243102"></a><a name="en-us_topic_0057972667_table64243102"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table64243102" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Objects of response parameter <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b247743252144737">security_group_rule</strong></caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row4043462"><th align="left" class="cellrowborder" valign="top" width="22.47775222477752%" id="mcps1.3.4.4.2.5.1.1"><p id="EN-US_TOPIC_0065817703__p1714375414138">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.2985701429857%" id="mcps1.3.4.4.2.5.1.2"><p id="EN-US_TOPIC_0065817703__p6517142119332">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.71762823717628%" id="mcps1.3.4.4.2.5.1.3"><p id="EN-US_TOPIC_0065817703__p16143195491314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.506049395060494%" id="mcps1.3.4.4.2.5.1.4"><p id="EN-US_TOPIC_0065817703__p1515835401311">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row14620318"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p43395070">parent_group_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p125171121123310">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p25339754">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p25475209">Specifies the associated security group ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row27950294"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p49381354">ip_protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1051752123315">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p40466701">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p19365543">Specifies the IP protocol, which can be <strong id="EN-US_TOPIC_0065817703__b5311162714">icmp</strong>, <strong id="EN-US_TOPIC_0065817703__b21441698162718">tcp</strong>, or <strong id="EN-US_TOPIC_0065817703__b29346275162728">udp</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row40072161"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p24619602">from_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p551782120336">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p48030711">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p13512140115024">Specifies the start port number. The value ranges from 1 to 65,535 and cannot be greater than <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b84235270692028">to_port</strong>.</p>
+<p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p53379839">When the protocol type is set to ICMP, <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b84235270692125">from_port</strong> is the ICMP type and ranges from 0 to 255.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row10656503"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p57870399">to_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1451772112338">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p56990719">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p49982224114937">Specifies the end port number. The value ranges from <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b842352706202844">1</strong> to <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b842352706202850">65,535</strong>.</p>
+<ul id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_ul4865871114949"><li id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_li12641097114949">When the protocol type is set to ICMP, <strong id="EN-US_TOPIC_0065817703__b982807173">to_port</strong> is the ICMP code and ranges from <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b842352706202945">0</strong> to <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b842352706202948">255</strong>.</li><li id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_li1297861811500">If both <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b84235270692421">from_port</strong> and <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b84235270692451">to_port</strong> are <strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b84235270692437">-1</strong>, it indicates that any ICMP packet can be transmitted.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row3908185"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p48127554">ip_range</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p95172211332">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p6017800">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__p21001840194649">Specifies the IP address range, including the CIDR information, such as <strong id="EN-US_TOPIC_0065817703__b32773974">"ip_range": {"cidr": "0.0.0.0/0"}</strong>. For details, see the ip_range object.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row32803348"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p39825499">group</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p751722163317">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p4640007">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p42776493">Nothing is returned.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row49444123"><td class="cellrowborder" valign="top" width="22.47775222477752%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p45551026">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.2985701429857%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p1351817212339">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.71762823717628%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p65754481">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.506049395060494%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p39377290">Specifies the security group rule ID in UUID format.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_table35443891" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_b897031316622">ip_range</strong> objects</caption><thead align="left"><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row42291718"><th align="left" class="cellrowborder" valign="top" width="22.94229422942294%" id="mcps1.3.4.5.2.5.1.1"><p id="EN-US_TOPIC_0065817703__p1757245818131">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.091409140914092%" id="mcps1.3.4.5.2.5.1.2"><p id="EN-US_TOPIC_0065817703__p6837447103311">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.752275227522752%" id="mcps1.3.4.5.2.5.1.3"><p id="EN-US_TOPIC_0065817703__p19588958181315">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.21402140214022%" id="mcps1.3.4.5.2.5.1.4"><p id="EN-US_TOPIC_0065817703__p558820583133">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_row41816140"><td class="cellrowborder" valign="top" width="22.94229422942294%" headers="mcps1.3.4.5.2.5.1.1 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p31664161">cidr</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.091409140914092%" headers="mcps1.3.4.5.2.5.1.2 "><p id="EN-US_TOPIC_0065817703__p18837647103316">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.752275227522752%" headers="mcps1.3.4.5.2.5.1.3 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p14660263">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.21402140214022%" headers="mcps1.3.4.5.2.5.1.4 "><p id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_p18987236">Specifies the IP address range. The address is in CIDR format, such as 192.168.0.0/24.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_section36722706"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817703__screen1132913268157">POST https://{endpoint}/v2/{project_id}/os-security-group-rules
+POST https://{endpoint}/v2.1/{project_id}/os-security-group-rules</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817703__en-us_topic_0057972667_screen2910654173514">{
+	"security_group_rule": {
+		"from_port": "443",
+		"ip_protocol": "tcp",
+		"to_port": "443",
+		"cidr": "0.0.0.0/0",
+		"parent_group_id": "48700ff3-30b8-4e63-845f-a79c9633e9fb"
+	}
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__section08601329298"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065817703__screen1870162132920">{
+	"security_group_rule": {
+		"id": "F4966B29-D21D-B211-B6B4-0018E1C5D866",
+		"ip_range": {
+			"cidr": "0.0.0.0/0"
+		},
+		"parent_group_id": "48700ff3-30b8-4e63-845f-a79c9633e9fb",
+		"to_port": 443,
+		"ip_protocol": "tcp",
+		"group": {
+			
+		},
+		"from_port": 443
+	}
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817703__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817703__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0267427144.html">Security Group Management (OpenStack Nova APIs)</a></div>
+</div>
+</div>
+

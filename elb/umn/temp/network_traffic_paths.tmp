@@ -1,0 +1,22 @@
+<a name="elb_ug_fz_0003_01"></a><a name="elb_ug_fz_0003_01"></a>
+
+<h1 class="topictitle1">Network Traffic Paths</h1>
+<p id="elb_ug_fz_0003_01__elb_ug_fz_0003_p6741227008">Load balancers communicate with backend <span id="elb_ug_fz_0003_01__elb_ug_fz_0003_text12861016154612">server</span>s over a private network.</p>
+<ul id="elb_ug_fz_0003_01__elb_ug_fz_0003_ul1783718431264"><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li20837643172615">If backend <span id="elb_ug_fz_0003_01__elb_ug_fz_0003_text962105024612">server</span>s process only requests routed from load balancers, there is no need to assign EIPs or create NAT gateways.</li><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li8561715368">If backend <span id="elb_ug_fz_0003_01__elb_ug_fz_0003_text127813559469">server</span>s need to provide Internet-accessible services or access the Internet, you must assign EIPs or create NAT gateways.</li></ul>
+<h4 class="sectiontitle">Inbound Network Traffic Paths</h4>The listeners' configurations determine how load balancers distribute incoming traffic.<span class="figcap"><b>Figure 1 </b>Inbound network traffic</span><br><span><img class="vsd" id="elb_ug_fz_0003_01__elb_ug_fz_0003_image5021893716" src="en-us_image_0000001181376003.png"></span>
+
+When a listener uses TCP or UDP to receive incoming traffic:<ul id="elb_ug_fz_0003_01__elb_ug_fz_0003_ul863417283383"><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li12421739938">Incoming traffic is routed only through the LVS cluster.</li><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li3634172853812">The LVS cluster directly routes incoming traffic to backend <span id="elb_ug_fz_0003_01__text1363314253911">server</span>s using the load balancing algorithm you select when you add the listener.</li></ul>
+
+When a listener uses HTTP or HTTPS to receive incoming traffic:<ul id="elb_ug_fz_0003_01__elb_ug_fz_0003_ul208003244417"><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li380012244414">Incoming traffic is routed first to the LVS cluster, then to the Nginx cluster, and finally across backend <span id="elb_ug_fz_0003_01__elb_ug_fz_0003_text19960153384810">server</span>s.</li><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li97801814194412">For HTTPS traffic, the Nginx cluster validates certificates and decrypts data packets before distributing the traffic across backend servers using HTTP.</li></ul>
+
+
+<h4 class="sectiontitle">Outbound Network Traffic Paths</h4>The outbound traffic is routed back the same way the traffic came in.<span class="figcap"><b>Figure 2 </b>Outbound network traffic</span><br><span><img class="vsd" id="elb_ug_fz_0003_01__elb_ug_fz_0003_image1079718394379" src="en-us_image_0000001135576398.png"></span>
+<ul id="elb_ug_fz_0003_01__elb_ug_fz_0003_ul163609417566"><li id="elb_ug_fz_0003_01__li791381117196">Because the load balancer receives and responds to requests over the Internet, traffic transmission depends on the bandwidth, which is not limited by ELB. The load balancer communicates with backend servers over a private network.</li><li id="elb_ug_fz_0003_01__li8115174117209">If you have a NAT gateway, it receives and responds to incoming traffic. The NAT gateway has an EIP bound, through which backend servers can access the Internet and provide services accessible from the Internet. Although there is a restriction on the connections that can be processed by a NAT gateway, traffic transmission depends on the bandwidth</li><li id="elb_ug_fz_0003_01__elb_ug_fz_0003_li9346527125312">If each backend server has an EIP bound, they receive and respond to incoming traffic directly. Traffic transmission depends on the bandwidth.</li></ul>
+
+
+
+
+
+
+
+

@@ -1,0 +1,299 @@
+<a name="EN-US_TOPIC_0020212658"></a><a name="EN-US_TOPIC_0020212658"></a>
+
+<h1 class="topictitle1">Querying Details About <span id="text8994205894811">ECS</span> Flavors</h1>
+<div id="body16655470"><div class="section" id="EN-US_TOPIC_0020212658__section57769674"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212658__p6915811">This API is used to query details about <span id="EN-US_TOPIC_0020212658__text18507010498">ECS</span> flavors.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section50165025"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212658__p2041319316475">GET /v2.1/{project_id}/flavors/detail?minDisk={minDisk}&amp;minRam={minRam}&amp;sort_key={sort_key}&amp;sort_dir={sort_dir}</p>
+<p id="EN-US_TOPIC_0020212658__p7559352155317">GET /v2/{project_id}/flavors/detail?minDisk={minDisk}&amp;minRam={minRam}&amp;sort_key={sort_key}&amp;sort_dir={sort_dir}</p>
+<div class="p" id="EN-US_TOPIC_0020212658__p89078491738"><a href="#EN-US_TOPIC_0020212658__table46110007">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212658__table46110007"></a><a name="table46110007"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212658__table46110007" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212658__row14148614"><th align="left" class="cellrowborder" valign="top" width="16.98%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0020212658__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.18%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0020212658__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.84%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0020212658__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212658__row17201924"><td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p51178607">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.18%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p51826478">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.84%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212658__table042719354613" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212658__row742718319462"><th align="left" class="cellrowborder" valign="top" width="16.919999999999998%" id="mcps1.3.3.2.5.1.1"><p id="EN-US_TOPIC_0020212658__en-us_topic_0057973030_p1494644">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.36%" id="mcps1.3.3.2.5.1.2"><p id="EN-US_TOPIC_0020212658__p1052214117427">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.24%" id="mcps1.3.3.2.5.1.3"><p id="EN-US_TOPIC_0020212658__en-us_topic_0057973030_p53957349">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.480000000000004%" id="mcps1.3.3.2.5.1.4"><p id="EN-US_TOPIC_0020212658__en-us_topic_0057973030_p14912584">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212658__row144271334468"><td class="cellrowborder" valign="top" width="16.919999999999998%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212658__p44273304617">minDisk</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212658__p242715320466">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.24%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212658__p1742720324617">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.480000000000004%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212658__p14277313465">Specifies the minimum disk specification in the unit of GB. Only the ECSs with the disk specification greater than or equal to the minimum specification can be queried.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row942719310465"><td class="cellrowborder" valign="top" width="16.919999999999998%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212658__p1542716374613">minRam</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212658__p11427735469">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.24%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212658__p14273316463">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.480000000000004%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212658__p1842714344616">Specifies the minimum RAM in the unit of MB. Only the ECSs with the RAM specification greater than or equal to the minimum specification can be queried.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row6427173164613"><td class="cellrowborder" valign="top" width="16.919999999999998%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212658__p942710364612">sort_key</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212658__p16427433461">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.24%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212658__p104271333463">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.480000000000004%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212658__p1142783114612">Indicates a sorting field, the default value of which is <strong id="EN-US_TOPIC_0020212658__b842352706101459">flavorid</strong>. The value of this parameter can also be <strong id="EN-US_TOPIC_0020212658__b842352706101549">name</strong>, <strong id="EN-US_TOPIC_0020212658__b842352706101555">memory_mb</strong>, <strong id="EN-US_TOPIC_0020212658__b842352706101622">vcpus</strong>, <strong id="EN-US_TOPIC_0020212658__b842352706101625">root_gb</strong>, or <strong id="EN-US_TOPIC_0020212658__b842352706144441">flavorid</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row642717310465"><td class="cellrowborder" valign="top" width="16.919999999999998%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212658__p642716364610">sort_dir</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212658__p1342773174619">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.24%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212658__p15427035461">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.480000000000004%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212658__p134272310466">Specifies the ascending (<strong id="EN-US_TOPIC_0020212658__b740796858102558">asc</strong>) or descending (<strong id="EN-US_TOPIC_0020212658__b67906925910263">desc</strong>) sorting. Options: <strong id="EN-US_TOPIC_0020212658__b274442023102145">asc</strong> and <strong id="EN-US_TOPIC_0020212658__b308485864173554">desc</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section136523104620"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0020212658__p18427635466">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section36835188"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0020212658__p19926183810413"><a href="#EN-US_TOPIC_0020212658__table23477058">Table 3</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212658__table23477058"></a><a name="table23477058"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212658__table23477058" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212658__row2792905"><th align="left" class="cellrowborder" valign="top" width="17.16%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0020212658__p110452114597">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.23%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0020212658__p71044217595">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.61%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0020212658__p15104102175910">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212658__row9994955"><td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p4284989">flavors</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p62312200">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.61%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p127029403320">Specifies <span id="EN-US_TOPIC_0020212658__text1219315164914">ECS</span> flavors. For details, see <a href="#EN-US_TOPIC_0020212658__table13194498">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row19878185610436"><td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p187945610434">flavors_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p0953191316483">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.61%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p5483191813483">Specifies data links for querying the next pages in pagination query. For details, see <a href="#EN-US_TOPIC_0020212658__table15913898194628">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212658__table13194498"></a><a name="table13194498"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212658__table13194498" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong>flavors</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212658__row35873632"><th align="left" class="cellrowborder" valign="top" width="17.11%" id="mcps1.3.5.4.2.4.1.1"><p id="EN-US_TOPIC_0020212658__p8760175413114">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.38%" id="mcps1.3.5.4.2.4.1.2"><p id="EN-US_TOPIC_0020212658__p18760195414120">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.51%" id="mcps1.3.5.4.2.4.1.3"><p id="EN-US_TOPIC_0020212658__p1176095419111">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212658__row15349251"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p35329809">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p24536113173145">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p56261663">Specifies the ID of the <span id="EN-US_TOPIC_0020212658__text1965152134916">ECS</span> flavor.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row36592919"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p11236435">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p54383891173145">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p61525259">Specifies the name of the <span id="EN-US_TOPIC_0020212658__text97482342204">ECS</span> flavor.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row126833218304"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p7268143212303">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p5268193243011">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p7268432113013">Describes the <span id="EN-US_TOPIC_0020212658__text356973154915">ECS</span> flavor.</p>
+<p id="EN-US_TOPIC_0020212658__p18128110183110">This parameter is supported in microversion 2.55 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row16856419"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p23192694">vcpus</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p61992247173145">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p60827539">Specifies the number of vCPUs in the <span id="EN-US_TOPIC_0020212658__text1353533072112">ECS</span> flavor.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row3097644510336"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p3929432310349">ram</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p51423198173145">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p154673810349">Specifies the memory size (MB) in the <span id="EN-US_TOPIC_0020212658__text5344153592118">ECS</span> flavor.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row10576944"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p51426113">disk</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p31344710173145">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p19756352">Specifies the system disk size in the <span id="EN-US_TOPIC_0020212658__text1410894220211">ECS</span> flavor.</p>
+<p id="EN-US_TOPIC_0020212658__p43589445">This parameter has not been used. Its default value is <strong id="EN-US_TOPIC_0020212658__b84235270611135">0</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row56760689"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p34213098">swap</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p31087024173145">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p1699362755013">Specifies the swap partition size required by the <span id="EN-US_TOPIC_0020212658__text12996747142115">ECS</span> flavor.</p>
+<p id="EN-US_TOPIC_0020212658__p4563766173425">This parameter has not been used. Its default value is <strong id="EN-US_TOPIC_0020212658__b449047605">""</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row56925253"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p47542785">OS-FLV-EXT-DATA:ephemeral</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p18132829173145">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p16591226713">Specifies the temporary disk size. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0020212658__p1140814148017">This parameter has not been used. Its default value is <strong id="EN-US_TOPIC_0020212658__b729732818">0</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row44806966"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p5485596">OS-FLV-DISABLED:disabled</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p52585611173145">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p32761310192019">Specifies whether the <span id="EN-US_TOPIC_0020212658__text1587395502110">ECS</span> flavor has been disabled. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0020212658__p182115151112">This parameter has not been used. Its default value is <strong id="EN-US_TOPIC_0020212658__b589176042">false</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row42184651"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p61513540">rxtx_factor</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p7527547173145">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p16772171313154">Specifies the ratio of the available network bandwidth to the network hardware bandwidth of the <span id="EN-US_TOPIC_0020212658__text1336793262312">ECS</span>.</p>
+<p id="EN-US_TOPIC_0020212658__p3711880173425">This parameter has not been used. Its default value is <strong id="EN-US_TOPIC_0020212658__b441707520">1.0</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row51313205"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p62728917">os-flavor-access:is_public</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p43117912173145">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p8894218182818">Specifies whether a flavor is available to all tenants. This is an extended attribute.</p>
+<ul id="EN-US_TOPIC_0020212658__ul1474014143815"><li id="EN-US_TOPIC_0020212658__li174051412817"><strong id="EN-US_TOPIC_0020212658__b84235270620200">true</strong>: indicates that a flavor is available to all tenants.</li><li id="EN-US_TOPIC_0020212658__li974011141783"><strong id="EN-US_TOPIC_0020212658__b661767186">false</strong>: indicates that a flavor is available only to certain tenants.</li></ul>
+<p id="EN-US_TOPIC_0020212658__p35038271466">Default value: <strong id="EN-US_TOPIC_0020212658__b842352706115252">true</strong></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row2047803919452"><td class="cellrowborder" valign="top" width="17.11%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p6509154919455">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.38%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p3792414219455">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.51%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p6495712119455">Specifies shortcut links for ECS flavors. For details, see <a href="#EN-US_TOPIC_0020212658__table15913898194628">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212658__table15913898194628"></a><a name="table15913898194628"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212658__table15913898194628" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong>links</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212658__row37608132194628"><th align="left" class="cellrowborder" valign="top" width="17.23%" id="mcps1.3.5.5.2.4.1.1"><p id="EN-US_TOPIC_0020212658__p7144115819116">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.11%" id="mcps1.3.5.5.2.4.1.2"><p id="EN-US_TOPIC_0020212658__p19144558313">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.66%" id="mcps1.3.5.5.2.4.1.3"><p id="EN-US_TOPIC_0020212658__p14144358114">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212658__row17692319194628"><td class="cellrowborder" valign="top" width="17.23%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p23791739194628">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.11%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p48082703194628">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.66%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p2384900194628">Specifies the shortcut link marker name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212658__row21464106194628"><td class="cellrowborder" valign="top" width="17.23%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0020212658__p60871059194628">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.11%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0020212658__p31608752194628">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.66%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0020212658__p10172138194628">Provides the corresponding shortcut link.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section1063811378466"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0020212658__en-us_topic_0057973030_screen28983216540">GET https://<em id="EN-US_TOPIC_0020212658__i921675914473">{endpoint}</em>/v2/743b4c0428d94531b9f2add666642e6b/flavors/detail
+GET https://<em id="EN-US_TOPIC_0020212658__i5452131772714">{endpoint}</em>/v2.1/743b4c0428d94531b9f2add666642e6b/flavors/detail</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section10861115013317"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0020212658__screen28862509311">{
+    "flavors": [
+        {
+            "name": "c3.2xlarge.2",
+            "links": [
+                {
+                    "href": "https://compute.region.xxx.com/v2.1/743b4c0428d94531b9f2add666642e6b/flavors/c3.2xlarge.2",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://compute.region.xxx.com/743b4c0428d94531b9f2add666642e6b/flavors/c3.2xlarge.2",
+                    "rel": "bookmark"
+                }
+            ],
+            "ram": 16384,
+            "OS-FLV-DISABLED:disabled": false,
+            "vcpus": 8,
+            "swap": "",
+            "os-flavor-access:is_public": true,
+            "rxtx_factor": 1,
+            "OS-FLV-EXT-DATA:ephemeral": 0,
+            "disk": 0,
+            "id": "c3.2xlarge.2"
+        },
+        {
+            "name": "c3.2xlarge.4",
+            "links": [
+                {
+                    "href": "https://compute.region.xxx.com/v2.1/743b4c0428d94531b9f2add666642e6b/flavors/c3.2xlarge.4",
+                    "rel": "self"
+                },
+                {
+                    "href": "https://compute.region.xxx.com/743b4c0428d94531b9f2add666642e6b/flavors/c3.2xlarge.4",
+                    "rel": "bookmark"
+                }
+            ],
+            "ram": 32768,
+            "OS-FLV-DISABLED:disabled": false,
+            "vcpus": 8,
+            "swap": "",
+            "os-flavor-access:is_public": true,
+            "rxtx_factor": 1,
+            "OS-FLV-EXT-DATA:ephemeral": 0,
+            "disk": 0,
+            "id": "c3.2xlarge.4"
+        }
+    ]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212658__section63081244"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212658__p13886058">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212655.html">Flavor Management</a></div>
+</div>
+</div>
+

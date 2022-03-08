@@ -1,0 +1,28 @@
+<a name="EN-US_TOPIC_0264235943"></a><a name="EN-US_TOPIC_0264235943"></a>
+
+<h1 class="topictitle1">Why Does the System Display Error Code 122.112.<em id="en-us_topic_0138293296_i1971581119245">.</em> When I Log In to a Windows <span id="text5771438152">ECS</span>?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_section138274312216"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_p3671101221">The system displays error 122.112... when you use RDC to locally access an <span id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_text1475872317594">ECS</span> running Windows Server 2012. The <span id="EN-US_TOPIC_0264235943__text36771759161514">ECS</span> is frequently disconnected and the Windows login process is unexpectedly interrupted.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_section0893911142214"><h4 class="sectiontitle">Possible Causes</h4><ol id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_ol12859172892412"><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li6859128122420">System resources are insufficient or unavailable.</li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li385982862416">The services cannot be started.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_section6777111520224"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_ol9749124112616"><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li17495416268"><span>Check system logs.</span><p><ol type="a" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_ol1713714752615"><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li141375722618">Log in to the <span id="EN-US_TOPIC_0264235943__text1010710411611">ECS</span> using VNC.</li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li88526917260">Click <span><img id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_image7857174634511" src="en-us_image_0000001122204571.png"></span> to start the service manager and choose <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b1897152165113">Administrative Tools</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b18011728125120">Event Viewer</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b7235143212517">Windows Logs</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b9395124118511">System</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b151891053195112">Filter Current Logs</strong>.<div class="fignone" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_fig1129272819299"><span class="figcap"><b>Figure 1 </b>Event viewer</span><br><span><img id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_image09513234264" src="en-us_image_0000001122000869.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li14152145311266">In the <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b1474102553811">Event Level</strong> pane, select event levels.<div class="fignone" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_fig13103521154816"><span class="figcap"><b>Figure 2 </b>Filtering logs</span><br><span><img id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_image15163172512811" src="en-us_image_0000001121886141.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li112872443281">Search for login logs.</li></ol>
+</p></li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li0105163103013"><span>Check the usage of host resources.</span><p><ol type="a" id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_ol11761131514325"><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li076181573219">Choose <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b109767393481">Start</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b1736342194814">Task Manager</strong> &gt; <strong id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_b2807164644816">Performance</strong>.</li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li11761215143218">Check usage of CPU and memory.</li></ol>
+</p></li><li id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_li4971645153015"><span>Check whether the purchased Windows <span id="EN-US_TOPIC_0264235943__text18406171010167">ECS</span> is with 1 vCPU and 1 GB of memory.</span><p><p id="EN-US_TOPIC_0264235943__en-us_topic_0138293296_p1176244920301">If it is, change the flavor or stop unnecessary processes.</p>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

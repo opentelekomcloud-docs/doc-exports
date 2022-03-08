@@ -1,0 +1,64 @@
+<a name="modelarts_23_0047"></a><a name="modelarts_23_0047"></a>
+
+<h1 class="topictitle1">Managing Training Job Versions</h1>
+<p id="modelarts_23_0047__en-us_topic_0171858285_p1454091315516">During model building, you may need to frequently tune the data, training parameters, or the model based on the training results to obtain a satisfactory model. ModelArts allows you to manage training job versions to effectively train your model after the tuning. Specifically, ModelArts generates a version each time when a training is performed. You can quickly get the difference between different versions.</p>
+<h4 class="sectiontitle">Viewing Training Job Versions</h4><ol id="modelarts_23_0047__en-us_topic_0171858285_ol29653500551"><li id="modelarts_23_0047__en-us_topic_0171858285_li1580718447312">Log in to the ModelArts management console. In the left navigation pane, choose <strong id="modelarts_23_0047__en-us_topic_0171858285_b98736196354">Training Management</strong> &gt; <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol1787421919355"><b>Training Jobs</b></span>. By default, the system switches to the <span class="wintitle" id="modelarts_23_0047__en-us_topic_0171858285_wintitle78756197357"><b>Training Jobs</b></span> page.</li><li id="modelarts_23_0047__en-us_topic_0171858285_li928416281944">In the training job list, click the name of a training job.<p id="modelarts_23_0047__en-us_topic_0171858285_p1484635319589"><a name="modelarts_23_0047__en-us_topic_0171858285_li928416281944"></a><a name="en-us_topic_0171858285_li928416281944"></a>By default, the basic information about the latest version is displayed. If there are multiple available versions, click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol2017104091915"><b>Select Version</b></span> in the upper left corner to view a certain version. Click the downward arrow to the left of the version to display job details. </p>
+</li></ol>
+
+<h4 class="sectiontitle">Comparing Versions of a Training Job</h4><p id="modelarts_23_0047__en-us_topic_0171858285_p155584424215">On the <span class="wintitle" id="modelarts_23_0047__en-us_topic_0171858285_wintitle197925515412"><b>Version Manager</b></span> page, click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol1325018391328"><b>View Comparison Result</b></span> to view the comparison of all or selected versions of the current training job. The comparison result involves the following information: <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname2613231047"><b>Running Parameter</b></span>, <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname59693251646"><b>F1 Score</b></span>, <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname13788284411"><b>Recall</b></span>, <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname1339143015419"><b>Precision</b></span>, and <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname13375932447"><b>Accuracy</b></span>.</p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="modelarts_23_0047__en-us_topic_0171858285_p2060214417415">The <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname1738024142414"><b>F1 Score</b></span>, <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname43832419244"><b>Recall</b></span>, <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname738202415248"><b>Precision</b></span>, and <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname93812249243"><b>Accuracy</b></span> parameters of a training job are displayed only when the job is created using a built-in algorithm. For training jobs created using frequently-used frameworks or custom images, define the output of these parameters in your training script code. These parameters cannot be viewed on the GUI.</p>
+
+
+<h4 class="sectiontitle">Shortcut Operations Based on Training Job Versions</h4><p id="modelarts_23_0047__en-us_topic_0171858285_p1128210221854">On the <strong id="modelarts_23_0047__en-us_topic_0171858285_b18742121373610">Version Manager</strong> page, ModelArts provides certain shortcut operation buttons for you to quickly enter the subsequent steps after model training is complete.</p>
+
+.. _modelarts_23_0047__en-us_topic_0171858285_table545322619177:
+
+<table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0047__en-us_topic_0171858285_table545322619177" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Shortcut operation button description</caption><thead align="left"><tr id="modelarts_23_0047__en-us_topic_0171858285_row1445412266175"><th align="left" class="cellrowborder" valign="top" width="24.91%" id="mcps1.3.4.3.2.3.1.1"><p id="modelarts_23_0047__en-us_topic_0171858285_p9454122621715">Shortcut Operation Button</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75.09%" id="mcps1.3.4.3.2.3.1.2"><p id="modelarts_23_0047__en-us_topic_0171858285_p1445442621713">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0047__en-us_topic_0171858285_row73661140131711"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p636714051714">Creating Visualization Job</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p103673402173">Creates a visualization job (TensorBoard) for the current training version. For details, see <a href="modelarts_23_0050.html">Managing Visualization Jobs</a>.</p>
+<span class="notetitle"> NOTE: </span><p id="modelarts_23_0047__en-us_topic_0171858285_p1183283141913">TensorBoard supports only the TensorFlow and MXNet engines. Therefore, you can create the TensorBoard jobs only when the AI engine is TensorFlow or MXNet.</p>
+
+</td>
+</tr>
+<tr id="modelarts_23_0047__en-us_topic_0171858285_row104541526111712"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p204542263176">Create Model</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p645512262173">Creates a model for the current training version. For details about how to create a model, see <a href="modelarts_23_0204.html">Importing a Model</a>. You can only create models for training jobs in the <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname0941184217383"><b>Running</b></span> status.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0047__en-us_topic_0171858285_row645562681714"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p74556269176">Modify</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p7455132617172">If the training result of the current version does not meet service requirements or the training job fails, click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol10291759688"><b>Modify</b></span> to switch to the page where you can modify the job parameter settings. For details about the parameters of the training job, see <a href="modelarts_23_0046.html">Creating a Training Job</a>. After modifying the job parameter settings as required, click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol20310195413813"><b>OK</b></span> to start the training job of a new version.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0047__en-us_topic_0171858285_row445582610170"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p14455102619173">Save Training Parameters</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p745532617177">You can save the job parameter settings of this version as a job parameter configuration, which will be displayed on the <strong id="modelarts_23_0047__en-us_topic_0171858285_b832911020408">Job Parameter Mgmt</strong> page. Click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol1233813549217"><b>More &gt; Save Training Parameters</b></span> to switch to the <span class="wintitle" id="modelarts_23_0047__en-us_topic_0171858285_wintitle187731359132116"><b>Training Parameter</b></span> page. After confirming that the settings are correct, click <strong id="modelarts_23_0047__en-us_topic_0171858285_b137568220478">OK</strong>. For details about training parameter management, see <a href="modelarts_23_0049.html">Managing Job Parameters</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0047__en-us_topic_0171858285_row134551626201712"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p445592613172">Stop</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p124551426111714">Click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol2017065954718"><b>More &gt; Stop</b></span> to stop the training job of the current version. Only training jobs in the <span class="parmname" id="modelarts_23_0047__en-us_topic_0171858285_parmname51822015114818"><b>Running</b></span> state can be stopped.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0047__en-us_topic_0171858285_row1845582617173"><td class="cellrowborder" valign="top" width="24.91%" headers="mcps1.3.4.3.2.3.1.1 "><p id="modelarts_23_0047__en-us_topic_0171858285_p94551426141718">Delete</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.09%" headers="mcps1.3.4.3.2.3.1.2 "><p id="modelarts_23_0047__en-us_topic_0171858285_p0455226131711">Click <span class="uicontrol" id="modelarts_23_0047__en-us_topic_0171858285_uicontrol12585736124813"><b>More &gt; Delete</b></span> to delete the training job of the current version.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0043.html">Training Management</a>
+
+
+

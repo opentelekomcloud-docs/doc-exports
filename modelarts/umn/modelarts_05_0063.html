@@ -1,0 +1,32 @@
+<a name="modelarts_05_0063"></a><a name="modelarts_05_0063"></a>
+
+<h1 class="topictitle1">How Do I Create a Training Job When a Dependency Package Is Referenced in a Model?</h1>
+<div id="body8662426"><p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p472912316566">When a model references a dependency package, select a frequently-used framework to create training jobs. In addition, place the required file or installation package in the code directory. The requirements vary based on the dependency package that you use.</p>
+<ul id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_ul1277854919572"><li id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_li1778114935710"><strong id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_b145292053161711">Open-source installation package</strong><div class="note" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_note14209752101715"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p18210352171719">It is not allowed to install the package using the GitHub source code.</p>
+</div></div>
+<p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p1051702281913">Create a file named <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath1551719224198"><b>pip-requirements.txt</b></span> in the code directory. In this file, specify the name and version of the dependency package in the format of <em id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_i094863161910">Package name</em><strong id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_b1594818311199">==</strong><em id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_i18948034197">Version</em>.</p>
+<p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p14517922181914">For example, the OBS path specified by <span class="parmname" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_parmname12230141822012"><b>Code Directory</b></span> contains model files and the <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath18517192220193"><b>pip-requirements.txt</b></span> file. The following shows the code directory structure:</p>
+<pre class="screen" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_screen951718224198">|---OBS path to the model boot file
+     |---model.py               #Model boot file
+     |---pip-requirements.txt   #Customized configuration file, which specifies the name and version of the dependency package</pre>
+<p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p3517132221911">The following shows the content of the <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath6517122151919"><b>pip-requirements.txt</b></span> file:</p>
+<pre class="screen" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_screen7517112211917">alembic==0.8.6
+bleach==1.4.3
+click==6.6</pre>
+</li><li id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_li106572405813"><strong id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_b1782510249238">Customized WHL file</strong><p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p72677538812">When you use a customized .whl file, the system cannot automatically download and install the file. Place the .whl file in the code directory, create a file named <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath82081126592"><b>pip-requirements.txt</b></span>, and specify the name of the .whl file in the created file. The dependency package must be a .whl file.</p>
+<p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p8517195916108">For example, the OBS path specified by <span class="parmname" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_parmname2391541112517"><b>Code Directory</b></span> contains model files, .whl file, and <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath05161459191012"><b>pip-requirements.txt</b></span> file. The following shows the code directory structure:</p>
+<pre class="screen" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_screen0831354101214">|---OBS path to the model boot file
+     |---model.py               #Model boot file
+     |---XXX.whl                #Dependency package. If multiple dependencies are required, place all of them here.
+     |---pip-requirements.txt   #Customized configuration file, which specifies the name of the dependency package</pre>
+<p id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_p921092518913">The following shows the content of the <span class="filepath" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_filepath86762393142"><b>pip-requirements.txt</b></span> file:</p>
+<pre class="screen" id="modelarts_05_0063__en-us_topic_0000001096467413_en-us_topic_0285164858_en-us_topic_0186387866_screen1749471118109">numpy-1.15.4-cp36-cp36m-manylinux1_x86_64.whl
+tensorflow-1.8.0-cp36-cp36m-manylinux1_x86_64.whl</pre>
+</li></ul>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_05_0030.html">Training Jobs</a></div>
+</div>
+</div>
+

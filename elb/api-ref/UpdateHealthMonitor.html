@@ -1,0 +1,494 @@
+<a name="UpdateHealthMonitor"></a><a name="UpdateHealthMonitor"></a>
+
+<h1 class="topictitle1">Updating a Health Check</h1>
+<h4 class="sectiontitle">Function</h4><p>This API is used to update a health check.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p>The health check can be updated only when the provisioning status of the associated load balancer is <strong>ACTIVE</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p>PUT /v3/{project_id}/elb/healthmonitors/{healthmonitor_id}</p>
+
+<table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>healthmonitor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Specifies the health check ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request header parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.1 "><p>X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.2.2.5.1.4 "><p>Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__requestParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Request body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.1 "><p>healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.5.1.3 "><p><a href="#UpdateHealthMonitor__request_UpdateHealthMonitorOption">UpdateHealthMonitorOption</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.3.2.5.1.4 "><p>Specifies the health check.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateHealthMonitor__request_UpdateHealthMonitorOption"></a><a name="request_UpdateHealthMonitorOption"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__request_UpdateHealthMonitorOption" frame="border" border="1" rules="all"><caption><b>Table 4 </b>UpdateHealthMonitorOption</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.4.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the administrative status of the health check. Two value options are available. <strong>true</strong> indicates that the health check is enabled, and <strong>false</strong> indicates that the health check is disabled.</p>
+<p>Default: <strong>true</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>delay</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the interval between health checks, in seconds.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>50</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>domain_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the domain name that HTTP requests are sent to during the health check.</p>
+<p>This parameter is available only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>The value is left blank by default, indicating that the virtual IP address of the load balancer is used as the destination address of HTTP requests.</p>
+<p>The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>100</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>expected_codes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the expected HTTP status code. This parameter will take effect only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>The value options are as follows:</p>
+<ul><li><p>A specific value, for example, 200</p>
+</li><li><p>A list of values that are separated with commas (,), for example, 200, 202</p>
+</li><li><p>A value range, for example, 200-204</p>
+</li></ul>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>200</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>64</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>http_method</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the HTTP method. The value can be <strong>GET</strong>, <strong>HEAD</strong>, <strong>POST</strong>, <strong>PUT</strong>, <strong>DELETE</strong>, <strong>TRACE</strong>, <strong>OPTIONS</strong>, <strong>CONNECT</strong>, or <strong>PATCH</strong>. This parameter will take effect only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>GET</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>16</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>max_retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the maximum health check retries.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>10</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>max_retries_down</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong>ONLINE</strong> to <strong>OFFLINE</strong>.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>10</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>monitor_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>65535</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the health check name.</p>
+<p>Minimum: <strong>0</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter <strong>delay</strong>.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>50</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>url_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>Default: <strong>/</strong></p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>255</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.4.4.2.5.1.4 "><p>Specifies the protocol used for the health check.</p>
+<p>The value can be <strong>TCP</strong>, <strong>UDP_CONNECT</strong>, <strong>HTTP</strong>, <strong>HTTPS</strong>, or <strong>PING</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.1 "><p>healthmonitor</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.3.2.4.1.2 "><p><a href="#UpdateHealthMonitor__response_HealthMonitor">HealthMonitor</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.3.2.4.1.3 "><p>Specifies the health check.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateHealthMonitor__response_HealthMonitor"></a><a name="response_HealthMonitor"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__response_HealthMonitor" frame="border" border="1" rules="all"><caption><b>Table 6 </b>HealthMonitor</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the administrative status of the health check. Two value options are available. <strong>true</strong> indicates that the health check is enabled, and <strong>false</strong> indicates that the health check is disabled.</p>
+<p>Default: <strong>true</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>delay</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the interval between health checks, in seconds.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>50</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>domain_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the domain name that HTTP requests are sent to during the health check.</p>
+<p>This parameter is available only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>The value is left blank by default, indicating that the virtual IP address of the load balancer is used as the destination address of HTTP requests.</p>
+<p>The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>expected_codes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the expected HTTP status code. This parameter will take effect only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>The value options are as follows:</p>
+<ul><li><p>A specific value, for example, 200</p>
+</li><li><p>A list of values that are separated with commas (,), for example, 200, 202</p>
+</li><li><p>A value range, for example, 200-204</p>
+</li></ul>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>200</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>http_method</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the HTTP method. This parameter will take effect only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>The value can be <strong>GET</strong>, <strong>HEAD</strong>, <strong>POST</strong>, <strong>PUT</strong>, <strong>DELETE</strong>, <strong>TRACE</strong>, <strong>OPTIONS</strong>, <strong>CONNECT</strong>, or <strong>PATCH</strong>.</p>
+<p>This parameter is unsupported. Please do not use it.</p>
+<p>Default: <strong>GET</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the health check ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>max_retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong>OFFLINE</strong> to <strong>ONLINE</strong>. The value ranges from <strong>1</strong> to <strong>10</strong>.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>10</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>max_retries_down</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the number of consecutive health checks when the health check result of a backend server changes from <strong>ONLINE</strong> to <strong>OFFLINE</strong>.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>10</strong></p>
+<p>Default: <strong>3</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>monitor_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>65535</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the health check name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Array of <a href="#UpdateHealthMonitor__response_PoolRef">PoolRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Lists the IDs of backend server groups for which the health check is configured.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter <strong>delay</strong>.</p>
+<p>Minimum: <strong>1</strong></p>
+<p>Maximum: <strong>50</strong></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the health check protocol.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p>url_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p>Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when <strong>type</strong> is set to <strong>HTTP</strong>.</p>
+<p>Default: <strong>/</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateHealthMonitor__response_PoolRef"></a><a name="response_PoolRef"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__response_PoolRef" frame="border" border="1" rules="all"><caption><b>Table 7 </b>PoolRef</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.5.2.4.1.3 "><p>Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><pre class="screen">PUT
+
+https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/healthmonitors/c2b210b2-60c4-449d-91e2-9e9ea1dd7441
+
+{
+  "healthmonitor" : {
+    "name" : "My Healthmonitor update",
+    "max_retries" : 10,
+    "delay" : 10
+  }
+}</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>Successful request.</p>
+<pre class="screen">{
+  "request_id" : "08d6ffea-d092-4cfa-860a-e364f3bef1be",
+  "healthmonitor" : {
+    "id" : "c2b210b2-60c4-449d-91e2-9e9ea1dd7441",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "name" : "My Healthmonitor update",
+    "delay" : 10,
+    "max_retries" : 10,
+    "pools" : [ {
+      "id" : "488acc50-6bcf-423d-8f0a-0f4184f5b8a0"
+    } ],
+    "admin_state_up" : true,
+    "timeout" : 30,
+    "type" : "HTTP",
+    "expected_codes" : "200",
+    "url_path" : "/",
+    "http_method" : "GET"
+  }
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateHealthMonitor__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.8.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.8.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.8.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.8.2.1.3.1.2 "><p>Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p>See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000008.html">Health Check</a>
+
+
+

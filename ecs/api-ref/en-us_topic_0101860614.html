@@ -1,0 +1,154 @@
+<a name="EN-US_TOPIC_0101860614"></a><a name="EN-US_TOPIC_0101860614"></a>
+
+<h1 class="topictitle1">Querying a Single Disk Attached to an <span id="text18304454111912">ECS</span></h1>
+<div id="body1521017541072"><div class="section" id="EN-US_TOPIC_0101860614__section61843920"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0101860614__p2362032">This API is used to query a disk attached to an <span id="EN-US_TOPIC_0101860614__text1175017198442">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__section19724370"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0101860614__p248418710335">GET /v2.1/servers/{server_id}/block_device/{volume_id}</p>
+<div class="p" id="EN-US_TOPIC_0101860614__p1514552742114"><a href="#EN-US_TOPIC_0101860614__table35893824">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0101860614__table35893824"></a><a name="table35893824"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0101860614__table35893824" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0101860614__row23656219"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0101860614__p37105578">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0101860614__p52761866">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="70%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0101860614__p45852771">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0101860614__row39466727"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p42688329">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p35202648">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p32842235">Specifies the <span id="EN-US_TOPIC_0101860614__text1544175614417">ECS</span> ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row77061621252"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p11706725259">volume_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p52640702510">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p8265878256">Specifies the EVS disk ID in UUID format.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__section43301605"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0101860614__p51234165">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__section54170131"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0101860614__p189031415112213"><a href="#EN-US_TOPIC_0101860614__table57959838">Table 2</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0101860614__table57959838"></a><a name="table57959838"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0101860614__table57959838" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0101860614__row39710134"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.2.2.2.4.1.1"><p id="EN-US_TOPIC_0101860614__p62404314">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.4.2.2.2.4.1.2"><p id="EN-US_TOPIC_0101860614__p3528183">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="69.69696969696969%" id="mcps1.3.4.2.2.2.4.1.3"><p id="EN-US_TOPIC_0101860614__p17347392">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0101860614__row62961510"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p66717520">volumeAttachment</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p49639570">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p15568903">Specifies the disk attached to an <span id="EN-US_TOPIC_0101860614__text250232184517">ECS</span>. For details, see <a href="#EN-US_TOPIC_0101860614__table7886611">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0101860614__table7886611"></a><a name="table7886611"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0101860614__table7886611" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0101860614__b84235270618554">volumeAttachment</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0101860614__row60727582"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.2.3.2.4.1.1"><p id="EN-US_TOPIC_0101860614__p1554374912162">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.4.2.3.2.4.1.2"><p id="EN-US_TOPIC_0101860614__p0543649111613">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="69.69696969696969%" id="mcps1.3.4.2.3.2.4.1.3"><p id="EN-US_TOPIC_0101860614__p754384917161">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0101860614__row34544438"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p46636132">serverId</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p30355189">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p50116845">Specifies the <span id="EN-US_TOPIC_0101860614__text1320365616454">ECS</span> ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row48398424"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p16791461647">volumeId</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p10861332121715">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p50454834">Specifies the EVS disk ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row51440330"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p1980225720418">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p1836163411178">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p62498284">Specifies the mount ID, which is the same as the EVS disk ID.</p>
+<p id="EN-US_TOPIC_0101860614__p19668183019510">The value is in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row9400111250"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p44001611759">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p1040020111156">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p1440012113518">Specifies the EVS disk size in GB.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row25613652"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p5917164">device</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p51461341">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p1462819">Specifies the drive letter of the EVS disk, which is the device name of the EVS disk.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row138081017757"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p181061717510">pciAddress</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p128101117559">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p28102176515">Specifies the PCI address.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row25285127356"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p11108124414332">bootIndex</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p1410818444336">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p193241929982">Specifies the EVS disk boot sequence.</p>
+<ul id="EN-US_TOPIC_0101860614__ul12742143715815"><li id="EN-US_TOPIC_0101860614__li1574263716816"><strong id="EN-US_TOPIC_0101860614__b842352706181942">0</strong> indicates the system disk.</li><li id="EN-US_TOPIC_0101860614__li0742637889">Non-0 indicates a data disk.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0101860614__row1477463153418"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0101860614__p1485515145717">bus</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0101860614__p185525155718">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.69696969696969%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0101860614__p18874019155217">Specifies the disk bus type.</p>
+<p id="EN-US_TOPIC_0101860614__p1485511511573">Options: <strong id="EN-US_TOPIC_0101860614__b842352706114826">virtio</strong> and <strong id="EN-US_TOPIC_0101860614__b842352706114831">scsi</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__section1828405010213"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0101860614__screen30281189171813">GET https://{endpoint}/v2.1/servers/{server_id}/block_device/{volume_id}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__section16327154723712"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0101860614__screen9334134711378">{
+    "volumeAttachment": {
+        "pciAddress": "0000:02:01.0",
+        "volumeId": "a26887c6-c47b-4654-abb5-asdf234r234r",
+        "device": "/dev/vda",
+        "serverId": "4d8c3732-a248-40ed-bebc-539a6ffd25c0",
+        "id": "a26887c6-c47b-4654-abb5-asdf234r234r",
+        "size": "40",
+        "bootIndex": 0,
+        "bus":"virtio"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0101860614__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0101860614__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0101860614__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0111860831.html">Disk Management</a></div>
+</div>
+</div>
+

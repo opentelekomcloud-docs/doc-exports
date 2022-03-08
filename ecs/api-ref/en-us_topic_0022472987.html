@@ -1,0 +1,117 @@
+<a name="EN-US_TOPIC_0022472987"></a><a name="EN-US_TOPIC_0022472987"></a>
+
+<h1 class="topictitle1">Attaching a Disk to an <span id="text1320923105110">ECS</span></h1>
+<div id="body1449024938540"><div class="section" id="EN-US_TOPIC_0022472987__section48627224105553"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0022472987__p46491051105553">This API is used to attach a disk to an <span id="EN-US_TOPIC_0022472987__text7169173225117">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__section15766276105553"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0022472987__p27779270105553">POST /v1/{project_id}/cloudservers/{server_id}/attachvolume</p>
+<div class="p" id="EN-US_TOPIC_0022472987__p343712912316"><a href="#EN-US_TOPIC_0022472987__table35528365105553">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022472987__table35528365105553"></a><a name="table35528365105553"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022472987__table35528365105553" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0022472987__row17119455105553"><th align="left" class="cellrowborder" valign="top" width="16.42%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0022472987__p37105578">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.36%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0022472987__p52761866">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.22%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0022472987__p45852771">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022472987__row39853249105553"><td class="cellrowborder" valign="top" width="16.42%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0022472987__p6887725105553">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0022472987__p21034813105553">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.22%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0022472987__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022472987__row670727210579"><td class="cellrowborder" valign="top" width="16.42%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0022472987__p41505172105731">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0022472987__p6475762105731">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.22%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0022472987__p54774717105731">Specifies the <span id="EN-US_TOPIC_0022472987__text88451273318">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__section33557800105553"><h4 class="sectiontitle">Request</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022472987__table55654045105553" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0022472987__row38118604105553"><th align="left" class="cellrowborder" valign="top" width="16.368363163683632%" id="mcps1.3.3.2.2.5.1.1"><p id="EN-US_TOPIC_0022472987__p599200105553">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.33826617338266%" id="mcps1.3.3.2.2.5.1.2"><p id="EN-US_TOPIC_0022472987__p48535233105553">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.75872412758724%" id="mcps1.3.3.2.2.5.1.3"><p id="EN-US_TOPIC_0022472987__p39039766105553">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.53464653534646%" id="mcps1.3.3.2.2.5.1.4"><p id="EN-US_TOPIC_0022472987__p8104455105553">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022472987__row650913578526"><td class="cellrowborder" valign="top" width="16.368363163683632%" headers="mcps1.3.3.2.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p351017572527">volumeAttachment</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.33826617338266%" headers="mcps1.3.3.2.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p1510125710524">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.75872412758724%" headers="mcps1.3.3.2.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p55101657165213">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.53464653534646%" headers="mcps1.3.3.2.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p1051017579521">Specifies the <span id="EN-US_TOPIC_0022472987__text8383155215364">ECS</span> attachment information. For details, see <a href="#EN-US_TOPIC_0022472987__table40707503151632">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022472987__table40707503151632"></a><a name="table40707503151632"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022472987__table40707503151632" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0022472987__b28932169510">volumeAttachment</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0022472987__row46910609151632"><th align="left" class="cellrowborder" valign="top" width="17.849999999999998%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0022472987__p41663005151632">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.26%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0022472987__p1090831092414">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.41%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0022472987__p19260278151632">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.480000000000004%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0022472987__p696749151632">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022472987__row56436699151632"><td class="cellrowborder" valign="top" width="17.849999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p7969910151632">volumeId</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.26%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p149565197249">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.41%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p9972164210362">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.480000000000004%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p28198497151632">Specifies the ID of the disk to be attached. The value is in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022472987__row52459882151632"><td class="cellrowborder" valign="top" width="17.849999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p21392044151632">device</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.26%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p16956171918245">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.41%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p55033990151632">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.480000000000004%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p179035435915">Indicates the disk device name.</p>
+<div class="note" id="EN-US_TOPIC_0022472987__note1755312117111"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0022472987__ul1580711965"><li id="EN-US_TOPIC_0022472987__li1758019120619">The new disk device name cannot be the same as an existing one.</li><li id="EN-US_TOPIC_0022472987__li058081761">For KVM <span id="EN-US_TOPIC_0022472987__text98491751985">ECS</span>s, set the parameter value to <strong id="EN-US_TOPIC_0022472987__b1449143511497">/dev/vda</strong> for system disks. The device names for data disks of KVM <span id="EN-US_TOPIC_0022472987__text1770614689">ECS</span>s are optional. If the device names of data disks are required, set them in alphabetical order. For example, if there are two data disks, set the device names of the two data disks to <strong id="EN-US_TOPIC_0022472987__b15013554917">/dev/vdb</strong> and <strong id="EN-US_TOPIC_0022472987__b25173594918">/dev/vdc</strong>, respectively. If you set a device name starting with <strong id="EN-US_TOPIC_0022472987__b15223594918">/dev/sd</strong>, the system uses <strong id="EN-US_TOPIC_0022472987__b1859235144914">/dev/vd</strong> by default.</li></ul>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__section5883164105553"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0022472987__p6774315105553">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__section812710371403"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0022472987__screen9285121518573">POST https://{endpoint}/v1/{project_id}/cloudservers/{server_id}/attachvolume</pre>
+<pre class="screen" id="EN-US_TOPIC_0022472987__screen111411737104016">{
+    "volumeAttachment": {
+         "volumeId": "a26887c6-c47b-4654-abb5-dfadf7d3f803",
+         "device": "/dev/sda"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__section7250113841316"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0022472987__screen4283641172510">{
+    "job_id": "70a599e0-31e7-49b7-b260-868f441e862b"
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0022472987__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0022472987__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0022472987__p4242151919297">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0111860831.html">Disk Management</a></div>
+</div>
+</div>
+

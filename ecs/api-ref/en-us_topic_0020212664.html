@@ -1,0 +1,265 @@
+<a name="EN-US_TOPIC_0020212664"></a><a name="EN-US_TOPIC_0020212664"></a>
+
+<h1 class="topictitle1">Adding a NIC to an <span id="text153091927155013">ECS</span></h1>
+<div id="body8128546"><div class="section" id="EN-US_TOPIC_0020212664__section10723444"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212664__p54432515">This API is used to add a NIC to an <span id="EN-US_TOPIC_0020212664__text570617294355">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section29402138"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212664__p1252194417278">POST /v2.1/{project_id}/servers/{server_id}/os-interface</p>
+<p id="EN-US_TOPIC_0020212664__p961173745118">POST /v2/{project_id}/servers/{server_id}/os-interface</p>
+<div class="p" id="EN-US_TOPIC_0020212664__p2852151693117"><a href="#EN-US_TOPIC_0020212664__table55925239">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table55925239"></a><a name="table55925239"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table55925239" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row60011419"><th align="left" class="cellrowborder" valign="top" width="16.6%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0020212664__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.169999999999998%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0020212664__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.23%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0020212664__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row61407752"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p7972012">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p41753265">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.23%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row37815352"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p43144677">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p5057967">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.23%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p7042173">Specifies the <span id="EN-US_TOPIC_0020212664__text141401083610">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section63292653"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0020212664__p374464793113"><a href="#EN-US_TOPIC_0020212664__table21989419">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table21989419"></a><a name="table21989419"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table21989419" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row20106686"><th align="left" class="cellrowborder" valign="top" width="16.41%" id="mcps1.3.3.2.2.2.5.1.1"><p id="EN-US_TOPIC_0020212664__p18028880">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.560000000000002%" id="mcps1.3.3.2.2.2.5.1.2"><p id="EN-US_TOPIC_0020212664__p51053199">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.14%" id="mcps1.3.3.2.2.2.5.1.3"><p id="EN-US_TOPIC_0020212664__p41668450">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.89%" id="mcps1.3.3.2.2.2.5.1.4"><p id="EN-US_TOPIC_0020212664__p19701298">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row52301286"><td class="cellrowborder" valign="top" width="16.41%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212664__p8545767">interfaceAttachment</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.560000000000002%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212664__p21118492">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.14%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212664__p32876269">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.89%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212664__p8936292">Specifies the NICs to be added. For details, see <a href="#EN-US_TOPIC_0020212664__table44975500">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table44975500"></a><a name="table44975500"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table44975500" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong>interfaceAttachment</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row35373287"><th align="left" class="cellrowborder" valign="top" width="16.35%" id="mcps1.3.3.2.3.2.5.1.1"><p id="EN-US_TOPIC_0020212664__p163671873419">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.669999999999998%" id="mcps1.3.3.2.3.2.5.1.2"><p id="EN-US_TOPIC_0020212664__p1136121853418">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.719999999999999%" id="mcps1.3.3.2.3.2.5.1.3"><p id="EN-US_TOPIC_0020212664__p15361118183411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.26%" id="mcps1.3.3.2.3.2.5.1.4"><p id="EN-US_TOPIC_0020212664__p183691812344">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row19920592"><td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212664__p2955276">port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212664__p38050837">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.719999999999999%" headers="mcps1.3.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212664__p23099752">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.26%" headers="mcps1.3.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212664__p62503562">Specifies the port ID.</p>
+<p id="EN-US_TOPIC_0020212664__p1735084713332">Either <strong id="EN-US_TOPIC_0020212664__b842352706164230">port_id</strong> or <strong id="EN-US_TOPIC_0020212664__b842352706164234">net_id</strong> is used each time.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row65287294"><td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212664__p53779479">net_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212664__p61170512">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.719999999999999%" headers="mcps1.3.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212664__p33017564">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.26%" headers="mcps1.3.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212664__p44831437">Specifies the network ID.</p>
+<p id="EN-US_TOPIC_0020212664__p19593329161444">Either <strong id="EN-US_TOPIC_0020212664__b2003485633">port_id</strong> or <strong id="EN-US_TOPIC_0020212664__b1991234479">net_id</strong> is used each time.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row6769295"><td class="cellrowborder" valign="top" width="16.35%" headers="mcps1.3.3.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212664__p11442060">fixed_ips</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.669999999999998%" headers="mcps1.3.3.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212664__p54391657">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.719999999999999%" headers="mcps1.3.3.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212664__p57288388">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.26%" headers="mcps1.3.3.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212664__p21521490">Specifies a private IP address.</p>
+<p id="EN-US_TOPIC_0020212664__p667912716519">This parameter cannot be specified when <strong id="EN-US_TOPIC_0020212664__b6212775439">port_id</strong> is used.</p>
+<p id="EN-US_TOPIC_0020212664__p52801617">This parameter must be used with <strong id="EN-US_TOPIC_0020212664__b1110874015436">net_id</strong>.</p>
+<p id="EN-US_TOPIC_0020212664__p6399032017506">Only the first element in the list is valid. If two or more elements are used, an error will be reported. For details, see <a href="#EN-US_TOPIC_0020212664__table26224215175117">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table26224215175117"></a><a name="table26224215175117"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table26224215175117" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong>fixed_ips</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row58580904175117"><th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.3.2.4.2.5.1.1"><p id="EN-US_TOPIC_0020212664__p141684386346">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.3.2.4.2.5.1.2"><p id="EN-US_TOPIC_0020212664__p19168133812341">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.141414141414144%" id="mcps1.3.3.2.4.2.5.1.3"><p id="EN-US_TOPIC_0020212664__p17168538103412">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.52525252525253%" id="mcps1.3.3.2.4.2.5.1.4"><p id="EN-US_TOPIC_0020212664__p1818353816344">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row38687294175117"><td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.3.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0020212664__p58156055175144">ip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.3.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0020212664__p1214420331348">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.3.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0020212664__p21614964175117">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.52525252525253%" headers="mcps1.3.3.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0020212664__p5981637175117">Specifies the IP address.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section32762966"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0020212664__p422118924020"><a href="#EN-US_TOPIC_0020212664__table60398192112020">Table 5</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table60398192112020"></a><a name="table60398192112020"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table60398192112020" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row40180364112020"><th align="left" class="cellrowborder" valign="top" width="16.509999999999998%" id="mcps1.3.4.2.2.2.4.1.1"><p id="EN-US_TOPIC_0020212664__p33384038112020">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.2%" id="mcps1.3.4.2.2.2.4.1.2"><p id="EN-US_TOPIC_0020212664__p19752577112020">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.29%" id="mcps1.3.4.2.2.2.4.1.3"><p id="EN-US_TOPIC_0020212664__p56454917112020">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row9445528112020"><td class="cellrowborder" valign="top" width="16.509999999999998%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p26890341112020">interfaceAttachment</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.2%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p30634002112020">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.29%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p52044805112020">Specifies <span id="EN-US_TOPIC_0020212664__text8831616173612">ECS</span> NICs. For details, see <a href="#EN-US_TOPIC_0020212664__table49017803">Table 6</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table49017803"></a><a name="table49017803"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table49017803" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="EN-US_TOPIC_0020212664__b15572172113613">interfaceAttachment</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row45954822"><th align="left" class="cellrowborder" valign="top" width="16.669999999999998%" id="mcps1.3.4.2.3.2.4.1.1"><p id="EN-US_TOPIC_0020212664__p1838855864417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.9%" id="mcps1.3.4.2.3.2.4.1.2"><p id="EN-US_TOPIC_0020212664__p7388958164410">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.43%" id="mcps1.3.4.2.3.2.4.1.3"><p id="EN-US_TOPIC_0020212664__p4404858174411">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row50443655"><td class="cellrowborder" valign="top" width="16.669999999999998%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p59404221">port_state</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.9%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p49923923">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.43%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p17305987">Specifies the port state.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row21536161"><td class="cellrowborder" valign="top" width="16.669999999999998%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p66707469">fixed_ips</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.9%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p50801977">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.43%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p57657762">Specifies IP addresses for NICs. For details, see <a href="#EN-US_TOPIC_0020212664__table35098076112057">Table 7</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row49157816"><td class="cellrowborder" valign="top" width="16.669999999999998%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p22360170">port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.9%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p5103804">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.43%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p29686030">Specifies the port ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row65847680"><td class="cellrowborder" valign="top" width="16.669999999999998%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p32061857">net_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.9%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p38664423">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.43%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p642126">Specifies the network ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row5779136"><td class="cellrowborder" valign="top" width="16.669999999999998%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p65456887">mac_addr</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.9%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p33020419">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.43%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p57408296">Specifies the MAC address.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212664__table35098076112057"></a><a name="table35098076112057"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212664__table35098076112057" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong>fixed_ips</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212664__row50961341112057"><th align="left" class="cellrowborder" valign="top" width="16.6%" id="mcps1.3.4.2.4.2.4.1.1"><p id="EN-US_TOPIC_0020212664__p1214910115455">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.85%" id="mcps1.3.4.2.4.2.4.1.2"><p id="EN-US_TOPIC_0020212664__p214914120458">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.55%" id="mcps1.3.4.2.4.2.4.1.3"><p id="EN-US_TOPIC_0020212664__p1514921174516">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212664__row5951916112057"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p12343224112057">subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.85%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p60277055112057">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.55%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p52776587112057">Specifies the ID of the subnet used by the NIC.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212664__row5227236112057"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0020212664__p20752977112057">ip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.85%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0020212664__p3269595112057">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.55%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0020212664__p34724789112057">Specifies the NIC IP address.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section1478176134514"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0020212664__screen1512345341815">POST https://{endpoint}/v2/{project_id}/servers/{server_id}/os-interface
+POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/os-interface</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212664__screen1255515498389">{
+    "interfaceAttachment" : {
+        "fixed_ips" : [ 
+            {
+                "ip_address" : "192.168.1.3"
+            } 
+         ],
+    "net_id" : "3cb9bc59-5699-4588-a4b1-b87f96708bc6"
+    }
+}</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212664__screen107861573198">{
+    "interfaceAttachment" : {
+    "port_id" : "ce531f90-199f-48c0-816c-13e38010b442"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section247111511352"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0020212664__screen18483551173510">{
+    "interfaceAttachment": {
+        "port_state": "DOWN",
+        "fixed_ips": [
+            {
+                "subnet_id": "d9cfef77-0151-4c2a-9ed5-d951ada8adf3",
+                "ip_address": "10.0.1.11"
+            }
+        ],
+        "port_id": " ce531f90-199f-48c0-816c-13e38010b442",
+        "net_id": "0dc714fa-9022-4a03-bb22-9821a396bb9d",
+        "mac_addr": "fa:16:3e:63:75:b2"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212664__section26431238"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212664__p41825741">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212660.html">NIC Management</a></div>
+</div>
+</div>
+

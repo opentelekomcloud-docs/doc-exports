@@ -1,0 +1,28 @@
+<a name="elb_ug_zs_0003"></a><a name="elb_ug_zs_0003"></a>
+
+<h1 class="topictitle1">Converting Certificate Formats</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_ug_zs_0003__p286973965611">ELB supports certificates only in PEM format. If you have a certificate in any other format, you must convert it to a PEM-encoded certificate. There are some common methods for converting a certificate from any other format to PEM.</p>
+
+<h4 class="sectiontitle">From DER to PEM</h4><p id="elb_ug_zs_0003__p1047491617626">The DER format is usually used on a Java platform.</p>
+<p id="elb_ug_zs_0003__p2716538117626">Run the following command to convert the certificate format:</p>
+<pre class="screen" id="elb_ug_zs_0003__screen43353130195849">openssl x509 -inform der -in certificate.cer -out certificate.pem</pre>
+<p id="elb_ug_zs_0003__p5291229217626">Run the following command to convert the private key format:</p>
+<pre class="screen" id="elb_ug_zs_0003__screen1729362232819">openssl rsa -inform DER -outform PEM -in privatekey.der -out privatekey.pem</pre>
+
+<h4 class="sectiontitle">From P7B to PEM</h4><p id="elb_ug_zs_0003__p4307218417653">The P7B format is usually used by Windows Server and Tomcat.</p>
+<p id="elb_ug_zs_0003__p5210533717653">Run the following command to convert the certificate format:</p>
+<pre class="screen" id="elb_ug_zs_0003__screen6246617153218">openssl pkcs7 -print_certs -in incertificate.p7b -out outcertificate.cer</pre>
+
+<h4 class="sectiontitle">From PFX to PEM</h4><p id="elb_ug_zs_0003__p6710697617731">The PFX format is usually used by Windows Server.</p>
+<p id="elb_ug_zs_0003__p6709187817731">Run the following command to convert the certificate format:</p>
+<pre class="screen" id="elb_ug_zs_0003__screen063526163319">openssl pkcs12 -in certname.pfx -nokeys -out cert.pem</pre>
+<p id="elb_ug_zs_0003__p6573300317731">Run the following command to convert the private key format:</p>
+<pre class="screen" id="elb_ug_zs_0003__screen151351139103310">openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes</pre>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_ug_zs_0000.html">Certificate</a>
+
+
+

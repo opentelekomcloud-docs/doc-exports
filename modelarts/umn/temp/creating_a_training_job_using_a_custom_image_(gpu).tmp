@@ -1,0 +1,81 @@
+<a name="modelarts_23_0087"></a><a name="modelarts_23_0087"></a>
+
+<h1 class="topictitle1">Creating a Training Job Using a Custom Image (GPU)</h1>
+<p id="modelarts_23_0087__en-us_topic_0171858299_p8060118">After creating and uploading a custom image to SWR, you can use the image to create a training job on the ModelArts management console to complete model training.</p>
+<h4 class="sectiontitle">Prerequisites</h4><ul id="modelarts_23_0087__en-us_topic_0171858299_ul1436215544613"><li id="modelarts_23_0087__en-us_topic_0171858299_li136295544615">You have created a custom image package based on ModelArts specifications. For details about the specifications you need to comply with when using a custom image to create training jobs, see <a href="modelarts_23_0217.html">Specifications for Custom Images Used for Training Jobs</a>.</li><li id="modelarts_23_0087__en-us_topic_0171858299_li1871014514711">You have uploaded the custom image to SWR. For details, see <a href="modelarts_23_0085.html">Creating and Uploading a Custom Image</a>.</li></ul>
+
+<h4 class="sectiontitle">Creating a Training Job</h4><p class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_p3544182019218">Log in to the ModelArts management console and create a training job according to <a href="modelarts_23_0235.html">Creating a Training Job</a>. When using a custom image to create a job, pay attention to the settings of <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname456118263718"><b>Algorithm Source</b></span>, <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname13404433070"><b>Environment Variable</b></span>, and <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname21063381571"><b>Resource Pool</b></span>.</p>
+<ul id="modelarts_23_0087__en-us_topic_0171858299_ul0884182183511"><li id="modelarts_23_0087__en-us_topic_0171858299_li1645876595"><strong id="modelarts_23_0087__en-us_topic_0171858299_b76019571198">Algorithm Source</strong><p id="modelarts_23_0087__en-us_topic_0171858299_p652942518595">Select <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname083614577919"><b>Custom</b></span>.</p>
+<ul id="modelarts_23_0087__en-us_topic_0171858299_ul4422237599"><li id="modelarts_23_0087__en-us_topic_0171858299_li9884521153519"><strong id="modelarts_23_0087__en-us_topic_0171858299_b12996135108">Image Path</strong>: SWR URL after the image is uploaded to SWR<span class="figcap"><b>Figure 1 </b>SWR image address</span><br><span><img id="modelarts_23_0087__en-us_topic_0171858299_image201031593369" src="en-us_image_0000001156920769.png"></span>
+</li><li id="modelarts_23_0087__en-us_topic_0171858299_li1398424101717"><strong id="modelarts_23_0087__en-us_topic_0171858299_b433632716362">Code Directory</strong>: OBS path for storing the training code file.</li><li id="modelarts_23_0087__en-us_topic_0171858299_li15884202115356"><strong id="modelarts_23_0087__en-us_topic_0171858299_b216482971014">Boot Command</strong>: boot command after the image is started. The basic format is as follows:<p class="sourcecode" id="modelarts_23_0087__en-us_topic_0171858299_p2884121103519"><b><span class="cmdname" id="modelarts_23_0087__en-us_topic_0171858299_cmdname20884112133518">bash /home/work/run_train.sh  {UserCommand}</span></b></p>
+<p class="sourcecode" id="modelarts_23_0087__en-us_topic_0171858299_p4884112193511"><b><span class="cmdname" id="modelarts_23_0087__en-us_topic_0171858299_cmdname178856213355">bash /home/work/run_train.sh  [python/bash/..] {file_location} {file_parameter}</span></b></p>
+<p class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_p1041617520315"><span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname94801845112612"><b>run_train.sh</b></span> is the training boot script. After this script is executed, ModelArts recursively downloads all content in the code directory to the local path of the container. The local path is in the format of <strong id="modelarts_23_0087__en-us_topic_0171858299_b12826101319383">/home/work/user-job-dir/${</strong><em id="modelarts_23_0087__en-us_topic_0171858299_i19174921173817">Name of the last level in the code directory</em>}<strong id="modelarts_23_0087__en-us_topic_0171858299_b4637726103816">/</strong>.</p>
+<p class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_p1273914505351">For example, if the OBS path of the training code file is <span class="filepath" id="modelarts_23_0087__en-us_topic_0171858299_filepath1866041617355"><b>obs://obs-bucket/new/train.py</b></span> and the code directory is <strong id="modelarts_23_0087__en-us_topic_0171858299_b6919202353914">obs://obs-bucket/new/</strong>, the local path of the container is <strong id="modelarts_23_0087__en-us_topic_0171858299_b1475119717405">/home/work/user-job-dir/new/</strong>. The local training code path of the container is <strong id="modelarts_23_0087__en-us_topic_0171858299_b2276192915184">/home/work/user-job-dir/new/train.py</strong>. Then, you can set the boot command to the following: <b><span class="cmdname" id="modelarts_23_0087__en-us_topic_0171858299_cmdname5740650123514">bash /home/work/run_train.sh  python /home/work/user-job-dir/new/train.py {python_file_parameter}</span></b></p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="modelarts_23_0087__en-us_topic_0171858299_p76732163516">If you create a training job using a custom image, ModelArts allows you to customize the boot command. The following are two basic formats for the boot command:</p>
+<p class="sourcecode" id="modelarts_23_0087__en-us_topic_0171858299_p367317169512"><b><span class="cmdname" id="modelarts_23_0087__en-us_topic_0171858299_cmdname13673516195118">bash /home/work/run_train.sh  {UserCommand}</span></b></p>
+<p class="sourcecode" id="modelarts_23_0087__en-us_topic_0171858299_p156732168513"><b><span class="cmdname" id="modelarts_23_0087__en-us_topic_0171858299_cmdname567391616518">bash /home/work/run_train.sh  [python/bash/..] {file_location} {file_parameter}</span></b></p>
+<p id="modelarts_23_0087__en-us_topic_0171858299_p15673111614519"><span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname175095162193"><b>run_train.sh</b></span> is the training boot script. When creating a custom image, you can implement the training boot script or place the training code in the custom image environment in advance to customize the boot command (in the basic formats or any other formats).</p>
+
+</li></ul>
+</li><li class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_li5444737195912"><strong id="modelarts_23_0087__en-us_topic_0171858299_b189911381114">Environment Variable</strong><p id="modelarts_23_0087__en-us_topic_0171858299_p12804203313154">After the container is started, besides the environment variables added by configuring <strong id="modelarts_23_0087__en-us_topic_0171858299_b1524817297411">Environment Variable</strong> during training job creation, <a href="#modelarts_23_0087__en-us_topic_0171858299_table341782301619">Table 1</a> lists other environment variables to be loaded. You can determine whether to use these environment variables in your own Python training script, or run the <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname933219130203"><b>{python_file_parameter}</b></span> command to pass the required parameters.</p>
+
+.. _modelarts_23_0087__en-us_topic_0171858299_table341782301619:
+
+<a name="modelarts_23_0087__en-us_topic_0171858299_table341782301619"></a><a name="en-us_topic_0171858299_table341782301619"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0087__en-us_topic_0171858299_table341782301619" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Optional environment variables</caption><thead align="left"><tr id="modelarts_23_0087__en-us_topic_0171858299_row441882319161"><th align="left" class="cellrowborder" valign="top" width="22.31%" id="mcps1.3.3.3.2.3.2.3.1.1"><p id="modelarts_23_0087__en-us_topic_0171858299_p94186234169">Environment Variable</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.69%" id="mcps1.3.3.3.2.3.2.3.1.2"><p id="modelarts_23_0087__en-us_topic_0171858299_p3418123121615">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0087__en-us_topic_0171858299_row241812311611"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p164181323131617">DLS_TASK_INDEX</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p124185233169">Container index, starting from 0. </p>
+</td>
+</tr>
+<tr id="modelarts_23_0087__en-us_topic_0171858299_row154185239163"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p241872361615">DLS_TASK_NUMBER</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p2418162314161">Number of containers, corresponding to <strong id="modelarts_23_0087__en-us_topic_0171858299_b144971229121810">Compute Nodes</strong></p>
+</td>
+</tr>
+<tr id="modelarts_23_0087__en-us_topic_0171858299_row1041882313169"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p18418162310164">DLS_APP_URL</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p1041815238164">Code directory, corresponding to <strong id="modelarts_23_0087__en-us_topic_0171858299_b1882832151814">Code Dir</strong> with the protocol name added. For example, you can use <span class="filepath" id="modelarts_23_0087__en-us_topic_0171858299_filepath1992581272213"><b>$DLS_APP_URL/*.py</b></span> to read files in OBS.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0087__en-us_topic_0171858299_row241812361615"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p9418823141616">DLS_DATA_URL</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p541882312164">Dataset path, corresponding to <strong id="modelarts_23_0087__en-us_topic_0171858299_b528772652220">Data Source</strong> with the protocol name added</p>
+</td>
+</tr>
+<tr id="modelarts_23_0087__en-us_topic_0171858299_row20418162313160"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p194181923161611">DLS_TRAIN_URL</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p1341812311164">Training output path, corresponding to <strong id="modelarts_23_0087__en-us_topic_0171858299_b05211544142219">Training Output Path</strong> with the protocol name added</p>
+</td>
+</tr>
+<tr id="modelarts_23_0087__en-us_topic_0171858299_row10418152320162"><td class="cellrowborder" valign="top" width="22.31%" headers="mcps1.3.3.3.2.3.2.3.1.1 "><p id="modelarts_23_0087__en-us_topic_0171858299_p28426261819">BATCH_{jobName}.0_HOSTS (standalone)</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.69%" headers="mcps1.3.3.3.2.3.2.3.1.2 "><p id="modelarts_23_0087__en-us_topic_0171858299_p5277131971917">For standalone training, that is, when the number of compute nodes is 1, the environment variable is <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname76051347132219"><b>BATCH_{jobName}.0_HOSTS</b></span>.</p>
+<p id="modelarts_23_0087__en-us_topic_0171858299_p1741832315165">The format of the <strong id="modelarts_23_0087__en-us_topic_0171858299_b381933463213">HOSTS</strong> environment variable is <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname151655217221"><b>hostname:port</b></span>. A container can view the <strong id="modelarts_23_0087__en-us_topic_0171858299_b6326122442713">HOSTS</strong> of all containers in the same job, such as <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname11834908282"><b>BATCH_CUSTOM0_HOSTS</b></span> and <span class="parmname" id="modelarts_23_0087__en-us_topic_0171858299_parmname199011171288"><b>BATCH_CUSTOM1_HOSTS</b></span>, varying according to the indexes. If the resource pool is a dedicated resource pool with the <strong id="modelarts_23_0087__en-us_topic_0171858299_b088574743314">8GPU</strong> specifications, the network type of the container is a host network, and the host IB network can be used to accelerate communications. If other resource pools are used, the network is a container network.</p>
+<span class="notetitle"> NOTE: </span><p id="modelarts_23_0087__en-us_topic_0171858299_p61667712273">When the host IB network is used for communication acceleration, the <strong id="modelarts_23_0087__en-us_topic_0171858299_b319116703512">ip_mapper.py</strong> tool is required to obtain the IP address of the <strong id="modelarts_23_0087__en-us_topic_0171858299_b715751317356">ib0</strong> NIC for using the IPoIB feature.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+
+<ul id="modelarts_23_0087__en-us_topic_0171858299_ul1568815918156"><li class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_li156882096155"><strong id="modelarts_23_0087__en-us_topic_0171858299_b2078122971117">Resource Pool</strong><p id="modelarts_23_0087__en-us_topic_0171858299_p6731122942011">If you select a resource pool of the GPU type, ModelArts mounts NVME SSDs to the <span class="filepath" id="modelarts_23_0087__en-us_topic_0171858299_filepath115211798239"><b>/cache</b></span> directory. You can use this directory to store temporary files.</p>
+</li></ul>
+<h4 class="sectiontitle">Running a Training Job Created Using a Custom Image</h4><p class="firstparagraph" id="modelarts_23_0087__en-us_topic_0171858299_p17364844">After a custom image is uploaded to SWR, ModelArts is authorized to obtain and run the image by default when you create a training job using the custom image. When a custom image is run for the first time, the image is checked first. For details about the check, see <a href="modelarts_23_0217.html">Specifications for Custom Images Used for Training Jobs</a>. The check failure cause is outputted in the log, and you can modify the image based on the log.</p>
+<p class="msobodytext" id="modelarts_23_0087__en-us_topic_0171858299_p64375151">After the image is checked, the backend starts the custom image container to run the training job. You can view the training status based on the log.</p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="modelarts_23_0087__en-us_topic_0171858299_p1062184817106">After an image is reviewed, the image does not need to be reviewed again when being used to create training jobs again.</p>
+
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0216.html">For Training Models</a>
+
+
+

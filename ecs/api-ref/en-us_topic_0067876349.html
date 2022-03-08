@@ -1,0 +1,216 @@
+<a name="EN-US_TOPIC_0067876349"></a><a name="EN-US_TOPIC_0067876349"></a>
+
+<h1 class="topictitle1">Reinstalling an <span id="text8713151174718">ECS</span> OS (Using an Image with Cloud-Init Installed)</h1>
+<div id="body1500949130277"><div class="section" id="EN-US_TOPIC_0067876349__section61372619"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0067876349__p133713011576">This API is used to reinstall an <span id="EN-US_TOPIC_0067876349__text8385332174712">ECS</span> OS. During the system disk reinstallation using the original image, the data disks of the <span id="EN-US_TOPIC_0067876349__text192811033104717">ECS</span> remain unchanged.</p>
+<p id="EN-US_TOPIC_0067876349__p1480015111317">After this API is called, the system uninstalls the system disk, uses the original image to create a system disk, and attaches it to the <span id="EN-US_TOPIC_0067876349__text121851434104713">ECS</span>. In this way, the OS is reinstalled.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section2842257210401"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0067876349__ul13146152104029"><li id="EN-US_TOPIC_0067876349__li84954618297">You can only use an image with Cloud-Init or Cloudbase-Init installed. </li><li id="EN-US_TOPIC_0067876349__li51206509104029">You can reinstall OS only on an <span id="EN-US_TOPIC_0067876349__text116561337144716">ECS</span> that is stopped or for which OS reinstallation has failed.</li><li id="EN-US_TOPIC_0067876349__li58205401104029">You are not allowed to reinstall the OS of an <span id="EN-US_TOPIC_0067876349__text11577103874717">ECS</span> that does not have the system disk.</li><li id="EN-US_TOPIC_0067876349__li1469919567156">You are not allowed to perform other operations when reinstalling the OS. Otherwise, reinstalling the OS will fail.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section15482662"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0067876349__p66228246145352">POST /v2/{project_id}/cloudservers/{server_id}/reinstallos</p>
+<div class="p" id="EN-US_TOPIC_0067876349__p3279173415294"><a href="#EN-US_TOPIC_0067876349__table55945983">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067876349__table55945983"></a><a name="table55945983"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067876349__table55945983" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0067876349__row11302482"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0067876349__p43085863">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0067876349__p294000">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0067876349__p23814038">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067876349__row49888896"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0067876349__p14468758">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0067876349__p31118786">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0067876349__p7411459134810">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row613736410235"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0067876349__p2736446410235">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0067876349__p192907210235">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0067876349__p2203711610235">Specifies the <span id="EN-US_TOPIC_0067876349__text0617103984716">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section5126234"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0067876349__p1338375413012"><a href="#EN-US_TOPIC_0067876349__table2840889">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067876349__table2840889"></a><a name="table2840889"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067876349__table2840889" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0067876349__row19854472"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.2.5.1.1"><p id="EN-US_TOPIC_0067876349__p5212090120624">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.2.2.5.1.2"><p id="EN-US_TOPIC_0067876349__p5568008920626">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.2.2.5.1.3"><p id="EN-US_TOPIC_0067876349__p4189246820628">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.4.2.2.2.5.1.4"><p id="EN-US_TOPIC_0067876349__p2137802720629">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067876349__row6277626"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p38725660">os-reinstall</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p49770771">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p4900679">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p61410719">Reinstalls an <span id="EN-US_TOPIC_0067876349__text567344024713">ECS</span> OS. For details, see <a href="#EN-US_TOPIC_0067876349__table32200631">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067876349__table32200631"></a><a name="table32200631"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067876349__table32200631" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0067876349__b84235270620940">os-reinstall</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0067876349__row47660253"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.3.2.5.1.1"><p id="EN-US_TOPIC_0067876349__p17130113293015">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.3.2.5.1.2"><p id="EN-US_TOPIC_0067876349__p101301832193010">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.3.2.5.1.3"><p id="EN-US_TOPIC_0067876349__p813003213017">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.4.2.3.2.5.1.4"><p id="EN-US_TOPIC_0067876349__p19146143273020">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067876349__row45934497"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p29706771">keyname</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p57438237">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p21985640">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p36006428">Specifies the key pair name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row2345411710289"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p2073531110289">userid</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p183865010289">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p1471297410289">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p5090020910289">Specifies the user ID. This parameter is mandatory when <strong id="EN-US_TOPIC_0067876349__b132012396254">keyname</strong> is used.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row6144862102847"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p27971812102847">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p51124270102847">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p47425188102847">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p16235056102847">Specifies metadata of the reinstalled <span id="EN-US_TOPIC_0067876349__text1199150192410">ECS</span>.</p>
+<p id="EN-US_TOPIC_0067876349__p3830913711291">For more information, see <a href="#EN-US_TOPIC_0067876349__table9120223">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067876349__table9120223"></a><a name="table9120223"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067876349__table9120223" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0067876349__b77937312258">metadata</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0067876349__row45607220"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.4.2.5.1.1"><p id="EN-US_TOPIC_0067876349__p1139016367303">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.4.2.5.1.2"><p id="EN-US_TOPIC_0067876349__p18390836193011">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.4.2.5.1.3"><p id="EN-US_TOPIC_0067876349__p6390153618307">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.4.2.4.2.5.1.4"><p id="EN-US_TOPIC_0067876349__p83901436133015">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067876349__row56761457"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p36421405103024">BYOL</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p24837051">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p65644149">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p13345152413333">Specifies whether a user has the license of an image.</p>
+<ul id="EN-US_TOPIC_0067876349__ul7453134512326"><li id="EN-US_TOPIC_0067876349__li154538452325">If this parameter is set to <strong id="EN-US_TOPIC_0067876349__b842352706215655">true</strong>, the license file delivered with the image is used, indicating that BYOL is used.</li><li id="EN-US_TOPIC_0067876349__li1845354573212">If this parameter is set to a value other than <strong id="EN-US_TOPIC_0067876349__b1593034899215814">true</strong>, BYOL is not used, and the license file provided by the public cloud platform must be used.</li></ul>
+<p id="EN-US_TOPIC_0067876349__p1213811423217">The default value is not <strong id="EN-US_TOPIC_0067876349__b184625899215847">true</strong>, indicating that BYOL is not used.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row11285618104313"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p1737951110318">user_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p39934810104313">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p13494158104313">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p4078366294136">Specifies the user data to be injected to the ECS during the creation. Text and text files can be injected.</p>
+<div class="note" id="EN-US_TOPIC_0067876349__note1076765671813"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0067876349__ul749201611912"><li id="EN-US_TOPIC_0067876349__li67541847182119">The content of <strong id="EN-US_TOPIC_0067876349__b449318139569">user_data</strong> must be encoded with base64.</li><li id="EN-US_TOPIC_0067876349__li84921116141913">The maximum size of the content to be injected (before encoding) is 32 KB.</li></ul>
+</div></div>
+<p id="EN-US_TOPIC_0067876349__p18485123125818">For more details, see "Injecting User Data into ECSs" in <em id="EN-US_TOPIC_0067876349__i16685141017211">Elastic Cloud Server User Guide</em>.</p>
+<p id="EN-US_TOPIC_0067876349__p1633783620117">Examples</p>
+<p id="EN-US_TOPIC_0067876349__p12545313524">Before base64 encoding:</p>
+<ul id="EN-US_TOPIC_0067876349__ul13541314520"><li id="EN-US_TOPIC_0067876349__li13546312528">Linux<pre class="screen" id="EN-US_TOPIC_0067876349__screen16541531125220">#! /bin/bash
+echo user_test &gt;&gt; /home/user.txt</pre>
+</li><li id="EN-US_TOPIC_0067876349__li0541731105219">Windows<pre class="screen" id="EN-US_TOPIC_0067876349__screen35418316520">rem cmd
+echo 111 &gt; c:\aaa.txt</pre>
+</li></ul>
+<p id="EN-US_TOPIC_0067876349__p16762152318318">After base64 encoding:</p>
+<ul id="EN-US_TOPIC_0067876349__ul2069415489311"><li id="EN-US_TOPIC_0067876349__li126941548163113">Linux<pre class="screen" id="EN-US_TOPIC_0067876349__screen1769415480317">IyEgL2Jpbi9iYXNoDQplY2hvIHVzZXJfdGVzdCAmZ3Q7Jmd0OyAvaG9tZS91c2VyLnR4dA==</pre>
+</li><li id="EN-US_TOPIC_0067876349__li06941485319">Windows<pre class="screen" id="EN-US_TOPIC_0067876349__screen1969444873114">cmVtIGNtZA0KZWNobyAxMTEgJmd0OyBjOlxhYWEudHh0</pre>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row8649109145313"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p1562408795622">__system__encrypted</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p5759155095622">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p3440400295622">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p729227516614">Specifies encryption in <strong id="EN-US_TOPIC_0067876349__b13828228161910">metadata</strong>. The value can be <strong id="EN-US_TOPIC_0067876349__b98296285198">0</strong> (encryption disabled) or <strong id="EN-US_TOPIC_0067876349__b0830162820198">1</strong> (encryption enabled).</p>
+<p id="EN-US_TOPIC_0067876349__p3526077895622">If this parameter does not exist, the system disk will not be encrypted by default.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067876349__row4410171365311"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.4.2.5.1.1 "><p id="EN-US_TOPIC_0067876349__p241272995622">__system__cmkid</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.4.2.5.1.2 "><p id="EN-US_TOPIC_0067876349__p683657101711">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.4.2.5.1.3 "><p id="EN-US_TOPIC_0067876349__p5933737595622">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.4.2.5.1.4 "><p id="EN-US_TOPIC_0067876349__p20670814113715">Specifies the CMK ID, which indicates encryption in <strong id="EN-US_TOPIC_0067876349__b1228012133211">metadata</strong>. This parameter is used with <strong id="EN-US_TOPIC_0067876349__b10599123542016">__system__encrypted</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0067876349__note153392271895"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0067876349__p35971634891">For details about how to obtain the CMK ID, see "Querying the List of CMKs" in <em id="EN-US_TOPIC_0067876349__i774310337213">Key Management Service API Reference</em>.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section46136113"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0067876349__p60682533">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section4722162513312"><h4 class="sectiontitle">Example Request</h4><ul id="EN-US_TOPIC_0067876349__ul95463984313"><li id="EN-US_TOPIC_0067876349__li1984203213915">Example URL request<pre class="screen" id="EN-US_TOPIC_0067876349__screen1667162394">POST https://{endpoint}/v2/{project_id}/cloudservers/{server_id}/reinstallos</pre>
+</li><li id="EN-US_TOPIC_0067876349__li105413912437">Example request 1 (using a password to remotely log in to an ECS with OS reinstalled)<pre class="screen" id="EN-US_TOPIC_0067876349__screen65463934318">{
+    "os-reinstall": {
+        "adminpass": "!QAZxsw2", 
+        "userid": "7e25b1da389f4697a79df3a0e5bd494e",
+        "mode": "withStopServer"
+    }
+}</pre>
+</li></ul>
+<ul id="EN-US_TOPIC_0067876349__ul64373262102922"><li id="EN-US_TOPIC_0067876349__li42488453102922">Example request 2 (using a key to remotely log in to an ECS with OS reinstalled)<pre class="screen" id="EN-US_TOPIC_0067876349__screen40301619143023">{
+    "os-reinstall": {
+        "keyname": "KeyPair-350b", 
+        "userid": "7e25b1da389f4697a79df3a0e5bd494e"
+    }
+}</pre>
+</li></ul>
+</div>
+<ul id="EN-US_TOPIC_0067876349__ul0419725171619"><li id="EN-US_TOPIC_0067876349__li15419102513161">Example request 3 (using a password to remotely log in a full-ECS-image-created <span id="EN-US_TOPIC_0067876349__text1214811652412">ECS</span> with OS reinstalled and system disk encrypted)<pre class="screen" id="EN-US_TOPIC_0067876349__screen1450485212165">{
+    "os-reinstall": {
+        "adminpass": "!QAZxsw2", 
+        "userid": "7e25b1da389f4697a79df3a0e5bd494e",
+        "metadata": {
+              "__system__encrypted": "1",
+              "__system__cmkid": "83cdb52d-9ebf-4469-9cfa-e7b5b80da846"
+        }
+    }
+}</pre>
+</li></ul>
+<div class="section" id="EN-US_TOPIC_0067876349__section079845214419"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0067876349__p13277162618519">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section27037160"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0067876349__p23224207">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067876349__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0067876349__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212691.html">Status Management</a></div>
+</div>
+</div>
+

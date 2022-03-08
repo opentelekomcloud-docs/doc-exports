@@ -1,0 +1,153 @@
+<a name="EN-US_TOPIC_0087901488"></a><a name="EN-US_TOPIC_0087901488"></a>
+
+<h1 class="topictitle1">How Can I Obtain the Mapping Between Disk Partitions and Disk Devices on a Linux <span id="text11180516172719">ECS</span>?</h1>
+<div id="body1512698113942"><p id="EN-US_TOPIC_0087901488__p2776878810243">For a Linux <span id="EN-US_TOPIC_0087901488__text284494911465">ECS</span>, its disk partitions correspond to disk devices. This section uses a Linux <span id="EN-US_TOPIC_0087901488__text1357245014616">ECS</span> running Red Hat Enterprise Linux 7 as an example to describe how to obtain the mapping between disk partitions and disk devices.</p>
+<ol id="EN-US_TOPIC_0087901488__ol1070392395649"><li id="EN-US_TOPIC_0087901488__li527599289572">Log in to the Linux <span id="EN-US_TOPIC_0087901488__text1930811532466">ECS</span> as user <strong id="EN-US_TOPIC_0087901488__b26002031542">root</strong>.</li><li id="EN-US_TOPIC_0087901488__li50773069572">Right-click in the blank area of the desktop and choose <strong id="EN-US_TOPIC_0087901488__b842352706114652">Open Terminal</strong> from the shortcut menu.<div class="fignone" id="EN-US_TOPIC_0087901488__fig63278226101115"><span class="figcap"><b>Figure 1 </b>open terminal</span><br><span><img id="EN-US_TOPIC_0087901488__image86086239572" src="en-us_image_0087903699.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0087901488__li3567271495748">Run the following command to view disk partitions and disk devices:<p id="EN-US_TOPIC_0087901488__p3992195395750"><a name="EN-US_TOPIC_0087901488__li3567271495748"></a><a name="li3567271495748"></a><strong id="EN-US_TOPIC_0087901488__b6602911195758">fdisk -l</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0087901488__fig101265111168"><span class="figcap"><b>Figure 2 </b>Viewing disk partitions and disk devices</span><br><span><img id="EN-US_TOPIC_0087901488__image345623069572" src="en-us_image_0087903704.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0087901488__p426252999572"><a href="#EN-US_TOPIC_0087901488__table18572291102543">Table 1</a> lists the mapping between disk partitions and disk devices.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0087901488__table18572291102543"></a><a name="table18572291102543"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0087901488__table18572291102543" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Mapping between disk partitions and disk devices</caption><thead align="left"><tr id="EN-US_TOPIC_0087901488__row41136453102543"><th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.2.3.4.2.3.1.1"><p id="EN-US_TOPIC_0087901488__p57921247102543">Disk Partition</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50%" id="mcps1.3.2.3.4.2.3.1.2"><p id="EN-US_TOPIC_0087901488__p61109434102543">Disk Device</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0087901488__row13113995102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p64587287102652">xvda</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p64187774102652">xvda</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row66259557102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p18009654102652">xvdb</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p49495871102652">xvdb</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row46710570102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p45030664102652">xvdc</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p23605166102652">xvdc</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row38181009102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p28296922102652">xvdd</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p10349350102652">xvdd</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row28140310102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p28483713102652">xvde</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p25479437102652">xvde</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row41708350102543"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p52463771102652">xvdf</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p21707025102652">xvdf</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row4820905102622"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p53838539102652">xvdg</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p65954406102652">xvdg</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row57521478102622"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p30815488102652">xvdh</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p13026569102652">xvdh</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row16821092102622"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p34018989102652">xvdi</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p4074750102652">xvdi</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row44080360102622"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p17703441102652">xvdj</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p24692629102652">xvdj</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row41411196102622"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p15751024102652">xvdk</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p764576102652">xvdk</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row34889124102631"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p20505175102652">xvdl</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p50306493102652">xvdl</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row48077717102631"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p31994075102652">xvdm</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p41383314102652">xvdm</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row65977729102631"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p36555994102652">xvdn</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p8245514102652">xvdn</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row35001738102631"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p38291255102652">xvdo</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p14583964102652">xvdo</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row33010075102631"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p28509473102652">xvdp</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p27565956102652">xvdp</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row13673019104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p3316577110430">xvdq</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p2678866210434">xvdq</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row29955953104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p1865648710430">xvdr</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p25566510434">xvdr</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row8154855104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p4458881510430">xvds</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p5216221710434">xvds</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row34522295104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p2455622210430">xvdt</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p4263981910434">xvdt</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row31650820104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p5052831110430">xvdu</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p1302452110434">xvdu</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row65530809104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p5948166910430">xvdv</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p3252643010434">xvdv</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row19535177104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p981119610430">xvdw</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p2233895710434">xvdw</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0087901488__row52264303104238"><td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.1 "><p id="EN-US_TOPIC_0087901488__p3882251710430">xvdx</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="mcps1.3.2.3.4.2.3.1.2 "><p id="EN-US_TOPIC_0087901488__p4475517010434">xvdx</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

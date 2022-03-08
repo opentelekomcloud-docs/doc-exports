@@ -1,0 +1,135 @@
+<a name="EN-US_TOPIC_0167811963"></a><a name="EN-US_TOPIC_0167811963"></a>
+
+<h1 class="topictitle1">Adding Tags to an ECS in a Batch</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section35847011245"><h4 class="sectiontitle">Function</h4><ul id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_ul333921351517"><li id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li1633941310159">This API is used to add tags to a specified ECS in a batch.</li><li id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li33395132153">The Tag Management Service (TMS) uses this API to batch manage the tags of an ECS.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section2179161873415"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_ul10518141417130"><li id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li451611401312">An ECS allows a maximum of 10 tags.</li><li id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li124985462297">This API is idempotent.<p id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_p173849568315"><a name="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li124985462297"></a><a name="en-us_topic_0096282701_li124985462297"></a>During tag creation, if a tag exists (both the key and value are the same as those of an existing tag), the tag is successfully processed by default.</p>
+</li><li id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_li1556118431293">A new tag will overwrite the original one if their keys are the same and values are different.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section16695164917340"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0167811963__p85801622333">POST /v1/{project_id}/cloudservers/{server_id}/tags/action</p>
+<div class="p" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_p4999161574415"><a href="#EN-US_TOPIC_0167811963__table73051127201915">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0167811963__table73051127201915"></a><a name="table73051127201915"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0167811963__table73051127201915" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0167811963__row203051827101920"><th align="left" class="cellrowborder" valign="top" width="19.15191519151915%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0167811963__p1736533731913">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.842484248424842%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0167811963__p73651837151920">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.00560056005601%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0167811963__p8365163715192">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0167811963__row173056271192"><td class="cellrowborder" valign="top" width="19.15191519151915%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0167811963__p43651637121911">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.842484248424842%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0167811963__p19365203751912">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00560056005601%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0167811963__p236563716192">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0167811963__row130542719190"><td class="cellrowborder" valign="top" width="19.15191519151915%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0167811963__p6365237161915">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.842484248424842%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0167811963__p43651037161919">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00560056005601%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0167811963__p1036516372195">Specifies the <span id="EN-US_TOPIC_0167811963__text19673156282">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section36878128386"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_p15501244174419"><a href="#EN-US_TOPIC_0167811963__table69204518218">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0167811963__table69204518218"></a><a name="table69204518218"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0167811963__table69204518218" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0167811963__row59945182111"><th align="left" class="cellrowborder" valign="top" width="19.99%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0167811963__p194401755172114">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.86%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0167811963__p144005522115">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.19%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0167811963__p14401255152118">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.96%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0167811963__p1244065592116">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0167811963__row199154511217"><td class="cellrowborder" valign="top" width="19.99%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0167811963__p5440125552110">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.86%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0167811963__p144014557217">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.19%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0167811963__p34404557211">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.96%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0167811963__p54401055112119">Specifies tags. For details, see <a href="#EN-US_TOPIC_0167811963__table1534514266207">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0167811963__row209164552118"><td class="cellrowborder" valign="top" width="19.99%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0167811963__p204401455182117">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.86%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0167811963__p14401553217">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.19%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0167811963__p9440105511215">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.96%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0167811963__p744035562112">Specifies the operation. (Only lowercase letters are supported.) For example, <strong id="EN-US_TOPIC_0167811963__b842352706152944">create</strong> indicates the creation operation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0167811963__table1534514266207"></a><a name="table1534514266207"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0167811963__table1534514266207" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0167811963__b84235270695528">tags</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0167811963__row1634517262204"><th align="left" class="cellrowborder" valign="top" width="19.49%" id="mcps1.3.4.4.2.5.1.1"><p id="EN-US_TOPIC_0167811963__p731216419207">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.66%" id="mcps1.3.4.4.2.5.1.2"><p id="EN-US_TOPIC_0167811963__p2312104111208">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.4.4.2.5.1.3"><p id="EN-US_TOPIC_0167811963__p163123418208">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.849999999999994%" id="mcps1.3.4.4.2.5.1.4"><p id="EN-US_TOPIC_0167811963__p1312841162016">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0167811963__row1934520269206"><td class="cellrowborder" valign="top" width="19.49%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0167811963__p1731294182014">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.66%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0167811963__p1312541142015">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0167811963__p13312441182011">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.849999999999994%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0167811963__p1312194112209">Specifies the tag key.</p>
+<ul id="EN-US_TOPIC_0167811963__ul183138417208"><li id="EN-US_TOPIC_0167811963__li123131341142020">Cannot be left blank.</li><li id="EN-US_TOPIC_0167811963__li23131941112013">Must be unique for each resource.</li><li id="EN-US_TOPIC_0167811963__li431314110206">Contains a maximum of 36 characters.</li><li id="EN-US_TOPIC_0167811963__li10313144192011">Can only consist of digits, letters, hyphens (-), and underscores (_).</li><li id="EN-US_TOPIC_0167811963__li1931314192020">Must be unique and cannot be left blank.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0167811963__row11345526122020"><td class="cellrowborder" valign="top" width="19.49%" headers="mcps1.3.4.4.2.5.1.1 "><p id="EN-US_TOPIC_0167811963__p831334192011">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.66%" headers="mcps1.3.4.4.2.5.1.2 "><p id="EN-US_TOPIC_0167811963__p531344116205">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.4.4.2.5.1.3 "><p id="EN-US_TOPIC_0167811963__p16313104113204">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.849999999999994%" headers="mcps1.3.4.4.2.5.1.4 "><p id="EN-US_TOPIC_0167811963__p15313114116201">Specifies the tag value.</p>
+<ul id="EN-US_TOPIC_0167811963__ul53131413201"><li id="EN-US_TOPIC_0167811963__li13313104116202">Contains a maximum of 43 characters.</li><li id="EN-US_TOPIC_0167811963__li5313114113206">Can only consist of digits, letters, hyphens (-), and underscores (_).</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section08601336145413"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_p16657154145416">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_section105681635543"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0167811963__screen103079507292">POST  https://{endpoint}/v1/{project_id}/cloudservers/{server_id}/tags/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_screen1863904613817">{
+    "action": "create",
+    "tags": [
+        {
+            "key": "key1",
+            "value": "value1"
+        },
+        {
+            "key": "key2",
+            "value": "value3"
+        }
+    ]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__section739350112116"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0167811963__p8239256211">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0167811963__en-us_topic_0096282701_p1553315114515">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0108433461.html">Tag Management</a></div>
+</div>
+</div>
+

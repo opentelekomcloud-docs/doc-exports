@@ -1,0 +1,74 @@
+<a name="modelarts_05_0090"></a><a name="modelarts_05_0090"></a>
+
+<h1 class="topictitle1">What Are Sizes of the /cache Directories for Different Resource Specifications in the Training Environment?</h1>
+<div id="body8662426"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p52514553619">When creating a training job, you can select CPU, GPU, or Ascend resources based on the size of the training job.</p>
+<p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p1352593019279">ModelArts mounts the disk to the <strong id="modelarts_05_0090__en-us_topic_0000001096855431_b919491193714">/cache</strong> directory. You can use this directory to store temporary files. The <strong id="modelarts_05_0090__en-us_topic_0000001096855431_b98621238372">/cache</strong> directory shares resources with the code directory. The directory has different capacities for different resource specifications.</p>
+<ul id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_ul71421635862"><li id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_li814218351561">GPU resources
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_table9533182215915" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Capacities of the cache directories for GPU resources</caption><thead align="left"><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row7534022115910"><th align="left" class="cellrowborder" valign="top" width="22.28%" id="mcps1.3.3.1.1.2.3.1.1"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p353482265914">GPU Specifications</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.72%" id="mcps1.3.3.1.1.2.3.1.2"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p9534422165914">cache Directory Capacity</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row65342022185912"><td class="cellrowborder" valign="top" width="22.28%" headers="mcps1.3.3.1.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p18534192235920">V100</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.72%" headers="mcps1.3.3.1.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p14534202255914">800G</p>
+</td>
+</tr>
+<tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row165341122145911"><td class="cellrowborder" valign="top" width="22.28%" headers="mcps1.3.3.1.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p14534822155911">8*V100</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.72%" headers="mcps1.3.3.1.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p7534822155914">3T</p>
+</td>
+</tr>
+<tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row11997245202"><td class="cellrowborder" valign="top" width="22.28%" headers="mcps1.3.3.1.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p1499819457019">P100</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.72%" headers="mcps1.3.3.1.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p799810455015">800G</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_li6214553111515">CPU resources
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_table2764175317167" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Capacities of the cache directories for CPU resources</caption><thead align="left"><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row11764185311167"><th align="left" class="cellrowborder" valign="top" width="24.02%" id="mcps1.3.3.2.1.2.3.1.1"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p13764153111612">CPU Specifications</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75.98%" id="mcps1.3.3.2.1.2.3.1.2"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p10764155321617">cache Directory Capacity</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row16764753181613"><td class="cellrowborder" valign="top" width="24.02%" headers="mcps1.3.3.2.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p376416536164">2 vCPUs | 8 GiB</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.98%" headers="mcps1.3.3.2.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p876475361619">50G</p>
+</td>
+</tr>
+<tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row17764155391610"><td class="cellrowborder" valign="top" width="24.02%" headers="mcps1.3.3.2.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p27641538162">8 vCPUs | 32 GiB</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.98%" headers="mcps1.3.3.2.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p157643539161">50G</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+<ul id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_ul16388103291919"><li id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_li14388173212195">Ascend resources
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_table1652218538206" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Capacities of the cache directories for Ascend resources</caption><thead align="left"><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row1652265382010"><th align="left" class="cellrowborder" valign="top" width="25.09%" id="mcps1.3.4.1.1.2.3.1.1"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p19522253112017">Ascend Specifications</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.91%" id="mcps1.3.4.1.1.2.3.1.2"><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p35228539204">cache Directory Capacity</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_row115221153162012"><td class="cellrowborder" valign="top" width="25.09%" headers="mcps1.3.4.1.1.2.3.1.1 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p152205316203">Ascend 910</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.91%" headers="mcps1.3.4.1.1.2.3.1.2 "><p id="modelarts_05_0090__en-us_topic_0000001096855431_en-us_topic_0200343601_p852385313201">3T</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_05_0030.html">Training Jobs</a></div>
+</div>
+</div>
+

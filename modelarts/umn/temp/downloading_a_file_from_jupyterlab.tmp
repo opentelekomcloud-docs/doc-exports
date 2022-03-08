@@ -1,0 +1,23 @@
+<a name="modelarts_23_0333"></a><a name="modelarts_23_0333"></a>
+
+<h1 class="topictitle1">Downloading a File from JupyterLab</h1>
+<p id="modelarts_23_0333__en-us_topic_0266024082_p533877195713">Only files within 100 MB in JupyterLab can be downloaded to a local PC. You can perform operations in different scenarios based on the storage location selected when creating a notebook instance.</p>
+<h4 class="sectiontitle">Notebook Instances with EVS Attached</h4><p id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_p8725101393615">For notebook instances with EVS attached, you can perform the following operations to download large files to the local PC:</p>
+<ol id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_ol67251113143620"><li id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_li5725191317368">In the notebook instance, create an <span class="filepath" id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_filepath1350811385717"><b>ipynb</b></span> file. Use MoXing to upload the large files from notebook instances to OBS. The sample code is as follows:<table class="highlighttable"><tr><td class="linenos"><pre>1
+2</pre></td><td class="code"><pre><span></span><span class="kn">import</span> <span class="nn">moxing</span> <span class="k">as</span> <span class="nn">mox</span>
+<span class="n">mox</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">'/home/ma-user/work/obs_file.txt'</span><span class="p">,</span> <span class="s1">'obs://bucket_name/obs_file.txt'</span><span class="p">)</span>
+</pre>
+</td></tr></table>
+<p id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_p5771012192619">In the preceding code, <span class="filepath" id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_filepath1738419416265"><b>/home/ma-user/work/obs_file.txt</b></span> indicates a file storage path in a notebook instance, and <span class="filepath" id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_filepath41473180278"><b>obs://bucket_name/obs_file.txt</b></span> indicates a file storage path on OBS.</p>
+</li><li id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_li3390113144218">Use OBS or the ModelArts SDKs to download the files from OBS to the local PC.</li></ol>
+
+<h4 class="sectiontitle">Notebook Instances Using OBS Storage</h4><p id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_p201041141447">For notebook instances that use OBS storage, you can use OBS or the ModelArts SDK to download files from OBS to a local PC.</p>
+<p id="modelarts_23_0333__en-us_topic_0266024082_en-us_topic_0200322945_p781215211569">Use OBS for download.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0331.html">Uploading and Downloading Data</a>
+
+
+

@@ -1,0 +1,144 @@
+<a name="elb_jd_fz_0003"></a><a name="elb_jd_fz_0003"></a>
+
+<h1 class="topictitle1">Deleting a Public Network Load Balancer</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p19138071162728">This API is used to delete a public network load balancer. The EIP bound to the load balancer will not be deleted. If you need to delete this IP address, refer to <a href="elb_jd_fz_0002.html#elb_jd_fz_0002">Deleting a Load Balancer</a>.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p20365805103831">Before deleting a public network load balancer, you must remove all backend ECSs from the listener. This API cannot be used to delete a private network load balancer.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p37164929162817">DELETE /v1.0/{project_id}/elbaas/loadbalancers/{loadbalancer_id}/keep-eip</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_table36879054162833" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row49833911162833"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.3.3.2.5.1.1"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p61955810162846">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.3.3.2.5.1.2"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p1520725162846"><strong id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_b84235270684256">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.3.3.2.5.1.3"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p34867169162846"><strong id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_b842352706192612">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.3.3.2.5.1.4"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p51015929162846">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row64014741162833"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p11572033144013">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p47572878162846">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p52454398162846">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p54313176162846">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row1931582162833"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p684419162846">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p29179768162846">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p65650521162846">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p10610120162846">Specifies the load balancer ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4><ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul14640111064018"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li76402010134019">Request parameters<p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p715417103914"><a name="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li76402010134019"></a><a name="en-us_topic_0096561501_en-us_topic_0096472892_li76402010134019"></a>None</p>
+</li></ul>
+<ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul11296519134018"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li929611924012">Example request<p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p1043563143911"><a name="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li929611924012"></a><a name="en-us_topic_0096561501_en-us_topic_0096472892_li929611924012"></a>None</p>
+</li></ul>
+
+<h4 class="sectiontitle">Response</h4><ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul4476810717284"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li5060777517284">Response parameters
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_table50818183163214" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row29557163214"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.5.2.1.1.2.4.1.1"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p21294624165058">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.5.2.1.1.2.4.1.2"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p21633666165058"><strong id="elb_jd_fz_0003__en-us_topic_0096561501_b1879260881">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.5.2.1.1.2.4.1.3"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p359862165058">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row53402582163214"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p12248968165058">uri</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p4018772165058">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p44004229165058">Specifies the URI returned by Combined API after the job for deleting a load balancer is delivered.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row50757710163214"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p9418372165058">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p20889095165058">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.5.2.1.1.2.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p61547425165058">Specifies the unique ID assigned to the job for deleting a load balancer in Combined API.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+<ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul3434945117289"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li2727718917289">Example response<pre class="screen" id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_screen17378617172618">{
+    "uri": "/v1/8263303061de4b5d95c9cb68c3a257f4/jobs/ff808082615b23aa01616b90efc65298", 
+    "job_id": "ff808082615b23aa01616b90efc65298"
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul423384317391"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li3720744817391">Normal<p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p5435471617294"><a name="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li3720744817391"></a><a name="en-us_topic_0096561501_en-us_topic_0096472892_li3720744817391"></a>200</p>
+</li></ul>
+<ul id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_ul5392619617397"><li id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_li2084688317397">Error
+<table cellpadding="4" cellspacing="0" summary="" id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_table37187872173933" frame="border" border="1" rules="all"><thead align="left"><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row2230937173933"><th align="left" class="cellrowborder" valign="top" width="13.04%" id="mcps1.3.6.3.1.1.1.4.1.1"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p32832295173942">Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.72%" id="mcps1.3.6.3.1.1.1.4.1.2"><p id="elb_jd_fz_0003__en-us_topic_0096561501_p146462305495">Message</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.239999999999995%" id="mcps1.3.6.3.1.1.1.4.1.3"><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p42170223173942">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row66722968173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p6233004173942">400</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p1700152135015">badRequest</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p35111316173942">Request error.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row30252965173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p27672659173942">401</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p117007255012">unauthorized</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p26892934173942">Authentication failed.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row36518335173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p9160770173942">403</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p1870010215015">userDisable</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p3824888173942">You do not have the permission to perform the operation.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row29159321173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p36880612173942">404</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p16701152115013">Not Found</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p34539625173942">The requested page does not exist.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row16677554173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p13563184173942">500</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p1701142195019">authFault</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p24876125173942">System error.</p>
+</td>
+</tr>
+<tr id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_row37461134173933"><td class="cellrowborder" valign="top" width="13.04%" headers="mcps1.3.6.3.1.1.1.4.1.1 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p15302370173942">503</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.72%" headers="mcps1.3.6.3.1.1.1.4.1.2 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_p8701123506">serviceUnavailable</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.239999999999995%" headers="mcps1.3.6.3.1.1.1.4.1.3 "><p id="elb_jd_fz_0003__en-us_topic_0096561501_en-us_topic_0096472892_p31532449173942">The service is unavailable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li></ul>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_jd_fz_0000.html">Load Balancer</a>
+
+
+

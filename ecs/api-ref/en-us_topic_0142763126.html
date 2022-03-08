@@ -1,0 +1,176 @@
+<a name="EN-US_TOPIC_0142763126"></a><a name="EN-US_TOPIC_0142763126"></a>
+
+<h1 class="topictitle1">Obtaining a VNC-based Remote Login Address (Microversion 2.6 or Later)</h1>
+<div id="body1543393827406"><div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section16588975"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_p31584679103330">This API is used to obtain the address for remotely logging in to an <span id="EN-US_TOPIC_0142763126__text8756131052315">ECS</span> using VNC.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section15083054"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0142763126__p096610813244">POST /v2.1/{project_id}/servers/{server_id}/remote-consoles</p>
+<div class="p" id="EN-US_TOPIC_0142763126__p7797814513"><a href="#EN-US_TOPIC_0142763126__en-us_topic_0092803065_table55945983">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0142763126__en-us_topic_0092803065_table55945983"></a><a name="en-us_topic_0092803065_table55945983"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_table55945983" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_row11302482"><th align="left" class="cellrowborder" valign="top" width="33%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0142763126__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0142763126__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="43%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0142763126__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_row49888896"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_p14468758">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_p31118786">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="43%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_row613736410235"><td class="cellrowborder" valign="top" width="33%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_p2736446410235">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="24%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_p192907210235">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="43%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_p2203711610235">Specifies the ECS ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_section56676316111458"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0142763126__ul741303912523"><li id="EN-US_TOPIC_0142763126__li134132398521">When using this API, ensure that the microversion is 2.6 or later.<p id="EN-US_TOPIC_0142763126__p1024224184314"><a name="EN-US_TOPIC_0142763126__li134132398521"></a><a name="li134132398521"></a>Add a microversion using the HTTP request header X-OpenStack-Nova-API-Version or OpenStack-API-Version.</p>
+<p id="EN-US_TOPIC_0142763126__p1924172494314">For example, X-OpenStack-Nova-API-Version: 2.6 or OpenStack-API-Version: compute 2.6</p>
+</li><li id="EN-US_TOPIC_0142763126__li74134398527">An obtained login address is valid for 10 minutes. Obtain a new one after expiration.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section56802184"><h4 class="sectiontitle">Request</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0142763126__table2421133916364" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0142763126__row15425153973610"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.4.2.2.5.1.1"><p id="EN-US_TOPIC_0142763126__p1542663953616">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.841584158415841%" id="mcps1.3.4.2.2.5.1.2"><p id="EN-US_TOPIC_0142763126__p16512193593516">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.891089108910892%" id="mcps1.3.4.2.2.5.1.3"><p id="EN-US_TOPIC_0142763126__p11427173918366">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.43564356435643%" id="mcps1.3.4.2.2.5.1.4"><p id="EN-US_TOPIC_0142763126__p1842973903611">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0142763126__row16430153914363"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.2.2.5.1.1 "><p id="EN-US_TOPIC_0142763126__p498319273719">remote_console</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.4.2.2.5.1.2 "><p id="EN-US_TOPIC_0142763126__p105121035103517">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.4.2.2.5.1.3 "><p id="EN-US_TOPIC_0142763126__p898215212374">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.4.2.2.5.1.4 "><p id="EN-US_TOPIC_0142763126__p9978132133714">Obtains the address for remotely logging in to an <span id="EN-US_TOPIC_0142763126__text210616184915">ECS</span> using VNC. For details, see <a href="#EN-US_TOPIC_0142763126__table19959184318164">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0142763126__table19959184318164"></a><a name="table19959184318164"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0142763126__table19959184318164" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0142763126__b10403110142411">remote_console</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0142763126__row129653435167"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.4.3.2.5.1.1"><p id="EN-US_TOPIC_0142763126__p1296704318169">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.841584158415841%" id="mcps1.3.4.3.2.5.1.2"><p id="EN-US_TOPIC_0142763126__p1149238163514">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.891089108910892%" id="mcps1.3.4.3.2.5.1.3"><p id="EN-US_TOPIC_0142763126__p109701443181618">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.43564356435643%" id="mcps1.3.4.3.2.5.1.4"><p id="EN-US_TOPIC_0142763126__p597624311615">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0142763126__row39781443181610"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0142763126__p10980144310164">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0142763126__p6149203820355">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0142763126__p189829437166">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0142763126__p1498612438166">Specifies a remote login mode. Set it to <strong id="EN-US_TOPIC_0142763126__b84235270615195">novnc</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0142763126__row11987144391610"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.3.2.5.1.1 "><p id="EN-US_TOPIC_0142763126__p2098904311617">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.4.3.2.5.1.2 "><p id="EN-US_TOPIC_0142763126__p614923863516">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.4.3.2.5.1.3 "><p id="EN-US_TOPIC_0142763126__p599184312166">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.4.3.2.5.1.4 "><p id="EN-US_TOPIC_0142763126__p599510433169">Specifies a remote login protocol. Set it to <strong id="EN-US_TOPIC_0142763126__b842352706151929">vnc</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section41457614"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0142763126__p835452184710"><a href="#EN-US_TOPIC_0142763126__table8420447171011">Table 4</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0142763126__table8420447171011"></a><a name="table8420447171011"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0142763126__table8420447171011" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0142763126__row19425134710106"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0142763126__p1542644714106">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0142763126__p2426104761014">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="72%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0142763126__p204289475101">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0142763126__row20429447201017"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__p743019477102">remote_console</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__p343116478104">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__p44331647131017">Obtains the address for remotely logging in to an <span id="EN-US_TOPIC_0142763126__text55631561935">ECS</span>. For details, see <a href="#EN-US_TOPIC_0142763126__table12434194718104">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0142763126__table12434194718104"></a><a name="table12434194718104"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0142763126__table12434194718104" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_b842352706165936">remote_console</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0142763126__row11437194781018"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.4.2.4.1.1"><p id="EN-US_TOPIC_0142763126__p10438104701020">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.5.4.2.4.1.2"><p id="EN-US_TOPIC_0142763126__p644124714100">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="72%" id="mcps1.3.5.4.2.4.1.3"><p id="EN-US_TOPIC_0142763126__p1044224771012">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0142763126__row44421547151015"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__p16443114712101">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__p154442475107">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__p13445747131013">Specifies a remote login mode.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0142763126__row194475479107"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__p1044764712103">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__p20448447111014">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__p64491447131016">Specifies a remote login protocol.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0142763126__row112741544151614"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0142763126__p627404410168">url</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0142763126__p92741044141612">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="72%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0142763126__p10274544151617">Specifies a remote login URL.</p>
+<p id="EN-US_TOPIC_0142763126__p18426544113918">The URL is valid for 10 minutes. Obtain a new one after expiration.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section37574207"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0142763126__screen663013718341">POST https://<em id="EN-US_TOPIC_0142763126__i137089202249">{endpoint}</em>/v2.1/13c67a214ced4afb88d911ae4bd5721a/servers/47bc79ae-df61-4ade-9197-283a74e5d70e/remote-consoles</pre>
+<pre class="screen" id="EN-US_TOPIC_0142763126__screen13217124718349">{
+   "remote_console" : {
+        "type" : "novnc",
+        "protocol": "vnc"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__section1713910142558"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0142763126__screen31441214185512">{
+	"remote_console": {
+		"url": "https://nova-novncproxy.az21.dc1.domainname.com:8002/vnc.auto.html?token=80fa7c8d-37fe-451e-8b08-bfbd9fb6a4df&amp;lang=EN",
+		"type": "novnc",
+		"protocol": "vnc"
+	}
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0142763126__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0142763126__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0167809634.html">ECS Console Management</a></div>
+</div>
+</div>
+

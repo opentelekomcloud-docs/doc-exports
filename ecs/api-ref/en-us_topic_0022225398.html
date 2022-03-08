@@ -1,0 +1,299 @@
+<a name="EN-US_TOPIC_0022225398"></a><a name="EN-US_TOPIC_0022225398"></a>
+
+<h1 class="topictitle1">Querying Task Execution Status</h1>
+<div id="body1448353929234"><div class="section" id="EN-US_TOPIC_0022225398__section49028201163249"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0022225398__p119019219372">This API is used to query the execution status of an asynchronous request task.</p>
+<p id="EN-US_TOPIC_0022225398__p58914097194855">After an asynchronous request task is issued, for example, creating or deleting an <span id="EN-US_TOPIC_0022225398__text10870151143711">ECS</span>, performing operations on <span id="EN-US_TOPIC_0022225398__text1399411482617">ECS</span>s in a batch, or performing operations on <span id="EN-US_TOPIC_0022225398__text1089381817268">ECS</span> NICs, a task ID will be returned, based on which you can query the execution status of the task.</p>
+</div>
+<p id="EN-US_TOPIC_0022225398__p11861341163249">For details about how to obtain the task ID, see <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+<div class="section" id="EN-US_TOPIC_0022225398__section39643212163249"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0022225398__p52270865163249">GET /v1/{project_id}/jobs/{job_id}</p>
+<div class="p" id="EN-US_TOPIC_0022225398__p5328123044219"><a href="#EN-US_TOPIC_0022225398__table6081678163249">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022225398__table6081678163249"></a><a name="table6081678163249"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022225398__table6081678163249" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0022225398__row23421905163249"><th align="left" class="cellrowborder" valign="top" width="16.6%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0022225398__p7707213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.36%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0022225398__p20304554">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.03999999999999%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0022225398__p34056167">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022225398__row27217880163249"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p19008506163553">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p63294000163553">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.03999999999999%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row58263622163612"><td class="cellrowborder" valign="top" width="16.6%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p54610556163612">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p61378926163612">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.03999999999999%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p5637133163612">Specifies the ID of an asynchronous request task.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section9500136163249"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0022225398__p31313515163249">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section5816336151220"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0022225398__p12335205915421"><a href="#EN-US_TOPIC_0022225398__table63003337163851">Table 2</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022225398__table63003337163851"></a><a name="table63003337163851"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022225398__table63003337163851" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0022225398__row65296242163851"><th align="left" class="cellrowborder" valign="top" width="19.259999999999998%" id="mcps1.3.5.2.2.2.4.1.1"><p id="EN-US_TOPIC_0022225398__p15806308">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.220000000000002%" id="mcps1.3.5.2.2.2.4.1.2"><p id="EN-US_TOPIC_0022225398__p21995508">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.52%" id="mcps1.3.5.2.2.2.4.1.3"><p id="EN-US_TOPIC_0022225398__p36805753">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022225398__row44762228163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p20905868102821">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p15653760102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p3084195102821">Specifies the task status.</p>
+<ul id="EN-US_TOPIC_0022225398__ul27757760102821"><li id="EN-US_TOPIC_0022225398__li48493251102821"><strong id="EN-US_TOPIC_0022225398__b33973835532521">SUCCESS</strong>: indicates the task is successfully executed.</li><li id="EN-US_TOPIC_0022225398__li33786077102821"><strong id="EN-US_TOPIC_0022225398__b107416427232521">RUNNING</strong>: indicates that the task is in progress.</li><li id="EN-US_TOPIC_0022225398__li35639239102821"><strong id="EN-US_TOPIC_0022225398__b46231590154042">FAIL</strong>: indicates that the task failed.</li><li id="EN-US_TOPIC_0022225398__li52317698102821"><strong id="EN-US_TOPIC_0022225398__b81007265432521">INIT</strong>: indicates that the task is being initialized.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row17040455163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p21767581102821">entities</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p18343614102821">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p78921950203711">Specifies the object of the task. </p>
+<p id="EN-US_TOPIC_0022225398__p17831309102821">The value of this parameter varies depending on the type of the task. If the task is an <span id="EN-US_TOPIC_0022225398__text534924116267">ECS</span>-related operation, the value is <strong id="EN-US_TOPIC_0022225398__b59118993155433">server_id</strong>. If the task is a NIC operation, the value is <strong id="EN-US_TOPIC_0022225398__b30288946155433">nic_id</strong>. If a sub-Job is available, details about the sub-job are displayed.</p>
+<p id="EN-US_TOPIC_0022225398__p16646155213278">For details, see <a href="#EN-US_TOPIC_0022225398__table63816992163249">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row51515112163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p47013726102821">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p50015490102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p21179423102821">Specifies the ID of an asynchronous request task.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row25971152163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p4761320102821">job_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p50122638102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p32181178102821">Specifies the type of an asynchronous request task.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row37164860163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p39085626102821">begin_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p11819105102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p26193501102821">Specifies the time when the task started.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row15772661163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p36144979102821">end_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p42062205102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p61705735102821">Specifies the time when the task finished.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row58136329163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p20542517102821">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p53331169102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p22389946102821">Specifies the returned error code when the task execution fails.</p>
+<p id="EN-US_TOPIC_0022225398__p53921224305">After the task is executed successfully, the value of this parameter is null.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row26946447163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p14816990102821">fail_reason</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p59325580102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p30239861102821">Specifies the cause of the task execution failure.</p>
+<p id="EN-US_TOPIC_0022225398__p115901930103017">After the task is executed successfully, the value of this parameter is null.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row41958503163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p33151312102821">message</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p901760102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p53403447102821">Specifies the error message returned when an error occurs in the request to query a task.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row47258102163851"><td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p7972234102821">code</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.220000000000002%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p41771195102821">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p50886402102821">Specifies the error code returned when an error occurs in the request to query a task.</p>
+<p id="EN-US_TOPIC_0022225398__p55324436102821">For details about the error code, see <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022225398__table63816992163249"></a><a name="table63816992163249"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022225398__table63816992163249" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0022225398__b84235270695528">entities</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0022225398__row25378569163249"><th align="left" class="cellrowborder" valign="top" width="19.24%" id="mcps1.3.5.2.3.2.4.1.1"><p id="EN-US_TOPIC_0022225398__p173103332361">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.24%" id="mcps1.3.5.2.3.2.4.1.2"><p id="EN-US_TOPIC_0022225398__p2310203316364">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.52%" id="mcps1.3.5.2.3.2.4.1.3"><p id="EN-US_TOPIC_0022225398__p15310123319365">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022225398__row21068325163249"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p1987866102840">sub_jobs_total</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.24%" headers="mcps1.3.5.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p26799477102840">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p23274041102840">Specifies the number of subtasks. </p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row1957164017643"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.3.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p55342196102840">sub_jobs</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.24%" headers="mcps1.3.5.2.3.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p53532900102840">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.52%" headers="mcps1.3.5.2.3.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p35234299102840">Specifies the execution information of a subtask.</p>
+<p id="EN-US_TOPIC_0022225398__p131011530113215">For details, see <a href="#EN-US_TOPIC_0022225398__table1500801817135">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022225398__table1500801817135"></a><a name="table1500801817135"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022225398__table1500801817135" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0022225398__b1311967441">sub_jobs</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0022225398__row5502467917135"><th align="left" class="cellrowborder" valign="top" width="19.24%" id="mcps1.3.5.2.4.2.4.1.1"><p id="EN-US_TOPIC_0022225398__p385318355367">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.23%" id="mcps1.3.5.2.4.2.4.1.2"><p id="EN-US_TOPIC_0022225398__p138539354361">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.53%" id="mcps1.3.5.2.4.2.4.1.3"><p id="EN-US_TOPIC_0022225398__p485303543616">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022225398__row3836327417140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p5596555610290">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p3691618110290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p124153110290">Specifies the task status.</p>
+<ul id="EN-US_TOPIC_0022225398__ul1117378710290"><li id="EN-US_TOPIC_0022225398__li3345522610290"><strong id="EN-US_TOPIC_0022225398__b67795505032521">SUCCESS</strong>: indicates the task is successfully executed.</li><li id="EN-US_TOPIC_0022225398__li3266158610290"><strong id="EN-US_TOPIC_0022225398__b188301151232521">RUNNING</strong>: indicates that the task is in progress.</li><li id="EN-US_TOPIC_0022225398__li2551881810290"><strong id="EN-US_TOPIC_0022225398__b457766221">FAIL</strong>: indicates that the task failed.</li><li id="EN-US_TOPIC_0022225398__li2834277210290"><strong id="EN-US_TOPIC_0022225398__b110641642332521">INIT</strong>: indicates that the task is being initialized.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row1171912617140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p5946004210290">entities</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p5153410710290">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p5450940410290">Specifies the object of the task. The value of this parameter varies depending on the type of the task. If the task is an <span id="EN-US_TOPIC_0022225398__text587481202712">ECS</span>-related operation, the value is <strong id="EN-US_TOPIC_0022225398__b45687457155433">server_id</strong>. If the task is a NIC operation, the value is <strong id="EN-US_TOPIC_0022225398__b2498330155433">nic_id</strong>. For details, see <a href="#EN-US_TOPIC_0022225398__table2577901102930">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row875866517140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p890825710290">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p5048019610290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p2440551510290">Specifies the subtask ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row3079934617140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p777215910290">job_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p2556517210290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p4785561910290">Specify the subtask type.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row6307447317140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p5724624610290">begin_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p643434910290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p6012909110290">Specifies the time when the task started.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row2192135517140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p1201928510290">end_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p3403799810290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p5052973810290">Specifies the time when the task finished.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row5463148917140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p6052212310290">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p334495010290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p2254991410290">Specifies the returned error code when the task execution fails.</p>
+<p id="EN-US_TOPIC_0022225398__p2391911153711">After the task is executed successfully, the value of this parameter is null.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row6572248917140"><td class="cellrowborder" valign="top" width="19.24%" headers="mcps1.3.5.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p6432481010290">fail_reason</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.23%" headers="mcps1.3.5.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p4292711110290">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.53%" headers="mcps1.3.5.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p2113349010290">Specifies the cause of the task execution failure.</p>
+<p id="EN-US_TOPIC_0022225398__p580920137374">After the task is executed successfully, the value of this parameter is null.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0022225398__table2577901102930"></a><a name="table2577901102930"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0022225398__table2577901102930" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0022225398__b703217170">entities</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0022225398__row41961594102930"><th align="left" class="cellrowborder" valign="top" width="17.64%" id="mcps1.3.5.2.5.2.4.1.1"><p id="EN-US_TOPIC_0022225398__p1819124019365">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.9%" id="mcps1.3.5.2.5.2.4.1.2"><p id="EN-US_TOPIC_0022225398__p31934010363">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.46%" id="mcps1.3.5.2.5.2.4.1.3"><p id="EN-US_TOPIC_0022225398__p8191240193618">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0022225398__row12623506102930"><td class="cellrowborder" valign="top" width="17.64%" headers="mcps1.3.5.2.5.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p15871098102930">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.9%" headers="mcps1.3.5.2.5.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p10490546102930">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.46%" headers="mcps1.3.5.2.5.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p64306551102930">If the task is an <span id="EN-US_TOPIC_0022225398__text1029201603718">ECS</span>-related operation, the value is <strong id="EN-US_TOPIC_0022225398__b114133310277">server_id</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row41888051102930"><td class="cellrowborder" valign="top" width="17.64%" headers="mcps1.3.5.2.5.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p37488972102930">nic_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.9%" headers="mcps1.3.5.2.5.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p16707926102930">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.46%" headers="mcps1.3.5.2.5.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p33374275102930">If the task is a NIC-related operation, the value is <strong id="EN-US_TOPIC_0022225398__b65546242155433">nic_id</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022225398__row64971320122011"><td class="cellrowborder" valign="top" width="17.64%" headers="mcps1.3.5.2.5.2.4.1.1 "><p id="EN-US_TOPIC_0022225398__p34983202201">errorcode_message</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.9%" headers="mcps1.3.5.2.5.2.4.1.2 "><p id="EN-US_TOPIC_0022225398__p184980206205">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.46%" headers="mcps1.3.5.2.5.2.4.1.3 "><p id="EN-US_TOPIC_0022225398__p1249812014200">Indicates the cause of a subtask execution failure.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section779115469181"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0022225398__screen15585942105910">GET https://{endpoint}/v1/{project_id}/jobs/{job_id}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section17930437174311"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0022225398__screen3451280204146">{
+    "status": "SUCCESS",
+    "entities": {
+        "sub_jobs_total": 1,
+        "sub_jobs": [
+            {
+                "status": "SUCCESS",
+                "entities": {
+                    "server_id": "bae51750-0089-41a1-9b18-5c777978ff6d"
+                },
+                "job_id": "2c9eb2c5544cbf6101544f0635672b60",
+                "job_type": "createSingleServer",
+                "begin_time": "2016-04-25T20:04:47.591Z",
+                "end_time": "2016-04-25T20:08:21.328Z",
+                "error_code": null,
+                "fail_reason": null
+            }
+        ]
+    },
+    "job_id": "2c9eb2c5544cbf6101544f0602af2b4f",
+    "job_type": "createServer",
+    "begin_time": "2016-04-25T20:04:34.604Z",
+    "end_time": "2016-04-25T20:08:41.593Z",
+    "error_code": null,
+    "fail_reason": null
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section6451411163249"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0022225398__p52802319163249">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0022225398__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0022225398__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0022225397.html">Task Status Management</a></div>
+</div>
+</div>
+

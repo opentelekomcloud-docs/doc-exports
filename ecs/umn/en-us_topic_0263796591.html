@@ -1,0 +1,35 @@
+<a name="EN-US_TOPIC_0263796591"></a><a name="EN-US_TOPIC_0263796591"></a>
+
+<h1 class="topictitle1">How Can I Use SCP to Transfer Files Between a Local Linux Computer and a Linux <span id="text1063175281110">ECS</span>?</h1>
+<div id="body1595406768774"><div class="section" id="EN-US_TOPIC_0263796591__section17416155834"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0263796591__p748521347">You want to use SCP to transfer files between a local Linux computer and a Linux <span id="EN-US_TOPIC_0263796591__text191091858171115">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0263796591__section18876136651"><h4 class="sectiontitle">Procedure</h4><p id="EN-US_TOPIC_0263796591__p135788377611">Log in to the management console. On the <strong id="EN-US_TOPIC_0263796591__b415911210494">Elastic Cloud Server</strong> page, obtain the EIP bound to the target <span id="EN-US_TOPIC_0263796591__text730211241213">ECS</span> in the <strong id="EN-US_TOPIC_0263796591__b19276440516">IP Address</strong> column.</p>
+<ul id="EN-US_TOPIC_0263796591__ul1987019478612"><li id="EN-US_TOPIC_0263796591__li287018472061"><strong id="EN-US_TOPIC_0263796591__b74151246105115">Uploading files</strong><p id="EN-US_TOPIC_0263796591__p13382441277">Run the following command on the local Linux computer to upload files to the Linux <span id="EN-US_TOPIC_0263796591__text6696818125">ECS</span>:</p>
+<p id="EN-US_TOPIC_0263796591__p41212557718"><strong id="EN-US_TOPIC_0263796591__b97431904819">scp </strong><em id="EN-US_TOPIC_0263796591__i9696315112">Path in which the files are stored on the local computer Username@EIP:Path in which the files are to be stored on the Linux <span id="EN-US_TOPIC_0263796591__text18671454103410">ECS</span></em></p>
+<p id="EN-US_TOPIC_0263796591__p118414298812">For example, to transfer the <strong id="EN-US_TOPIC_0263796591__b39754019133">/home/test.txt</strong> file on the local computer to the <strong id="EN-US_TOPIC_0263796591__b14553111717146">/home</strong> directory on the <span id="EN-US_TOPIC_0263796591__text109801221143519">ECS</span> whose EIP is 139.x.x.x, run the following command:</p>
+<p id="EN-US_TOPIC_0263796591__p95978131692"><strong id="EN-US_TOPIC_0263796591__b153652181995">scp /home/test.txt root@139.x.x.x:/home</strong></p>
+<p id="EN-US_TOPIC_0263796591__p194043552918">Enter the login password as prompted.</p>
+<div class="fignone" id="EN-US_TOPIC_0263796591__fig14448226162016"><span class="figcap"><b>Figure 1 </b>Setting file uploading</span><br><span><img id="EN-US_TOPIC_0263796591__image074611082311" src="en-us_image_0263796649.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ul>
+<ul id="EN-US_TOPIC_0263796591__ul155957491617"><li id="EN-US_TOPIC_0263796591__li159510497616"><strong id="EN-US_TOPIC_0263796591__b14901145115620">Downloading files</strong><p id="EN-US_TOPIC_0263796591__p15996157131016">Run the following command on the local Linux computer to download files from the Linux <span id="EN-US_TOPIC_0263796591__text197021355121219">ECS</span>:</p>
+<p id="EN-US_TOPIC_0263796591__p14928441109"><strong id="EN-US_TOPIC_0263796591__b17145159198">scp </strong><em id="EN-US_TOPIC_0263796591__i19934114652012">Username@EIP:Path in which the files are stored on the Linux <span id="EN-US_TOPIC_0263796591__text7757142818372">ECS</span> Path in which the files are to be stored on the local computer</em></p>
+<p id="EN-US_TOPIC_0263796591__p1835721341314">For example, to download the <strong id="EN-US_TOPIC_0263796591__b13292247216">/home/test.txt</strong> file on the <span id="EN-US_TOPIC_0263796591__text15275433163714">ECS</span> whose EIP is 139.x.x.x to the <strong id="EN-US_TOPIC_0263796591__b1229212410219">/home</strong> directory on the local computer, run the following command:</p>
+<p id="EN-US_TOPIC_0263796591__p1598911581139"><strong id="EN-US_TOPIC_0263796591__b16675163201417">scp root@139.x.x.x:/home/test.txt /home/</strong></p>
+<p id="EN-US_TOPIC_0263796591__p51787329255">Enter the login password as prompted.</p>
+<div class="fignone" id="EN-US_TOPIC_0263796591__fig1437792312541"><span class="figcap"><b>Figure 2 </b>Setting file downloading</span><br><span><img id="EN-US_TOPIC_0263796591__image20528171112204" src="en-us_image_0263796651.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0170135967.html">File Upload/Data Transfer</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

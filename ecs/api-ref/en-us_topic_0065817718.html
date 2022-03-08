@@ -1,0 +1,115 @@
+<a name="EN-US_TOPIC_0065817718"></a><a name="EN-US_TOPIC_0065817718"></a>
+
+<h1 class="topictitle1">Binding a Floating IP Address (Discarded)</h1>
+<div id="body1499652824862"><div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_section32822464"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p45653483">This API is used to bind a floating IP address for an <span id="EN-US_TOPIC_0065817718__text55799533537">ECS</span>.</p>
+<p id="EN-US_TOPIC_0065817718__p1780916151626">This API has been discarded. Since microversion 2.44, the system will return error 404 when you call this API. You are advised to use the VPC API "Updating a Floating IP Address".</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_section26966728"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817718__p1937673720164">POST /v2/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p17816132418199">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0065817718__p17992251917"><a href="#EN-US_TOPIC_0065817718__en-us_topic_0057972997_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817718__en-us_topic_0057972997_table32475667"></a><a name="en-us_topic_0057972997_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row44937496"><th align="left" class="cellrowborder" valign="top" width="22.24%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817718__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.87%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817718__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.88999999999999%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817718__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row1664874"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817718__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row41565035"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p11324657">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p44882061">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p11568292">Specifies the <span id="EN-US_TOPIC_0065817718__text12963810906">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_section62956448"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817718__p137902411192"><a href="#EN-US_TOPIC_0065817718__en-us_topic_0057972997_table49322741">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817718__en-us_topic_0057972997_table49322741"></a><a name="en-us_topic_0057972997_table49322741"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_table49322741" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameter</caption><thead align="left"><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row35749488"><th align="left" class="cellrowborder" valign="top" width="22.37%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p10027379">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.15%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0065817718__p1579692179">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.8%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p6911408">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="37.68%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p47267058">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row3426504"><td class="cellrowborder" valign="top" width="22.37%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p9111414">addFloatingIp</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.15%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817718__p2057918910178">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.8%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p66935973">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="37.68%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p6518693">Specifies the floating IP address to be bound to an <span id="EN-US_TOPIC_0065817718__text05941055135313">ECS</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_table58252101" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_b146627134391">addFloatingIp</strong> parameter information</caption><thead align="left"><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row45148248"><th align="left" class="cellrowborder" valign="top" width="21.59%" id="mcps1.3.3.4.2.5.1.1"><p id="EN-US_TOPIC_0065817718__p863285611197">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.930000000000001%" id="mcps1.3.3.4.2.5.1.2"><p id="EN-US_TOPIC_0065817718__p8861511151711">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.8%" id="mcps1.3.3.4.2.5.1.3"><p id="EN-US_TOPIC_0065817718__p86328569191">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="37.68%" id="mcps1.3.3.4.2.5.1.4"><p id="EN-US_TOPIC_0065817718__p863217564195">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row23607505"><td class="cellrowborder" valign="top" width="21.59%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p33159773">address</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.930000000000001%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817718__p88619112175">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.8%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p1587126">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="37.68%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p11263469">Specifies the floating IP address.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_row34262360"><td class="cellrowborder" valign="top" width="21.59%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p23787767">fixed_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.930000000000001%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0065817718__p3861211201716">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.8%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p47760999">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="37.68%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p28633049">Specifies the fixed IP address with which the floating IP address associates.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_section29737121"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_p2636029">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_section66307504"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817718__screen28281527123018">POST https://{endpoint}/v2/9c53a566cb3443ab910cf0daebca90c4/servers/47e9be4e-a7b9-471f-92d9-ffc83814e07a/action
+POST https://{endpoint}/v2.1/9c53a566cb3443ab910cf0daebca90c4/servers/47e9be4e-a7b9-471f-92d9-ffc83814e07a/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_screen3702082516528">{
+   "addFloatingIp" : {
+       "address" : "10.144.2.1",
+       "fixed_address" : "192.168.1.3"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__section462213664713"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065817718__p362611684718">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817718__en-us_topic_0057972997_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065817682.html">Floating IP Address Management (OpenStack Nova APIs)</a></div>
+</div>
+</div>
+

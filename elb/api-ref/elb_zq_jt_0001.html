@@ -1,0 +1,579 @@
+<a name="elb_zq_jt_0001"></a><a name="elb_zq_jt_0001"></a>
+
+<h1 class="topictitle1">Adding a Listener</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_jt_0001__en-us_topic_0096561542_en-us_topic_0049139642_p22112997">This API is used to add a listener to a load balancer.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_jt_0001__en-us_topic_0096561542_p964215335225">When <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b84235270612150">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b84235270612153">TCP</strong> and <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b84235270612157">protocol_port</strong> to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706121515">0</strong>, the listener works in IP mode (DR mode).</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_jt_0001__en-us_topic_0096561542_p115539531381">POST /v2.0/lbaas/listeners</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table122881844161815" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1528814471819"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p02881944101816">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p9288104491819">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1628844491814">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p112889445184">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row19289114471819"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p14289344171817">listener</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1928964471819">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p19272639181111">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p142892443189">Specifies the listener. For details, see <a href="#elb_zq_jt_0001__en-us_topic_0096561542_table3499100135410">Table 2</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jt_0001__en-us_topic_0096561542_table3499100135410"></a><a name="en-us_topic_0096561542_table3499100135410"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table3499100135410" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b19767174972320">listener</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row064317014542"><th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18643190205416">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1564318075420">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p86431055413">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.515151515151516%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1664316014546">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row864310075414"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p16643140135418">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p13644150165414">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3643170135418">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1564410175417">Specifies the ID of the project where the listener is used.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p8222164914610"></p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p2038118462238">The value must be the same as the value of <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b19143931716">project_id</strong> in the token.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p38262421513">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1964412016546"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p064410165412">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p146444045415">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p46441102547">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p106444014545">Specifies the listener name.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p84618511617">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row464412025415"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p06447018548">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p56441504543">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p116441301547">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p206440012544">Provides supplementary information about the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p16635135313117">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row196444065412"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1644150175410">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p462249153815">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p2644807540">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1434418339294">Specifies the protocol used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p1342193518290">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b37719544155919">TCP</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b3931576155919">HTTP</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706155831">UDP</strong>, or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b148866620519381">TERMINATED_HTTPS</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row12644103548"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p156445075418">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1064515019547">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p146441802549">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1305737162912">Specifies the port used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p17184113813293">The port number ranges from 1 to 65535.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jt_0001__en-us_topic_0096561542_p158337444299">If the protocol used by the listener is UDP, the port number cannot be 4789.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row106459010540"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p364512016547">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p136451407547">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1032993444813">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3645170135410">Specifies the ID of the associated load balancer.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row13645509545"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p6645120145417">connection_limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p16573171183812">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12645902548">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p35248213012">Specifies the maximum number of connections.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p0590933306">The value ranges from <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706194030">-1</strong> to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706194035">2147483647</strong>. The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b6898417171220">-1</strong>, indicating that there is no restriction on the maximum number of connections.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p176373514306">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1264500115411"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p8645708547">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12390167113820">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p96457019548">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p4676198103013">Specifies the administrative status of the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p155768344620">This parameter is reserved, and the default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row92631030637"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p852915407320">http2_enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p19530104019310">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p353015409313">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p427111614307">Specifies whether to use HTTP/2.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p1217445083313">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b417475083318">true</strong> or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b131741450173320">false</strong>.</p>
+<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul84755623314"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li1947125633317"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1246356143314">true</strong>: HTTP/2 is used.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li91758173317"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1311758113320">false</strong>: HTTP/2 is not used.</li></ul>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p1547317505556">The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1755343613127">false</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p8409182313011">This parameter is valid only when the protocol used by the listener is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b243971411113">TERMINATED_HTTPS</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row57349363204"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1874565118208">default_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p87451651142014">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1621934644815">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p123367270306">Specifies the ID of the associated backend server group.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p95518286302">If a request does not match the forwarding policy, the request is forwarded to the default backend server group for processing. If the value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706201335">null</strong>, the listener has no default backend server group.</p>
+This parameter has the following constraints:<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul7527145916134"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li053055961311">Its value cannot be the ID of any backend server group of other listeners.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li17534125918134">Its value cannot be the ID of any backend server group associated with the forwarding policies set for other listeners.</li></ul>
+
+The relationships between the protocol used by the listener and the protocol of the backend server group are as follows:<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul10547150145714"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li11559175085719">When the protocol used by the listener is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b18591025183313">TCP</strong>, the protocol of the backend server group must be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b985813330339">TCP</strong>.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li056314503579">When the protocol used by the listener is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b178916472337">UDP</strong>, the protocol of the backend server group must be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b583815116332">UDP</strong>.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li19568115095715">When the protocol used by the listener is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706203755">HTTP</strong> or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706203759">TERMINATED_HTTPS</strong>, the protocol of the backend server group must be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b6420858143312">HTTP</strong>.</li></ul>
+
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1172544022017"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p10745151172020">default_tls_container_ref</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1174685116203">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1874515182018">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18168203914301">Specifies the ID of the server certificate used by the listener. </p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p19265194233012">This parameter is mandatory when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706203838">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b842352706203841">TERMINATED_HTTPS</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p1746719819484">The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b431014617404">null</strong> when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b5595101012409">protocol</strong> is not set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b119501515194012">TERMINATED_HTTPS</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p517965328">The value contains a maximum of 128 characters.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jt_0001__en-us_topic_0096561542_p4834524191915">This parameter is valid only when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1662475311403">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b186491812415">TERMINATED_HTTPS</strong>.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row867712216579"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p53859232572">client_ca_tls_container_ref</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p938542315573">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p7385223185710">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1744120112011">Specifies the ID of the CA certificate used by the listener. </p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p16389354164819">The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b59926172414">null</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p53343171428">The value contains a maximum of 128 characters.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12163155819194">This parameter is valid only when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b174134182414">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b441419188419">TERMINATED_HTTPS</strong>.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1076020151219"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p157613020122">sni_container_refs</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p976130161215">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p767224410308">Lists the IDs of SNI certificates (server certificates with a domain name) used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p18240124723012">If the parameter value is an empty list, the SNI feature is disabled.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p3793414918">The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b183676445413">[]</strong>.</p>
+<span class="notetitle"> NOTE: </span><p id="elb_zq_jt_0001__en-us_topic_0096561542_p7342191102014">This parameter is valid only when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b686024411418">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b986154410411">TERMINATED_HTTPS</strong>.</p>
+
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row145771026185211"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p108551029191718">tls_ciphers_policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1985511298179">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18855429181713">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.515151515151516%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p39741913115313">Specifies the security policy used by the listener. This parameter is valid only when the protocol used by the listener is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1645319448239">TERMINATED_HTTPS</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p567518010317">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b73063541724">tls-1-0-inherit</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b97011824122417">tls-1-0</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b181532711249">tls-1-1</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b9944113042418">tls-1-2</strong>, or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b13993634152413">tls-1-2-strict</strong>, and the default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1058214842413">tls-1-0</strong>. For details of cipher suites for each security policy, see <a href="#elb_zq_jt_0001__en-us_topic_0096561542_table1247813103533">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jt_0001__en-us_topic_0096561542_table1247813103533"></a><a name="en-us_topic_0096561542_table1247813103533"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table1247813103533" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b84235270611418_1">tls_ciphers_policy</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row204784101539"><th align="left" class="cellrowborder" valign="top" width="17.346938775510207%" id="mcps1.3.4.4.2.4.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p147851075312">Security Policy</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.367346938775512%" id="mcps1.3.4.4.2.4.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p2478181015313">TLS Version</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.28571428571429%" id="mcps1.3.4.4.2.4.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p5478131085310">Cipher Suite</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row11591451355"><td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p20159135113517">tls-1-0-inherit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.367346938775512%" headers="mcps1.3.4.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1665313212612">TLS 1.2 TLS 1.1 TLS 1.0</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.28571428571429%" headers="mcps1.3.4.4.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1018361910181">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-SHA:AES256-SHA:DHE-DSS-AES128-SHA:CAMELLIA128-SHA:EDH-RSA-DES-CBC3-SHA:DES-CBC3-SHA:ECDHE-RSA-RC4-SHA:RC4-SHA:DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DHE-RSA-CAMELLIA256-SHA:DHE-DSS-CAMELLIA256-SHA:CAMELLIA256-SHA:EDH-DSS-DES-CBC3-SHA:DHE-RSA-CAMELLIA128-SHA:DHE-DSS-CAMELLIA128-SHA</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row125843182408"><td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12584131812401">tls-1-0</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.367346938775512%" headers="mcps1.3.4.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1358411811405">TLS 1.2 TLS 1.1 TLS 1.0</p>
+</td>
+<td class="cellrowborder" rowspan="3" valign="top" width="64.28571428571429%" headers="mcps1.3.4.4.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p152111143203617">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-SHA:AES256-SHA</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1250119222406"><td class="cellrowborder" valign="top" headers="mcps1.3.4.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p050232216409">tls-1-1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p185021822194019">TLS 1.2 TLS 1.1</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row19159426144017"><td class="cellrowborder" valign="top" headers="mcps1.3.4.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p31598266400">tls-1-2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p315914265406">TLS 1.2</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row148501331204010"><td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18850153164010">tls-1-2-strict</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.367346938775512%" headers="mcps1.3.4.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3850531104014">TLS 1.2</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.28571428571429%" headers="mcps1.3.4.4.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12274148203711">ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES128-SHA256:AES256-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table89971153151815" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row199855361813"><th align="left" class="cellrowborder" valign="top" width="15.841584158415841%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p599818535187">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.85148514851485%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p4998165315188">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="69.3069306930693%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p8998175331817">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1599914530183"><td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p0999653151816">listener</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.85148514851485%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3999165310187">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.3069306930693%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p799915331810">Specifies the listener. For details, see <a href="#elb_zq_jt_0001__en-us_topic_0096561542_table5301132505414">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jt_0001__en-us_topic_0096561542_table5301132505414"></a><a name="en-us_topic_0096561542_table5301132505414"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table5301132505414" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1649080039">listeners</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row34671725195410"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p946792525418">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p8467142519541">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="70%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p104671125165411">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row12467122519549"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p8467425205419">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3467192515543">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p9467132535416">Specifies the listener ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row124679252544"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p44682025175413">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p146811253546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p19468192515548">Specifies the ID of the project where the listener is used.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row746816255547"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p184683251549">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1046842519548">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p44681425125418">Specifies the listener name.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1046812512541"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p546862545411">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p154685252543">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p14468172517540">Provides supplementary information about the listener.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1046832595418"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p17468125125414">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p746811255546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p201601841193216">Specifies the protocol used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p0300344103218">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b103871119189">TCP</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1038921117183">HTTP</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b183906115182">UDP</strong>, or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b193911311181810">TERMINATED_HTTPS</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1346912520548"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p144691225205414">protocol_port</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p446952515416">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18323468323">Specifies the port used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p7688104743213">The port number ranges from 1 to 65535.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1546932511547"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p19469202585413">loadbalancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p546911258548">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p16788191994017">Specifies the ID of the associated load balancer. For details, see <a href="#elb_zq_jt_0001__en-us_topic_0096561542_table17641175071912">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row16469625125411"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3469112575415">connection_limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p144691725185411">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p636816504321">Specifies the maximum number of connections.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p17992184321313">The value ranges from <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1262188182">-1</strong> to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b182018161820">2147483647</strong>. The default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b780161918188">-1</strong>, indicating that there is no restriction on the maximum number of connections.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p8758551203215">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row44691325175419"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p446922525410">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3469102512549">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p257371723315">Specifies the administrative status of the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p1794055920316">This parameter is reserved. The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b1437913531122">true</strong> or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b0380553171215">false</strong>.</p>
+<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul118694033910"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li1786915015393"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b578855417125">true</strong>: The load balancer is enabled.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li1031815323916"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b6300115620122">false</strong>: The load balancer is disabled.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row155261945821"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p149771721230">http2_enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p149775217319">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p483792111330">Specifies whether to use HTTP/2.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p183584202475">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b53581020204716">true</strong> or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b93584201473">false</strong>.</p>
+<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul2055452614479"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li1555319262479"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b155372615476">true</strong>: HTTP/2 is used.</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li9669928124716"><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b366918288476">false</strong>: HTTP/2 is not used.</li></ul>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p3519192712331">This parameter is valid only when the protocol used by the listener is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b167901226151113">TERMINATED_HTTPS</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1547012555419"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p20470112585411">default_pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p9470525195410">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p3466142973313">Specifies the ID of the associated backend server group.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p149661432143316">If a request does not match the forwarding policy, the request is forwarded to the default backend server group for processing. If the value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b125951581919">null</strong>, the listener has no default backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row94701258544"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p114701625185416">default_tls_container_ref</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p194705259542">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p8103123513337">Specifies the ID of the server certificate used by the listener. For details, see <a href="elb_zq_zs_0000.html#elb_zq_zs_0000">Certificate</a>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p15749173783317">This parameter is mandatory when <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b771517531197">protocol</strong> is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b11716753181920">TERMINATED_HTTPS</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row174701325205420"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p347010254548">client_ca_tls_container_ref</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p4470825185414">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1867105844415">Specifies the ID of the CA certificate used by the listener. For details, see <a href="elb_zq_zs_0000.html#elb_zq_zs_0000">Certificate</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row1947122517545"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1247117256543">sni_container_refs</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p7471172515547">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p33961341163319">Lists the IDs of SNI certificates (server certificates with a domain name) used by the listener.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p8259184619337">If the parameter value is an empty list, the SNI feature is disabled.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row18840123882117"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p38408381214">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p12840538162110">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p19840203842114">Tags the listener.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row109815596568"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18781627124910">created_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p18781627204916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p15848951122220">Specifies the time when the listener was created. The UTC time is in <em id="elb_zq_jt_0001__en-us_topic_0096561542_i1017723733015">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row122703319572"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1541843114495">updated_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p1810172112506">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p341843144919">Specifies the time when the listener was updated. The UTC time is in <em id="elb_zq_jt_0001__en-us_topic_0096561542_i12883301256">YYYY-MM-DDTHH:MM:SS</em> format.</p>
+</td>
+</tr>
+<tr id="elb_zq_jt_0001__en-us_topic_0096561542_row674511497493"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p15804713184311">tls_ciphers_policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p78041413134319">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p546123425013">Specifies the security policy used by the listener. This parameter is valid only when the protocol used by the listener is set to <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b156051134122510">TERMINATED_HTTPS</strong>.</p>
+<p id="elb_zq_jt_0001__en-us_topic_0096561542_p3241114918325">The value can be <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b18364926031">tls-1-0-inherit</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b13885173792519">tls-1-0</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b15887123752517">tls-1-1</strong>, <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b9887123742520">tls-1-2</strong>, or <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b13889133713252">tls-1-2-strict</strong>, and the default value is <strong id="elb_zq_jt_0001__en-us_topic_0096561542_b2088953792517">tls-1-0</strong>. For details of cipher suites for each security policy, see <a href="#elb_zq_jt_0001__en-us_topic_0096561542_table1247813103533">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_jt_0001__en-us_topic_0096561542_table17641175071912"></a><a name="en-us_topic_0096561542_table17641175071912"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_jt_0001__en-us_topic_0096561542_table17641175071912" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="elb_zq_jt_0001__en-us_topic_0096561542_b637553141620">loadbalancers</strong> parameter description</caption><thead align="left"><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row17642135018199"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p564295010190">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p126421250191912">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_jt_0001__en-us_topic_0096561542_p11642205012199">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_jt_0001__en-us_topic_0096561542_row664275021919"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p464219506196">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p156423501195">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_jt_0001__en-us_topic_0096561542_p164210502197">Specifies the ID of the associated load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul1383122553713"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li188318257374">Example request 1: Adding a TCP listener<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen69181414479">POST https://{Endpoint}/v2.0/lbaas/listeners 
+
+{
+    "listener": {
+        "protocol_port": 80,
+        "protocol": "TCP",
+        "loadbalancer_id": "0416b6f1-877f-4a51-987e-978b3f084253",
+        "name": "listener-test",
+        "admin_state_up": true
+    }
+}</pre>
+</li></ul>
+
+<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul196814816365"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li14811636154013">Example request 2: Adding an HTTPS listener<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen48543616401">POST https://{Endpoint}/v2.0/lbaas/listeners 
+
+{ 
+    "listener": { 
+        "protocol_port": 25, 
+        "protocol": "TERMINATED_HTTPS", 
+        "default_tls_container_ref": "02dcd56799e045bf8b131533cc911dd6",
+        "loadbalancer_id": "0416b6f1-877f-4a51-987e-978b3f084253", 
+        "name": "listener-test", 
+        "admin_state_up": true
+ 
+    } 
+}</pre>
+</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li8501435175">Example request 3: Adding a listener with the SNI feature enabled<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen860633524416">POST https://{Endpoint}/v2.0/lbaas/listeners 
+
+{
+    "listener": {
+        "protocol_port": 27, 
+        "protocol": "TERMINATED_HTTPS", 
+        "loadbalancer_id": "6bb85e33-4953-457a-85a9-336d76125b7b", 
+        "name": "listener-test", 
+        "admin_state_up": true,
+        "default_tls_container_ref":"02dcd56799e045bf8b131533cc911dd6",
+        "sni_container_refs": ["e15d1b5000474adca383c3cd9ddc06d4",
+        	              "5882325fd6dd4b95a88d33238d293a0f"]
+    }
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul151169521719"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li10267163251610">Example response 1<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen226773211611">{
+    "listener": {
+        "protocol_port": 80,
+        "protocol": "TCP",
+        "description": "",
+        "client_ca_tls_container_ref": null,
+        "default_tls_container_ref": null,
+        "admin_state_up": true,
+        "http2_enable": false,
+        "loadbalancers": [
+            {
+                "id": "0416b6f1-877f-4a51-987e-978b3f084253"
+            }
+        ],
+        "tenant_id": "145483a5107745e9b3d80f956713e6a3",
+        "sni_container_refs": [],
+        "connection_limit": -1,
+        "default_pool_id": null,
+        "tags": [],
+        "id": "b7f32b52-6f17-4b16-9ec8-063d71b653ce",
+        "name": "listener-test",
+        "tls_ciphers_policy": null,
+        "created_at": "2018-07-25T01:54:13", 
+        "updated_at": "2018-07-25T01:54:14"
+    }
+}
+</pre>
+</li></ul>
+
+<ul id="elb_zq_jt_0001__en-us_topic_0096561542_ul2267532111611"><li id="elb_zq_jt_0001__en-us_topic_0096561542_li52691532191616">Example response 2<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen5269103231610">{
+    "listener": {
+        "protocol_port": 25,
+        "protocol": "TERMINATED_HTTPS",
+        "description": "",
+        "default_tls_container_ref": "02dcd56799e045bf8b131533cc911dd6",
+        "sni_container_refs": [],
+        "loadbalancers": [
+            {
+                "id": "0416b6f1-877f-4a51-987e-978b3f084253"
+            }
+        ],
+        "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+  
+        "created_at": "2019-01-21T12:38:31",
+        "client_ca_tls_container_ref": null,
+        "connection_limit": -1,
+        "updated_at": "2019-01-21T12:38:31",
+        "http2_enable": false,
+        "admin_state_up": true,
+        "default_pool_id": null,
+        "tls_ciphers_policy": "tls-1-0",
+        "id": "b56634cd-5ba8-460e-b5a2-6de5ba8eaf60",
+        "tags": [],
+        "name": "listener-test"
+  
+    }
+}</pre>
+</li><li id="elb_zq_jt_0001__en-us_topic_0096561542_li827011328161">Example response 3<pre class="screen" id="elb_zq_jt_0001__en-us_topic_0096561542_screen4270173241617">{
+    "listener": {
+        "protocol_port": 27,
+        "protocol": "TERMINATED_HTTPS",
+        "description": "",
+        "default_tls_container_ref": "02dcd56799e045bf8b131533cc911dd6",
+        "sni_container_refs": [
+            "5882325fd6dd4b95a88d33238d293a0f",
+            "e15d1b5000474adca383c3cd9ddc06d4"
+        ],
+        "loadbalancers": [
+            {
+                "id": "6bb85e33-4953-457a-85a9-336d76125b7b"
+            }
+        ],
+        "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+        "project_id": "601240b9c5c94059b63d484c92cfe308",
+        "created_at": "2019-01-21T12:43:55",
+        "client_ca_tls_container_ref": null,
+        "connection_limit": -1,
+        "updated_at": "2019-01-21T12:43:55",
+        "http2_enable": false,
+        "admin_state_up": true,
+        "default_pool_id": null,
+        "": "tls-1-0",
+        "id": "b2cfda5b-52fe-4320-8845-34e8d4dac2c7",
+        "tags": [],
+        "name": "listener-test"
+    }
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_jt_0001__en-us_topic_0096561542_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_jt_0000.html">Listener</a>
+
+
+

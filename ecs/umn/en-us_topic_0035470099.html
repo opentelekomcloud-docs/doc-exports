@@ -1,0 +1,183 @@
+<a name="EN-US_TOPIC_0035470099"></a><a name="EN-US_TOPIC_0035470099"></a>
+
+<h1 class="topictitle1">Disk-intensive ECSs</h1>
+<div id="body1471085716053"><div class="section" id="EN-US_TOPIC_0035470099__section28296694191148"><h4 class="sectiontitle">Overview</h4><p id="EN-US_TOPIC_0035470099__p484218485238">D2 ECSs are developed based on KVM virtualization. They use local storage and provide high storage performance and intranet bandwidth for distributed Hadoop computing, large data warehouse, distributed file system, and log/data processing.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470099__section31415995191246"><h4 class="sectiontitle">Specifications</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035470099__table47541937112515" frame="border" border="1" rules="all"><caption><b>Table 1 </b>D2 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035470099__row1775413371257"><th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.2.2.2.10.1.1"><p id="EN-US_TOPIC_0035470099__p179531340880">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.080808080808081%" id="mcps1.3.2.2.2.10.1.2"><p id="EN-US_TOPIC_0035470099__p123165013254">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.101010101010102%" id="mcps1.3.2.2.2.10.1.3"><p id="EN-US_TOPIC_0035470099__p7236185013252">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.2.2.2.10.1.4"><p id="EN-US_TOPIC_0035470099__p1973293135819">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.2.2.2.10.1.5"><p id="EN-US_TOPIC_0035470099__p973253111589">Maximum PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9.090909090909092%" id="mcps1.3.2.2.2.10.1.6"><p id="EN-US_TOPIC_0035470099__p573223115812">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.141414141414144%" id="mcps1.3.2.2.2.10.1.7"><p id="EN-US_TOPIC_0035470099__p724035017257">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9.090909090909092%" id="mcps1.3.2.2.2.10.1.8"><p id="EN-US_TOPIC_0035470099__p1624105092519">Local Disks (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.2.2.2.10.1.9"><p id="EN-US_TOPIC_0035470099__p9205101061511">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035470099__row075673742516"><td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p6954040384">d2.xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.080808080808081%" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p3921123262912">4</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.101010101010102%" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p243424132914">32</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p412273214109">4/1.4</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p14858182391010">40</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.090909090909092%" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p191661518131020">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p975653772517">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.090909090909092%" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p14756133732515">2×1675</p>
+</td>
+<td class="cellrowborder" rowspan="6" valign="top" width="13.131313131313133%" headers="mcps1.3.2.2.2.10.1.9 "><p id="EN-US_TOPIC_0035470099__p449920318167">CPU: Intel&reg; Xeon&reg; Gold 6151</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__row15756537142510"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p13954040581">d2.2xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p1592183213294">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p143494102918">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p912211328108">6/2.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p14858122316101">80</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p71661418141016">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p147561837182520">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p1275663712258">4×1675</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__row14967171717297"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p15954194015818">d2.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p1492123262911">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p18434144113294">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p121238322105">10/5.6</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p16858102321018">160</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p5167151861017">6</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p10967117172915">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p169678175293">8×1675</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__row014021416298"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p8954240487">d2.6xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p1392118321294">24</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p14434541142917">192</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p101232323105">15/8.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p19858182314109">250</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p3167418131017">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p16140151414292">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p181401414112911">12×1675</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__row575615372253"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p199540401081">d2.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p692123252911">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p13434174116295">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p1812373261010">17/11</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p085892301012">320</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p416741841012">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p10756133715250">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p1675663717258">16×1675</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__row1375619376259"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470099__p995417404819">d2.15xlarge.9</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470099__p2921153211298">60</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470099__p1343414182916">540</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470099__p312323261019">17/17</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470099__p1985862316107">500</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470099__p1516791813109">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470099__p207561237112515">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470099__p13756113742515">24×1675</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470099__section107991967319"><h4 class="sectiontitle">Scenarios</h4><ul id="EN-US_TOPIC_0035470099__en-us_topic_0088858518_ul49201844163116"><li id="EN-US_TOPIC_0035470099__en-us_topic_0088858518_li47780679161753">Applications<p id="EN-US_TOPIC_0035470099__en-us_topic_0088858518_p17103902202858"><a name="EN-US_TOPIC_0035470099__en-us_topic_0088858518_li47780679161753"></a><a name="en-us_topic_0088858518_li47780679161753"></a>Disk-intensive ECSs are suitable for applications that require large volumes of data to process, high I/O performance, and rapid data switching and processing.</p>
+</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088858518_li6922144203112">Application scenarios<p id="EN-US_TOPIC_0035470099__en-us_topic_0088858518_p16922104473112"><a name="EN-US_TOPIC_0035470099__en-us_topic_0088858518_li6922144203112"></a><a name="en-us_topic_0088858518_li6922144203112"></a>Big data computing, network file systems, data processing, MapReduce, Hadoop, and data-intensive computing</p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470099__section9344849161910"><h4 class="sectiontitle">Features of D2 ECSs</h4><ul id="EN-US_TOPIC_0035470099__ul18346124951918"><li id="EN-US_TOPIC_0035470099__li434604951910">D2 ECSs use local disks to provide high sequential read/write performance and low latency, improving file read/write performance.</li><li id="EN-US_TOPIC_0035470099__li13346164961915">D2 ECSs provide powerful and stable computing capabilities, ensuring efficient data processing.</li><li id="EN-US_TOPIC_0035470099__li734617492193">D2 ECSs with a vCPU/memory ratio of 1:8 process large volumes of data.</li><li id="EN-US_TOPIC_0035470099__li2346194971917">D2 ECSs provide high intranet performance, including high intranet bandwidth and PPS, meeting requirements for data exchange between ECSs during peak hours.</li><li id="EN-US_TOPIC_0035470099__li1362217566192">Each D2 ECS supports a maximum configuration of 24 local disks, 60 vCPUs, and 540 GiB memory.</li></ul>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035470099__table9670341181017" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Specifications of a single SAS HDD disk attached to a D2 ECS</caption><thead align="left"><tr id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_row17671114131010"><th align="left" class="cellrowborder" valign="top" width="49.94%" id="mcps1.3.4.3.2.3.1.1"><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p1367104115109">Metric</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50.06%" id="mcps1.3.4.3.2.3.1.2"><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p1671741141018">Performance</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_row16719414103"><td class="cellrowborder" valign="top" width="49.94%" headers="mcps1.3.4.3.2.3.1.1 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p15671144118105">Disk capacity</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.06%" headers="mcps1.3.4.3.2.3.1.2 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p067104121019">1800 GiB</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_row18671134131018"><td class="cellrowborder" valign="top" width="49.94%" headers="mcps1.3.4.3.2.3.1.1 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p10671641191019">Maximum throughput</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.06%" headers="mcps1.3.4.3.2.3.1.2 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p16672141121018">230 MB/s</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_row06721841121017"><td class="cellrowborder" valign="top" width="49.94%" headers="mcps1.3.4.3.2.3.1.1 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p867294112107">Access latency</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.06%" headers="mcps1.3.4.3.2.3.1.2 "><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p1167219416102">Millisecond-level</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470099__section1749014919186"><h4 class="sectiontitle">Notes on Using D2 ECSs</h4><ul id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_ul55510468223614"><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li250518431277">Currently, the following operating systems are supported (subject to the information displayed on the console):<ul id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_ul184031855970"><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1140317551375">CentOS 6.7/6.8/7.2/7.3/7.4 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li124212117819">SUSE Enterprise Linux Server 11 SP3/SP4 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1140355513719">SUSE Enterprise Linux Server 12 SP1/SP2 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li240455510710">Red Hat Enterprise Linux 6.8/7.3 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1991717591189">Windows Server 2008 R2 Enterprise 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li6426921597">Windows Server 2012 R2 Standard 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li12404155178">Windows Server 2016 Standard 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li340435514713">Debian 8.7/9/9.0.0 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1840445516714">EulerOS 2.2 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1540410551772">Fedora 25/26 64bit</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li34043551720">OpenSUSE 42.2/42.3 64bit</li></ul>
+</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li54923077223716">When the physical host where a D2 ECS is deployed becomes faulty, the ECS cannot be migrated.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li151915198480">To improve network performance, you can set the NIC MTU of a D2 ECS to <strong id="EN-US_TOPIC_0035470099__b84235270612277">8888</strong>.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li63198920223614">D2 ECSs do not support modifying specifications.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li14386295223843">D2 ECSs do not support local disk snapshots or backups.</li><li id="EN-US_TOPIC_0035470099__li177919151012">D2 ECSs do not support OS reinstallation or change.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li18838856223614">D2 ECSs can use both local disks and EVS disks to store data. In addition, they can have EVS disks attached to provide a larger storage size. Use restrictions on the two types of storage media are as follows:<ul id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_ul35331977223614"><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li49552340223614">Only an EVS disk, not a local disk, can be used as the system disk of a D2 ECS.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li43317883223614">Both EVS disks and local disks can be used as data disks of a D2 ECS.</li><li id="EN-US_TOPIC_0035470099__li3171339122615">A maximum of 60 disks (including VBD, SCSI, and local disks) can be attached to a D2 ECS. Among the 60 disks, the maximum number of SCSI disks is 30, and the VBD disks (including the system disk) is 24. For details, see <a href="en-us_topic_0018073215.html">Can I Attach Multiple Disks to an ECS?</a><div class="note" id="EN-US_TOPIC_0035470099__note1768622142210"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0035470099__p8681221228">The maximum number of disks attached to an existing D2 ECS remains unchanged. To attach 60 disks, enable advanced disk. For details, see <a href="en-us_topic_0122307169.html">Enabling Advanced Disk</a>.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li178320164203">You are advised to use World Wide Names (WWNs), but not drive letters, in applications to perform operations on local disks to prevent drive letter drift (low probability) on Linux. Take local disk attachment as an example:<p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p125271917152017"><a name="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li178320164203"></a><a name="en-us_topic_0088142885_li178320164203"></a>If the local disk WWN is wwn-0x50014ee2b14249f6, run the <strong id="EN-US_TOPIC_0035470099__b103256708420139">mount /dev/disk/by-id/wwn-0x50014ee2b14249f6</strong> command.</p>
+<div class="note" id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_note7400716205517"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p9401316185516">How can I view the local disk WWN?</p>
+<ol id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_ol10809103775511"><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li168091237195516">Log in to the ECS.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li11310154511556">Run the following command:<p id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_p682452201913"><a name="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li11310154511556"></a><a name="en-us_topic_0088142885_li11310154511556"></a><strong id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_b63631425181914">ll /dev/disk/by-id</strong></p>
+</li></ol>
+</div></div>
+</li></ul>
+</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1717385122398">The local disk data of a D2 ECS may be lost due to some reasons, such as physical server breakdown or local disk damage. If the data reliability of your application cannot be ensured, you are strongly advised to use EVS disks to build your ECS.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li2034693822398">When a D2 ECS is deleted, its local disk data is automatically deleted. Back up the data before deleting such an ECS. Deleting local disk data is time-consuming. Therefore, a D2 ECS requires a longer period of time than other ECSs for releasing resources.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li4890471922398">Do not store long-term service data in local disks. Instead, back up data in a timely manner and use a high availability data architecture. Store long-term service data in EVS disks.</li><li id="EN-US_TOPIC_0035470099__en-us_topic_0088142885_li1242239722417">You are not allowed to buy additional local disks. The quantity and capacity of your local disks are determined according to your ECS flavor. For D2 ECSs, if additional local disks are required, buy them when creating the ECSs.</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0132345719.html">ECS Specifications and Types</a></div>
+</div>
+</div>
+

@@ -1,0 +1,186 @@
+<a name="EN-US_TOPIC_0085634797"></a><a name="EN-US_TOPIC_0085634797"></a>
+
+<h1 class="topictitle1">Initializing a Linux Data Disk (fdisk)</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_section31580524185332"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3566739210424">This section uses CentOS 7.4 64bit to describe how to initialize a data disk attached to <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text1895391527145159">a server</span> running Linux and use fdisk to partition the data disk.</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p166075410209">The maximum disk capacity supported by MBR is 2 TB, and that supported by GPT is 18 EB. Therefore, use the GPT partition style if your disk capacity is larger than 2 TB. In Linux, if you choose to use the GPT partition style, the fdisk partitioning tool cannot be used. Use the parted partitioning tool instead. For details about disk partition styles, see <a href="en-us_topic_0030831623.html">Scenarios and Disk Partitions</a>.</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p4699546795037">The method for initializing a disk varies depending on the OS running on the <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text849922751145419">server</span>. This document is used for reference only. For the detailed operations and differences, see the product documents of the corresponding OS.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_section117091356845"><h4 class="sectiontitle">Prerequisites</h4><ul id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_ul28913191171813"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_li20771164724419">A data disk has been attached to <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_text184241938124418">a server</span> and has not been initialized.</li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_li36962755115557">You have logged in to the <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_text25940422717248">server</span>.<ul id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_ul6229092211568"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_li197989548398">For how to log in to an ECS, see the <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_i157642033171941">Elastic Cloud Server User Guide</em>.</li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_li7220898115452">For how to log in to a BMS, see the <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524740_i842352697172014">Bare Metal Server User Guide</em>.</li></ul>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_section36039836195351"><h4 class="sectiontitle">Creating and Mounting a Partition</h4><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p4530289419544">The following example shows you how a new primary partition can be created on a new data disk that has been attached to <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text2422957163556">a server</span>. The primary partition will be created using fdisk, and MBR is the default partition style. Furthermore, the partition will be formatted using the ext4 file system, mounted on <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b84235270611226">/mnt/sdc</strong>, and configured with automatic mounting at system start.</p>
+</div>
+<ol id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_ol1329192162914"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li02952152918"><span>Run the following command to query information about the new data disk:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p6233165017299"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b423375018297">fdisk -l</strong></p>
+<div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1861313818316">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen4298194012254">[root@ecs-test-0001 ~]# fdisk -l
+
+Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x000bcb4e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048    83886079    41942016   83  Linux
+
+Disk /dev/vdb: 107.4 GB, 107374182400 bytes, 209715200 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p944866918517">In the command output, <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text4601163618515">the server</span> contains two disks. <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname3595506118515"><b>/dev/vda</b></span> is the system disk, and <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname2667886718515"><b>/dev/vdb</b></span> is the new data disk.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li17578198183210"><span>Run the following command to enter fdisk to partition the new data disk:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p41477006111223"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b605403455145346">fdisk</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i2067335144145346">New data disk</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p857813815327">In this example, run the following command:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p175788883211"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b66574550181116">fdisk /dev/vdb</strong></p>
+<div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p2057812811323">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen395618342713">[root@ecs-test-0001 ~]# fdisk /dev/vdb
+Welcome to fdisk (util-linux 2.23.2).
+
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table
+Building a new DOS disklabel with disk identifier 0x38717fc1.
+
+Command (m for help): </pre>
+</div>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li125780811321"><span>Enter <strong>n</strong> and press <strong>Enter</strong> to create a new partition.</span><p><div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p29271455221812">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen552432311275">Command (m for help): n
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended</pre>
+</div>
+<div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p6561287416158">There are two types of disk partitions:<ul id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_ul5364496116158"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_li1304260716158">Choosing <span class="parmvalue" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_parmvalue5027460516158"><b>p</b></span> creates a primary partition.</li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_li4981826916158">Choosing <span class="parmvalue" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_parmvalue4571123816158"><b>e</b></span> creates an extended partition.</li></ul>
+<div class="note" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_note13373129016"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_p4376112918117">If the MBR partition style is used, a maximum of 4 primary partitions, or 3 primary partitions and 1 extended partition can be created. The extended partition cannot be used directly and must be divided into logical partitions before use.</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_en-us_topic_0044524728_p20170151213510">Disk partitions created using GPT are not categorized.</p>
+</div></div>
+</div>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li125793873218"><span>In this example, a primary partition is created. Therefore, enter <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b8423527061987">p</strong> and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b84235270619811">Enter</strong> to create a primary partition.</span><p><div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3579681322">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen58255532278">Select (default p): p
+Partition number (1-4, default 1): </pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p464804381863"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706182145">Partition number</strong> indicates the serial number of the primary partition. The value ranges from <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706182148">1</strong> to <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706182152">4</strong>.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li175794893214"><span>Enter the serial number of the primary partition and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b160537203521528">Enter</strong>. Primary partition number <span class="parmvalue" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmvalue203175347321528"><b>1</b></span> is used in this example. One usually starts with partition number <span class="parmvalue" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmvalue188795161819721"><b>1</b></span> when partitioning an empty disk.</span><p><div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1757912843215">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen27157518289">Partition number (1-4, default 1): 1
+First sector (2048-209715199, default 2048):</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p5969793618623"><span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname430336231191358"><b>First sector</b></span> indicates the start sector. The value ranges from <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706191526">2048</strong> to <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1319272316549">209715199</strong>, and the default value is <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706191543">2048</strong>.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li45799811324"><span>Select the default start sector <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b84235270611954">2048</strong> and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b84235270619166">Enter</strong>.</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3623215214">The system displays the start and end sectors of the partition's available space. You can customize the value within this range or use the default value. The start sector must be smaller than the partition's end sector.</p>
+<div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p11579198133216">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen869654415283">First sector (2048-209715199, default 2048):
+Using default value 2048
+Last sector, +sectors or +size{K,M,G} (2048-209715199, default 209715199):</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p4034033118642"><span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname888805909"><b>Last sector</b></span> indicates the end sector. The value ranges from <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b600136218">2048</strong> to <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1798151514556">209715199</strong>, and the default value is <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b951753599">209715199</strong>.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li657968113217"><span>Select the default end sector <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706112515">209715199</strong> and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b785985218">Enter</strong>.</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1675124661216">The system displays the start and end sectors of the partition's available space. You can customize the value within this range or use the default value. The start sector must be smaller than the partition's end sector.</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p457918818329">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen116541323132915">Last sector, +sectors or +size{K,M,G} (2048-209715199, default 209715199):
+Using default value 209715199
+Partition 1 of type Linux and of size 100 GiB is set
+
+Command (m for help):</pre>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3578292518655">A primary partition has been created for the new data disk.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li457988173211"><span>Enter <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706192228">p</strong> and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706192231">Enter</strong> to view details about the new partition.</span><p><div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p157919863211">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen1798684912294">Command (m for help): p
+
+Disk /dev/vdb: 107.4 GB, 107374182400 bytes, 209715200 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x38717fc1
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vdb1            2048   209715199   104856576   83  Linux
+
+Command (m for help):</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1763074218740">Details about the <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname152545062818295"><b>/dev/vdb1</b></span> partition are displayed.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li4398403895019"><span>Enter <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706192329">w</strong> and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706192333">Enter</strong> to write the changes to the partition table.</span><p><div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p15580178163215">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen81901432133015">Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+Syncing disks.</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3006153018755">The partition is created.</p>
+<div class="note" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_note21918251185717"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_p1060395711212">In case that you want to discard the changes made before, you can exit fdisk by entering <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0044524728_b842352706161749">q</strong>.</p>
+</div></div>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li1957582819528"><span>Run the following command to synchronize the new partition table to the OS:</span><p><p class="litext" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p7575142815211"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b3575192814523">partprobe</strong></p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li958068193210"><span>Run the following command to set the file system format for the new partition:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1169510295739"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1753813373145334">mkfs</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b980454451145334">-t</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i2020743538145334">File system format</em> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b552945349145334">/dev/vdb1</strong></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p5243126995731">In this example, run the following command to set the <span class="filepath" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_filepath55769406711457"><b>ext4</b></span> file system for the new partition:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1580148193210"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b2150362315270">mkfs -t ext4 /dev/vdb1</strong></p>
+<div class="p" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p458016833215">Information similar to the following is displayed:<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen277612213119">[root@ecs-test-0001 ~]# mkfs -t ext4 /dev/vdb1
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+6553600 inodes, 26214144 blocks
+1310707 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=2174746624
+800 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+        4096000, 7962624, 11239424, 20480000, 23887872
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done</pre>
+</div>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1758015813211">The formatting takes a period of time. Observe the system running status and do not exit.</p>
+<div class="notice" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_note29186911243"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-en-us.png"> </span><div class="noticebody"><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p262682811243">The partition sizes supported by file systems vary. Therefore, you are advised to choose an appropriate file system based on your service requirements.</p>
+</div></div>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li1758111811323"><span>Run the following command to create a mount point:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1038930410141"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b185866046992856">mkdir</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i214308114392856">Mount point</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p6697580910132">In this example, run the following command to create the <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b97471244387">/mnt/sdc</strong> mount point:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p9581128153219"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b258111873210">mkdir /mnt/sdc</strong></p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li62473867152927"><span>Run the following command to mount the new partition on the created mount point:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1011938710557"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b608287909162747">mount</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i2056323561162747">Disk partition</em> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i1566529680162747">Mount point</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p2550130210557">In this example, run the following command to mount the new partition <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b10604235896">/dev/vdb1</strong> on <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b175162410917">/mnt/sdc</strong>:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p5169551152959"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b18041179153011">mount /dev/vdb1 /mnt/sdc</strong></p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li65228046151616"><span>Run the following command to view the mount result:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p50181505151616"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b48980368151616">df -TH</strong></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p38170130151616">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen51057714151616">[root@ecs-test-0001 ~]# df -TH
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/vda1      ext4       43G  1.9G   39G   5% /
+devtmpfs       devtmpfs  2.0G     0  2.0G   0% /dev
+tmpfs          tmpfs     2.0G     0  2.0G   0% /dev/shm
+tmpfs          tmpfs     2.0G  9.1M  2.0G   1% /run
+tmpfs          tmpfs     2.0G     0  2.0G   0% /sys/fs/cgroup
+tmpfs          tmpfs     398M     0  398M   0% /run/user/0
+/dev/vdb1      ext4      106G   63M  101G   1% /mnt/sdc</pre>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p42763420151616">New partition <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname1012184233182948"><b>/dev/vdb1</b></span> is mounted on <span class="filepath" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_filepath1018173411182954"><b>/mnt/sdc</b></span>.</p>
+<div class="note" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_note151217575408"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p13141357194019">If the <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text18797917173516">server</span> is restarted, the mounting will become invalid. You can set automatic mounting for partitions at system start by modifying the <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b165511748151219">/etc/fstab</strong> file. For details, see <a href="#EN-US_TOPIC_0085634797__en-us_topic_0044524669_section15839912195453">Setting Automatic Mounting at System Start</a>.</p>
+</div></div>
+</p></li></ol>
+<div class="section" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_section15839912195453"><a name="EN-US_TOPIC_0085634797__en-us_topic_0044524669_section15839912195453"></a><a name="en-us_topic_0044524669_section15839912195453"></a><h4 class="sectiontitle">Setting Automatic Mounting at System Start</h4><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p10888449418">Modify the <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b638544071512">fstab</strong> file to set automatic disk mounting at server start. You can also set automatic mounting for the <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text615861019358">server</span>s containing data. This operation will not affect the existing data.</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p3301097119558">The following procedure shows how to set automatic disk mounting at server start by using UUIDs to identify disks in the <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1250394412233">fstab</strong> file. You are advised not to use device names to identify disks in the file because a device name may change (for example, from /dev/vdb1 to /dev/vdb2) during <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text60279752174534">the server</span> stop or start, resulting in improper <span id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_text33232815911">server</span> running after restart.</p>
+<div class="note" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_note6058396910219"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p838481110219">UUID is the unique character string for disk partitions in a Linux system.</p>
+</div></div>
+<ol id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_ol7409641133211"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li840964143216"><span>Run the following command to query the partition UUID:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p32760575102436"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b810771306145914">blkid</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i1994655083145914">Disk partition</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p54606997105845">In this example, run the following command to query the UUID of the <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname2013759973122928"><b>/dev/vdb1</b></span> partition:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p204811453103215"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b11565159153817">blkid /dev/vdb1</strong></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p13610514113319">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen361091453315">[root@ecs-test-0001 ~]# blkid /dev/vdb1
+/dev/vdb1: UUID="0b3040e2-1367-4abb-841d-ddb0b92693df" TYPE="ext4"</pre>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p275684701890">The UUID of the <span class="parmname" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_parmname860990818858"><b>/dev/vdb1</b></span> partition is displayed.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li199421823183318"><span>Run the following command to open the <strong>fstab</strong> file using the vi editor:</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p9610114153320"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1361031419337">vi /etc/fstab</strong></p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li941511389331"><span>Press <strong>i</strong> to enter the editing mode.</span></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li8415123893310"><span>Move the cursor to the end of the file and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1084837140102256">Enter</strong>. Then, add the following information:</span><p><pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_screen8133145031318">UUID=0b3040e2-1367-4abb-841d-ddb0b92693df /mnt/sdc                ext4    defaults        0 2</pre>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_li841512388338"><span>Press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b8348192418548">Esc</strong>, enter <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b15351152418546">:wq</strong>, and press <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b7353142416544">Enter</strong>.</span><p><p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_p1141543813310">The system saves the configurations and exits the vi editor.</p>
+</p></li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li17720613102410"><span>Perform the following operations to verify the automatic mounting function:</span><p><ol type="a" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_ol199891910256"><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li1620791415268">Run the following command to unmount the partition:<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p18208131462618"><a name="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li1620791415268"></a><a name="en-us_topic_0044524669_en-us_topic_0142861223_li1620791415268"></a><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1708526520162011">umount</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_i1458842329162011">Disk partition</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p621161413262">In this example, run the following command:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p1521115148260"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_b0213614192618">umount /dev/vdb1</strong></p>
+</li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li2397162792610">Run the following command to reload all the content in the <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b842352706104731">/etc/fstab</strong> file:<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p1739714278269"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_b63981278267">mount -a</strong></p>
+</li><li id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li9280203710269">Run the following command to query the file system mounting information:<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p3282133715264"><a name="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_li9280203710269"></a><a name="en-us_topic_0044524669_en-us_topic_0142861223_li9280203710269"></a><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1187012852919">mount</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b17601123382916">|</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1070716324521">grep</strong> <em id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_i2284337112614">Mount point</em></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p3286437112619">In this example, run the following command:</p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p18286123782619"><strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b925094342911">mount</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1725119437291">|</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b15324154395212">grep</strong> <strong id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_b1831387417">/mnt/sdc</strong></p>
+<p id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_p429163752616">If information similar to the following is displayed, the automatic mounting function takes effect:</p>
+<pre class="screen" id="EN-US_TOPIC_0085634797__en-us_topic_0044524669_en-us_topic_0142861223_screen429312370265">root@ecs-test-0001 ~]# mount | grep /mnt/sdc
+/dev/vdb1 on /mnt/sdc type ext4 (rw,relatime,data=ordered)</pre>
+</li></ol>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030831989.html">Initializing EVS Data Disks</a></div>
+</div>
+</div>
+

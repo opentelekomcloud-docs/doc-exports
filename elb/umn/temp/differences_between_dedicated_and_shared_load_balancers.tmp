@@ -1,0 +1,287 @@
+<a name="elb_pro_0004"></a><a name="elb_pro_0004"></a>
+
+<h1 class="topictitle1">Differences Between Dedicated and Shared Load Balancers</h1>
+<p id="elb_pro_0004__en-us_topic_0000001192971589_en-us_elb_01_0007_p876745119533">Each type of load balancer has their advantages.</p>
+<ul id="elb_pro_0004__en-us_topic_0000001192971589_en-us_topic_0015479966_ul4956122720526"><li id="elb_pro_0004__en-us_topic_0000001192971589_li169414430249">Dedicated load balancers have exclusive use of underlying resources, so that the performance of a dedicated load balancer is not affected by other load balancers. In addition, there are a wide range of specifications available for selection.</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li16268857034"><span id="elb_pro_0004__en-us_topic_0000001192971589_ph795912163165">Shared</span> load balancers share underlying resources so that the performance of a load balancer is affected by other load balancers. <span id="elb_pro_0004__ph9708103681212">Shared load balancers were previously named enhanced load balancers.</span><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_pro_0004__en-us_topic_0242751126_p154433010355">Currently, dedicated load balancers are supported only in the <strong id="elb_pro_0004__en-us_topic_0242751126_b26751356154914">eu-nl</strong> region.</p>
+
+</li></ul>
+<h4 class="sectiontitle">Advantages of Dedicated Load Balancers</h4><ul id="elb_pro_0004__en-us_topic_0000001192971589_ul5803337195711"><li id="elb_pro_0004__en-us_topic_0000001192971589_li262618546011">Robust performance<p id="elb_pro_0004__en-us_topic_0000001192971589_p132072057606"><a name="elb_pro_0004__en-us_topic_0000001192971589_li262618546011"></a><a name="en-us_topic_0000001192971589_li262618546011"></a>Each dedicated load balancer has exclusive use of isolated underlying resources and can provide guaranteed performance. A single dedicated load balancer deployed in one AZ can establish up to 20 million concurrent connections, and a load balancer deployed across two AZs can establish up to 40 million concurrent connections, meeting your requirements for handling a massive number of requests.</p>
+</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li1297671615">High availability<p id="elb_pro_0004__en-us_topic_0000001192971589_p17860193020210"><a name="elb_pro_0004__en-us_topic_0000001192971589_li1297671615"></a><a name="en-us_topic_0000001192971589_li1297671615"></a>Dedicated load balancers provide a comprehensive health check mechanism to ensure that incoming traffic is routed to only healthy backend servers, improving the availability of your applications.</p>
+<p id="elb_pro_0004__en-us_topic_0000001192971589_p126811107120">Dedicated load balancers on both public and private networks can route traffic across AZs and support automatic DR and service isolation between users.</p>
+</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li6423824716">Ultra security<p id="elb_pro_0004__en-us_topic_0000001192971589_p16773129816"><a name="elb_pro_0004__en-us_topic_0000001192971589_li6423824716"></a><a name="en-us_topic_0000001192971589_li6423824716"></a>Dedicated load balancers also allow you to select security policies that fit your security requirements.</p>
+</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li248013404119">Multiple protocols<p id="elb_pro_0004__en-us_topic_0000001192971589_p92691543417"><a name="elb_pro_0004__en-us_topic_0000001192971589_li248013404119"></a><a name="en-us_topic_0000001192971589_li248013404119"></a>Dedicated load balancers support the following protocols, including TCP, UDP, HTTP, and HTTPS, so that they can route requests from different types of applications.</p>
+</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li15646112122">Hybrid load balancing<p id="elb_pro_0004__en-us_topic_0000001192971589_p46091644210"><a name="elb_pro_0004__en-us_topic_0000001192971589_li15646112122"></a><a name="en-us_topic_0000001192971589_li15646112122"></a>Dedicated load balancers can route requests to both servers on the cloud and on premises, allowing you to leverage the public cloud to handle burst traffic.</p>
+</li></ul>
+
+<h4 class="sectiontitle">Feature Comparisons</h4><p id="elb_pro_0004__en-us_topic_0000001192971589_en-us_elb_01_0007_p1827251515432">Dedicated load balancers provide more powerful forwarding performance, while <span id="elb_pro_0004__ph18410132581512">shared</span> load balancers are less expensive. You can select the appropriate load balancer based on your application needs. The following tables compare the features supported by the two types of load balancers. (√ indicates that an item is supported, and ╳ indicates that an item is not supported.)</p>
+
+.. _elb_pro_0004__en-us_topic_0000001192971589_table142931939192617:
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_pro_0004__en-us_topic_0000001192971589_table142931939192617" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Supported protocols</caption><thead align="left"><tr id="elb_pro_0004__en-us_topic_0000001192971589_row529410397263"><th align="left" class="cellrowborder" valign="top" width="20.01%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_pro_0004__en-us_topic_0000001192971589_p2294123916260">Protocol</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.760000000000005%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_pro_0004__en-us_topic_0000001192971589_p5294143912618">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.74%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_pro_0004__en-us_topic_0000001192971589_p122942039102612">Dedicated Load Balancers</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.49%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_pro_0004__en-us_topic_0000001192971589_p18287254172715"><span id="elb_pro_0004__en-us_topic_0000001192971589_ph16287554192717">Shared</span> Load Balancers</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_pro_0004__en-us_topic_0000001192971589_row18295139162613"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p16762151013272">TCP/UDP (Layer 4)</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p47626107279">After receiving TCP or UDP requests from the clients, the load balancer directly routes the requests to backend servers. Load balancing at Layer 4 features high routing efficiency.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p376281015277">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p6762121016273">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row4295153922619"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1376211013271">HTTP/HTTPS (Layer 7)</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p117621410172713">After receiving a request, the listener needs to identify the request and forward data based on the fields in the HTTP/HTTPS packet header. Though the routing efficiency is lower than that at Layer 4, load balancing at Layer 7 provides some advanced features such as encrypted transmission and cookie-based sticky sessions.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p16762191019275">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1976215100271">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row1295203972620"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p276311105274">WebSocket</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p77634108272">WebSocket is a new HTML5 protocol that provides full-duplex communication between the browser and the server. WebSocket saves server resources and bandwidth, and enables real-time communication.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p776351016279">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p4763161017274">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_pro_0004__en-us_topic_0000001192971589_table9759549192919:
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_pro_0004__en-us_topic_0000001192971589_table9759549192919" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Supported Backend types</caption><thead align="left"><tr id="elb_pro_0004__en-us_topic_0000001192971589_row10760184922918"><th align="left" class="cellrowborder" valign="top" width="22.64%" id="mcps1.3.4.4.2.5.1.1"><p id="elb_pro_0004__en-us_topic_0000001192971589_p1076019499297">Backend Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="45.129999999999995%" id="mcps1.3.4.4.2.5.1.2"><p id="elb_pro_0004__en-us_topic_0000001192971589_p17760134910295">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.74%" id="mcps1.3.4.4.2.5.1.3"><p id="elb_pro_0004__en-us_topic_0000001192971589_p4760249182914">Dedicated Load Balancers</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.49%" id="mcps1.3.4.4.2.5.1.4"><p id="elb_pro_0004__en-us_topic_0000001192971589_p187602495297"><span id="elb_pro_0004__ph6896476918">Shared</span> Load Balancers</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_pro_0004__en-us_topic_0000001192971589_row15762154932915"><td class="cellrowborder" valign="top" width="22.64%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p34942393119">ECS</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.129999999999995%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1949493113119">You can use load balancers to distribute incoming traffic across ECSs.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p194941933313">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1749483123116">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row1476384916299"><td class="cellrowborder" valign="top" width="22.64%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p204948317311">BMS</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.129999999999995%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p124944383113">You can use load balancers to distribute incoming traffic across BMSs.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p7494173173113">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p94942383112">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_pro_0004__en-us_topic_0000001192971589_table593918591292:
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_pro_0004__en-us_topic_0000001192971589_table593918591292" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Advanced features</caption><thead align="left"><tr id="elb_pro_0004__en-us_topic_0000001192971589_row2939259132920"><th align="left" class="cellrowborder" valign="top" width="20.01%" id="mcps1.3.4.5.2.5.1.1"><p id="elb_pro_0004__en-us_topic_0000001192971589_p7939105916294">Feature</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.760000000000005%" id="mcps1.3.4.5.2.5.1.2"><p id="elb_pro_0004__en-us_topic_0000001192971589_p2939125910292">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.74%" id="mcps1.3.4.5.2.5.1.3"><p id="elb_pro_0004__en-us_topic_0000001192971589_p6939195972917">Dedicated Load Balancers</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.49%" id="mcps1.3.4.5.2.5.1.4"><p id="elb_pro_0004__en-us_topic_0000001192971589_p199396598294"><span id="elb_pro_0004__ph1050111817911">Shared</span> Load Balancers</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_pro_0004__en-us_topic_0000001192971589_row659585473820"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.5.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p27471216183913">Multiple specifications</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.5.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1074714164399">Load balancers allow you to select appropriate specifications based on your requirements. For details, see <a href="en-us_topic_0287737145.html">Specifications of Dedicated Load Balancers</a>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.5.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p77482016193918">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.5.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p5748151653912">x</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__row385852814127"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.5.2.5.1.1 "><p id="elb_pro_0004__p158585289124">HTTPS support</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.5.2.5.1.2 "><p id="elb_pro_0004__p168583283121">Load balancers can receive HTTPS requests from clients and route them to backend servers.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.5.2.5.1.3 "><p id="elb_pro_0004__p1837183451418">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.5.2.5.1.4 "><p id="elb_pro_0004__p17837123414146">x</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row1593905910296"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.5.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p9748141633914">Mutual authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.5.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p8957194211404">In this case, you need to deploy both the server certificate and client certificate.</p>
+<p id="elb_pro_0004__en-us_topic_0000001192971589_p117481016173920">Mutual authentication is supported only by HTTPS listeners.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.5.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p10748101612395">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.5.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1748111612397">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row1394075992911"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.5.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p12748816113910">SNI</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.5.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1174801663912">Server Name Indication (SNI) is an extension to TLS and is used when a server uses multiple domain names and certificates. After SNI is enabled, certificates corresponding to the domain names are required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.5.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p97481716123910">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.5.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p6749151614393">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row1294155992919"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.5.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p11749616103912">Security policies</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.5.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1474931619399">When you add HTTPS listeners, you can select desired security policies to improve service security. A security policy is a combination of TLS protocols and cipher suites.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.5.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p19749616143911">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.5.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p187491016153920">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _elb_pro_0004__en-us_topic_0000001192971589_table95315574216:
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_pro_0004__en-us_topic_0000001192971589_table95315574216" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Other features</caption><thead align="left"><tr id="elb_pro_0004__en-us_topic_0000001192971589_row1053125174219"><th align="left" class="cellrowborder" valign="top" width="20.01%" id="mcps1.3.4.6.2.5.1.1"><p id="elb_pro_0004__en-us_topic_0000001192971589_p14531855422">Feature</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.760000000000005%" id="mcps1.3.4.6.2.5.1.2"><p id="elb_pro_0004__en-us_topic_0000001192971589_p653115574210">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.74%" id="mcps1.3.4.6.2.5.1.3"><p id="elb_pro_0004__en-us_topic_0000001192971589_p053114514426">Dedicated Load Balancers</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.49%" id="mcps1.3.4.6.2.5.1.4"><p id="elb_pro_0004__en-us_topic_0000001192971589_p053211584218"><span id="elb_pro_0004__ph1984316255914">Shared</span> Load Balancers</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_pro_0004__row799314141913"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__p131539278910">Cross-AZ deployment</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__p111533277915">You can create a load balancer in multiple AZs. Each AZ selects an optimal path to process requests. In addition, the AZs back up each other, improving service processing efficiency and reliability.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__p141531927197">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__p151541527295">x</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__row84010339548"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p20407112314214">Load balancing algorithms</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p10407323114216">Load balancers support weighted round robin, weighted least connections, and source IP hash.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p154071923184217">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p840712236421">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row453210511424"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p440612239424">Load balancing over public and private networks</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><ul id="elb_pro_0004__en-us_topic_0000001192971589_ul293055112515"><li id="elb_pro_0004__en-us_topic_0000001192971589_li8930185118515">Each load balancer on a public network has a public IP address bound to it and routes requests from clients to backend servers over the Internet.</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li182569541953">Load balancers on a private network work within a VPC and route requests from clients to backend servers in the same VPC.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p14407142314425">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p04076231422">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row353255184215"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p134071523154213">Modifying the bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p7407132344210">You can modify the bandwidth used by the EIP bound to the load balancer as required.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p194074231427">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1407223194213">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row155339517424"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p440772314429">Binding/Unbinding an IP address</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p540716234424">You can bind an IP address to a load balancer or unbind the IP address from a load balancer based on service requirements.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p10407192318428">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p164072230429">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row85335554213"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p040714230421">Sticky session</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p9407142364214">If you enable sticky sessions, requests from the same client will be routed to the same backend server during the session.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p17407823184211">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p3407162312424">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row15335514212"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p144072023124211">Access control</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p13515121817615">You can add IP addresses to a whitelist or blacklist to control access to a listener.</p>
+<ul id="elb_pro_0004__en-us_topic_0000001192971589_ul499133619613"><li id="elb_pro_0004__en-us_topic_0000001192971589_li15991436263">A whitelist allows specified IP addresses to access the listener.</li><li id="elb_pro_0004__en-us_topic_0000001192971589_li178161240167">A blacklist denies access from specified IP addresses.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p4407112374213">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p440882354219">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row253414564219"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p166031237843">Health check</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p4603037248">Load balancers periodically send requests to backend servers to check whether they can process requests.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p10604143713419">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p96042371543">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row953410512421"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p340819235421">Certificate management</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p10408223174215">You can create two types of certificates: server certificate and CA certificate. If you need an HTTPS listener, you need to bind a server certificate to it. To enable mutual authentication, you also need to bind a CA certificate to the listener. You can also replace a certificate that is already used by a load balancer.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p9408623144214">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p54081423134213">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row19534135174217"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p124084237423">Tagging</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p0408182354217">If you have a large number of cloud resources, you can assign different tags to the resources to quickly identify them and use these tags to easily manage your resources.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p5408123104215">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p040972304220">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row65357510429"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p194091723194211">Support the display of monitoring metrics.</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p4410132314219">You can use Cloud Eye to monitor load balancers and associated resources and view metrics on the management console.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p8410823184216">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p7410172384213">√</p>
+</td>
+</tr>
+<tr id="elb_pro_0004__en-us_topic_0000001192971589_row35352574212"><td class="cellrowborder" valign="top" width="20.01%" headers="mcps1.3.4.6.2.5.1.1 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p4410523194219">Log auditing</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.760000000000005%" headers="mcps1.3.4.6.2.5.1.2 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p16410102344211">You can use Cloud Trace Service (CTS) to record operations on load balancers and associated resources for query, auditing, and backtracking.</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.74%" headers="mcps1.3.4.6.2.5.1.3 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1041017232423">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.49%" headers="mcps1.3.4.6.2.5.1.4 "><p id="elb_pro_0004__en-us_topic_0000001192971589_p1441013233426">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<a name="elb_fl_0005"></a><a name="elb_fl_0005"></a>
+
+<h1 class="topictitle1">Sequencing Query Results</h1>
+<p id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_p23562876">APIs v2.0 enable the system to sort queried results based on customized keys by adding the <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b842352706155426">sort_key</strong> and <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b842352706155431">sort_dir</strong> parameters to the URL of the list request. <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b306818313155457">sort_key</strong> specifies the parameter used for sequencing results, and <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b842352706155544">sort_dir</strong> specifies whether results are displayed in ascending or descending order. These APIs allow sorting query results by multiple criteria. The number of <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b8423527061567">sort_key</strong> parameters must be equal to that of <strong id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_b84235270615631">sort_dir</strong> parameters. Otherwise, 400 status code is returned.</p>
+<h4 class="sectiontitle">Example Request</h4><pre class="screen" id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_screen29365919">GET /v2.0/networks?sort_key=name&amp;sort_dir=asc&amp;sort_key=status&amp;sort_dir=desc</pre>
+
+<h4 class="sectiontitle">Example Response</h4><pre class="screen" id="elb_fl_0005__en-us_topic_0109430489_en-us_topic_0049143235_screen2134856210552">{
+    "networks": [
+        {
+            "status": "ACTIVE",
+            "subnets": [],
+            "name": "liudongtest ",
+            "admin_state_up": false,
+            "tenant_id": "6fbe9263116a4b68818cf1edce16bc4f",
+            "id": "60c809cb-6731-45d0-ace8-3bf5626421a9"
+        },
+        {
+            "status": "ACTIVE",
+            "subnets": [
+                "132dc12d-c02a-4c90-9cd5-c31669aace04"
+            ],
+            "name": "publicnet",
+            "admin_state_up": true,
+            "tenant_id": "6fbe9263116a4b68818cf1edce16bc4f",
+            "id": "9daeac7c-a98f-430f-8e38-67f9c044e299"
+        },
+        {
+            "status": "ACTIVE",
+            "subnets": [
+                "e25189a8-54df-4948-9396-d8291ffc92a0"
+            ],
+            "name": "testnet01",
+            "admin_state_up": true,
+            "tenant_id": "6fbe9263116a4b68818cf1edce16bc4f",
+            "id": "3d42a0d4-a980-4613-ae76-a2cddecff054"
+        }
+    ]
+}</pre>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_fl_0003.html">General Information About Shared Load Balancers</a>
+
+
+

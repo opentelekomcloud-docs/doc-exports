@@ -1,0 +1,114 @@
+<a name="EN-US_TOPIC_0065820825"></a><a name="EN-US_TOPIC_0065820825"></a>
+
+<h1 class="topictitle1">Adding a Tag to an <span id="text4698566414">ECS</span></h1>
+<div id="body1499653398050"><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p466603">This API is used to add a tag to an <span id="EN-US_TOPIC_0065820825__text6954167248">ECS</span>.</p>
+<p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p11762556135819">You are required to use the HTTP header <strong id="EN-US_TOPIC_0065820825__b842352706165643">X-OpenStack-Nova-API-Version: 2.26</strong> to specify the microversion on the client.</p>
+<div class="section" id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_section31378522222725"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_ul3622491022280"><li id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_li5932847622280">The tag contains a maximum of 80 characters.</li><li id="EN-US_TOPIC_0065820825__li1684610186378">A tag can only consist of digits, letters, hyphens (-), and underscores (_).</li><li id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_li4737309122280">A maximum of 50 tags can be added to an <span id="EN-US_TOPIC_0065820825__text6493791640">ECS</span>.</li><li id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_li3490106422280">An empty tag cannot be created.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_section37794916"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065820825__p1515602182719">PUT /v2.1/{project_id}/servers/{server_id}/tags/{tag}</p>
+<div class="p" id="EN-US_TOPIC_0065820825__p9476162643515"><a href="#EN-US_TOPIC_0065820825__en-us_topic_0057972840_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065820825__en-us_topic_0057972840_table32475667"></a><a name="en-us_topic_0057972840_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_row44937496"><th align="left" class="cellrowborder" valign="top" width="14.729999999999999%" id="mcps1.3.4.3.2.2.4.1.1"><p id="EN-US_TOPIC_0065820825__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.11%" id="mcps1.3.4.3.2.2.4.1.2"><p id="EN-US_TOPIC_0065820825__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75.16000000000001%" id="mcps1.3.4.3.2.2.4.1.3"><p id="EN-US_TOPIC_0065820825__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_row1664874"><td class="cellrowborder" valign="top" width="14.729999999999999%" headers="mcps1.3.4.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.11%" headers="mcps1.3.4.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.16000000000001%" headers="mcps1.3.4.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_row41565035"><td class="cellrowborder" valign="top" width="14.729999999999999%" headers="mcps1.3.4.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p11324657">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.11%" headers="mcps1.3.4.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p44882061">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.16000000000001%" headers="mcps1.3.4.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p11568292">Specifies the <span id="EN-US_TOPIC_0065820825__text1565394063615">ECS</span> ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820825__row074891417316"><td class="cellrowborder" valign="top" width="14.729999999999999%" headers="mcps1.3.4.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__p874919141739">tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.11%" headers="mcps1.3.4.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__p137495141317">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.16000000000001%" headers="mcps1.3.4.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972841_p1415044592918">Specifies the key of the tag to be added.</p>
+<p id="EN-US_TOPIC_0065820825__p141334271371">For details about key rules, see <a href="en-us_topic_0065817686.html">Tag Types</a>.</p>
+<div class="note" id="EN-US_TOPIC_0065820825__note124521913175616"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0065820825__p1745221311560">Tag functions have been upgraded on the public cloud. If the tags added before the function upgrade are in the format of "Key.Value", query tags using "Key".</p>
+<p id="EN-US_TOPIC_0065820825__p213418685710">For example, an existing tag is "a.b". The tag can be queried in the format of "tag=a.b" before and in the format of "tag=a" now according to the new tag rules.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_section9861165814212"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_p7324265193031">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__section488222312016"><h4 class="sectiontitle">Response</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065820825__table1481741123815" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065820825__row1818614389"><th align="left" class="cellrowborder" valign="top" width="20.52%" id="mcps1.3.6.2.2.4.1.1"><p id="EN-US_TOPIC_0065820825__p281816120382">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.259999999999998%" id="mcps1.3.6.2.2.4.1.2"><p id="EN-US_TOPIC_0065820825__p4818161113816">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60.22%" id="mcps1.3.6.2.2.4.1.3"><p id="EN-US_TOPIC_0065820825__p1281812119386">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065820825__row08181516386"><td class="cellrowborder" valign="top" width="20.52%" headers="mcps1.3.6.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__p02447191043">message</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.6.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__p28181710388">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.22%" headers="mcps1.3.6.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__p198186118384">Example: "&lt;br /&gt;&lt;br /&gt;\n\n\n"</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820825__row1632715121249"><td class="cellrowborder" valign="top" width="20.52%" headers="mcps1.3.6.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__p0992522849">code</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.6.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__p380731391">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.22%" headers="mcps1.3.6.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__p185911751841">Example: "201 Created"</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065820825__row36469141444"><td class="cellrowborder" valign="top" width="20.52%" headers="mcps1.3.6.2.2.4.1.1 "><p id="EN-US_TOPIC_0065820825__p972110265417">title</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.259999999999998%" headers="mcps1.3.6.2.2.4.1.2 "><p id="EN-US_TOPIC_0065820825__p137983418919">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.22%" headers="mcps1.3.6.2.2.4.1.3 "><p id="EN-US_TOPIC_0065820825__p145901953949">Example: "Created"</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__section204251290013"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065820825__screen18731282391">PUT https://{endpoint}/v2.1/{project_id}/servers/{server_id}/tags/{tag}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__section38861442507"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065820825__p153512579595">By default, the response is in HTML format.</p>
+<pre class="screen" id="EN-US_TOPIC_0065820825__screen734891310435">&lt;html&gt;
+&lt;head&gt;
+      &lt;title&gt;201 Created&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+      &lt;h1&gt;201 Created&lt;/h1&gt;
+      &lt;br /&gt;&lt;br /&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p id="EN-US_TOPIC_0065820825__p1370517494572">JSON format</p>
+<pre class="screen" id="EN-US_TOPIC_0065820825__screen41874410589">{
+   "message": "&lt;br /&gt;&lt;br /&gt;\n\n\n",
+   "code": "201 Created",
+   "title": "Created"
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065820825__en-us_topic_0057972840_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0108433460.html">Tag Management</a></div>
+</div>
+</div>
+

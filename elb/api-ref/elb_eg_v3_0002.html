@@ -1,0 +1,65 @@
+<a name="elb_eg_v3_0002"></a><a name="elb_eg_v3_0002"></a>
+
+<h1 class="topictitle1">Adding a Listener to a Dedicated Load Balancer</h1>
+<h4 class="sectiontitle">Scenarios</h4><p id="elb_eg_v3_0002__p396912337414">Call the API to add a listener to a dedicated load balancer.</p>
+
+<h4 class="sectiontitle">Prerequisites</h4><ul id="elb_eg_v3_0002__ul1440745218323"><li id="elb_eg_v3_0002__li3407452183210">You have created a dedicated load balancer.</li><li id="elb_eg_v3_0002__li41840546322">You have obtained the ID of the dedicated load balancer.</li></ul>
+
+<h4 class="sectiontitle">Procedure</h4><ol id="elb_eg_v3_0002__ol54540221397"><li id="elb_eg_v3_0002__li19710910192810">Add a listener.<ol type="a" id="elb_eg_v3_0002__ol16710810152814"><li id="elb_eg_v3_0002__li197105105282">Send <strong id="elb_eg_v3_0002__b6143626121919">POST https://</strong><em id="elb_eg_v3_0002__i4153192651910">{elb_endpoint}</em><strong id="elb_eg_v3_0002__b15154112661912">/v3/</strong><em id="elb_eg_v3_0002__i14156162651911">{project_id}</em><strong id="elb_eg_v3_0002__b115792611910">/elb/listeners</strong>. <em id="elb_eg_v3_0002__i2157726101913">project_id</em> indicates the project ID.</li><li id="elb_eg_v3_0002__li171091082816">Add <strong id="elb_eg_v3_0002__b1461644516195">X-Auth-Token</strong> to the request header.</li><li id="elb_eg_v3_0002__li7710410122817">Ensure that the following parameters are passed in the request body:<pre class="screen" id="elb_eg_v3_0002__screen1697543293113">{
+	"listener": {
+ 		"protocol_port": 80, // Frontend port. The listener will use this port to receive requests.
+		"protocol": "HTTP", // Frontend protocol. The listener will use this protocol to receive requests.
+		"loadbalancer_id": "f77281cb-9f58-4347-8f82-2180d8bea789", // Load balancer that the listener is added to
+		"name": "my_listener" // Listener name
+	}
+}</pre>
+</li><li id="elb_eg_v3_0002__li2711141092814">Check the response.<ul id="elb_eg_v3_0002__ul147115109283"><li id="elb_eg_v3_0002__li1071151018288">The request is successful if the following response is displayed:<pre class="screen" id="elb_eg_v3_0002__screen162291142133118">{
+    "listener": {
+        "id": "90ad2705-4ffd-43d3-8f75-af8086bde841",
+        "name": "my_listener",
+        "protocol_port": 80,
+        "protocol": "HTTP",
+        "description": "",
+        "default_tls_container_ref": null,
+        "admin_state_up": true,
+        "loadbalancers": [
+            {
+                "id": "f77281cb-9f58-4347-8f82-2180d8bea789"
+            }
+        ],
+        "client_ca_tls_container_ref": null,
+        "project_id": "057ef081eb00d2732fd1c01a9be75e6f",
+        "sni_container_refs": [],
+        "connection_limit": -1,
+        "default_pool_id": null,
+        "tls_ciphers_policy": null,
+        "tags": [],
+        "created_at": "2020-11-21T03:09:13Z",
+        "updated_at": "2020-11-21T03:09:13Z",
+        "http2_enable": false,
+        "insert_headers": {
+            "X-Forwarded-ELB-IP": false,
+            "X-Forwarded-Host": true,
+            "X-Forwarded-For-Port": false,
+            "X-Forwarded-Port": false
+        },
+        "member_timeout": 60,
+        "client_timeout": 60,
+        "keepalive_timeout": 60,
+        "ipgroup": null,
+        "enable_member_retry": true,
+        "transparent_client_ip_enable": true
+    },
+    "request_id": "fcd61ee6a6a6c673c65fa0df0577fed9"
+}</pre>
+</li><li id="elb_eg_v3_0002__li15711121014289">If the request is abnormal, locate the fault by referring to <a href="errorcode.html">HTTP Status Codes for Dedicated Load Balancers</a>.</li></ul>
+</li></ol>
+</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_eg_v3_0000.html">Examples</a>
+
+
+

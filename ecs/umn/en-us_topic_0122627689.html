@@ -1,0 +1,51 @@
+<a name="EN-US_TOPIC_0122627689"></a><a name="EN-US_TOPIC_0122627689"></a>
+
+<h1 class="topictitle1">Changing the Login Password on an <span id="text197143955217">ECS</span></h1>
+<div id="body1532068415229"><div class="section" id="EN-US_TOPIC_0122627689__section11722115773514"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0122627689__p8397174115130">This section describes how to change the password for logging in to an <span id="EN-US_TOPIC_0122627689__text1491821105215">ECS</span> when the password is about to expire, the password is forgotten, or you are logging in to the <span id="EN-US_TOPIC_0122627689__text132081103550">ECS</span> for the first time. It is a good practice to change the initial password upon the first login.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0122627689__section3844435019"><h4 class="sectiontitle">Prerequisites</h4><p id="EN-US_TOPIC_0122627689__p760159135013">The <span id="EN-US_TOPIC_0122627689__text56101159201912">ECS</span> can be logged in.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0122627689__section8845441181739"><h4 class="sectiontitle">Background</h4><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0021426802_p6815706202029"><a href="#EN-US_TOPIC_0122627689__en-us_topic_0021426802_table4381109318958">Table 1</a> shows the <span id="EN-US_TOPIC_0122627689__text849616018206">ECS</span> password complexity requirements.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0122627689__en-us_topic_0021426802_table4381109318958"></a><a name="en-us_topic_0021426802_table4381109318958"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0122627689__en-us_topic_0021426802_table4381109318958" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Password complexity requirements</caption><thead align="left"><tr id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row925712618958"><th align="left" class="cellrowborder" valign="top" width="18.000000000000004%" id="mcps1.3.3.3.2.4.1.1"><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p1162970218958">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.910000000000004%" id="mcps1.3.3.3.2.4.1.2"><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p248177818958">Requirement</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.090000000000003%" id="mcps1.3.3.3.2.4.1.3"><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6680635518958">Example Value</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_row4260571318958"><td class="cellrowborder" valign="top" width="18.000000000000004%" headers="mcps1.3.3.3.2.4.1.1 "><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p2851073918958">Password</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.910000000000004%" headers="mcps1.3.3.3.2.4.1.2 "><ul id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul5961106018958"><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li6376657018958">Consists of 8 to 26 characters. </li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li52807732181018">Contains at least three of the following character types:<ul id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_ul24583583181022"><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li30443664181018">Uppercase letters</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li4078050181018">Lowercase letters</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li29325375181018">Digits</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_li132021431143219">Special characters: $!@%-_=+[]:./^,{}?</li></ul>
+</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li38450401173547">Cannot contain the username or the username spelled backwards.</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_li531840181018">Cannot contain more than two consecutive characters in the same sequence as they appear in the username. (This requirement applies only to Windows <span id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_text153189271104">ECS</span>s.)</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.090000000000003%" headers="mcps1.3.3.3.2.4.1.3 "><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_en-us_topic_0067909751_en-us_topic_0021426802_p6481855218958">YNbUwp!dUc9MClnv</p>
+<div class="note" id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_note18511011891"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0122627689__en-us_topic_0035643949_p351011796">The example password is generated randomly. Do not use it.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0122627689__section5482101418386"><h4 class="sectiontitle">Windows</h4><ol id="EN-US_TOPIC_0122627689__ol23004457215035"><li id="EN-US_TOPIC_0122627689__li5504163011320">Log in to the <span id="EN-US_TOPIC_0122627689__text64483292017">ECS</span>.<p id="EN-US_TOPIC_0122627689__p1366616322038">For details, see <a href="en-us_topic_0092494943.html">Login Overview</a>.</p>
+</li><li id="EN-US_TOPIC_0122627689__li47245438105630">Press <strong id="EN-US_TOPIC_0122627689__b84235270601135">Win+R</strong> to start the <strong id="EN-US_TOPIC_0122627689__b84235270601228">Run</strong> dialog box.</li><li id="EN-US_TOPIC_0122627689__li45726854105714">Enter <strong id="EN-US_TOPIC_0122627689__b842352706155117">cmd</strong> to open the command-line interface (CLI) window.</li><li id="EN-US_TOPIC_0122627689__li3687176215035">Run the following command to change the password (the new password must meet the requirements described in <a href="#EN-US_TOPIC_0122627689__en-us_topic_0021426802_table4381109318958">Table 1</a>):<p id="EN-US_TOPIC_0122627689__p28751713215144"><strong id="EN-US_TOPIC_0122627689__b553554283152234">net user </strong><strong id="EN-US_TOPIC_0122627689__b435775987152234">Administrator </strong><em id="EN-US_TOPIC_0122627689__i2075987327152234">New password</em></p>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0122627689__section114862031133811"><h4 class="sectiontitle">Linux</h4><ol id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_ol58530541202027"><li id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_li57012826202027">Use the existing key file to log in to the <span id="EN-US_TOPIC_0122627689__text1018418125201">ECS</span> as user <strong id="EN-US_TOPIC_0122627689__b991892545614">root</strong> through SSH.<p id="EN-US_TOPIC_0122627689__p1916414085020">For details, see <a href="en-us_topic_0017955380.html">Login Using an SSH Key</a>.</p>
+</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_li54636160202027">Run the following command to reset the password of user <strong id="EN-US_TOPIC_0122627689__b31040509104828">root</strong>:<p id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_p63452839202027"><strong id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_b34204642202027">passwd</strong></p>
+<p id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_p39406326202027">To reset the password of another user, replace <strong id="EN-US_TOPIC_0122627689__b1665417462416">passwd</strong> with <strong id="EN-US_TOPIC_0122627689__b1865464616418">passwd username</strong>.</p>
+</li><li id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_li19112621202027">Enter the new password as prompted. Ensure that the new password meets the requirements described in <a href="#EN-US_TOPIC_0122627689__en-us_topic_0021426802_table4381109318958">Table 1</a>.<pre class="screen" id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_screen5410559911038">New password:
+Retype new password:</pre>
+<div class="p" id="EN-US_TOPIC_0122627689__p89426584018">If the following information is displayed, the password has been changed:<pre class="screen" id="EN-US_TOPIC_0122627689__en-us_topic_0021427650_screen11402728202027">passwd: password updated successfully</pre>
+</div>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0140313881.html">Passwords and Key Pairs</a></div>
+</div>
+</div>
+

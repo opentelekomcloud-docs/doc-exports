@@ -1,0 +1,76 @@
+<a name="en-us_elb_01_0004"></a><a name="en-us_elb_01_0004"></a>
+
+<h1 class="topictitle1">Load Balancing on a Public or Private Network</h1>
+<p id="en-us_elb_01_0004__p66271919200">A load balancer can work on either a public or private network.</p>
+<h4 class="sectiontitle">Load Balancing on a Public Network</h4><p id="en-us_elb_01_0004__elb_ug_fz_0002_p4457188315333">You can bind an EIP to a load balancer so that it can receive requests from clients on the Internet and route the requests to backend servers.</p>
+<span class="figcap"><b>Figure 1 </b>Load balancing on a public network</span><br><span><img class="vsd" id="en-us_elb_01_0004__elb_ug_fz_0002_image15180012445" src="en-us_image_0000001135576038.png"></span>
+
+<h4 class="sectiontitle">Load Balancing on a Private Network</h4><p id="en-us_elb_01_0004__elb_ug_fz_0002_p4740880415353">A load balancer has only a private IP address to receive requests from clients in a VPC and route the requests to backend servers in the same VPC. This type of load balancer can only be accessed in a VPC.</p>
+<span class="figcap"><b>Figure 2 </b>Load balancing on a private network</span><br><span><img class="vsd" id="en-us_elb_01_0004__elb_ug_fz_0002_image189652253468" src="en-us_image_0000001181535567.png"></span>
+
+<h4 class="sectiontitle">Network Types and Load Balancer Types</h4>
+.. _en-us_elb_01_0004__table18627142116143:
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_elb_01_0004__table18627142116143" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Dedicated load balancers and their network types</caption><thead align="left"><tr id="en-us_elb_01_0004__row1462810218147"><th align="left" class="cellrowborder" valign="top" width="20.01200120012001%" id="mcps1.3.4.2.2.4.1.1"><p id="en-us_elb_01_0004__p1162915214147">Load Balancer Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.79167916791679%" id="mcps1.3.4.2.2.4.1.2"><p id="en-us_elb_01_0004__p196291921161418">Network Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63.19631963196319%" id="mcps1.3.4.2.2.4.1.3"><p id="en-us_elb_01_0004__p4629421131419">Network Type</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_elb_01_0004__row116291621181420"><td class="cellrowborder" rowspan="3" valign="top" width="20.01200120012001%" headers="mcps1.3.4.2.2.4.1.1 "><p id="en-us_elb_01_0004__p76291121111416">Dedicated load balancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.79167916791679%" headers="mcps1.3.4.2.2.4.1.2 "><p id="en-us_elb_01_0004__p46298214143">Public IPv4 network</p>
+</td>
+<td class="cellrowborder" valign="top" width="63.19631963196319%" headers="mcps1.3.4.2.2.4.1.3 "><p id="en-us_elb_01_0004__p46291421121419">Each load balancer has an IPv4 EIP bound to enable it to route requests over the Internet.</p>
+</td>
+</tr>
+<tr id="en-us_elb_01_0004__row1162972113146"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.2.4.1.1 "><p id="en-us_elb_01_0004__p15629102151410">Private IPv4 network</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.2.2.4.1.2 "><p id="en-us_elb_01_0004__p962912116148">Each load balancer has only a private IPv4 address and can route requests in a VPC.</p>
+</td>
+</tr>
+<tr id="en-us_elb_01_0004__row1562922116140"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.2.4.1.1 "><p id="en-us_elb_01_0004__p1762972112147">IPv6 network</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.2.2.4.1.2 "><p id="en-us_elb_01_0004__p1062920212147">Each load balancer has an IPv6 address bound.</p>
+<ul id="en-us_elb_01_0004__ul925154522215"><li id="en-us_elb_01_0004__li122511345182216">If the IPv6 address is added to a shared bandwidth, the load balancer can route requests over the Internet.</li><li id="en-us_elb_01_0004__li1047941182310">If the IPv6 address is not added to a shared bandwidth, the load balancer can route requests only in a VPC.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _en-us_elb_01_0004__table17299338192413:
+
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_elb_01_0004__table17299338192413" frame="border" border="1" rules="all"><caption><b>Table 2 </b><span id="en-us_elb_01_0004__ph122521083017">Shared</span> load balancers and their network types</caption><thead align="left"><tr id="en-us_elb_01_0004__row229915389243"><th align="left" class="cellrowborder" valign="top" width="25.002500250025%" id="mcps1.3.4.3.2.4.1.1"><p id="en-us_elb_01_0004__p1629913812420">Load Balancer Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.991399139913991%" id="mcps1.3.4.3.2.4.1.2"><p id="en-us_elb_01_0004__p5299173872410">Network Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="61.00610061006101%" id="mcps1.3.4.3.2.4.1.3"><p id="en-us_elb_01_0004__p52991238112412">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_elb_01_0004__row8299143822415"><td class="cellrowborder" rowspan="2" valign="top" width="25.002500250025%" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_elb_01_0004__p8299203813247"><span id="en-us_elb_01_0004__ph143143917124">Shared</span> load balancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.991399139913991%" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_elb_01_0004__p18299338102418">Public network</p>
+</td>
+<td class="cellrowborder" valign="top" width="61.00610061006101%" headers="mcps1.3.4.3.2.4.1.3 "><p id="en-us_elb_01_0004__p93361054203415">Load balancers can route requests on both public and private networks.</p>
+<ul id="en-us_elb_01_0004__ul11227131163518"><li id="en-us_elb_01_0004__li15228171112359">Each load balancer has an EIP bound to enable it to route requests over the Internet.</li><li id="en-us_elb_01_0004__li19228811183512">The load balancer also has a private IP address and can route requests in a VPC.</li></ul>
+</td>
+</tr>
+<tr id="en-us_elb_01_0004__row15299103832419"><td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.4.1.1 "><p id="en-us_elb_01_0004__p172992384249">Private network</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.4.1.2 "><p id="en-us_elb_01_0004__p6299153815244">Each load balancer has only a private IP address and can route requests in a VPC.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+<a name="modelarts_23_0206"></a><a name="modelarts_23_0206"></a>
+
+<h1 class="topictitle1">Importing a Meta Model from a Container Image</h1>
+<p id="modelarts_23_0206__en-us_topic_0207629477_p8060118">For AI engines that are not supported by ModelArts, you can import the model you compile to ModelArts from custom images.</p>
+<h4 class="sectiontitle">Prerequisites</h4><ul id="modelarts_23_0206__en-us_topic_0207629477_ul226794853118"><li id="modelarts_23_0206__en-us_topic_0207629477_li163701602226">For details about the specifications and description of custom images, see <a href="modelarts_23_0086.html">Importing a Model Using a Custom Image</a>.</li><li id="modelarts_23_0206__en-us_topic_0207629477_li2683103014253">The configuration must be provided for a model that you have developed and trained. The file must comply with ModelArts specifications. For details about the specifications, see <a href="modelarts_23_0092.html">Specifications for Compiling the Model Configuration File</a>. After the compilation is complete, upload the file to the specified OBS directory.</li><li id="modelarts_23_0206__en-us_topic_0207629477_li15774172132115">The OBS directory you use and ModelArts are in the same region.</li></ul>
+
+<h4 class="sectiontitle">Procedure</h4><ol id="modelarts_23_0206__en-us_topic_0207629477_ol361819292368"><li id="modelarts_23_0206__en-us_topic_0207629477_li1580718447312">Log in to the ModelArts management console, and choose <strong id="modelarts_23_0206__en-us_topic_0207629477_b1186710582414">Model Management</strong> &gt; <strong id="modelarts_23_0206__en-us_topic_0207629477_b178682583420">Models</strong> in the left navigation pane. The <strong id="modelarts_23_0206__en-us_topic_0207629477_b8869115820419">Models</strong> page is displayed.</li><li id="modelarts_23_0206__en-us_topic_0207629477_li861952913360">Click <strong id="modelarts_23_0206__en-us_topic_0207629477_b183157319510">Import</strong> in the upper left corner. The <strong id="modelarts_23_0206__en-us_topic_0207629477_b123161338519">Import</strong> page is displayed.</li><li id="modelarts_23_0206__en-us_topic_0207629477_li2619629133610">On the <strong id="modelarts_23_0206__en-us_topic_0207629477_b182164415513">Import</strong> page, set related parameters.<ol type="a" id="modelarts_23_0206__en-us_topic_0207629477_ol78982017184013"><li id="modelarts_23_0206__en-us_topic_0207629477_li1883720166406">Set basic information about the model. For details about the parameters, see <a href="#modelarts_23_0206__en-us_topic_0207629477_table19428112584211">Table 1</a>.
+.. _modelarts_23_0206__en-us_topic_0207629477_table19428112584211:
+
+<a name="modelarts_23_0206__en-us_topic_0207629477_table19428112584211"></a><a name="en-us_topic_0207629477_table19428112584211"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0206__en-us_topic_0207629477_table19428112584211" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters of basic model information</caption><thead align="left"><tr id="modelarts_23_0206__en-us_topic_0207629477_row2042972515427"><th align="left" class="cellrowborder" valign="top" width="18.91%" id="mcps1.3.3.2.3.2.1.2.2.3.1.1"><p id="modelarts_23_0206__en-us_topic_0207629477_p18429225134213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="81.08999999999999%" id="mcps1.3.3.2.3.2.1.2.2.3.1.2"><p id="modelarts_23_0206__en-us_topic_0207629477_p1742912544217">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0206__en-us_topic_0207629477_row164292250428"><td class="cellrowborder" valign="top" width="18.91%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p1842982518421">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.08999999999999%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p10429132534219">Model name. The value can contain 1 to 64 visible characters, including Chinese characters. Only letters, Chinese characters, digits, hyphens (-), and underscores (_) are allowed.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row5429112564217"><td class="cellrowborder" valign="top" width="18.91%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p14298255423">Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.08999999999999%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p11429125104218">Version of the model to be created. For the first import, the default value is <strong id="modelarts_23_0206__en-us_topic_0207629477_b12223147514">0.0.1</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row1458062121419"><td class="cellrowborder" valign="top" width="18.91%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p327817225912">Label</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.08999999999999%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p182787221697">Model label. A maximum of five model labels are supported.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row18429132512429"><td class="cellrowborder" valign="top" width="18.91%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p24294259424">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.08999999999999%" headers="mcps1.3.3.2.3.2.1.2.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p1042942514210">Brief description of the model</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="modelarts_23_0206__en-us_topic_0207629477_li940110124413">Select the meta model source and set related parameters. <strong id="modelarts_23_0206__en-us_topic_0207629477_b113481219055">Meta Model Source</strong> has four options based on the scenario. For details, see <a href="modelarts_23_0052.html#modelarts_23_0052__en-us_topic_0171858287_section179419351998">Methods of Importing a Model</a>. Set <strong id="modelarts_23_0206__en-us_topic_0207629477_b163458231656">Meta Model Source</strong> to <strong id="modelarts_23_0206__en-us_topic_0207629477_b8345123459">Container image</strong>. For details about the parameters, see <a href="#modelarts_23_0206__en-us_topic_0207629477_table104931647171713">Table 2</a>.
+.. _modelarts_23_0206__en-us_topic_0207629477_table104931647171713:
+
+<a name="modelarts_23_0206__en-us_topic_0207629477_table104931647171713"></a><a name="en-us_topic_0207629477_table104931647171713"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0206__en-us_topic_0207629477_table104931647171713" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters of the meta model source </caption><thead align="left"><tr id="modelarts_23_0206__en-us_topic_0207629477_row14487647101714"><th align="left" class="cellrowborder" valign="top" width="26.33%" id="mcps1.3.3.2.3.2.2.6.2.3.1.1"><p id="modelarts_23_0206__en-us_topic_0207629477_p448744701719">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="73.67%" id="mcps1.3.3.2.3.2.2.6.2.3.1.2"><p id="modelarts_23_0206__en-us_topic_0207629477_p124875475173">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0206__en-us_topic_0207629477_row517284302310"><td class="cellrowborder" valign="top" width="26.33%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p117284312239">Container Image Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.67%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p1266423518249">Click <span><img id="modelarts_23_0206__en-us_topic_0207629477_image983352417157" src="en-us_image_0000001157081003.png"></span> to import the model image from the container image. The model is of the Image type, and you do not need to use <span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname0919121018164"><b>swr_location</b></span> in the configuration file to specify the image location.</p>
+<p id="modelarts_23_0206__en-us_topic_0207629477_p12493184771713">For details about how to create a custom image, see <a href="modelarts_23_0084.html">Introduction to Custom Images</a>.</p>
+<span class="notetitle"> NOTE: </span><p id="modelarts_23_0206__en-us_topic_0207629477_p94938476173">The model image you select will be shared with the administrator, so ensure you have the permission to share the image (images shared with other accounts are unsupported). When you deploy a service, ModelArts deploys the image as an inference service. Ensure that your image can be properly started and provide an inference interface.</p>
+
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row29331240162319"><td class="cellrowborder" valign="top" width="26.33%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p541115218358">Deployment Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.67%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p650465117507">After the model is imported, select the service type that the model is deployed. When deploying a service, you can only deploy the service type selected here. For example, if you only select <strong id="modelarts_23_0206__en-us_topic_0207629477_b1440811579353">Real-time services</strong> here, you can only deploy real-time services after importing the model. </p>
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row1475083810235"><td class="cellrowborder" valign="top" width="26.33%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p1093314017236">Configuration File</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.67%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p9750193872311">The <span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname7768205418225"><b>Import from OBS</b></span> and <span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname3769554142215"><b>Edit online</b></span> methods are available. The configuration file must comply with certain specifications in <a href="modelarts_23_0091.html">Model Package Specifications</a>. If you select <span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname199276178244"><b>Import from OBS</b></span>, you need to specify the OBS path for storing the configuration file. You can enable <span class="uicontrol" id="modelarts_23_0206__en-us_topic_0207629477_uicontrol1592841702416"><b>View Configuration File</b></span> to view or edit the configuration file online.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0206__en-us_topic_0207629477_row16323132522313"><td class="cellrowborder" valign="top" width="26.33%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.1 "><p id="modelarts_23_0206__en-us_topic_0207629477_p27501638112316">Parameter Configuration</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.67%" headers="mcps1.3.3.2.3.2.2.6.2.3.1.2 "><p id="modelarts_23_0206__en-us_topic_0207629477_p6324172582316">Click <span><img id="modelarts_23_0206__en-us_topic_0207629477_image174917225248" src="en-us_image_0000001157081001.png"></span> on the right to view the input and output parameters of the model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="modelarts_23_0206__en-us_topic_0207629477_li12485203315">Set the inference specifications and model description.<ul id="modelarts_23_0206__en-us_topic_0207629477_ul883711401632"><li id="modelarts_23_0206__en-us_topic_0207629477_li8837164012316"><span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname10214315519"><b>Min. Inference Specs</b></span>: If your model requires certain resources to complete inference, you can configure this parameter to set the minimum specifications required for normal inference after the model is deployed as a service. In later versions, the system will allocate resources based on the inference specifications in service deployment. You can also modify the specifications as required during deployment. Note that the specifications configured here are valid only when real-time services are deployed and the dedicated resource pool is used.</li><li id="modelarts_23_0206__en-us_topic_0207629477_li683712403311"><span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname02614613515"><b>Model Description</b></span>: To help other model developers better understand and use your models, provide model descriptions. Click <span class="parmname" id="modelarts_23_0206__en-us_topic_0207629477_parmname1834515518242"><b>Add Model Description</b></span> and then set the document name and URL. A maximum of three model descriptions are supported.</li></ul>
+</li><li id="modelarts_23_0206__en-us_topic_0207629477_li73991610194118">Check the information and click <span class="uicontrol" id="modelarts_23_0206__en-us_topic_0207629477_uicontrol1338914597483"><b>Next</b></span>. The model is imported.<p id="modelarts_23_0206__en-us_topic_0207629477_p82831624818">In the model list, you can view the imported model and its version. When the model status changes to <strong id="modelarts_23_0206__en-us_topic_0207629477_b1877510184243">Normal</strong>, the model is successfully imported. On this page, you can create new versions, quickly deploy models, publish models to the market, and perform other operations.</p>
+</li></ol>
+</li></ol>
+
+<h4 class="sectiontitle">Follow-Up Procedure</h4><ul id="modelarts_23_0206__en-us_topic_0207629477_ul773064102410"><li id="modelarts_23_0206__en-us_topic_0207629477_li273024122411"><strong id="modelarts_23_0206__en-us_topic_0207629477_b168952682615"><a href="modelarts_23_0058.html">Model Deployment</a></strong>: On the <span class="wintitle" id="modelarts_23_0206__en-us_topic_0207629477_wintitle7106821122620"><b>Models</b></span> page, click the triangle next to a model name to view all versions of the model. Locate the row that contains the target version, click <strong id="modelarts_23_0206__en-us_topic_0207629477_b207841285241">Deploy</strong> in the <strong id="modelarts_23_0206__en-us_topic_0207629477_b17869282249">Operation</strong> column, and select the deployment type configured when importing the model from the drop-down list. On the <strong id="modelarts_23_0206__en-us_topic_0207629477_b151051307248">Deploy</strong> page, set parameters by referring to <a href="modelarts_23_0058.html">Introduction to Model Deployment</a>.</li></ul>
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0204.html">Importing a Model</a>
+
+
+

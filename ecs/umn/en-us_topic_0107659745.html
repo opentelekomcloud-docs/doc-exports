@@ -1,0 +1,243 @@
+<a name="EN-US_TOPIC_0107659745"></a><a name="EN-US_TOPIC_0107659745"></a>
+
+<h1 class="topictitle1">How Can I View and Modify Kernel Parameters of a Linux <span id="text1272172983218">ECS</span>?</h1>
+<div id="body1524141066989"><p id="EN-US_TOPIC_0107659745__p06154263316">Modify the kernel parameters only if the parameter settings affect your services. Kernel parameters vary depending on OS versions. If the parameter settings must be modified,</p>
+<ul id="EN-US_TOPIC_0107659745__ul9135202313339"><li id="EN-US_TOPIC_0107659745__li111351237331">Ensure that the target parameter settings meet service requirements.</li><li id="EN-US_TOPIC_0107659745__li12135192320332">Modify the correct kernel parameters. For details about common kernel parameters, see <a href="#EN-US_TOPIC_0107659745__table15253154115313">Table 1</a>.</li><li id="EN-US_TOPIC_0107659745__li0135123193315">Back up key <span id="EN-US_TOPIC_0107659745__text108959305326">ECS</span> data before modifying kernel parameter settings.</li></ul>
+<div class="section" id="EN-US_TOPIC_0107659745__section192621849125219"><h4 class="sectiontitle">Background</h4>
+<div class="tablenoborder"><a name="EN-US_TOPIC_0107659745__table15253154115313"></a><a name="table15253154115313"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0107659745__table15253154115313" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Common Linux kernel parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0107659745__row925310485320"><th align="left" class="cellrowborder" valign="top" width="34%" id="mcps1.3.3.2.2.3.1.1"><p id="EN-US_TOPIC_0107659745__p3253114125316">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66%" id="mcps1.3.3.2.2.3.1.2"><p id="EN-US_TOPIC_0107659745__p12253443539">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0107659745__row1325317420532"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p62792019155413">net.core.rmem_default</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p9279519185414">Specifies the default size (in bytes) of the window for receiving TCP data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1325364125316"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p14279111965414">net.core.rmem_max</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p2279131918542">Specifies the maximum size (in bytes) of the window for receiving TCP data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row10253740532"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p10279171975412">net.core.wmem_default</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p9279181916549">Specifies the default size (in bytes) of the window for transmitting TCP data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row42546475310"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p11279201917540">net.core.wmem_max</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p72792197542">Specifies the maximum size (in bytes) of the window for transmitting TCP data.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row13254164165313"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p13279131965411">net.core.netdev_max_backlog</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p15279171911549">Specifies the maximum number of packets that can be sent to a queue when the rate at which each network port receives packets is faster than the rate at which the kernel processes these packets.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row172541349536"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1327941955416">net.core.somaxconn</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p112791119135414">Defines the maximum length of the listening queue for each port in the system. This parameter applies globally.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1125411415318"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p427921911547">net.core.optmem_max</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p10279181917545">Specifies the maximum size of the buffer allowed by each socket.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1191115175317"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p4279161912542">net.ipv4.tcp_mem</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p1027911191548">Uses the TCP stack to show memory usage in memory pages (4 KB generally).</p>
+<p id="EN-US_TOPIC_0107659745__p132791019185418">The first value is the lower limit of memory usage.</p>
+<p id="EN-US_TOPIC_0107659745__p1427917193540">The second value is the upper limit of the load added to the buffer when the memory is overloaded.</p>
+<p id="EN-US_TOPIC_0107659745__p727919198540">The third value is the upper limit of memory usage. When this value is reached, packets can be discarded to reduce memory usage. For a large BDP, increase the parameter value as needed. The unit of this parameter is memory page but not byte.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row612110125418"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p2279121935416">net.ipv4.tcp_rmem</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p0279181915548">Specifies the memory used by sockets for automatic optimization.</p>
+<p id="EN-US_TOPIC_0107659745__p12791119125416">The first value is the minimum number of bytes allocated to the socket buffer for receiving data.</p>
+<p id="EN-US_TOPIC_0107659745__p127921916546">The second value is the default value, which is overwritten by <strong id="EN-US_TOPIC_0107659745__b8423527062018">rmem_default</strong>. The buffer size can increase to this value when the system load is not heavy.</p>
+<p id="EN-US_TOPIC_0107659745__p327915192549">The third value is the maximum number of bytes allocated to the socket buffer for receiving data. This value is overwritten by <strong id="EN-US_TOPIC_0107659745__b84235270620328">rmem_max</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row4484131211542"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p152791119185415">net.ipv4.tcp_wmem</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p62791919165419">Specifies the memory used by sockets for automatic optimization.</p>
+<p id="EN-US_TOPIC_0107659745__p13279121985415">The first value is the minimum number of bytes allocated to the socket buffer for transmitting data.</p>
+<p id="EN-US_TOPIC_0107659745__p10279131945411">The second value is the default value, which is overwritten by <strong id="EN-US_TOPIC_0107659745__b1039819869">wmem_default</strong>. The buffer size can increase to this value when the system load is not heavy.</p>
+<p id="EN-US_TOPIC_0107659745__p1127931955419">The third value is the maximum number of bytes allocated to the socket buffer for transmitting data. This value is overwritten by <strong id="EN-US_TOPIC_0107659745__b1419819215">wmem_max</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row9484201215410"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p927991916543">net.ipv4.tcp_keepalive_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p19279181945420">Specifies the interval at which keepalive detection messages are sent in seconds for checking TCP connections.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1348411205416"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p112791419145413">net.ipv4.tcp_keepalive_intvl</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p12279181945411">Specifies the interval at which keepalive detection messages are resent in seconds when no response is received.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row748491245418"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p10279619115413">net.ipv4.tcp_keepalive_probes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p1127931917544">Specifies the maximum number of keepalive detection messages that are sent to determine a TCP connection failure.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row44849127542"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p92793194545">net.ipv4.tcp_sack</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p62792190549">Enables selective acknowledgment (value <strong id="EN-US_TOPIC_0107659745__b842352706201018">1</strong> indicates enabled). This configuration allows the transmitter to resend only lost packets, thereby improving system performance. However, this configuration will increase the CPU usage. You are suggested to enable selective acknowledgment for WAN communication.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row2121903549"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p102801519185417">net.ipv4.tcp_fack</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p1628016193546">Enables forwarding acknowledgment for selective acknowledgment (SACK), thereby reducing congestion. You are suggested to enable forwarding acknowledgment.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1121180195411"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p12280121914549">net.ipv4.tcp_timestamps</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p8280141919544">Specifies a TCP timestamp, which will add 12 bytes in the TCP packet header. This configuration calculates RTT using RFC1323, a more precise retransmission method upon timeout than retransmission. You are suggested to use this configuration for higher system performance.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1812117015543"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p16280191918544">net.ipv4.tcp_window_scaling</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p628021925411">Enables RFC1323-based window scaling by setting the parameter value to <strong id="EN-US_TOPIC_0107659745__b842352706202458">1</strong> if the TCP window is larger than 64 KB. The maximum TCP window is 1 GB. This parameter takes effect only when window scaling is enabled on both ends of the TCP connection.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row5732156145420"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1828071913544">net.ipv4.tcp_syncookies</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p1128011915415">Specifies whether to enable TCP synchronization (<strong id="EN-US_TOPIC_0107659745__b842352706202721">syncookie</strong>). This configuration prevents socket overloading when a large number of connections are attempted to set up. <strong id="EN-US_TOPIC_0107659745__b842352706202743">CONFIG_SYN_COOKIES</strong> must be enabled in the kernel for compilation. The default value is <strong>0</strong>, indicating that TCP synchronization is disabled.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row157321062544"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1428018197542">net.ipv4.tcp_tw_reuse</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p19645218349">Specifies whether a <strong id="EN-US_TOPIC_0107659745__b1127844296195551">TIME-WAIT</strong> socket (<strong id="EN-US_TOPIC_0107659745__b842352706203136">TIME-WAIT</strong> port) can be used for new TCP connections.</p>
+<div class="note" id="EN-US_TOPIC_0107659745__note1597821818446"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p1978618144412">This parameter cannot be set to <strong id="EN-US_TOPIC_0107659745__b842352706204934">1</strong> if NAT is enabled. Otherwise, an error will occur in remote <span id="EN-US_TOPIC_0107659745__text1520172825214">ECS</span> logins.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row12732161544"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p228031935420">net.ipv4.tcp_tw_recycle</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p19857534103412">Allows fast recycle of <strong id="EN-US_TOPIC_0107659745__b842352706203228">TIME-WAIT</strong> sockets.</p>
+<div class="note" id="EN-US_TOPIC_0107659745__note255910298445"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p1755982917442">Do not set this parameter to <strong id="EN-US_TOPIC_0107659745__b1806568119">1</strong> if NAT is enabled. Otherwise, an error will occur during remote <span id="EN-US_TOPIC_0107659745__text171127552612">ECS</span> logins.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row207320620546"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p828131912544">net.ipv4.tcp_fin_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p528121915542">Specifies the time (in seconds) during which a socket TCP connection that is disconnected from the local end remains in the <strong id="EN-US_TOPIC_0107659745__b842352706201143">FIN-WAIT-2</strong> state. Process suspension may be caused by the disconnection from the peer end, continuous connection from the peer end, or other reasons.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row6732156105411"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1428181912547">net.ipv4.ip_local_port_range</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p62812019195414">Specifies local port numbers allowed by TCP/UDP.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row373218619548"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p20281219145419">net.ipv4.tcp_max_syn_backlog</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p628191911540">Specifies the maximum number of connection requests that are not acknowledged by the peer end and that can be stored in the queue. The default value is <strong id="EN-US_TOPIC_0107659745__b543394205328">1024</strong>. If the server is frequently overloaded, try to increase the value.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row27334665418"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p162811619155420">net.ipv4.tcp_low_latency</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p172811819135414">This option should be disabled if the TCP/IP stack is used for high throughput, low latency.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row17733263549"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p17281181915540">net.ipv4.tcp_westwood</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p13281101915416">Enables the congestion control algorithm on the transmitter end to evaluate throughput and improve the overall bandwidth utilization. You are suggested to enable the congestion control algorithm for WAN communication.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row573310675413"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1528111995419">net.ipv4.tcp_bic</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p6281151975415">Enables binary increase congestion for fast long-distance networks so that the connections with operations being performed at a rate of Gbit/s can be functional. You are suggested to enable binary increase congestion for WAN communication.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row3121900541"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p10281101975417">net.ipv4.tcp_max_tw_buckets</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p428101985414">Specifies the number of TIME_WAIT buckets, which defaults to <strong id="EN-US_TOPIC_0107659745__b84235270623220">180000</strong>. If the number of buckets exceeds the default value, extra ones will be cleared.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row161217010549"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1328261945413">net.ipv4.tcp_synack_retries</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p20282171955418">Specifies the number of times that SYN+ACK packets are retransmitted in <strong id="EN-US_TOPIC_0107659745__b84235270623326">SYN_RECV</strong> state.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row121218055411"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p142826199549">net.ipv4.tcp_abort_on_overflow</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p15282019105416">When this parameter is set to <strong id="EN-US_TOPIC_0107659745__b842352706231511">1</strong>, if the system receives a large number of requests within a short period of time but fails to process them, the system will send reset packets to terminate the connections. It is recommended that you improve system processing capabilities by optimizing the application efficiency instead of performing reset operations.</p>
+<p id="EN-US_TOPIC_0107659745__p728281918547">Default value: <strong id="EN-US_TOPIC_0107659745__b842352706232515">0</strong></p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row15500355185313"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p5282419205419">net.ipv4.route.max_size</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p1028219195544">Specifies the maximum number of routes allowed by the kernel.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row350014551530"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p14282111975410">net.ipv4.ip_forward</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p928271919549">Forward packets between interfaces.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row115001355185316"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p72821119115418">net.ipv4.ip_default_ttl</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p428251914540">Specifies the maximum number of hops that a packet can pass through.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row1050005512535"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p12282141945413">net.netfilter.nf_conntrack_tcp_timeout_established</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p82827194548">Clears iptables connections that are inactive for a specific period of time.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0107659745__row175004559535"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p12282181965414">net.netfilter.nf_conntrack_max</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p10282111915419">Specifies the maximum value of hash entries.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0107659745__section68511530163412"><h4 class="sectiontitle">Viewing Kernel Parameters</h4><ul id="EN-US_TOPIC_0107659745__ul13801853175717"><li id="EN-US_TOPIC_0107659745__li1880175314576">Method 1: Run the cat command in <span class="filepath" id="EN-US_TOPIC_0107659745__filepath2021653449232846"><b>/proc/sys</b></span> to view file content.<p id="EN-US_TOPIC_0107659745__p137341916125810"><span class="filepath" id="EN-US_TOPIC_0107659745__filepath499836880232912"><b>/proc/sys/</b></span> is a pseudo directory generated after the Linux kernel is started. The <strong id="EN-US_TOPIC_0107659745__b842352706232929">net</strong> folder in this directory stores all kernel parameters that have taken effect in the system. The directory tree structure is determined based on complete parameter names. For example, <strong id="EN-US_TOPIC_0107659745__b84235270623349">net.ipv4.tcp_tw_recycle</strong> corresponds to the <strong id="EN-US_TOPIC_0107659745__b842352706233428">/proc/sys/net/ipv4/tcp_tw_recycle</strong> file, and the content of the file is the parameter value.</p>
+<p id="EN-US_TOPIC_0107659745__p666716231805">Example:</p>
+<p id="EN-US_TOPIC_0107659745__p124619441502">To view the <strong id="EN-US_TOPIC_0107659745__b84235270623356">net.ipv4.tcp_tw_recycle</strong> value, run the following command:</p>
+<p id="EN-US_TOPIC_0107659745__p171984271506"><strong id="EN-US_TOPIC_0107659745__b419335733914">cat /proc/sys/net/ipv4/tcp_tw_recycle</strong></p>
+</li><li id="EN-US_TOPIC_0107659745__li10807538570">Method 2: Use the <span class="parmvalue" id="EN-US_TOPIC_0107659745__parmvalue649206917233529"><b>/etc/sysctl.conf</b></span> file.<p id="EN-US_TOPIC_0107659745__p7492852415">Run the following command to view all parameters that have taken effect in the system:</p>
+<p id="EN-US_TOPIC_0107659745__p2071418145219"><strong id="EN-US_TOPIC_0107659745__b1194720014284">/usr/sbin/sysctl -a</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0107659745__screen1910632610407"><strong id="EN-US_TOPIC_0107659745__b1958412217352">net.ipv4.tcp_syncookies = 1</strong>
+<strong id="EN-US_TOPIC_0107659745__b9584621133512">net.ipv4.tcp_max_tw_buckets = 4096</strong>
+<strong id="EN-US_TOPIC_0107659745__b145848216353">net.ipv4.tcp_tw_reuse = 1</strong>
+<strong id="EN-US_TOPIC_0107659745__b135841021133518">net.ipv4.tcp_tw_recycle = 1</strong>
+<strong id="EN-US_TOPIC_0107659745__b1858462118352">net.ipv4.tcp_keepalive_time = 1800</strong>
+<strong id="EN-US_TOPIC_0107659745__b458442173513">net.ipv4.tcp_fin_timeout = 30</strong>
+<strong id="EN-US_TOPIC_0107659745__b758418214351">......</strong>
+<strong id="EN-US_TOPIC_0107659745__b358472133512">net.ipv4.tcp_keepalive_time = 1200</strong>
+<strong id="EN-US_TOPIC_0107659745__b15847211355">net.ipv4.ip_local_port_range = 1024 65000</strong>
+<strong id="EN-US_TOPIC_0107659745__b205841621113515">net.ipv4.tcp_max_syn_backlog = 8192</strong>
+<strong id="EN-US_TOPIC_0107659745__b10584321203519">net.ipv4.tcp_rmem = 16384 174760 349520</strong>
+<strong id="EN-US_TOPIC_0107659745__b1458462115350">net.ipv4.tcp_wmem = 16384 131072 262144</strong>
+<strong id="EN-US_TOPIC_0107659745__b1758417215358">net.ipv4.tcp_mem = 262144 524288 1048576</strong>
+<strong id="EN-US_TOPIC_0107659745__b12584152113510">......</strong></pre>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0107659745__section1996094863415"><h4 class="sectiontitle">Modifying Kernel Parameter Settings</h4><ul id="EN-US_TOPIC_0107659745__ul83973411311"><li id="EN-US_TOPIC_0107659745__li19405341938">Method 1: Run the echo command in <span class="filepath" id="EN-US_TOPIC_0107659745__filepath1268872032233636"><b>/proc/sys</b></span> to modify the file for the target kernel parameters.<p id="EN-US_TOPIC_0107659745__p94318341315">The parameter values changed using this method take effect only during the current running and will be reset after the system is restarted. To make the modification take effect permanently, see method 2.</p>
+<p id="EN-US_TOPIC_0107659745__p7455342032"><span class="filepath" id="EN-US_TOPIC_0107659745__filepath148889868"><b>/proc/sys/</b></span> is a pseudo directory generated after the Linux kernel is started. The <strong id="EN-US_TOPIC_0107659745__b406863115">net</strong> folder in this directory stores all kernel parameters that have taken effect in the system. The directory tree structure is determined based on complete parameter names. For example, <strong id="EN-US_TOPIC_0107659745__b232051340">net.ipv4.tcp_tw_recycle</strong> corresponds to the <strong id="EN-US_TOPIC_0107659745__b295945730">/proc/sys/net/ipv4/tcp_tw_recycle</strong> file, and the content of the file is the parameter value.</p>
+<p id="EN-US_TOPIC_0107659745__p1447203418313">Example:</p>
+<p id="EN-US_TOPIC_0107659745__p1083514271712">To change the <strong id="EN-US_TOPIC_0107659745__b842352706234041">net.ipv4.tcp_tw_recycle</strong> value to <strong id="EN-US_TOPIC_0107659745__b842352706234049">0</strong>, run the following command:</p>
+<p id="EN-US_TOPIC_0107659745__p4499341238"><strong id="EN-US_TOPIC_0107659745__b1742769557234059">echo "0" &gt; /proc/sys/net/ipv4/tcp_tw_recycle</strong></p>
+</li><li id="EN-US_TOPIC_0107659745__li14519341530">Method 2: Use the <span class="parmvalue" id="EN-US_TOPIC_0107659745__parmvalue61647010223418"><b>/etc/sysctl.conf</b></span> file.<div class="p" id="EN-US_TOPIC_0107659745__p185413347311">The parameter values changed using this method take effect permanently.<ol id="EN-US_TOPIC_0107659745__ol6275144454115"><li id="EN-US_TOPIC_0107659745__li65285474415">Run the following command to change the value of a specified parameter:<p id="EN-US_TOPIC_0107659745__p1593611151424"><a name="EN-US_TOPIC_0107659745__li65285474415"></a><a name="li65285474415"></a><strong id="EN-US_TOPIC_0107659745__b799992882234254">/sbin/sysctl -w kernel.domainname="</strong><em id="EN-US_TOPIC_0107659745__i1464400579234254">example.com</em><strong id="EN-US_TOPIC_0107659745__b1402916969234320">"</strong></p>
+<p id="EN-US_TOPIC_0107659745__p3182122494212">Example:</p>
+<p id="EN-US_TOPIC_0107659745__p17394142618429">sysctl -w net.ipv4.tcp_tw_recycle="0"</p>
+</li><li id="EN-US_TOPIC_0107659745__li102725054119">Run the following command to change the parameter value in the <strong id="EN-US_TOPIC_0107659745__b84235270683820">/etc/sysctl.conf</strong> file:<p id="EN-US_TOPIC_0107659745__p4393168134313"><strong id="EN-US_TOPIC_0107659745__b6962161044311">vi /etc/sysctl.conf</strong></p>
+</li><li id="EN-US_TOPIC_0107659745__li4274164444117">Run the following command for the configuration to take effect:<p id="EN-US_TOPIC_0107659745__p179352614318"><a name="EN-US_TOPIC_0107659745__li4274164444117"></a><a name="li4274164444117"></a><strong id="EN-US_TOPIC_0107659745__b1731916323438">/sbin/sysctl -p</strong></p>
+</li></ol>
+</div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+

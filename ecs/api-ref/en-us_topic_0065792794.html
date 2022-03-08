@@ -1,0 +1,204 @@
+<a name="EN-US_TOPIC_0065792794"></a><a name="EN-US_TOPIC_0065792794"></a>
+
+<h1 class="topictitle1">Querying a Specified API Version</h1>
+<div id="body1499509081353"><div class="section" id="EN-US_TOPIC_0065792794__section553655182144"><h4 class="sectiontitle">Function Description</h4><p id="EN-US_TOPIC_0065792794__p45724818">This API is used to query the information of a specified version.</p>
+<p id="EN-US_TOPIC_0065792794__p19479413244">To support function extension, Nova APIs can be distinguished by version. There are two types of versions:</p>
+<ul id="EN-US_TOPIC_0065792794__ul5741402166"><li id="EN-US_TOPIC_0065792794__li1874113021615">Major version: Independent URL</li><li id="EN-US_TOPIC_0065792794__li87411100168">Microversion: Used by the HTTP request header X-OpenStack-Nova-API-Version. Since version 2.27, the new microversion header OpenStack-API-Version has been supported.<div class="note" id="EN-US_TOPIC_0065792794__note199931232193116"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0065792794__p23994291347">If the OpenStack-API-Version request header is used, the version is in the format of "compute microversion".</p>
+<p id="EN-US_TOPIC_0065792794__p69931532193110">For example, if <strong id="EN-US_TOPIC_0065792794__b298223144318">key</strong> is set to <strong id="EN-US_TOPIC_0065792794__b39571498432">OpenStack-API-Version</strong>, set <strong id="EN-US_TOPIC_0065792794__b14704025114310">value</strong> to <strong id="EN-US_TOPIC_0065792794__b109881305430">compute 2.27</strong>.</p>
+</div></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section961608182144"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065792794__p53736847103512">GET /{api_version}</p>
+<div class="p" id="EN-US_TOPIC_0065792794__p960412219"><a href="#EN-US_TOPIC_0065792794__table46110007">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065792794__table46110007"></a><a name="table46110007"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065792794__table46110007" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065792794__row14148614"><th align="left" class="cellrowborder" valign="top" width="18.291829182918292%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0065792794__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.111811181118114%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0065792794__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63.596359635963594%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0065792794__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065792794__row17201924"><td class="cellrowborder" valign="top" width="18.291829182918292%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p51178607">api_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.111811181118114%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p51826478">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="63.596359635963594%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p37195178">Specifies an API version, such as V2.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section108201017144216"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065792794__p1429714229422">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section89511024194216"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065792794__p1094516251431">The following table describes the response parameters.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065792794__table1456520231001" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065792794__row25656239015"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.3.2.4.1.1"><p id="EN-US_TOPIC_0065792794__p45658231201">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.3.2.4.1.2"><p id="EN-US_TOPIC_0065792794__p125655231308">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.3.2.4.1.3"><p id="EN-US_TOPIC_0065792794__p056515231709">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065792794__row456582314010"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p115651723008">versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p8565122310019">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p125121301517">Specifies the versions. For details, see <a href="#EN-US_TOPIC_0065792794__table1970522313484">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065792794__table1970522313484"></a><a name="table1970522313484"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065792794__table1970522313484" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0065792794__b1527114562012">versions</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065792794__row11705723114815"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.4.2.4.1.1"><p id="EN-US_TOPIC_0065792794__p770515232485">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.4.2.4.1.2"><p id="EN-US_TOPIC_0065792794__p177051223184810">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.4.2.4.1.3"><p id="EN-US_TOPIC_0065792794__p7705112374819">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065792794__row127051723154815"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p155331243134911">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p17051623154814">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p6251730155117">Specifies the version ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row13161133211483"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p20162193264816">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p101624324488">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p168341639155116">Specifies the links to resources. For more information, see the <a href="https://docs.openstack.org/api-guide/compute/links_and_references.html" target="_blank" rel="noopener noreferrer">OpenStack Documentation</a>.</p>
+<p id="EN-US_TOPIC_0065792794__p97381735319">For details, see <a href="#EN-US_TOPIC_0065792794__table1586318199718">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row161541434114814"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p61541434154814">media-types</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p14154153424815">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p15390144665112">Specifies the media types. For details, see <a href="#EN-US_TOPIC_0065792794__table1242753025619">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row1866313454811"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p2663734104815">min_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p666313345481">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><ul id="EN-US_TOPIC_0065792794__ul343720140818"><li id="EN-US_TOPIC_0065792794__li164375141087">Specifies the microversion. If the APIs of this version support microversions, set this parameter to the supported minimum microversion. </li><li id="EN-US_TOPIC_0065792794__li1943741412819">If the microversion is not supported, leave this parameter blank.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row1178133544820"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p157810358483">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p1578143511481">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p18269115975114">Specifies the API version status. Possible values are as follows:</p>
+<ul id="EN-US_TOPIC_0065792794__ul5520141712813"><li id="EN-US_TOPIC_0065792794__li552012177811"><strong id="EN-US_TOPIC_0065792794__b19400195222418">CURRENT</strong>: This is the preferred API version.</li><li id="EN-US_TOPIC_0065792794__li175216179813"><strong id="EN-US_TOPIC_0065792794__b4719558202412">SUPPORTED</strong>: This is the old API version that is still supported.</li><li id="EN-US_TOPIC_0065792794__li8521717382"><strong id="EN-US_TOPIC_0065792794__b1332741462618">DEPRECATED</strong>: This is the deprecated API version that will be removed.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row18470235174818"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p1947063511481">updated</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p147033519489">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p13546378525">The value of this parameter varies by API version. If the API version is 2.0, the value is <strong id="EN-US_TOPIC_0065792794__b4849111818265">2011-01-21T11:33:21Z</strong>. If the API version is 2.1, the value is <strong id="EN-US_TOPIC_0065792794__b085431820262">2013-07-23T11:33:21Z</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row57011535174817"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p6702113515482">version</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p2070273594817">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.4.2.4.1.3 "><ul id="EN-US_TOPIC_0065792794__ul81689446815"><li id="EN-US_TOPIC_0065792794__li11168844485">Specifies the microversion. If the APIs of this version support microversions, set this parameter to the supported maximum microversion. </li><li id="EN-US_TOPIC_0065792794__li101691844281">If the microversion is not supported, leave this parameter blank.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065792794__table1586318199718"></a><a name="table1586318199718"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065792794__table1586318199718" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0065792794__b4561231162613">links</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065792794__row19863719071"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.5.2.4.1.1"><p id="EN-US_TOPIC_0065792794__p38643193712">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.5.2.4.1.2"><p id="EN-US_TOPIC_0065792794__p1186420191678">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.5.2.4.1.3"><p id="EN-US_TOPIC_0065792794__p118647191972">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065792794__row1886419192713"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p48646193713">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p786471915713">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p55689555719">Specifies the links of the corresponding resources.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row178649191472"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p386411192074">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p68646190716">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.5.2.4.1.3 "><ul id="EN-US_TOPIC_0065792794__ul06311647387"><li id="EN-US_TOPIC_0065792794__li66319478817"><strong id="EN-US_TOPIC_0065792794__b1139884042615">self</strong>: A self link contains a versioned link to the resource. Use these links when the link is followed immediately.</li><li id="EN-US_TOPIC_0065792794__li17631147481"><strong id="EN-US_TOPIC_0065792794__b1111912459264">bookmark</strong>: A bookmark link provides a permanent link to a resource that is appropriate for long term storage.</li><li id="EN-US_TOPIC_0065792794__li963110471486"><strong id="EN-US_TOPIC_0065792794__b332194632611">alternate</strong>: An alternate link can contain an alternate representation of the resource. For example, an OpenStack Compute image might have an alternate representation in the OpenStack Image service.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065792794__table1242753025619"></a><a name="table1242753025619"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065792794__table1242753025619" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0065792794__b84235270620940">media-types</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065792794__row342713010569"><th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.6.2.4.1.1"><p id="EN-US_TOPIC_0065792794__p44276309569">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.6.2.4.1.2"><p id="EN-US_TOPIC_0065792794__p04277305564">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.33333333333333%" id="mcps1.3.4.6.2.4.1.3"><p id="EN-US_TOPIC_0065792794__p14427153011563">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065792794__row1342719303565"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p742733065617">base</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p4427193017566">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p9874125215560">Specifies the basic type.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065792794__row44271330135612"><td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.1 "><p id="EN-US_TOPIC_0065792794__p742753019564">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.2 "><p id="EN-US_TOPIC_0065792794__p1142743085619">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="mcps1.3.4.6.2.4.1.3 "><p id="EN-US_TOPIC_0065792794__p13427113095613">Specifies the media type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section19667838182144"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065792794__screen7765527151810">GET https://{endpoint}/v2</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section20327115469"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065792794__screen174016112462">{
+ "version": {
+  "min_version": "",
+  "media-types": [{
+   "type": "application/vnd.openstack.compute+json;version=2",
+   "base": "application/json"
+  }],
+  "links": [{
+   "rel": "self",
+   "href": "https://ecs.service.domain.com:443/v2/"
+  },
+  {
+   "rel": "describedby",
+   "href": "http://docs.openstack.org/",
+   "type": "text/html"
+  }],
+  "id": "v2.0",
+  "updated": "1999-02-20T11:33:21Z",
+  "version": "",
+  "status": "SUPPORTED"
+ }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065792794__section12571834"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065792794__p21915813">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065792792.html">API Version Query</a></div>
+</div>
+</div>
+

@@ -1,0 +1,870 @@
+<a name="EN-US_TOPIC_0068473331"></a><a name="EN-US_TOPIC_0068473331"></a>
+
+<h1 class="topictitle1">Creating an <span id="text59371174414">ECS</span></h1>
+<div id="body1501148122250"><div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section31291646"><h4 class="sectiontitle">Function</h4><p class="MsoNormal" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p21421675">This API is used to create <span id="EN-US_TOPIC_0068473331__text94111934115316">ECS</span>.</p>
+</div>
+<p id="EN-US_TOPIC_0068473331__p1710118117292">This API does not support automatic rollback after creating an <span id="EN-US_TOPIC_0068473331__text132538196448">ECS</span> failed. If automatic rollback is required, call the API POST /v1/{project_id}/cloudservers. For details, see <a href="en-us_topic_0020212668.html">Creating an ECS</a>.</p>
+<div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section13189358"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1154405819108">POST /v2.1/{project_id}/servers</p>
+<p id="EN-US_TOPIC_0068473331__p20748151516235">POST /v2/{project_id}/servers</p>
+<div class="p" id="EN-US_TOPIC_0068473331__p8282915111917"><a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table47145209">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table47145209"></a><a name="en-us_topic_0057972661_table47145209"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table47145209" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row4152081"><th align="left" class="cellrowborder" valign="top" width="28.000000000000004%" id="mcps1.3.3.4.2.2.4.1.1"><p id="EN-US_TOPIC_0068473331__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.3.4.2.2.4.1.2"><p id="EN-US_TOPIC_0068473331__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49%" id="mcps1.3.3.4.2.2.4.1.3"><p id="EN-US_TOPIC_0068473331__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row11861416151631"><td class="cellrowborder" valign="top" width="28.000000000000004%" headers="mcps1.3.3.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p50425983151639">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.3.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p57972822151639">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="49%" headers="mcps1.3.3.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note5845651920449"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p54139234161417">Alias of the API for creating <span id="EN-US_TOPIC_0068473331__text1710214361534">ECS</span>s: /v2/{project_id}/os-volumes_boot</p>
+<p id="EN-US_TOPIC_0068473331__p35683935123555">This calling mode can only be used in OpenStack client.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section51595365"><h4 class="sectiontitle">Constraints</h4><ol id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ol2444080120559"><li id="EN-US_TOPIC_0068473331__li17345029503">This API is native, which does not support the creation of <span id="EN-US_TOPIC_0068473331__text111013719535">ECS</span>s using full-<span id="EN-US_TOPIC_0068473331__text2063683016535">ECS</span> images. To use full-<span id="EN-US_TOPIC_0068473331__text8858183716534">ECS</span> images to create <span id="EN-US_TOPIC_0068473331__text934165615318">ECS</span>s, refer to <a href="en-us_topic_0020212668.html">Creating an ECS</a>.</li><li id="EN-US_TOPIC_0068473331__li15272181694018">During the creation of an ECS using this API, you cannot bind an EIP to the ECS. If you want to create an ECS and bind an EIP to it, refer to <a href="en-us_topic_0020212668.html">Creating an ECS</a>.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li3192695720559">Parameter <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706184252">port</strong> in the three network parameters (<strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270618439">port</strong>, <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706184317">uuid</strong>, and <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706184325">fixed_ip</strong>) has the highest priority. If parameter <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706184351">fixed_ip</strong> is set, you must specify the UUID.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li527415632067">A file injection failure will result in the <span id="EN-US_TOPIC_0068473331__text1595183813539">ECS</span> creation failure.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li1185352520612">The following restrictions apply when you create <span id="EN-US_TOPIC_0068473331__text11330439135311">ECS</span>s using an image:<ol type="a" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ol711466920643"><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li5007646820630">You cannot create an <span id="EN-US_TOPIC_0068473331__text25824015318">ECS</span> on a specified host.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li6069648520647">If a tenant backs up a disk in an <span id="EN-US_TOPIC_0068473331__text277834018531">ECS</span>, the disk can be deleted only after the tenant deletes all the snapshots of the disk.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li494894722070">The flavors with different resource types cannot be adjusted if you adjust the specifications of an <span id="EN-US_TOPIC_0068473331__text1650664135316">ECS</span> created using an image.</li></ol>
+</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li65983394172050">Native APIs /v2/{project_id}/servers and /v2.1/{project_id}/servers provided by the public cloud platform is developed based on and compatible with the community-version native OpenStack API.<div class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p188078151138"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li65983394172050"></a><a name="en-us_topic_0057972661_li65983394172050"></a>Compared with the community-version native API, this API has the following restrictions when you create an <span id="EN-US_TOPIC_0068473331__text42061429537">ECS</span> using a specified image:<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul82873815137"><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li328711818131">Community-version native OpenStack API: creates an <span id="EN-US_TOPIC_0068473331__text10858204275319">ECS</span> using the local disk by default.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li7287689135">Native API provided by the public cloud platform: creates an <span id="EN-US_TOPIC_0068473331__text15307433531">ECS</span> using the shared storage as the system disk.</li></ul>
+</div>
+<div class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6287158141317">Specifically, when you use the native API to create an <span id="EN-US_TOPIC_0068473331__text15495634194412">ECS</span>:<ol type="a" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ol162876851319"><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li328712816132">You can query information about the disks attached to the <span id="EN-US_TOPIC_0068473331__text5573435134410">ECS</span>.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li12287168121313">The <span id="EN-US_TOPIC_0068473331__text134771636194414">ECS</span> system disk uses the EVS disk quota.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li1728758171316">You cannot query <span id="EN-US_TOPIC_0068473331__text61481244185312">ECS</span>s created based on a specified image using the image filtering function.</li></ol>
+</div>
+</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li3914840520823">When you create an <span id="EN-US_TOPIC_0068473331__text479494418539">ECS</span> with a specified disk, ensure that the disk and the <span id="EN-US_TOPIC_0068473331__text18740184717019">ECS</span> are in the same AZ.</li><li class="litext" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li121865920831">The <strong id="EN-US_TOPIC_0068473331__b842352706114858">device_name</strong> field configured in <strong id="EN-US_TOPIC_0068473331__b842352706115046">block_device_mapping_v2</strong> during the <span id="EN-US_TOPIC_0068473331__text15114174695319">ECS</span> creation does not take effect. The system generates a device name by default.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li5433128220844"><span id="EN-US_TOPIC_0068473331__text1271474613531">ECS</span>s cannot be created in networks with <strong id="EN-US_TOPIC_0068473331__b2290104913119">provider:network_type</strong> set to <strong id="EN-US_TOPIC_0068473331__b1631210220">geneve</strong>.<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note46505087101613"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p15892604101613"><strong id="EN-US_TOPIC_0068473331__b1824983338154358">provider:network_type</strong> being set to <strong id="EN-US_TOPIC_0068473331__b2120964971154358">geneve</strong> indicates the internal high-speed network for BMSs.</p>
+</div></div>
+</li><li id="EN-US_TOPIC_0068473331__li18301244123618">If your <span id="EN-US_TOPIC_0068473331__text2495125164414">ECS</span> is remotely logged in using a key, use the <strong id="EN-US_TOPIC_0068473331__b1277851019613">key_name</strong> parameter. If your <span id="EN-US_TOPIC_0068473331__text2691203418615">ECS</span> is remotely logged in using a password, use the <strong id="EN-US_TOPIC_0068473331__b9692153411616">adminPass</strong> parameter. Linux <span id="EN-US_TOPIC_0068473331__text2701851459">ECS</span>s support <strong id="EN-US_TOPIC_0068473331__b223418361475">user_data</strong> for injection. Windows <span id="EN-US_TOPIC_0068473331__text1037748778">ECS</span>s support <strong id="EN-US_TOPIC_0068473331__b711416206710">admin_pass</strong> for injection.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li20059403154324">If the image based on which the <span id="EN-US_TOPIC_0068473331__text99786495539">ECS</span> is created uses the native OpenStack API, ensure that the specified AZ and system disk capacity and type used when the <span id="EN-US_TOPIC_0068473331__text94646357451">ECS</span> is created are the same as those used when the image is created. Otherwise, the <span id="EN-US_TOPIC_0068473331__text17762115015312">ECS</span> creation will fail.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section18475057"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0068473331__p614311718229"><a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table40519951">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table40519951"></a><a name="en-us_topic_0057972661_table40519951"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table40519951" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row35619075"><th align="left" class="cellrowborder" valign="top" width="20.05%" id="mcps1.3.5.3.2.5.1.1"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p66572856">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.719999999999999%" id="mcps1.3.5.3.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p1467903512918">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.32%" id="mcps1.3.5.3.2.5.1.3"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p23692278">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.91%" id="mcps1.3.5.3.2.5.1.4"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p20908074">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row15832433"><td class="cellrowborder" valign="top" width="20.05%" headers="mcps1.3.5.3.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p7358688">server</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.719999999999999%" headers="mcps1.3.5.3.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p467915358917">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.5.3.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p59182880">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.91%" headers="mcps1.3.5.3.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6993202">Specifies the <span id="EN-US_TOPIC_0068473331__text676325155312">ECS</span> information. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table64008488102639">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row29578451"><td class="cellrowborder" valign="top" width="20.05%" headers="mcps1.3.5.3.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p47044325">os:scheduler_hints</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.719999999999999%" headers="mcps1.3.5.3.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p4679135396">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.5.3.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p52493967">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.91%" headers="mcps1.3.5.3.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p10232270">Specifies the <span id="EN-US_TOPIC_0068473331__text1560265485318">ECS</span> scheduling information. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table12534817105641">Table 8</a>. This parameter is not available for BMSs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table64008488102639"></a><a name="en-us_topic_0057972661_table64008488102639"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table64008488102639" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0068473331__b15402194564619">server</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row56993194102639"><th align="left" class="cellrowborder" valign="top" width="19.939999999999998%" id="mcps1.3.5.4.2.5.1.1"><p id="EN-US_TOPIC_0068473331__p15357151212247">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.79%" id="mcps1.3.5.4.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p67554367107">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.57%" id="mcps1.3.5.4.2.5.1.3"><p id="EN-US_TOPIC_0068473331__p19357112132415">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.699999999999996%" id="mcps1.3.5.4.2.5.1.4"><p id="EN-US_TOPIC_0068473331__p3372912142414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row64892893102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p53667478102658">imageRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p2075533681020">No</p>
+<p id="EN-US_TOPIC_0068473331__p1951213358419"></p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p52098484102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p32710312102658">Specifies the ECS image ID or URL.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul25957356102658"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li32289615102658">Example image ID: 3b8d6fef-af77-42ab-b8b7-5a7f0f0af8f2</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li22171082102658">Example image URL: http://glance.openstack.example.com/images/3b8d6fef-af77-42ab-b8b7-5a7f0f0af8f2</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li51027221102658">If you use a specified disk as the system disk to create an <span id="EN-US_TOPIC_0068473331__text14540195515311">ECS</span>, this parameter is not required. If you do not use a disk to create an <span id="EN-US_TOPIC_0068473331__text1668194717332">ECS</span>, you must set a valid UUID. Otherwise, the API will return error code <strong id="EN-US_TOPIC_0068473331__b1882281283417">400</strong>.</li></ul>
+<div class="note" id="EN-US_TOPIC_0068473331__note12001550131917"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0068473331__ul185629592115"><li id="EN-US_TOPIC_0068473331__li155622595111">Certain <span id="EN-US_TOPIC_0068473331__text8131185713530">ECS</span> flavors cannot support all public images provided on the public cloud platform. To obtain the images supported by an <span id="EN-US_TOPIC_0068473331__text930515183512">ECS</span> flavor, log in to the management console, view the images displayed on the <strong id="EN-US_TOPIC_0068473331__b842352706185454">Create <span id="EN-US_TOPIC_0068473331__text734415973514">ECS</span></strong> page, and obtain the image IDs on the <strong id="EN-US_TOPIC_0068473331__b842352706185522">Image Management Service</strong> page.</li><li id="EN-US_TOPIC_0068473331__li16562859217">If the creation fails, modify the parameter settings.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row993360102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p20533591102658">flavorRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p2756536151015">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p52608144102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p21145347102658">Specifies the flavor ID or URL.</p>
+<p id="EN-US_TOPIC_0068473331__p27315444412">For example: c3.2xlarge</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row3565234102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p47028347102658">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p9756133613109">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p51199773102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p41851471102658">Specifies the <span id="EN-US_TOPIC_0068473331__text37096581536">ECS</span> name. The value contains 1 to 255 characters.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__note1631304619446"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__p1313546134412"><span id="EN-US_TOPIC_0068473331__text444584524519">ECS</span> hostnames comply with <a href="https://tools.ietf.org/html/rfc952" target="_blank" rel="noopener noreferrer">RFC952</a> and <a href="https://tools.ietf.org/html/rfc1123" target="_blank" rel="noopener noreferrer">RFC1123</a> naming rules. It is recommended that you configure hostnames using digits, letters (case sensitive), and hyphens (-). Underscores (_) are converted into hyphens (-) by default.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row59762533102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p42298537102658">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p375616363108">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3629454102658">Map&lt;String,String&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p14501627151547">Specifies the <span id="EN-US_TOPIC_0068473331__text1161115945310">ECS</span> metadata. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table2373623012315">Table 4</a>.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul18338492151614"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li46030966151614">The key contains 1 to 255 characters.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li14256160151617">The value contains 0 to 255 characters.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row4553446102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5856011102658">adminPass</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p4756133619102">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4574868102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p59981754144012">Specifies the initial login password of the administrator account for logging in to an <span id="EN-US_TOPIC_0068473331__text758216412465">ECS</span> using password authentication. The Linux administrator is <strong id="EN-US_TOPIC_0068473331__b1433882092316">root</strong>, and the Windows administrator is <strong id="EN-US_TOPIC_0068473331__b3338720132311">Administrator</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row19678943102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p44887270102658">block_device_mapping_v2</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p17569367102">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p11990221102658">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p16256306102658">Indicates the V2 API for specifying the <span id="EN-US_TOPIC_0068473331__text205401809548">ECS</span> storage device. This is an extended attribute. This is the storage resource API of the new version. You are not allowed to create <span id="EN-US_TOPIC_0068473331__text1260213115414">ECS</span>s in batches when the volume is specified. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table15044407105358">Table 5</a>. This parameter is not available for BMSs.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row6088188102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p21642473102658">config_drive</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p07561536191013">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p8209879102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p43710689102658">Specifies the config_drive disk to be attached to the <span id="EN-US_TOPIC_0068473331__text13414128541">ECS</span> during the <span id="EN-US_TOPIC_0068473331__text16755195419394">ECS</span> creation for transferring information to the <span id="EN-US_TOPIC_0068473331__text206382598392">ECS</span>. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p57851884102658">This function is not supported.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row38867078102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p29656925102658">security_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p1675653621016">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p53400697102658">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p45349775152941">Specifies the security group that the <span id="EN-US_TOPIC_0068473331__text114255253338">ECS</span> belongs to. This parameter is an extended attribute. The default parameter value is <strong id="EN-US_TOPIC_0068473331__b12388142134015">default</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p53708280102658">This parameter is valid when you create an <span id="EN-US_TOPIC_0068473331__text1525016272565">ECS</span> on a specified network. For an existing port, the requested security groups are invalid. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table16920677105453">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row11447375102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p58493193102658">networks</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p14756143616107">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p40328188102658">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p50103488102658">Specifies information about the <span id="EN-US_TOPIC_0068473331__text12245718155418">ECS</span> NIC. This parameter is an extended attribute. This parameter must be specified if multiple tenant networks are used. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table9995892105551">Table 7</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row62300910102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p62687271102658">key_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p3756236101010">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p44504222102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1533495102658">Specifies the name of a key pair. This parameter is an extended attribute. </p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row33176070102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p44176647102658">user_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p16756163619108">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p21538656102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p124835165514">Specifies the user data to be injected to the ECS during the creation. Text and text files can be injected.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__note1076765671813"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0068473331__ul749201611912"><li id="EN-US_TOPIC_0068473331__li67541847182119">The content of <strong id="EN-US_TOPIC_0068473331__b181201631182219">user_data</strong> must be encoded with base64.</li><li id="EN-US_TOPIC_0068473331__li84921116141913">The maximum size of the content to be injected (before encoding) is 32 KB.</li></ul>
+</div></div>
+<p id="EN-US_TOPIC_0068473331__p151383081516">For more information about the user data to be injected, see "Injecting User Data into ECSs" in <em id="EN-US_TOPIC_0068473331__i102071635133514">Elastic Cloud Server User Guide</em>.</p>
+<p id="EN-US_TOPIC_0068473331__p1633783620117">Examples</p>
+<p id="EN-US_TOPIC_0068473331__p12545313524">Before base64 encoding:</p>
+<ul id="EN-US_TOPIC_0068473331__ul13541314520"><li id="EN-US_TOPIC_0068473331__li13546312528">Linux<pre class="screen" id="EN-US_TOPIC_0068473331__screen16541531125220">#! /bin/bash
+echo user_test &gt;&gt; /home/user.txt</pre>
+</li><li id="EN-US_TOPIC_0068473331__li0541731105219">Windows<pre class="screen" id="EN-US_TOPIC_0068473331__screen35418316520">rem cmd
+echo 111 &gt; c:\aaa.txt</pre>
+</li></ul>
+<p id="EN-US_TOPIC_0068473331__p16762152318318">After base64 encoding:</p>
+<ul id="EN-US_TOPIC_0068473331__ul2069415489311"><li id="EN-US_TOPIC_0068473331__li126941548163113">Linux<pre class="screen" id="EN-US_TOPIC_0068473331__screen1769415480317">IyEgL2Jpbi9iYXNoDQplY2hvIHVzZXJfdGVzdCAmZ3Q7Jmd0OyAvaG9tZS91c2VyLnR4dA==</pre>
+</li><li id="EN-US_TOPIC_0068473331__li06941485319">Windows<pre class="screen" id="EN-US_TOPIC_0068473331__screen1969444873114">cmVtIGNtZA0KZWNobyAxMTEgJmd0OyBjOlxhYWEudHh0</pre>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row63798654102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p45459633102658">availability_zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p16756203661019">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p58351639102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p9041942195215">Specifies the AZ of a specified <span id="EN-US_TOPIC_0068473331__text103952019145414">ECS</span>. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p56149386102658">This parameter is mandatory when you create an <span id="EN-US_TOPIC_0068473331__text871582016544">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row14011337102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p63604766102658">return_reservation_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p13756173611019">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p51712396102658">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p49723161102658">Specifies whether the reservation IDs of the <span id="EN-US_TOPIC_0068473331__text65711121115418">ECS</span>s created in a batch are returned. This is an extended attribute. You can query the <span id="EN-US_TOPIC_0068473331__text4459103510424">ECS</span>s created this time based on the returned reservation IDs.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul1627916843419"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li2027912833414"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270611354">true</strong>: The reservation IDs are returned.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li1388112143517"><strong id="EN-US_TOPIC_0068473331__b10523359154212">false</strong>: The <span id="EN-US_TOPIC_0068473331__text154596230545">ECS</span> information is returned.<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note1151212192215"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p17513619142119">When you create <span id="EN-US_TOPIC_0068473331__text17691112411543">ECS</span>s in a batch, this parameter is available.</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row14685215102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p17473992102658">min_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p47571336141013">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6107265102658">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p39383468153028">Specifies the minimum number of <span id="EN-US_TOPIC_0068473331__text15109104795418">ECS</span>s that can be created. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1358388153054">The default value is <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270615612">1</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note5101551193636"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p45913965193636">When you use a specified image to create <span id="EN-US_TOPIC_0068473331__text17474104814548">ECS</span>s, this parameter is available.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row33216193102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p48294822102658">max_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p575716366106">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p19566505102658">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4122565110275">Specifies the maximum number of <span id="EN-US_TOPIC_0068473331__text044413490549">ECS</span>s that can be created.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p771939515316">The default value of <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b8289053">max_count</strong> is the same as that of <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b7492614">min_count</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p52138865153152">Note:</p>
+<ul id="EN-US_TOPIC_0068473331__ul19332971587"><li id="EN-US_TOPIC_0068473331__li113321178819">The <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b26298136">max_count</strong> value must be greater than or equal to the <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b35356632">min_count</strong> value.</li><li id="EN-US_TOPIC_0068473331__li6332171989">If both <strong id="EN-US_TOPIC_0068473331__b45314905">min_count</strong> and <strong id="EN-US_TOPIC_0068473331__b5180964">max_count</strong> are specified, the number of <span id="EN-US_TOPIC_0068473331__text557214501544">ECS</span>s that can be created depends on host resources. If host resources permit, you can create a maximum number of <span id="EN-US_TOPIC_0068473331__text11571125115549">ECS</span>s ranging from <strong id="EN-US_TOPIC_0068473331__b46628683">min_count</strong> to <strong id="EN-US_TOPIC_0068473331__b17004965">max_count</strong> values.</li></ul>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note20928070193644"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p54134906193644">When you use a specified image to create <span id="EN-US_TOPIC_0068473331__text298081811451">ECS</span>s, this parameter is available.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row29652792102639"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p36386296102658">OS-DCF:diskConfig</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p7757123671012">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p61608878102658">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p19164491102658">Specifies the disk configuration mode. The value can be <strong id="EN-US_TOPIC_0068473331__b131704233710139">AUTO</strong> or <strong id="EN-US_TOPIC_0068473331__b185300378710139">MANUAL</strong>.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul38262699102658"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li8819971102658"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b1845617405112742">MANUAL</strong>: indicates that the image space of the system disk cannot be expanded.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li12270877102658"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b527243814112758">AUTO</strong>: indicates that the image space of the system disk can be automatically expanded to a value same as that specified in flavor.</li></ul>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p43329035102658">This function is not supported.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__row15681131174915"><td class="cellrowborder" valign="top" width="19.939999999999998%" headers="mcps1.3.5.4.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__p1650191194918">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.79%" headers="mcps1.3.5.4.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p19757133619100">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.57%" headers="mcps1.3.5.4.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__p14650131154914">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.699999999999996%" headers="mcps1.3.5.4.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p364511262207">Specifies the description of an <span id="EN-US_TOPIC_0068473331__text1737912537540">ECS</span>, which is a null string by default. This is an extended attribute.</p>
+<p id="EN-US_TOPIC_0068473331__p1297515113113">This parameter is supported in microversion 2.19 and later.</p>
+<ul id="EN-US_TOPIC_0068473331__ul176291026182010"><li id="EN-US_TOPIC_0068473331__li3772184817419">Can contain a maximum of 85 characters.</li><li id="EN-US_TOPIC_0068473331__li864514268205">Cannot contain special characters, such as &lt; and &gt;.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table2373623012315"></a><a name="en-us_topic_0057972661_table2373623012315"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table2373623012315" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b115061996313">metadata</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row4787810512315"><th align="left" class="cellrowborder" valign="top" width="21.617838216178384%" id="mcps1.3.5.5.2.5.1.1"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5292128812315">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.348665133486653%" id="mcps1.3.5.5.2.5.1.2"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5876596012315">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.66823317668233%" id="mcps1.3.5.5.2.5.1.3"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6242233712315">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.36526347365263%" id="mcps1.3.5.5.2.5.1.4"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2304450612315">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row1717815342412"><td class="cellrowborder" valign="top" width="21.617838216178384%" headers="mcps1.3.5.5.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p91796345418">admin_pass</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.348665133486653%" headers="mcps1.3.5.5.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p131791234844">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.66823317668233%" headers="mcps1.3.5.5.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p51791934647">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.36526347365263%" headers="mcps1.3.5.5.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p11179163419418">Specifies the password of user <strong id="EN-US_TOPIC_0068473331__b5334330144617">Administrator</strong> for logging in to a Windows <span id="EN-US_TOPIC_0068473331__text16244125416544">ECS</span>.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note1931159867"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p15312694619">This parameter is mandatory when a Windows <span id="EN-US_TOPIC_0068473331__text1829105516543">ECS</span> using password authentication is created.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table15044407105358"></a><a name="en-us_topic_0057972661_table15044407105358"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table15044407105358" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b33599791">block_device_mapping_v2</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row46099088105358"><th align="left" class="cellrowborder" valign="top" width="25.069999999999997%" id="mcps1.3.5.6.2.5.1.1"><p id="EN-US_TOPIC_0068473331__p13422222102415">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.82%" id="mcps1.3.5.6.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p4437192213248">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.09%" id="mcps1.3.5.6.2.5.1.3"><p id="EN-US_TOPIC_0068473331__p1743713226241">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.02%" id="mcps1.3.5.6.2.5.1.4"><p id="EN-US_TOPIC_0068473331__p114371922172411">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row61925742105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3486240110546">source_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p528222710546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2520722910546">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2851968810546">Specifies the source type of the volume device. Its value can be <strong id="EN-US_TOPIC_0068473331__b842352706154558">volume</strong>, <strong id="EN-US_TOPIC_0068473331__b84235270615461">image</strong>, <strong id="EN-US_TOPIC_0068473331__b84235270615465">snapshot</strong>, or <strong id="EN-US_TOPIC_0068473331__b842352706161056">blank</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p547651293810">If you use a volume to create an <span id="EN-US_TOPIC_0068473331__text5811325153414">ECS</span>, set <strong id="EN-US_TOPIC_0068473331__b16393531174713">source_type</strong> to <strong id="EN-US_TOPIC_0068473331__b8182173619476">volume</strong>. If you use an image to create an <span id="EN-US_TOPIC_0068473331__text165761041154712">ECS</span>, set <strong id="EN-US_TOPIC_0068473331__b22011454471">source_type</strong> to <strong id="EN-US_TOPIC_0068473331__b634712480473">image</strong>. If you use a snapshot to create an <span id="EN-US_TOPIC_0068473331__text19902125214716">ECS</span>, set <strong id="EN-US_TOPIC_0068473331__b1560485624715">source_type</strong> to <strong id="EN-US_TOPIC_0068473331__b932712164813">snapshot</strong>. If you create an empty data volume, set <strong id="EN-US_TOPIC_0068473331__b4925178164818">source_type</strong> to <strong id="EN-US_TOPIC_0068473331__b361620110480">blank</strong>.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note25817266173940"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p31028803173940">If <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706174725">source_type</strong> is <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706174651">snapshot</strong> and <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706174743">boot_index</strong> is 0, the EVS disk of this snapshot must be the system disk.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row9923110105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5421404410546">destination_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2926143910546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2136636710546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p1970412531749">Specifies the target type of the disk device. Its value can only be <strong id="EN-US_TOPIC_0068473331__b1706426110153149">volume</strong>.</p>
+<ul id="EN-US_TOPIC_0068473331__ul16455112018817"><li id="EN-US_TOPIC_0068473331__li7456020182"><strong id="EN-US_TOPIC_0068473331__b1516419404326">volume</strong>: indicates the volume type.</li><li id="EN-US_TOPIC_0068473331__li20456820485"><strong id="EN-US_TOPIC_0068473331__b17805319338">local</strong>: indicates the local file, which has not been supported.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row9269169105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1597666010546">guest_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1904109010546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6593336110546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3900205710546">Specifies the local file system format. Its value can be <strong id="EN-US_TOPIC_0068473331__b1873743962112936">swap</strong> or <strong id="EN-US_TOPIC_0068473331__b363440314112936">ext4</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1547419510546">This function is not supported.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row32258375105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p639950510546">device_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4859790610546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4411631510546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p204864456459">Specifies the disk device name.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__note0422219468"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__p12532675472">This field has been discarded.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1665179710546">The specified <strong id="EN-US_TOPIC_0068473331__b1779043114019">device_name</strong> does not take effect. The system generates a device name by default.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row34936617105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5956509810546">delete_on_termination</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6004360410546">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3169373810546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1705602210546">Specifies whether disks are deleted when an <span id="EN-US_TOPIC_0068473331__text5401191665517">ECS</span> is deleted. Its default value is <strong id="EN-US_TOPIC_0068473331__b912293964810">false</strong>.</p>
+<ul id="EN-US_TOPIC_0068473331__ul34054252086"><li id="EN-US_TOPIC_0068473331__li14051425581"><strong id="EN-US_TOPIC_0068473331__b8807155018486">true</strong>: When an <span id="EN-US_TOPIC_0068473331__text1667391755517">ECS</span> is deleted, its disks are deleted.</li><li id="EN-US_TOPIC_0068473331__li440617251789"><strong id="EN-US_TOPIC_0068473331__b59371556184820">false</strong>: When an <span id="EN-US_TOPIC_0068473331__text89391656184813">ECS</span> is deleted, its disks are not deleted.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row18070752105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1870026710546">boot_index</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3832668110546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1745343110546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p444177310546">Specifies whether it is a boot disk. <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270621371">0</strong> specifies a boot disk, and <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706213645">-1</strong> specifies a non-boot disk.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note1430479894258"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6163432094258">If <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706162734">source_type</strong> of the volume device is <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706162729">volume</strong>, there must be one <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706161627">boot_index</strong> whose value is <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706161631">0</strong>.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row54392189105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1682739910546">uuid</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2084208210546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1048705710546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><ul id="EN-US_TOPIC_0068473331__ul135474331382"><li id="EN-US_TOPIC_0068473331__li125471533186">If <strong id="EN-US_TOPIC_0068473331__b10449135719713">source_type</strong> is <strong id="EN-US_TOPIC_0068473331__b14648210812">volume</strong>, the value of this parameter is the volume UUID.</li><li id="EN-US_TOPIC_0068473331__li45481833287">If <strong id="EN-US_TOPIC_0068473331__b3404142614813">source_type</strong> is <strong id="EN-US_TOPIC_0068473331__b0597629289">snapshot</strong>, the value of this parameter is the snapshot UUID.</li><li id="EN-US_TOPIC_0068473331__li1954873316816">If <strong id="EN-US_TOPIC_0068473331__b1177853081">source_type</strong> is <strong id="EN-US_TOPIC_0068473331__b59411531488">image</strong>, the value of this parameter is the image UUID.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row43403738105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3676107810546">volume_size</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2485733610546">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p17832210546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1444414110546">Specifies the volume size. The value is an integer. This parameter is mandatory when <strong id="EN-US_TOPIC_0068473331__b254888028113121">source_type</strong> is set to <strong id="EN-US_TOPIC_0068473331__b1240294377113121">image</strong> or <strong id="EN-US_TOPIC_0068473331__b13565393455">blank</strong>, and <strong id="EN-US_TOPIC_0068473331__b872300708113121">destination_type</strong> is set to <strong id="EN-US_TOPIC_0068473331__b131730660113121">volume</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1645936993326">Unit: GB</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row64465110105358"><td class="cellrowborder" valign="top" width="25.069999999999997%" headers="mcps1.3.5.6.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6079647310546">volume_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.82%" headers="mcps1.3.5.6.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2556727610546">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.09%" headers="mcps1.3.5.6.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5768348410546">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.02%" headers="mcps1.3.5.6.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4185060810546">Specifies the volume type. This parameter is recommended when <strong id="EN-US_TOPIC_0068473331__b25526012205">source_type</strong> is set to <strong id="EN-US_TOPIC_0068473331__b8553709207">image</strong> and <strong id="EN-US_TOPIC_0068473331__b055313014207">destination_type</strong> is set to <strong id="EN-US_TOPIC_0068473331__b12553190102014">volume</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table16920677105453"></a><a name="en-us_topic_0057972661_table16920677105453"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table16920677105453" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b29310085">security_groups</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row60708739105453"><th align="left" class="cellrowborder" valign="top" width="25.740000000000002%" id="mcps1.3.5.7.2.5.1.1"><p id="EN-US_TOPIC_0068473331__p14804142712417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.31%" id="mcps1.3.5.7.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p9555122215124">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.780000000000001%" id="mcps1.3.5.7.2.5.1.3"><p id="EN-US_TOPIC_0068473331__p1280402712240">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.17%" id="mcps1.3.5.7.2.5.1.4"><p id="EN-US_TOPIC_0068473331__p208181427132416">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row6853617105453"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.7.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3952465110557">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.31%" headers="mcps1.3.5.7.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p1755572271210">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.780000000000001%" headers="mcps1.3.5.7.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4738015610557">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.17%" headers="mcps1.3.5.7.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1294589010557">Specifies the security group name or UUID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table9995892105551"></a><a name="en-us_topic_0057972661_table9995892105551"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table9995892105551" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b58839532">networks</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row37997114105551"><th align="left" class="cellrowborder" valign="top" width="25.740000000000002%" id="mcps1.3.5.8.2.5.1.1"><p id="EN-US_TOPIC_0068473331__p184551730132417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.94%" id="mcps1.3.5.8.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p146295264122">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.31%" id="mcps1.3.5.8.2.5.1.3"><p id="EN-US_TOPIC_0068473331__p15471830142410">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.010000000000005%" id="mcps1.3.5.8.2.5.1.4"><p id="EN-US_TOPIC_0068473331__p44711430132418">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row27440950105551"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.8.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1501087310563">port</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.94%" headers="mcps1.3.5.8.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p762942681213">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.31%" headers="mcps1.3.5.8.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p792119010563">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.010000000000005%" headers="mcps1.3.5.8.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2866860910563">Specifies the network port UUID.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5669089410563">This parameter must be set when the network UUID is not specified.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row53194686105551"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.8.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5571052610563">uuid</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.94%" headers="mcps1.3.5.8.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p11629142618127">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.31%" headers="mcps1.3.5.8.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1625879010563">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.010000000000005%" headers="mcps1.3.5.8.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p3793825410563">Specifies the network UUID.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p589997110563">This parameter must be set when the network port is not specified.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row58124020105551"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.8.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p611192810563">fixed_ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.94%" headers="mcps1.3.5.8.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p6629326201219">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.31%" headers="mcps1.3.5.8.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2530419410563">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.010000000000005%" headers="mcps1.3.5.8.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p6060160810563">Specifies the fixed IP address. Parameter <strong id="EN-US_TOPIC_0068473331__b1726511560">port</strong> in the three network parameters (<strong id="EN-US_TOPIC_0068473331__b1056930033">port</strong>, <strong id="EN-US_TOPIC_0068473331__b274819948">uuid</strong>, and <strong id="EN-US_TOPIC_0068473331__b1812935757">fixed_ip</strong>) has the highest priority. If parameter <strong id="EN-US_TOPIC_0068473331__b411308803">fixed_ip</strong> is set, you must specify the UUID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table12534817105641"></a><a name="en-us_topic_0057972661_table12534817105641"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table12534817105641" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b39844708">os:scheduler_hints</strong> parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row26068168105641"><th align="left" class="cellrowborder" valign="top" width="25.740000000000002%" id="mcps1.3.5.9.2.5.1.1"><p id="EN-US_TOPIC_0068473331__p1858783513243">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.46%" id="mcps1.3.5.9.2.5.1.2"><p id="EN-US_TOPIC_0068473331__p165381328142">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.37%" id="mcps1.3.5.9.2.5.1.3"><p id="EN-US_TOPIC_0068473331__p360443592415">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40.43%" id="mcps1.3.5.9.2.5.1.4"><p id="EN-US_TOPIC_0068473331__p160413532410">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row62928048105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p15046690105656">group</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p15539528147">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__p322913253235">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p1711236145217">Specifies the anti-affinity group.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p4240670105656">The value is in UUID format.</p>
+<div class="note" id="EN-US_TOPIC_0068473331__note1994442816299"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__p12944132817299">Ensure that the ECS group uses the anti-affinity policy. You are not advised to use other policies.</p>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row64921661105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p39968339105656">different_host</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p75391226145">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__p6465152712239">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p12868562105656">The function has not been supported, and this field is reserved.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row30356398105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p53049785105656">same_host</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p17539162191416">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p2065343105656">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p19667172105656">The function has not been supported, and this field is reserved.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row42773507105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p43180380105656">cidr</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p10539172161419">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__p133891574237">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5287950105656">The function has not been supported, and this field is reserved.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row12287877105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p29710531105656">build_near_host_ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p35394214149">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__p1670754182311">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p53961881105656">The function has not been supported, and this field is reserved.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row63947270105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p12417014105656">tenancy</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p1854062161414">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p66254100105656">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p29039112105656">Specifies whether the <span id="EN-US_TOPIC_0068473331__text33149249550">ECS</span> is created on a Dedicated Host (DeH) or in a shared pool (default).</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p219220436270">The value can be <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b177257758703220">shared</strong> or <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b73566161403220">dedicated</strong>.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul16179359172716"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li217975922712"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270603231">shared</strong>: indicates the shared pool.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li1318322618283"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b84235270603241">dedicated</strong>: indicates the DeH.</li></ul>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p1488816294282">The parameter value also takes effect for ECS query operations.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row31685405105641"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p19286814105656">dedicated_host_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p2540112161416">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p18728119105656">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p65968369105656">Specifies the DeH ID.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p56844412105656">This parameter takes effect only when the value of <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b57098564112329">tenancy</strong> is <strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b44125034112329">dedicated</strong>.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p41837667105656">If you do not specify this parameter, the system will automatically assign a DeH to you to deploy <span id="EN-US_TOPIC_0068473331__text1220918257556">ECS</span>s.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p40994685105656">The parameter value also takes effect for ECS query operations.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row1451311915810"><td class="cellrowborder" valign="top" width="25.740000000000002%" headers="mcps1.3.5.9.2.5.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p135159935817">check_resources</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.46%" headers="mcps1.3.5.9.2.5.1.2 "><p id="EN-US_TOPIC_0068473331__p65408251413">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.37%" headers="mcps1.3.5.9.2.5.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p10515169125817">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40.43%" headers="mcps1.3.5.9.2.5.1.4 "><p id="EN-US_TOPIC_0068473331__p1176174163413">Specifies whether to check resource sufficiency when creating an <span id="EN-US_TOPIC_0068473331__text151381826115511">ECS</span>. If this parameter is not configured, the system does not check resource sufficiency by default.</p>
+<p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p7354558152617">The value can be <strong id="EN-US_TOPIC_0068473331__b842352706184734">true</strong> or <strong id="EN-US_TOPIC_0068473331__b842352706184738">false</strong>. The default value is <strong id="EN-US_TOPIC_0068473331__b842352706184742">false</strong>.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul658716261273"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li155860265273"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706102527">true</strong>: indicates that the system will check resource sufficiency. If the resources are insufficient, the check result will be returned.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li155864267272"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b842352706102721">false</strong>: indicates that the system will not check resource sufficiency.</li></ul>
+<div class="note" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_note15121261355"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p11516136458">Since the resource usage is dynamic, the resource sufficiency check result is not accurate.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section32057793"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0068473331__p8704104254"><a href="#EN-US_TOPIC_0068473331__table44736746">Table 9</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__table44736746"></a><a name="table44736746"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__table44736746" frame="border" border="1" rules="all"><caption><b>Table 9 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__row8242429"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.6.3.2.4.1.1"><p id="EN-US_TOPIC_0068473331__p63657004">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.6.3.2.4.1.2"><p id="EN-US_TOPIC_0068473331__p35147813">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="71%" id="mcps1.3.6.3.2.4.1.3"><p id="EN-US_TOPIC_0068473331__p28400574">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__row18745119"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.3.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p41959665">server</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.3.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p16804102">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="71%" headers="mcps1.3.6.3.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p36377578">Specifies <span id="EN-US_TOPIC_0068473331__text171698395348">ECS</span> information. For details, see <a href="#EN-US_TOPIC_0068473331__en-us_topic_0057972661_table37882063">Table 10</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table37882063"></a><a name="en-us_topic_0057972661_table37882063"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_table37882063" frame="border" border="1" rules="all"><caption><b>Table 10 </b><strong id="EN-US_TOPIC_0068473331__b79961241514">server</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row35582587"><th align="left" class="cellrowborder" valign="top" width="28.09%" id="mcps1.3.6.4.2.4.1.1"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p63617293">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.1%" id="mcps1.3.6.4.2.4.1.2"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p52727095">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.81%" id="mcps1.3.6.4.2.4.1.3"><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p63390070">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row1032124"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p16493259">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p60885635">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p38694667">Specifies the <span id="EN-US_TOPIC_0068473331__text3825182716555">ECS</span> ID in UUID format.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row12707688"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p22689808">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p25935173">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p39701876">Specifies the URI of the <span id="EN-US_TOPIC_0068473331__text1464111287551">ECS</span>. For details, see <a href="#EN-US_TOPIC_0068473331__table16539321">Table 11</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row21772565"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p18747312">security_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p42137308">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p41469957">Specifies the security groups to which the <span id="EN-US_TOPIC_0068473331__text05722293559">ECS</span> belongs. For details, see <a href="#EN-US_TOPIC_0068473331__table761507165933">Table 12</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_row37685299"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p32610412">OS-DCF:diskConfig</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p24197721">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p48788849">Specifies the disk configuration mode.</p>
+<ul id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_ul36446461"><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li59582700"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b63173312">MANUAL</strong>: indicates that the image space of the system disk cannot be expanded.</li><li id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_li66482253"><strong id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_b16764629">AUTO</strong>: indicates that the image space of the system disk can be automatically expanded to a value same as that specified in flavor.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__row11302638192316"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p18302113820232">reservation_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p9302138142319">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><div class="p" id="EN-US_TOPIC_0068473331__p139921927192516">Specifies a filtering criteria to query the created <span id="EN-US_TOPIC_0068473331__text17433153011559">ECS</span>s.<div class="note" id="EN-US_TOPIC_0068473331__note11231428132513"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__p112322862510">When you create <span id="EN-US_TOPIC_0068473331__text29421224175513">ECS</span>s in a batch, this parameter is available.</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__row928515498315"><td class="cellrowborder" valign="top" width="28.09%" headers="mcps1.3.6.4.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p22879491036">adminPass</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.1%" headers="mcps1.3.6.4.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p528713493311">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.81%" headers="mcps1.3.6.4.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p1628710497317">Specifies the password of user <strong id="EN-US_TOPIC_0068473331__b15320433115517">Administrator</strong> for logging in to a Windows <span id="EN-US_TOPIC_0068473331__text10626173214551">ECS</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__table16539321"></a><a name="table16539321"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__table16539321" frame="border" border="1" rules="all"><caption><b>Table 11 </b><strong id="EN-US_TOPIC_0068473331__b14183827111613">links</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__row4585366"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.6.5.2.4.1.1"><p id="EN-US_TOPIC_0068473331__p1475445290">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.6.5.2.4.1.2"><p id="EN-US_TOPIC_0068473331__p14634442298">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="71%" id="mcps1.3.6.5.2.4.1.3"><p id="EN-US_TOPIC_0068473331__p36312446294">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__row14455526"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.5.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p30046962">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.5.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p39387099">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="71%" headers="mcps1.3.6.5.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p36238473">Specifies the shortcut link marker name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0068473331__row57710802"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.5.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p44063391">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.5.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p62035831">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="71%" headers="mcps1.3.6.5.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p58846418">Provides the corresponding shortcut link.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0068473331__table761507165933"></a><a name="table761507165933"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0068473331__table761507165933" frame="border" border="1" rules="all"><caption><b>Table 12 </b><strong id="EN-US_TOPIC_0068473331__b18518413312">security_groups</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0068473331__row29958070165933"><th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.6.6.2.4.1.1"><p id="EN-US_TOPIC_0068473331__p1550320527296">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.6.6.2.4.1.2"><p id="EN-US_TOPIC_0068473331__p650355252917">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="70.70707070707071%" id="mcps1.3.6.6.2.4.1.3"><p id="EN-US_TOPIC_0068473331__p14518145202914">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0068473331__row29572324165933"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.6.6.2.4.1.1 "><p id="EN-US_TOPIC_0068473331__p46548026165933">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.6.2.4.1.2 "><p id="EN-US_TOPIC_0068473331__p12293798165933">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.70707070707071%" headers="mcps1.3.6.6.2.4.1.3 "><p id="EN-US_TOPIC_0068473331__p52012230">Specifies the security group name or UUID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__section8540539202712"><h4 class="sectiontitle">Example Request (Creating an <span id="EN-US_TOPIC_0068473331__text4891541105519">ECS</span>)</h4><p id="EN-US_TOPIC_0068473331__p169171611195916">Example URL request</p>
+<pre class="screen" id="EN-US_TOPIC_0068473331__screen20880126125916">POST https://{endpoint}/v2/9c53a566cb3443ab910cf0daebca90c4/servers
+POST https://{endpoint}/v2.1/9c53a566cb3443ab910cf0daebca90c4/servers</pre>
+<p id="EN-US_TOPIC_0068473331__p1259183782815"><strong id="EN-US_TOPIC_0068473331__b1221132145611">Example 1: Use an image to create an <span id="EN-US_TOPIC_0068473331__text11993941175516">ECS</span> through the API block_device_mapping_v2.</strong></p>
+<pre class="screen" id="EN-US_TOPIC_0068473331__screen208673131595"> { 
+    "server": { 
+        "flavorRef": "2", 
+        "name": "wjvm48", 
+        "metadata": { 
+            "name": "name_xx1", 
+            "id": "id_xxxx1" 
+        }, 
+        "block_device_mapping_v2": [{ 
+            "source_type": "image", 
+            "destination_type": "volume", 
+            "uuid": "b023fe17-11db-4efb-b800-78882a0e394b", 
+            "delete_on_termination": "False", 
+            "boot_index": "0",
+            "volume_type": "SAS",
+            "volume_size": "40"
+        }], 
+        "security_groups": [{ 
+            "name": "name_xx5_sg" 
+        }], 
+        "networks": [{ 
+            "uuid": "fd40e6f8-942d-4b4e-a7ae-465287b02a2c", 
+            "port": "e730a11c-1a19-49cc-8797-cee2ad67af6f", 
+            "fixed_ip": "10.20.30.137" 
+        }], 
+        "key_name": "test", 
+        "user_data": "ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2ggYSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4uLnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNvbnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3csIHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==", 
+        "availability_zone":"az1-dc1"
+    } 
+}</pre>
+<div class="p" id="EN-US_TOPIC_0068473331__p18841357131913"><strong id="EN-US_TOPIC_0068473331__b1279918366565">Example 2: Use a snapshot to create an <span id="EN-US_TOPIC_0068473331__text147941442185514">ECS</span> through the API block_device_mapping_v2.</strong><div class="note" id="EN-US_TOPIC_0068473331__note11822019182717"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0068473331__p18823161932715">When <strong id="EN-US_TOPIC_0068473331__b8423527069017">source_type</strong> is <strong id="EN-US_TOPIC_0068473331__b8423527069024">snapshot</strong>, <strong id="EN-US_TOPIC_0068473331__b8423527069036">boot_index</strong> is <strong id="EN-US_TOPIC_0068473331__b8423527069040">0</strong>, and the EVS disk corresponding to the snapshot must be a system disk.</p>
+</div></div>
+<pre class="screen" id="EN-US_TOPIC_0068473331__screen2154134015265">{
+    "server":{
+        "name":"wjvm48",
+        "availability_zone":"az1-dc1",
+        "block_device_mapping_v2": [
+            {
+                "source_type":"snapshot",
+                "boot_index":"0",
+                "uuid":"df51997d-ee35-4fb3-a372-e2ac933a6565", //Specifies the snapshot ID, which is returned by the API for creating a snapshot.
+                "destination_type":"volume"
+            }
+        ],
+        "flavorRef":"s3.xlarge.2",
+        "max_count":1,
+        "min_count":1,
+        "networks": [
+            {
+                "uuid":"79a68cef-0936-4e21-b1f4-b800ecb70246"
+            }
+        ] 
+    } 
+}</pre>
+</div>
+<div class="p" id="EN-US_TOPIC_0068473331__p25121638192811"><strong id="EN-US_TOPIC_0068473331__b76047135711">Example 3: Use a disk to create an <span id="EN-US_TOPIC_0068473331__text156101243195518">ECS</span> through the API block_device_mapping_v2.</strong><pre class="screen" id="EN-US_TOPIC_0068473331__screen4601209517">{ 
+    "server": { 
+        "flavorRef": "2", 
+        "name": "wjvm48", 
+        "metadata": { 
+            "name": "name_xx1", 
+            "id": "id_xxxx1" 
+        }, 
+        "block_device_mapping_v2": [{ 
+            "source_type": "volume", 
+            "destination_type": "volume", 
+            "uuid": "bd7e4f86-b004-4745-bea2-a55b1085f107", 
+            "delete_on_termination": "False", 
+            "boot_index": "0", 
+            "volume_type": "dsware",
+            "volume_size": "40"
+        }], 
+        "security_groups": [{ 
+            "name": "name_xx5_sg" 
+        }], 
+        "networks": [{ 
+            "uuid": "fd40e6f8-942d-4b4e-a7ae-465287b02a2c", 
+            "port": "e730a11c-1a19-49cc-8797-cee2ad67af6f", 
+            "fixed_ip": "10.20.30.137" 
+        }], 
+        "key_name": "test", 
+        "user_data": "ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2ggYSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4uLnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNvbnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3csIHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==", 
+        "availability_zone":"az1-dc1"
+    } 
+}</pre>
+</div>
+<div class="p" id="EN-US_TOPIC_0068473331__p1861475211280"><strong id="EN-US_TOPIC_0068473331__b13124204795717">Example 4: Create an <span id="EN-US_TOPIC_0068473331__text048114444552">ECS</span> through the API imageRef.</strong><pre class="screen" id="EN-US_TOPIC_0068473331__screen1264311193213">{ 
+    "server": { 
+        "flavorRef": "2", 
+        "name": "wjvm48", 
+        "metadata": { 
+            "name": "name_xx1", 
+            "id": "id_xxxx1" 
+        }, 
+        "adminPass": "name_xx1", 
+        "imageRef": "6b344c54-d606-4e1a-a99e-a7d0250c3d14",
+        "security_groups": [{ 
+            "name": "name_xx5_sg" 
+        }], 
+        "networks": [{ 
+            "uuid": "fd40e6f8-942d-4b4e-a7ae-465287b02a2c",
+            "port": "e730a11c-1a19-49cc-8797-cee2ad67af6f",
+            "fixed_ip": "10.20.30.137" 
+        }], 
+        "key_name": "test", 
+        "user_data": "ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2ggYSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4uLnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNvbnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3csIHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==", 
+        "availability_zone":"az1-dc1"
+    } 
+}</pre>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__section5933204164918"><h4 class="sectiontitle">Example Response (Creating an <span id="EN-US_TOPIC_0068473331__text1744964525516">ECS</span>)</h4><pre class="screen" id="EN-US_TOPIC_0068473331__screen59893419497">{
+    "server": {
+        "security_groups": [
+            {
+                "name": "name_xx5_sg"
+            }
+        ],
+        "OS-DCF:diskConfig": " MANUAL",
+        "id": "567c1557-0eca-422c-bfce-149d6b8f1bb8",
+        "links": [
+            {
+                "href": "http://192.168.82.230:8774/v2/dc4059e8e7994f2498b514ca04cdaf44/servers/567c1557-0eca-422c-bfce-149d6b8f1bb8",
+                "rel": "self"
+            },
+            {
+                "href": "http://192.168.82.230:8774/dc4059e8e7994f2498b514ca04cdaf44/servers/567c1557-0eca-422c-bfce-149d6b8f1bb8",
+                "rel": "bookmark"
+            }
+        ],
+        "adminPass": "name_xx1"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__section9554114338"><h4 class="sectiontitle">Example Request (Creating <span id="EN-US_TOPIC_0068473331__text220194675515">ECS</span>s in a Batch)</h4><pre class="screen" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_screen1373152314274">{
+    "server": {
+        "availability_zone":"az1.dc1",
+        "name": "test",
+        "imageRef": "10ff4f01-35b6-4209-8397-359cb4475fa0",
+        "flavorRef": "s3.medium",
+        "return_reservation_id": "true",
+        "networks": [
+            {
+                "uuid": "51bead38-d1a3-4d08-be20-0970c24b7cab"
+            }
+        ],
+        "min_count": "2",
+        "max_count": "3"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__section4462153875112"><h4 class="sectiontitle">Example Response (Creating <span id="EN-US_TOPIC_0068473331__text165795911349">ECS</span>s in a Batch)</h4><pre class="screen" id="EN-US_TOPIC_0068473331__screen13478153805115">{
+    "reservation_id": "r-3fhpjulh"
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_section128741313191616"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0068473331__en-us_topic_0057972661_p5693111841619">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385015.html">Lifecycle Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,73 @@
+<a name="elb_ug_jt_0002"></a><a name="elb_ug_jt_0002"></a>
+
+<h1 class="topictitle1">Protocols and Ports</h1>
+<h4 class="sectiontitle">Frontend Protocols and Ports</h4><p id="elb_ug_jt_0002__p1072885381915">Frontend protocols and ports are used by load balancers to receive requests from clients. Load balancers use TCP, UDP, or SSL at Layer 4, and HTTP or HTTPS at Layer 7. Select a protocol and a port that best suit your requirements.</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0002__table16662138185223" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Frontend protocols and ports</caption><thead align="left"><tr id="elb_ug_jt_0002__row66696918185223"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.1.3.2.3.1.1"><p id="elb_ug_jt_0002__p33741271185223"><strong id="elb_ug_jt_0002__b194111818274">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.1.3.2.3.1.2"><p id="elb_ug_jt_0002__p578219194238"><strong id="elb_ug_jt_0002__b371215143273">Port</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0002__row60479457185223"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.1.3.2.3.1.1 "><p id="elb_ug_jt_0002__p66997849185223">TCP</p>
+</td>
+<td class="cellrowborder" rowspan="5" valign="top" width="75%" headers="mcps1.3.1.3.2.3.1.2 "><p id="elb_ug_jt_0002__p1467622095114">There are some restrictions when you select the protocols and port numbers.</p>
+<ul id="elb_ug_jt_0002__ul3677162065116"><li id="elb_ug_jt_0002__li1468022012513">For each load balancer, UDP can use the same ports as other protocols, but these other protocols must have unique ports. For example, if you have a UDP listener that uses port 88, you can add a TCP, HTTP, or HTTPS listener that also uses port 88. However, if you already have an HTTP listener that uses port 443, you cannot add an HTTPS or TCP listener that uses the same port.</li><li id="elb_ug_jt_0002__li196821020185117">The port numbers of the same protocol must be unique. For example, if you have a TCP listener that uses port 80, you cannot add another TCP listener that uses the same port.</li></ul>
+<p id="elb_ug_jt_0002__p568392015110">The port number ranges from 1 to 65535.</p>
+<p id="elb_ug_jt_0002__p188415513232">The following are some commonly-used protocols and port numbers:</p>
+<p id="elb_ug_jt_0002__p1539004613252">TCP/80</p>
+<p id="elb_ug_jt_0002__p1772713917262">HTTPS/443</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row3124943991152"><td class="cellrowborder" valign="top" headers="mcps1.3.1.3.2.3.1.1 "><p id="elb_ug_jt_0002__p1280950091152">UDP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row53288272185223"><td class="cellrowborder" valign="top" headers="mcps1.3.1.3.2.3.1.1 "><p id="elb_ug_jt_0002__p21382803185223">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row21290497142014"><td class="cellrowborder" valign="top" headers="mcps1.3.1.3.2.3.1.1 "><p id="elb_ug_jt_0002__p57396749142014">HTTPS</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row57281241122611"><td class="cellrowborder" valign="top" headers="mcps1.3.1.3.2.3.1.1 "><p id="elb_ug_jt_0002__p67299415263">SSL (only classic load balancers)</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Backend Protocols and Ports</h4><p id="elb_ug_jt_0002__p035410353276">Backend protocols and ports are used by backend servers to receive requests from load balancers. If Windows servers have Internet Information Services (IIS) installed, the default backend protocol and port are HTTP and 80.</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_ug_jt_0002__table193210457467" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Backend protocols and ports</caption><thead align="left"><tr id="elb_ug_jt_0002__row8933144564614"><th align="left" class="cellrowborder" valign="top" width="36.199999999999996%" id="mcps1.3.2.3.2.3.1.1"><p id="elb_ug_jt_0002__p129331845104611"><strong id="elb_ug_jt_0002__b1372128058">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63.800000000000004%" id="mcps1.3.2.3.2.3.1.2"><p id="elb_ug_jt_0002__p17933204513468"><strong id="elb_ug_jt_0002__b614820613">Port</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_ug_jt_0002__row13933184511467"><td class="cellrowborder" valign="top" width="36.199999999999996%" headers="mcps1.3.2.3.2.3.1.1 "><p id="elb_ug_jt_0002__p7933164544618">TCP</p>
+</td>
+<td class="cellrowborder" rowspan="4" valign="top" width="63.800000000000004%" headers="mcps1.3.2.3.2.3.1.2 "><p id="elb_ug_jt_0002__p39332456469">Backend servers can use the same ports. The port number ranges from 1 to 65535.</p>
+<p id="elb_ug_jt_0002__p1793344524619">The following are some commonly-used protocols and port numbers:</p>
+<p id="elb_ug_jt_0002__p7933184564619">TCP/80</p>
+<p id="elb_ug_jt_0002__p15933345174619">HTTP/443</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row149331145174610"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.3.1.1 "><p id="elb_ug_jt_0002__p1093394574613">UDP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row189339455463"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.3.1.1 "><p id="elb_ug_jt_0002__p2933174584616">HTTP</p>
+</td>
+</tr>
+<tr id="elb_ug_jt_0002__row270314819473"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.3.1.1 "><p id="elb_ug_jt_0002__p147032864715">HTTPS</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+<strong>Parent topic:</strong> <a href="en-us_topic_0015479923.html">Listener</a>
+
+
+

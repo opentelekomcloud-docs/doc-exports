@@ -1,0 +1,84 @@
+<a name="EN-US_TOPIC_0028714261"></a><a name="EN-US_TOPIC_0028714261"></a>
+
+<h1 class="topictitle1">Modifying the Specifications of an <span id="text871617201133">ECS</span></h1>
+<div id="body1460104995674"><div class="section" id="EN-US_TOPIC_0028714261__section5763990416457"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0028714261__p84656149514">This API is used to modify the specifications of an <span id="EN-US_TOPIC_0028714261__text1133917308466">ECS</span>.</p>
+<p id="EN-US_TOPIC_0028714261__p1527813411203">For a running <span id="EN-US_TOPIC_0028714261__text421815520579">ECS</span>, the system will automatically stop the <span id="EN-US_TOPIC_0028714261__text11300131211147">ECS</span>, copy the <span id="EN-US_TOPIC_0028714261__text12953121518141">ECS</span> data to the target node, which can be the source node, and then restart the <span id="EN-US_TOPIC_0028714261__text188684342142">ECS</span>.</p>
+<p id="EN-US_TOPIC_0028714261__p2753185172918">This API supports automatic rollback if the underlying resources are insufficient.</p>
+<p id="EN-US_TOPIC_0028714261__p2422452121419">This API must be used with the API for verifying <span id="EN-US_TOPIC_0028714261__text8841735144616">ECS</span> specifications modification (POST /v2.1/{project_id}/servers/{server_id}/action) or the API for rolling back <span id="EN-US_TOPIC_0028714261__text73136741516">ECS</span> specifications modification (POST /v2.1/{project_id}/servers/{server_id}/action) if an <span id="EN-US_TOPIC_0028714261__text1452841011510">ECS</span> is detected to be in <strong id="EN-US_TOPIC_0028714261__b1722332392010">VERIFY_RESIZE</strong> state and its <strong id="EN-US_TOPIC_0028714261__b20490122382113">OS-EXT-STS:vm_state</strong> is <strong id="EN-US_TOPIC_0028714261__b1829212952118">RESIZED</strong>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section934152916457"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0028714261__p416613912243">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0028714261__p9553613143218">POST /v2/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0028714261__p897104414117"><a href="#EN-US_TOPIC_0028714261__table3588765216457">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0028714261__table3588765216457"></a><a name="table3588765216457"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0028714261__table3588765216457" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0028714261__row3213599316457"><th align="left" class="cellrowborder" valign="top" width="16.61%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0028714261__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.169999999999998%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0028714261__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.22%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0028714261__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0028714261__row5283576216457"><td class="cellrowborder" valign="top" width="16.61%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0028714261__p5183832116457">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0028714261__p3815449716457">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.22%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0028714261__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0028714261__row3155913116457"><td class="cellrowborder" valign="top" width="16.61%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0028714261__p615277916457">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0028714261__p2861306316457">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.22%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0028714261__p3595679216457">Specifies the <span id="EN-US_TOPIC_0028714261__text2159205419166">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section5517568016457"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0028714261__p11342119112314"><a href="#EN-US_TOPIC_0028714261__table2242889516457">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0028714261__table2242889516457"></a><a name="table2242889516457"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0028714261__table2242889516457" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0028714261__row3650219016457"><th align="left" class="cellrowborder" valign="top" width="16.648335166483353%" id="mcps1.3.3.2.2.2.5.1.1"><p id="EN-US_TOPIC_0028714261__en-us_topic_0057973030_p1494644">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.24827517248275%" id="mcps1.3.3.2.2.2.5.1.2"><p id="EN-US_TOPIC_0028714261__en-us_topic_0057973030_p8469150">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.258574142585742%" id="mcps1.3.3.2.2.2.5.1.3"><p id="EN-US_TOPIC_0028714261__en-us_topic_0057973030_p53957349">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.84481551844815%" id="mcps1.3.3.2.2.2.5.1.4"><p id="EN-US_TOPIC_0028714261__en-us_topic_0057973030_p14912584">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0028714261__row1418337416457"><td class="cellrowborder" valign="top" width="16.648335166483353%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0028714261__p800266116457">flavorRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24827517248275%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0028714261__p731712146">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.258574142585742%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0028714261__p2633272116457">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.84481551844815%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0028714261__p341898416457">Specifies the new flavor ID or URI.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section1759889416457"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0028714261__p1622428116457">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section1264820314241"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0028714261__screen10769281839">POST https://{endpoint}/v2/{project_id}/servers/{server_id}/action
+POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0028714261__screen5405652919544">{
+    "resize" : {
+        "flavorRef" : "s6.medium.2"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section47159401499"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0028714261__p154884512106">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0028714261__section1180080516457"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0028714261__p1634118516457">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385016.html">Status Management</a></div>
+</div>
+</div>
+

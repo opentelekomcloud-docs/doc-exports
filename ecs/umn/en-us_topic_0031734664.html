@@ -1,0 +1,21 @@
+<a name="EN-US_TOPIC_0031734664"></a><a name="EN-US_TOPIC_0031734664"></a>
+
+<h1 class="topictitle1">Why Does the Login to My Linux <span id="text45181954103015">ECS</span> Using a Key File Fail?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0031734664__en-us_topic_0031703610_section563002281179"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0031734664__en-us_topic_0031703610_p4536999911713">When you use the key file created during your Linux <span id="EN-US_TOPIC_0031734664__text1932695513016">ECS</span> creation to log in to the <span id="EN-US_TOPIC_0031734664__text22982452067">ECS</span>, the login fails.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0031734664__en-us_topic_0031703610_section379062211192"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0031734664__p337422193331">Possible causes vary depending on the image used to create the Linux <span id="EN-US_TOPIC_0031734664__text953011565302">ECS</span>.</p>
+<ul id="EN-US_TOPIC_0031734664__ul3665672819349"><li id="EN-US_TOPIC_0031734664__li4295650419349">Cause 1: The image that you used to create the Linux <span id="EN-US_TOPIC_0031734664__text1086125743012">ECS</span> is a private image, on which Cloud-Init is not installed.</li><li id="EN-US_TOPIC_0031734664__li12463602193413">Cause 2: Cloud-Init is installed on the image, but you did not obtain the key pair when you created the <span id="EN-US_TOPIC_0031734664__text1064685753020">ECS</span>.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0031734664__en-us_topic_0031703610_section32757467113923"><h4 class="sectiontitle">Solution</h4><ul id="EN-US_TOPIC_0031734664__ul18352997193630"><li id="EN-US_TOPIC_0031734664__li57458761193630">If the issue is a result of cause 1, proceed as follows:<p id="EN-US_TOPIC_0031734664__p16909377145119"><a name="EN-US_TOPIC_0031734664__li57458761193630"></a><a name="li57458761193630"></a>If you created a private image without installing Cloud-Init, you cannot customize the <span id="EN-US_TOPIC_0031734664__text1479817582306">ECS</span> configuration. As a result, you can log in to the <span id="EN-US_TOPIC_0031734664__text186583244915">ECS</span> only using the original image password or key pair.</p>
+<p id="EN-US_TOPIC_0031734664__p14781596306">The original image password or key pair is the OS password or key pair you configured when you created the private image.</p>
+</li><li id="EN-US_TOPIC_0031734664__li10282759193656">If the issue is a result of cause 2, proceed as follows:<ol id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_ol46859259171911"><li id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_li40959995171921">Locate the row containing the target <span id="EN-US_TOPIC_0031734664__text178711901319">ECS</span>, click <strong id="EN-US_TOPIC_0031734664__b8356511141319">More</strong> in the <strong id="EN-US_TOPIC_0031734664__b1851651491315">Operation</strong> column, and select <strong id="EN-US_TOPIC_0031734664__b15636141721317">Restart</strong>.</li><li id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_li1838866171911">Use the key file to log in to the <span id="EN-US_TOPIC_0031734664__text188301119314">ECS</span> again and check whether the login is successful.<ul id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_ul47236236172129"><li id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_li43665397172129">If the login is successful, no further action is required.</li><li id="EN-US_TOPIC_0031734664__en-us_topic_0031736846_li57444253172129">If the login fails, contact customer service for technical support.</li></ul>
+</li></ol>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0105215483.html">Passwords and Key Pairs</a></div>
+</div>
+</div>
+

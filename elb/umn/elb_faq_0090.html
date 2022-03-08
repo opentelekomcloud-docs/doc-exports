@@ -1,0 +1,81 @@
+<a name="elb_faq_0090"></a><a name="elb_faq_0090"></a>
+
+<h1 class="topictitle1">How Can I Obtain the IP Address of a Client?</h1>
+<p id="elb_faq_0090__p126130261229">When you use ELB to route requests to backend servers, IP addresses of the clients will be translated by the ELB system. This FAQ provides the operations for obtaining the IP addresses of the clients.</p>
+<h4 class="sectiontitle">Constraints and Limitations</h4><ul id="elb_faq_0090__ul104521513161519"><li id="elb_faq_0090__li13452113161512">If Network Address Translation (NAT) or Web Application Firewall (WAF) is used, you cannot obtain the IP addresses of the clients.</li><li id="elb_faq_0090__li9274171501517">If the client is a container, you can obtain only the IP address of the node where the container is located, but cannot obtain the IP address of the container.</li><li id="elb_faq_0090__li9335359112219">If the <strong id="elb_faq_0090__b352118212323">Obtain Client IP Address</strong> option is enabled for TCP or UDP listeners, a cloud server cannot be used as a backend server and a client at the same time. In this case, you can configure the TOA plug-in to obtain the source IP addresses.</li><li id="elb_faq_0090__li983412419371">By default, the <strong id="elb_faq_0090__b149753488323">Obtain Client IP Address</strong> option is enabled for TCP and UDP listeners of dedicated load balancers. You do not need to manually enable it.</li></ul>
+
+<h4 class="sectiontitle">Layer 7 Load Balancing</h4><p id="elb_faq_0090__p1023417204310">Configure the application server and obtain the IP address of a client from the HTTP header.</p>
+
+<p id="elb_faq_0090__p831417121548">The real IP address is placed in the X-Forwarded-For header field by the load balancer in the following format:</p>
+<pre class="screen" id="elb_faq_0090__screen1187691785410">X-Forwarded-For: <em id="elb_faq_0090__i1750233911017">IP address of the client</em>,<em id="elb_faq_0090__i1750311398014">Proxy server 1-IP address</em>,<em id="elb_faq_0090__i5504183920016">Proxy server 2-IP address</em>,...</pre>
+<p id="elb_faq_0090__p20617125125319">If you use this method, the first IP address obtained is the IP address of the client.</p>
+<p id="elb_faq_0090__p19756101917416"><strong id="elb_faq_0090__b10993195705216">Apache Server</strong></p>
+<ol id="elb_faq_0090__ol6308148164116"><li id="elb_faq_0090__li12308194814416">Install Apache 2.4.<p id="elb_faq_0090__p730884864117"><a name="elb_faq_0090__li12308194814416"></a><a name="li12308194814416"></a>For example, if CentOS 7.5 is used as the OS, run the following command to install the software:</p>
+<pre class="screen" id="elb_faq_0090__screen179405819412">yum install httpd</pre>
+</li><li id="elb_faq_0090__li119211618194213">Add the following content to the end of Apache configuration file <strong id="elb_faq_0090__b17513185075513">/etc/httpd/conf/httpd.conf</strong>:<pre class="screen" id="elb_faq_0090__screen777611144433">LoadModule remoteip_module modules/mod_remoteip.so
+RemoteIPHeader X-Forwarded-For
+RemoteIPInternalProxy <strong id="elb_faq_0090__b1977615149432"><em id="elb_faq_0090__i1777601412436">100.125.0.0/16</em></strong></pre>
+<span class="figcap"><b>Figure 1 </b>Content to be added</span><br><span><img id="elb_faq_0090__image1368125117439" src="en-us_image_0174899056.jpg"></span>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_faq_0090__p11969135614319">Add the IP address range of the proxy server after <strong id="elb_faq_0090__b110010178155">RemoteIPInternalProxy</strong>.</p>
+<ul id="elb_faq_0090__ul5985165818319"><li id="elb_faq_0090__li49865581436"><span id="elb_faq_0090__ph1911810238">Shared</span> load balancers: 100.125.0.0/16<span id="elb_faq_0090__ph1820812303110"></span> and the IP address range used by the AAD service. 100.125.0.0/16 is used by load balancers to communicate with backend servers, and there are no security risks. Use commas (,) to separate multiple entries.</li><li id="elb_faq_0090__li6194337848">Dedicated load balancers: the CIDR block of the subnet where the load balancer resides</li></ul>
+</div>
+</li><li id="elb_faq_0090__li10895421174213">Change the log output format in the Apache configuration file to the following (<strong id="elb_faq_0090__b1311681216319">%a</strong> indicates the source IP address):<pre class="screen" id="elb_faq_0090__screen13565739124411">LogFormat "<em id="elb_faq_0090__i18199122934118"><strong id="elb_faq_0090__b5762132774111">%</strong><strong id="elb_faq_0090__b194131533162710">a</strong></em> %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined</pre>
+</li><li id="elb_faq_0090__li1851619394515">Restart Apache.<pre class="screen" id="elb_faq_0090__screen108061723195117">systemctl restart httpd</pre>
+</li><li id="elb_faq_0090__li156661737145114">Obtain the actual IP address of the client from the httpd access logs.</li></ol>
+<p id="elb_faq_0090__p6714439135314"><strong id="elb_faq_0090__b577241918535">Nginx Server</strong></p>
+<p id="elb_faq_0090__p155321736613">For example, if CentOS 7.5 is used as the OS, run the following command to install the software:</p>
+<ol id="elb_faq_0090__ol7358205916533"><li id="elb_faq_0090__li0358155914534">Run the following commands to install http_realip_module:<pre class="screen" id="elb_faq_0090__screen1882810131546">yum -y install gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel
+wget http://nginx.org/download/nginx-1.17.0.tar.gz
+tar zxvf nginx-1.17.0.tar.gz
+cd nginx-1.17.0
+./configure --prefix=/path/server/nginx --with-http_stub_status_module --without-http-cache --with-http_ssl_module --with-http_realip_module
+make
+make install</pre>
+</li><li id="elb_faq_0090__li157133719579">Run the following command to open the <strong id="elb_faq_0090__b284014426589">nginx.conf</strong> file:<pre class="screen" id="elb_faq_0090__screen168161722125710">vi /path/server/nginx/conf/nginx.conf</pre>
+</li><li id="elb_faq_0090__li08471939155717">Add the following content under <strong id="elb_faq_0090__b749741615367">http</strong> or <strong id="elb_faq_0090__b182411020113613">server</strong>:<pre class="screen" id="elb_faq_0090__screen114715217570">;<em id="elb_faq_0090__i486310577577"><strong id="elb_faq_0090__b3978993586">100.125.0.0/16</strong></em>set_real_ip_from 
+real_ip_header X-Forwarded-For;</pre>
+<span class="figcap"><b>Figure 2 </b>Content to be added</span><br><span><img id="elb_faq_0090__image117512241589" src="en-us_image_0174914269.jpg"></span>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_faq_0090__p66517423613">Add the IP address range of the proxy server after <strong id="elb_faq_0090__b115641940173910">set_real_ip_from</strong>.</p>
+<ul id="elb_faq_0090__ul382910413719"><li id="elb_faq_0090__li13829341171"><span id="elb_faq_0090__ph17309135819617">Shared</span> load balancers: 100.125.0.0/16<span id="elb_faq_0090__ph5282205074611"></span> and the IP address range used by the AAD service. (100.125.0.0/16 is used by load balancers to communicate with backend servers, and there are no security risks. Use commas to separate multiple entries.</li></ul>
+<ul id="elb_faq_0090__ul410015111674"><li id="elb_faq_0090__li14373314679">Dedicated load balancers: the CIDR block of the subnet where the load balancer resides</li></ul>
+</div>
+</li><li id="elb_faq_0090__li641018965916">Start Nginx.<pre class="screen" id="elb_faq_0090__screen578563035916">/path/server/nginx/sbin/nginx</pre>
+</li><li id="elb_faq_0090__li148240105591">Obtain the actual IP address of the client from the Nginx access logs.<pre class="screen" id="elb_faq_0090__screen8367134511812">cat /path/server/nginx/logs/access.log</pre>
+</li></ol>
+<p id="elb_faq_0090__p480771725215"><strong id="elb_faq_0090__b16433239142610">Tomcat Servers</strong></p>
+<p id="elb_faq_0090__p1680781711526">In the following operations, the Tomcat installation path is <strong id="elb_faq_0090__b944410301920">/usr/tomcat/tomcat8/</strong>.</p>
+<ol id="elb_faq_0090__ol78072171526"><li id="elb_faq_0090__li2497621114416">Log in to a server on which Tomcat is installed.</li><li id="elb_faq_0090__li20249121115120">Check whether Tomcat is running properly.<pre class="screen" id="elb_faq_0090__screen44802295146">ps -ef|grep tomcat
+netstat -anpt|grep java</pre>
+<span class="figcap"><b>Figure 3 </b>Tomcat running properly</span><br><span><img id="elb_faq_0090__image12991039151611" src="en-us_image_0276143526.png"></span>
+</li><li id="elb_faq_0090__li19727103382213">Add the following configuration items to the <strong id="elb_faq_0090__b2106163312205">server.xml</strong> file:<pre class="screen" id="elb_faq_0090__screen1724114353318">&lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+prefix="localhost_access_log." suffix=".txt"
+pattern="%{X-FORWARDED-FOR}i %l %u %t %r %s %b %D %q %{User-Agent}i %T" resolveHosts="false" /&gt;</pre>
+<span class="figcap"><b>Figure 4 </b>Example configuration</span><br><span><img id="elb_faq_0090__image465444415514" src="en-us_image_0276220702.png"></span>
+</li><li id="elb_faq_0090__li10807317205216">Restart the Tomcat service.<pre class="screen" id="elb_faq_0090__screen1289953143813">cd /usr/tomcat/tomcat8/bin &amp;&amp; sh startup.sh</pre>
+<p id="elb_faq_0090__p7855124164517">In this command, <strong id="elb_faq_0090__b1160153111279">/usr/tomcat/tomcat8/</strong> is the Tomcat installation path. Change it based on site requirements.</p>
+<span class="figcap"><b>Figure 5 </b>Restarting the Tomcat service</span><br><span><img id="elb_faq_0090__image1537214114202" src="en-us_image_0276225173.png"></span>
+</li><li id="elb_faq_0090__li52307461589">View the latest logs.<p id="elb_faq_0090__p6782174619819"><a name="elb_faq_0090__li52307461589"></a><a name="li52307461589"></a>As highlighted in the following figure, IP addresses that are not in the IP address range starting with 100.125 are the source IP addresses.</p>
+<pre class="screen" id="elb_faq_0090__screen5699423179">cat localhost_access_log..2020-09-10.txt</pre>
+<p id="elb_faq_0090__p1499318356184">In this command, <strong id="elb_faq_0090__b1309101394310">localhost_access_log..2020-09-10.txt</strong> indicates the log path of the current day. Change it based on site requirements.</p>
+<span class="figcap"><b>Figure 6 </b>Querying the source IP address</span><br><span><img id="elb_faq_0090__image360791441717" src="en-us_image_0276223899.png"></span>
+</li></ol>
+<p id="elb_faq_0090__p16107922101012">Windows Server with IIS Deployed</p>
+<p id="elb_faq_0090__p68600531213">The following uses Windows Server 2012 with IIS7 as an example to describe how to obtain the source IP address.</p>
+<ol id="elb_faq_0090__ol610718229101"><li id="elb_faq_0090__li76432018259">Download and install IIS.</li><li id="elb_faq_0090__li91351915183019">Download the <strong id="elb_faq_0090__b14943951164816">F5XForwardedFor.dll</strong> plug-in and copy the plug-ins in the <strong id="elb_faq_0090__b622893114919">x86</strong> and <strong id="elb_faq_0090__b8309153684912">x64</strong> directories to a directory for which IIS has the access permission, for example, <strong id="elb_faq_0090__b1610019581407">C:\F5XForwardedFor2008</strong>.</li><li id="elb_faq_0090__li656010311115">Open the Server Manager and choose <strong id="elb_faq_0090__b71521450114319">Modules</strong> &gt; <strong id="elb_faq_0090__b4123165611432">Configure Native Modules</strong>.<span class="figcap"><b>Figure 7 </b>Selecting modules</span><br><span><img id="elb_faq_0090__image555920581104" src="en-us_image_0267429969.png"></span>
+<span class="figcap"><b>Figure 8 </b>Configure Native Modules</span><br><span><img id="elb_faq_0090__image19181513320" src="en-us_image_0267431325.png"></span>
+</li><li id="elb_faq_0090__li158981131057">Click <strong id="elb_faq_0090__b10305101117465">Register</strong> to register the x86 and x64 plug-ins.<span class="figcap"><b>Figure 9 </b>Registering plug-ins</span><br><span><img id="elb_faq_0090__image8335241059" src="en-us_image_0267432483.png"></span>
+</li><li id="elb_faq_0090__li14440312814">In the <strong id="elb_faq_0090__b104651358134613">Modules</strong> dialog box, verify that the registered plug-ins are displayed in the list.<span class="figcap"><b>Figure 10 </b>Confirming the registration</span><br><span><img id="elb_faq_0090__image14574191416814" src="en-us_image_0267434399.png"></span>
+</li><li id="elb_faq_0090__li2088319001410">Select <strong id="elb_faq_0090__b1076244794818">ISAPI Filters</strong> on the Server Manager homepage and authorize two plug-ins to run ISAPI and CGI extensions.<span class="figcap"><b>Figure 11 </b>Adding authorization</span><br><span><img id="elb_faq_0090__image121471154181314" src="en-us_image_0267440227.png"></span>
+</li><li id="elb_faq_0090__li1522516511177">Select <strong id="elb_faq_0090__b97915442492">ISAPI and CGI Restriction</strong> to set the execution permission for the two plug-ins.<span class="figcap"><b>Figure 12 </b>Allowing the plug-ins to execute</span><br><span><img id="elb_faq_0090__image18752134415175" src="en-us_image_0267442311.png"></span>
+</li><li id="elb_faq_0090__li16707014261">Click <strong id="elb_faq_0090__b8679927125015">Restart</strong> on the homepage to restart IIS. The configuration will take effect after the restart.<span class="figcap"><b>Figure 13 </b>Restarting IIS</span><br><span><img id="elb_faq_0090__image8470105182515" src="en-us_image_0267446611.png"></span>
+</li></ol>
+<h4 class="sectiontitle">Layer 4 Load Balancing</h4><p id="elb_faq_0090__p9180141819616">TCP listeners require the TOA plug-in to obtain real IP addresses. For details, see <a href="en-us_elb_06_0001.html">Configuring the TOA Plug-in</a>.</p>
+
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_faq_0170.html">Obtaining Source IP Addresses</a>
+
+
+

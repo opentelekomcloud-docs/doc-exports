@@ -1,0 +1,784 @@
+<a name="UpdateLoadBalancer"></a><a name="UpdateLoadBalancer"></a>
+
+<h1 class="topictitle1">Updating a Load Balancer</h1>
+<h4 class="sectiontitle">Function</h4><p id="UpdateLoadBalancer__p0204237122511">This API is used to update a load balancer.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="UpdateLoadBalancer__p1920513711253">PUT /v3/{project_id}/elb/loadbalancers/{loadbalancer_id}</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__table1720611379254" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr id="UpdateLoadBalancer__row02062377259"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p id="UpdateLoadBalancer__p1620683712516">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p id="UpdateLoadBalancer__p122071337102512">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p id="UpdateLoadBalancer__p132071737102517">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p id="UpdateLoadBalancer__p132071637202511">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row1720623716252"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p id="UpdateLoadBalancer__p1208163714259">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p id="UpdateLoadBalancer__p12208153719258">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p id="UpdateLoadBalancer__p1320803752512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p id="UpdateLoadBalancer__p16209637202517">Specifies the load balancer ID.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1120613719255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p id="UpdateLoadBalancer__p1320993732511">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p id="UpdateLoadBalancer__p82091337132516">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p id="UpdateLoadBalancer__p12101375252">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p id="UpdateLoadBalancer__p15210437142512">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request Parameters</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__HeaderParameter" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request header parameters</caption><thead align="left"><tr id="UpdateLoadBalancer__row17211103762513"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p id="UpdateLoadBalancer__p202121237102518">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p id="UpdateLoadBalancer__p5212133742516">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p id="UpdateLoadBalancer__p9214103702517">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p id="UpdateLoadBalancer__p192142037142519">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row821117376252"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p id="UpdateLoadBalancer__p15214137172512">X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p id="UpdateLoadBalancer__p72151837152513">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p id="UpdateLoadBalancer__p1921553722516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p id="UpdateLoadBalancer__p72151937182511">Specifies the token used for IAM authentication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__requestParameter" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Request body parameters</caption><thead align="left"><tr id="UpdateLoadBalancer__row2021603716253"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p id="UpdateLoadBalancer__p1021763702513">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p id="UpdateLoadBalancer__p182170371253">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p id="UpdateLoadBalancer__p721783719258">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p id="UpdateLoadBalancer__p721813772510">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row0216337152516"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateLoadBalancer__p621833762511">loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateLoadBalancer__p2218153714257">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateLoadBalancer__p521993792518"><a href="#UpdateLoadBalancer__request_UpdateLoadBalancerOption">UpdateLoadBalancerOption</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateLoadBalancer__p10219163714253">Specifies the load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__request_UpdateLoadBalancerOption"></a><a name="request_UpdateLoadBalancerOption"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__request_UpdateLoadBalancerOption" frame="border" border="1" rules="all"><caption><b>Table 4 </b>UpdateLoadBalancerOption</caption><thead align="left"><tr id="UpdateLoadBalancer__row1322083713252"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p id="UpdateLoadBalancer__p8223437142517">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p id="UpdateLoadBalancer__p19223183752517">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p id="UpdateLoadBalancer__p222463722510">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p id="UpdateLoadBalancer__p122241337172513">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row122063742518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p1322423712253">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p122493714258">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p13225937162515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p172251137112511">Specifies the load balancer name.</p>
+<p id="UpdateLoadBalancer__p52251037142510">Minimum: <strong id="UpdateLoadBalancer__b1822510372259">0</strong></p>
+<p id="UpdateLoadBalancer__p52261937132515">Maximum: <strong id="UpdateLoadBalancer__b222617370252">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1722023719251"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p10226837172516">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p922673702518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p18227173702515">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p12271437172514">Specifies the administrative status of the load balancer. And the value can only be <strong id="UpdateLoadBalancer__b1222816374252">true</strong>.</p>
+<p id="UpdateLoadBalancer__p1722816371251">This parameter is unsupported. Please do not use it.</p>
+<p id="UpdateLoadBalancer__p14228183722519">Default: <strong id="UpdateLoadBalancer__b62281337142515">true</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row922010377254"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p12282037192520">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p722843713257">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p162291237182515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p12229237192517">Provides supplementary information about the load balancer.</p>
+<p id="UpdateLoadBalancer__p15229637102518">Minimum: <strong id="UpdateLoadBalancer__b323023792516">0</strong></p>
+<p id="UpdateLoadBalancer__p13230193762512">Maximum: <strong id="UpdateLoadBalancer__b1230337112518">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1422013719254"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p182301537132510">ipv6_vip_virsubnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p323133717255">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p823113772514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p1423213718253">Specifies the ID of the IPv6 subnet where the load balancer works. You can query <strong id="UpdateLoadBalancer__b223283716251">id</strong> in the response by calling the API (GET https://{VPC_Endpoint}/v1/{project_id}/subnets).</p>
+<p id="UpdateLoadBalancer__p4232113712256">The IPv6 subnet can be updated using <strong id="UpdateLoadBalancer__b12232437142520">ipv6_vip_virsubnet_id</strong>, and the private IPv6 address of the load balancer will be changed accordingly.</p>
+<p id="UpdateLoadBalancer__p723310373254">The IPv6 subnet must be in the VPC specified by <strong id="UpdateLoadBalancer__b102349378257">vpc_id</strong>.</p>
+<p id="UpdateLoadBalancer__p19234113772510">Note:</p>
+<ul id="UpdateLoadBalancer__ul7236163718256"><li id="UpdateLoadBalancer__li52361337162515"><strong id="UpdateLoadBalancer__b6236103714253">ipv6_vip_virsubnet_id</strong> can be updated only when <strong id="UpdateLoadBalancer__b10236193732519">guaranteed</strong> is set to <strong id="UpdateLoadBalancer__b1623693762514">true</strong>.</li><li id="UpdateLoadBalancer__li72377371258">Enter <strong id="UpdateLoadBalancer__b4237173720257">null</strong> if the IPv6 address is unbound from the load balancer.</li></ul>
+<p id="UpdateLoadBalancer__p122371437102515">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1022012373259"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p1723718370250">vip_subnet_cidr_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p62387372255">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p20239113762516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p1323923732512">Specifies the ID of the IPv4 subnet where the load balancer works. You can query <strong id="UpdateLoadBalancer__b10239837172518">neutron_subnet_id</strong> in the response by calling the API (GET https://{VPC_Endpoint}/v1/{project_id}/subnets).</p>
+<ul id="UpdateLoadBalancer__ul7239137202516"><li id="UpdateLoadBalancer__li102394374253">The IPv4 subnet can be updated using <strong id="UpdateLoadBalancer__b1924020376250">vip_subnet_cidr_id</strong>, and the private IPv4 address of the load balancer will be changed accordingly.</li><li id="UpdateLoadBalancer__li224015376258">If <strong id="UpdateLoadBalancer__b112415377255">vip_address</strong> is also specified, the IP address specified by it must be in the subnet specified by <strong id="UpdateLoadBalancer__b13241133772518">vip_subnet_cidr_id</strong> and will be used as the private IPv4 address of the load balancer.</li><li id="UpdateLoadBalancer__li82418375258">The IPv4 subnet must be in the VPC specified by <strong id="UpdateLoadBalancer__b12241637122515">vpc_id</strong>.</li></ul>
+<p id="UpdateLoadBalancer__p12422371251">Note:</p>
+<ul id="UpdateLoadBalancer__ul17243123716251"><li id="UpdateLoadBalancer__li8243123752518"><strong id="UpdateLoadBalancer__b1424393720253">vip_subnet_cidr_id</strong> can be updated only when <strong id="UpdateLoadBalancer__b11243183762511">guaranteed</strong> is set to <strong id="UpdateLoadBalancer__b6243137112515">true</strong>.</li><li id="UpdateLoadBalancer__li9243183712257">Enter <strong id="UpdateLoadBalancer__b172441137152510">null</strong> if the private IPv4 address is unbound from the load balancer.</li></ul>
+<p id="UpdateLoadBalancer__p0244837192511">Minimum: <strong id="UpdateLoadBalancer__b6244163722520">1</strong></p>
+<p id="UpdateLoadBalancer__p1024418370252">Maximum: <strong id="UpdateLoadBalancer__b1324420371254">36</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row182204377253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p19245173792518">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p7245237202511">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p132451337142512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p20246133742510">Specifies the virtual IP address bound to the load balancer. The IP address must be from the IPv4 subnet of the VPC where the load balancer works and IP address should not be occupied by other services.</p>
+<p id="UpdateLoadBalancer__p19246113716250">The IP address specified by this parameter must be in the subnet specified by <strong id="UpdateLoadBalancer__b624643714251">vip_subnet_cidr_id</strong> and will be used as the private IPv4 address of the load balancer.</p>
+<p id="UpdateLoadBalancer__p202461037122514"><strong id="UpdateLoadBalancer__b924623772520">vip_address</strong> can be updated only when <strong id="UpdateLoadBalancer__b7246537152513">guaranteed</strong> is set to <strong id="UpdateLoadBalancer__b1924693714251">true</strong>.</p>
+<p id="UpdateLoadBalancer__p1924612376251">Minimum: <strong id="UpdateLoadBalancer__b824673712516">1</strong></p>
+<p id="UpdateLoadBalancer__p13247173712255">Maximum: <strong id="UpdateLoadBalancer__b1724753752513">36</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row72200373253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p1824716374256">l4_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p1724711375259">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p424833762510">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p1624973792511">Specifies the ID of the Layer-4 flavor.</p>
+<p id="UpdateLoadBalancer__p5249203762511">Note:</p>
+<ul id="UpdateLoadBalancer__ul1525010374254"><li id="UpdateLoadBalancer__li52501237142516">This parameter can be updated only when <strong id="UpdateLoadBalancer__b725033711259">guaranteed</strong> is set to <strong id="UpdateLoadBalancer__b13250037102515">true</strong>.</li><li id="UpdateLoadBalancer__li1525033717257">The value cannot be changed from <strong id="UpdateLoadBalancer__b20250837102515">null</strong> to a specific value, or the other way around. If you need to change the flavor, you must select a larger one.</li></ul>
+<p id="UpdateLoadBalancer__p125173742516">Minimum: <strong id="UpdateLoadBalancer__b225113373257">1</strong></p>
+<p id="UpdateLoadBalancer__p192515377257">Maximum: <strong id="UpdateLoadBalancer__b92518375252">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1322073717256"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p62523376250">l7_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p425214371250">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p10252137172519">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p1325333718254">Specifies the ID of the Layer-7 flavor.</p>
+<p id="UpdateLoadBalancer__p20253133714254">Note:</p>
+<ul id="UpdateLoadBalancer__ul925363792515"><li id="UpdateLoadBalancer__li182538377250">This parameter can be updated only when <strong id="UpdateLoadBalancer__b10254193714256">guaranteed</strong> is set to <strong id="UpdateLoadBalancer__b7254153719258">true</strong>.</li><li id="UpdateLoadBalancer__li1225415371257">The value cannot be changed from <strong id="UpdateLoadBalancer__b1525433717257">null</strong> to a specific value, or the other way around. If you need to change the flavor, you must select a larger one.</li></ul>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row12201437142518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p92541374258">ipv6_bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p1255163712258">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p625593710251"><a href="#UpdateLoadBalancer__request_BandwidthRef">BandwidthRef</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p325514371253">Specifies the ID of the bandwidth. This parameter is available only when you create or update a dedicated load balancer that has an IPv6 address bound.</p>
+<p id="UpdateLoadBalancer__p2025603792510">If you use a new IPv6 address and specify a shared bandwidth, the IPv6 address will be added to the shared bandwidth.</p>
+<p id="UpdateLoadBalancer__p1125616379254">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row722143742513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateLoadBalancer__p0256123732516">ip_target_enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateLoadBalancer__p425717379255">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateLoadBalancer__p18257637162511">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateLoadBalancer__p5257337192518">Specifies whether to enable cross-VPC backend. The value can only be <strong id="UpdateLoadBalancer__b1525793792519">true</strong>.</p>
+<p id="UpdateLoadBalancer__p162578378256">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__request_BandwidthRef"></a><a name="request_BandwidthRef"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__request_BandwidthRef" frame="border" border="1" rules="all"><caption><b>Table 5 </b>BandwidthRef</caption><thead align="left"><tr id="UpdateLoadBalancer__row14258193762510"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.1"><p id="UpdateLoadBalancer__p7264153711254">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.2"><p id="UpdateLoadBalancer__p15265337182516">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.3"><p id="UpdateLoadBalancer__p626518377255">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.5.2.5.1.4"><p id="UpdateLoadBalancer__p62661437182513">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row625873711259"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateLoadBalancer__p926603719253">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateLoadBalancer__p326733792516">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateLoadBalancer__p226813712512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateLoadBalancer__p3268837152510">Specifies the shared bandwidth ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response Parameters</h4><p id="UpdateLoadBalancer__p19269153772518"><strong id="UpdateLoadBalancer__b42691437172518">Status code: 200</strong></p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__responseParameter" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Response body parameters</caption><thead align="left"><tr id="UpdateLoadBalancer__row3270137192510"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p id="UpdateLoadBalancer__p172712037102515">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p id="UpdateLoadBalancer__p127215377259">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p id="UpdateLoadBalancer__p827218376253">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row72701337132512"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateLoadBalancer__p627223712250">request_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateLoadBalancer__p727313762513">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateLoadBalancer__p112736371258">Specifies the request ID. The value is automatically generated.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row142701837132514"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateLoadBalancer__p227493719252">loadbalancer</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateLoadBalancer__p027417379255"><a href="#UpdateLoadBalancer__response_LoadBalancer">LoadBalancer</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateLoadBalancer__p627433720252">Specifies the load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_LoadBalancer"></a><a name="response_LoadBalancer"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_LoadBalancer" frame="border" border="1" rules="all"><caption><b>Table 7 </b>LoadBalancer</caption><thead align="left"><tr id="UpdateLoadBalancer__row3276113717254"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p id="UpdateLoadBalancer__p10279183710257">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p id="UpdateLoadBalancer__p15280237132512">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p id="UpdateLoadBalancer__p12280173713251">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row2276173719255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p52818372254">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p14281133732515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p128220375258">Specifies the load balancer ID.</p>
+<p id="UpdateLoadBalancer__p2028253742517">Default: <strong id="UpdateLoadBalancer__b828213372252">Automatically generated</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row227683762513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1028283716251">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p1282637192512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p11283173713255">Provides supplementary information about the load balancer.</p>
+<p id="UpdateLoadBalancer__p9283113702510">Minimum: <strong id="UpdateLoadBalancer__b5283837152515">1</strong></p>
+<p id="UpdateLoadBalancer__p142830371257">Maximum: <strong id="UpdateLoadBalancer__b8283737122517">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1627615374256"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p428310379252">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p19284337152513">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p15284737172520">Specifies the provisioning status of the load balancer. The value can only be <strong id="UpdateLoadBalancer__b17285837192518">ACTIVE</strong>.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row15276133762515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p10285133712515">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p52851037172514">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p8286103782512">Specifies the administrative status of the load balancer. The value can only be <strong id="UpdateLoadBalancer__b11286183752515">true</strong>.</p>
+<p id="UpdateLoadBalancer__p20286133762510">This parameter is unsupported. Please do not use it.</p>
+<p id="UpdateLoadBalancer__p9286103762520">Default: <strong id="UpdateLoadBalancer__b5286437182512">true</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row17276183719252"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p12286193718258">provider</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p1928713375254">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p4287437112519">Specifies the provider of the load balancer. The value can only be <strong id="UpdateLoadBalancer__b42871537162517">vlb</strong>.</p>
+<p id="UpdateLoadBalancer__p15287537162513">Default: <strong id="UpdateLoadBalancer__b1128793718252">vlb</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row327633792512"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p0288163710258">pools</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p182887377254">Array of <a href="#UpdateLoadBalancer__response_PoolRef">PoolRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1528818375253">Lists the IDs of backend server groups associated with the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1727783712253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p9289113742520">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p928943711255">Array of <a href="#UpdateLoadBalancer__response_ListenerRef">ListenerRef</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p11289113717250">Lists the IDs of listeners added to the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row227773712254"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p328903762514">operating_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p132901837122512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1229012376251">Specifies the operating status of the load balancer. The value can only be <strong id="UpdateLoadBalancer__b1729023702516">ONLINE</strong>.</p>
+<p id="UpdateLoadBalancer__p11290163711255">Minimum: <strong id="UpdateLoadBalancer__b629114378259">1</strong></p>
+<p id="UpdateLoadBalancer__p329133762510">Maximum: <strong id="UpdateLoadBalancer__b1729133718253">16</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row13277937152519"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p19291103772516">vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p20291173717257">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p12925371256">Specifies the private IPv4 address bound to the load balancer.</p>
+<p id="UpdateLoadBalancer__p129212378251">Minimum: <strong id="UpdateLoadBalancer__b17292113772513">1</strong></p>
+<p id="UpdateLoadBalancer__p8292153714250">Maximum: <strong id="UpdateLoadBalancer__b13292123713253">64</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row827718370258"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p2293437142513">vip_subnet_cidr_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p7293133752512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p32938373257">Specifies the ID of the IPv4 subnet where the load balancer works.</p>
+<p id="UpdateLoadBalancer__p82941237122514">Minimum: <strong id="UpdateLoadBalancer__b829453772516">1</strong></p>
+<p id="UpdateLoadBalancer__p20294163712515">Maximum: <strong id="UpdateLoadBalancer__b19294163752513">36</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1727733742514"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p82951937202516">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p2029513710251">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1129703712258">Specifies the name of the load balancer.</p>
+<p id="UpdateLoadBalancer__p19297143719257">Minimum: <strong id="UpdateLoadBalancer__b829753714254">1</strong></p>
+<p id="UpdateLoadBalancer__p8298143713259">Maximum: <strong id="UpdateLoadBalancer__b0298193752517">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1727753710253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1629910377250">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p230063782518">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1630219375256">Specifies the project ID of the load balancer.</p>
+<p id="UpdateLoadBalancer__p1230233702510">Minimum: <strong id="UpdateLoadBalancer__b930523714258">1</strong></p>
+<p id="UpdateLoadBalancer__p162618385256">Maximum: <strong id="UpdateLoadBalancer__b16626938102520">32</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1727783719255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p206263382258">vip_port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p2626173852516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p166262038152519">Specifies the ID of the port bound to the virtual IP address (the value of <strong id="UpdateLoadBalancer__b106261438182510">vip_address</strong>) of the load balancer.</p>
+<p id="UpdateLoadBalancer__p196261938122511">When you create a dedicated load balancer, the system automatically creates a port for the load balancer and associates the port with a default security group. However, security group rules containing the port will not affect traffic to and from the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row17277143752517"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1162720385254">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p662710383250">Array of <a href="#UpdateLoadBalancer__response_Tag">Tag</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p86271538192517">Lists the tags added to the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row72772377254"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1627143892516">created_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p1862703818257">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1762763812259">Specifies the time when the load balancer was created.</p>
+<p id="UpdateLoadBalancer__p462793816255">Minimum: <strong id="UpdateLoadBalancer__b2627173882511">1</strong></p>
+<p id="UpdateLoadBalancer__p19627173892510">Maximum: <strong id="UpdateLoadBalancer__b186271138162517">20</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row5277837192510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p136272386255">updated_at</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p16271438182513">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p4627123810259">Specifies the time when the load balancer was updated.</p>
+<p id="UpdateLoadBalancer__p86271738192519">Minimum: <strong id="UpdateLoadBalancer__b1362853832510">1</strong></p>
+<p id="UpdateLoadBalancer__p16287387253">Maximum: <strong id="UpdateLoadBalancer__b13628438112516">20</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row192778377253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p11628203819252">guaranteed</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p26282388254">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p462843802519">Specifies whether the load balancer is a dedicated load balancer.</p>
+<p id="UpdateLoadBalancer__p2628113814253">The value can be <strong id="UpdateLoadBalancer__b662817382259">true</strong> or <strong id="UpdateLoadBalancer__b0628163842512">false</strong>. <strong id="UpdateLoadBalancer__b186281038172515">true</strong> indicates a dedicated load balancer, and <strong id="UpdateLoadBalancer__b20628538172518">false</strong> indicates a shared load balancer. When dedicated load balancers are launched in the <strong id="UpdateLoadBalancer__b116281538172517">eu-de</strong> region, either <strong id="UpdateLoadBalancer__b26288389251">true</strong> or <strong id="UpdateLoadBalancer__b1562813816254">false</strong> will be returned when you use the API to query or update a load balancer.</p>
+<p id="UpdateLoadBalancer__p176281138192513">Default: <strong id="UpdateLoadBalancer__b166287386255">true</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row12277937142515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p56291638102519">vpc_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p18629153820253">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p26293386254">Specifies the ID of the VPC where the load balancer works.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row10277163714252"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p10629183872514">eips</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p36293389252">Array of <a href="#UpdateLoadBalancer__response_EipInfo">EipInfo</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p762910388253">Specifies the EIP bound to the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1227703792518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p18629153810253">ipv6_vip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p762918383258">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p176293385251">Specifies the IPv6 address bound to the load balancer.</p>
+<p id="UpdateLoadBalancer__p4629103842519">This parameter is unsupported. Please do not use it.</p>
+<p id="UpdateLoadBalancer__p5629338112520">Default: <strong id="UpdateLoadBalancer__b6629738162511">None</strong></p>
+<p id="UpdateLoadBalancer__p862993813259">Minimum: <strong id="UpdateLoadBalancer__b18629193815257">1</strong></p>
+<p id="UpdateLoadBalancer__p362973842514">Maximum: <strong id="UpdateLoadBalancer__b2629113811255">64</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row627753742510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p8629153815259">ipv6_vip_virsubnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p19630638122514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p17630838182514">Specifies the ID of the IPv6 subnet where the load balancer works.</p>
+<p id="UpdateLoadBalancer__p13630133817258">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row727783762513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1463073882519">ipv6_vip_port_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p146301238102510">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p206301138112517">Specifies the ID of the port bound to the IPv6 address.</p>
+<p id="UpdateLoadBalancer__p263083813255">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row627753717258"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p10630183813255">availability_zone_list</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p15630103814253">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p163083832511">Specifies the list of AZs where the load balancer is created.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row327714371256"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1863112387257">enterprise_project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p263113815255">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1663113817256">Specifies the enterprise project ID.</p>
+<p id="UpdateLoadBalancer__p10631103811257">If this parameter is not passed during resource creation, the resource belongs to the default enterprise project.</p>
+<p id="UpdateLoadBalancer__p166311738192515">This parameter is unsupported. Please do not use it.</p>
+<p id="UpdateLoadBalancer__p1763113811253">Default: <strong id="UpdateLoadBalancer__b56316385252">0</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row18277113712511"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p16321138162514">l4_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p19632143815251">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1963210381252">Specifies the Layer-4 flavor.</p>
+<p id="UpdateLoadBalancer__p116321038142517">Minimum: <strong id="UpdateLoadBalancer__b863218386250">1</strong></p>
+<p id="UpdateLoadBalancer__p6632338152514">Maximum: <strong id="UpdateLoadBalancer__b10632138142516">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1227718379257"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p26331382255">l4_scale_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p8633113862514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p46334383250">Specifies the reserved Layer 4 flavor.</p>
+<p id="UpdateLoadBalancer__p156331538202517">Minimum: <strong id="UpdateLoadBalancer__b166339388257">1</strong></p>
+<p id="UpdateLoadBalancer__p1633193811258">Maximum: <strong id="UpdateLoadBalancer__b163353822513">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row927733713259"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p14633153822516">l7_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p16633153832515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p4633193818258">Specifies the Layer-7 flavor.</p>
+<p id="UpdateLoadBalancer__p1363363816250">Minimum: <strong id="UpdateLoadBalancer__b66341638202518">1</strong></p>
+<p id="UpdateLoadBalancer__p263410380254">Maximum: <strong id="UpdateLoadBalancer__b106341938132510">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1327814372259"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p10634338162510">l7_scale_flavor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p063493862517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1663443842510">Specifies the reserved Layer 7 flavor.</p>
+<p id="UpdateLoadBalancer__p11634183811254">Minimum: <strong id="UpdateLoadBalancer__b14634113818251">1</strong></p>
+<p id="UpdateLoadBalancer__p363415389258">Maximum: <strong id="UpdateLoadBalancer__b1963423811251">255</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1527873715255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p5634103812515">publicips</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p1063412389254">Array of <a href="#UpdateLoadBalancer__response_PublicIpInfo">PublicIpInfo</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p15635113820255">Specifies the EIP bound to the load balancer.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row827814374256"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p86359382255">elb_virsubnet_ids</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p8635238152516">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1463514387252">Specifies the ID of the subnet on the downstream plane. The ports used by the load balancer dynamically occupy IP addresses in the subnet.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row152787375256"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p863523892517">ip_target_enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p2635538132511">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p2635638112514">Specifies whether to enable cross-VPC backend.</p>
+<p id="UpdateLoadBalancer__p126351382257">This parameter is unsupported. Please do not use it.</p>
+<p id="UpdateLoadBalancer__p3635193819255">Default: <strong id="UpdateLoadBalancer__b1763513817256">false</strong></p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1027833712253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p11635153810257">frozen_scene</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p4635038202517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1963510381251">Specifies the scenario where the load balancer is frozen. Use commas to separate multiple scenarios.</p>
+<p id="UpdateLoadBalancer__p1863653813259">If the value is <strong id="UpdateLoadBalancer__b2636203818256">ARREAR</strong>, the load balancer is frozen because your account is in arrears.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1527812378255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateLoadBalancer__p1163653872511">ipv6_bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateLoadBalancer__p2636538152520"><a href="#UpdateLoadBalancer__response_BandwidthRef">BandwidthRef</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateLoadBalancer__p1963673862514">Specifies the ID of the bandwidth. This parameter is available only when you create or update a dedicated load balancer that has an IPv6 address bound.</p>
+<p id="UpdateLoadBalancer__p16361138112516">If you use a new IPv6 address and specify a shared bandwidth, the IPv6 address will be added to the shared bandwidth.</p>
+<p id="UpdateLoadBalancer__p1863683818256">This parameter is unsupported. Please do not use it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_PoolRef"></a><a name="response_PoolRef"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_PoolRef" frame="border" border="1" rules="all"><caption><b>Table 8 </b>PoolRef</caption><thead align="left"><tr id="UpdateLoadBalancer__row632803762516"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.1"><p id="UpdateLoadBalancer__p9637938122510">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.2"><p id="UpdateLoadBalancer__p136371838162519">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.5.2.4.1.3"><p id="UpdateLoadBalancer__p16637173842515">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row632811379254"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p id="UpdateLoadBalancer__p063753852511">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p id="UpdateLoadBalancer__p10638193820252">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p id="UpdateLoadBalancer__p106389383255">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_ListenerRef"></a><a name="response_ListenerRef"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_ListenerRef" frame="border" border="1" rules="all"><caption><b>Table 9 </b>ListenerRef</caption><thead align="left"><tr id="UpdateLoadBalancer__row13311371258"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.1"><p id="UpdateLoadBalancer__p263933842518">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.2"><p id="UpdateLoadBalancer__p563913383258">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.6.2.4.1.3"><p id="UpdateLoadBalancer__p3639438162516">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row14331937182515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p id="UpdateLoadBalancer__p1639153813251">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p id="UpdateLoadBalancer__p146401338102516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p id="UpdateLoadBalancer__p20640173819259">Specifies the listener ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_Tag"></a><a name="response_Tag"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_Tag" frame="border" border="1" rules="all"><caption><b>Table 10 </b>Tag</caption><thead align="left"><tr id="UpdateLoadBalancer__row9334163719255"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.1"><p id="UpdateLoadBalancer__p176401383253">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.2"><p id="UpdateLoadBalancer__p164112385254">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.7.2.4.1.3"><p id="UpdateLoadBalancer__p364117389259">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row19334123732520"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p id="UpdateLoadBalancer__p0641153872515">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p id="UpdateLoadBalancer__p14641638102514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p id="UpdateLoadBalancer__p1964163812253">Specifies the tag key.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row13334537122518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p id="UpdateLoadBalancer__p1764114384251">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p id="UpdateLoadBalancer__p764193811258">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p id="UpdateLoadBalancer__p5641113811250">Specifies the tag value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_EipInfo"></a><a name="response_EipInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_EipInfo" frame="border" border="1" rules="all"><caption><b>Table 11 </b>EipInfo</caption><thead align="left"><tr id="UpdateLoadBalancer__row13337173714259"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.1"><p id="UpdateLoadBalancer__p186422038132512">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.2"><p id="UpdateLoadBalancer__p11642123818254">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.8.2.4.1.3"><p id="UpdateLoadBalancer__p16420384255">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row113379378255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p id="UpdateLoadBalancer__p1642138182510">eip_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p id="UpdateLoadBalancer__p564323817257">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p id="UpdateLoadBalancer__p14643193812514">Specifies the EIP ID.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row16337183712515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p id="UpdateLoadBalancer__p1464319385253">eip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p id="UpdateLoadBalancer__p146431438122518">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p id="UpdateLoadBalancer__p464313842518">Specifies the specific IP address.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1633773772518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p id="UpdateLoadBalancer__p1964363822513">ip_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p id="UpdateLoadBalancer__p36432389257">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p id="UpdateLoadBalancer__p11643538182515">Specifies the IP version. <strong id="UpdateLoadBalancer__b864383852513">4</strong> indicates IPv4, and <strong id="UpdateLoadBalancer__b16643143819252">6</strong> indicates IPv6.</p>
+<p id="UpdateLoadBalancer__p106441138162518">IPv6 is unsupported. The value cannot be <strong id="UpdateLoadBalancer__b764493832511">6</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_PublicIpInfo"></a><a name="response_PublicIpInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_PublicIpInfo" frame="border" border="1" rules="all"><caption><b>Table 12 </b>PublicIpInfo</caption><thead align="left"><tr id="UpdateLoadBalancer__row3342037192512"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.1"><p id="UpdateLoadBalancer__p1264463811250">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.2"><p id="UpdateLoadBalancer__p116446386256">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.9.2.4.1.3"><p id="UpdateLoadBalancer__p2064493814253">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row20342437102518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p id="UpdateLoadBalancer__p11644038192514">publicip_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p id="UpdateLoadBalancer__p56441338102516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p id="UpdateLoadBalancer__p15644163818257">Specifies the EIP ID.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1534293719255"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p id="UpdateLoadBalancer__p1664411389254">publicip_address</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p id="UpdateLoadBalancer__p16645143832513">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p id="UpdateLoadBalancer__p1564513811255">Specifies the IP address.</p>
+</td>
+</tr>
+<tr id="UpdateLoadBalancer__row1434243752513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p id="UpdateLoadBalancer__p56451638142510">ip_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p id="UpdateLoadBalancer__p15645173819258">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p id="UpdateLoadBalancer__p2645153815255">Specifies the IP version. The value can be <strong id="UpdateLoadBalancer__b3645938102517">4</strong> (IPv4) or <strong id="UpdateLoadBalancer__b264543862510">6</strong> (IPv6).</p>
+<p id="UpdateLoadBalancer__p13645183812255">IPv6 is unsupported. The value cannot be <strong id="UpdateLoadBalancer__b15645163819252">6</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="UpdateLoadBalancer__response_BandwidthRef"></a><a name="response_BandwidthRef"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__response_BandwidthRef" frame="border" border="1" rules="all"><caption><b>Table 13 </b>BandwidthRef</caption><thead align="left"><tr id="UpdateLoadBalancer__row1934683772515"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.1"><p id="UpdateLoadBalancer__p164503872517">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.2"><p id="UpdateLoadBalancer__p56451138182512">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.10.2.4.1.3"><p id="UpdateLoadBalancer__p4645538112517">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row15346173714257"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p id="UpdateLoadBalancer__p20645123802510">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p id="UpdateLoadBalancer__p15646153814257">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p id="UpdateLoadBalancer__p10646123819258">Specifies the shared bandwidth ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Requests</h4><pre class="screen" id="UpdateLoadBalancer__screen2646163862515">PUT
+
+https://{elb_endpoint}/v3/{project_id}/elb/loadbalancers/{loadbalancer_id}
+
+{
+  "loadbalancer" : {
+    "admin_state_up" : true,
+    "description" : "loadbalancer",
+    "name" : "loadbalancer-update"
+  }
+}</pre>
+
+<h4 class="sectiontitle">Example Responses</h4><p id="UpdateLoadBalancer__p3649113802510"><strong id="UpdateLoadBalancer__b164910383251">Status code: 200</strong></p>
+<p id="UpdateLoadBalancer__p06491938202513">Successful request.</p>
+<pre class="screen" id="UpdateLoadBalancer__screen196496381253">{
+  "request_id" : "010dad1e-32a3-4405-ab83-62a1fc5f8722",
+  "loadbalancer" : {
+    "id" : "2e073bf8-edfe-4e51-a699-d915b0b8af89",
+    "project_id" : "b2782e6708b8475c993e6064bc456bf8",
+    "name" : "loadbalancer-update",
+    "description" : "loadbalancer",
+    "admin_state_up" : true,
+    "provisioning_status" : "ACTIVE",
+    "operating_status" : "ONLINE",
+    "listeners" : [ {
+      "id" : "41937176-bf64-4b58-8e0d-9ff2d0d32c54"
+    }, {
+      "id" : "abc6ac93-ad0e-4765-bd5a-eec632efde56"
+    }, {
+      "id" : "b9d8ba97-6d60-467d-838d-f3550b54c22a"
+    }, {
+      "id" : "fd797ebd-263d-4b18-96e9-e9188d36c69e"
+    } ],
+    "pools" : [ {
+      "id" : "0aabcaa8-c35c-4ddc-a60c-9032d0ac0b80"
+    }, {
+      "id" : "165d9092-396e-4a8d-b398-067496a447d2"
+    } ],
+    "tags" : [ ],
+    "provider" : "vlb",
+    "created_at" : "2019-04-20T03:10:37Z",
+    "updated_at" : "2019-05-24T02:11:58Z",
+    "vpc_id" : "2037c5bb-e04b-4de2-9300-9051af18e417",
+    "enterprise_project_id" : "0",
+    "availability_zone_list" : [ "AZ1", "AZ2", "dc3" ],
+    "eips" : [ ],
+    "guaranteed" : true
+  }
+}</pre>
+
+<h4 class="sectiontitle">Status Codes</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="UpdateLoadBalancer__status_code" frame="border" border="1" rules="all"><thead align="left"><tr id="UpdateLoadBalancer__row8357203714252"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p id="UpdateLoadBalancer__p3652938142515">Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p id="UpdateLoadBalancer__p1465213389257">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="UpdateLoadBalancer__row1535763710251"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p id="UpdateLoadBalancer__p1652163813259">200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p id="UpdateLoadBalancer__p15652133818257">Successful request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Error Codes</h4><p id="UpdateLoadBalancer__p7652153813251">See <a href="errorcode.html">Error Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="topic_300000003.html">Load Balancer</a>
+
+
+

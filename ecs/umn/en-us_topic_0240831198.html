@@ -1,0 +1,36 @@
+<a name="EN-US_TOPIC_0240831198"></a><a name="EN-US_TOPIC_0240831198"></a>
+
+<h1 class="topictitle1">Why Does the Disk Drive Letter Change After the ECS Is Restarted?</h1>
+<div id="body1587719802694"><div class="section" id="EN-US_TOPIC_0240831198__section1577211401201"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0240831198__p1330013138151">For a Linux <span id="EN-US_TOPIC_0240831198__text3923111812190">ECS</span>, the drive letter may change after an EVS disk is detached and then attached again, or after an EVS disk is detached and then the <span id="EN-US_TOPIC_0240831198__text192024613218">ECS</span> is restarted. This is a normal phenomenon due to the drive letter allocation mechanism of the Linux system.</p>
+<p id="EN-US_TOPIC_0240831198__p2030051312156">For example, an <span id="EN-US_TOPIC_0240831198__text0190440161714">ECS</span> has three disks attached: <strong id="EN-US_TOPIC_0240831198__b728111593218">/dev/vda1</strong>, <strong id="EN-US_TOPIC_0240831198__b6361157323">/dev/vdb1</strong>, and <strong id="EN-US_TOPIC_0240831198__b153721583215">/dev/vdc1</strong>. The mounting parameters in <strong id="EN-US_TOPIC_0240831198__b2037121513218">/etc/fstab</strong> are as follows:</p>
+<p id="EN-US_TOPIC_0240831198__p0561101781519">cat /etc/fstab</p>
+<pre class="screen" id="EN-US_TOPIC_0240831198__screen7583621121511">UUID=b9a07b7b-9322-4e05-ab9b-14b8050bdc8a  /  ext4  defaults  0  1 
+/dev/vdb1                       /data1   ext4  defaults  0  0 
+/dev/vdc1                       /data2   ext4  defaults  0  0</pre>
+<p id="EN-US_TOPIC_0240831198__p10583621191517">If <strong id="EN-US_TOPIC_0240831198__b1236749183214">/dev/vdb1</strong> is detached, <strong id="EN-US_TOPIC_0240831198__b1823714916321">/dev/vdc1</strong> becomes <strong id="EN-US_TOPIC_0240831198__b12237174920322">/dev/vdb1</strong> and is mounted to <strong id="EN-US_TOPIC_0240831198__b523718498324">/data1</strong> after the <span id="EN-US_TOPIC_0240831198__text1393120372195">ECS</span> is restarted. In such a case, no disk is mounted to <strong id="EN-US_TOPIC_0240831198__b023894912323">/data2</strong>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0240831198__section21110971611"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0240831198__p632111249164">To prevent this issue, use a UUID, a unique character string provided by the Linux system for disk partitions, to replace the /dev/vdx device.</p>
+<ol id="EN-US_TOPIC_0240831198__ol7921142751614"><li id="EN-US_TOPIC_0240831198__li1692132771619">Run the following command to obtain the partition UUID:<p id="EN-US_TOPIC_0240831198__p13823163021616"><a name="EN-US_TOPIC_0240831198__li1692132771619"></a><a name="li1692132771619"></a><strong id="EN-US_TOPIC_0240831198__b1722024116332">blkid</strong> <em id="EN-US_TOPIC_0240831198__i4221184163316">Disk partition</em></p>
+<p id="EN-US_TOPIC_0240831198__p6823230111610">In this example, run the following command to obtain the UUID of the <span class="parmname" id="EN-US_TOPIC_0240831198__parmname139218501332"><b>/dev/vdb1</b></span> partition:</p>
+<p id="EN-US_TOPIC_0240831198__p8823430201610"><strong id="EN-US_TOPIC_0240831198__b10602725349">blkid /dev/vdb1</strong></p>
+<p id="EN-US_TOPIC_0240831198__p1823143019165">Information similar to the following is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0240831198__screen7366133519160">[root@ecs-test-0001 ~]# blkid /dev/vdb1 
+/dev/vdb1: UUID="b9a07b7b-9322-4e05-ab9b-14b8050cd8cc" TYPE="ext4"</pre>
+<p id="EN-US_TOPIC_0240831198__p19366335201610">The UUID of the <strong id="EN-US_TOPIC_0240831198__b1928420350341">/dev/vdb1</strong> partition is displayed.</p>
+</li><li id="EN-US_TOPIC_0240831198__li48461045121613">Run the following command to open the <strong id="EN-US_TOPIC_0240831198__b35551840203419">fstab</strong> file using the vi editor:<p id="EN-US_TOPIC_0240831198__p157212055131616"><strong id="EN-US_TOPIC_0240831198__b496015819163">vi /etc/fstab</strong></p>
+</li><li id="EN-US_TOPIC_0240831198__li8176133171715">Press <strong id="EN-US_TOPIC_0240831198__b166277932016">i</strong> to enter the editing mode.</li><li id="EN-US_TOPIC_0240831198__li101765321710">Move the cursor to the end of the file and press <strong id="EN-US_TOPIC_0240831198__b4246141213201">Enter</strong>. Then, add the following information:<pre class="screen" id="EN-US_TOPIC_0240831198__screen19740189171716">UUID=b9a07b7b-9322-4e05-ab9b-14b8050cd8cc /mnt/sdc                ext4    defaults        0 0</pre>
+<p id="EN-US_TOPIC_0240831198__p1954019167172">Repeat the preceding operations to add the UUID of the <strong id="EN-US_TOPIC_0240831198__b2859193883516">/dev/vdc1</strong> partition and run the following command to check the disk mounting parameters:</p>
+<p id="EN-US_TOPIC_0240831198__p1754011168175">cat /etc/fstab</p>
+<p id="EN-US_TOPIC_0240831198__p205408168171">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0240831198__screen10467182011175">UUID=b9a07b7b-9322-4e05-ab9b-14b8050bdc8a  /  ext4  defaults  0  1 
+UUID=b9a07b7b-9322-4e05-ab9b-14b8050cd8cc   /data1   ext4  defaults  0  0 
+UUID=b9a07b7b-9322-4e05-ab9b-14b8050ab6bb   /data2   ext4  defaults  0  0</pre>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+

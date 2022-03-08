@@ -1,0 +1,215 @@
+<a name="EN-US_TOPIC_0067298110"></a><a name="EN-US_TOPIC_0067298110"></a>
+
+<h1 class="topictitle1">Querying Tenant Quotas</h1>
+<div id="body1500534456688"><div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_section15804956"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p43581113">This API is used to query quotas, including <span id="EN-US_TOPIC_0067298110__text16331228145315">ECS</span>s, vCPUs, and memory.</p>
+<p id="EN-US_TOPIC_0067298110__p207971123174420">This API provides the <strong id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_b842352706103643">user_id</strong> parameter for obtaining the quota configuration of a specified user.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_section8026877"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p8665112023416">GET /v2.1/{project_id}/os-quota-sets/{project_id}?user_id={user_id}</p>
+<p id="EN-US_TOPIC_0067298110__p24601446033">GET /v2/{project_id}/os-quota-sets/{project_id}?user_id={user_id}</p>
+<div class="p" id="EN-US_TOPIC_0067298110__p148764915366"><a href="#EN-US_TOPIC_0067298110__en-us_topic_0057973199_table12637461156">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067298110__en-us_topic_0057973199_table12637461156"></a><a name="en-us_topic_0057973199_table12637461156"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_table12637461156" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row15273164612514"><th align="left" class="cellrowborder" valign="top" width="20.69%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0067298110__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.24%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0067298110__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.07%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0067298110__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row828511468510"><td class="cellrowborder" valign="top" width="20.69%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p6287184613518">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p22901046657">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.07%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1129212464514">Specifies the project ID. If the specified project does not exist, the default quota in the system is returned.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row132920461656"><td class="cellrowborder" valign="top" width="20.69%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p102952462511">user_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1629820467514">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.07%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1529916466519">Specifies the user ID. If the specified user does not exist, the default quota in the system is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_section13122166"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1524317301168">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_section50990633"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0067298110__p1973194211372"><a href="#EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_table62068690">Table 2</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_table62068690"></a><a name="en-us_topic_0057973199_en-us_topic_0057973197_table62068690"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_table62068690" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_row56098908"><th align="left" class="cellrowborder" valign="top" width="30.643064306430645%" id="mcps1.3.4.3.2.4.1.1"><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973197_p47717737">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30.643064306430645%" id="mcps1.3.4.3.2.4.1.2"><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973197_p39931478">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="38.71387138713872%" id="mcps1.3.4.3.2.4.1.3"><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973197_p64532721">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_row59767919"><td class="cellrowborder" valign="top" width="30.643064306430645%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_p9363310">quota_set</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.643064306430645%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_p20230678">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="38.71387138713872%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0057973197_p59256190">Specifies the <strong id="EN-US_TOPIC_0067298110__b2048115317483">quota_set</strong> object. For details, see <a href="#EN-US_TOPIC_0067298110__en-us_topic_0057973199_table30231561">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067298110__en-us_topic_0057973199_table30231561"></a><a name="en-us_topic_0057973199_table30231561"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_table30231561" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_b842352706145746">quota_set</strong> parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row25113310"><th align="left" class="cellrowborder" valign="top" width="30.769999999999996%" id="mcps1.3.4.4.2.4.1.1"><p id="EN-US_TOPIC_0067298110__p9963183415323">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.54%" id="mcps1.3.4.4.2.4.1.2"><p id="EN-US_TOPIC_0067298110__p0963133410326">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="47.69%" id="mcps1.3.4.4.2.4.1.3"><p id="EN-US_TOPIC_0067298110__p996317342321">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row30393275"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p45936220">cores</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p29846341">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p47666411392">Specifies the quantity quota of vCPUs.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row50766756"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p18466542">fixed_ips</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1691612101512">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p7766144103912">Specifies the quantity quota of fixed IP addresses. This parameter is not supported.</p>
+<p id="EN-US_TOPIC_0067298110__p864017413393">This parameter is not supported in microversion 2.36 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row37686197"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p32683139">floating_ips</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p158282315153">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p16766740399">Specifies the quantity quota of floating IP addresses. This parameter is not supported.</p>
+<p id="EN-US_TOPIC_0067298110__p2171103013411">This parameter is not supported in microversion 2.36 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row60322465"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p54281500">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p34725355">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p107671041392">Specifies the project UUID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row53277152"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p20482050">injected_file_content_bytes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p193011246151">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p19767154163911">Specifies the size quota (bytes) of the files to be injected.</p>
+<p id="EN-US_TOPIC_0067298110__p171873367419">This parameter is not supported in microversion 2.56 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row28988915"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p66400774">injected_file_path_bytes</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p72501227151510">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1176715413396">Specifies the size quota (bytes) of the path for the files to be injected.</p>
+<p id="EN-US_TOPIC_0067298110__p69816710121">This parameter is not supported in microversion 2.56 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row13369507"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p9188289">injected_files</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1460345412151">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p9767246391">Specifies the quantity quota of the files to be injected.</p>
+<p id="EN-US_TOPIC_0067298110__p167581619128">This parameter is not supported in microversion 2.56 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row59944257"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p23646677">instances</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p97481655101511">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1876714183917">Specifies the quantity quota of <span id="EN-US_TOPIC_0067298110__text1079810298532">ECS</span>s.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row5482215"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p41406250">key_pairs</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p152511579158">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p1876716493911">Specifies the quantity quota of key pairs. This parameter is not supported.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row43614388"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p43104560">metadata_items</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p5274115911512">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p187671742393">Specifies the metadata quantity quota.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row20242451"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p29025826">ram</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p23505391618">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p17670483911">Specifies the memory quota (MB).</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row46426356"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p2438464">security_group_rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p19881144163">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p97671453913">Specifies the quota of security group rules. This parameter is not supported.</p>
+<p id="EN-US_TOPIC_0067298110__p19247528171210">This parameter is not supported in microversion 2.36 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row50813968"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p22290707">security_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p181921769166">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p10769114153919">Specifies the quantity quota of security groups. This parameter is not supported.</p>
+<p id="EN-US_TOPIC_0067298110__p14918173751212">This parameter is not supported in microversion 2.36 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row47118120"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p58471341">server_groups</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p819119817166">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p7769944391">Specifies the quantity quota of <span id="EN-US_TOPIC_0067298110__text529933165318">ECS</span> groups.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_row18294597"><td class="cellrowborder" valign="top" width="30.769999999999996%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p5467365">server_group_members</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.54%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p172754921610">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="47.69%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_p5769134203914">Specifies the size quota of <span id="EN-US_TOPIC_0067298110__text123511326537">ECS</span> groups.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_section56262520"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0067298110__screen16120118173817">GET https://{endpoint}/v2/d9ebe43510414ef590a4aa158605329e/os-quota-sets/d9ebe43510414ef590a4aa158605329e
+GET https://{endpoint}/v2.1/d9ebe43510414ef590a4aa158605329e/os-quota-sets/d9ebe43510414ef590a4aa158605329e</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__section1965011613499"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0067298110__screen468196104913">{
+    "quota_set": {
+        "cores": 20,
+        "fixed_ips": 40,
+        "floating_ips": 10,
+        "id": "d9ebe43510414ef590a4aa158605329e",
+        "injected_file_content_bytes": 10240,
+        "injected_file_path_bytes": 255,
+        "injected_files": 5,
+        "instances": 20,
+        "key_pairs": 100,
+        "metadata_items": 128,
+        "ram": 51200,
+        "security_group_rules": 20,
+        "security_groups": 50,
+        "server_group_members": 10,
+        "server_groups": 10
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0020212692_section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0067298110__en-us_topic_0057973199_en-us_topic_0020212692_p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0111860833.html">Tenant Quota Management</a></div>
+</div>
+</div>
+

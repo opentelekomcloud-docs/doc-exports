@@ -1,0 +1,107 @@
+<a name="EN-US_TOPIC_0020212653"></a><a name="EN-US_TOPIC_0020212653"></a>
+
+<h1 class="topictitle1">Modifying the Specifications of an <span id="text17988164611250">ECS</span></h1>
+<div id="body28932175"><div class="section" id="EN-US_TOPIC_0020212653__section5379216"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0020212653__p5596104012214"><span id="EN-US_TOPIC_0020212653__text71951219496">ECS</span> specifications can be modified, for example, upgrading the vCPUs and memory, to meet service requirements. This API is used to modify <span id="EN-US_TOPIC_0020212653__text107161833175810">ECS</span> specifications.</p>
+<p id="EN-US_TOPIC_0020212653__p65611548195111">An ECS flavor cannot be changed to certain flavors. For details, see <a href="en-us_topic_0110472767.html">Querying the Target Flavors to Which an ECS Flavor Can Be Changed</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section10197106104013"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0020212653__ul2178142918719"><li id="EN-US_TOPIC_0020212653__li31785299713">You can modify the <span id="EN-US_TOPIC_0020212653__text1319665212519">ECS</span> specifications only when the <span id="EN-US_TOPIC_0020212653__text1873103611716">ECS</span> is stopped.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section48412952"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0020212653__p40996912155429">POST /v1/{project_id}/cloudservers/{server_id}/resize</p>
+<div class="p" id="EN-US_TOPIC_0020212653__p1267005325417"><a href="#EN-US_TOPIC_0020212653__table29396722">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212653__table29396722"></a><a name="table29396722"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212653__table29396722" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212653__row15658103"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0020212653__p60346796">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0020212653__p56252285">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66.33663366336634%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0020212653__p60141268">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212653__row39604502"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212653__p53848109">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212653__p66729601">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.33663366336634%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212653__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0020212653__row59061958"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0020212653__p19289328">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0020212653__p18931763">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.33663366336634%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0020212653__p57077814">Specifies the <span id="EN-US_TOPIC_0020212653__text1728017317212">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section33063388"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0020212653__p9784122915554"><a href="#EN-US_TOPIC_0020212653__table6742880">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212653__table6742880"></a><a name="table6742880"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212653__table6742880" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0020212653__row13072760"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.2.5.1.1"><p id="EN-US_TOPIC_0020212653__p52260639">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.2.5.1.2"><p id="EN-US_TOPIC_0020212653__p5253358">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.4.2.2.2.5.1.3"><p id="EN-US_TOPIC_0020212653__p22868878">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.4.2.2.2.5.1.4"><p id="EN-US_TOPIC_0020212653__p40439847">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212653__row54402144"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0020212653__p44497505">resize</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0020212653__p47528147">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0020212653__p24574685">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0020212653__p63988077">Specifies the operation to modify <span id="EN-US_TOPIC_0020212653__text1482818562613">ECS</span> specifications. For details, see <a href="#EN-US_TOPIC_0020212653__table7657338">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0020212653__table7657338"></a><a name="table7657338"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0020212653__table7657338" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0020212653__b8423527061138">resize</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0020212653__row17725233"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.3.2.5.1.1"><p id="EN-US_TOPIC_0020212653__p1733218125569">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.3.2.5.1.2"><p id="EN-US_TOPIC_0020212653__p203321912145616">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.3.2.5.1.3"><p id="EN-US_TOPIC_0020212653__p1633291212566">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="54%" id="mcps1.3.4.2.3.2.5.1.4"><p id="EN-US_TOPIC_0020212653__p733241219565">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0020212653__row40163483"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0020212653__p32016662">flavorRef</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0020212653__p43212834">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0020212653__p10578662">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="54%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0020212653__p61434729">Specifies the flavor ID of the <span id="EN-US_TOPIC_0020212653__text10373711262">ECS</span> after the modification.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section29135036"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0020212653__p17425743">See <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section1183192295620"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0020212653__screen18856755142815">POST https://{endpoint}/v1/{project_id}/cloudservers/{server_id}/resize</pre>
+<pre class="screen" id="EN-US_TOPIC_0020212653__screen10956347143412">{
+"resize": {
+        "flavorRef": "c3.15xlarge.2"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section1923071117499"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0020212653__p6586114104919">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section27037160"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0020212653__p23224207">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0020212653__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0020212653__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212691.html">Status Management</a></div>
+</div>
+</div>
+

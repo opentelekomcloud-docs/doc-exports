@@ -1,0 +1,281 @@
+<a name="modelarts_23_0238"></a><a name="modelarts_23_0238"></a>
+
+<h1 class="topictitle1">Using Frequently-used Frameworks to Train Models</h1>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p1626935755620">If you use frequently-used frameworks, such as TensorFlow and MXNet, to develop algorithms locally, you can select <strong id="modelarts_23_0238__en-us_topic_0216621183_b159671719112913">Frequently-used</strong> to create training jobs and build models.</p>
+<h4 class="sectiontitle">Prerequisites</h4><ul id="modelarts_23_0238__en-us_topic_0216621183_ul153712018018"><li id="modelarts_23_0238__en-us_topic_0216621183_li1937182017010">Data has been prepared. Specifically, you have created an available dataset in ModelArts, or you have uploaded the dataset used for training to the OBS directory.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li329113814116">If you select <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname9188315317"><b>Frequently-used</b></span> for <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname5394102314316"><b>Algorithm Source</b></span>, prepare the training script and upload it to the OBS directory.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li1864816519315">At least one empty folder has been created on OBS for storing the training output.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li487843619411">The account is not in arrears because resources are consumed when training jobs are running.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li1017435434920">The OBS directory you use and ModelArts are in the same region.</li></ul>
+
+<h4 class="sectiontitle">Precautions</h4><ul id="modelarts_23_0238__en-us_topic_0216621183_ul83831918123712"><li id="modelarts_23_0238__en-us_topic_0216621183_li1674019293372">In the dataset directory specified for a training job, the names of the files (such as the image file, audio file, and label file) containing data used for training contain 0 to 255 characters. If the names of certain files in the dataset directory contain over 255 characters, the training job will ignore these files and use data in the valid files for training. If the names of all files in the dataset directory contain over 255 characters, no data is available for the training job and the training job fails.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li63082617350">In the training script, the <strong id="modelarts_23_0238__en-us_topic_0216621183_b854162417186">Data Source</strong> and <strong id="modelarts_23_0238__en-us_topic_0216621183_b426112717181">Training Output Path</strong> parameters must be set to the OBS path. Use the  to perform read and write operations in the path.</li></ul>
+
+<a name="modelarts_23_0238__en-us_topic_0216621183_section12188201115920"></a><a name="en-us_topic_0216621183_section12188201115920"></a><h4 class="sectiontitle">Frequently-used AI Frameworks for Training Management</h4><p id="modelarts_23_0238__en-us_topic_0216621183_p879574119413">ModelArts supports the following AI engines and versions. </p>
+
+.. _modelarts_23_0238__en-us_topic_0216621183_table1106232165220:
+
+<table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0238__en-us_topic_0216621183_table1106232165220" frame="border" border="1" rules="all"><caption><b>Table 1 </b>AI engines supported by training jobs</caption><thead align="left"><tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row1087063616135"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.3.2.7.1.1"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p6870736161311">Environment</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.4.3.2.7.1.2"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p11516153811458">Supported Chip</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.4.3.2.7.1.3"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p198701136141310">System Architecture</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.4.3.2.7.1.4"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p16881643144719">System Version</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.232323232323235%" id="mcps1.3.4.3.2.7.1.5"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p179127131467">AI Engine and Version</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.3.2.7.1.6"><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p48709364133">Supported CUDA or Ascend Version</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row118701536121316"><td class="cellrowborder" rowspan="2" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p127875581222">TensorFlow</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1287105117458">CPU and GPU</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1348017423514">x86_64</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p114804426516">Ubuntu 16.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p7912171314467">TF-1.13.1-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p6870536171311">CUDA 10.0</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row787023615137"><td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p791281319465">TF-2.1.0-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p128701136161312">CUDA 10.1</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row75855533178"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p175851953171719">Caffe</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p10516183820452">CPU and GPU</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1258535341711">x86_64</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p98974317476">Ubuntu 16.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p14912161364613">Caffe-1.0.0-python2.7</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p4585753141714">CUDA 8.0</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row18379187181818"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1413342913611">Spark_MLlib</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1113352914610">CPU</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p11331029963">x86_64</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p201331529663">Ubuntu 16.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p491216135466">Spark-2.3.2-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p14379177111819">N/A</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row1580544612172"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1754234531912">XGBoost-Sklearn</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p75421545171917">CPU</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p15421345121916">x86_64</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1854254511920">Ubuntu 16.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p10912191313469">Scikit_Learn-0.18.1-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p880616464172">N/A</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row179453282010"><td class="cellrowborder" rowspan="2" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1692131612221">PyTorch</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p592121692216">CPU and GPU</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p3921101612225">x86_64</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p11921111612226">Ubuntu 16.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p14913513124612">PyTorch-1.3.0-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p6945132162011">CUDA 10.0</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row7530115152013"><td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p89135132466">PyTorch-1.4.0-python3.6</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p153120522012">CUDA 10.1</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row1839417201203"><td class="cellrowborder" rowspan="2" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p133941720182017">Ascend-Powered-Engine</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1060134016203"></p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p11517123834513">Ascend 910</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1151783854512"></p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p6633131214313">AArch64</p>
+</td>
+<td class="cellrowborder" rowspan="2" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p188919436476">EulerOS 2.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p4913171334613">Mindspore-1.1.1-python3.7-aarch64</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1394142016208">C76</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row26011404205"><td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p3913101315469">TF-1.15-python3.7-aarch64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p561140162018">C76</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_row879012231253"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p117910237255">MindSpore-GPU</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.3.2.7.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p20517038164512">CPU and GPU</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.4.3.2.7.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p2612161263115">x86_64</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.3.2.7.1.4 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p15891343134717">Ubuntu 18.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.3.2.7.1.5 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p891331313462">MindSpore-1.1.0-python3.7</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.3.2.7.1.6 "><p id="modelarts_23_0238__en-us_topic_0216621183_en-us_topic_0298539662_p1979102392511">CUDA 10.1</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Creating a Training Job</h4><ol id="modelarts_23_0238__en-us_topic_0216621183_ol0873861001"><li id="modelarts_23_0238__en-us_topic_0216621183_li1580718447312">Log in to the ModelArts management console. In the left navigation pane, choose <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname13171141605310"><b>Training Management</b></span> &gt; <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname917111169534"><b>Training Jobs</b></span>. By default, the system switches to the <span class="wintitle" id="modelarts_23_0238__en-us_topic_0216621183_wintitle161728169533"><b>Training Jobs</b></span> page.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li928416281944">In the upper left corner of the training job list, click <span class="uicontrol" id="modelarts_23_0238__en-us_topic_0216621183_uicontrol164521725566"><b>Create</b></span> to switch to the <span class="wintitle" id="modelarts_23_0238__en-us_topic_0216621183_wintitle1450720655619"><b>Create Training Job</b></span> page.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li12261856510">Set related parameters.<ol type="a" id="modelarts_23_0238__en-us_topic_0216621183_ol156031301865"><li id="modelarts_23_0238__en-us_topic_0216621183_li45623018616">Set the basic information, including <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname74502181607"><b>Name</b></span>, <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname124508181209"><b>Version</b></span>, and <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname17451171815016"><b>Description</b></span>. The <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname05801352076"><b>Version</b></span> information is automatically generated by the system and named in an ascending order of <span class="parmvalue" id="modelarts_23_0238__en-us_topic_0216621183_parmvalue135815357717"><b>V001</b></span>, <span class="parmvalue" id="modelarts_23_0238__en-us_topic_0216621183_parmvalue45815351875"><b>V002</b></span>, and so on. You cannot manually modify it.<p id="modelarts_23_0238__en-us_topic_0216621183_p9907144951214">Specify <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname194783411215"><b>Name</b></span> and <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname994713414220"><b>Description</b></span> according to actual requirements.</p>
+</li><li id="modelarts_23_0238__en-us_topic_0216621183_li31131228711">Set job parameters, including the data source, algorithm source, and more. For details, see <a href="#modelarts_23_0238__en-us_topic_0216621183_table1819364517144">Table 2</a>.
+.. _modelarts_23_0238__en-us_topic_0216621183_table1819364517144:
+
+<a name="modelarts_23_0238__en-us_topic_0216621183_table1819364517144"></a><a name="en-us_topic_0216621183_table1819364517144"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0238__en-us_topic_0216621183_table1819364517144" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Job parameters</caption><thead align="left"><tr id="modelarts_23_0238__en-us_topic_0216621183_row111285509146"><th align="left" class="cellrowborder" valign="top" width="15.2%" id="mcps1.3.5.2.3.1.2.2.2.4.1.1"><p id="modelarts_23_0238__en-us_topic_0216621183_p1812920509149">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.24%" id="mcps1.3.5.2.3.1.2.2.2.4.1.2"><p id="modelarts_23_0238__en-us_topic_0216621183_p12704382189">Sub-Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.56%" id="mcps1.3.5.2.3.1.2.2.2.4.1.3"><p id="modelarts_23_0238__en-us_topic_0216621183_p5130175014147">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0238__en-us_topic_0216621183_row5512145291613"><td class="cellrowborder" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p851245216167">One-Click Configuration</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p1870103891815">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p155121452111615">If you have saved job parameter configurations in ModelArts, click <strong id="modelarts_23_0238__en-us_topic_0216621183_b194835169917">One-Click Configuration</strong> and select an existing job parameter configuration as prompted to quickly complete parameter setting for the job.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row7162332840"><td class="cellrowborder" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p1516218325419">Algorithm Source</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p14795841744">Frequently-used</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p117211416010">Select an AI engine and its version and specify <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname15486195843718"><b>Code Directory</b></span> and <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname24861058183720"><b>Boot File</b></span>. The framework selected for the AI engine must be the same as the one you select when compiling training code. For example, if TensorFlow is used in your training code, select TensorFlow when you create a training job.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p1858757011">For details about the supported AI engines and versions, see <a href="#modelarts_23_0238__en-us_topic_0216621183_section12188201115920">Frequently-used AI Frameworks for Training Management</a>.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p128622716017">If your model requires Python dependency packages, place the dependency packages and their configuration files in the code directory based on the requirements defined in ModelArts. For details, see <a href="modelarts_05_0063.html">How Do I Create a Training Job When a Dependency Package Is Referenced in a Model?</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row1819384501419"><td class="cellrowborder" rowspan="2" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p10193545161415">Data Source</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p15708387183">Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p743717206252">Select an available dataset and its version from the ModelArts <strong id="modelarts_23_0238__en-us_topic_0216621183_b681619441107">Data Management</strong> module.</p>
+<ul id="modelarts_23_0238__en-us_topic_0216621183_ul2598192417254"><li id="modelarts_23_0238__en-us_topic_0216621183_li1859982472519"><span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname13253142884218"><b>Dataset</b></span>: Select an existing dataset from the drop-down list. If no dataset is available in ModelArts, no result will be displayed in the drop-down list.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li724712832517"><span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname13464912121117"><b>Version</b></span>: Select a version according to the <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname184646120115"><b>Dataset</b></span> setting.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row124412527189"><td class="cellrowborder" valign="top" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p7441452181819">Data path</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p154417526185">Select the training data from your OBS bucket. On the right of the <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname1830361612287"><b>Data path</b></span> text box, click <span class="uicontrol" id="modelarts_23_0238__en-us_topic_0216621183_uicontrol194381418142816"><b>Select</b></span>. In the dialog box that is displayed, select an OBS folder for storing data.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row1326154083111"><td class="cellrowborder" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p4194144581410">Training Output Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p107043801820">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p151941645141413">Select a path for storing the training result.</p>
+<span class="notetitle"> NOTE: </span><p id="modelarts_23_0238__en-us_topic_0216621183_p1727163323519">To minimize errors, select an empty directory for <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname1522414083616"><b>Training Output Path</b></span>. Do not select the directory used for storing the dataset for <strong id="modelarts_23_0238__en-us_topic_0216621183_b1443471416231">Training Output Path</strong>.</p>
+
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row19194124531419"><td class="cellrowborder" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p1219464571415">Running Parameter</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p177063818188">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p11941045121419">Set the command line parameters in the code based on the algorithm code logic. Make sure that the parameter names are the same as those in the code.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p1019484514145">For example, <strong id="modelarts_23_0238__en-us_topic_0216621183_b371512466316">train_steps = 10000</strong>, where <span class="parmvalue" id="modelarts_23_0238__en-us_topic_0216621183_parmvalue471514469313"><b>train_steps</b></span> is a passing parameter in code.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row14194104591416"><td class="cellrowborder" valign="top" width="15.2%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p6194174510145">Job Log Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.24%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p107033881810">-</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.56%" headers="mcps1.3.5.2.3.1.2.2.2.4.1.3 "><p id="modelarts_23_0238__en-us_topic_0216621183_p7194104518146">Select a path for storing log files generated during job running.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="modelarts_23_0238__en-us_topic_0216621183_li1649181972">Select resources for the training job.
+.. _modelarts_23_0238__en-us_topic_0216621183_table1110144413718:
+
+<table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0238__en-us_topic_0216621183_table1110144413718" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Resource parameters</caption><thead align="left"><tr id="modelarts_23_0238__en-us_topic_0216621183_row495964715372"><th align="left" class="cellrowborder" valign="top" width="22.32%" id="mcps1.3.5.2.3.1.3.1.2.3.1.1"><p id="modelarts_23_0238__en-us_topic_0216621183_p341854123713">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.68%" id="mcps1.3.5.2.3.1.3.1.2.3.1.2"><p id="modelarts_23_0238__en-us_topic_0216621183_p14411154173713">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0238__en-us_topic_0216621183_row4663152034118"><td class="cellrowborder" valign="top" width="22.32%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p182161224184118">Resource Pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.68%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p12216102414114">Select resource pools for the job.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row9985123192911"><td class="cellrowborder" valign="top" width="22.32%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p1298619237296">Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.68%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p1298616237295">If <strong id="modelarts_23_0238__en-us_topic_0216621183_b3346155735217">Resource Pool</strong> is set to <strong id="modelarts_23_0238__en-us_topic_0216621183_b165461722195210">Public resource pools</strong>, select a resource type. Available resource types are <strong id="modelarts_23_0238__en-us_topic_0216621183_b10720174912716">CPU</strong> and <strong id="modelarts_23_0238__en-us_topic_0216621183_b17102145262716">GPU</strong>.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p192241239154116">The GPU resource delivers better performance, and the CPU resource is more cost effective. If the selected algorithm has been defined to use the CPU or GPU, the resource type is automatically displayed on the page. Select the resource type as required.</p>
+<span class="notetitle"> NOTE: </span><p id="modelarts_23_0238__en-us_topic_0216621183_p711115448377">If GPU resources are used in training code, you must select a GPU cluster when selecting a resource pool. Otherwise, the training job may fail.</p>
+
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row57690524219"><td class="cellrowborder" valign="top" width="22.32%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p9641156144211">Specifications</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.68%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p17135153975111">Select a resource flavor based on the resource type.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p1641864424"></p>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row411134413716"><td class="cellrowborder" valign="top" width="22.32%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p161113441372">Compute Nodes</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.68%" headers="mcps1.3.5.2.3.1.3.1.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p18111744183715">Set the number of compute nodes. If you set <strong id="modelarts_23_0238__en-us_topic_0216621183_b686614269581">Compute Nodes</strong> to <strong id="modelarts_23_0238__en-us_topic_0216621183_b14866162635819">1</strong>, the standalone computing mode is used. If you set <strong id="modelarts_23_0238__en-us_topic_0216621183_b198661626135815">Compute Nodes</strong> to a value greater than 1, the distributed computing mode is used. Select a computing mode based on the actual requirements.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p835054518452">When <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname61416813427"><b>Frequently-used</b></span> of <strong id="modelarts_23_0238__en-us_topic_0216621183_b1628121124215">Algorithm Source</strong> is set to <strong id="modelarts_23_0238__en-us_topic_0216621183_b52913211426">Caffe</strong>, only standalone training is supported, that is, <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname138144547429"><b>Compute Nodes</b></span> must be set to <span class="parmvalue" id="modelarts_23_0238__en-us_topic_0216621183_parmvalue966653464614"><b>1</b></span>. For other options of <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname10974659461"><b>Frequently-used</b></span>, you can select the standalone or distributed mode based on service requirements.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="modelarts_23_0238__en-us_topic_0216621183_li193321924076">Configure <strong id="modelarts_23_0238__en-us_topic_0216621183_b141481611167">Notification</strong> and select whether to save the parameters of the training job.
+.. _modelarts_23_0238__en-us_topic_0216621183_table1217141794320:
+
+<table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0238__en-us_topic_0216621183_table1217141794320" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Parameters related to notification and parameter configuration saving</caption><thead align="left"><tr id="modelarts_23_0238__en-us_topic_0216621183_row1614614211435"><th align="left" class="cellrowborder" valign="top" width="22.33%" id="mcps1.3.5.2.3.1.4.2.2.3.1.1"><p id="modelarts_23_0238__en-us_topic_0216621183_p9147102194317">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.66999999999999%" id="mcps1.3.5.2.3.1.4.2.2.3.1.2"><p id="modelarts_23_0238__en-us_topic_0216621183_p10147182114430">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0238__en-us_topic_0216621183_row131731715438"><td class="cellrowborder" valign="top" width="22.33%" headers="mcps1.3.5.2.3.1.4.2.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p161741717439">Notification</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.66999999999999%" headers="mcps1.3.5.2.3.1.4.2.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p91719173434">Select the resource pool status to be monitored from the event list, and SMN sends a notification message when the event occurs.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p10224114819444">This parameter is optional. You can choose whether to enable subscription based on actual requirements. If you enable subscription, set the following parameters as required:</p>
+<ul id="modelarts_23_0238__en-us_topic_0216621183_ul4779327174518"><li id="modelarts_23_0238__en-us_topic_0216621183_li1377917271451"><span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname174195995917"><b>Topic</b></span>: indicates the topic name. You can create a topic on the SMN console.</li><li id="modelarts_23_0238__en-us_topic_0216621183_li1733623024520"><span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname12328122074614"><b>Event</b></span>: indicates the event to be subscribed to. The options are <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname392644163514"><b>OnJobRunning</b></span>, <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname6927540351"><b>OnJobSucceeded</b></span>, and <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname292720413512"><b>OnJobFailed</b></span>, indicating that training is in progress, successful, and failed, respectively.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_23_0238__en-us_topic_0216621183_row0394182311432"><td class="cellrowborder" valign="top" width="22.33%" headers="mcps1.3.5.2.3.1.4.2.2.3.1.1 "><p id="modelarts_23_0238__en-us_topic_0216621183_p23947235436">Saving Training Parameters</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.66999999999999%" headers="mcps1.3.5.2.3.1.4.2.2.3.1.2 "><p id="modelarts_23_0238__en-us_topic_0216621183_p64311681476">If you select this option, the parameter settings of the current job will be saved to facilitate subsequent job creation.</p>
+<p id="modelarts_23_0238__en-us_topic_0216621183_p73614719479">Select <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname1267313483519"><b>Save Training Parameters</b></span> and specify <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname1367403443512"><b>Configuration Name</b></span> and <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname1367415341355"><b>Description</b></span>. After a training job is created, you can switch to the <strong id="modelarts_23_0238__en-us_topic_0216621183_b1931034417216">Job Parameters</strong> tab page to view your saved job parameter settings. For details, see <a href="modelarts_23_0049.html">Managing Job Parameters</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="modelarts_23_0238__en-us_topic_0216621183_li813110438717">After setting the parameters, click <span class="uicontrol" id="modelarts_23_0238__en-us_topic_0216621183_uicontrol7233163418509"><b>Next</b></span>.</li></ol>
+</li><li id="modelarts_23_0238__en-us_topic_0216621183_li0335165819514">Confirm that the information is correct on the <span class="wintitle" id="modelarts_23_0238__en-us_topic_0216621183_wintitle2074017566719"><b>Confirm</b></span> page that is displayed and click <span class="uicontrol" id="modelarts_23_0238__en-us_topic_0216621183_uicontrol9821183017149"><b>Submit</b></span>. Generally, training jobs run for a period of time, which may be several minutes or tens of minutes depending on the amount of your selected data and resources.<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="modelarts_23_0238__en-us_topic_0216621183_p156918005513">After a training job is created, it is started immediately.</p>
+
+<p id="modelarts_23_0238__en-us_topic_0216621183_p199943452522">You can switch to the training job list to view the basic information about training jobs. In the training job list, <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname07710542035"><b>Status</b></span> of the newly created training job is <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname57713541533"><b>Initializing</b></span>. If the status changes to <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname57817541335"><b>Successful</b></span>, the training job ends and the model generated is stored in the location specified by <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname147865417316"><b>Training Output Path</b></span>. If the status of a training job changes to <span class="parmname" id="modelarts_23_0238__en-us_topic_0216621183_parmname729618168415"><b>Running failed</b></span>, click the name of the training job and view the job logs. Troubleshoot the fault based on the logs.</p>
+</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0235.html">Creating a Training Job</a>
+
+
+

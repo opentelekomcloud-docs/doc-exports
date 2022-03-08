@@ -1,0 +1,98 @@
+<a name="EN-US_TOPIC_0103285575"></a><a name="EN-US_TOPIC_0103285575"></a>
+
+<h1 class="topictitle1">How Do I Obtain My Disk Name in the ECS OS Using the Device Identifier Provided on the Console?</h1>
+<div id="body1521878887197"><div class="section" id="EN-US_TOPIC_0103285575__section1021919499213"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0103285575__p050832918200">You find that the disk name displayed on the ECS OS is different from that displayed on the management console and you cannot determine which disk name is correct. This section describes how to obtain the disk name used on an ECS OS according to the device identifier on the console.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section1041415015310"><a name="EN-US_TOPIC_0103285575__section1041415015310"></a><a name="section1041415015310"></a><h4 class="sectiontitle">Obtaining the Disk ID of an ECS on the Console</h4><ol id="EN-US_TOPIC_0103285575__ol126291944416"><li id="EN-US_TOPIC_0103285575__li3490190117228">Log in to the management console.</li><li id="EN-US_TOPIC_0103285575__li8262319194419">Under <strong id="EN-US_TOPIC_0103285575__b179180684311615"><span id="EN-US_TOPIC_0103285575__text1268114121369">Computing</span></strong>, click <strong id="EN-US_TOPIC_0103285575__b87401412411615">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0103285575__li4263171964414">Click the target ECS name in the ECS list.<p id="EN-US_TOPIC_0103285575__p92637198447"><a name="EN-US_TOPIC_0103285575__li4263171964414"></a><a name="li4263171964414"></a>The page providing details about the ECS is displayed.</p>
+</li><li id="EN-US_TOPIC_0103285575__li526391912447">Click the <strong id="EN-US_TOPIC_0103285575__b84235270611827">Disks</strong> tab and then <span><img id="EN-US_TOPIC_0103285575__image2263171920447" src="en-us_image_0216898618.png"></span> to expand the disk information.</li><li id="EN-US_TOPIC_0103285575__li12263101924414">Check the device type and ID of the disk.<div class="note" id="EN-US_TOPIC_0103285575__note12761241672"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0103285575__p13761124177">If <strong id="EN-US_TOPIC_0103285575__b84235270612035">Device Identifier</strong> is not displayed on the web page, stop the ECS and restart it.</p>
+</div></div>
+<ul id="EN-US_TOPIC_0103285575__ul134848404712"><li id="EN-US_TOPIC_0103285575__li587765813483">KVM<ul id="EN-US_TOPIC_0103285575__ul1156111818497"><li id="EN-US_TOPIC_0103285575__li7484164013715">If <strong id="EN-US_TOPIC_0103285575__b138074394914">Device Type</strong> is <strong id="EN-US_TOPIC_0103285575__b151060431591">VBD</strong>, use a serial number or BDF to obtain the disk device name. <p id="EN-US_TOPIC_0103285575__p47401340681">If you use a serial number (recommended) to obtain the disk name, see <a href="#EN-US_TOPIC_0103285575__section1549713815243">Using a Serial Number to Obtain the Disk Name (Windows)</a> and <a href="#EN-US_TOPIC_0103285575__section1251215393317">Using a Serial Number to Obtain a Disk Device Name (Linux)</a>.</p>
+<p id="EN-US_TOPIC_0103285575__p106031241086">If you use a BDF to obtain the disk device name, see <a href="#EN-US_TOPIC_0103285575__section8901134753319">Using a VBD to Obtain a Disk Device Name (Linux)</a>. (BDF cannot be used to obtain the disk name of Windows ECSs.)</p>
+</li><li id="EN-US_TOPIC_0103285575__li048514406717">If <strong id="EN-US_TOPIC_0103285575__b107891133149">Device Type</strong> is <strong id="EN-US_TOPIC_0103285575__b13349201815145">SCSI</strong>, use a WWN to obtain the disk name. For details, see <a href="#EN-US_TOPIC_0103285575__section49041319248">Using a WWN to Obtain the Disk Name (Windows)</a> and <a href="#EN-US_TOPIC_0103285575__section436018073419">Using a WWN to Obtain a Disk Device Name (Linux)</a>.</li></ul>
+</li></ul>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section1549713815243"><a name="EN-US_TOPIC_0103285575__section1549713815243"></a><a name="section1549713815243"></a><h4 class="sectiontitle">Using a Serial Number to Obtain the Disk Name (Windows)</h4><p id="EN-US_TOPIC_0103285575__p8497148102411">If a serial number is displayed on the console, use either of the following methods to obtain the disk name.</p>
+<p id="EN-US_TOPIC_0103285575__p1611616258448"><strong id="EN-US_TOPIC_0103285575__b1293013363204">cmd</strong></p>
+<ol id="EN-US_TOPIC_0103285575__ol91571536143614"><li id="EN-US_TOPIC_0103285575__li1215733614369">Start <strong id="EN-US_TOPIC_0103285575__b922182819264">cmd</strong> in a Windows OS as an administrator and run either of the following commands:<p id="EN-US_TOPIC_0103285575__p10803548134311"><strong id="EN-US_TOPIC_0103285575__b107621652134313">wmic diskdrive get serialnumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p1680334854314"><strong id="EN-US_TOPIC_0103285575__b10763652164316">wmic path win32_physicalmedia get SerialNumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p1280364864320"><strong id="EN-US_TOPIC_0103285575__b7763115294319">wmic path Win32_DiskDrive get SerialNumber</strong></p>
+<div class="note" id="EN-US_TOPIC_0103285575__note18497198202415"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0103285575__p14971882415">A serial number is the first 20 digits of a disk UUID.</p>
+</div></div>
+<p id="EN-US_TOPIC_0103285575__p114976852410">For example, if the serial number of a VBD disk on the console is 97c876c0-54b3-460a-b, run either of the following commands to obtain the serial number of the disk on the ECS OS:</p>
+<p id="EN-US_TOPIC_0103285575__p174976818247"><strong id="EN-US_TOPIC_0103285575__b718102554413">wmic diskdrive get serialnumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p12184259444"><strong id="EN-US_TOPIC_0103285575__b1718182544412">wmic path win32_physicalmedia get SerialNumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p2018725184416"><strong id="EN-US_TOPIC_0103285575__b7188251445">wmic path Win32_DiskDrive get SerialNumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p249717832412">Information similar to the following is displayed:</p>
+<div class="fignone" id="EN-US_TOPIC_0103285575__fig141513348195"><span class="figcap"><b>Figure 1 </b>Obtaining the disk serial number</span><br><span><img id="EN-US_TOPIC_0103285575__image13906145218541" src="en-us_image_0000001127902463.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0103285575__li4650351455">Run the following command to check the disk corresponding to the serial number:<p id="EN-US_TOPIC_0103285575__p37604132474"><a name="EN-US_TOPIC_0103285575__li4650351455"></a><a name="li4650351455"></a><strong id="EN-US_TOPIC_0103285575__b4409151217473">wmic</strong> <strong id="EN-US_TOPIC_0103285575__b96355018463">diskdrive get Name, SerialNumber</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0103285575__fig499418565481"><span class="figcap"><b>Figure 2 </b>Checking the disk corresponding to the serial number</span><br><span><img id="EN-US_TOPIC_0103285575__image189415519480" src="en-us_image_0000001081131958.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+<p id="EN-US_TOPIC_0103285575__p1658693814472"><strong id="EN-US_TOPIC_0103285575__b16684163912401">PowerShell</strong></p>
+<ol id="EN-US_TOPIC_0103285575__ol260213824718"><li id="EN-US_TOPIC_0103285575__li560213804716">Start PowerShell as an administrator in a Windows OS.</li><li id="EN-US_TOPIC_0103285575__li16022381478">Run the following command to check the disk on which the logical disk is created:<ul id="EN-US_TOPIC_0103285575__ul13602438144719"><li id="EN-US_TOPIC_0103285575__li460212382479">Windows Server 2012 or later<ol type="a" id="EN-US_TOPIC_0103285575__ol3602143854711"><li id="EN-US_TOPIC_0103285575__li6602638104715">Run the following command to check the disk on which the logical disk is created:<p id="EN-US_TOPIC_0103285575__p12602438174712"><a name="EN-US_TOPIC_0103285575__li6602638104715"></a><a name="li6602638104715"></a><strong id="EN-US_TOPIC_0103285575__b2602133814710">Get-CimInstance -ClassName Win32_LogicalDiskToPartition |select Antecedent, Dependent |fl</strong></p>
+<p id="EN-US_TOPIC_0103285575__p176021738204714">As shown in <a href="#EN-US_TOPIC_0103285575__fig1960253814473">Figure 3</a>, the disk is <strong id="EN-US_TOPIC_0103285575__b6436444181815">Disk 0</strong>.</p>
+</li><li id="EN-US_TOPIC_0103285575__li3602133814710">Run the following command to view the mapping between the serial number and the disk:<p id="EN-US_TOPIC_0103285575__p1160218385477"><a name="EN-US_TOPIC_0103285575__li3602133814710"></a><a name="li3602133814710"></a><strong id="EN-US_TOPIC_0103285575__b146023380475">Get-Disk |select Number, SerialNumber</strong></p>
+<p id="EN-US_TOPIC_0103285575__p460273817470">As shown in <a href="#EN-US_TOPIC_0103285575__fig1960253814473">Figure 3</a>, the disk is <strong id="EN-US_TOPIC_0103285575__b16914030192111">Disk 0</strong>.</p>
+<div class="fignone" id="EN-US_TOPIC_0103285575__fig1960253814473"><a name="EN-US_TOPIC_0103285575__fig1960253814473"></a><a name="fig1960253814473"></a><span class="figcap"><b>Figure 3 </b>Viewing the disk on which the logical disk is created</span><br><span><img id="EN-US_TOPIC_0103285575__image060203812474" src="en-us_image_0000001127906793.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</li><li id="EN-US_TOPIC_0103285575__li7602183813475">Versions earlier than Windows 2012<ol type="a" id="EN-US_TOPIC_0103285575__ol10602143812475"><li id="EN-US_TOPIC_0103285575__li1260219386475">Run the following command to check the disk on which the logical disk is created:<p id="EN-US_TOPIC_0103285575__p5602173820471"><a name="EN-US_TOPIC_0103285575__li1260219386475"></a><a name="li1260219386475"></a><strong id="EN-US_TOPIC_0103285575__b960293884714">Get-WmiObject -Class Win32_PhysicalMedia |select Tag, Serialnumber</strong></p>
+</li><li id="EN-US_TOPIC_0103285575__li8602123817478">Run the following command to view the mapping between the serial number and the disk:<p id="EN-US_TOPIC_0103285575__p56021338144713"><a name="EN-US_TOPIC_0103285575__li8602123817478"></a><a name="li8602123817478"></a><strong id="EN-US_TOPIC_0103285575__b7602138144719">Get-WmiObject -Class Win32_LogicalDiskToPartition |select Antecedent, Dependent |fl</strong></p>
+</li></ol>
+</li></ul>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section1251215393317"><a name="EN-US_TOPIC_0103285575__section1251215393317"></a><a name="section1251215393317"></a><h4 class="sectiontitle">Using a Serial Number to Obtain a Disk Device Name (Linux)</h4><p id="EN-US_TOPIC_0103285575__p1733118149351">If a serial number is displayed on the console, run either of the following commands to obtain the device name.</p>
+<p id="EN-US_TOPIC_0103285575__p9988516173810"><strong id="EN-US_TOPIC_0103285575__b898851663814"># </strong><strong id="EN-US_TOPIC_0103285575__b10988141673812">udevadm info --query=all --name=/dev/xxx | grep ID_SERIAL</strong></p>
+<p id="EN-US_TOPIC_0103285575__p24164484311"><strong id="EN-US_TOPIC_0103285575__b1898819161389"># ll /dev/disk/by-id/*</strong></p>
+<div class="note" id="EN-US_TOPIC_0103285575__note35122117519"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0103285575__p1512141111517">A serial number is the first 20 digits of a disk UUID.</p>
+</div></div>
+<p id="EN-US_TOPIC_0103285575__p159881316163816">For example, if the serial number of the VBD disk is 62f0d06b-808d-480d-8, run either of the following commands:</p>
+<p id="EN-US_TOPIC_0103285575__p1498818168383"><strong id="EN-US_TOPIC_0103285575__b139881216143818"># udevadm info --query=all --name=/dev/vdb | grep ID_SERIAL</strong></p>
+<p id="EN-US_TOPIC_0103285575__p6989916103812"><strong id="EN-US_TOPIC_0103285575__b1798921619383"># ll /dev/disk/by-id/*</strong></p>
+<p id="EN-US_TOPIC_0103285575__p1498919161388">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0103285575__screen169896163389">[root@ecs-ab63 ~]# udevadm info --query=all --name=/dev/vdb | grep ID_SERIAL
+<strong id="EN-US_TOPIC_0103285575__b78592044105219">E: ID_SERIAL=62f0d06b-808d-480d-8</strong>
+[root@ecs-ab63 ~]# ll /dev/disk/by-id/*
+lrwxrwxrwx 1 root root  9 Dec 30 15:56 /dev/disk/by-id/virtio-128d5bfd-f215-487f-9 -&gt; ../../vda
+lrwxrwxrwx 1 root root 10 Dec 30 15:56 /dev/disk/by-id/virtio-128d5bfd-f215-487f-9-part1 -&gt; ../../vda1
+lrwxrwxrwx 1 root root  9 Dec 30 15:56 /dev/disk/by-id/<strong id="EN-US_TOPIC_0103285575__b58721054125211">virtio-62f0d06b-808d-480d-8 -&gt; ../../vdb</strong></pre>
+<p id="EN-US_TOPIC_0103285575__p12989111617387"><strong id="EN-US_TOPIC_0103285575__b10206145112412">/dev/vdb</strong> is the disk device name.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section8901134753319"><a name="EN-US_TOPIC_0103285575__section8901134753319"></a><a name="section8901134753319"></a><h4 class="sectiontitle">Using a VBD to Obtain a Disk Device Name (Linux)</h4><ol id="EN-US_TOPIC_0103285575__ol1274863233712"><li id="EN-US_TOPIC_0103285575__li103661059205712">Run the following command to use a BDF to obtain the device name:<p id="EN-US_TOPIC_0103285575__p103661159145712"><a name="EN-US_TOPIC_0103285575__li103661059205712"></a><a name="li103661059205712"></a><strong id="EN-US_TOPIC_0103285575__b42771117101914">ll /sys/bus/pci/devices/</strong><em id="EN-US_TOPIC_0103285575__i992432016812">BDF disk ID</em><strong id="EN-US_TOPIC_0103285575__b11666922171916">/virtio*/block</strong></p>
+<p id="EN-US_TOPIC_0103285575__p19366459185713">For example, if the BDF disk ID of the VBD disk is 0000:02:02.0, run the following command to obtain the device name:</p>
+<p id="EN-US_TOPIC_0103285575__p6366105915719"><strong id="EN-US_TOPIC_0103285575__b469820365712">ll /sys/bus/pci/devices/0000:02:02.0/virtio*/block</strong></p>
+<p id="EN-US_TOPIC_0103285575__p1536655945715">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0103285575__screen11366105915571">[root@ecs-ab63 ~]# ll /sys/bus/pci/devices/0000:02:02.0/virtio*/block
+total 0
+drwxr-xr-x 8 root root 0 Dec 30 15:56 <strong id="EN-US_TOPIC_0103285575__b11784374811">vdb</strong></pre>
+<p id="EN-US_TOPIC_0103285575__p1367115975715"><strong id="EN-US_TOPIC_0103285575__b7830181692518">/dev/vdb</strong> is the disk device name.</p>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section49041319248"><a name="EN-US_TOPIC_0103285575__section49041319248"></a><a name="section49041319248"></a><h4 class="sectiontitle">Using a WWN to Obtain the Disk Name (Windows)</h4><ol id="EN-US_TOPIC_0103285575__ol119049191040"><li id="EN-US_TOPIC_0103285575__li1677012351852">Obtain the device identifier on the console by referring to <a href="#EN-US_TOPIC_0103285575__section1041415015310">Obtaining the Disk ID of an ECS on the Console</a>.</li><li id="EN-US_TOPIC_0103285575__li1965919912614">Manually convert the WWN.<p id="EN-US_TOPIC_0103285575__p1886712415295"><a name="EN-US_TOPIC_0103285575__li1965919912614"></a><a name="li1965919912614"></a>For example, the obtained WWN (device identifier) is 68886030000<strong id="EN-US_TOPIC_0103285575__b20762033143010">3252f</strong>fa16520d39517815.</p>
+<ol type="a" id="EN-US_TOPIC_0103285575__ol742917321218"><li id="EN-US_TOPIC_0103285575__li14357629162111">Obtain the 21st to 17th digits that are counted backwards (<strong id="EN-US_TOPIC_0103285575__b562419212383">3252f</strong>).</li><li id="EN-US_TOPIC_0103285575__li1577905318119">Convert a hexadecimal (<strong id="EN-US_TOPIC_0103285575__b1264321916410">3252f</strong>) to a decimal (<strong id="EN-US_TOPIC_0103285575__b113721144114110">206127</strong>).</li></ol>
+</li><li id="EN-US_TOPIC_0103285575__li14153192352216">Start PowerShell as an administrator in a Windows OS.</li><li id="EN-US_TOPIC_0103285575__li0241175312245">Run the following command:<p id="EN-US_TOPIC_0103285575__p2268154142414"><a name="EN-US_TOPIC_0103285575__li0241175312245"></a><a name="li0241175312245"></a><strong id="EN-US_TOPIC_0103285575__b560215652416">Get-CimInstance Win32_DiskDrive | Select-Object DeviceID, SerialNumber</strong></p>
+</li><li id="EN-US_TOPIC_0103285575__li144302710234">In the command output, the disk whose serial number ends with <strong id="EN-US_TOPIC_0103285575__b192471015114414">206127</strong> is the disk corresponding to the WWN.<div class="fignone" id="EN-US_TOPIC_0103285575__fig3430181417335"><span class="figcap"><b>Figure 4 </b>Disk with the serial number ending with <strong id="EN-US_TOPIC_0103285575__b1463085164413">206127</strong></span><br><span><img id="EN-US_TOPIC_0103285575__image346643313114" src="en-us_image_0000001128111323.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0103285575__section436018073419"><a name="EN-US_TOPIC_0103285575__section436018073419"></a><a name="section436018073419"></a><h4 class="sectiontitle">Using a WWN to Obtain a Disk Device Name (Linux)</h4><ol id="EN-US_TOPIC_0103285575__ol2091914145364"><li id="EN-US_TOPIC_0103285575__li0264161916441">Log in to the ECS as user <strong id="EN-US_TOPIC_0103285575__b842352706145328">root</strong>.</li><li id="EN-US_TOPIC_0103285575__li155123341577">Run the following command to view the disk device name:<p id="EN-US_TOPIC_0103285575__p1051273455711"><a name="EN-US_TOPIC_0103285575__li155123341577"></a><a name="li155123341577"></a><strong id="EN-US_TOPIC_0103285575__b3512173412572">ll /dev/disk/by-id |grep </strong><em id="EN-US_TOPIC_0103285575__i185121434115713">WWN</em><strong id="EN-US_TOPIC_0103285575__b115121334155710">|grep scsi-3</strong></p>
+<p id="EN-US_TOPIC_0103285575__p165121734175716">For example, if the WWN obtained on the console is 6888603000008b32fa16688d09368506, run the following command:</p>
+<p id="EN-US_TOPIC_0103285575__p951233465711"><strong id="EN-US_TOPIC_0103285575__b145121434135719">ll /dev/disk/by-id |grep 6888603000008b32fa16688d09368506|grep scsi-3</strong></p>
+<p id="EN-US_TOPIC_0103285575__p0512173415576">The following information is displayed:</p>
+<pre class="screen" id="EN-US_TOPIC_0103285575__screen3512123495718">[root@host-192-168-133-148 block]# ll /dev/disk/by-id/ |grep 6888603000008b32fa16688d09368506 |grep scsi-3
+lrwxrwxrwx 1 root root  9 May 21 20:22 <strong id="EN-US_TOPIC_0103285575__b5512123445715">scsi-3</strong>6888603000008b32fa16688d09368506 -&gt; <strong id="EN-US_TOPIC_0103285575__b251218343578">../../</strong><strong id="EN-US_TOPIC_0103285575__b20512173417574">sda</strong></pre>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124786.html">Disk Management</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

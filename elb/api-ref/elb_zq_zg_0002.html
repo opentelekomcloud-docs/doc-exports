@@ -1,0 +1,369 @@
+<a name="elb_zq_zg_0002"></a><a name="elb_zq_zg_0002"></a>
+
+<h1 class="topictitle1">Querying Forwarding Rules</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_zg_0002__en-us_topic_0116649234_p18397115712318">This API is used to query forwarding rules. Filter query and pagination query are supported. Unless otherwise specified, exact match is applied.</p>
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_p1425263917142">Parameters <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b842352706173057">marker</strong>, <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b84235270617310">limit</strong>, and <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b84235270617314">page_reverse</strong> are used for pagination query. Parameters <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b842352706173217">marker</strong> and <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b842352706173221">page_reverse</strong> take effect only when they are used together with parameter <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008270_b842352706173232">limit</strong>.</p>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_zg_0002__en-us_topic_0116649234_p463031392317">GET /v2.0/lbaas/l7policies/{l7policy_id}/rules</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zg_0002__en-us_topic_0116649234_table7499543142219" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row3499843182216"><th align="left" class="cellrowborder" valign="top" width="14.141414141414144%" id="mcps1.3.3.3.2.5.1.1"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p94995435221">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.101010101010102%" id="mcps1.3.3.3.2.5.1.2"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p132241538132114">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.3.3.2.5.1.3"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p11499144352210">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.62626262626263%" id="mcps1.3.3.3.2.5.1.4"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p34997434220">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1499134372214"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p2499243172211">l7policy_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.101010101010102%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p62222038202115">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p8499134342213">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p84991243162216">Specifies the forwarding policy ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zg_0002__en-us_topic_0116649234_table360792218500" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row6791152295011"><th align="left" class="cellrowborder" valign="top" width="14.141414141414144%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p8791112255016">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.111111111111112%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p177916223503">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.121212121212121%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1479102255019">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.62626262626263%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p16791102219507">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row3791522145010"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p18791722195020">marker</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p177915227501">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p479152215504">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p4235152211344">Specifies the ID of the forwarding rule from which pagination query starts, that is, the ID of the last forwarding rule on the previous page.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p06221826143418">This parameter must be used together with <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b945794234911">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1579132218507"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p13791102205018">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p9791622175011">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p5791182213509">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p163282306342">Specifies the number of forwarding rules on each page. If this parameter is not set, all forwarding rules are queried by default.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1879222220503"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p47921922155013">page_reverse</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p167921822185015">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p18792922125013">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p15227113913341">Specifies the page direction. The value can be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b19958113641314">true</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b17959153620133">false</strong>, and the default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b2960153618136">false</strong>. The last page in the list requested with <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b7960173651311">page_reverse</strong> set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b196133613131">false</strong> will not contain the "next" link, and the last page in the list requested with <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b179610369134">page_reverse</strong> set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b16962163671310">true</strong> will not contain the "previous" link.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p5244104243413">This parameter must be used together with <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b176601535175117">limit</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row18792722135018"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p579222210501">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p2079282218505">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p147921225505">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p177921622135012">Specifies the forwarding rule ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row187921022165016"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1679232215014">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p279222218509">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1579252214505">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p11184131">Specifies the ID of the project where the forwarding rule is used.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row079212227502"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p187921122155017">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p5792192205017">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1779252275015">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p189741017613">Specifies the administrative status of the forwarding rule.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1685165224811">This parameter is reserved, and the default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row47923228501"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p7792112255010">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p15792122235013">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1792192210506">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1161972619482">Specifies the match type of a forwarding rule.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p9536114413489">The value can be one of the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul3525953124817"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li145711056184813"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b15235194317515">HOST_NAME</strong>: matches the domain name in the request.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li3527145320480"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b848794416516">PATH</strong>: matches the path in the request.</li></ul>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p15285166489">The match type of forwarding rules in a forwarding policy must be unique.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1279242295016"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p197931722175012">compare_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1979314227506">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1279382265012">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p51371649125820">Specifies the match mode. The options are as follows:</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p10794420115116">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1170415481515">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b97053486514">HOST_NAME</strong>, the value of this parameter can only be the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul15305619145114"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li1630531925110"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b997144919516">EQUAL_TO</strong>: indicates exact match.</li></ul>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p13663103020517">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b24861451155115">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1548785125116">PATH</strong>, the value of this parameter can be one of the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul17531436125112"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li16531153615514"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b11799115213519">REGEX</strong>: indicates regular expression match.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li28489482511"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b579115435118">STARTS_WITH</strong>: indicates prefix match.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li16998845175115"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b19176195595116">EQUAL_TO</strong>: indicates exact match.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row16793182219506"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p187931822165010">invert</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p167931822175012">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p19793182210507">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1837110431511">Specifies whether reverse matching is supported.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1497849152414">The value can be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b8781657185117">true</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b478235715513">false</strong>. The default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b11199059165117">false</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1828957181510">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row20793122245015"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1379382265013">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p12793222155016">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p19793622105017">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p781771561717">Specifies the key of the match content. The default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b20117319528">null</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p198171615161716">This parameter is reserved.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p259352683110">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row12793172219508"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p3793152214509">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p117931322175012">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1679382211505">String</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p207931223501"></p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p19314172610176">Specifies the value of the match content.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p93101830103115">The value contains a maximum of 128 characters.</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul731432621713"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li17314132610172">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b52941659114517">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1529595910458">HOST_NAME</strong>, the value can contain a maximum of 100 characters that contain only letters, digits, hyphens (-), and periods (.), and must start with a letter or digit.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li9316152619173">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b14496522466">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1449614220462">PATH</strong>, the value can contain a maximum of 128 characters. When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b49571939255">compare_type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b16971203112513">STARTS_WITH</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b179711432250">EQUAL_TO</strong>, the value must start with a slash (/) and can contain only letters, digits, and special characters _~';@^-%#&amp;$.*+?,=!:| \/()[]{}</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1879342295018"><td class="cellrowborder" valign="top" width="14.141414141414144%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p147930223508">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p18793112211501">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p117931022145014">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.62626262626263%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p6111121195311">This parameter is reserved, and its value can only be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b316117277353">ACTIVE</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p14704205693714">It specifies the provisioning status of the forwarding rule.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zg_0002__en-us_topic_0116649234_table0996611195215" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row173041215215"><th align="left" class="cellrowborder" valign="top" width="20.792079207920793%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p103061225213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.801980198019802%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1330171214526">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.4059405940594%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p113061219521">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row73021275214"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p153041218522">rules</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0096561533_p422512115486">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.4059405940594%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p430412105214">Lists the forwarding rules. For details, see <a href="#elb_zq_zg_0002__en-us_topic_0116649234_table19731219105316">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row937132812194"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p45418369196">rules_links</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p454115364196">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.4059405940594%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1754113613197">Provides links to the previous or next page during pagination query, respectively.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1254112369197">This parameter exists only in the response body of pagination query.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p4541123620196">For details, see <a href="#elb_zq_zg_0002__en-us_topic_0116649234_table121191126442">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zg_0002__en-us_topic_0116649234_table19731219105316"></a><a name="en-us_topic_0116649234_table19731219105316"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zg_0002__en-us_topic_0116649234_table19731219105316" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b19767174972320">rules</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row18222814135918"><th align="left" class="cellrowborder" valign="top" width="20.202020202020204%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p102227144592">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.202020202020204%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p922291411591">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.59595959595959%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p945745517918">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row102221114205912"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p122261415596">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p888713113107">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p52228141594">Specifies the forwarding rule ID.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row202222146591"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p11222111412593">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p4222914145911">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1266711718204">Specifies the ID of the project where the forwarding rule is used.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p59353183315">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row722213149597"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1622251465915">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p19222111414597">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1979757131619">Specifies the administrative status of the forwarding rule.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1795102428">This parameter is reserved. The value can be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul189511322022"><li id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row4224114155917"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p92241147592">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p222481475913">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p199311319151611">Specifies the match type of a forwarding rule.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p293131991615">The value can be one of the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul13931161917169"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li5931131991614"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b101137424524">HOST_NAME</strong>: matches the domain name in the request.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li20931191918167"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b136271243135215">PATH</strong>: matches the path in the request.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row622461465910"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p162241814165916">compare_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p12241214105911">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p928234417166">Specifies the match mode. The options are as follows:</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p112828447167">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b95681446175216">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b7569124625212">HOST_NAME</strong>, the value of this parameter can only be the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul128264412167"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li17282444101615"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b5178648125214">EQUAL_TO</strong>: indicates exact match.</li></ul>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p2028224451611">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b0318144913529">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b13194499524">PATH</strong>, the value of this parameter can be one of the following:</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul162821144131610"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li528216443163"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1239115531524">REGEX</strong>: indicates regular expression match.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li82827446163"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b2261205520526">STARTS_WITH</strong>: indicates prefix match.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li32821344171616"><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b134151756115216">EQUAL_TO</strong>: indicates exact match.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row322461410591"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p622481485911">invert</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1622411412594">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p4697172743112">Specifies whether reverse matching is supported.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p20699112712319">The value can be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b689217587527">true</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b18931658125215">false</strong>. The default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b12501400536">false</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p10700172773113">This parameter is reserved.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row19224714125916"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p172241014165910">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p922415146591">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p2070622763110">Specifies the key of the match content. The default value is <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b94609318531">null</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p170832743110">This parameter is reserved.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p161342783311">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row622481417593"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p15224151413595">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p622413146591">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p571492763113">Specifies the value of the match content.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p181971511193320">The value contains a maximum of 128 characters.</p>
+<ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul1171713278316"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li67178275314">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b82412164537">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b11251516115317">HOST_NAME</strong>, the value can contain a maximum of 100 characters that contain only letters, digits, hyphens (-), and periods (.), and must start with a letter or digit.</li><li id="elb_zq_zg_0002__en-us_topic_0116649234_li271732793120">When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b4809101715319">type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b7810121755310">PATH</strong>, the value can contain a maximum of 128 characters. When <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b338183120255">compare_type</strong> is set to <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b251231172513">STARTS_WITH</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b252183111259">EQUAL_TO</strong>, the value must start with a slash (/) and can contain only letters, digits, and special characters _~';@^-%#&amp;$.*+?,=!:| \/()[]{}</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row2224191419593"><td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p2022412148597">provisioning_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.202020202020204%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p622431415599">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.59595959595959%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p127855308530">This parameter is reserved, and its value can only be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b2602495341">ACTIVE</strong>.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p1672832743114">It specifies the provisioning status of the forwarding rule.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_zg_0002__en-us_topic_0116649234_table121191126442"></a><a name="en-us_topic_0116649234_table121191126442"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_zg_0002__en-us_topic_0116649234_table121191126442" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_zg_0002__en-us_topic_0116649234_b133751315">rules_links</strong> parameter description</caption><thead align="left"><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row20223825440"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1322317218448">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p12223102174417">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1916893712107">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_zg_0002__en-us_topic_0116649234_row422311294414"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p6223172154412">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p11963432121013">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_en-us_topic_0096561531_p1653852193312">Provides links to the previous or next page during pagination query, respectively.</p>
+</td>
+</tr>
+<tr id="elb_zq_zg_0002__en-us_topic_0116649234_row1222316274420"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1222310218449">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1022316204415">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_zg_0002__en-us_topic_0116649234_p1772113411218">Specifies the prompt of the previous or next page.</p>
+<p id="elb_zq_zg_0002__en-us_topic_0116649234_p422510443113">The value can be <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b12464285315">next</strong> or <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b35204245313">previous</strong>. The value <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b1218104485313">next</strong> indicates the href containing the URL of the next page, and <strong id="elb_zq_zg_0002__en-us_topic_0116649234_b618213444531">previous</strong> indicates the href containing the URL of the previous page.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul197011389505"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li157579377507">Example request: Querying all forwarding rules of a specific forwarding policy<pre class="screen" id="elb_zq_zg_0002__en-us_topic_0116649234_screen1714515553501">GET https://{Endpoint}/v2.0/lbaas/l7policies/5ae0e1e7-5f0f-47a1-b39f-5d4c428a1586/rules</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_zg_0002__en-us_topic_0116649234_ul19681335103113"><li id="elb_zq_zg_0002__en-us_topic_0116649234_li11968635183111">Example response<pre class="screen" id="elb_zq_zg_0002__en-us_topic_0116649234_screen129681535143112">{
+    "rules": [
+        {
+            "compare_type": "EQUAL_TO", 
+            "provisioning_status": "ACTIVE",
+            "admin_state_up": true, 
+            "tenant_id": "a31d2bdcf7604c0faaddb058e1e08819", 
+   
+            "invert": false, 
+            "value": "www.test.com", 
+            "key": null, 
+            "type": "HOST_NAME", 
+            "id": "67d8a8fa-b0dd-4bd4-a85b-671db19b2ef3"
+        }, 
+        {
+            "compare_type": "EQUAL_TO",
+            "provisioning_status": "ACTIVE", 
+            "admin_state_up": true, 
+            "tenant_id": "a31d2bdcf7604c0faaddb058e1e08819",
+  
+            "invert": false, 
+            "value": "/aaa.html", 
+            "key": null, 
+            "type": "PATH", 
+            "id": "f02b3bca-69d2-4335-a3fa-a8054e996213"
+        }
+    ]
+    "rules_links": [
+        {
+        "href": "https://{Endpoint}/v2.0/lbaas/l7policies/061f461c-c7cf-47ab-9583-09be5076cd09/rules?marker=167c1a31-bc12-4c3d-9ad1-c9bf450df4ce&amp;page_reverse=True",
+        "rel": "previous"
+        }
+    ]
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_zg_0002__en-us_topic_0116649234_p17362142418158">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_zg_0000.html">Forwarding Rule</a>
+
+
+

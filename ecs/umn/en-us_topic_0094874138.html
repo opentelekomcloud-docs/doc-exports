@@ -1,0 +1,51 @@
+<a name="EN-US_TOPIC_0094874138"></a><a name="EN-US_TOPIC_0094874138"></a>
+
+<h1 class="topictitle1">Is an <span id="text3723134917524">ECS</span> Hostname with Suffix .novalocal Normal?</h1>
+<div id="body1517211411414"><div class="section" id="EN-US_TOPIC_0094874138__section10979141164416"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0094874138__p505399599">Hostnames of ECSs created based on some types of images have the suffix <span class="parmvalue" id="EN-US_TOPIC_0094874138__parmvalue190539205912"><b>.novalocal</b></span>, whereas others do not.</p>
+<p id="EN-US_TOPIC_0094874138__p203843145447">For example, the hostname is set to <span class="parmvalue" id="EN-US_TOPIC_0094874138__parmvalue65165393451"><b>abc</b></span> during <span id="EN-US_TOPIC_0094874138__text565943216415">ECS</span> creation. <a href="#EN-US_TOPIC_0094874138__table168595206502">Table 1</a> lists the hostnames (obtained by running the <strong id="EN-US_TOPIC_0094874138__b3747144113363">hostname</strong> command) of <span id="EN-US_TOPIC_0094874138__text1260513311414">ECS</span>s created using different images and those displayed after the <span id="EN-US_TOPIC_0094874138__text1041615483617">ECS</span>s are restarted.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0094874138__table168595206502"></a><a name="table168595206502"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0094874138__table168595206502" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Hostnames of ECSs created from different images</caption><thead align="left"><tr id="EN-US_TOPIC_0094874138__row1886017204502"><th align="left" class="cellrowborder" valign="top" width="18.47184718471847%" id="mcps1.3.1.4.2.4.1.1"><p id="EN-US_TOPIC_0094874138__p78601120205016">Image</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.73417341734174%" id="mcps1.3.1.4.2.4.1.2"><p id="EN-US_TOPIC_0094874138__p1386072045010">Hostname Before ECS Restart</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.79397939793979%" id="mcps1.3.1.4.2.4.1.3"><p id="EN-US_TOPIC_0094874138__p13931651105213">Hostname After ECS Restart</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0094874138__row5860162011509"><td class="cellrowborder" valign="top" width="18.47184718471847%" headers="mcps1.3.1.4.2.4.1.1 "><p id="EN-US_TOPIC_0094874138__p386012085016">CentOS 6.8</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.73417341734174%" headers="mcps1.3.1.4.2.4.1.2 "><p id="EN-US_TOPIC_0094874138__p486042016501">abc</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.79397939793979%" headers="mcps1.3.1.4.2.4.1.3 "><p id="EN-US_TOPIC_0094874138__p4932551195211">abc.novalocal</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094874138__row11860820185019"><td class="cellrowborder" valign="top" width="18.47184718471847%" headers="mcps1.3.1.4.2.4.1.1 "><p id="EN-US_TOPIC_0094874138__p286062015501">CentOS 7.3</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.73417341734174%" headers="mcps1.3.1.4.2.4.1.2 "><p id="EN-US_TOPIC_0094874138__p10860162011508">abc.novalocal</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.79397939793979%" headers="mcps1.3.1.4.2.4.1.3 "><p id="EN-US_TOPIC_0094874138__p29321951115218">abc.novalocal</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094874138__row1086082045017"><td class="cellrowborder" valign="top" width="18.47184718471847%" headers="mcps1.3.1.4.2.4.1.1 "><p id="EN-US_TOPIC_0094874138__p98600203505">Ubuntu 16</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.73417341734174%" headers="mcps1.3.1.4.2.4.1.2 "><p id="EN-US_TOPIC_0094874138__p17860172016504">abc</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.79397939793979%" headers="mcps1.3.1.4.2.4.1.3 "><p id="EN-US_TOPIC_0094874138__p7932751125212">abc</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p id="EN-US_TOPIC_0094874138__p1752492619412"></p>
+<div class="section" id="EN-US_TOPIC_0094874138__section6524112624111"><h4 class="sectiontitle">Troubleshooting</h4><p id="EN-US_TOPIC_0094874138__p1870117710820">This is a normal phenomenon.</p>
+</div>
+<p id="EN-US_TOPIC_0094874138__p917933915817">The static hostname of a Linux <span id="EN-US_TOPIC_0094874138__text1161914010386">ECS</span> is user defined and injected using Cloud-Init during the <span id="EN-US_TOPIC_0094874138__text86244033815">ECS</span> creation. According to the test results, Cloud-Init adapts to OSs differently. As a result, hostnames of some ECSs have suffix <strong id="EN-US_TOPIC_0094874138__b84235270616229">.novalocal</strong>, whereas others do not.</p>
+<p id="EN-US_TOPIC_0094874138__p1686018267395">If you do not need suffix <strong id="EN-US_TOPIC_0094874138__b125123317290">.novalocal</strong> in obtained hostnames, change the hostnames. For details, see <a href="en-us_topic_0050735736.html">How Can a Changed Static Hostname Take Effect Permanently?</a></p>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0208808104.html">ECS Management</a></div>
+</div>
+</div>
+

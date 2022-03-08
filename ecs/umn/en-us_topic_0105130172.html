@@ -1,0 +1,146 @@
+<a name="EN-US_TOPIC_0105130172"></a><a name="EN-US_TOPIC_0105130172"></a>
+
+<h1 class="topictitle1">Why Can't an EIP Be Pinged?</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_section33522024122612"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p9653153062612">After you purchase an EIP and bind it to an <span id="EN-US_TOPIC_0105130172__text82541137183">ECS</span>, the ping operation to the EIP fails, or the <span id="EN-US_TOPIC_0105130172__text1169219517325">ECS</span> fails to access the Internet.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section1116655241118"><h4 class="sectiontitle">Fault Locating</h4><p id="EN-US_TOPIC_0105130172__p17987205213470">The following fault causes are sequenced based on their occurrence probability.</p>
+<p id="EN-US_TOPIC_0105130172__p997211345215">If the fault persists after you have ruled out a cause, check other causes.</p>
+<div class="fignone" id="EN-US_TOPIC_0105130172__en-us_topic_0118498854_fig257119102320"><span class="figcap"><b>Figure 1 </b>Method of locating the failure to ping an EIP</span><br><span><img id="EN-US_TOPIC_0105130172__image1236010411317" src="en-us_image_0293553366.png" title="Click to enlarge" class="imgResize"></span></div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table6168184132811" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Method of locating the failure to ping an EIP</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row31680416283"><th align="left" class="cellrowborder" valign="top" width="28.189999999999998%" id="mcps1.3.2.5.2.3.1.1"><p id="EN-US_TOPIC_0105130172__p17639192710215">Possible Cause</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="71.81%" id="mcps1.3.2.5.2.3.1.2"><p id="EN-US_TOPIC_0105130172__p1063918274214">Solution</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0105130172__row6168941172810"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p174364119463">ICMP access rules are not added to the security group.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p11168104115284">Add ICMP access rules to the security group. For details, see <a href="#EN-US_TOPIC_0105130172__section1715910911214">Checking Security Group Rules</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0105130172__row41681741172819"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p716874117282">Ping operations are prohibited on the firewall.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p31691416286">Allow ping operations on the firewall. For details, see <a href="#EN-US_TOPIC_0105130172__section774414326138">Checking Firewall Settings</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0105130172__row796182813291"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p1296116289297">Ping operations are prohibited on the ECS.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p7961192852920">Allow ping operations on the ECS. For details, see <a href="#EN-US_TOPIC_0105130172__section42301821174115">Checking Whether Ping Operations Have Been Disabled on the ECS</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0105130172__row1596162815296"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p6961152892919">Network ACL is associated.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p1496152892917">If the VPC is associated with a network ACL, check the network ACL rules. For details, see <a href="#EN-US_TOPIC_0105130172__en-us_topic_0096302298_section374314592329">Checking ACL Rules</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0105130172__row18169124122820"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p31691418284">A network exception occurred.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p19169541152818">Use another ECS in the same region to check whether the local network is functional. For details, see <a href="#EN-US_TOPIC_0105130172__section108152100162">Checking Whether the Network Is Functional</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0105130172__row1920342419296"><td class="cellrowborder" valign="top" width="28.189999999999998%" headers="mcps1.3.2.5.2.3.1.1 "><p id="EN-US_TOPIC_0105130172__p12045243298">Routes are incorrectly configured if multiple NICs are used.</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.81%" headers="mcps1.3.2.5.2.3.1.2 "><p id="EN-US_TOPIC_0105130172__p1820462462919">If the network is inaccessible due to an extension NIC, the fault is generally caused by incorrect route configurations. To resolve this issue, see <a href="#EN-US_TOPIC_0105130172__section175172388145">Checking the ECS Route Configuration If Multiple NICs Are Used</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section1715910911214"><a name="EN-US_TOPIC_0105130172__section1715910911214"></a><a name="section1715910911214"></a><h4 class="sectiontitle">Checking Security Group Rules</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p74698814216">The ping operations use the ICMP protocol. Check whether the security group accommodating the <span id="EN-US_TOPIC_0105130172__text4440563310">ECS</span> allows ICMP traffic in the inbound direction.</p>
+<ol id="EN-US_TOPIC_0105130172__ol1062118920910"><li id="EN-US_TOPIC_0105130172__li899315381790">Log in to the management console.</li><li id="EN-US_TOPIC_0105130172__li464234814566">Click <span><img id="EN-US_TOPIC_0105130172__en-us_topic_0014250631_image1862675853202121" src="en-us_image_0210779229.png"></span> in the upper left corner and select your region and project.</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0029320966_li50026016224047">Under <strong id="EN-US_TOPIC_0105130172__b26151629185618"><span id="EN-US_TOPIC_0105130172__text11614629105612">Computing</span></strong>, click <strong id="EN-US_TOPIC_0105130172__b206161829145611">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0105130172__li34401539214315">On the <strong id="EN-US_TOPIC_0105130172__b116104274418">Elastic Cloud Server</strong> page, click the name of the target <span id="EN-US_TOPIC_0105130172__text10144144802310">ECS</span>.<p id="EN-US_TOPIC_0105130172__p19982029214319">The page providing details about the <span id="EN-US_TOPIC_0105130172__text186236591941">ECS</span> is displayed.</p>
+</li><li id="EN-US_TOPIC_0105130172__li45534692214355">Click the <strong id="EN-US_TOPIC_0105130172__b101784411513">Security Groups</strong> tab, expand the information of the security group, and view security group rules.</li><li id="EN-US_TOPIC_0105130172__li2997365821442">Click the security group ID.<p id="EN-US_TOPIC_0105130172__p5857465521443"><a name="EN-US_TOPIC_0105130172__li2997365821442"></a><a name="li2997365821442"></a>The system automatically switches to the <strong id="EN-US_TOPIC_0105130172__b5881737191118">Security Group</strong> page.</p>
+</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0029320966_li110100322530">On the <strong id="EN-US_TOPIC_0105130172__b14616038181110">Inbound Rules</strong> tab, click <strong id="EN-US_TOPIC_0105130172__b176161838201115">Add Rule</strong>. In the displayed dialog box, set required parameters to add an inbound rule.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table156272235264" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Security group rules</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row362852317264"><th align="left" class="cellrowborder" valign="top" width="22.222222222222225%" id="mcps1.3.3.3.7.3.2.5.1.1"><p id="EN-US_TOPIC_0105130172__p1662819236265">Transfer Direction</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.3.3.7.3.2.5.1.2"><p id="EN-US_TOPIC_0105130172__p20628523132616">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.252525252525253%" id="mcps1.3.3.3.7.3.2.5.1.3"><p id="EN-US_TOPIC_0105130172__p162812311266">Protocol/Port Range</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.3939393939394%" id="mcps1.3.3.3.7.3.2.5.1.4"><p id="EN-US_TOPIC_0105130172__p16628323202611">Source</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0105130172__row56286239261"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.3.3.7.3.2.5.1.1 "><p id="EN-US_TOPIC_0105130172__p14239113312264">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.3.3.7.3.2.5.1.2 "><p id="EN-US_TOPIC_0105130172__p10628023122614">IPv4</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.252525252525253%" headers="mcps1.3.3.3.7.3.2.5.1.3 "><p id="EN-US_TOPIC_0105130172__p462819234268">ICMP/Any</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.3939393939394%" headers="mcps1.3.3.3.7.3.2.5.1.4 "><p id="EN-US_TOPIC_0105130172__p115071006306">0.0.0.0/0</p>
+<p id="EN-US_TOPIC_0105130172__p350740123019">0.0.0.0/0 indicates all IP addresses.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0105130172__li116512113184">Click <strong id="EN-US_TOPIC_0105130172__b279013254135">OK</strong> to complete the security rule configuration.</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section774414326138"><a name="EN-US_TOPIC_0105130172__section774414326138"></a><a name="section774414326138"></a><h4 class="sectiontitle">Checking Firewall Settings</h4><p id="EN-US_TOPIC_0105130172__p1429452284015">If a firewall is enabled on the <span id="EN-US_TOPIC_0105130172__text1651091653318">ECS</span>, check whether the firewall blocks the ping operations.</p>
+<div class="p" id="EN-US_TOPIC_0105130172__p16626181817304"><strong id="EN-US_TOPIC_0105130172__b2033715377335">Linux</strong><ol id="EN-US_TOPIC_0105130172__ol1055845311436"><li id="EN-US_TOPIC_0105130172__li6558453164313">Consider CentOS 7 as an example. Run the following command to check the firewall status:<p id="EN-US_TOPIC_0105130172__p831844410518"><a name="EN-US_TOPIC_0105130172__li6558453164313"></a><a name="li6558453164313"></a><strong id="EN-US_TOPIC_0105130172__b15318144105117">firewall-cmd --state</strong></p>
+<p id="EN-US_TOPIC_0105130172__p1326884813458">If <strong id="EN-US_TOPIC_0105130172__b10676181495317">running</strong> is displayed in the command output, the firewall has been enabled.</p>
+</li></ol><ol start="2" id="EN-US_TOPIC_0105130172__ol189501215164517"><li id="EN-US_TOPIC_0105130172__li179501615104512">Check whether there is any ICMP rule blocking the ping operations.<p id="EN-US_TOPIC_0105130172__p7791244231"><a name="EN-US_TOPIC_0105130172__li179501615104512"></a><a name="li179501615104512"></a><strong id="EN-US_TOPIC_0105130172__b17916413236">iptables -L</strong></p>
+<p id="EN-US_TOPIC_0105130172__p2053116127275">If the command output shown in <a href="#EN-US_TOPIC_0105130172__fig7244357113416">Figure 2</a> is displayed, there is no ICMP rule blocking the ping operations.</p>
+<div class="fignone" id="EN-US_TOPIC_0105130172__fig7244357113416"><a name="EN-US_TOPIC_0105130172__fig7244357113416"></a><a name="fig7244357113416"></a><span class="figcap"><b>Figure 2 </b>Checking firewall rules</span><br><span><img id="EN-US_TOPIC_0105130172__image4422479410" src="en-us_image_0250117342.png" title="Click to enlarge" class="imgResize"></span></div>
+<p id="EN-US_TOPIC_0105130172__p5988185917351">If the ping operations are blocked by an ICMP rule, run the following commands to modify the rule for unblocking:</p>
+<p id="EN-US_TOPIC_0105130172__p791544317361"><strong id="EN-US_TOPIC_0105130172__b87941254133620">iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT</strong></p>
+<p id="EN-US_TOPIC_0105130172__p2915343143619"><strong id="EN-US_TOPIC_0105130172__b67951454183614">iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT</strong></p>
+</li></ol>
+</div>
+<div class="p" id="EN-US_TOPIC_0105130172__p85318279305"><strong id="EN-US_TOPIC_0105130172__b392913188356">Windows</strong><ol id="EN-US_TOPIC_0105130172__ol10282151610474"><li id="EN-US_TOPIC_0105130172__li1084091310506">Log in to the Windows <span id="EN-US_TOPIC_0105130172__text15855529189">ECS</span>, click the Windows icon in the lower left corner of the desktop, and choose <strong id="EN-US_TOPIC_0105130172__b1154013327110">Control Panel</strong> &gt; <strong id="EN-US_TOPIC_0105130172__b181941636131116">Windows Firewall</strong>.</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0138887282_li177027438277">Click <strong id="EN-US_TOPIC_0105130172__b17394937121115">Turn Windows Firewall on or off</strong>.<p id="EN-US_TOPIC_0105130172__en-us_topic_0138887282_p1770284310272">View and set the firewall status.</p>
+</li><li id="EN-US_TOPIC_0105130172__li818485585018">If the firewall is <strong id="EN-US_TOPIC_0105130172__b521418431315">On</strong>, go to <a href="#EN-US_TOPIC_0105130172__li192824161474">4</a>.</li><li id="EN-US_TOPIC_0105130172__li192824161474"><a name="EN-US_TOPIC_0105130172__li192824161474"></a><a name="li192824161474"></a>Check the ICMP rule statuses in the firewall.<ol type="a" id="EN-US_TOPIC_0105130172__ol26465154285"><li id="EN-US_TOPIC_0105130172__en-us_topic_0138887282_li1843115331458">In the navigation pane on the <strong id="EN-US_TOPIC_0105130172__b133771445121320">Windows Firewall</strong> page, click <strong id="EN-US_TOPIC_0105130172__b14382144581320">Advanced settings</strong>.</li><li id="EN-US_TOPIC_0105130172__li866173020572">Enable the following rules:<p id="EN-US_TOPIC_0105130172__p1538813371577"><a name="EN-US_TOPIC_0105130172__li866173020572"></a><a name="li866173020572"></a><strong id="EN-US_TOPIC_0105130172__b6907162218182">Inbound Rules</strong>: <strong id="EN-US_TOPIC_0105130172__b877313110239">File and Printer Sharing (Echo Request - ICMPv4-In)</strong></p>
+<p id="EN-US_TOPIC_0105130172__p3699103115575"><strong id="EN-US_TOPIC_0105130172__b14980443142318">Outbound Rules</strong>: <strong id="EN-US_TOPIC_0105130172__b1272318616245">File and Printer Sharing (Echo Request - ICMPv4-Out)</strong></p>
+<p id="EN-US_TOPIC_0105130172__p128879121411">If IPv6 is enabled, enable the following rules:</p>
+<p id="EN-US_TOPIC_0105130172__p58681124711"><strong id="EN-US_TOPIC_0105130172__b144968272613">Inbound Rules</strong>: <strong id="EN-US_TOPIC_0105130172__b92587108265">File and Printer Sharing (Echo Request - ICMPv6-In)</strong></p>
+<p id="EN-US_TOPIC_0105130172__p1286813248114"><strong id="EN-US_TOPIC_0105130172__b774531916267">Outbound Rules</strong>: <strong id="EN-US_TOPIC_0105130172__b2075021914268">File and Printer Sharing (Echo Request - ICMPv6-Out)</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0105130172__fig178326362544"><span class="figcap"><b>Figure 3 </b>Inbound Rules</span><br><span><img id="EN-US_TOPIC_0105130172__image168322360545" src="en-us_image_0250182352.png" title="Click to enlarge" class="imgResize"></span></div>
+<div class="fignone" id="EN-US_TOPIC_0105130172__fig5225320554"><span class="figcap"><b>Figure 4 </b>Outbound Rules</span><br><span><img id="EN-US_TOPIC_0105130172__image6225620551" src="en-us_image_0250182717.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</li></ol>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section42301821174115"><a name="EN-US_TOPIC_0105130172__section42301821174115"></a><a name="section42301821174115"></a><h4 class="sectiontitle">Checking Whether Ping Operations Have Been Disabled on the <span id="EN-US_TOPIC_0105130172__text22714541916">ECS</span></h4><p id="EN-US_TOPIC_0105130172__p615911372419"><strong id="EN-US_TOPIC_0105130172__b539555012416">Windows</strong></p>
+<p id="EN-US_TOPIC_0105130172__p4753258105312">Enable ping operations using the CLI.</p>
+<ol id="EN-US_TOPIC_0105130172__ol1618218354917"><li id="EN-US_TOPIC_0105130172__li125993812499">Start the <strong id="EN-US_TOPIC_0105130172__b19819318131214">Run</strong> dialog box. Enter <strong id="EN-US_TOPIC_0105130172__b325823012138">cmd</strong> and press <strong id="EN-US_TOPIC_0105130172__b44704359133">Enter</strong>.</li><li id="EN-US_TOPIC_0105130172__li1218223144919">Run the following command to enable ping operations:<p id="EN-US_TOPIC_0105130172__p198365597494"><a name="EN-US_TOPIC_0105130172__li1218223144919"></a><a name="li1218223144919"></a><strong id="EN-US_TOPIC_0105130172__b33993135016">netsh firewall set icmpsetting 8</strong></p>
+</li></ol>
+<p id="EN-US_TOPIC_0105130172__p991054215412"><strong id="EN-US_TOPIC_0105130172__b13349204824120">Linux</strong></p>
+<div class="p" id="EN-US_TOPIC_0105130172__p67581627134220">Check the <span id="EN-US_TOPIC_0105130172__text15149710171914">ECS</span> kernel parameters.<ol id="EN-US_TOPIC_0105130172__ol722915110309"><li id="EN-US_TOPIC_0105130172__li11577145132912">Check the <strong id="EN-US_TOPIC_0105130172__b1212175941318">net.ipv4.icmp_echo_ignore_all</strong> value in the <strong id="EN-US_TOPIC_0105130172__b19163591138">/etc/sysctl.conf</strong> file. Value <strong id="EN-US_TOPIC_0105130172__b317135961316">0</strong> indicates that ping operations are allowed, and value <strong id="EN-US_TOPIC_0105130172__b121725912133">1</strong> indicates that ping operations are prohibited.</li><li id="EN-US_TOPIC_0105130172__li1346662173317">Allow ping operations.<ul id="EN-US_TOPIC_0105130172__ul7102344341"><li id="EN-US_TOPIC_0105130172__li810217483410">Run the following command to temporarily allow the ping operations:<p id="EN-US_TOPIC_0105130172__p161331327342"><a name="EN-US_TOPIC_0105130172__li810217483410"></a><a name="li810217483410"></a>#echo 0 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all</p>
+</li><li id="EN-US_TOPIC_0105130172__li1844321212346">Run the following command to permanently allow the ping operations:<p id="EN-US_TOPIC_0105130172__p7749122415345"><a name="EN-US_TOPIC_0105130172__li1844321212346"></a><a name="li1844321212346"></a>net.ipv4.icmp_echo_ignore_all=0</p>
+</li></ul>
+</li></ol>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_section374314592329"><a name="EN-US_TOPIC_0105130172__en-us_topic_0096302298_section374314592329"></a><a name="en-us_topic_0096302298_section374314592329"></a><h4 class="sectiontitle">Checking ACL Rules</h4><p id="EN-US_TOPIC_0105130172__p19468152511410">By default, no ACL is configured for a VPC. If a network ACL is associated with a VPC, check the ACL rules.</p>
+<ol id="EN-US_TOPIC_0105130172__ol753403917104"><li id="EN-US_TOPIC_0105130172__li853473931019">Check whether the subnet of the <span id="EN-US_TOPIC_0105130172__text152483360">ECS</span> has been associated with a network ACL.<p id="EN-US_TOPIC_0105130172__p410725111267">If an ACL name is displayed, the network ACL has been associated with the ECS.</p>
+</li><li id="EN-US_TOPIC_0105130172__li168229277161">Click the ACL name to view its status.</li><li id="EN-US_TOPIC_0105130172__li7701418122214">If the network ACL is enabled, add an ICMP rule to allow traffic.<div class="note" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_note179761105114"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p19869922514">The default network ACL rule denies all incoming and outgoing packets. If a network ACL is disabled, the default rule is still effective.</p>
+</div></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section108152100162"><a name="EN-US_TOPIC_0105130172__section108152100162"></a><a name="section108152100162"></a><h4 class="sectiontitle">Checking Whether the Network Is Functional</h4><ol id="EN-US_TOPIC_0105130172__ol4273151815246"><li id="EN-US_TOPIC_0105130172__li183722415244">Use another ECS in the same region to check whether the local network is functional.<p id="EN-US_TOPIC_0105130172__p1994410241162"><a name="EN-US_TOPIC_0105130172__li183722415244"></a><a name="li183722415244"></a>Use another <span id="EN-US_TOPIC_0105130172__text850172013368">ECS</span> in the same region to ping the affected EIP. If the EIP can be pinged, the VPC is functional. In such a case, rectify the local network fault and ping the affected EIP again.</p>
+</li><li id="EN-US_TOPIC_0105130172__li116916545251">Check whether the link is accessible.<p id="EN-US_TOPIC_0105130172__p2058145515259"><a name="EN-US_TOPIC_0105130172__li116916545251"></a><a name="li116916545251"></a>A ping failure is caused by packet loss or long delay, which may be caused by link congestion, link node faults, or heavy load on the ECS.</p>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0105130172__section175172388145"><a name="EN-US_TOPIC_0105130172__section175172388145"></a><a name="section175172388145"></a><h4 class="sectiontitle">Checking the <span id="EN-US_TOPIC_0105130172__text4584163715198">ECS</span> Route Configuration If Multiple NICs Are Used</h4><p id="EN-US_TOPIC_0105130172__p11592164684517">Generally, the default route of an OS will preferentially select the primary NIC. If an extension NIC is selected in a route and the network malfunctions, this issue is typically caused by incorrect route configuration.</p>
+<ul id="EN-US_TOPIC_0105130172__ul1371243722220"><li id="EN-US_TOPIC_0105130172__li671203752218">If the <span id="EN-US_TOPIC_0105130172__text2865124720382">ECS</span> has multiple NICs, check whether the default route is available.<ol id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_ol318215556917"><li id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_li132249417418">Log in to the <span id="EN-US_TOPIC_0105130172__text739715439192">ECS</span> and run the following command to check whether the default route is available:<p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p49772412048"><strong id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_b15976194111411">ip route</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0105130172__fig7362102412018"><span class="figcap"><b>Figure 5 </b>Default route</span><br><span><img id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_image1325712242053" src="en-us_image_0250105611.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_li184775918912">If the route is unavailable, run the following command to add it:<p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p789310591997"><a name="EN-US_TOPIC_0105130172__en-us_topic_0096302298_li184775918912"></a><a name="en-us_topic_0096302298_li184775918912"></a><strong id="EN-US_TOPIC_0105130172__b624847161618">ip route add default via XXXX dev eth0</strong></p>
+<div class="note" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_note18894559299"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p1489415591694">In the preceding command, <em id="EN-US_TOPIC_0105130172__i21294530318551">XXXX</em> specifies a gateway IP address.</p>
+</div></div>
+</li></ol>
+</li></ul>
+</div>
+<ul id="EN-US_TOPIC_0105130172__ul69571545102217"><li id="EN-US_TOPIC_0105130172__li17957154515226">If the <span id="EN-US_TOPIC_0105130172__text1339924813379">ECS</span> has multiple NICs and the <span id="EN-US_TOPIC_0105130172__text6869102322011">EIP</span> is bound to an extension NIC, configure policy routing on the <span id="EN-US_TOPIC_0105130172__text1253191703814">ECS</span> for network communication with the extension NIC.</li></ul>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

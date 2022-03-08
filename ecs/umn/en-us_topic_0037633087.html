@@ -1,0 +1,31 @@
+<a name="EN-US_TOPIC_0037633087"></a><a name="EN-US_TOPIC_0037633087"></a>
+
+<h1 class="topictitle1">What Is the <strong id="b84235270619529">cloudbase-init</strong> Account in Windows ECSs Used for?</h1>
+<div id="body1473673172888"><div class="section" id="EN-US_TOPIC_0037633087__section109001326192819"><h4 class="sectiontitle">Description</h4><p id="EN-US_TOPIC_0037633087__p66585033175159">In Windows <span id="EN-US_TOPIC_0037633087__text1924136143116">ECS</span>s, <strong id="EN-US_TOPIC_0037633087__b84235270683416">cloudbase-init</strong> is the default account of the Cloudbase-Init agent program. It is used to obtain the metadata and execute configurations when the <span id="EN-US_TOPIC_0037633087__text9822135110102">ECS</span> starts.</p>
+<div class="note" id="EN-US_TOPIC_0037633087__note4231041619153"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0037633087__p1340872619153">This account is unavailable on Linux <span id="EN-US_TOPIC_0037633087__text52469716315">ECS</span>s.</p>
+</div></div>
+<p id="EN-US_TOPIC_0037633087__p47556143185637">Do not modify or delete this account or uninstall the Cloudbase-Init agent program. Otherwise, you will be unable to insert data to initialize an ECS created using a Windows private image.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0037633087__section4690554122811"><h4 class="sectiontitle">Security Hardening for Randomized <strong id="EN-US_TOPIC_0037633087__b416313272141225">cloudbase-init</strong> Passwords</h4><p id="EN-US_TOPIC_0037633087__p1254375332212">In Cloudbase-Init 0.9.10, the security of randomized <strong id="EN-US_TOPIC_0037633087__b816235449141521">cloudbase-init</strong> passwords has been hardened to ensure that the hash values (LM-HASH and NTLM-HASH) of the passwords are different.</p>
+<p id="EN-US_TOPIC_0037633087__p141991295244">In Windows, the hash passwords are in the format of "Username:RID:LM-HASH value:NT-HASH value".</p>
+<p id="EN-US_TOPIC_0037633087__p17596101192414">For example, in "Administrator:500:C8825DB10F2590EAAAD3B435B51404EE:683020925C5D8569C23AA724774CE9CC:::",</p>
+<ul id="EN-US_TOPIC_0037633087__ul135288157246"><li id="EN-US_TOPIC_0037633087__li17528161511246">Username: <strong id="EN-US_TOPIC_0037633087__b842352706155334">Administrator</strong></li><li id="EN-US_TOPIC_0037633087__li1852841542416">RID: <strong id="EN-US_TOPIC_0037633087__b842352706155341">500</strong></li><li id="EN-US_TOPIC_0037633087__li25292015152418">LM-HASH value: <strong id="EN-US_TOPIC_0037633087__b84235270615543">C8825DB10F2590EAAAD3B435B51404EE</strong></li><li id="EN-US_TOPIC_0037633087__li11529715162411">NT-HASH value: <strong id="EN-US_TOPIC_0037633087__b842352706155426">683020925C5D8569C23AA724774CE9CC</strong></li></ul>
+<p id="EN-US_TOPIC_0037633087__p66191792510">Use an image to create two ECSs, ecs01 and ecs02. Then, verify that the hash values of the <strong id="EN-US_TOPIC_0037633087__b368218992155815">cloudbase-init</strong> account for the two <span id="EN-US_TOPIC_0037633087__text6269154612212">ECS</span>s are different.</p>
+<ul id="EN-US_TOPIC_0037633087__ul124872047162714"><li id="EN-US_TOPIC_0037633087__li2487747182715">LM-HASH and NTLM-HASH values of the <strong id="EN-US_TOPIC_0037633087__b12314770531604">cloudbase-init</strong> account for ecs01<div class="fignone" id="EN-US_TOPIC_0037633087__fig311825713493"><span class="figcap"><b>Figure 1 </b>ecs01</span><br><span><img id="EN-US_TOPIC_0037633087__image8496042102719" src="en-us_image_0202311481.gif" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0037633087__li134871147202720">LM-HASH and NTLM-HASH values of the <strong id="EN-US_TOPIC_0037633087__b846115589">cloudbase-init</strong> account for ecs02<div class="fignone" id="EN-US_TOPIC_0037633087__fig19275102321818"><span class="figcap"><b>Figure 2 </b>ecs02</span><br><span><img id="EN-US_TOPIC_0037633087__image2059619236279" src="en-us_image_0202311491.gif" title="Click to enlarge" class="imgResize"></span></div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0105215483.html">Passwords and Key Pairs</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,104 @@
+<a name="EN-US_TOPIC_0067161469"></a><a name="EN-US_TOPIC_0067161469"></a>
+
+<h1 class="topictitle1">Adding a Security Group</h1>
+<div id="body1500454627058"><div class="section" id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_section16588975"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0067161469__p31584679103330">This API is used to add an <span id="EN-US_TOPIC_0067161469__text25069431401">ECS</span> to a security group.</p>
+<p id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_p8601970">You are suggested to add an <span id="EN-US_TOPIC_0067161469__text1115420441709">ECS</span> to a maximum of five security groups.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_section15083054"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0067161469__p66228246145352">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0067161469__p16313185013391">POST /v2/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0067161469__p16489491975"><a href="#EN-US_TOPIC_0067161469__table55945983">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067161469__table55945983"></a><a name="table55945983"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067161469__table55945983" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0067161469__row11302482"><th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0067161469__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0067161469__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.65656565656566%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0067161469__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067161469__row49888896"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0067161469__p14468758">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0067161469__p31118786">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.65656565656566%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0067161469__p934718212216">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0067161469__row613736410235"><td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0067161469__p2736446410235">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0067161469__p192907210235">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.65656565656566%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0067161469__p2203711610235">Specifies the <span id="EN-US_TOPIC_0067161469__text167371431103818">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_section56802184"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0067161469__p1880615561477"><a href="#EN-US_TOPIC_0067161469__en-us_topic_0058745339_table44724688204850">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067161469__en-us_topic_0058745339_table44724688204850"></a><a name="en-us_topic_0058745339_table44724688204850"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_table44724688204850" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameter</caption><thead align="left"><tr id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_row1798761204850"><th align="left" class="cellrowborder" valign="top" width="21.05%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p39560242204918">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.51%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0067161469__p19631192162611">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.82%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p50263001204918">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="44.62%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p2596798204918">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_row5848663204850"><td class="cellrowborder" valign="top" width="21.05%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p22382703204933">addSecurityGroup</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.51%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0067161469__p563122113266">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.82%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p1059631204933">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="44.62%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p40030009204933">Specifies the security group where the <span id="EN-US_TOPIC_0067161469__text1257011454012">ECS</span> is added. For details, see <a href="#EN-US_TOPIC_0067161469__en-us_topic_0058745339_table59377750205027">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0067161469__en-us_topic_0058745339_table59377750205027"></a><a name="en-us_topic_0058745339_table59377750205027"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_table59377750205027" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0067161469__b842352706145746">addSecurityGroup</strong> parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_row1841518205027"><th align="left" class="cellrowborder" valign="top" width="21.23787621237876%" id="mcps1.3.3.4.2.5.1.1"><p id="EN-US_TOPIC_0067161469__p41713531817">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.308669133086692%" id="mcps1.3.3.4.2.5.1.2"><p id="EN-US_TOPIC_0067161469__p64231924132619">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.04829517048295%" id="mcps1.3.3.4.2.5.1.3"><p id="EN-US_TOPIC_0067161469__p151705317816">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.40515948405159%" id="mcps1.3.3.4.2.5.1.4"><p id="EN-US_TOPIC_0067161469__p91720539815">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_row20042728205027"><td class="cellrowborder" valign="top" width="21.23787621237876%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p29571470205128">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.308669133086692%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0067161469__p12423724152620">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.04829517048295%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p46478847205128">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.40515948405159%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0067161469__en-us_topic_0058745339_p5042904205128">Specifies the UUID or name of the security group to which the <span id="EN-US_TOPIC_0067161469__text63069462010">ECS</span> is added. The configuration takes effect for the NICs on the <span id="EN-US_TOPIC_0067161469__text11858222174713">ECS</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_section41457614"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0067161469__p498469151749">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__en-us_topic_0057973179_section37574207"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0067161469__screen89881759139">POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0067161469__screen3155298117452">{ 
+    "addSecurityGroup": { 
+        "name": "sg-test"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__section124971154202413"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0067161469__p8216110257">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0067161469__section657556601763"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0067161469__p4639416917613">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0031167514.html">Security Group Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,104 @@
+<a name="EN-US_TOPIC_0081950549"></a><a name="EN-US_TOPIC_0081950549"></a>
+
+<h1 class="topictitle1">Disassociating an FPGA Image from an ECS Image</h1>
+<div id="body1509509464637"><div class="section" id="EN-US_TOPIC_0081950549__section43795230211632"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0081950549__p47554188211632">This API is used to delete a mapping between an FPGA image and an ECS image.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section28033540211632"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0081950549__p53736847103512">DELETE /v1/{project_id}/cloudservers/fpga_image/{fpga_image_id}/association</p>
+<p id="EN-US_TOPIC_0081950549__p9178742341"><a href="#EN-US_TOPIC_0081950549__table28107133211632">Table 1</a> describes the parameters in the URI.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0081950549__table28107133211632"></a><a name="table28107133211632"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0081950549__table28107133211632" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0081950549__row19177941211632"><th align="left" class="cellrowborder" valign="top" width="19.96%" id="mcps1.3.2.4.2.4.1.1"><p id="EN-US_TOPIC_0081950549__p7707213">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.16%" id="mcps1.3.2.4.2.4.1.2"><p id="EN-US_TOPIC_0081950549__p20304554">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.88%" id="mcps1.3.2.4.2.4.1.3"><p id="EN-US_TOPIC_0081950549__p34056167">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0081950549__row33377558211632"><td class="cellrowborder" valign="top" width="19.96%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0081950549__p53863828211632">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0081950549__p47645557211632">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.88%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0081950549__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0081950549__row176964211632"><td class="cellrowborder" valign="top" width="19.96%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0081950549__p48913232211632">fpga_image_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.16%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0081950549__p66905560211632">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.88%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0081950549__p5594788211632">Specifies the FPGA image ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section3313651211632"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0081950549__p10776820143419"><a href="#EN-US_TOPIC_0081950549__table41782128362">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0081950549__table41782128362"></a><a name="table41782128362"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0081950549__table41782128362" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0081950549__row17178181253615"><th align="left" class="cellrowborder" valign="top" width="19.919999999999998%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0081950549__p3178612173615">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.23%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0081950549__p2017861210364">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.49%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0081950549__p1775122317363">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.36%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0081950549__p71791812113610">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0081950549__row817971293614"><td class="cellrowborder" valign="top" width="19.919999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0081950549__p54426520364">image</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.23%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0081950549__p12442185213364">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.49%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0081950549__p16442195218369">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.36%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0081950549__p15444145213368">Specifies the ECS image.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0081950549__table9461983324" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0081950549__b177124204819">image</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0081950549__row1546112813212"><th align="left" class="cellrowborder" valign="top" width="19.92%" id="mcps1.3.3.4.2.5.1.1"><p id="EN-US_TOPIC_0081950549__p14613820329">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.290000000000003%" id="mcps1.3.3.4.2.5.1.2"><p id="EN-US_TOPIC_0081950549__p946168183217">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.480000000000004%" id="mcps1.3.3.4.2.5.1.3"><p id="EN-US_TOPIC_0081950549__p47957996211632">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.31%" id="mcps1.3.3.4.2.5.1.4"><p id="EN-US_TOPIC_0081950549__p184616815328">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0081950549__row346158143218"><td class="cellrowborder" valign="top" width="19.92%" headers="mcps1.3.3.4.2.5.1.1 "><p id="EN-US_TOPIC_0081950549__p8461188173210">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.290000000000003%" headers="mcps1.3.3.4.2.5.1.2 "><p id="EN-US_TOPIC_0081950549__p946220803218">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.480000000000004%" headers="mcps1.3.3.4.2.5.1.3 "><p id="EN-US_TOPIC_0081950549__p27767370211632">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.31%" headers="mcps1.3.3.4.2.5.1.4 "><p id="EN-US_TOPIC_0081950549__p046218183218">Specifies the ECS image ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section727655211632"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0081950549__p55138791211632">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section47627159211632"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0081950549__screen86555133812">DELETE https://{endpoint}/v1/{project_id}/cloudservers/fpga_image/{fpga_image_id}/association</pre>
+<pre class="screen" id="EN-US_TOPIC_0081950549__screen11675195520348">{
+  "image": {
+    "id": "18efee75-e058-4c52-a49c-9e3ba4d1c8de"
+  }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section15218105142815"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0081950549__p191751356182820">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section3477250491225"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0081950549__p6510945291225">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081950549__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0081950549__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065962596.html">FPGA Logical File Management</a></div>
+</div>
+</div>
+

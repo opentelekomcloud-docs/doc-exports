@@ -1,0 +1,170 @@
+<a name="EN-US_TOPIC_0000001128445638"></a><a name="EN-US_TOPIC_0000001128445638"></a>
+
+<h1 class="topictitle1">Overview</h1>
+<div id="body0000001128445638"><div class="section" id="EN-US_TOPIC_0000001128445638__section4212145215467"><h4 class="sectiontitle">What Is CBR?</h4><p id="EN-US_TOPIC_0000001128445638__p768573334718">Cloud Backup and Recovery (CBR) enables you to back up cloud servers and disks with ease. In case of a virus attack, accidental deletion, or software or hardware fault, you can restore data to any point in the past when the data was backed up.</p>
+<p id="EN-US_TOPIC_0000001128445638__p96851733104714">CBR protects your services by ensuring the security and consistency of your data.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001128445638__section19946833164711"><h4 class="sectiontitle">What Are the Differences Between Backup, Snapshot, and Image?</h4><p id="EN-US_TOPIC_0000001128445638__p962984243318">You can use the cloud server backup function to create ECSs and the cloud disk backup function to create EVS disks.</p>
+<p id="EN-US_TOPIC_0000001128445638__p9112612341">An image can be a system disk image, data disk image, or full-ECS image.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001128445638__table178211453578" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0000001128445638__row78224565715"><th align="left" class="cellrowborder" valign="top" width="11.335012594458437%" id="mcps1.3.2.4.1.5.1.1"><p id="EN-US_TOPIC_0000001128445638__p1988181522311">Backup Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.284634760705288%" id="mcps1.3.2.4.1.5.1.2"><p id="EN-US_TOPIC_0000001128445638__p116637569152">Backup Object</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="43.46662468513854%" id="mcps1.3.2.4.1.5.1.3"><p id="EN-US_TOPIC_0000001128445638__p137359131305">Application Scenario</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.913727959697734%" id="mcps1.3.2.4.1.5.1.4"><p id="EN-US_TOPIC_0000001128445638__p108274514579">Differences and Advantages</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001128445638__row15821845165711"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p19819171811233">Cloud server backup</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p146631756141518">All disks (system and data disks) on an ECS</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><ul id="EN-US_TOPIC_0000001128445638__ul16762144814380"><li id="EN-US_TOPIC_0000001128445638__li676254833811"><strong id="EN-US_TOPIC_0000001128445638__b785654822511">Hacker attacks and viruses</strong><p id="EN-US_TOPIC_0000001128445638__p4774840103820">You can use cloud server backup to restore data to the latest backup point at which the ECS has not been affected by hacker attacks and viruses.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li1325412542381"><strong id="EN-US_TOPIC_0000001128445638__b177191258153318">Accidental data deletion</strong><p id="EN-US_TOPIC_0000001128445638__p13706888394">You can use cloud server backup to restore data to the backup point prior to the accidental deletion.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li16239151515399"><strong id="EN-US_TOPIC_0000001128445638__b989625112374">Application update errors</strong><p id="EN-US_TOPIC_0000001128445638__p1925712262397">You can use cloud server backup to restore data to the backup point prior to the application update.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li1428714083916"><strong id="EN-US_TOPIC_0000001128445638__b17955361413">System breakdown</strong><p id="EN-US_TOPIC_0000001128445638__p166664418390">You can use cloud server backup to restore an ECS to the backup point in time prior to system breakdown.</p>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><p id="EN-US_TOPIC_0000001128445638__p1882194595717">All disks on an ECS are backed up at the same time, ensuring data consistency.</p>
+<p id="EN-US_TOPIC_0000001128445638__p196755423127">In addition, you can configure backup policies for automatic backup.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row16771191313586"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p18191618132317">Cloud disk backup</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p15663155691519">One or more specified disks (system or data disks)</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><ul id="EN-US_TOPIC_0000001128445638__ul12814418144014"><li id="EN-US_TOPIC_0000001128445638__li58141118204014"><strong id="EN-US_TOPIC_0000001128445638__b715873184713">Only data disks need to be backed up, because the system disk does not contain users' application data.</strong><p id="EN-US_TOPIC_0000001128445638__p252010149407">You can use cloud disk backup to back up and restore data if an EVS disk is faulty or encounters a logical error, for example, accidental deletion, hacker attacks, and virus infection.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li1399553811406"><strong id="EN-US_TOPIC_0000001128445638__b15785194664511">Use backups as baseline data.</strong><p id="EN-US_TOPIC_0000001128445638__p21618407406">After a backup policy has been set, the EVS disk data can be automatically backed up based on the policy. You can use the backups created on a timely basis as the baseline data to create new EVS disks or to restore the backup data to EVS disks.</p>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><p id="EN-US_TOPIC_0000001128445638__p19413652143116">Backup data is stored in OBS, instead of disks. This ensures data restoration upon disk data loss or corruption.</p>
+<p id="EN-US_TOPIC_0000001128445638__p577151315582">Backup cost is reduced without compromising data security.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row982745105710"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p088101510237">Snapshot</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p1663175613156">One or more specified disks (system or data disks)</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><ul id="EN-US_TOPIC_0000001128445638__ul6984153717419"><li id="EN-US_TOPIC_0000001128445638__li143484684113"><strong id="EN-US_TOPIC_0000001128445638__b1777221235314">Routine data backup</strong><p id="EN-US_TOPIC_0000001128445638__p152601348174111">You can create snapshots for disks on a timely basis and use snapshots to recover your data in case that data loss or data inconsistency occurred due to misoperations, viruses, or attacks.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li783525134211"><strong id="EN-US_TOPIC_0000001128445638__b12851923145510">Rapid data restoration</strong><p id="EN-US_TOPIC_0000001128445638__p17395320184212">You can create a snapshot or multiple snapshots before an application software upgrade or a service data migration. If an exception occurs during the upgrade or migration, service data can be rapidly restored to the time point when the snapshot was created.</p>
+<p id="EN-US_TOPIC_0000001128445638__p1596319612428">For example, if ECS A cannot be started due to a fault occurred in system disk A, you can create disk B using an existing snapshot of system disk A and attach disk B to a properly running ECS, for example ECS B. In this case, ECS B can read the data of system disk A from the disk B.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li2290104610429"><strong id="EN-US_TOPIC_0000001128445638__b116152241321">Rapid deployment of multiple services</strong><p id="EN-US_TOPIC_0000001128445638__p4648158194218">You can use a snapshot to create multiple EVS disks containing the same initial data, and these disks can be used as data resources for various services,</p>
+<p id="EN-US_TOPIC_0000001128445638__p157391849144210">for example data mining, report query, and development and testing. This method protects the initial data and creates disks rapidly, meeting the diversified service data requirements.</p>
+</li></ul>
+<div class="note" id="EN-US_TOPIC_0000001128445638__note638916413210"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="EN-US_TOPIC_0000001128445638__ul163891344216"><li id="EN-US_TOPIC_0000001128445638__li14389134132115">A snapshot can be rolled back only to its source disk. Rollback to another disk is not possible.</li><li id="EN-US_TOPIC_0000001128445638__li9389149219">If you have reinstalled or changed the ECS OS, snapshots of the system disk are automatically deleted. Snapshots of the data disks can be used as usual.</li></ul>
+</div></div>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><ul id="EN-US_TOPIC_0000001128445638__ul136659893210"><li id="EN-US_TOPIC_0000001128445638__li4547111313327">The snapshot data is stored with the disk data to facilitate rapid data back up and restoration.</li><li id="EN-US_TOPIC_0000001128445638__li196653820329">You can create snapshots to rapidly save disk data as it was at specified points in time. You can also use snapshots to create new disks so that the created disks will contain the snapshot data in the beginning.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row683445165717"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p3881215142318">System disk image</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p966325651518">System disk</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><ul id="EN-US_TOPIC_0000001128445638__ul118058151441"><li id="EN-US_TOPIC_0000001128445638__li11731121664415"><strong id="EN-US_TOPIC_0000001128445638__b63362682216">Rapid system recovery</strong><p id="EN-US_TOPIC_0000001128445638__p18731716124415">You can create a system disk image for the system disk of an ECS before OS change, application software upgrade, or service data migration. If an exception occurs during the migration, you can use the system disk image to change ECS OS or create a new ECS.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li207312016124415"><strong id="EN-US_TOPIC_0000001128445638__b26091626261">Rapid deployment of multiple services</strong><p id="EN-US_TOPIC_0000001128445638__p4731181674411">You can use a system disk image to quickly create multiple ECSs with the same OS, thereby quickly deploying services these ECSs.</p>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><p id="EN-US_TOPIC_0000001128445638__p16868744153217">A system disk image can help an ECS with OS damaged to quickly change its OS.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row1461794818367"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p26181488364">Data disk image</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p5618104817362">Specific data disk</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><p id="EN-US_TOPIC_0000001128445638__p1893141023013"><strong id="EN-US_TOPIC_0000001128445638__b1821114111514">Rapid data replication</strong></p>
+<p id="EN-US_TOPIC_0000001128445638__p127210433273">You can use a data disk image to create multiple EVS disks containing the same initial data, and then attach these disks to ECSs to provide data resources for multiple services.</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><p id="EN-US_TOPIC_0000001128445638__p98261950113510">A data disk image can replicate all data on a disk and create new EVS disks. The EVS disks can be attached to other ECSs for data replication and sharing.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row1183684119360"><td class="cellrowborder" valign="top" width="11.335012594458437%" headers="mcps1.3.2.4.1.5.1.1 "><p id="EN-US_TOPIC_0000001128445638__p1583615415362">Full-ECS image</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.284634760705288%" headers="mcps1.3.2.4.1.5.1.2 "><p id="EN-US_TOPIC_0000001128445638__p58361741133618">All disks (system and data disks) on an ECS</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.46662468513854%" headers="mcps1.3.2.4.1.5.1.3 "><ul id="EN-US_TOPIC_0000001128445638__ul1430432103020"><li id="EN-US_TOPIC_0000001128445638__li943017321307"><strong id="EN-US_TOPIC_0000001128445638__b099413281189">Rapid system recovery</strong><p id="EN-US_TOPIC_0000001128445638__p8430133283016">You can create a full-ECS image for the system disk and data disks of an ECS before OS change, application software upgrade, or service data migration. If an exception occurs during the migration, you can use the full-ECS image to change ECS OS or create a new ECS.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li1143013213309"><strong id="EN-US_TOPIC_0000001128445638__b1053119221670">Rapid deployment of multiple services</strong><p id="EN-US_TOPIC_0000001128445638__p9430193218309">You can use a full-ECS image to quickly create multiple ECSs with the same OS and data, thereby quickly deploying services these ECSs.</p>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="23.913727959697734%" headers="mcps1.3.2.4.1.5.1.4 "><p id="EN-US_TOPIC_0000001128445638__p59001351153513">A full-ECS image facilitates service migration.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001128445638__section10399144613501"><a name="EN-US_TOPIC_0000001128445638__section10399144613501"></a><a name="section10399144613501"></a><h4 class="sectiontitle">CBR Architecture</h4><p id="EN-US_TOPIC_0000001128445638__p35643549507">CBR consists of backups, vaults, and policies.</p>
+<ul id="EN-US_TOPIC_0000001128445638__ul24613333511"><li id="EN-US_TOPIC_0000001128445638__li134611033125114"><strong id="EN-US_TOPIC_0000001128445638__b1614818139">Backup</strong><p id="EN-US_TOPIC_0000001128445638__p585434935117">A backup is a copy of a particular chunk of data and is usually stored elsewhere so that it may be used to restore the original data in the event of data loss. CBR supports the following backup types:</p>
+<ul id="EN-US_TOPIC_0000001128445638__ul14914406524"><li id="EN-US_TOPIC_0000001128445638__li1914200105211">Cloud server backup: This type of backup uses the consistency snapshot technology for disks to protect data of ECSs and BMSs. The backups of servers without deployed databases are common server backups, and those of servers with deployed databases are application-consistent backups.</li><li id="EN-US_TOPIC_0000001128445638__li199141302524">Cloud disk backup: This type of backup provides snapshot-based data protection for EVS disks.</li></ul>
+</li><li id="EN-US_TOPIC_0000001128445638__li846163318516"><strong id="EN-US_TOPIC_0000001128445638__b15292551173416">Vault</strong><p id="EN-US_TOPIC_0000001128445638__p0411161705210">CBR uses vaults to store backups. Before creating a backup, you need to create at least one vault and associate the resource you want to back up with the vault. Then the backup of the resource is stored in the associated vault.</p>
+<p id="EN-US_TOPIC_0000001128445638__p18411191795210">Vaults can be classified into two types: backup vaults and replication vaults. Backup vaults store backups, whereas replication vaults store replicas of backups.</p>
+<p id="EN-US_TOPIC_0000001128445638__p1741171795219">The backups of different types of resources must be stored in different types of vaults.</p>
+</li><li id="EN-US_TOPIC_0000001128445638__li8461103375114"><strong id="EN-US_TOPIC_0000001128445638__b210644719462">Policy</strong><p id="EN-US_TOPIC_0000001128445638__p11303653195217">Policies are divided into backup policies and replication policies.</p>
+<ul id="EN-US_TOPIC_0000001128445638__ul183031953105215"><li id="EN-US_TOPIC_0000001128445638__li53032053185217">Backup policies: To perform automatic backups, configure a backup policy by setting the execution times of backup tasks, the backup cycle, and retention rules, and then apply the policy to a vault.</li><li id="EN-US_TOPIC_0000001128445638__li230313531526">Replication policies: To automatically replicate backups or vaults, configure a replication policy by setting the execution times of replication tasks, the replication cycle, and retention rules, and then apply the policy to a vault. Replicas of backups must be stored in replication vaults.</li></ul>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001128445638__section696712594578"><a name="EN-US_TOPIC_0000001128445638__section696712594578"></a><a name="section696712594578"></a><h4 class="sectiontitle">Backup Mechanism</h4><p id="EN-US_TOPIC_0000001128445638__p1574125614583">A full backup is performed only for the first backup and backs up all used data blocks.</p>
+<p id="EN-US_TOPIC_0000001128445638__p104343414592">For example, if the size of a disk is 100 GB and the used space is 40 GB, the 40 GB of data is backed up.</p>
+<p id="EN-US_TOPIC_0000001128445638__p28861017597">An incremental backup backs up only the data changed since the last backup, which is storage- and time-efficient.</p>
+<p id="EN-US_TOPIC_0000001128445638__p19233416195817">When a backup is deleted, only the data blocks that are not depended on by other backups are deleted, so that other backups can still be used for restoration. Both a full backup and an incremental backup can restore data to the state at a given backup point in time.</p>
+<p id="EN-US_TOPIC_0000001128445638__p223313161581">When creating a backup of a disk, CBR also creates a snapshot for it. Every time a new disk backup is created, CBR deletes the old snapshot and keeps only the latest snapshot.</p>
+<p id="EN-US_TOPIC_0000001128445638__p523311615815">CBR stores backup data in OBS, enhancing backup data security.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001128445638__section533362013"><a name="EN-US_TOPIC_0000001128445638__section533362013"></a><a name="section533362013"></a><h4 class="sectiontitle">Backup Options</h4><p id="EN-US_TOPIC_0000001128445638__p204317397120">CBR supports one-off backup and periodic backup. A one-off backup task is manually created by users and is executed only once. Periodic backup tasks are automatically executed based on a user-defined backup policy.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001128445638__table427813140219" frame="border" border="1" rules="all"><caption><b>Table 1 </b>One-off backup and periodic backup</caption><thead align="left"><tr id="EN-US_TOPIC_0000001128445638__row52782014622"><th align="left" class="cellrowborder" valign="top" width="14.75147514751475%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0000001128445638__p162781714127">Item</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="41.45414541454145%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0000001128445638__p627871418217">One-Off Backup</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="43.79437943794379%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0000001128445638__p1827815141921">Periodic Backup</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001128445638__row12781014024"><td class="cellrowborder" valign="top" width="14.75147514751475%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0000001128445638__p8278191410219">Backup policy</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.45414541454145%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0000001128445638__p1927819141724">Not required</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79437943794379%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0000001128445638__p42786141321">Required</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row192789141020"><td class="cellrowborder" valign="top" width="14.75147514751475%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0000001128445638__p327819141216">Number of backup tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.45414541454145%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0000001128445638__p1027871411216">One manual backup task</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79437943794379%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0000001128445638__p1278814226">Periodic tasks driven by a backup policy</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row15278914126"><td class="cellrowborder" valign="top" width="14.75147514751475%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0000001128445638__p1278171417217">Backup name</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.45414541454145%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0000001128445638__p02785143214">User-defined backup name, which is <strong id="EN-US_TOPIC_0000001128445638__b6267139389">manualbk_</strong><em id="EN-US_TOPIC_0000001128445638__i526191303810">xxxx</em> by default</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79437943794379%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0000001128445638__p132783149213">System-assigned backup name, which is <strong id="EN-US_TOPIC_0000001128445638__b1954011378382">autobk_</strong><em id="EN-US_TOPIC_0000001128445638__i185412037153810">xxxx</em> by default</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row127841418215"><td class="cellrowborder" valign="top" width="14.75147514751475%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0000001128445638__p32786141929">Backup mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.45414541454145%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0000001128445638__p92785141327">Full backup for the first time and incremental backup subsequently, by default</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79437943794379%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0000001128445638__p152787141521">Full backup for the first time and incremental backup subsequently, by default</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0000001128445638__row1627814149212"><td class="cellrowborder" valign="top" width="14.75147514751475%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0000001128445638__p7278131416212">Application scenario</p>
+</td>
+<td class="cellrowborder" valign="top" width="41.45414541454145%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0000001128445638__p1527821419216">Executed before patching or upgrading the OS or upgrading an application on a resource. A one-off backup can be used to restore the resource to the original state if the patching or upgrading fails.</p>
+</td>
+<td class="cellrowborder" valign="top" width="43.79437943794379%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0000001128445638__p327816141328">Executed for routine maintenance of a resource. The latest backup can be used for restoration if an unexpected failure or data loss occurs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0096304614.html">CBR</a></div>
+</div>
+</div>
+

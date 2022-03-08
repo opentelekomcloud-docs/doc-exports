@@ -1,0 +1,136 @@
+<a name="en-us_topic_0015479967"></a><a name="en-us_topic_0015479967"></a>
+
+<h1 class="topictitle1">Creating a Shared Load Balancer</h1>
+<h4 class="sectiontitle">Prerequisites</h4><p id="en-us_topic_0015479967__p1344415116">You have prepared everything required for creating a load balancer. For details, see <a href="elb_ug_fz_0004.html">Preparations for Creating a Load Balancer</a>.</p>
+<p id="en-us_topic_0015479967__p175919348591">Load balancers receive requests from clients and route the requests to backend servers, which answer to these requests over the private network.</p>
+
+<a name="en-us_topic_0015479967__section19343262431"></a><a name="section19343262431"></a><h4 class="sectiontitle">Creating <span id="en-us_topic_0015479967__ph1952892414212">a Shared</span> Load Balancer</h4><ol id="en-us_topic_0015479967__ol1889111542441"><li id="en-us_topic_0015479967__li677391520332">Log in to the management console.</li><li id="en-us_topic_0015479967__li675519100420">In the upper left corner of the page, click <span><img id="en-us_topic_0015479967__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_topic_0015479967__li32841639173317">Hover on <span><img id="en-us_topic_0015479967__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_topic_0015479967__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="en-us_topic_0015479967__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="en-us_topic_0015479967__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li><li id="en-us_topic_0015479967__li7543135419311"><p id="en-us_topic_0015479967__p9117122316619"><a name="en-us_topic_0015479967__li7543135419311"></a><a name="li7543135419311"></a>On the <strong id="en-us_topic_0015479967__b881655962517">Load Balancers</strong> page, click <strong id="en-us_topic_0015479967__b269662062312">Create Elastic Load Balancer</strong>. Configure the parameters based on <a href="#en-us_topic_0015479967__table1312515231668">Table 1</a>.</p>
+
+.. _en-us_topic_0015479967__table1312515231668:
+
+<a name="en-us_topic_0015479967__table1312515231668"></a><a name="table1312515231668"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0015479967__table1312515231668" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters for creating <span id="en-us_topic_0015479967__ph14980183614423">a shared</span> load balancer</caption><thead align="left"><tr id="en-us_topic_0015479967__row5117123161"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.2.2.4.2.2.4.1.1"><p id="en-us_topic_0015479967__p1117823768"><strong id="en-us_topic_0015479967__b152701410151511">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.2.2.4.2.2.4.1.2"><p id="en-us_topic_0015479967__p311712236611"><strong id="en-us_topic_0015479967__b1389131141513">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.2.4.2.2.4.1.3"><p id="en-us_topic_0015479967__p9117192312618"><strong id="en-us_topic_0015479967__b84235270617719">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0015479967__row161204232619"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p41179231464">Region</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p1911720230618">Specifies the region. Resources in different regions cannot communicate with each other over internal networks. For lower network latency and faster access to resources, select the nearest region.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p1912082312615">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row161213231462"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p151201323169">Network Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p111201623364">Specifies the network type of a load balancer.</p>
+<ul id="en-us_topic_0015479967__ul9121423867"><li id="en-us_topic_0015479967__li812012231613"><strong id="en-us_topic_0015479967__b640712220152">Public network</strong>: The load balancer routes requests from the clients to backend <span id="en-us_topic_0015479967__ph18772132710420">server</span>s over the Internet.</li><li id="en-us_topic_0015479967__li1912172316611"><strong id="en-us_topic_0015479967__b940193120156">Private network</strong>: The load balancer routes requests from the clients to backend <span id="en-us_topic_0015479967__ph875515384443">server</span>s in the same VPC.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p13121723161">Private network</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row02439327575"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p542718333572">VPC</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p34271433125718">Specifies the VPC where the load balancer works.</p>
+<p id="en-us_topic_0015479967__p1942773318578">Select an existing VPC or create one.</p>
+<p id="en-us_topic_0015479967__p12427203315711">For more information about VPC, see the <em id="en-us_topic_0015479967__i1548834481517">Virtual Private Cloud User Guide</em>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p2042773316575">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row19121723266"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p2121172315614">Subnet</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p2012112231161">Specifies the subnet that the load balancer belongs to.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p71218238620">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row712113233611"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p101211223569">Private IP Address</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__en-us_topic_0172674943_p1584051145410">Specifies how you want the IP address to be assigned.</p>
+<ul id="en-us_topic_0015479967__ul4861742536"><li id="en-us_topic_0015479967__li12864421230"><strong id="en-us_topic_0015479967__b185041352181010">Automatically-assigned IP address</strong>: The system automatically assigns an IPv4 address to the load balancer.</li><li id="en-us_topic_0015479967__li11471115219313"><strong id="en-us_topic_0015479967__b78092054161014">Manually-specified IP address</strong>: Manually specify an IPv4 address to the load balancer.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p1112122315610">Automatically-assigned IP address</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row1112282318619"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p1612117231566">EIP</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p91211023964">Specifies the public IP address that will be bound to the load balancer for receiving and forwarding requests over the Internet.</p>
+<p id="en-us_topic_0015479967__p1412112231464">The following options are available:</p>
+<ul id="en-us_topic_0015479967__ul51229232063"><li id="en-us_topic_0015479967__li012217238612"><strong id="en-us_topic_0015479967__b16427828112014">New EIP</strong>: The system will automatically assign an EIP.</li><li id="en-us_topic_0015479967__li912218237611"><strong id="en-us_topic_0015479967__b134597530208">Use existing</strong>: Select an existing EIP.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p1412214231768">New EIP</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row41242233612"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p812314231366">Bandwidth</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p8123182316611">Specifies the bandwidth when a new EIP is used, in the unit of Mbit/s.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p11123142315610">10 Mbit/s</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row112414233619"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p16124723664">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p912410232614">Specifies the load balancer name.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p712402315614">elb-yss0</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row21242231616"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p6124112317617">Description</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p171243231969">Provides supplementary information about the load balancer.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><p id="en-us_topic_0015479967__p1412414231067">N/A</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row312482318617"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.2.2.4.1.1 "><p id="en-us_topic_0015479967__p101247235619">Tag</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.2.2.4.1.2 "><p id="en-us_topic_0015479967__p31246231611">Identifies load balancers so that they can be easily found. A tag consists of a tag key and a tag value. The tag key marks a tag, and the tag value specifies specific tag content.</p>
+<p id="en-us_topic_0015479967__p1112415237614">For details about the naming specifications, see <a href="#en-us_topic_0015479967__table212772311610">Table 2</a>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.2.2.4.1.3 "><ul id="en-us_topic_0015479967__ul1912417231364"><li id="en-us_topic_0015479967__li3124192310611">Key: elb_key1</li><li id="en-us_topic_0015479967__li121241823168">Value: elb-01</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+.. _en-us_topic_0015479967__table212772311610:
+
+<a name="en-us_topic_0015479967__table212772311610"></a><a name="table212772311610"></a><table cellpadding="4" cellspacing="0" summary="" id="en-us_topic_0015479967__table212772311610" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Naming rules of load balancer tags</caption><thead align="left"><tr id="en-us_topic_0015479967__row912512231661"><th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.2.2.4.3.2.4.1.1"><p id="en-us_topic_0015479967__p1712513231067"><strong id="en-us_topic_0015479967__b151692530564">Item</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.2.2.4.3.2.4.1.2"><p id="en-us_topic_0015479967__p31257234610"><strong id="en-us_topic_0015479967__b1550711563561">Requirement</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.2.4.3.2.4.1.3"><p id="en-us_topic_0015479967__p512519231167"><strong id="en-us_topic_0015479967__b1932625918563">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_topic_0015479967__row131261423867"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.3.2.4.1.1 "><p id="en-us_topic_0015479967__p131251323260">Tag key</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.3.2.4.1.2 "><ul id="en-us_topic_0015479967__ul712618231865"><li id="en-us_topic_0015479967__li1912515231164">Cannot be left blank.</li><li id="en-us_topic_0015479967__li5125132317613">Must be unique for the same load balancer.</li><li id="en-us_topic_0015479967__li1812510230618">Can contain a maximum of 36 characters.</li><li id="en-us_topic_0015479967__li012515236618">Cannot contain asterisks (*), angle brackets (&lt; and &gt;), backslashes (\), equal signs (=), commas (,), vertical bars (|), or slashes (/).</li><li id="en-us_topic_0015479967__li212682311614">Can contain only the following character types:<ul id="en-us_topic_0015479967__ul812612318614"><li id="en-us_topic_0015479967__li101252023065">Uppercase letters</li><li id="en-us_topic_0015479967__li912513231267">Lowercase letters</li><li id="en-us_topic_0015479967__li16126142317615">Digits</li><li id="en-us_topic_0015479967__li212612231463">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.3.2.4.1.3 "><p id="en-us_topic_0015479967__p11126182313620">elb_key1</p>
+</td>
+</tr>
+<tr id="en-us_topic_0015479967__row5126132314618"><td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.2.2.4.3.2.4.1.1 "><p id="en-us_topic_0015479967__p1612613236616">Tag value</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.2.2.4.3.2.4.1.2 "><ul id="en-us_topic_0015479967__ul2126192311620"><li id="en-us_topic_0015479967__li161260237611">Can contain a maximum of 43 characters.</li><li id="en-us_topic_0015479967__li1312618231769">Cannot contain asterisks (*), angle brackets (&lt; and &gt;), backslashes (\), equal signs (=), commas (,), vertical bars (|), or slashes (/).</li><li id="en-us_topic_0015479967__li012619231460">Can contain only the following character types:<ul id="en-us_topic_0015479967__ul1126122319611"><li id="en-us_topic_0015479967__li151261231618">Uppercase letters</li><li id="en-us_topic_0015479967__li312652316618">Lowercase letters</li><li id="en-us_topic_0015479967__li121267231965">Digits</li><li id="en-us_topic_0015479967__li412616236618">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.4.3.2.4.1.3 "><p id="en-us_topic_0015479967__p412612235611">elb-01</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="en-us_topic_0015479967__li22394472202211">Click <strong id="en-us_topic_0015479967__b25241291202455">Create Now</strong>.</li><li id="en-us_topic_0015479967__li350531019181">Confirm the configuration and submit your request.</li></ol>
+
+
+
+
+
+
+

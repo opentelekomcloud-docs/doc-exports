@@ -1,0 +1,35 @@
+<a name="modelarts_23_0162"></a><a name="modelarts_23_0162"></a>
+
+<h1 class="topictitle1">TensorFlow-py36 General Template</h1>
+<div id="body8662426"><div class="section" id="modelarts_23_0162__en-us_topic_0193596262_section17644758143116"><h4 class="sectiontitle">Introduction</h4><p id="modelarts_23_0162__en-us_topic_0193596262_p1744413013329">AI engine: TensorFlow 1.8; Environment: Python 3.6; Input and output mode: undefined mode. Select an appropriate input and output mode based on the model function or application scenario. When using the template to import a model, select the <strong id="modelarts_23_0162__en-us_topic_0193596262_b435952510129">model</strong> directory containing the model files.</p>
+</div>
+<div class="section" id="modelarts_23_0162__en-us_topic_0193596262_section1287913116322"><h4 class="sectiontitle">Template Input</h4><p id="modelarts_23_0162__en-us_topic_0193596262_p2351974324">The template input is the TensorFlow-based model package stored on OBS. Ensure that the OBS directory you use and ModelArts are in the same region. For details about model package requirements, see <a href="#modelarts_23_0162__en-us_topic_0193596262_section1761262493211">Model Package Example</a>.</p>
+</div>
+<div class="section" id="modelarts_23_0162__en-us_topic_0193596262_section157592853210"><h4 class="sectiontitle">Input and Output Mode</h4><p id="modelarts_23_0162__en-us_topic_0193596262_p94051528194911"><a href="modelarts_23_0103.html">Undefined Mode</a> can be overwritten. That is, you can select another input and output mode during model creation.</p>
+</div>
+<div class="section" id="modelarts_23_0162__en-us_topic_0193596262_section856341533214"><h4 class="sectiontitle">Model Package Specifications</h4><ul id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_ul1225294533816"><li id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_li11253445183818">The model package must be stored in the OBS folder named <span class="filepath" id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_filepath997444410310"><b>model</b></span>. Model files and the model inference code file are stored in the <span class="filepath" id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_filepath1623415719313"><b>model</b></span> folder.</li><li id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_li1125334515384">The model inference code file is optional. If the file exists, the file name must be <span class="filepath" id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_filepath15441360418"><b>customize_service.py</b></span>. Only one inference code file can exist in the <span class="filepath" id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_filepath154421261045"><b>model</b></span> folder. For details about how to compile the model inference code file, see <a href="modelarts_23_0093.html">Specifications for Compiling Model Inference Code</a>.</li></ul>
+<ul id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_ul7932192875513"><li id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_li199331928145515">The structure of the model package imported using the template is as follows:<pre class="screen" id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_screen166121755782">model/
+│
+├── Model file                 //(Mandatory) The model file format varies according to the engine. For details, see the model package example.
+├── Custom Python package           //(Optional) User's Python package, which can be directly referenced in the model inference code
+├── customize_service.py  //(Optional) Model inference code file. The file name must be <strong id="modelarts_23_0162__en-us_topic_0193596262_en-us_topic_0193596258_b643814618416">customize_service.py</strong>. Otherwise, the code is not considered as inference code.</pre>
+</li></ul>
+</div>
+<div class="section" id="modelarts_23_0162__en-us_topic_0193596262_section1761262493211"><a name="modelarts_23_0162__en-us_topic_0193596262_section1761262493211"></a><a name="en-us_topic_0193596262_section1761262493211"></a><h4 class="sectiontitle">Model Package Example</h4><p id="modelarts_23_0162__en-us_topic_0193596262_p13210054819"><strong id="modelarts_23_0162__en-us_topic_0193596262_b187031577125">Structure of the TensorFlow-based model package</strong></p>
+<p id="modelarts_23_0162__en-us_topic_0193596262_p61991229193412">When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0162__en-us_topic_0193596262_filepath6856459191214"><b>model</b></span> directory.</p>
+<pre class="screen" id="modelarts_23_0162__en-us_topic_0193596262_screen62001429183416">OBS bucket/directory name
+|── model    (Mandatory) The folder must be named <strong id="modelarts_23_0162__en-us_topic_0193596262_b5810226136">model</strong> and is used to store model-related files.
+    ├── &lt;&lt;Custom Python package&gt;&gt;    (Optional) User's Python package, which can be directly referenced in the model inference code
+    ├── saved_model.pb        (Mandatory) Protocol buffer file, which contains the diagram description of the model
+    ├── variables             Mandatory for the main file of the <strong id="modelarts_23_0162__en-us_topic_0193596262_b77831686130">*.pb</strong> model. The folder must be named <strong id="modelarts_23_0162__en-us_topic_0193596262_b1378418181311">variables</strong> and contains the weight deviation of the model.
+        ├── variables.index                   Mandatory
+        ├── variables.data-00000-of-00001     Mandatory
+    ├──customize_service.py   (Optional) Model inference code file. The file must be named <strong id="modelarts_23_0162__en-us_topic_0193596262_b14525161361312">customize_service.py</strong>. Only one inference code file exists. The <strong id="modelarts_23_0162__en-us_topic_0193596262_b14527413171319">.py</strong> file on which <strong id="modelarts_23_0162__en-us_topic_0193596262_b1352831316134">customize_service.py</strong> depends can be directly put in the <strong id="modelarts_23_0162__en-us_topic_0193596262_b1853021317139">model</strong> directory.</pre>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0118.html">Template Description</a></div>
+</div>
+</div>
+

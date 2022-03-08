@@ -1,0 +1,889 @@
+<a name="EN-US_TOPIC_0035470101"></a><a name="EN-US_TOPIC_0035470101"></a>
+
+<h1 class="topictitle1">General-Purpose ECSs</h1>
+<div id="body1471085716053"><div class="section" id="EN-US_TOPIC_0035470101__section21906772103453"><h4 class="sectiontitle">Overview</h4><p id="EN-US_TOPIC_0035470101__p53560489103456">General-purpose ECSs provide a balance of computing, memory, and network resources and a baseline level of vCPU performance with the ability to burst above the baseline. These ECSs are suitable for applications with general workloads, such as web servers, enterprise R&amp;D, and small-scale databases.</p>
+<p id="EN-US_TOPIC_0035470101__p14674135144912">S3 ECSs are suitable for applications that require moderate performance generally but occasionally burstable high performance, such as light-workload web servers, enterprise R&amp;D and testing environments, and low- and medium-performance databases.</p>
+<p id="EN-US_TOPIC_0035470101__p1080872815224">S2 ECSs use Intel&reg; Xeon&reg; Scalable processors, which significantly improve the comprehensive performance. They provide a balance of computing, memory, and network resources and a baseline level of vCPU performance with the ability to burst above the baseline. These ECSs are suitable for many applications.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470101__section26311304103459"><h4 class="sectiontitle">Specifications</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035470101__table131314023616" frame="border" border="1" rules="all"><caption><b>Table 1 </b>S3 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035470101__row161440183616"><th align="left" class="cellrowborder" valign="top" width="10.958904109589042%" id="mcps1.3.2.2.2.10.1.1"><p id="EN-US_TOPIC_0035470101__p71419016367">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.189281071892811%" id="mcps1.3.2.2.2.10.1.2"><p id="EN-US_TOPIC_0035470101__p111419011369">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.529247075292471%" id="mcps1.3.2.2.2.10.1.3"><p id="EN-US_TOPIC_0035470101__p01470173611">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.688731126887312%" id="mcps1.3.2.2.2.10.1.4"><p id="EN-US_TOPIC_0035470101__p191420163619">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.848815118488151%" id="mcps1.3.2.2.2.10.1.5"><p id="EN-US_TOPIC_0035470101__p1514109360">Max. PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.279172082791721%" id="mcps1.3.2.2.2.10.1.6"><p id="EN-US_TOPIC_0035470101__p141514014362">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.889111088891113%" id="mcps1.3.2.2.2.10.1.7"><p id="EN-US_TOPIC_0035470101__p196423595324">Maximum NICs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.818818118188181%" id="mcps1.3.2.2.2.10.1.8"><p id="EN-US_TOPIC_0035470101__p1515170123615">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.7979202079792%" id="mcps1.3.2.2.2.10.1.9"><p id="EN-US_TOPIC_0035470101__p225719461520">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035470101__row91517083617"><td class="cellrowborder" valign="top" width="10.958904109589042%" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p199414412389">s3.medium.1</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.189281071892811%" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p173631035153920">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.529247075292471%" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1363935173913">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.688731126887312%" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1874316117407">0.8/0.15</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.848815118488151%" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1760141854020">10</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.279172082791721%" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1949610406408">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.889111088891113%" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p164225914324">2</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.818818118188181%" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p22761852204018">KVM</p>
+</td>
+<td class="cellrowborder" rowspan="24" valign="top" width="20.7979202079792%" headers="mcps1.3.2.2.2.10.1.9 "><p id="EN-US_TOPIC_0035470101__p162577463210">CPU: Intel&reg; Xeon&reg; Cascade Lake 6278</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row416004361"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p49949413383">s3.large.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p33635355391">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1536373523916">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p974351104010">1.5/0.3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p156011718184019">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p18496040174018">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p764214596322">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1727619522408">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row141616053613"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1999418415381">s3.xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p3363163503918">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p33639358391">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p11743121174010">2/0.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p15601161824016">25</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p19496194054012">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p18642659163214">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p8276135210400">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row717305366"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p5994204113816">s3.2xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p18363173533915">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p123637351399">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1974381204018">3/1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1960261818405">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p74966403408">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1764213596322">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p827665234019">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row5182017360"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p14994154119389">s3.4xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p1036323583918">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p8363193512391">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1974312113405">6/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p19602151810401">100</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p9496340164016">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p13642155916324">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1327717520405">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row17197020360"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p10995841153814">s3.8xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p43637352397">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p73631035193912">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1743131184019">8/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1260211824019">200</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p44964402401">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p14642165911324">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p327795212402">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1990951963811"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p4995154114383">s3.medium.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p63630351395">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1436318353394">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p6743101194013">0.8/0.15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p146021718134013">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p349644019404">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1464205993219">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p3277652184017">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row17910151914380"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1499512419382">s3.large.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p536313513913">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1836343510396">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p6743191114013">1.5/0.3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p2060211844012">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p2496104017408">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p146422059123214">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p427735218400">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1891081911381"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p18995144113819">s3.xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p1136363503916">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1736383543920">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p5743121184010">2/0.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p176021218104011">25</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p54961409403">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p17642205933217">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p32772520404">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row119101919143817"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p109951241193810">s3.2xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p1836393553917">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1136313523912">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p14744913401">3/1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p860216188401">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p114961840174012">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p3642115943212">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p795914549406">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row6911101913383"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p49951741123810">s3.4xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p4363335113916">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p8364173523911">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p57441312401">6/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p96021418134013">100</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p94966409405">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p19642175910324">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1095919545403">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row9911131943812"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1995741173817">s3.8xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p153641355395">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p8364335153913">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1974414114408">8/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p19602518104018">200</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p19496194017404">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p964218594324">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p12960105413407">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row2202002366"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p799564183819">s3.medium.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p7364193503915">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p036415359394">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p674412113402">0.8/0.15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p160214187406">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p04960400400">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1464205913324">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p17960454124010">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row92017093615"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p99957415383">s3.large.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p15364193563918">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p5364103513393">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p574414104010">1.5/0.3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1460271814012">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p7497540194018">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p36427591329">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p8960135414012">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1721190183612"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p17995114111380">s3.xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p536473593915">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p2364335113910">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p7744191124019">2/0.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p166021318114011">25</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p249764012406">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p26421059183220">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p9960254194012">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row2582151011388"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p899534133812">s3.2xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p036420357393">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p83641035173914">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p874410119402">3/1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p860216182401">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p13497840194020">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p17642115914328">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p8961145494017">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row4583151012381"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p139951241123817">s3.4xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p8364835173914">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p14364183583918">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1074431124015">6/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p19602131844010">100</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p2497184019407">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p364355933217">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p15961154144014">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row3583210163815"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p4995104143818">s3.8xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p636415359396">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1536443523912">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p474420118404">8/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p186021818144013">200</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p13497240184020">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p464310595326">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p149613549400">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row45849106384"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1995941203819">s3.medium.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p1836463511398">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p7364735123913">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1274441134020">0.8/0.15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1160217187402">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p349711401403">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1364311592321">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p14162057134018">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row105847104389"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p399610415384">s3.large.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p23641235123917">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1436453573912">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p197448194013">1.5/0.3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p136027182406">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1649764012406">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p14643959123210">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1741715579404">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row8585171013380"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1599614103817">s3.xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p193641735123916">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p12364935183919">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p7744415406">2/0.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p5602191815407">25</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p94975408404">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p2643115993218">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p84175576400">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1358501093818"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p69961441113810">s3.2xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p183641355392">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p33641735133914">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p127457194017">3/1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p46022181403">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p64971740194020">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p196434599324">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p13417957134020">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1258571063819"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p39961414383">s3.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p73655355390">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p18365735173917">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p11745151104013">6/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p86031184407">100</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p10497640124014">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p56439596321">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p24171657164013">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row558601023819"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p19961841113811">s3.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p636533512398">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1336533593911">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p12745151174012">8/2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p17603191812404">200</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p249754044014">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p7643165919320">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p8417157154017">KVM</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0035470101__table477598401959" frame="border" border="1" rules="all"><caption><b>Table 2 </b>S2 ECS specifications</caption><thead align="left"><tr id="EN-US_TOPIC_0035470101__row11866311959"><th align="left" class="cellrowborder" valign="top" width="10.960000000000003%" id="mcps1.3.2.3.2.10.1.1"><p id="EN-US_TOPIC_0035470101__p115939515532">Flavor</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.1000000000000005%" id="mcps1.3.2.3.2.10.1.2"><p id="EN-US_TOPIC_0035470101__p3699556719753">vCPUs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="7.410000000000001%" id="mcps1.3.2.3.2.10.1.3"><p id="EN-US_TOPIC_0035470101__p4385097319753">Memory (GiB)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.990000000000002%" id="mcps1.3.2.3.2.10.1.4"><p id="EN-US_TOPIC_0035470101__p107291434184215">Maximum/Assured Bandwidth (Gbit/s)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.850000000000001%" id="mcps1.3.2.3.2.10.1.5"><p id="EN-US_TOPIC_0035470101__p1972918347421">Max. PPS (10,000)</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.480000000000002%" id="mcps1.3.2.3.2.10.1.6"><p id="EN-US_TOPIC_0035470101__p117291134104211">NIC Multi-Queue</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="8.890000000000002%" id="mcps1.3.2.3.2.10.1.7"><p id="EN-US_TOPIC_0035470101__p195411537133810">Maximum NICs</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.200000000000003%" id="mcps1.3.2.3.2.10.1.8"><p id="EN-US_TOPIC_0035470101__p10826634191219">Virtualization Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.120000000000005%" id="mcps1.3.2.3.2.10.1.9"><p id="EN-US_TOPIC_0035470101__p3432171392918">Hardware</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0035470101__row388151959"><td class="cellrowborder" valign="top" width="10.960000000000003%" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1559314516533">s2.medium.1</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.1000000000000005%" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p533387381959">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="7.410000000000001%" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p254705081959">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.990000000000002%" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p84651721124216">0.5/0.1</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.850000000000001%" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p9891182811424">5</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.480000000000002%" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1090163264219">1</p>
+</td>
+<td class="cellrowborder" valign="top" width="8.890000000000002%" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p65411637163813">12</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.200000000000003%" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p13827734111210">KVM</p>
+</td>
+<td class="cellrowborder" rowspan="24" valign="top" width="21.120000000000005%" headers="mcps1.3.2.3.2.10.1.9 "><p id="EN-US_TOPIC_0035470101__p16432111314295">CPU: Intel&reg; Xeon&reg; Skylake 6161</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row459544041959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p8593159537">s2.large.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p538326941959">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p654809661959">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p16373935018">0.8/0.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p168174212496">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p17452113214493">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p17541137193818">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p208275345125">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row212220931959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1059310515531">s2.xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p543726571959">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p421091361959">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p156375914502">1.5/0.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p158144210491">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p9453932144914">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p2541537103815">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p5827133441213">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row288099461959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p95931255537">s2.2xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p434992051959">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p337747171959">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p19637189145011">3/0.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p8811742104910">20</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p345383254912">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1854113793814">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p582711346124">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row599249481959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p65930517535">s2.4xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p438639621959">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p633200051959">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1864612955016">4/1.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p138715427495">30</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1646213254911">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p5541163719385">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p382753431213">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row564944771959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p05941752533">s2.8xlarge.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p180083521959">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p493904411959">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p864612916506">6/3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1987194218494">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p546233284920">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p3541133719384">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1982763461211">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row352807961959"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p155941654533">s2.medium.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p188338101959">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p491436661959">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p116461792504">0.5/0.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p198774215497">5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p246243234919">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p9541133715384">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p188277348127">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row50292659191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1159420517534">s2.large.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p21909021191342">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p29800280191342">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p10646093501">0.8/0.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p198720424493">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p9462203254910">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1354133710380">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p14827133491214">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row43581420191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p7594185195314">s2.xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p28362577191342">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p15667423191342">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p46461297504">1.5/0.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1387184244913">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p12462113216496">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p12542123710385">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p0619165814147">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row37213243191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p5594145135314">s2.2xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p16473696191342">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p59300970191342">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p86471793509">3/0.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p68724294912">20</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p146219329499">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1154273733810">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p963535851412">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row56701193191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p3594553537">s2.4xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p63218839191342">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p20452344191342">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p564714910507">4/1.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1787242134917">30</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1546223204917">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p5542123717387">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p2649958201418">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row5879428191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1059515175311">s2.8xlarge.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p58245071191342">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p20230288191342">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p12647493500">6/3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1188642164915">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p04621832144916">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p25421037143814">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p6661125812144">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row14942819191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p159515514533">s2.medium.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p21679653191342">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p11221506191342">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1464739195011">0.5/0.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p58844264915">5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1946243214497">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p454210376384">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p166773584147">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row34065318191342"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1659514516539">s2.large.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p3337154191342">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p1874083191342">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p36471195506">0.8/0.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p1788842184912">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p846263234913">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p17542337193819">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p12691205861418">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row15811817191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p195951556531">s2.xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p51199203191425">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p53494782191425">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p18647299504">1.5/0.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p388184211491">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p546223284910">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p25421537113810">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p17705155821410">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row39274866191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p85953518533">s2.2xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p43001319191425">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p60554837191425">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1647169185013">3/0.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p58884204918">20</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p17462232194916">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1654223743812">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p2717658111417">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row33191825191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p10595757532">s2.4xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p37649990191425">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p29750320191425">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p564712919502">4/1.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p78854220494">30</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1346253212494">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1454283753812">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p814815391515">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row18231215191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1359512595311">s2.8xlarge.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p3001165191425">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p41767822191425">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1764713917507">6/3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p288174214490">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p18462173284910">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p7542137183818">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p115913371518">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row29918714191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p19596254533">s2.medium.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p362197191425">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p29337974191425">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p36476965016">0.5/0.1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p38824218497">5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1346212329493">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p14542203763813">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p117115316155">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row1436713191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p3596145165317">s2.large.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p40731387191425">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p10908088191425">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p1664716911505">0.8/0.2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p128811423495">10</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p546243294913">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p1854233763811">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p5182183121520">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row13454652191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1359614514538">s2.xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p10547176191425">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p49014953191425">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p264712915501">1.5/0.4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p178816426492">15</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p9462203215494">1</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p13542103712384">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p1319119319153">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row18549560191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p1559614585311">s2.2xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p33747850191425">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p49221354191425">64</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p464812965016">3/0.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p208814426497">20</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p12462153254919">2</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p75425370381">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p10204838150">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row43372269191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p559675135318">s2.4xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p10109784191425">16</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p13586209191425">128</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p15465321164215">4/1.5</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p689352819422">30</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1191932164212">4</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p45421370385">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p92127317152">KVM</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0035470101__row19438003191425"><td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.1 "><p id="EN-US_TOPIC_0035470101__p105971555316">s2.8xlarge.8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.2 "><p id="EN-US_TOPIC_0035470101__p10334226191425">32</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.3 "><p id="EN-US_TOPIC_0035470101__p31765949191425">256</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.4 "><p id="EN-US_TOPIC_0035470101__p10465821134211">6/3</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.5 "><p id="EN-US_TOPIC_0035470101__p9893628174217">50</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.6 "><p id="EN-US_TOPIC_0035470101__p1591332124217">8</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.7 "><p id="EN-US_TOPIC_0035470101__p85421837123819">12</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.3.2.10.1.8 "><p id="EN-US_TOPIC_0035470101__p82260321514">KVM</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470101__section19143182213303"><h4 class="sectiontitle">Scenarios</h4><ul id="EN-US_TOPIC_0035470101__ul1120016919299"><li id="EN-US_TOPIC_0035470101__li336439103921">Applications<p id="EN-US_TOPIC_0035470101__p54038438191413"><a name="EN-US_TOPIC_0035470101__li336439103921"></a><a name="li336439103921"></a>General-purpose ECSs are suitable for applications that have no special requirements on CPU performance, memory, disk capacity, or bandwidth, but have high requirements on security and reliability. They feature low initial investment and maintenance costs.</p>
+</li><li id="EN-US_TOPIC_0035470101__li1020110920293">Application scenarios<p id="EN-US_TOPIC_0035470101__p18201695295"><a name="EN-US_TOPIC_0035470101__li1020110920293"></a><a name="li1020110920293"></a>Enterprise website deployment, enterprise office environment setup, enterprise R&amp;D and testing activities, web servers, R&amp;D and testing environments, and small-scale databases</p>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0035470101__section19230673185147"><h4 class="sectiontitle">Notes</h4><ul id="EN-US_TOPIC_0035470101__ul3871165672712"><li id="EN-US_TOPIC_0035470101__li287155672712">General-purpose ECSs support all released OSs.</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0132345719.html">ECS Specifications and Types</a></div>
+</div>
+</div>
+

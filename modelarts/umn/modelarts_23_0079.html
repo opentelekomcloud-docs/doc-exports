@@ -1,0 +1,53 @@
+<a name="modelarts_23_0079"></a><a name="modelarts_23_0079"></a>
+
+<h1 class="topictitle1">Creating a User and Granting Permissions</h1>
+<div id="body8662426"><div class="section" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_section106463610252"><h4 class="sectiontitle">Policy Content</h4><p id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p12888110445">A fine-grained policy consists of the policy version (the <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b1950194310158">Version</strong> field) and statement (the <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b1150954341519">Statement</strong> field).</p>
+<ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul57930886173354"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li15836462154039"><strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b8161101061616">Version</strong>: Distinguishes between role-based access control (RBAC) and fine-grained policies.<ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul2002846815829"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li2458727515829"><strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b288541311614">1.0</strong>: RBAC policies, which are preset in the system and used to grant permissions of each service as a whole. After such a policy is granted to a user, the user has all permissions of the corresponding service.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li13966918555"><strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b17866433171616">1.1</strong>: Fine-grained policies. A fine-grained policy consists of API-based permissions for operations on specific resource types. Fine-grained policies, as the name suggests, allow for more fine-grained control than RBAC policies. Users granted permissions of such a policy can only perform specific operations on the corresponding service. Fine-grained policies are classified into default and custom policies.<ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul2011870181019"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li61184016102">Default policies: Preset common permission sets to control read and administrator permissions of different services.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li1211813015108">Custom policies: Permission sets created and managed by users as an extension and supplement to system-defined policies. For example, a custom policy can be created to allow users only to modify ECS specifications.</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul59455830103212"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li643724412531"><strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b995118144245">Statement</strong>: Detailed information about a policy, containing the <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b81965381011">Effect</strong> and <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b221714631011">Action</strong> elements.<ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul284172016541"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li36192405103212">Effect<p id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p62294521103326"><a name="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li36192405103212"></a><a name="en-us_topic_0285383428_en-us_topic_0270979573_li36192405103212"></a>Valid values for <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b11257161011018">Effect</strong> include <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b8794101271014">Allow</strong> and <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b767420168106">Deny</strong>. In a custom policy that contains both Allow and Deny statements, the Deny statements take precedence.</p>
+</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li65462610103212">Action<p id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p21734600113344"><a name="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li65462610103212"></a><a name="en-us_topic_0285383428_en-us_topic_0270979573_li65462610103212"></a>The value can be one or more resource operations.</p>
+<div class="p" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p28955516431">The value format is <em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i84235269723526">Service name</em>:<em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i84235269723639">Resource type</em>:<em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i84235269723534">Action</em>, for example, <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b842352706165816">modelarts:exemlProject:create</strong>.<div class="note" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_note3343181071212"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul1634371081218"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li1334371071210"><em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i2766942122617">Service name</em>: service name. Only lowercase letters are supported, for example, <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b3118112272">modelarts</strong>.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li834391061215"><em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i84235269710240">Resource type</em> and <em id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_i84235269710254">Action</em>: The values are case-insensitive, and the wildcard (*) are allowed. A wildcard (*) can represent all or part of information about resource types and actions for the specific service.</li></ul>
+</div></div>
+</div>
+</li></ul>
+</li></ul>
+<div class="section" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_section44276331103751"><h4 class="sectiontitle">Example Policies</h4><ul id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ul4257892811384"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li50918891151013">A policy can define a single permission, such as the permission to deny ExeML project deletion.<pre class="screen" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_screen59661958133014">{ 
+      "Version": "1.1", 
+      "Statement": [ 
+            { 
+		  "Effect": "Deny", 
+                  "Action": [ 
+                        "modelarts:exemlProject:delete" 
+                  ] 
+            } 
+      ] 
+}</pre>
+</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li57384969151036">A policy can define multiple permissions, such as the permissions to delete an ExeML version and an ExeML project.<pre class="screen" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_screen910654795918">{ 
+    "Version": "1.1", 
+    "Statement": [ 
+        { 
+            "Effect": "Allow", 
+            "Action": [ 
+                "modelarts:exemlProjectVersion:delete", 
+                "modelarts:exemlProject:delete" 
+            ] 
+        } 
+    ] 
+}</pre>
+</li></ul>
+</div>
+<div class="section" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_section565017773111"><h4 class="sectiontitle">Authentication Logic</h4><p id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p113850961512">IAM authenticates users according to the permissions that the users have been granted. The authentication logic is as follows:</p>
+<div class="fignone" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_fig4148178111014"><span class="figcap"><b>Figure 1 </b>Authentication logic</span><br><span><img id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_image1510332720618" src="en-us_image_0000001110920802.png"></span></div>
+<div class="note" id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_note1469502165619"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_p1169518295612">The actions in each policy bear the OR relationship.</p>
+</div></div>
+<ol id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_ol173684558404"><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li1126012426413">A user accesses the system and makes an operation request.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li9861041152420">The system evaluates all the permissions policies assigned to the user.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li24996913162311">In these policies, the system looks for explicit deny permissions. If the system finds an explicit deny that applies, it returns a decision of <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b498254333812">Deny</strong>, and the authentication ends.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li953633414512">If no explicit deny is found, the system looks for allow permissions that would apply to the request. If the system finds an explicit allow permission that applies, it returns a decision of <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b7664146163910">Allow</strong>, and the authentication ends.</li><li id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_li977251615286">If no explicit allow permission is found, the system returns a decision of <strong id="modelarts_23_0079__en-us_topic_0285383428_en-us_topic_0270979573_b107631412183917">Deny</strong>, and the authentication ends.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0077.html">Permissions Management</a></div>
+</div>
+</div>
+

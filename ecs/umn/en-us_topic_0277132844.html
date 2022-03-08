@@ -1,0 +1,32 @@
+<a name="EN-US_TOPIC_0277132844"></a><a name="EN-US_TOPIC_0277132844"></a>
+
+<h1 class="topictitle1">What Should I Do If Error Message "Disconnected: No supported authentication methods available" Is Displayed When I Remotely Log In to a Linux <span id="text225974321615">ECS</span>?</h1>
+<div id="body1600150564244"><div class="section" id="EN-US_TOPIC_0277132844__section118312613216"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0277132844__p10616143120711">When I attempted to remotely log in to a Linux <span id="EN-US_TOPIC_0277132844__text93048154360">ECS</span>, the system displayed error message "Disconnected: No supported authentication methods available".</p>
+<div class="fignone" id="EN-US_TOPIC_0277132844__fig2069165133516"><span class="figcap"><b>Figure 1 </b>No supported authentication methods available</span><br><span><img id="EN-US_TOPIC_0277132844__image750534101711" src="en-us_image_0277132897.png" title="Click to enlarge" class="imgResize"></span></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0277132844__section1851618545810"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0277132844__p588161910185">A policy that denies password-authenticated logins is enabled on the SSH server.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0277132844__section1286672717516"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0277132844__ol438220620213"><li id="EN-US_TOPIC_0277132844__li193821468212">Open the <strong id="EN-US_TOPIC_0277132844__b1285417718385">/etc/ssh/sshd_config</strong> file and check the following settings:<p id="EN-US_TOPIC_0277132844__p3683217172017"><strong id="EN-US_TOPIC_0277132844__b468351711201">vi /etc/ssh/sshd_config</strong></p>
+</li></ol>
+</div>
+<ol id="EN-US_TOPIC_0277132844__ol568410178204"><li id="EN-US_TOPIC_0277132844__li11178415192118">Modify the following settings:<p id="EN-US_TOPIC_0277132844__p58271516172110"><a name="EN-US_TOPIC_0277132844__li11178415192118"></a><a name="li11178415192118"></a>Change <strong id="EN-US_TOPIC_0277132844__b1626832253820">PasswordAuthentication no</strong> to <strong id="EN-US_TOPIC_0277132844__b326882283820">PasswordAuthentication yes</strong>.</p>
+<p id="EN-US_TOPIC_0277132844__p17406617152112">Alternatively, delete the comment tag (#) before <strong id="EN-US_TOPIC_0277132844__b187801240143810">PasswordAuthentication yes</strong>.</p>
+</li><li id="EN-US_TOPIC_0277132844__li1168410174201">Restart SSH.<ul id="EN-US_TOPIC_0277132844__ul1042511257214"><li id="EN-US_TOPIC_0277132844__li9425132516212">CentOS 6<p id="EN-US_TOPIC_0277132844__p11280152118219"><a name="EN-US_TOPIC_0277132844__li9425132516212"></a><a name="li9425132516212"></a><strong id="EN-US_TOPIC_0277132844__b1568411792014">service sshd restart</strong></p>
+</li></ul>
+<ul id="EN-US_TOPIC_0277132844__ul1797382616212"><li id="EN-US_TOPIC_0277132844__li1597322618214">CentOS 7<p id="EN-US_TOPIC_0277132844__p341924132117"><a name="EN-US_TOPIC_0277132844__li1597322618214"></a><a name="li1597322618214"></a><strong id="EN-US_TOPIC_0277132844__b19684217152010">systemctl restart sshd</strong></p>
+</li></ul>
+</li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

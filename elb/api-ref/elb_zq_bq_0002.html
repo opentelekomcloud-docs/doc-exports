@@ -1,0 +1,166 @@
+<a name="elb_zq_bq_0002"></a><a name="elb_zq_bq_0002"></a>
+
+<h1 class="topictitle1">Batch Adding or Deleting Load Balancer Tags</h1>
+<h4 class="sectiontitle">Function</h4><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p64381698114447">This API is used to batch add tags to or delete tags from a load balancer. </p>
+<img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0109852830_p1082815344418">You can also use this API for dedicated load balancers.</p>
+
+
+<h4 class="sectiontitle">Constraints</h4><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p19769105720210">A maximum of 20 tags can be added to a load balancer.</p>
+<p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p29035762172950">This API is idempotent.</p>
+<ul id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_ul4918005171319"><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li6488937817301">Note the following when you add tags:<ul id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_ul1996890417304"><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li19257859171319">If there are duplicate keys in the request body, an error is reported.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li51932504171319">If there are no duplicate keys in the request body but the key in the request body exists in the database, the key in the database is overwritten.</li></ul>
+</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li22569482173439">Note the following when you delete the tags:<ul id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_ul52613428173547"><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li18619964173545">If the tag to be deleted does not exist, the deletion is considered successful by default.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li27456565173545">The value range of the tag character set is not verified.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_li66776746173545">The tag structure body cannot be missing, and the key cannot be left blank or set to an empty string.</li></ul>
+</li></ul>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_bq_0002__en-us_topic_0109852827_p6129128535">POST /v2.0/{project_id}/loadbalancers/{loadbalancer_id}/tags/action</p>
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0002__en-us_topic_0109852827_table33323423" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_bq_0002__en-us_topic_0109852827_row8420641"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.3.3.2.5.1.1"><p id="elb_zq_bq_0002__en-us_topic_0109852827_p10983320">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.3.3.2.5.1.2"><p id="elb_zq_bq_0002__en-us_topic_0109852827_p17233719"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_b84235270616735">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.3.3.2.5.1.3"><p id="elb_zq_bq_0002__en-us_topic_0109852827_p4164548117122"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_b842352706151111">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.99999999999999%" id="mcps1.3.3.3.2.5.1.4"><p id="elb_zq_bq_0002__en-us_topic_0109852827_p53754023">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0002__en-us_topic_0109852827_row53906008171138"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p16126074171144">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p31143627171144">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p39605860171144">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.99999999999999%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p11184131">Specifies the ID of the project where the tag is used.</p>
+<p id="elb_zq_bq_0002__en-us_topic_0109852827_p8222164914610"></p>
+</td>
+</tr>
+<tr id="elb_zq_bq_0002__en-us_topic_0109852827_row33431272113959"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.3.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p19792599161649">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p50996812114013">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.3.3.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p1958172617518">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.99999999999999%" headers="mcps1.3.3.3.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p8340728114018">Specifies the ID of the load balancer to which tags are to be added or from which tags are to be deleted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_table60941389114447" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row2166302114447"><th align="left" class="cellrowborder" valign="top" width="31.626837316268368%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p41252734114447">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.288571142885708%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p53137130114447"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b423514296">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.288571142885708%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p9140299114447"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b225726215">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.7960203979602%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p2166793114447">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row41292555114447"><td class="cellrowborder" valign="top" width="31.626837316268368%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p56362682114447">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.288571142885708%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p1974525114447">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.288571142885708%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p892419588196">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.7960203979602%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p2851681114447">Lists the tags. For details, see <a href="#elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_table16812991114447">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row25665132114447"><td class="cellrowborder" valign="top" width="31.626837316268368%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p65609826114447">action</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.288571142885708%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p12795696114447">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.288571142885708%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p29818495114447">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.7960203979602%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p597772653220">Specifies the operation type.</p>
+<p id="elb_zq_bq_0002__en-us_topic_0109852827_p6875837143218">The value can be one of the following:</p>
+<ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul16838103943212"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li1318714714320"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b842352706113353">create</strong>: adds tags to the load balancer.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li98381139163211"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b842352706194852">delete</strong>: deletes tags from the load balancer.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_table16812991114447"></a><a name="en-us_topic_0109852827_en-us_topic_0094115925_table16812991114447"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_table16812991114447" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b84235270695528">tags</strong> parameter description</caption><thead align="left"><tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row870873114447"><th align="left" class="cellrowborder" valign="top" width="22.577742225777424%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p3431874114447">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.96830316968303%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p9546376114447"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b1540639098">Mandatory</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.468553144685531%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p35058962114447"><strong id="elb_zq_bq_0002__en-us_topic_0109852827_b2089844134">Type</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="45.98540145985402%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p21203656114447">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row39774612114447"><td class="cellrowborder" valign="top" width="22.577742225777424%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p518107114447">key</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.96830316968303%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p41966727114447">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.468553144685531%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p43861760114447">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.98540145985402%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p1395417582912">Specifies the tag key.</p>
+<ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul5708182422218"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li19708182418226">Cannot be left blank.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li8708122417228">Can contain a maximum of 36 characters.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li2070822414225">Can contain only the following character types:<ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul18708824152211"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li470882422219">Uppercase letters</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li170872412229">Lowercase letters</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li1370811246224">Digits</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li157081024172213">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li11709112414226">The tag key of a load balancer must be unique.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_row31404187114447"><td class="cellrowborder" valign="top" width="22.577742225777424%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p60711218114447">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.96830316968303%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p18661617114447">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.468553144685531%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_p35196033114447">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="45.98540145985402%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_bq_0002__en-us_topic_0109852827_p877212691013">Specifies the tag value.</p>
+<ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul17709124142210"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li1970982415225">Can contain a maximum of 43 characters.</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li270910242224">Can contain only the following character types:<ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul670952492214"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li7709524182210">Uppercase letters</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li2070962413226">Lowercase letters</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li15709122402215">Digits</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li187097243229">Special characters, including hyphens (-) and underscores (_)</li></ul>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4><p id="elb_zq_bq_0002__en-us_topic_0109852827_p1050241135115">None</p>
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_ul47148614114447"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li463845018711">Example request 1<pre class="screen" id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_screen14039231145644">POST https://{Endpoint}/v2.0/6a0de1c3-7d74-4f4a-b75e-e57135bd2b97/loadbalancers/7add33ad-11dc-4ab9-a50f-419703f13163/tags/action
+
+{
+    "action": "create", 
+    "tags": [
+        {
+            "key": "key1", 
+            "value": "value1"
+        }, 
+        {
+            "key": "key2", 
+            "value": "value2"
+        }
+    ]
+}</pre>
+</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li125026514212">Example request 2<pre class="screen" id="elb_zq_bq_0002__en-us_topic_0109852827_screen125021251172117">POST https://{Endpoint}/v2.0/6a0de1c3-7d74-4f4a-b75e-e57135bd2b97/loadbalancers/7add33ad-11dc-4ab9-a50f-419703f13163/tags/action
+
+{
+    "action": "delete", 
+    "tags": [
+        {
+            "key": "key1", 
+            "value": "value1"
+        }, 
+        {
+            "key": "key2", 
+            "value": "value2"
+        }
+    ]
+}</pre>
+</li></ul>
+
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_bq_0002__en-us_topic_0109852827_ul12992111634410"><li id="elb_zq_bq_0002__en-us_topic_0109852827_li0992416114413">Example response 1<p id="elb_zq_bq_0002__en-us_topic_0109852827_p11992191674416"><a name="elb_zq_bq_0002__en-us_topic_0109852827_li0992416114413"></a><a name="en-us_topic_0109852827_li0992416114413"></a>None</p>
+</li><li id="elb_zq_bq_0002__en-us_topic_0109852827_li4923831154416">Example response 2<p id="elb_zq_bq_0002__en-us_topic_0109852827_p17923531124413"><a name="elb_zq_bq_0002__en-us_topic_0109852827_li4923831154416"></a><a name="en-us_topic_0109852827_li4923831154416"></a>None</p>
+</li></ul>
+
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_bq_0002__en-us_topic_0109852827_en-us_topic_0094115925_en-us_topic_0082414419_p30557388112958">For details, see <a href="elb_zq_bq_0013.html#elb_zq_bq_0013">Status Codes</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_bq_0000.html">Tag</a>
+
+
+

@@ -1,0 +1,217 @@
+<a name="EN-US_TOPIC_0065962600"></a><a name="EN-US_TOPIC_0065962600"></a>
+
+<h1 class="topictitle1">Viewing Details of FPGA Images</h1>
+<div id="body1499692511539"><div class="section" id="EN-US_TOPIC_0065962600__section48834480211756"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065962600__p33970137211756">This API is used to view the details of the FPGA images of a tenant.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section30048492211756"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065962600__p53736847103512">GET /v1/{project_id}/cloudservers/fpga_image/detail?fpga_image_id={fpga_image_id}&amp;page={page}&amp;size={size}</p>
+<p id="EN-US_TOPIC_0065962600__p13657181052913"><a href="#EN-US_TOPIC_0065962600__table972014396283">Table 1</a> describes the parameters in the URI.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065962600__table972014396283"></a><a name="table972014396283"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065962600__table972014396283" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065962600__row18736639162810"><th align="left" class="cellrowborder" valign="top" width="16.98%" id="mcps1.3.2.4.2.4.1.1"><p id="EN-US_TOPIC_0065962600__p1873611398284">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.32%" id="mcps1.3.2.4.2.4.1.2"><p id="EN-US_TOPIC_0065962600__p13736113918287">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.7%" id="mcps1.3.2.4.2.4.1.3"><p id="EN-US_TOPIC_0065962600__p1736123982813">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065962600__row873613910283"><td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p127363398282">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p1573653913281">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.7%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p573610392287">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row104351048202211"><td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p20435134810224">fpga_image_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p114361048162214">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.7%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p134361248182213">Specifies the FPGA image ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row1273633912816"><td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p075111399287">page</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p575113399286">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.7%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p11751839102813">Specifies the number of pages in a pagination query.</p>
+<p id="EN-US_TOPIC_0065962600__p375133982819">The value of this parameter must meet the following requirements:</p>
+<ul id="EN-US_TOPIC_0065962600__ul5751239142816"><li id="EN-US_TOPIC_0065962600__li1075193952816">Must be a decimal integer.</li><li id="EN-US_TOPIC_0065962600__li275118394289">Ranges from 1 (inclusive) to 65,535 (exclusive).</li><li id="EN-US_TOPIC_0065962600__li5751939132817">Cannot contain <span class="parmvalue" id="EN-US_TOPIC_0065962600__parmvalue1012157220123616"><b>+</b></span>.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row4751539122812"><td class="cellrowborder" valign="top" width="16.98%" headers="mcps1.3.2.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p375115393284">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.2.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p2751639162811">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.7%" headers="mcps1.3.2.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p10751193912280">Specifies the maximum records displayed on a page in a pagination query.</p>
+<ul id="EN-US_TOPIC_0065962600__ul137519397282"><li id="EN-US_TOPIC_0065962600__li1975153982815">Must be a decimal integer.</li><li id="EN-US_TOPIC_0065962600__li197671339112813">Ranges from 1 (inclusive) to 100 (inclusive).</li><li id="EN-US_TOPIC_0065962600__li207671439132818">Cannot contain <span class="parmvalue" id="EN-US_TOPIC_0065962600__parmvalue690999489"><b>+</b></span>.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note" id="EN-US_TOPIC_0065962600__note5979114520286"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0065962600__ul120864213311"><li id="EN-US_TOPIC_0065962600__li10208042173318">Pagination query takes effect only if parameters <strong id="EN-US_TOPIC_0065962600__b842352706123810">page</strong> and <strong id="EN-US_TOPIC_0065962600__b842352706123813">size</strong> both have a value. If only one of them has a value, an error message indicating invalid parameter will be displayed.</li><li id="EN-US_TOPIC_0065962600__li16208104233317">If <strong id="EN-US_TOPIC_0065962600__b84235270641156">fpga_image_id</strong> is used, pagination query specified by <strong id="EN-US_TOPIC_0065962600__b147839609241244">page</strong> and <strong id="EN-US_TOPIC_0065962600__b65668073041244">size</strong> does not take effect.</li></ul>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section8276847211756"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065962600__p11592172272816">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section1847981211756"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065962600__p137542383298"><a href="#EN-US_TOPIC_0065962600__table41782128362">Table 2</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065962600__table41782128362"></a><a name="table41782128362"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065962600__table41782128362" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065962600__row17178181253615"><th align="left" class="cellrowborder" valign="top" width="17.86%" id="mcps1.3.4.3.2.4.1.1"><p id="EN-US_TOPIC_0065962600__p3178612173615">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.899999999999999%" id="mcps1.3.4.3.2.4.1.2"><p id="EN-US_TOPIC_0065962600__p2017861210364">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.24%" id="mcps1.3.4.3.2.4.1.3"><p id="EN-US_TOPIC_0065962600__p71791812113610">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065962600__row19882155510223"><td class="cellrowborder" valign="top" width="17.86%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p17883135513226">count</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.899999999999999%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p14248122614238">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.24%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p1388355518227">Specifies the number of FPGA images to be queried.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row124863092316"><td class="cellrowborder" valign="top" width="17.86%" headers="mcps1.3.4.3.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p14435168240">fpgaimages</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.899999999999999%" headers="mcps1.3.4.3.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__en-us_topic_0057972909_p28080649">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.24%" headers="mcps1.3.4.3.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p748690112311">Specifies details of FPGA images.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065962600__table41296006211756" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0065962600__b3500731184613">fpgaimages</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0065962600__row1990984211756"><th align="left" class="cellrowborder" valign="top" width="17.919999999999998%" id="mcps1.3.4.4.2.4.1.1"><p id="EN-US_TOPIC_0065962600__p15806308">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.719999999999999%" id="mcps1.3.4.4.2.4.1.2"><p id="EN-US_TOPIC_0065962600__p21995508">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.36%" id="mcps1.3.4.4.2.4.1.3"><p id="EN-US_TOPIC_0065962600__p36805753">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065962600__row43619055211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p17102613211756">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p50695788211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p49395919211756">Specifies the FPGA image ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row41382846211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p14594565211756">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p60068226211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p24580412211756">Specifies the FPGA image name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row2706776211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p12159451211756">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p31907576211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p30372637211756">Describes the FPGA image.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row16501990211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p16482479211756">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p29509334211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p63235550211311">Specifies the FPGA image status. Options:</p>
+<ul id="EN-US_TOPIC_0065962600__ul10437195973916"><li id="EN-US_TOPIC_0065962600__li124379597392"><strong id="EN-US_TOPIC_0065962600__b842352706155750">initialing</strong>: indicates that the task of creating an FPGA image is being initialized.</li><li id="EN-US_TOPIC_0065962600__li1272013284019"><strong id="EN-US_TOPIC_0065962600__b84235270615593">scheduling</strong>: indicates that the task of creating an FPGA image is waiting for scheduling.</li><li id="EN-US_TOPIC_0065962600__li20250177164018"><strong id="EN-US_TOPIC_0065962600__b84235270615561">creating</strong>: indicates that the FPGA image is being created.</li><li id="EN-US_TOPIC_0065962600__li63161214013"><strong>saving</strong>: indicates that the FPGA image file is being uploaded to the backend storage.</li><li id="EN-US_TOPIC_0065962600__li1733419141408"><strong id="EN-US_TOPIC_0065962600__b1413355573">deleting</strong>: indicates that the FPGA image is being deleted.</li><li id="EN-US_TOPIC_0065962600__li06821520174012"><strong id="EN-US_TOPIC_0065962600__b842352706155622">error</strong>: indicates that creating the FPGA image failed.</li><li id="EN-US_TOPIC_0065962600__li59525134010"><strong>active</strong>: indicates that the FPGA image is available for use.</li></ul>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row23208874211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p50294579211756">size</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p55007805211756">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p40832246211756">Specifies the size (MB) of the FPGA image file.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row6209341211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p63772911211756">createdAt</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p23403431211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p7571123314012">Specifies the time when the FPGA image was created.</p>
+<p id="EN-US_TOPIC_0065962600__p48706887211756">Coordinated Universal Time (UTC) time is used.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row3069902211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p56866436211756">protected</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p14992676211756">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p10022464211756">Specifies whether an FPGA image is protected.</p>
+<p id="EN-US_TOPIC_0065962600__p11704713203339">If an FPGA image is protected, it is associated with an image used to create ECSs and cannot be deleted.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row57042024211756"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p31688172211756">message</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p34157725211756">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p12786151213735">Specifies the FPGA image supplementation.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row9124165114747"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p859913114747">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p17931171520319">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p29151897114957">Specifies the FPGA image metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065962600__row1599674922420"><td class="cellrowborder" valign="top" width="17.919999999999998%" headers="mcps1.3.4.4.2.4.1.1 "><p id="EN-US_TOPIC_0065962600__p179961449132417">log_directory</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.719999999999999%" headers="mcps1.3.4.4.2.4.1.2 "><p id="EN-US_TOPIC_0065962600__p0996649122411">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.36%" headers="mcps1.3.4.4.2.4.1.3 "><p id="EN-US_TOPIC_0065962600__p59961849152415">Specifies the directory, in the format of "Bucket name:Directory", in which the log file for constructing the FPGA image is stored in OBS, for example, "obs-fpga:vu9p/log".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section10567103352712"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065962600__screen119511205371">GET https://{endpoint}/v1/{project_id}/cloudservers/fpga_image/detail</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section31303547211756"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0065962600__screen189001511549">{ 
+  "count": 2, 
+  "fpgaimages": [ 
+    { 
+      "id": "4010a32c5c7d7711015c81ac714c009d", 
+      "name": "FPGA001", 
+      "description": "fpga test", 
+      "status": "active", 
+      "size": 40, 
+      "createdAt": "2017-06-07 08:29:41", 
+      "protected": false, 
+      "message": null, 
+      "metadata": { 
+        "shell_type": "OCL", 
+        "shell_version": "1.0" 
+      },
+      "log_directory": "obs-fpga:vu9p/log"
+    }, 
+    { 
+      "id": "4010a32c5c7d7711015c813e69bd002c", 
+      "name": "FPGA002", 
+      "description": "fpga test", 
+      "status": "active", 
+      "size": 43, 
+      "createdAt": "2017-06-07 16:29:30", 
+      "protected": true, 
+      "message": null,
+      "metadata": { 
+        "shell_type": "OCL", 
+        "shell_version": "1.0" 
+      },
+      "log_directory": "obs-fpga:vu9p/log"
+    } 
+  ] 
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section3477250491225"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065962600__p6510945291225">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065962600__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0065962600__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0065962596.html">FPGA Logical File Management</a></div>
+</div>
+</div>
+

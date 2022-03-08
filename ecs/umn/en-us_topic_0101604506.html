@@ -1,0 +1,36 @@
+<a name="EN-US_TOPIC_0101604506"></a><a name="EN-US_TOPIC_0101604506"></a>
+
+<h1 class="topictitle1">How Can I Obtain the MAC Address of My <span id="text4516741164419">ECS</span>?</h1>
+<div id="body8662426"><p id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_p416815428221">This section describes how to obtain the MAC address of an <span id="EN-US_TOPIC_0101604506__text3501205902019">ECS</span>.</p>
+<div class="note" id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_note1524913174234"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_p132491117142311">The MAC address of an <span id="EN-US_TOPIC_0101604506__text147764412120">ECS</span> cannot be changed.</p>
+</div></div>
+<div class="section" id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_section2041123984615"><h4 class="sectiontitle">Linux (CentOS 6)</h4><ol id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_ol1201554152216"><li id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_li1903543225">Log in to the Linux <span id="EN-US_TOPIC_0101604506__text139485842118">ECS</span>.</li><li id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_li190105418223">Run the following command to view the MAC address of the <span id="EN-US_TOPIC_0101604506__text1270141312216">ECS</span>:<p id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_p40155416223"><strong id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_b150155418224">ifconfig</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604506__en-us_topic_0167240183_fig5947759164518"><span class="figcap"><b>Figure 1 </b>Obtaining the MAC address</span><br><span><img id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_image16015413225" src="en-us_image_0121682272.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0101604506__section42321254112911"><h4 class="sectiontitle">Linux (CentOS 7)</h4><ol id="EN-US_TOPIC_0101604506__ol16357963308"><li id="EN-US_TOPIC_0101604506__li193574616309">Log in to the Linux <span id="EN-US_TOPIC_0101604506__text1963715207217">ECS</span>.</li><li id="EN-US_TOPIC_0101604506__li83576683013">Run the following command to view the MAC address of the <span id="EN-US_TOPIC_0101604506__text18518024102111">ECS</span>:<p id="EN-US_TOPIC_0101604506__p1357176193019"><strong id="EN-US_TOPIC_0101604506__b935714613012">ifconfig</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604506__fig469484533215"><span class="figcap"><b>Figure 2 </b>Obtaining the NIC information</span><br><span><img id="EN-US_TOPIC_0101604506__image1931153012345" src="en-us_image_0268824628.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0101604506__li35911473348">Run the following command to view the MAC address of NIC <strong id="EN-US_TOPIC_0101604506__b392576132112">eth0</strong>:<p id="EN-US_TOPIC_0101604506__p12411938153510"><strong id="EN-US_TOPIC_0101604506__b272414117355">ifconfig eth0 |egrep "ether"</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604506__fig19751114377"><span class="figcap"><b>Figure 3 </b>Obtaining the MAC address of eth0</span><br><span><img id="EN-US_TOPIC_0101604506__image1075419564361" src="en-us_image_0268825353.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0101604506__li134750116376">Obtain the returned MAC address.<p id="EN-US_TOPIC_0101604506__p1683383023710"><a name="EN-US_TOPIC_0101604506__li134750116376"></a><a name="li134750116376"></a><strong id="EN-US_TOPIC_0101604506__b86741528153713">ifconfig eth0 |egrep "ether" |awk '{print $2}'</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0101604506__fig92621536113716"><span class="figcap"><b>Figure 4 </b>Obtaining the MAC address of eth0</span><br><span><img id="EN-US_TOPIC_0101604506__image174781147183815" src="en-us_image_0268826092.png" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_section1286812195513"><h4 class="sectiontitle">Windows</h4><ol id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_ol1017105972213"><li id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_li141765919227">Press <strong id="EN-US_TOPIC_0101604506__b84235270601135">Win+R</strong> to start the <strong id="EN-US_TOPIC_0101604506__b84235270601228">Run</strong> text box.</li><li id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_li117105942212">Enter <strong id="EN-US_TOPIC_0101604506__b84235270614130">cmd</strong> and click <strong id="EN-US_TOPIC_0101604506__b84235270614137">OK</strong>.</li><li id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_li817205902216">Run the following command to view the MAC address of the <span id="EN-US_TOPIC_0101604506__text149251636152112">ECS</span>:<p id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_p121715594229"><strong id="EN-US_TOPIC_0101604506__en-us_topic_0096287813_b16171959182214">ipconfig /all</strong></p>
+<p id="EN-US_TOPIC_0101604506__p1639800141812"><span><img id="EN-US_TOPIC_0101604506__image128671806188" src="en-us_image_0188029785.png" title="Click to enlarge" class="imgResize"></span></p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

@@ -1,0 +1,18 @@
+<a name="EN-US_TOPIC_0018078505"></a><a name="EN-US_TOPIC_0018078505"></a>
+
+<h1 class="topictitle1">Why Can I Remotely Access an ECS But Cannot Ping It?</h1>
+<div id="body1437566721410"><div class="section" id="EN-US_TOPIC_0018078505__section112601346131"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0018078505__p4890913982">You can remotely access an ECS but when you ping the EIP bound to the ECS, the ping operation fails.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0018078505__section20883121316810"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0018078505__p178971413284">A desired inbound rule is not added for the security group, and ICMP is not enabled.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0018078505__section77204542"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0018078505__ol11273115135112"><li id="EN-US_TOPIC_0018078505__li3490190117228">Log in to the management console.</li><li id="EN-US_TOPIC_0018078505__li17328012195115">Under <strong id="EN-US_TOPIC_0018078505__b19496122155710"><span id="EN-US_TOPIC_0018078505__text0490921165711">Computing</span></strong>, click <strong id="EN-US_TOPIC_0018078505__b949772155717">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0018078505__li28629203528">On the <strong id="EN-US_TOPIC_0018078505__b3261857153312">Elastic Cloud Server</strong> page, click the name of the target <span id="EN-US_TOPIC_0018078505__text16404315310">ECS</span>.<p id="EN-US_TOPIC_0018078505__p66841434195314">The page providing details about the <span id="EN-US_TOPIC_0018078505__text172120593411">ECS</span> is displayed.</p>
+</li><li id="EN-US_TOPIC_0018078505__li16197173213533">Click the <strong id="EN-US_TOPIC_0018078505__b842352706145555">Security Groups</strong> tab, expand the information of the security group, and click the security group ID.</li><li id="EN-US_TOPIC_0018078505__li18544194410552">On the <strong id="EN-US_TOPIC_0018078505__b842352706111511">Inbound Rules</strong> tab of the <strong id="EN-US_TOPIC_0018078505__b842352706111530">Security Group</strong> page, click <strong id="EN-US_TOPIC_0018078505__b842352706111538">Add Rule</strong>.</li><li id="EN-US_TOPIC_0018078505__li671705882116">Add an inbound rule for the security group and enable ICMP.<ul id="EN-US_TOPIC_0018078505__ul146914461233"><li id="EN-US_TOPIC_0018078505__li10691174682318"><strong id="EN-US_TOPIC_0018078505__b8423527061048">Protocol</strong>: <strong id="EN-US_TOPIC_0018078505__b8423527061052">ICMP</strong></li><li id="EN-US_TOPIC_0018078505__li146911946202310"><strong id="EN-US_TOPIC_0018078505__b8423527061130">Source</strong>: <strong id="EN-US_TOPIC_0018078505__b842352706111513">IP address</strong> <strong id="EN-US_TOPIC_0018078505__b842352706111524">0.0.0.0/0</strong></li></ul>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+

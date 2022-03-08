@@ -1,0 +1,542 @@
+<a name="elb_zq_hz_0001"></a><a name="elb_zq_hz_0001"></a>
+
+<h1 class="topictitle1">Adding a Backend Server Group</h1>
+<h4 class="sectiontitle">Function</h4><p class="msonormal" id="elb_zq_hz_0001__en-us_topic_0096561549_p43888858">This API is used to add a backend server group. After multiple backend servers are added to a backend server group, requests are distributed among backend servers based on the load balancing algorithm configured for the backend server group and the weight set for each backend server.</p>
+
+<h4 class="sectiontitle">Constraints</h4><ul id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_ul55793310123418"><li id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_li22851816123418">Backend server groups using different protocols cannot be added to the same listener.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_li63896208123418">If parameter <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b842352706165245">session-persistence</strong> is configured, parameter <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b84235270616532">cookie_name</strong> is available only when the value of <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b842352706165328">type</strong> is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b842352706165333">APP_COOKIE</strong>.</li></ul>
+
+<h4 class="sectiontitle">URI</h4><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1088615815011">POST /v2.0/lbaas/pools</p>
+
+<h4 class="sectiontitle">Request</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_table36216906" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_row55337852"><th align="left" class="cellrowborder" valign="top" width="21.357864213578644%" id="mcps1.3.4.2.2.5.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p53181042">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.1985801419858%" id="mcps1.3.4.2.2.5.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p21836431">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.108689131086889%" id="mcps1.3.4.2.2.5.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p12697152">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.334866513348665%" id="mcps1.3.4.2.2.5.1.4"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p204001542132510">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_row58513871"><td class="cellrowborder" valign="top" width="21.357864213578644%" headers="mcps1.3.4.2.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p42003087">pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.1985801419858%" headers="mcps1.3.4.2.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p33262233">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.108689131086889%" headers="mcps1.3.4.2.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p46806896">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.334866513348665%" headers="mcps1.3.4.2.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p9886387">Specifies the backend server group. For details, see <a href="#elb_zq_hz_0001__en-us_topic_0096561549_table1263319159">Table 2</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hz_0001__en-us_topic_0096561549_table1263319159"></a><a name="en-us_topic_0096561549_table1263319159"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table1263319159" frame="border" border="1" rules="all"><caption><b>Table 2 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b19767174972320">pool</strong> parameter description </caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row148461091857"><th align="left" class="cellrowborder" valign="top" width="19.98%" id="mcps1.3.4.3.2.5.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p208461391457">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.11%" id="mcps1.3.4.3.2.5.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p9846398519">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.32%" id="mcps1.3.4.3.2.5.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6846791456">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="48.59%" id="mcps1.3.4.3.2.5.1.4"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p44213134276">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1984619916516"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p88461695515">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1084618910518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p188466919514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p11846891258">Specifies the ID of the project where the backend server group is used.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p8222164914610"></p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p1965918447911">The value must be the same as the value of <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b18165148016">project_id</strong> in the token.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p1264211013318">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row20846149157"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p284639456">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6846189858">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p16846797514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p208461591857">Specifies the name of the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p25162146396">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row12847149652"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p884715912511">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p11847991259">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p48471091558">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p108472913513">Provides supplementary information about the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p2726516103912">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row9847491854"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1847159356">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p184759753">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1984759551">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p121005279227">Specifies the protocol that the backend server group uses to receive requests.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p187979311223">TCP, UDP, and HTTP are supported.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p109081234192220">When a backend server group is associated with a listener, the relationships between the protocol used by the listener and the protocol of the backend server group are as follows:</p>
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul118471640122214"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li184894042213">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b104827316296">UDP</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b148233172911">UDP</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li198611242162210">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b55824518295">TCP</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b125821855294">TCP</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1867017444224">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b7390280296">HTTP</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b113912812297">TERMINATED_HTTPS</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b639111832912">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row8847191155"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p28471891959">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p2847491552">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p138471197510">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p14750174732220">Specifies the load balancing algorithm of the backend server group.</p>
+The value can be one of the following:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul142123811119"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li164563820118"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b935711055713">ROUND_ROBIN</strong>: indicates the weighted round robin algorithm.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li14823814116"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b61874358576">LEAST_CONNECTIONS</strong>: indicates the weighted least connections algorithm.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1151103831117"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b9160652165718">SOURCE_IP</strong>: indicates the source IP hash algorithm.</li></ul>
+
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p45737526223">When the value is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1588125814818">SOURCE_IP</strong>, the weights of backend servers in the server group are invalid.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1184711916511"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p158471791356">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p284779659">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p684710918519">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1265335414227">Specifies the administrative status of the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p136141610163013">This parameter is reserved, and the default value is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_b7386530455">true</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row28477917512"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1484789054">listener_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p284718915510">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1685120531266">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p73704032312">Specifies the ID of the listener associated with the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p534811219232">Specify either <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b81508491193">listener_id</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1615118491398">loadbalancer_id</strong>, or both of them.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row7849191658"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p3849391351">loadbalancer_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p08491096510">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p241919557261">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p19931853231">Specifies the ID of the load balancer associated with the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p1489712782310">Specify either <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b622113112395">listener_id</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1323363143911">loadbalancer_id</strong>, or both of them.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row14849891059"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.4.3.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p158491098517">session_persistence</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.11%" headers="mcps1.3.4.3.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p118491092053">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.32%" headers="mcps1.3.4.3.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p884919555">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="48.59%" headers="mcps1.3.4.3.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p15990791234">Specifies the sticky session timeout duration in minutes. For details, see <a href="#elb_zq_hz_0001__en-us_topic_0096561549_table168044271458">Table 3</a>.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p17157712162320">If the value is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1526414918108">null</strong>, the sticky session feature is disabled.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hz_0001__en-us_topic_0096561549_table168044271458"></a><a name="en-us_topic_0096561549_table168044271458"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table168044271458" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b783298355">session_persistence</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row18875271455"><th align="left" class="cellrowborder" valign="top" width="20.217978202179783%" id="mcps1.3.4.4.2.5.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6887192711513">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.348365163483653%" id="mcps1.3.4.4.2.5.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p198874276517">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.18858114188581%" id="mcps1.3.4.4.2.5.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p168878271513">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="49.24507549245076%" id="mcps1.3.4.4.2.5.1.4"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p08872027454">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row588772720514"><td class="cellrowborder" valign="top" width="20.217978202179783%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6887172711519">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.348365163483653%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1688782715511">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.18858114188581%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p588710276512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.24507549245076%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p19681233142510">Specifies the sticky session type.</p>
+The value can be one of the following:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul96910511656"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li96912549510"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b95828597720">SOURCE_IP</strong>: Requests are distributed based on the client's IP address. Requests from the same IP address are sent to the same backend server.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li143361298116"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b68641331082">HTTP_COOKIE</strong>: When the client sends a request for the first time, the load balancer automatically generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to the backend server that processes the first request.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1132492271217"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b16575810819">APP_COOKIE</strong>: When the client sends a request for the first time, the backend server that receives the request generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to this backend server.</li></ul>
+
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p143821832101217">When the protocol of the backend server group is TCP, only <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1748011881415">SOURCE_IP</strong> takes effect. When the protocol of the backend server group is HTTP, only <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b103532318141">HTTP_COOKIE</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b13969626141412">APP_COOKIE</strong> takes effect.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1188716271451"><td class="cellrowborder" valign="top" width="20.217978202179783%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p158871927855">cookie_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.348365163483653%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1288742719514">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.18858114188581%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p08876276516">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.24507549245076%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p74201830102516">Specifies the cookie name.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p47902276252">This parameter is mandatory when the sticky session type is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1655012542119">APP_COOKIE</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row5123330103411"><td class="cellrowborder" valign="top" width="20.217978202179783%" headers="mcps1.3.4.4.2.5.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p10835205182919">persistence_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.348365163483653%" headers="mcps1.3.4.4.2.5.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p3836195192911">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.18858114188581%" headers="mcps1.3.4.4.2.5.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1883514502914">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="49.24507549245076%" headers="mcps1.3.4.4.2.5.1.4 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p79347431251">Specifies the sticky session timeout duration in minutes.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p1865846122518">This parameter is invalid when <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b335872616125">type</strong> is set to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1636092617122">APP_COOKIE</strong>.</p>
+The value range varies depending on the protocol of the backend server group:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul14784431191918"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1336845404615">When the protocol of the backend server group is TCP or UDP, the value ranges from <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b14694114910134">1</strong> to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b14699124919134">60</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li114611030184710">When the protocol of the backend server group is HTTP or HTTPS, the value ranges from <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1132211171410">1</strong> to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b193223181417">1440</strong>.</li></ul>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Response</h4>
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_table26528280" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_row4346180"><th align="left" class="cellrowborder" valign="top" width="23.169999999999998%" id="mcps1.3.5.2.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p16496329">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.61%" id="mcps1.3.5.2.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p61134295">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.22%" id="mcps1.3.5.2.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p59539371">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_row57959746"><td class="cellrowborder" valign="top" width="23.169999999999998%" headers="mcps1.3.5.2.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p64227841">pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.61%" headers="mcps1.3.5.2.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p35072657">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.22%" headers="mcps1.3.5.2.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0049139649_p62521411">Specifies the backend server group. For details, see <a href="#elb_zq_hz_0001__en-us_topic_0096561549_table549816561954">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hz_0001__en-us_topic_0096561549_table549816561954"></a><a name="en-us_topic_0096561549_table549816561954"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table549816561954" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b390964712">pools</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row129412056850"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.3.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p8941556758">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.3.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p5941205616511">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="66%" id="mcps1.3.5.3.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p19941155610513">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1994112561351"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6941956051">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6395118132915">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p394185614510">Specifies the ID of the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row694135617510"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p18941356653">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p6942145615514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p133818413522">Specifies the ID of the project where the backend server group is used.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p17033816399">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row189421561755"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p99422562513">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p169421456857">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p894213562510">Specifies the name of the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p11736124214399">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row7942165615511"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p694235612516">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p99423564514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p17942115615520">Provides supplementary information about the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p12272194573912">The value contains a maximum of 255 characters.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row6942115618510"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p129428561458">protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p209421556751">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p12345548148">Specifies the protocol that the backend server group uses to receive requests.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p205871558161412">TCP, UDP, and HTTP are supported.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p12123121610154">When a backend server group is associated with a listener, the relationships between the protocol used by the listener and the protocol of the backend server group are as follows:</p>
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul162192018201516"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li182191187158">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b379817447">UDP</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b477261583">UDP</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li18967142001519">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b2097143325">TCP</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1703817181">TCP</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li587092441512">When the protocol used by the listener is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b413593817">HTTP</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1707544441">TERMINATED_HTTPS</strong>, the protocol of the backend server group must be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b560124993">HTTP</strong>.</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row694235612512"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p199426561657">lb_algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p149431356051">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1190711287157">Specifies the load balancing algorithm of the backend server group.</p>
+The value can be one of the following:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul1064992814235"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li206513287239"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1794111372911">ROUND_ROBIN</strong>: indicates the weighted round robin algorithm.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li965313286237"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b16960191417295">LEAST_CONNECTIONS</strong>: indicates the weighted least connections algorithm.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1165702842316"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b8945715182910">SOURCE_IP</strong>: indicates the source IP hash algorithm. When the value is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b3577112981412">SOURCE_IP</strong>, the weights of backend servers in the server group are invalid.</li></ul>
+
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1194465616515"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p14944256556">members</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p12944656151">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p139440561151">Lists the IDs of backend servers in the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row159441356956"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p17944155618514">healthmonitor_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p10245320142912">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p159441556659">Specifies the ID of the health check configured for the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row49441756554"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1594419562516">admin_state_up</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p5944135616511">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p114391647141511">Specifies the administrative status of the backend server group.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p17626191241414">This parameter is reserved. The value can be <strong id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_b165949352520">true</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_b76047354513">false</strong>.</p>
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul19626181281410"><li id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_li1786915015393"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_b1178053714514">true</strong>: Enabled</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_li1031815323916"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0141008273_b1524614510615">false</strong>: Disabled</li></ul>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row0944135615511"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p15944165613512">listeners</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p59448565512">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p12944125619511">Lists the IDs of listeners associated with the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row494419564513"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p594495614516">loadbalancers</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p694413561519">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p189451656658">Lists the IDs of load balancers associated with the backend server group.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row209451156154"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.3.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p16945185612516">session_persistence</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.3.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p109451564513">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.5.3.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p18458175215155">Specifies whether to enable sticky sessions. For details, see <a href="#elb_zq_hz_0001__en-us_topic_0096561549_table1659974218492">Table 9</a>.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p166781654171513">Once sticky session are enabled, requests from the same client are sent to the same backend server during the session.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p19438135717159">When sticky sessions are disabled, the value is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b11162048195216">null</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table17641175071912" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b5199253122014">members</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row17642135018199"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.5.4.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p564295010190">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.5.4.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p126421250191912">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.5.4.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p11642205012199">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row664275021919"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.5.4.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p464219506196">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.5.4.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p156423501195">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.5.4.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p164210502197">Specifies the ID of the associated backend server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table672914459541" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b138465752014">listeners</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row4729345175415"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.5.5.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p11729194505417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.5.5.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1272917457543">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.5.5.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p10729345185415">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row7729124519544"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.5.5.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p47291451542">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.5.5.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p172954519544">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.5.5.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p97291745165416">Specifies the ID of the associated backend server group.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table13106184745416" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1137917127218">loadbalancers</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row101064477540"><th align="left" class="cellrowborder" valign="top" width="25.290000000000003%" id="mcps1.3.5.6.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p20106194715549">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.13%" id="mcps1.3.5.6.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p9106447115412">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.580000000000005%" id="mcps1.3.5.6.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p41061147105415">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row1110684720544"><td class="cellrowborder" valign="top" width="25.290000000000003%" headers="mcps1.3.5.6.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p141068470547">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.13%" headers="mcps1.3.5.6.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1110614745415">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.580000000000005%" headers="mcps1.3.5.6.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1810694735420">Specifies the ID of the associated load balancer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<a name="elb_zq_hz_0001__en-us_topic_0096561549_table1659974218492"></a><a name="en-us_topic_0096561549_table1659974218492"></a><table cellpadding="4" cellspacing="0" summary="" id="elb_zq_hz_0001__en-us_topic_0096561549_table1659974218492" frame="border" border="1" rules="all"><caption><b>Table 9 </b><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b897659784">session_persistence</strong> parameter description</caption><thead align="left"><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row12652114216495"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.7.2.4.1.1"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p8652134218493">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.7.2.4.1.2"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p965284214496">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.5.7.2.4.1.3"><p id="elb_zq_hz_0001__en-us_topic_0096561549_p3652164264914">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="elb_zq_hz_0001__en-us_topic_0096561549_row16652114264914"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p106528426495">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p665216429491">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1082720181618">Specifies the sticky session type.</p>
+The value can be one of the following:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul258091011289"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li175822109282"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b13160219163613">SOURCE_IP</strong>: Requests are distributed based on the client's IP address. Requests from the same IP address are sent to the same backend server.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1058512100288"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b13123122818366">HTTP_COOKIE</strong>: When the client sends a request for the first time, the load balancer automatically generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to the backend server that processes the first request.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1858851072810"><strong id="elb_zq_hz_0001__en-us_topic_0096561549_b9757628366">APP_COOKIE</strong>: When the client sends a request for the first time, the backend server that receives the request generates a cookie and inserts the cookie into the response message. Subsequent requests are sent to this backend server.</li></ul>
+
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p1382521641612">When the protocol of the backend server group is TCP, only <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b9575159612">SOURCE_IP</strong> takes effect. When the protocol of the backend server group is HTTP, only <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1758181519614">HTTP_COOKIE</strong> or <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b45814151266">APP_COOKIE</strong> takes effect.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row765217429490"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p26521442114916">cookie_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p16653174214493">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1184122312164">Specifies the cookie name.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p8672254169">This parameter is mandatory when the sticky session type is <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b19041396">APP_COOKIE</strong>.</p>
+</td>
+</tr>
+<tr id="elb_zq_hz_0001__en-us_topic_0096561549_row268634152316"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.7.2.4.1.1 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p1190604118422">persistence_timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.7.2.4.1.2 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p19102413425">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.5.7.2.4.1.3 "><p id="elb_zq_hz_0001__en-us_topic_0096561549_p31964815179">Specifies the sticky session timeout duration in minutes.</p>
+<p id="elb_zq_hz_0001__en-us_topic_0096561549_p18281115101717">This parameter is invalid when <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b20486547017">type</strong> is set to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b7485541101">APP_COOKIE</strong>.</p>
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul460616103285"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1615191052813">Optional value ranges are as follows:<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul19618201052818"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li18619151018281">When the protocol of the backend server group is TCP or UDP, the value ranges from <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1218829301">1</strong> to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b780458296">60</strong>.</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li7622510192811">When the protocol of the backend server group is HTTP or HTTPS, the value ranges from <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b452303439">1</strong> to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b1902239440">1440</strong>.</li></ul>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 class="sectiontitle">Example Request</h4><ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul1435714151293"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li183571915172912">Example request 1: Adding a backend server group with the sticky session feature disabled<pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen1925810295299">POST https://{Endpoint}/v2.0/lbaas/pools 
+
+{
+    "pool": {
+        "lb_algorithm":"ROUND_ROBIN",
+        "loadbalancer_id": "63ad9dfe-4750-479f-9630-ada43ccc8117",
+        "protocol":"HTTP"
+    }
+}</pre>
+</li></ul>
+
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul1958074319288"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li0557164153417">Example request 2: Adding an HTTP backend server group with the value of <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b149768119544">type</strong> set to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b19977121119547">APP_COOKIE</strong><pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen234241910327">POST https://{Endpoint}/v2.0/lbaas/pools 
+
+{ 
+  "pool": { 
+    "lb_algorithm": "ROUND_ROBIN", 
+    "listener_id": "370fb112-e920-486a-b051-1d0d30704dd3", 
+    "protocol": "HTTP", 
+    "session_persistence": { 
+      "cookie_name": "my_cookie", 
+      "type": "APP_COOKIE", 
+      "persistence_timeout": 1 
+    }, 
+    "admin_state_up": true 
+  } 
+}</pre>
+</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li169655116356">Example request 3: Adding an HTTP backend server group with the value of <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b44884643011">type</strong> set to <strong id="elb_zq_hz_0001__en-us_topic_0096561549_b74891063305">HTTP_COOKIE</strong><pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen7702208125017">POST https://{Endpoint}/v2.0/lbaas/pools 
+
+{
+    "pool": {
+        "lb_algorithm":"ROUND_ROBIN",
+        "loadbalancer_id": "63ad9dfe-4750-479f-9630-ada43ccc8117",
+        "protocol":"HTTP",
+        "session_persistence":{
+        	"type":"HTTP_COOKIE"
+        }
+    }
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Example Response</h4><ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul168664919490"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li115591917343">Example response 1<pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen955719103417">{
+    "pool": {
+        "lb_algorithm": "ROUND_ROBIN",
+        "protocol": "HTTP",
+        "description": "",
+        "admin_state_up": true,
+        "loadbalancers": [
+            {
+                "id": "63ad9dfe-4750-479f-9630-ada43ccc8117"
+            }
+        ],
+        "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+        "session_persistence": null,
+        "healthmonitor_id": null,
+        "listeners": [],
+        "members": [],
+        "id": "4e496951-befb-47bf-9573-c1cd11825c07",
+        "name": ""
+    }
+}</pre>
+</li></ul>
+
+<ul id="elb_zq_hz_0001__en-us_topic_0096561549_ul8551319193414"><li id="elb_zq_hz_0001__en-us_topic_0096561549_li1156141915343">Example response 2<pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen105681913342">{ 
+  "pool": { 
+    "lb_algorithm": "ROUND_ROBIN", 
+    "protocol": "HTTP", 
+    "description": "", 
+    "admin_state_up": true, 
+    "loadbalancers": [ 
+      { 
+        "id": "6b041b9e-976b-40ba-b075-375be6110b53" 
+      } 
+    ], 
+    "tenant_id": "145483a5107745e9b3d80f956713e6a3", 
+ 
+    "session_persistence": { 
+      "cookie_name": "my_cookie", 
+      "type": "APP_COOKIE", 
+      "persistence_timeout": 1 
+    }, 
+    "healthmonitor_id": null, 
+    "listeners": [ 
+      { 
+        "id": "370fb112-e920-486a-b051-1d0d30704dd3" 
+      } 
+    ], 
+    "members": [ 
+ 
+    ], 
+    "id": "307f8968-9474-4d0c-8434-66be09dabcc1", 
+    "name": "" 
+  } 
+} </pre>
+</li><li id="elb_zq_hz_0001__en-us_topic_0096561549_li7561319123414">Example response 3<pre class="screen" id="elb_zq_hz_0001__en-us_topic_0096561549_screen1457319163417">{
+    "pool": {
+        "lb_algorithm": "ROUND_ROBIN",
+        "protocol": "HTTP",
+        "description": "",
+        "admin_state_up": true,
+        "loadbalancers": [
+            {
+                "id": "63ad9dfe-4750-479f-9630-ada43ccc8117"
+            }
+        ],
+        "tenant_id": "601240b9c5c94059b63d484c92cfe308",
+        "session_persistence": {
+            "persistence_timeout": 1440,
+            "cookie_name": null,
+            "type": "HTTP_COOKIE"
+        },
+        "healthmonitor_id": null,
+        "listeners": [],
+        "members": [],
+        "id": "d46eab56-d76b-4cd3-8952-3c3c4cf113aa",
+        "name": ""
+    }
+}</pre>
+</li></ul>
+<h4 class="sectiontitle">Status Code</h4><p id="elb_zq_hz_0001__en-us_topic_0096561549_en-us_topic_0096561531_en-us_topic_0049139631_p12358762">For details, see <a href="elb_gc_0002.html">HTTP Status Codes of Shared Load Balancers</a>.</p>
+
+
+
+
+<strong>Parent topic:</strong> <a href="elb_zq_hz_0000.html">Backend Server Group</a>
+
+
+

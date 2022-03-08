@@ -1,0 +1,80 @@
+<a name="EN-US_TOPIC_0065817690"></a><a name="EN-US_TOPIC_0065817690"></a>
+
+<h1 class="topictitle1">Locking an <span id="text020192254519">ECS</span></h1>
+<div id="body1499652824860"><div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section39224329"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p61116506">This API is used to lock an <span id="EN-US_TOPIC_0065817690__text142612567564">ECS</span>.</p>
+<p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p14911181711169">You are only allowed to lock your own ECSs. After <span id="EN-US_TOPIC_0065817690__text493975811562">ECS</span>s are locked, you will not be able to perform management operations on them, including life cycle management, status management, NIC management, disk management, and password management.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section17474649"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p17816132418199">POST /v2.1/{project_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0065817690__p1688356192817">POST /v2/{project_id}/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0065817690__p114859644310"><a href="#EN-US_TOPIC_0065817690__en-us_topic_0057973175_table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817690__en-us_topic_0057973175_table32475667"></a><a name="en-us_topic_0057973175_table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_row44937496"><th align="left" class="cellrowborder" valign="top" width="22.24%" id="mcps1.3.2.4.2.2.4.1.1"><p id="EN-US_TOPIC_0065817690__p5187119">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.87%" id="mcps1.3.2.4.2.2.4.1.2"><p id="EN-US_TOPIC_0065817690__p17503500">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.88999999999999%" id="mcps1.3.2.4.2.2.4.1.3"><p id="EN-US_TOPIC_0065817690__p8497414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_row1664874"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817690__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_row41565035"><td class="cellrowborder" valign="top" width="22.24%" headers="mcps1.3.2.4.2.2.4.1.1 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p11324657">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.87%" headers="mcps1.3.2.4.2.2.4.1.2 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p44882061">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.88999999999999%" headers="mcps1.3.2.4.2.2.4.1.3 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p11568292">Specifies the <span id="EN-US_TOPIC_0065817690__text2735112635618">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section55444361"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0065817690__p669215884717"><a href="#EN-US_TOPIC_0065817690__en-us_topic_0057973175_table18228066">Table 2</a> describes the request parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0065817690__en-us_topic_0057973175_table18228066"></a><a name="en-us_topic_0057973175_table18228066"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_table18228066" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_row66497515"><th align="left" class="cellrowborder" valign="top" width="21.240000000000002%" id="mcps1.3.3.3.2.5.1.1"><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p17589653">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.93%" id="mcps1.3.3.3.2.5.1.2"><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p15475779">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22.56%" id="mcps1.3.3.3.2.5.1.3"><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p45578590">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.269999999999996%" id="mcps1.3.3.3.2.5.1.4"><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p878285">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_row4032249"><td class="cellrowborder" valign="top" width="21.240000000000002%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p58176713">lock</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.93%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p14693285">Null</p>
+</td>
+<td class="cellrowborder" valign="top" width="22.56%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p49305462">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.269999999999996%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p34319524">Locks an <span id="EN-US_TOPIC_0065817690__text197051929145619">ECS</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section7967191653319"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_p1596821613332">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section1296841643314"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0065817690__screen51724365216">POST https://{endpoint}/v2/{project_id}/servers/{server_id}/action
+POST https://{endpoint}/v2.1/{project_id}/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_screen3475423117715">{
+    "lock": null
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__section243517360410"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0065817690__p78881840048">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_section40414779"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0065817690__en-us_topic_0057973175_en-us_topic_0020212652_p5882489">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0124385016.html">Status Management</a></div>
+</div>
+</div>
+

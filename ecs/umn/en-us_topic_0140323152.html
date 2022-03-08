@@ -1,0 +1,244 @@
+<a name="EN-US_TOPIC_0140323152"></a><a name="EN-US_TOPIC_0140323152"></a>
+
+<h1 class="topictitle1">Security Group Configuration Examples</h1>
+<div id="body8662426"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1751311138341">Common security group configuration examples are as follows: The following examples allow all outgoing data packets by default and only describe how to configure the inbound rules of a security group.</p>
+<ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul713553810351"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li12136538133510"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section14197522283">Enabling ECSs in Different Security Groups to Communicate with Each Other Through an Internal Network</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1473742010350"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section17693183118306">Enabling Specified IP Addresses to Remotely Access ECSs in a Security Group</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li8110102993512"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section115069253338">Remotely Connecting to Linux ECSs Using SSH</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1474133817354"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section168046312349">Remotely Connecting to Windows ECSs Using RDP</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li196501546103513"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section34721049193411">Enabling Communication Between ECSs</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li841555143515"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section1517991516357">Hosting a Website on ECSs</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1668819214369"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section2910346123520">Enabling an ECS to Function as a DNS Server</a></li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li161287417362"><a href="#EN-US_TOPIC_0140323152__en-us_topic_0118534011_section5964121693610">Uploading or Downloading Files Using FTP</a></li></ul>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section14197522283"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section14197522283"></a><a name="en-us_topic_0118534011_section14197522283"></a><h4 class="sectiontitle">Enabling ECSs in Different Security Groups to Communicate with Each Other Through an Internal Network</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul21899044185846"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li40497788185850">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4547009185855"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li40497788185850"></a><a name="en-us_topic_0118534011_li40497788185850"></a>Resources on an ECS in a security group need to be copied to an ECS associated with another security group. The two ECSs are in the same VPC. We recommend that you enable private network communication between the ECSs and then copy the resources.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li47936438185859">Security group configuration:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p405492291909"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li47936438185859"></a><a name="en-us_topic_0118534011_li47936438185859"></a>Within a given VPC, ECSs in the same security group can communicate with one another by default. However, ECSs in different security groups cannot communicate with each other by default. To enable these ECSs to communicate with each other, you need to add certain security group rules.</p>
+<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2072730185936">You can add an inbound rule to the security groups containing the ECSs to allow access from ECSs in the other security group. The required rule is as follows.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table854766319358" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row2051403019358"><th align="left" class="cellrowborder" valign="top" width="12.400000000000002%" id="mcps1.3.3.2.2.3.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p3928016319358"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_en-us_topic_0118646266_en-us_topic_0118534005_b13723751135618">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="32.43000000000001%" id="mcps1.3.3.2.2.3.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p5102371419358"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b14553203018450">Protocol/Application</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.810000000000002%" id="mcps1.3.3.2.2.3.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2415644494621"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1471367356">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30.360000000000003%" id="mcps1.3.3.2.2.3.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1911210519358"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1382772979">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row3779122419358"><td class="cellrowborder" valign="top" width="12.400000000000002%" headers="mcps1.3.3.2.2.3.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4808290419358">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.43000000000001%" headers="mcps1.3.3.2.2.3.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4119033619358">Used for communication through an internal network</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.810000000000002%" headers="mcps1.3.3.2.2.3.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4640703694621">Port or port range</p>
+</td>
+<td class="cellrowborder" valign="top" width="30.360000000000003%" headers="mcps1.3.3.2.2.3.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p6027368919358">ID of another security group</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section17693183118306"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section17693183118306"></a><a name="en-us_topic_0118534011_section17693183118306"></a><h4 class="sectiontitle">Enabling Specified IP Addresses to Remotely Access ECSs in a Security Group</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul3930233319555"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li5634934719110">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p6321813719116"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li5634934719110"></a><a name="en-us_topic_0118534011_li5634934719110"></a>To prevent ECSs from being attacked, you can change the port for remote login and configure security group rules that allow only specified IP addresses to remotely access the ECSs.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1788957719555">Security group configuration:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2678846519555"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1788957719555"></a><a name="en-us_topic_0118534011_li1788957719555"></a>To allow IP address <strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b84235270621340">192.168.20.2</strong> to remotely access Linux ECSs in a security group over the SSH protocol (port 22), you can configure the following security group rule.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table2497622119555" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row407563919555"><th align="left" class="cellrowborder" valign="top" width="12.04120412041204%" id="mcps1.3.4.2.2.2.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p181361106345"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b137891355798">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.51185118511851%" id="mcps1.3.4.2.2.2.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p6169135719555"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b62878816103">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.53165316531653%" id="mcps1.3.4.2.2.2.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2343829819555"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b9902119131013">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.91529152915292%" id="mcps1.3.4.2.2.2.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1945401819555"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1742151071014">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row3227161019555"><td class="cellrowborder" valign="top" width="12.04120412041204%" headers="mcps1.3.4.2.2.2.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p313671093414">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.51185118511851%" headers="mcps1.3.4.2.2.2.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p6386359419555">SSH</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.53165316531653%" headers="mcps1.3.4.2.2.2.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4840629219555">22</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.91529152915292%" headers="mcps1.3.4.2.2.2.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2859561419555">IPv4 CIDR block or ID of another security group</p>
+<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p62410334191747">For example, 192.168.20.2/32</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section115069253338"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section115069253338"></a><a name="en-us_topic_0118534011_section115069253338"></a><h4 class="sectiontitle">Remotely Connecting to Linux ECSs Using SSH</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul1363591714330"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li7634131783318">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p18634417173313"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li7634131783318"></a><a name="en-us_topic_0118534011_li7634131783318"></a>After creating Linux ECSs, you can add a security group rule to enable remote SSH access to the ECSs.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li1063511713337">Security group rule:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table16351717123312" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row19634417153313"><th align="left" class="cellrowborder" valign="top" width="14.649999999999999%" id="mcps1.3.5.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p96349178332"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1009506318">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.779999999999998%" id="mcps1.3.5.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p0634141717339"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b20568193181112">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20.22%" id="mcps1.3.5.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p19634717103313"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b13935183291110">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.35%" id="mcps1.3.5.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p166348179336"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b2110143631114">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row17635217123314"><td class="cellrowborder" valign="top" width="14.649999999999999%" headers="mcps1.3.5.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p863501710331">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.779999999999998%" headers="mcps1.3.5.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1663551718336">SSH</p>
+</td>
+<td class="cellrowborder" valign="top" width="20.22%" headers="mcps1.3.5.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p5635417133313">22</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.35%" headers="mcps1.3.5.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p166353177333">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section168046312349"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section168046312349"></a><a name="en-us_topic_0118534011_section168046312349"></a><h4 class="sectiontitle">Remotely Connecting to Windows ECSs Using RDP</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul84919420375"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li154911410379">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p850134123716"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li154911410379"></a><a name="en-us_topic_0118534011_li154911410379"></a>After creating Windows ECSs, you can add a security group rule to enable remote RDP access to the ECSs.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li65011414373">Security group rule:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table129650323711" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row145116433715"><th align="left" class="cellrowborder" valign="top" width="13.84%" id="mcps1.3.6.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p155113453713"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b629416239134">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="26.590000000000003%" id="mcps1.3.6.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p165113443717"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b11162247131">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31.47%" id="mcps1.3.6.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p155214163719"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b595842441314">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.1%" id="mcps1.3.6.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p952142371"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b8638162571317">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row18528416375"><td class="cellrowborder" valign="top" width="13.84%" headers="mcps1.3.6.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p8521445370">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="26.590000000000003%" headers="mcps1.3.6.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p452446375">RDP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.47%" headers="mcps1.3.6.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p125215413371">3389</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.1%" headers="mcps1.3.6.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p155219414376">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section34721049193411"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section34721049193411"></a><a name="en-us_topic_0118534011_section34721049193411"></a><h4 class="sectiontitle">Enabling Communication Between ECSs</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul14158195163712"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li2158145116376">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p19158551143714"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li2158145116376"></a><a name="en-us_topic_0118534011_li2158145116376"></a>After creating ECSs, you need to add a security group rule so that you can run the <strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b842352706105552">ping</strong> command to test communication between the ECSs.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li141581951123715">Security group rule:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table810055173719" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row0160051103719"><th align="left" class="cellrowborder" valign="top" width="16.7%" id="mcps1.3.7.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2160251153718"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b817717513146">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.73%" id="mcps1.3.7.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p141601751113715"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b2703157121418">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31.47%" id="mcps1.3.7.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p14160165111379"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b183020117149">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.1%" id="mcps1.3.7.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p161601651183720"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1961815117140">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row1216175110371"><td class="cellrowborder" valign="top" width="16.7%" headers="mcps1.3.7.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p5161175117373">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.73%" headers="mcps1.3.7.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p816119517376">ICMP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.47%" headers="mcps1.3.7.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p11161205112375">All</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.1%" headers="mcps1.3.7.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1316155143713">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section1517991516357"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section1517991516357"></a><a name="en-us_topic_0118534011_section1517991516357"></a><h4 class="sectiontitle">Hosting a Website on ECSs</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul26399129195135"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li36265574195135">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p173859524813"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li36265574195135"></a><a name="en-us_topic_0118534011_li36265574195135"></a>If you deploy a website on your ECSs and require that your website be accessed over HTTP or HTTPS, you can add rules to the security group used by the ECSs that function as the web servers.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li37512349195135">Security group rule:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table30323767195135" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row15770184195135"><th align="left" class="cellrowborder" valign="top" width="17.611761176117614%" id="mcps1.3.8.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p53423553195135"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b659583018152">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.17231723172317%" id="mcps1.3.8.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2316559195135"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b9364183851519">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31.203120312031203%" id="mcps1.3.8.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p32340552195135"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b3222439161517">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.012801280128013%" id="mcps1.3.8.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2339084195135"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b885615391151">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row55248116195135"><td class="cellrowborder" valign="top" width="17.611761176117614%" headers="mcps1.3.8.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p27918930195135">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.17231723172317%" headers="mcps1.3.8.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p45912425195135">HTTP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.203120312031203%" headers="mcps1.3.8.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p46840856195135">80</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.012801280128013%" headers="mcps1.3.8.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p36012962195135">0.0.0.0/0</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row5566305020026"><td class="cellrowborder" valign="top" width="17.611761176117614%" headers="mcps1.3.8.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p4461017620026">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.17231723172317%" headers="mcps1.3.8.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p3120540920026">HTTPS</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.203120312031203%" headers="mcps1.3.8.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p5665449220026">443</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.012801280128013%" headers="mcps1.3.8.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2561110020026">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section2910346123520"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section2910346123520"></a><a name="en-us_topic_0118534011_section2910346123520"></a><h4 class="sectiontitle">Enabling an ECS to Function as a DNS Server</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul17718163973510"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li20719639183515">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p66322301773"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li20719639183515"></a><a name="en-us_topic_0118534011_li20719639183515"></a>If you need to use an ECS as a DNS server, you must allow TCP and UDP access from port 53 to the DNS server. You can add the following rules to the security group associated with the ECS.</p>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li878133319717">Security group rules:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table9719143933517" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row371953993514"><th align="left" class="cellrowborder" valign="top" width="16.711671167116712%" id="mcps1.3.9.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p77202395359"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b57571227181619">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.072407240724072%" id="mcps1.3.9.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p107201939133514"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b9830202821610">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31.203120312031203%" id="mcps1.3.9.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p07201398353"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b139231629111618">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.012801280128013%" id="mcps1.3.9.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p157201239183513"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1177753015164">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row87211239133515"><td class="cellrowborder" valign="top" width="16.711671167116712%" headers="mcps1.3.9.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p2721163963512">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.072407240724072%" headers="mcps1.3.9.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p16721163916353">TCP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.203120312031203%" headers="mcps1.3.9.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1672119392358">53</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.012801280128013%" headers="mcps1.3.9.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p672163953517">0.0.0.0/0</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row127214392355"><td class="cellrowborder" valign="top" width="16.711671167116712%" headers="mcps1.3.9.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1721739123511">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.072407240724072%" headers="mcps1.3.9.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p207221139183518">UDP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.203120312031203%" headers="mcps1.3.9.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p3722133933514">53</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.012801280128013%" headers="mcps1.3.9.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p3722439103510">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section5964121693610"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_section5964121693610"></a><a name="en-us_topic_0118534011_section5964121693610"></a><h4 class="sectiontitle">Uploading or Downloading Files Using FTP</h4><ul id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_ul651614306399"><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li14516123018398">Example scenario:<p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p732518589502"><a name="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li14516123018398"></a><a name="en-us_topic_0118534011_li14516123018398"></a>If you want to use File Transfer Protocol (FTP) to upload files to or download files from ECSs, you need to add a security group rule.</p>
+<div class="note" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_note195188265116"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p19522162165117">You must first install the FTP server program on the ECSs and check whether ports 20 and 21 are working properly. </p>
+</div></div>
+</li><li id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_li5516113023919">Security group rule:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_table8479153013395" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row1518203013392"><th align="left" class="cellrowborder" valign="top" width="16.17%" id="mcps1.3.10.2.2.1.1.5.1.1"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p13518730193918"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b16647191041714">Direction</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="24.26%" id="mcps1.3.10.2.2.1.1.5.1.2"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p1651819306397"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b4518131111171">Protocol</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="31.47%" id="mcps1.3.10.2.2.1.1.5.1.3"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p175183303395"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b2393161214175">Port</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.1%" id="mcps1.3.10.2.2.1.1.5.1.4"><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p3518163053913"><strong id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_b1414191319178">Source</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_row4519143013399"><td class="cellrowborder" valign="top" width="16.17%" headers="mcps1.3.10.2.2.1.1.5.1.1 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p13519123013393">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="24.26%" headers="mcps1.3.10.2.2.1.1.5.1.2 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p10519113063920">TCP</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.47%" headers="mcps1.3.10.2.2.1.1.5.1.3 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p5519930193917">20-21</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.1%" headers="mcps1.3.10.2.2.1.1.5.1.4 "><p id="EN-US_TOPIC_0140323152__en-us_topic_0118534011_p13519630123910">0.0.0.0/0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0140323151.html">Security Groups</a></div>
+</div>
+</div>
+

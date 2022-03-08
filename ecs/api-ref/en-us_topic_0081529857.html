@@ -1,0 +1,73 @@
+<a name="EN-US_TOPIC_0081529857"></a><a name="EN-US_TOPIC_0081529857"></a>
+
+<h1 class="topictitle1">Adding an ECS to the Monitoring List</h1>
+<div id="body1509185302631"><div class="section" id="EN-US_TOPIC_0081529857__section3492751018840"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0081529857__p49510961891">This API is used to add an <span id="EN-US_TOPIC_0081529857__text127741094264">ECS</span> to the monitoring list.</p>
+<p id="EN-US_TOPIC_0081529857__p445598691891">Ceilometer periodically collects monitoring data on the ECSs added to the monitoring list and reports the data to Cloud Eye. The data includes the platform version, CPU, memory, NICs, disks, and hardware version. For example, the plug-in of an SAP <span id="EN-US_TOPIC_0081529857__text1360571542610">ECS</span> periodically obtains monitoring data from Cloud Eye and reports the data to SAP in reports.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section3752955218923"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0081529857__p798048518945">POST /v1.0/servers/{server_id}/action</p>
+<div class="p" id="EN-US_TOPIC_0081529857__p115804316444"><a href="#EN-US_TOPIC_0081529857__table3713317418952">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0081529857__table3713317418952"></a><a name="table3713317418952"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0081529857__table3713317418952" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0081529857__row5865996918952"><th align="left" class="cellrowborder" valign="top" width="20.43%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0081529857__p5383705918952">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.49%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0081529857__p6583454618952">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.08%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0081529857__p3099800518952">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0081529857__row2781048518952"><td class="cellrowborder" valign="top" width="20.43%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0081529857__p3805679318952">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.49%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0081529857__p6270138618952">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.08%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0081529857__p4564747118952">Specifies the <span id="EN-US_TOPIC_0081529857__text855418301351">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section61456643181021"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0081529857__p983636459"><a href="#EN-US_TOPIC_0081529857__table20892986181041">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0081529857__table20892986181041"></a><a name="table20892986181041"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0081529857__table20892986181041" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0081529857__row38729067181041"><th align="left" class="cellrowborder" valign="top" width="20.44%" id="mcps1.3.3.2.2.2.5.1.1"><p id="EN-US_TOPIC_0081529857__p50046718181041">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.29%" id="mcps1.3.3.2.2.2.5.1.2"><p id="EN-US_TOPIC_0081529857__p27252366181041">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.66%" id="mcps1.3.3.2.2.2.5.1.3"><p id="EN-US_TOPIC_0081529857__p59958018181041">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50.61%" id="mcps1.3.3.2.2.2.5.1.4"><p id="EN-US_TOPIC_0081529857__p24761283181041">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0081529857__row59506872181041"><td class="cellrowborder" valign="top" width="20.44%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0081529857__p55327305181041">monitorMetrics</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.29%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0081529857__p52326752181041">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.66%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0081529857__p10608482181041">Null</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.61%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0081529857__p53980729181041">Enables monitoring on the <span id="EN-US_TOPIC_0081529857__text19430151717261">ECS</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section7035651181135"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0081529857__p2553478181141">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section65518423453"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0081529857__screen38201726174610">POST https://{endpoint}/v1.0/servers/{server_id}/action</pre>
+<pre class="screen" id="EN-US_TOPIC_0081529857__screen36527430181110">{  
+   "monitorMetrics" : null 
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section733344563613"><h4 class="sectiontitle">Example Response</h4><p id="EN-US_TOPIC_0081529857__p17356164873616">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section4901036318129"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0081529857__p37947247181212">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081529857__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0081529857__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212691.html">Status Management</a></div>
+</div>
+</div>
+

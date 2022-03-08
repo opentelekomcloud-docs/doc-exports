@@ -1,0 +1,42 @@
+<a name="EN-US_TOPIC_0134192993"></a><a name="EN-US_TOPIC_0134192993"></a>
+
+<h1 class="topictitle1">Modifying ECS Specifications</h1>
+<div id="body48212187"><div class="section" id="EN-US_TOPIC_0134192993__section203962505268"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0134192993__p37344536260">When ECS specifications fail to meet service requirements, they can be modified, for example, by upgrading the vCPUs and memory. Certain ECSs also support changing ECS types.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0134192993__section23721755182615"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0134192993__ul184452212302"><li id="EN-US_TOPIC_0134192993__li1047716578309">You can modify the ECS specifications only when the ECS is stopped.</li><li id="EN-US_TOPIC_0134192993__li198751035123211">The EVS disk capacity of the ECS cannot be reduced during the specifications modification.</li><li id="EN-US_TOPIC_0134192993__li9445726303">ECS specifications (vCPU or memory) reduction degrades the ECS performance.</li><li id="EN-US_TOPIC_0134192993__li247404121418">Certain ECSs do not support specifications modification. For details about available ECS types as well as their functions and usage on the public cloud, see section "Notes" in <a href="https://docs.otc.t-systems.com/en-us/usermanual/ecs/en-us_topic_0035470096.html" target="_blank" rel="noopener noreferrer">Instances and Application Scenarios</a>.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0134192993__section1737160142715"><h4 class="sectiontitle">Involved APIs</h4><p id="EN-US_TOPIC_0134192993__p144661646173413">Modifying ECS specifications involves the following APIs:</p>
+<ul id="EN-US_TOPIC_0134192993__ul15633112133212"><li id="EN-US_TOPIC_0134192993__li156331021123214">API for modifying the specifications of an ECS</li><li id="EN-US_TOPIC_0134192993__li18633721113211">API for confirming ECS specifications modification</li><li id="EN-US_TOPIC_0134192993__li5633172113321">API for rolling back ECS specifications modification</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0134192993__section193094162712"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0134192993__ol1774421418331"><li id="EN-US_TOPIC_0134192993__li20744151453314"><span>Modify the ECS specifications.</span><p><ul id="EN-US_TOPIC_0134192993__ul143321827133518"><li id="EN-US_TOPIC_0134192993__li1532554016381">API<p id="EN-US_TOPIC_0134192993__p1034054083812"><a name="EN-US_TOPIC_0134192993__li1532554016381"></a><a name="li1532554016381"></a>URI format: POST /v2/{tenant_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0134192993__p1464317514508">For details, see section "Modifying the Specifications of an ECS" in <em id="EN-US_TOPIC_0134192993__i8423526979148">Elastic Cloud Server API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192993__li1234016404388">Request example<pre class="screen" id="EN-US_TOPIC_0134192993__screen534094063813">{
+    "resize": {
+                  "flavorRef": "4"
+    }
+}</pre>
+</li><li id="EN-US_TOPIC_0134192993__li83401040153810">Response example<p id="EN-US_TOPIC_0134192993__p73403402387"><a name="EN-US_TOPIC_0134192993__li83401040153810"></a><a name="li83401040153810"></a>N/A</p>
+</li></ul>
+</p></li><li id="EN-US_TOPIC_0134192993__li188259221331"><span>Confirm the specifications modification.</span><p><div class="p" id="EN-US_TOPIC_0134192993__p11580182118396">The ECS must be in <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue210728689615396"><b>resized</b></span> state. That is, the <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue799918360153936"><b>OS-EXT-STS:vm_state</b></span> value of the ECS must be <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue162622219153950"><b>resized</b></span>.<ul id="EN-US_TOPIC_0134192993__ul8574215163917"><li id="EN-US_TOPIC_0134192993__li3574015183912">API<p id="EN-US_TOPIC_0134192993__p95741815143913"><a name="EN-US_TOPIC_0134192993__li3574015183912"></a><a name="li3574015183912"></a>URI format: POST /v2/{tenant_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0134192993__p1857442165013">For details, see section "Confirming ECS Specifications Modification" in <em id="EN-US_TOPIC_0134192993__i8423526979148_1">Elastic Cloud Server API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192993__li1257411513392">Request example<pre class="screen" id="EN-US_TOPIC_0134192993__screen1057491593911">{
+   "confirmResize": null
+}</pre>
+</li><li id="EN-US_TOPIC_0134192993__li45741515113920">Response example<p id="EN-US_TOPIC_0134192993__p1057461515398"><a name="EN-US_TOPIC_0134192993__li45741515113920"></a><a name="li45741515113920"></a>N/A</p>
+</li></ul>
+</div>
+</p></li><li id="EN-US_TOPIC_0134192993__li13919143183311"><span>(Optional) Roll back the specifications modification.</span><p><p id="EN-US_TOPIC_0134192993__p1691152412429">Fallback notice:</p>
+<p id="EN-US_TOPIC_0134192993__p0100165494115">The ECS must be in <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue405896410154116"><b>resized</b></span> state. That is, the <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue1238507323154122"><b>OS-EXT-STS:vm_state</b></span> value of the ECS must be <span class="parmvalue" id="EN-US_TOPIC_0134192993__parmvalue523641083154134"><b>resized</b></span>.</p>
+<p id="EN-US_TOPIC_0134192993__p15141427124218">The data modified during specifications modification will be lost after the rollback.</p>
+<ul id="EN-US_TOPIC_0134192993__ul49511542114112"><li id="EN-US_TOPIC_0134192993__li1095124215412">API<p id="EN-US_TOPIC_0134192993__p795104204115"><a name="EN-US_TOPIC_0134192993__li1095124215412"></a><a name="li1095124215412"></a>URI format: POST /v2/{tenant_id}/servers/{server_id}/action</p>
+<p id="EN-US_TOPIC_0134192993__p10262193820519">For details, see section "Rolling Back ECS Specifications Modification" in <em id="EN-US_TOPIC_0134192993__i8423526979148_2">Elastic Cloud Server API Reference</em>.</p>
+</li><li id="EN-US_TOPIC_0134192993__li1795113425410">Request example<pre class="screen" id="EN-US_TOPIC_0134192993__screen1735819262440">{
+    "revertResize": null
+}</pre>
+</li><li id="EN-US_TOPIC_0134192993__li4951204284119">Response example<p id="EN-US_TOPIC_0134192993__p57151847124415"><a name="EN-US_TOPIC_0134192993__li4951204284119"></a><a name="li4951204284119"></a>N/A</p>
+</li></ul>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+

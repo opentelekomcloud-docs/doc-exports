@@ -1,0 +1,18 @@
+<a name="modelarts_23_0038"></a><a name="modelarts_23_0038"></a>
+
+<h1 class="topictitle1">Synchronizing Files with OBS</h1>
+<p id="modelarts_23_0038__en-us_topic_0164900253_p21921924184117">If you specify <span class="parmname" id="modelarts_23_0038__en-us_topic_0164900253_parmname11563133014310"><b>Storage Path</b></span> during notebook instance creation, your compiled code will be automatically stored in your specified OBS bucket. If code invocation among different <strong id="modelarts_23_0038__en-us_topic_0164900253_b71188713362">.ipynb</strong> files is required, you can use the Sync OBS function.</p>
+<p id="modelarts_23_0038__en-us_topic_0164900253_p467517595414">The Sync OBS function is used to synchronize the objects selected in the list of notebook instance files from the OBS bucket to the current container directory <span class="filepath" id="modelarts_23_0038__en-us_topic_0164900253_filepath4125135211381"><b>~/work</b></span>.</p>
+<h4 class="sectiontitle">Precautions</h4><ul id="modelarts_23_0038__en-us_topic_0164900253_ul17633250174118"><li id="modelarts_23_0038__en-us_topic_0164900253_li17633150174119">The maximum size of files to be synchronized at a time is 500 MB, and the maximum number of files to be synchronized at a time is 1,024.</li><li id="modelarts_23_0038__en-us_topic_0164900253_li12633650104111">The total size of objects to be synchronized cannot exceed 5 GB. For example, if 2 GB files exist in the <span class="filepath" id="modelarts_23_0038__en-us_topic_0164900253_filepath1456574713814"><b>~/work</b></span> container directory, you can use Sync OBS to synchronize a maximum of 3 GB files.</li><li id="modelarts_23_0038__en-us_topic_0164900253_li1296835354213">The Sync OBS function only takes effect on notebook instances for which <strong id="modelarts_23_0038__en-us_topic_0164900253_b263919557284">Storage</strong> is <strong id="modelarts_23_0038__en-us_topic_0164900253_b364095515288">OBS</strong>. For notebook instances whose <strong id="modelarts_23_0038__en-us_topic_0164900253_b156411655102815">Storage</strong> is not <strong id="modelarts_23_0038__en-us_topic_0164900253_b1264265532814">OBS</strong>, all files are read and written in the <span class="filepath" id="modelarts_23_0038__en-us_topic_0164900253_filepath1664375519286"><b>~/work</b></span> container directory.</li></ul>
+
+<h4 class="sectiontitle">Procedure</h4><p id="modelarts_23_0038__en-us_topic_0164900253_p20563153063114">The Sync OBS function can be used in notebook instances. The following describes how to use the function.</p>
+<p id="modelarts_23_0038__en-us_topic_0164900253_p98581329444">For example, if the <span class="parmname" id="modelarts_23_0038__en-us_topic_0164900253_parmname165285914518"><b>Example1.ipynb</b></span> file needs to call <span class="parmname" id="modelarts_23_0038__en-us_topic_0164900253_parmname1559848143115"><b>module</b></span> in the <span class="parmname" id="modelarts_23_0038__en-us_topic_0164900253_parmname265212599453"><b>Example2.ipynb</b></span> file, select both files and click <span class="uicontrol" id="modelarts_23_0038__en-us_topic_0164900253_uicontrol108130177322"><b>Sync OBS</b></span>.</p>
+<span class="figcap"><b>Figure 1 </b>Using the Sync OBS function</span><br><span><img id="modelarts_23_0038__en-us_topic_0164900253_image986625619599" src="en-us_image_0000001156920981.png"></span>
+
+
+
+
+<strong>Parent topic:</strong> <a href="modelarts_23_0035.html">Using Jupyter Notebook</a>
+
+
+

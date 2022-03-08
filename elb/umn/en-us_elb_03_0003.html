@@ -1,0 +1,46 @@
+<a name="en-us_elb_03_0003"></a><a name="en-us_elb_03_0003"></a>
+
+<h1 class="topictitle1">Access Control</h1>
+<p id="en-us_elb_03_0003__p51515371185455">Access control allows you to whitelist certain IP addresses to allow them to access a listener.</p>
+<span class="noticetitle"><img src="public_sys-resources/notice_3.0-en-us.png"> </span><ul id="en-us_elb_03_0003__ul138992447810"><li id="en-us_elb_03_0003__li78991244284">You can add whitelists only to listeners of <span id="en-us_elb_03_0003__ph669718389418">shared</span> load balancers. Adding whitelists may interrupt services. Once a whitelist is added, only IP addresses in the whitelist can access the listener.</li><li id="en-us_elb_03_0003__li148991944486">If access control is enabled but no whitelist is added, the listener cannot be accessed.</li><li id="en-us_elb_03_0003__li10684131818611">Whitelists do not conflict with inbound security group rules. Whitelists control access to listeners based on IP addresses or CIDR blocks, whereas inbound security group rules control access to backend servers based on the protocol, ports, and IP addresses.</li></ul>
+</div>
+<h4 class="sectiontitle">Adding a Whitelist</h4><ol id="en-us_elb_03_0003__ol26196503175216"><li id="en-us_elb_03_0003__li677391520332">Log in to the management console.</li><li id="en-us_elb_03_0003__li675519100420">In the upper left corner of the page, click <span><img id="en-us_elb_03_0003__en-us_topic_0240829509_image177714713415" src="en-us_image_0241356603.png"></span> and select the desired region and project.</li><li id="en-us_elb_03_0003__li83736197297">Hover on <span><img id="en-us_elb_03_0003__en-us_topic_0052569751_en-us_topic_0052569751_image616618613" src="en-us_image_0000001120894978.png"></span> in the upper left corner to display <strong id="en-us_elb_03_0003__en-us_topic_0052569751_b9121102522212">Service List</strong> and choose <strong id="en-us_elb_03_0003__en-us_topic_0052569751_b61222025142217">Network</strong> &gt; <strong id="en-us_elb_03_0003__en-us_topic_0052569751_b4124425142210">Elastic Load Balancing</strong>.</li></ol><ol start="4" id="en-us_elb_03_0003__ol60792516175313"><li id="en-us_elb_03_0003__li10261739175313">Locate the load balancer and click its name.</li><li id="en-us_elb_03_0003__li49367592175440">Click <strong id="en-us_elb_03_0003__b842352706163455">Listeners</strong>, locate the listener, and click its name. In the <strong id="en-us_elb_03_0003__b1477153710813">Basic Information</strong> area, click <strong id="en-us_elb_03_0003__b842352706163920">Configure</strong> next to <strong id="en-us_elb_03_0003__b84235270616397">Access Control</strong>.
+<table cellpadding="4" cellspacing="0" summary="" id="en-us_elb_03_0003__table3263104318541" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="en-us_elb_03_0003__row6556870018541"><th align="left" class="cellrowborder" valign="top" width="21.000000000000004%" id="mcps1.3.3.3.2.5.2.4.1.1"><p id="en-us_elb_03_0003__p60775331862"><strong id="en-us_elb_03_0003__b842352706114331">Parameter</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.00000000000001%" id="mcps1.3.3.3.2.5.2.4.1.2"><p id="en-us_elb_03_0003__p5449227018541"><strong id="en-us_elb_03_0003__b8423527061772">Description</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.000000000000004%" id="mcps1.3.3.3.2.5.2.4.1.3"><p id="en-us_elb_03_0003__p5179777918541"><strong id="en-us_elb_03_0003__b842352706194150">Example Value</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="en-us_elb_03_0003__row6352683318541"><td class="cellrowborder" valign="top" width="21.000000000000004%" headers="mcps1.3.3.3.2.5.2.4.1.1 "><p id="en-us_elb_03_0003__p4539988218541">Access Control</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.00000000000001%" headers="mcps1.3.3.3.2.5.2.4.1.2 "><p id="en-us_elb_03_0003__p2634610118936">Enabled</p>
+<ul id="en-us_elb_03_0003__ul2943297718957"><li id="en-us_elb_03_0003__li1083249618957">If access control is enabled and no whitelist is set, no IP address can access the listener.</li><li id="en-us_elb_03_0003__li28326823181114">If access control is enabled and a whitelist is set, only IP addresses in the whitelist can access the listener.</li></ul>
+<p id="en-us_elb_03_0003__p5351183118541">Disabled</p>
+<ul id="en-us_elb_03_0003__ul42097092181052"><li id="en-us_elb_03_0003__li52501725181052">If access control is disabled, the listener can be accessed from any IP address.</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="21.000000000000004%" headers="mcps1.3.3.3.2.5.2.4.1.3 "><p id="en-us_elb_03_0003__p3949107318541">N/A</p>
+</td>
+</tr>
+<tr id="en-us_elb_03_0003__row1987534018541"><td class="cellrowborder" valign="top" width="21.000000000000004%" headers="mcps1.3.3.3.2.5.2.4.1.1 "><p id="en-us_elb_03_0003__p6639869918541">Whitelist</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.00000000000001%" headers="mcps1.3.3.3.2.5.2.4.1.2 "><p id="en-us_elb_03_0003__p39771091184017">Lists the IP addresses that can access the listener.</p>
+<span class="notetitle"> NOTE: </span><ul id="en-us_elb_03_0003__ul1730234112458"><li id="en-us_elb_03_0003__li630264118458">A maximum of 300 IP addresses or IP address ranges are supported. A comma (,) is used to separate every two entries.</li><li id="en-us_elb_03_0003__li1630218413459">The whitelist cannot contain IPv6 addresses.</li></ul>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="21.000000000000004%" headers="mcps1.3.3.3.2.5.2.4.1.3 "><p id="en-us_elb_03_0003__p3823315618541">10.168.2.24,10.168.16.0/24</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li><li id="en-us_elb_03_0003__li53937062181258">Click <strong id="en-us_elb_03_0003__b842352706102911">OK</strong>.</li></ol>
+
+
+
+
+<strong>Parent topic:</strong> <a href="en-us_topic_0015479923.html">Listener</a>
+
+
+

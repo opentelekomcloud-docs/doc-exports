@@ -1,0 +1,25 @@
+<a name="EN-US_TOPIC_0018339851"></a><a name="EN-US_TOPIC_0018339851"></a>
+
+<h1 class="topictitle1">Why Does an Authentication Failure Occurs After I Attempt to Remotely Log In to a Windows ECS?</h1>
+<div id="body1438216771584"><div class="section" id="EN-US_TOPIC_0018339851__section142338358917"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0018339851__p17625338093">When a local computer running Windows attempts to access a Windows <span id="EN-US_TOPIC_0018339851__text1572112818383">ECS</span> using RDP (for example, MSTSC), an identity authentication failure occurs and the desired function is not supported.</p>
+<ul id="EN-US_TOPIC_0018339851__ul147821152174920"><li id="EN-US_TOPIC_0018339851__li17822052124915">If the error message contains only the information that an identity authentication failure occurs and that the desired function is not supported, rectify the fault by following the instructions provided in <a href="#EN-US_TOPIC_0018339851__section9947102411203">Solution</a>.</li><li id="EN-US_TOPIC_0018339851__li107821052184912">If the error message shows that the fault was caused by "CredSSP Encryption Oracle Remediation", as shown in <a href="#EN-US_TOPIC_0018339851__fig18932134871212">Figure 1</a>, the fault may be caused by a security patch released by Microsoft in March 2018. This patch may affect RDP-based CredSSP connections. As a result, setting up RDP-based connections to <span id="EN-US_TOPIC_0018339851__text20735113415385">ECS</span>s failed. For details, see <a href="https://blogs.technet.microsoft.com/mckittrick/unable-to-rdp-to-virtual-machine-credssp-encryption-oracle-remediation/" target="_blank" rel="noopener noreferrer">Unable to RDP to Virtual Machine: CredSSP Encryption Oracle Remediation</a>. Rectify the fault by following the instructions provided in <a href="https://support.microsoft.com/en-us/help/4093492/credssp-updates-for-cve-2018-0886-march-13-2018" target="_blank" rel="noopener noreferrer">official Microsoft document</a>.<div class="fignone" id="EN-US_TOPIC_0018339851__fig18932134871212"><a name="EN-US_TOPIC_0018339851__fig18932134871212"></a><a name="fig18932134871212"></a><span class="figcap"><b>Figure 1 </b>Failed to set up a remote desktop connection</span><br><span><img id="EN-US_TOPIC_0018339851__image12932114801211" src="en-us_image_0117334497.png"></span></div>
+</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0018339851__section9947102411203"><a name="EN-US_TOPIC_0018339851__section9947102411203"></a><a name="section9947102411203"></a><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0018339851__p466323910257">Modify the remote desktop connection settings on the Windows <span id="EN-US_TOPIC_0018339851__text1840119353311">ECS</span>:</p>
+<ol id="EN-US_TOPIC_0018339851__ol52211337315"><li id="EN-US_TOPIC_0018339851__li17226333314">Log in to the <span id="EN-US_TOPIC_0018339851__text15798508382">ECS</span>.</li><li id="EN-US_TOPIC_0018339851__li1497214396316">Click <strong id="EN-US_TOPIC_0018339851__b842352706162454">Start</strong> in the lower left corner, right-click <strong id="EN-US_TOPIC_0018339851__b842352706162528">Computer</strong>, and choose <strong id="EN-US_TOPIC_0018339851__b842352706162559">Properties</strong> from the shortcut menu.</li><li id="EN-US_TOPIC_0018339851__li184844434336">In the navigation pane on the left, choose <strong id="EN-US_TOPIC_0018339851__b842352706162744">Remote settings</strong>.</li><li id="EN-US_TOPIC_0018339851__li628415106341">Click the <strong id="EN-US_TOPIC_0018339851__b820173822618">Remote</strong> tab. In the <strong id="EN-US_TOPIC_0018339851__b3848959142719">Remote Desktop</strong> pane, select <strong id="EN-US_TOPIC_0018339851__b821538142614">Allow connections from computers running any version of Remote Desktop (less secure)</strong>.<div class="fignone" id="EN-US_TOPIC_0018339851__fig62503556467"><span class="figcap"><b>Figure 2 </b>Remote settings</span><br><span><img id="EN-US_TOPIC_0018339851__image31961575420" src="en-us_image_0253037157.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0018339851__li359819154348">Click <strong id="EN-US_TOPIC_0018339851__b84235270611586">OK</strong>.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

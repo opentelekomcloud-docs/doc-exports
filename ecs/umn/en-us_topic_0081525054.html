@@ -1,0 +1,32 @@
+<a name="EN-US_TOPIC_0081525054"></a><a name="EN-US_TOPIC_0081525054"></a>
+
+<h1 class="topictitle1">Why Can't I Obtain the Password for Logging In to My Windows ECS Authenticated Using a Key Pair?</h1>
+<div id="body1509183470143"><div class="section" id="EN-US_TOPIC_0081525054__section378516093915"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0081525054__p1529419416394">A private key cannot be used to obtain the password for logging in to a Windows <span id="EN-US_TOPIC_0081525054__text86631113529">ECS</span> that is authenticated using a key pair.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0081525054__section093552319396"><h4 class="sectiontitle">Possible Causes</h4><div class="p" id="EN-US_TOPIC_0081525054__p141617554402">The password fails to inject using Cloudbase-Init due to:<ul id="EN-US_TOPIC_0081525054__ul041117317415"><li id="EN-US_TOPIC_0081525054__li1841113313413">A network fault, leading to the failure of the connection from the <span id="EN-US_TOPIC_0081525054__text13534141511526">ECS</span> to the Cloudbase-Init server.</li><li id="EN-US_TOPIC_0081525054__li6411203120414">No configuration on the image for Cloudbase-Init to obtain the password.</li><li id="EN-US_TOPIC_0081525054__li10412133114120">Other reasons.</li></ul>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0081525054__section1868684714415"><h4 class="sectiontitle">Solution</h4><p id="EN-US_TOPIC_0081525054__p8060118">If logging in to an <span id="EN-US_TOPIC_0081525054__text3339184473911">ECS</span> with Cloudbase-Init enabled failed, perform the following operations to locate the fault:</p>
+<ol id="EN-US_TOPIC_0081525054__ol165821216102213"><li id="EN-US_TOPIC_0081525054__li3582121612228">Ensure that Cloudbase-Init has been correctly configured on the image that was used to create the ECS.<ul id="EN-US_TOPIC_0081525054__ul1524101712414"><li id="EN-US_TOPIC_0081525054__li8524517152417">If Cloudbase-Init has not been configured, your ECS will not allow customized configurations, and you can log in to it only by using the original image password.</li><li id="EN-US_TOPIC_0081525054__li10524131720241">The <span id="EN-US_TOPIC_0081525054__text13145123042513">ECS</span>s created using a public image have Cloudbase-Init installed by default. Therefore, you do not need to install and configure Cloudbase-Init anymore.</li><li id="EN-US_TOPIC_0081525054__li1952615452242">If you created your ECS by using an external image file, install and configure Cloudbase-Init.<p id="EN-US_TOPIC_0081525054__p1496671532514"><a name="EN-US_TOPIC_0081525054__li1952615452242"></a><a name="li1952615452242"></a>For details, see "Installing and Configuring Cloudbase-Init" in <em id="EN-US_TOPIC_0081525054__i18488112143919">Image Management Service User Guide</em>.</p>
+</li></ul>
+</li></ol><ol start="2" id="EN-US_TOPIC_0081525054__ol958551818225"><li id="EN-US_TOPIC_0081525054__li1558531819222">Ensure that the key pair for logging in to the <span id="EN-US_TOPIC_0081525054__text7356144517398">ECS</span> is correct.<p id="EN-US_TOPIC_0081525054__p178085172710">The key used for obtaining the password must be the key used during the <span id="EN-US_TOPIC_0081525054__text1243919193271">ECS</span> creation.</p>
+</li><li id="EN-US_TOPIC_0081525054__li2058521817225">Ensure that DHCP is enabled in the VPC to which the <span id="EN-US_TOPIC_0081525054__text171867466395">ECS</span> belongs.<p id="EN-US_TOPIC_0081525054__p103101936192819">On the management console, check whether DHCP has been enabled in the target subnet.</p>
+</li><li id="EN-US_TOPIC_0081525054__li158561815222">Ensure that the <span id="EN-US_TOPIC_0081525054__text129001046163911">ECS</span> has an <span id="EN-US_TOPIC_0081525054__text155801615153">EIP</span> bound.</li><li id="EN-US_TOPIC_0081525054__li145851818172210">Ensure that traffic to and from port 80 is allowed in security group rules.</li><li id="EN-US_TOPIC_0081525054__li58512110107">Check Cloudbase-Init logs to identify the cause.<ol type="a" id="EN-US_TOPIC_0081525054__ol16730184129"><li id="EN-US_TOPIC_0081525054__li16969123912115"><a name="EN-US_TOPIC_0081525054__li16969123912115"></a><a name="li16969123912115"></a>Stop the affected ECS and detach the system disk from it.</li><li id="EN-US_TOPIC_0081525054__li5721617181410">Use a public image to create a temporary Windows <span id="EN-US_TOPIC_0081525054__text8831164172411">ECS</span> and attach the system disk detached in <a href="#EN-US_TOPIC_0081525054__li16969123912115">6.a</a> to the <span id="EN-US_TOPIC_0081525054__text749504852411">ECS</span>.</li><li id="EN-US_TOPIC_0081525054__li26191624131715">Log in to the temporary <span id="EN-US_TOPIC_0081525054__text2983487242">ECS</span>, open the <strong id="EN-US_TOPIC_0081525054__b11427191612516">Server Manager</strong> page, choose <strong id="EN-US_TOPIC_0081525054__b412614194615">File and Storage Services</strong> &gt; <strong id="EN-US_TOPIC_0081525054__b3936935168">Volumes</strong> &gt; <strong id="EN-US_TOPIC_0081525054__b1613413427620">Disks</strong>, right-click the offline disk, and choose <strong id="EN-US_TOPIC_0081525054__b16391191717811">Online</strong> from the shortcut menu.<div class="fignone" id="EN-US_TOPIC_0081525054__fig12301902519"><span class="figcap"><b>Figure 1 </b>Setting disk online</span><br><span><img id="EN-US_TOPIC_0081525054__image9892225258" src="en-us_image_0275724694.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0081525054__li1120818387172">Switch to the <strong id="EN-US_TOPIC_0081525054__b1933617531782">cloudbase-init</strong> file in <strong id="EN-US_TOPIC_0081525054__b133374532817">/Program Files/Cloudbase Solution/Cloudbase-Init/log</strong> of this disk to view the log for fault locating.<div class="fignone" id="EN-US_TOPIC_0081525054__fig9250818165110"><span class="figcap"><b>Figure 2 </b>cloudbase-init</span><br><span><img id="EN-US_TOPIC_0081525054__image440410421488" src="en-us_image_0275726221.png"></span></div>
+</li></ol>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

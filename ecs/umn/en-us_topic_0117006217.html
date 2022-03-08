@@ -1,0 +1,27 @@
+<a name="EN-US_TOPIC_0117006217"></a><a name="EN-US_TOPIC_0117006217"></a>
+
+<h1 class="topictitle1">How Can I Handle Slow ECS Startup?</h1>
+<div id="body1528860959173"><p id="EN-US_TOPIC_0117006217__p29011531391">If an ECS requires a long period of time to start, you can change the default timeout to speed up the startup.</p>
+<ol id="EN-US_TOPIC_0117006217__ol1664141313409"><li id="EN-US_TOPIC_0117006217__li15641613174012">Log in to the ECS.</li><li id="EN-US_TOPIC_0117006217__li179011530424">Run the following command to switch to user <strong id="EN-US_TOPIC_0117006217__b842352706163831">root</strong>:<p id="EN-US_TOPIC_0117006217__p785411794215"><strong id="EN-US_TOPIC_0117006217__b1131492018427">sudo su</strong></p>
+</li><li id="EN-US_TOPIC_0117006217__li10659192764216">Run the following command to obtain the grub version:<p id="EN-US_TOPIC_0117006217__p74493437"><a name="EN-US_TOPIC_0117006217__li10659192764216"></a><a name="li10659192764216"></a><strong id="EN-US_TOPIC_0117006217__b27877119433">rpm -qa | grep grub</strong></p>
+<div class="fignone" id="EN-US_TOPIC_0117006217__fig165801156121217"><span class="figcap"><b>Figure 1 </b>Viewing the grub version</span><br><span><img id="EN-US_TOPIC_0117006217__image8580155671214" src="en-us_image_0117031082.png" title="Click to enlarge" class="imgResize"></span></div>
+</li><li id="EN-US_TOPIC_0117006217__li17926182814136">Change the timeout in the grub file to 0s.<ul id="EN-US_TOPIC_0117006217__ul12202182641616"><li id="EN-US_TOPIC_0117006217__li20202152618165">If the grub version is earlier than 2:<p id="EN-US_TOPIC_0117006217__p573211916166"><a name="EN-US_TOPIC_0117006217__li20202152618165"></a><a name="li20202152618165"></a>Open the <span class="filepath" id="EN-US_TOPIC_0117006217__filepath1840205966173138"><b>/boot/grub/grub.cfg</b></span> or <span class="filepath" id="EN-US_TOPIC_0117006217__filepath2115086734173138"><b>/boot/grub/menu.lst</b></span> file and change the <strong id="EN-US_TOPIC_0117006217__b84235270617323">timeout</strong> value to <strong id="EN-US_TOPIC_0117006217__b84235270617326">0</strong>.</p>
+</li></ul>
+<ul id="EN-US_TOPIC_0117006217__ul1937452819163"><li id="EN-US_TOPIC_0117006217__li1237482801615">If the grub version is 2:<p id="EN-US_TOPIC_0117006217__p123194206181"><a name="EN-US_TOPIC_0117006217__li1237482801615"></a><a name="li1237482801615"></a>Open the <strong id="EN-US_TOPIC_0117006217__b842352706173228">/boot/grub2/grub.cfg</strong> file and change the <strong id="EN-US_TOPIC_0117006217__b1551235077173237">timeout</strong> value to <strong id="EN-US_TOPIC_0117006217__b1913885787173237">0</strong>.</p>
+</li></ul>
+<div class="fignone" id="EN-US_TOPIC_0117006217__fig109003411818"><span class="figcap"><b>Figure 2 </b>Changing timeout duration</span><br><span><img id="EN-US_TOPIC_0117006217__image194591939112217" src="en-us_image_0117031548.gif" title="Click to enlarge" class="imgResize"></span></div>
+</li></ol>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0096170524.html">Troubleshooting</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>

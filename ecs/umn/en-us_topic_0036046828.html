@@ -1,0 +1,138 @@
+<a name="EN-US_TOPIC_0036046828"></a><a name="EN-US_TOPIC_0036046828"></a>
+
+<h1 class="topictitle1">Detaching an EVS Disk from a Running ECS</h1>
+<div id="body1471760962232"><div class="section" id="EN-US_TOPIC_0036046828__section15787511144344"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0036046828__p61233608144347">An EVS disk attached to an <span id="EN-US_TOPIC_0036046828__text13472924122511">ECS</span> can function as a system disk or data disk.</p>
+<ul id="EN-US_TOPIC_0036046828__ul34783665144736"><li id="EN-US_TOPIC_0036046828__li2948622144736">EVS disks mounted to <span class="filepath" id="EN-US_TOPIC_0036046828__filepath172571950016515"><b>/dev/sda</b></span> or <span class="filepath" id="EN-US_TOPIC_0036046828__filepath100298619716515"><b>/dev/vda</b></span> function as system disks. You can only detach system disks offline. Before detaching a system disk from an <span id="EN-US_TOPIC_0036046828__text117773172817">ECS</span>, you must stop the <span id="EN-US_TOPIC_0036046828__text127544911251">ECS</span>.</li><li id="EN-US_TOPIC_0036046828__li571809915431">EVS disks mounted to other locations function as data disks. In addition to offline detachment, data disks can be detached online if the OS running on the <span id="EN-US_TOPIC_0036046828__text14891448192714">ECS</span> supports this feature.</li></ul>
+<p id="EN-US_TOPIC_0036046828__p5023067515435">This section describes how to detach a disk from a running <span id="EN-US_TOPIC_0036046828__text392914487276">ECS</span>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0036046828__section34475334143121"><h4 class="sectiontitle">Constraints</h4><ul id="EN-US_TOPIC_0036046828__ul2123683814330"><li id="EN-US_TOPIC_0036046828__li61996412154820">The EVS disk to be detached must be mounted at a location other than <span class="filepath" id="EN-US_TOPIC_0036046828__filepath853326388165144"><b>/dev/sda</b></span> or <span class="filepath" id="EN-US_TOPIC_0036046828__filepath1079141565165144"><b>/dev/vda</b></span>.<p id="EN-US_TOPIC_0036046828__p12398226154820">EVS disks mounted to <span class="filepath" id="EN-US_TOPIC_0036046828__filepath108642609165156"><b>/dev/sda</b></span> or <span class="filepath" id="EN-US_TOPIC_0036046828__filepath904523234165156"><b>/dev/vda</b></span> are system disks and cannot be detached from running <span id="EN-US_TOPIC_0036046828__text4632449112720">ECS</span>s.</p>
+</li><li id="EN-US_TOPIC_0036046828__li3988964315757">Before detaching an EVS disk from a running Windows <span id="EN-US_TOPIC_0036046828__text10313105092718">ECS</span>, make sure that OTC Tools have been installed on the <span id="EN-US_TOPIC_0036046828__text19928195092713">ECS</span> and that the tools are running properly.</li><li id="EN-US_TOPIC_0036046828__li3824496314330">Before detaching an EVS disk from a running Windows <span id="EN-US_TOPIC_0036046828__text7825217272">ECS</span>, ensure that no program is reading data from or writing data to the disk. Otherwise, data will be lost.</li><li id="EN-US_TOPIC_0036046828__li5498143194410">SCSI EVS disks cannot be detached from running Windows <span id="EN-US_TOPIC_0036046828__text1957985282711">ECS</span>s.</li></ul>
+<ul id="EN-US_TOPIC_0036046828__ul1787075414330"><li id="EN-US_TOPIC_0036046828__li435515631715">Before detaching an EVS disk from a running Linux <span id="EN-US_TOPIC_0036046828__text161041853202718">ECS</span>, you must log in to the <span id="EN-US_TOPIC_0036046828__text1999316351317">ECS</span> and run the <strong id="EN-US_TOPIC_0036046828__b16542154283120">umount</strong> command to cancel the association between the disk and the file system. In addition, ensure that no program is reading data from or writing data to the disk. Otherwise, detaching the disk will fail.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0036046828__section58087347152725"><h4 class="sectiontitle">Notes</h4><ul id="EN-US_TOPIC_0036046828__ul66280750153234"><li id="EN-US_TOPIC_0036046828__li1720245153234">On a Windows <span id="EN-US_TOPIC_0036046828__text18200754162714">ECS</span>, if the disk is in non-offline state, the system forcibly detaches the EVS disk. If this occurs, the system may generate a xenvbd alarm. You can ignore this alarm.<div class="note" id="EN-US_TOPIC_0036046828__note49048231101517"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0036046828__p38780895101517">To view the status of an EVS disk, perform the following operations:</p>
+<ol id="EN-US_TOPIC_0036046828__ol26334646103539"><li id="EN-US_TOPIC_0036046828__li38735030103539">Click <strong id="EN-US_TOPIC_0036046828__b84235270610568">Start</strong> in the task bar. In the displayed <strong id="EN-US_TOPIC_0036046828__b842352706144350">Start</strong> menu, right-click <strong id="EN-US_TOPIC_0036046828__b84235270610537">Computer</strong> and choose <strong id="EN-US_TOPIC_0036046828__b842352706105742">Manage</strong> from the shortcut menu.<p id="EN-US_TOPIC_0036046828__p325572709943">The <strong id="EN-US_TOPIC_0036046828__b84235270610589">Server Manager</strong> page is displayed.</p>
+</li><li id="EN-US_TOPIC_0036046828__li61272817103749">In the navigation pane on the left, choose <strong>Storage</strong> &gt; <strong>Disk Management</strong>.<p id="EN-US_TOPIC_0036046828__p42227161104821">The EVS disk list is displayed in the right pane.</p>
+</li><li id="EN-US_TOPIC_0036046828__li53946944105018">View the status of each EVS disk.</li></ol>
+</div></div>
+</li><li id="EN-US_TOPIC_0036046828__li866034714330">Do not detach an EVS disk from an <span id="EN-US_TOPIC_0036046828__text82661855152712">ECS</span> that is being started, stopped, or restarted.</li><li id="EN-US_TOPIC_0036046828__li1083426414330">Do not detach an EVS disk from a running <span id="EN-US_TOPIC_0036046828__text325756202712">ECS</span> whose OS does not support this feature. OSs supporting EVS disk detachment from a running <span id="EN-US_TOPIC_0036046828__text1319984173317">ECS</span> are listed in <a href="#EN-US_TOPIC_0036046828__section21417196143518">OSs Supporting EVS Disk Detachment from a Running ECS</a>.</li><li id="EN-US_TOPIC_0036046828__li2083217118616">For a running Linux <span id="EN-US_TOPIC_0036046828__text13577456172718">ECS</span>, the drive letter may be changed after an EVS disk is detached from it and then attached to it again. This is a normal case due to the drive letter allocation mechanism of the Linux system.</li><li id="EN-US_TOPIC_0036046828__li172337181873">For a running Linux <span id="EN-US_TOPIC_0036046828__text31061557172710">ECS</span>, the drive letter may be changed after an EVS disk is detached from it and the <span id="EN-US_TOPIC_0036046828__text1449242523510">ECS</span> is restarted. This is a normal case due to the drive letter allocation mechanism of the Linux system.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0036046828__section21417196143518"><a name="EN-US_TOPIC_0036046828__section21417196143518"></a><a name="section21417196143518"></a><h4 class="sectiontitle">OSs Supporting EVS Disk Detachment from a Running ECS</h4><div class="p" id="EN-US_TOPIC_0036046828__p5615198194219">OSs supporting EVS disk detachment from a running ECS include two parts:<ul id="EN-US_TOPIC_0036046828__ul1465704620856"><li id="EN-US_TOPIC_0036046828__li53235914201713">For the first part, see <a href="https://docs.otc.t-systems.com/en-us/usermanual/ims/en-us_topic_0030713143.html" target="_blank" rel="noopener noreferrer">Formats and OSs Supported for External Image Files</a>.</li><li id="EN-US_TOPIC_0036046828__li2908004620162"><a href="#EN-US_TOPIC_0036046828__table9271324195455">Table 1</a> lists the second part of supported OSs.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0036046828__table9271324195455"></a><a name="table9271324195455"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0036046828__table9271324195455" frame="border" border="1" rules="all"><caption><b>Table 1 </b>OSs supporting EVS disk detachment from a running ECS</caption><thead align="left"><tr id="EN-US_TOPIC_0036046828__row29095028195455"><th align="left" class="cellrowborder" valign="top" width="35.709999999999994%" id="mcps1.3.4.2.1.2.2.2.3.1.1"><p id="EN-US_TOPIC_0036046828__p3874810195455">OS</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.29%" id="mcps1.3.4.2.1.2.2.2.3.1.2"><p id="EN-US_TOPIC_0036046828__p45424225195455">Version</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0036046828__row6164841195455"><td class="cellrowborder" rowspan="4" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p29590097195455">CentOS</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p47987633195455">7.3 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row29235518195455"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p17103579195455">7.2 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row19714485195455"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p27960603195455">6.8 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row50318836195455"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p33382838195455">6.7 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row32010086195455"><td class="cellrowborder" rowspan="2" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p42680203195455">Debian</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p34544441195455">8.6.0 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row42464514195455"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p40785593195455">8.5.0 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row31526020195455"><td class="cellrowborder" rowspan="2" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p3470819195455">Fedora</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p12700947195455">25 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row7771181195618"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p28046932195618">24 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row48634140195618"><td class="cellrowborder" rowspan="4" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p35054084195618">SUSE</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p20808552195618">SUSE Linux Enterprise Server 12 SP2 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row56745994195618"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p28769574195618">SUSE Linux Enterprise Server 12 SP1 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row53117304195618"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p700567195618">SUSE Linux Enterprise Server 11 SP4 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row1719114311319"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p5009498811319">SUSE Linux Enterprise Server 12 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row588467195618"><td class="cellrowborder" rowspan="2" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p5296204195618">OpenSUSE</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p26339408195618">42.2 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row14494860195618"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p30661931195618">42.1 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row48454688195618"><td class="cellrowborder" rowspan="4" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p33439014195618">Oracle Linux Server release</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p24205579195618">7.3 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row44683344195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p26359341195810">7.2 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row6869729195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p41976870195810">6.8 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row49642196195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p17483405195810">6.7 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row28948492195810"><td class="cellrowborder" rowspan="3" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p59209837195810">Ubuntu Server</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p31267532195810">16.04 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row66691124195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p31012055195810">14.04 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row29984127195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p48048103195810">14.04.4 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row58019688195810"><td class="cellrowborder" rowspan="3" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p52415150195810">Windows (SCSI EVS disks cannot be detached from a running ECS.)</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p17768768195810">Windows Server 2008 R2 Enterprise 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row17974643195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p17286382195810">Windows Server 2012 R2 Standard 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row5831657195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p23420035195810">Windows Server 2016 R2 Standard 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row24482463195810"><td class="cellrowborder" rowspan="2" valign="top" width="35.709999999999994%" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p19015578195810">Red Hat Linux Enterprise</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.29%" headers="mcps1.3.4.2.1.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0036046828__p63866841195810">7.3 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0036046828__row39384495195810"><td class="cellrowborder" valign="top" headers="mcps1.3.4.2.1.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0036046828__p55812053195810">6.8 64bit</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+<div class="note" id="EN-US_TOPIC_0036046828__note1774654154017"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="EN-US_TOPIC_0036046828__p15971893154017">Online detachment is not supported by the <span id="EN-US_TOPIC_0036046828__text152332586278">ECS</span>s running OSs not listed in the preceding table. For such <span id="EN-US_TOPIC_0036046828__text990141510461">ECS</span>s, stop the <span id="EN-US_TOPIC_0036046828__text17572171714460">ECS</span>s before detaching disks from them to prevent any possible problems from occurring.</p>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0036046828__section4606494215457"><h4 class="sectiontitle">Procedure</h4><ol id="EN-US_TOPIC_0036046828__ol17420769173348"><li id="EN-US_TOPIC_0036046828__li41009011173348">On the <strong id="EN-US_TOPIC_0036046828__b64131524465">Elastic Cloud Server</strong> page, click the name of the <span id="EN-US_TOPIC_0036046828__text1691325918271">ECS</span> from which the EVS disk is to be detached. The page providing details about the <span id="EN-US_TOPIC_0036046828__text12537968476">ECS</span> is displayed.</li><li id="EN-US_TOPIC_0036046828__li20688073173348">Click the <strong id="EN-US_TOPIC_0036046828__b84235270692933">Disks</strong> tab. Locate the row containing the EVS disk to be detached and click <strong id="EN-US_TOPIC_0036046828__b842352706102711">Detach</strong>.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0092499770.html">EVS Disks</a></div>
+</div>
+</div>
+

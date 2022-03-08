@@ -1,0 +1,61 @@
+<a name="EN-US_TOPIC_0018073216"></a><a name="EN-US_TOPIC_0018073216"></a>
+
+<h1 class="topictitle1">Can I Bind Multiple EIPs to an <span id="text141047105318">ECS</span>?</h1>
+<div id="body1437550181838"><div class="section" id="EN-US_TOPIC_0018073216__section1851945163017"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0018073216__p6303405720918">You can bind multiple EIPs to an <span id="EN-US_TOPIC_0018073216__text595081043120">ECS</span>. However, this configuration is not recommended.</p>
+<p id="EN-US_TOPIC_0018073216__p19349519165733">To bind multiple EIPs to an ECS, you must manually configure routes.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0018073216__section32091531162222"><h4 class="sectiontitle">Configuration Example</h4><p id="EN-US_TOPIC_0018073216__p54619536163151"><a href="#EN-US_TOPIC_0018073216__table10449199163243">Table 1</a> lists <span id="EN-US_TOPIC_0018073216__text661413114314">ECS</span> configurations.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0018073216__table10449199163243"></a><a name="table10449199163243"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0018073216__table10449199163243" frame="border" border="1" rules="all"><caption><b>Table 1 </b>ECS configurations</caption><thead align="left"><tr id="EN-US_TOPIC_0018073216__row8662904163243"><th align="left" class="cellrowborder" valign="top" width="25.19%" id="mcps1.3.2.3.2.3.1.1"><p id="EN-US_TOPIC_0018073216__p7023835163243">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.81%" id="mcps1.3.2.3.2.3.1.2"><p id="EN-US_TOPIC_0018073216__p32059771163243">Configuration</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0018073216__row20102485163243"><td class="cellrowborder" valign="top" width="25.19%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0018073216__p17688570163243">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.81%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0018073216__p23488080163243">ecs_test</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0018073216__row10066133163243"><td class="cellrowborder" valign="top" width="25.19%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0018073216__p10050422163243">Image</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.81%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0018073216__p8777885163243">CentOS 6.5 64bit</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0018073216__row11892101163243"><td class="cellrowborder" valign="top" width="25.19%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0018073216__p23736109163243">EIP</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.81%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0018073216__p43576653163243">2</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0018073216__row56645562163243"><td class="cellrowborder" valign="top" width="25.19%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0018073216__p24887810163243">Primary NIC</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.81%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0018073216__p2646743163243">eth0</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0018073216__row23304392163323"><td class="cellrowborder" valign="top" width="25.19%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0018073216__p8412943163323">Secondary NIC</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.81%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0018073216__p10359815163323">eth1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="EN-US_TOPIC_0018073216__p29420320164233"><strong id="EN-US_TOPIC_0018073216__b84235270601519">Example 1:</strong></p>
+<div class="p" id="EN-US_TOPIC_0018073216__p41171733162920">If you are required to access public network 11.11.11.0/24 through standby NIC <strong id="EN-US_TOPIC_0018073216__b8423527060169">eth1</strong>, perform the following operations to configure a route:<ol id="EN-US_TOPIC_0018073216__ol18362660164218"><li id="EN-US_TOPIC_0018073216__li42417408164218">Log in to the <span id="EN-US_TOPIC_0018073216__text893111478179">ECS</span>.</li><li id="EN-US_TOPIC_0018073216__li35072844164223">Run the following command to configure a route:<p id="EN-US_TOPIC_0018073216__p3211026816433"><a name="EN-US_TOPIC_0018073216__li35072844164223"></a><a name="li35072844164223"></a><strong id="EN-US_TOPIC_0018073216__b622605418417">ip route add 11.11.11.0/24 dev eth1 via 192.168.2.1</strong></p>
+<p id="EN-US_TOPIC_0018073216__p7288110164437">In the preceding command, <strong id="EN-US_TOPIC_0018073216__b84235270601739">192.168.2.1</strong> is the gateway IP address of standby NIC <strong id="EN-US_TOPIC_0018073216__b84235270601913">eth1</strong>.</p>
+</li></ol>
+</div>
+<p id="EN-US_TOPIC_0018073216__p30721816164524"><strong id="EN-US_TOPIC_0018073216__b84235270601921">Example 2:</strong></p>
+<p id="EN-US_TOPIC_0018073216__p55315599164548">Based on example 1, if you are required to enable routing for default public network traffic through standby NIC <strong id="EN-US_TOPIC_0018073216__b7037019810216">eth1</strong>, perform the following operations to configure a route:</p>
+<ol id="EN-US_TOPIC_0018073216__ol16816170164734"><li id="EN-US_TOPIC_0018073216__li56130240164734">Log in to the <span id="EN-US_TOPIC_0018073216__text66355316182">ECS</span>.</li><li id="EN-US_TOPIC_0018073216__li51081423164738">Run the following command to delete the default route:<p id="EN-US_TOPIC_0018073216__p49989555164813"><a name="EN-US_TOPIC_0018073216__li51081423164738"></a><a name="li51081423164738"></a><strong id="EN-US_TOPIC_0018073216__b62521877164816">ip route delete default</strong></p>
+</li><li id="EN-US_TOPIC_0018073216__li16873338164820">Run the following command to configure a new default route:<p id="EN-US_TOPIC_0018073216__p2759619316498"><a name="EN-US_TOPIC_0018073216__li16873338164820"></a><a name="li16873338164820"></a><strong id="EN-US_TOPIC_0018073216__b7933526124213">ip route add 0.0.0.0/0 dev eth1 via 192.168.2.1</strong></p>
+<p id="EN-US_TOPIC_0018073216__p52517685164934">In the preceding command, <strong id="EN-US_TOPIC_0018073216__b1965872420">192.168.2.1</strong> is the gateway IP address of standby NIC <strong id="EN-US_TOPIC_0018073216__b706638583">eth1</strong>.</p>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0018124785.html">Network Configurations</a></div>
+</div>
+</div>
+

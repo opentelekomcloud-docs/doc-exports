@@ -1,0 +1,21 @@
+<a name="EN-US_TOPIC_0031736846"></a><a name="EN-US_TOPIC_0031736846"></a>
+
+<h1 class="topictitle1">Why Does the System Display a Message Indicating that the Password for Logging In to a Windows <span id="text48761341185020">ECS</span> Cannot Be Viewed?</h1>
+<div id="body1465888288533"><div class="section" id="EN-US_TOPIC_0031736846__en-us_topic_0031703610_section563002281179"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0031736846__en-us_topic_0031703610_p4536999911713">Password authentication is required to log in to a Windows ECS. Therefore, you require a key file to obtain the initial password for logging in to the ECS. However, after you click <strong id="EN-US_TOPIC_0031736846__b2005120299191039">Get Password</strong> (see <a href="en-us_topic_0031107266.html">Obtaining the Password for Logging In to a Windows ECS</a>), the system displays a message indicating that the password cannot be viewed. ECS login was therefore unsuccessful.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0031736846__en-us_topic_0031703610_section379062211192"><h4 class="sectiontitle">Possible Causes</h4><p id="EN-US_TOPIC_0031736846__p50934004164951">Possible causes vary depending on the image used to create the Windows <span id="EN-US_TOPIC_0031736846__text741218281355">ECS</span>.</p>
+<ul id="EN-US_TOPIC_0031736846__ul4377094163739"><li id="EN-US_TOPIC_0031736846__li4337660616508">Cause 1: The image used to create the Windows <span id="EN-US_TOPIC_0031736846__text174701540731">ECS</span> is a private image, on which Cloudbase-Init has not been installed.</li><li id="EN-US_TOPIC_0031736846__li49377380163741">Cause 2: Cloudbase-Init has been installed on the image, but the key pair has not been obtained when the Windows <span id="EN-US_TOPIC_0031736846__text0236164417318">ECS</span> was created.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0031736846__en-us_topic_0031703610_section32757467113923"><h4 class="sectiontitle">Solution</h4><ul id="EN-US_TOPIC_0031736846__ul62864375171136"><li id="EN-US_TOPIC_0031736846__li10641948171136">If the issue is a result of cause 1, proceed as follows:<p id="EN-US_TOPIC_0031736846__p16909377145119"><a name="EN-US_TOPIC_0031736846__li10641948171136"></a><a name="li10641948171136"></a>If a private image is created without Cloudbase-Init installed, the <span id="EN-US_TOPIC_0031736846__text19860445238">ECS</span> configuration cannot be customized. As a result, you can log in to the <span id="EN-US_TOPIC_0031736846__text201881453191910">ECS</span> only using the original image password.</p>
+<p id="EN-US_TOPIC_0031736846__p46020234261">The original image password is the OS password configured when the private image was created.</p>
+</li><li id="EN-US_TOPIC_0031736846__li15564696171147">If the issue is a result of cause 2, proceed as follows:<ol id="EN-US_TOPIC_0031736846__ol46859259171911"><li id="EN-US_TOPIC_0031736846__li40959995171921">Locate the row containing the target <span id="EN-US_TOPIC_0031736846__text5204749932">ECS</span>, click <strong id="EN-US_TOPIC_0031736846__b88081742142010">More</strong> in the <strong id="EN-US_TOPIC_0031736846__b1760113455207">Operation</strong> column, and select <strong id="EN-US_TOPIC_0031736846__b888318494203">Restart</strong>.</li><li id="EN-US_TOPIC_0031736846__li1838866171911">Click <strong id="EN-US_TOPIC_0031736846__b842352706223549">More</strong> in the <strong id="EN-US_TOPIC_0031736846__b697720573213037">Operation</strong> column and select <strong id="EN-US_TOPIC_0031736846__b842352706223554">Get Password</strong> to check whether the password can be obtained.<ul id="EN-US_TOPIC_0031736846__ul47236236172129"><li id="EN-US_TOPIC_0031736846__li43665397172129">If you can obtain the password, no further action is required.</li><li id="EN-US_TOPIC_0031736846__li57444253172129">If you cannot obtain the password, contact customer service.</li></ul>
+</li></ol>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0030930807.html">Login and Connection</a></div>
+</div>
+</div>
+

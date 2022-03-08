@@ -1,0 +1,30 @@
+<a name="EN-US_TOPIC_0166284971"></a><a name="EN-US_TOPIC_0166284971"></a>
+
+<h1 class="topictitle1">How Can I Use WinSCP to Transfer Files from a Local Windows Computer to a Linux <span id="text16551138181016">ECS</span>?</h1>
+<div id="body1555897188778"><div class="section" id="EN-US_TOPIC_0166284971__section1033221544315"><h4 class="sectiontitle">Scenarios</h4><p id="EN-US_TOPIC_0166284971__p679631874317">WinSCP can be used to securely copy-paste files across local and remote computers. Compared with FTP, WinSCP allows you to use a username and password to access the destination server without any additional configuration on the server.</p>
+</div>
+<p id="EN-US_TOPIC_0166284971__p649115488266">To transfer a file from a local Windows computer to a Linux ECS, WinSCP is commonly used. This section describes how to transfer files from a local Windows computer to a Linux <span id="EN-US_TOPIC_0166284971__text8839174841014">ECS</span> using WinSCP. In this example, the <span id="EN-US_TOPIC_0166284971__text546916616302">ECS</span> running CentOS 7.2 is used as an example.</p>
+<div class="section" id="EN-US_TOPIC_0166284971__section69111948104914"><h4 class="sectiontitle">Prerequisites</h4><ul id="EN-US_TOPIC_0166284971__ul21492248112020"><li id="EN-US_TOPIC_0166284971__li1586644205812">The target <span id="EN-US_TOPIC_0166284971__text5102134118813">ECS</span> is running.</li><li id="EN-US_TOPIC_0166284971__li59212509112020">The ECS has an EIP bound. For details, see <a href="en-us_topic_0174917535.html">Binding an EIP</a>.</li></ul>
+<ul id="EN-US_TOPIC_0166284971__ul9218111185414"><li id="EN-US_TOPIC_0166284971__li31483937112020">The security group of the ECS allows traffic on port 22. For details, see <a href="en-us_topic_0030878383.html">Configuring Security Group Rules</a>.</li></ul>
+</div>
+<div class="section" id="EN-US_TOPIC_0166284971__section628216511377"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0166284971__ol18791942111415"><li id="EN-US_TOPIC_0166284971__li15793421149"><a href="https://winscp.net/" target="_blank" rel="noopener noreferrer">Download WinSCP</a>.</li></ol><ol start="2" id="EN-US_TOPIC_0166284971__ol13842394399"><li id="EN-US_TOPIC_0166284971__li98493913395">Install WinSCP.</li><li id="EN-US_TOPIC_0166284971__li1318204392917">Start WinSCP.<p id="EN-US_TOPIC_0166284971__p1497165011412"><a name="EN-US_TOPIC_0166284971__li1318204392917"></a><a name="li1318204392917"></a><span><img id="EN-US_TOPIC_0166284971__image750681191518" src="en-us_image_0166287336.png" title="Click to enlarge" class="imgResize"></span></p>
+<p id="EN-US_TOPIC_0166284971__p48476469329">Set parameters as follows:</p>
+<ul id="EN-US_TOPIC_0166284971__ul163512492242"><li id="EN-US_TOPIC_0166284971__li335194914243"><strong id="EN-US_TOPIC_0166284971__b842352706191656">File protocol</strong>: Set this to <strong id="EN-US_TOPIC_0166284971__b842352706191714">SFTP</strong> or <strong id="EN-US_TOPIC_0166284971__b842352706191716">SCP</strong>.</li><li id="EN-US_TOPIC_0166284971__li6351049142417"><strong id="EN-US_TOPIC_0166284971__b1599522812305">Host name</strong>: Enter the EIP bound to the <span id="EN-US_TOPIC_0166284971__text2087814031110">ECS</span>. Log in to the management console to obtain the EIP.</li><li id="EN-US_TOPIC_0166284971__li1035184922412"><strong id="EN-US_TOPIC_0166284971__b842352706191830">Port number</strong>: <strong id="EN-US_TOPIC_0166284971__b842352706191839">22</strong> by default.</li><li id="EN-US_TOPIC_0166284971__li135134952411"><strong id="EN-US_TOPIC_0166284971__b842352706105034">User Name</strong>: Enter the username for logging in to the <span id="EN-US_TOPIC_0166284971__text1130278111116">ECS</span>.<ul id="EN-US_TOPIC_0166284971__ul1635144919241"><li id="EN-US_TOPIC_0166284971__li14767336332">If the <span id="EN-US_TOPIC_0166284971__text6710151119118">ECS</span> is logged in using an SSH key pair,<ul id="EN-US_TOPIC_0166284971__ul98012763319"><li id="EN-US_TOPIC_0166284971__li13801871337">The username is <strong id="EN-US_TOPIC_0166284971__b84235270610129">core</strong> for a CoreOS public image.</li><li id="EN-US_TOPIC_0166284971__li5805713338">The username is <strong id="EN-US_TOPIC_0166284971__b281082540">root</strong> for a non-CoreOS public image.</li></ul>
+</li><li id="EN-US_TOPIC_0166284971__li3129204413412">If the <span id="EN-US_TOPIC_0166284971__text156131216101120">ECS</span> is logged in using a password, the username is <strong id="EN-US_TOPIC_0166284971__b145538974192043">root</strong> for a public image.</li></ul>
+</li><li id="EN-US_TOPIC_0166284971__li987213210300"><strong id="EN-US_TOPIC_0166284971__b842352706192114">Password</strong>: the password set when you created the <span id="EN-US_TOPIC_0166284971__text66461027171116">ECS</span> or converted using a key.</li></ul>
+</li><li id="EN-US_TOPIC_0166284971__li78691521183115">Click <strong id="EN-US_TOPIC_0166284971__b172914187521">Login</strong>.</li><li id="EN-US_TOPIC_0166284971__li12348165515457">Drag a file from the local computer on the left to the remotely logged in <span id="EN-US_TOPIC_0166284971__text2019883614117">ECS</span> on the right to transfer the file.</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0170135967.html">File Upload/Data Transfer</a></div>
+</div>
+</div>
+
+
+<script language="JavaScript">
+<!--
+image_size('.imgResize');
+var msg_imageMax = "view original image";
+var msg_imageClose = "close";
+//--></script>
