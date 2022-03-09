@@ -96,9 +96,10 @@ def main():
                 processed_line = re.sub(r'\.\. \\_', '\n\n.. _', line)
                 processed_line = re.sub(r'√', 'Y', processed_line)
                 processed_line = re.sub(r'public_sys-resources/', '', processed_line)
-                processed_line = re.sub(r'image:: ', 'image:: /images/', processed_line)
+                processed_line = re.sub(r'image:: ', 'image:: /_static/images/', processed_line)
                 processed_line = re.sub(r'   :name: .*$', '', processed_line)
-                processed_line = re.sub(r'.. code:: screen', '.. code::', processed_line)
+                processed_line = re.sub(r'**Parent topic:.*$', '', processed_line)
+                processed_line = re.sub(r'.. code:: screen', '.. code-block::', processed_line)
                 writer.write(processed_line)
     # Generate indexes
     for k, v in tree.items():
@@ -113,7 +114,8 @@ def main():
             index.write(title + '\n')
             index.write('='*(len(title)) + '\n')
             index.write('\n')
-            index.write('.. toctree::\n\n')
+            index.write('.. toctree::\n')
+            index.write('   :maxdepth:1\n\n')
             for child in v:
                 new_name = child['new_name']
                 if child['code'] in tree:
@@ -124,8 +126,9 @@ def main():
 
         p = pathlib.Path(f"result/{path}.rst")
         if p.exists():
-            print(f"Please check {p.resolve()}. It should be dropped in favour"
+            print(f"{p.resolve()} is removed in favour"
                   f"of result/{path}/index.rst")
+            p.unlink()
 
 
 if __name__ == "__main__":
