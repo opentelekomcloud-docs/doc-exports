@@ -10,6 +10,11 @@ def get_new_name(current_name):
     new_name = current_name.replace(' - ','_')
     new_name = new_name.replace(' ','_')
     new_name = new_name.replace('/','_')
+    new_name = new_name.replace('\'','')
+    new_name = new_name.replace('\"','')
+    new_name = new_name.replace('\`','')
+    new_name = new_name.replace('\´','')
+    new_name = new_name.replace(':','')
     new_name = new_name.replace('?','')
     new_name = new_name.lower()
     return new_name
