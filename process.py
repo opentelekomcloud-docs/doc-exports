@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import os
 import pathlib
 import re
+import subprocess
 import warnings
 
+
 def get_new_name(current_name):
-    new_name = current_name.replace(' - ','_')
-    new_name = new_name.replace(' ','_')
-    new_name = new_name.replace('/','_')
-    new_name = new_name.replace('\'','')
-    new_name = new_name.replace('\"','')
-    new_name = new_name.replace('\`','')
-    new_name = new_name.replace('\´','')
-    new_name = new_name.replace(':','')
-    new_name = new_name.replace('?','')
+    new_name = current_name.replace(' - ', '_')
+    new_name = new_name.replace(' ', '_')
+    new_name = new_name.replace('/', '_')
+    new_name = new_name.replace('\'', '')
+    new_name = new_name.replace('"', '')
+    new_name = new_name.replace('`', '')
+    new_name = new_name.replace('´', '')
+    new_name = new_name.replace(':', '')
+    new_name = new_name.replace('?', '')
     new_name = new_name.lower()
     return new_name
 
@@ -48,16 +51,29 @@ def build_doc_tree(metadata):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Process links.')
+    parser.add_argument(
+            'path', type=str, help='path to the files')
+    args = parser.parse_args()
+    retval = os.getcwd()
+    os.chdir(args.path)
     meta_data = json.loads(open("CLASS.TXT.json").read())
     metadata_by_uri = dict()
     metadata_by_code = dict()
+    rename_matrix = dict()
     table_re = re.compile(r'.*<table[^>]+ id="([^"]+)"')
     for f in meta_data:
         f['new_name'] = get_new_name(f['title'])
         metadata_by_uri[f['uri']] = f
         metadata_by_code[f.get('code')] = f
 
+        # Construct link renaming matrix
+        target_path = get_target_path(f['p_code'], metadata_by_code)
+        rename_matrix[f['uri']] = f"{target_path}/{f['new_name']}.html"
+
     tree = build_doc_tree(metadata_by_code)
+
+    pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
 
     for f in pathlib.Path().glob("*.html"):
         if not f.name in metadata_by_uri:
@@ -65,6 +81,7 @@ def main():
         _target = metadata_by_uri[f.name]
         target = _target['new_name']
         target_path = get_target_path(_target['p_code'], metadata_by_code)
+        target_deepness = target_path.count('/') + 1
         pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
         pathlib.Path("tmp_result/" + target_path).mkdir(parents=True, exist_ok=True)
         pathlib.Path("result/" + target_path).mkdir(parents=True, exist_ok=True)
@@ -79,12 +96,17 @@ def main():
                 if not line.startswith("<strong>Parent topic:</strong>"):
                     # Drop all divs
                     processed_line = re.sub(r'<[/]?div[^>]*>', '', line)
+
+                    # Replace links to point to renamed files
+                    for k, v in rename_matrix.items():
+                        replace = ('../' * target_deepness) + v
+                        processed_line = processed_line.replace(k, replace)
                     writer.write(processed_line)
         # Convert html to rst
         os.system(
             f"pandoc 'temp/{target}.tmp' -f html "
             f"-o 'tmp_result/{target_path}/{target}.rst' "
-            f"--column 120 --ascii -s --wrap preserve"
+            f"--ascii -s --wrap none"
         )
         # Post processing of rendered rst
         with (
@@ -98,7 +120,7 @@ def main():
                 processed_line = re.sub(r'public_sys-resources/', '', processed_line)
                 processed_line = re.sub(r'image:: ', 'image:: /_static/images/', processed_line)
                 processed_line = re.sub(r'   :name: .*$', '', processed_line)
-                processed_line = re.sub(r'**Parent topic:.*$', '', processed_line)
+                processed_line = re.sub(r'\*\*Parent topic:.*$', '', processed_line)
                 processed_line = re.sub(r'.. code:: screen', '.. code-block::', processed_line)
                 writer.write(processed_line)
     # Generate indexes
@@ -115,7 +137,7 @@ def main():
             index.write('='*(len(title)) + '\n')
             index.write('\n')
             index.write('.. toctree::\n')
-            index.write('   :maxdepth:1\n\n')
+            index.write('   :maxdepth: 1\n\n')
             for child in v:
                 new_name = child['new_name']
                 if child['code'] in tree:
@@ -127,8 +149,10 @@ def main():
         p = pathlib.Path(f"result/{path}.rst")
         if p.exists():
             print(f"{p.resolve()} is removed in favour"
-                  f"of result/{path}/index.rst")
+                  f" of result/{path}/index.rst")
             p.unlink()
+
+    os.chdir(retval)
 
 
 if __name__ == "__main__":
