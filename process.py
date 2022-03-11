@@ -67,11 +67,13 @@ def main():
         metadata_by_uri[f['uri']] = f
         metadata_by_code[f.get('code')] = f
 
+    tree = build_doc_tree(metadata_by_code)
+
+    for f in meta_data:
         # Construct link renaming matrix
         target_path = get_target_path(f['p_code'], metadata_by_code)
-        rename_matrix[f['uri']] = f"{target_path}/{f['new_name']}.html"
-
-    tree = build_doc_tree(metadata_by_code)
+        name = f["new_name"] if not tree.get(f['code']) else "index"
+        rename_matrix[f['uri']] = f"{target_path}/{name}.html"
 
     pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
 
