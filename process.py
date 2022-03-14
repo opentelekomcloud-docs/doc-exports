@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import bs4
 import json
 import os
 import pathlib
@@ -49,6 +50,27 @@ def build_doc_tree(metadata):
         flat_tree[parent_id].append(v)
     return flat_tree
 
+def flatten_html(soup):
+    for i in soup.body.find_all('div'):
+        if "note" in i.get('class', []):
+            del i['id']
+            if i.img:
+                i.img.decompose()
+            notetitle = i.find('span', class_='notetitle')
+            if notetitle:
+                title = soup.new_tag('div')
+                title['class'] = 'title'
+                title.string = 'Note:'
+                notetitle.replace_with(title)
+            #if i.p:
+            #    i.p.unwrap()
+        else:
+            i.name = 'p'
+    for tbl in soup.body.find_all('table'):
+        tbl_id = tbl.get('id')
+        if tbl_id:
+            tbl['id'] = re.sub('[-_]', '', tbl_id)
+    return soup.body
 
 def main():
     parser = argparse.ArgumentParser(description='Process links.')
@@ -91,19 +113,46 @@ def main():
         # Pre-processing of html content
         with open(f, 'r') as reader, open(f"temp/{target}.tmp", 'w') as writer:
             print(f"Processing {target}")
-            for line in reader.readlines():
+            doc_anchors = dict()
+            content = reader.read()
+            soup = bs4.BeautifulSoup(content, "lxml")
+            proc = flatten_html(soup)
+            # Fix cross links
+            for lnk in proc.find_all("a"):
+                href = lnk.get('href')
+                if href:
+                    page_url = ''
+                    href_parts = href.split('#')
+                    if href_parts[0] in rename_matrix:
+                        page_url = ('../' * target_deepness) + \
+                            rename_matrix[href_parts[0]]
+                    else:
+                        page_url = href_parts[0]
+                    if len(href_parts) > 1:
+                        lnk['href'] = (
+                            f"{page_url}#" +
+                            re.sub('[-_]', '', href_parts[1])
+                            )
+                    else:
+                        lnk['href'] = lnk['href'].replace(
+                                href_parts[0],
+                                page_url)
+                if not href:
+                    lnk_name = lnk.get('name')
+                    if (
+                            lnk_name and not lnk.string
+                            and not lnk_name in doc_anchors
+                    ):
+                        lnk['id'] = lnk_name
+                        doc_anchors[lnk_name] = 1
+            #writer.write(str(proc))
+            for line in str(proc).splitlines():
                 table_match = table_re.match(line)
                 if table_match:
                     writer.write(f".. _{table_match.group(1)}:\n\n")
                 if not line.startswith("<strong>Parent topic:</strong>"):
-                    # Drop all divs
-                    processed_line = re.sub(r'<[/]?div[^>]*>', '', line)
-
-                    # Replace links to point to renamed files
-                    for k, v in rename_matrix.items():
-                        replace = ('../' * target_deepness) + v
-                        processed_line = processed_line.replace(k, replace)
-                    writer.write(processed_line)
+                    processed_line = line
+                    writer.write(processed_line + '\n')
         # Convert html to rst
         os.system(
             f"pandoc 'temp/{target}.tmp' -f html "
