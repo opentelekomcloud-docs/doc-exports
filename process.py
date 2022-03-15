@@ -23,6 +23,7 @@ def get_new_name(current_name):
     new_name = new_name.lower()
     return new_name
 
+
 def get_target_path(code, metadata, path=''):
     if code in metadata:
         current = metadata[code]
@@ -37,8 +38,8 @@ def get_target_path(code, metadata, path=''):
     else:
         return ''
 
+
 def build_doc_tree(metadata):
-    tree = dict()
     flat_tree = dict()
     for k, v in metadata.items():
         parent_id = v.get('p_code')
@@ -49,6 +50,7 @@ def build_doc_tree(metadata):
             flat_tree[parent_id] = list()
         flat_tree[parent_id].append(v)
     return flat_tree
+
 
 def flatten_html(soup):
     for i in soup.body.find_all('div'):
@@ -62,8 +64,26 @@ def flatten_html(soup):
                 title['class'] = 'title'
                 title.string = 'Note:'
                 notetitle.replace_with(title)
-            #if i.p:
-            #    i.p.unwrap()
+        elif "notice" in i.get('class', []):
+            del i['id']
+            if i.img:
+                i.img.decompose()
+            i['class'] = 'important'
+        elif "caution" in i.get('class', []):
+            del i['id']
+            if i.img:
+                i.img.decompose()
+        elif "fignone" in i.get('class', []):
+            figure = soup.new_tag('figure')
+            img = i.find('img')
+            cap = i.find('span', class_='figcap')
+            if cap is not None:
+                cap.name = 'figcaption'
+                figure.append(cap)
+            if img:
+                img['src'] = '/_static/images/' + img['src']
+                figure.append(img)
+            i.replace_with(figure)
         else:
             i.name = 'p'
     for tbl in soup.body.find_all('table'):
@@ -71,6 +91,7 @@ def flatten_html(soup):
         if tbl_id:
             tbl['id'] = re.sub('[-_]', '', tbl_id)
     return soup.body
+
 
 def main():
     parser = argparse.ArgumentParser(description='Process links.')
@@ -100,15 +121,17 @@ def main():
     pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
 
     for f in pathlib.Path().glob("*.html"):
-        if not f.name in metadata_by_uri:
+        if f.name not in metadata_by_uri:
             continue
         _target = metadata_by_uri[f.name]
         target = _target['new_name']
         target_path = get_target_path(_target['p_code'], metadata_by_code)
         target_deepness = target_path.count('/') + 1
         pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
-        pathlib.Path("tmp_result/" + target_path).mkdir(parents=True, exist_ok=True)
-        pathlib.Path("result/" + target_path).mkdir(parents=True, exist_ok=True)
+        pathlib.Path("tmp_result/" + target_path).mkdir(
+                parents=True, exist_ok=True)
+        pathlib.Path("result/" + target_path).mkdir(
+                parents=True, exist_ok=True)
 
         # Pre-processing of html content
         with open(f, 'r') as reader, open(f"temp/{target}.tmp", 'w') as writer:
@@ -141,7 +164,7 @@ def main():
                     lnk_name = lnk.get('name')
                     if (
                             lnk_name and not lnk.string
-                            and not lnk_name in doc_anchors
+                            and lnk_name not in doc_anchors
                     ):
                         lnk['id'] = lnk_name
                         doc_anchors[lnk_name] = 1
@@ -168,11 +191,16 @@ def main():
             for line in reader.readlines():
                 processed_line = re.sub(r'\.\. \\_', '\n\n.. _', line)
                 processed_line = re.sub(r'√', 'Y', processed_line)
-                processed_line = re.sub(r'public_sys-resources/', '', processed_line)
-                processed_line = re.sub(r'image:: ', 'image:: /_static/images/', processed_line)
-                processed_line = re.sub(r'   :name: .*$', '', processed_line)
-                processed_line = re.sub(r'\*\*Parent topic:.*$', '', processed_line)
-                processed_line = re.sub(r'.. code:: screen', '.. code-block::', processed_line)
+                processed_line = re.sub(
+                    r'public_sys-resources/', '', processed_line)
+                processed_line = re.sub(
+                    r'image:: ', 'image:: /_static/images/', processed_line)
+                processed_line = re.sub(
+                    r'   :name: .*$', '', processed_line)
+                processed_line = re.sub(
+                    r'\*\*Parent topic:.*$', '', processed_line)
+                processed_line = re.sub(
+                    r'.. code:: screen', '.. code-block::', processed_line)
                 writer.write(processed_line)
     # Generate indexes
     for k, v in tree.items():
@@ -195,7 +223,6 @@ def main():
                     # If this is folder - add /index
                     new_name = new_name + '/index'
                 index.write(f"   {new_name}\n")
-
 
         p = pathlib.Path(f"result/{path}.rst")
         if p.exists():
