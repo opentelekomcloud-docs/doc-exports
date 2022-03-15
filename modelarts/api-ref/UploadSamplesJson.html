@@ -1,0 +1,954 @@
+<a name="UploadSamplesJson"></a><a name="UploadSamplesJson"></a>
+
+<h1 class="topictitle1">Adding Samples in Batches</h1>
+<div><div class="section"><h4 class="sectiontitle">Function</h4><p>This API is used to add samples in batches.</p>
+</div>
+<div class="section"><h4 class="sectiontitle">URI</h4><p>POST /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Dataset ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Request Parameters</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_UploadSamplesReq" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>final_annotation</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether to directly import to the final result. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Import labels to the labeled dataset. (Default value).</p>
+</li><li><p><strong>false</strong>: Import labels to the to-be-confirmed dataset. Currently, to-be-confirmed datasets only support categories of image classification and object detection.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>label_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p><a href="#UploadSamplesJson__request_LabelFormat">LabelFormat</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Label format. This parameter is used only for text datasets.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Array of <a href="#UploadSamplesJson__request_Sample">Sample</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Sample list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_LabelFormat"></a><a name="request_LabelFormat"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_LabelFormat" frame="border" border="1" rules="all"><caption><b>Table 3 </b>LabelFormat</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>label_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Label type of text classification. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: The label is separated from the text, and they are distinguished by the fixed suffix <strong>_result</strong>. For example, the text file is <strong>abc.txt</strong>, and the label file is <strong>abc_result.txt</strong>.</p>
+</li><li><p><strong>1</strong>: Default value. Labels and texts are stored in the same file and separated by separators. You can use <strong>text_sample_separator</strong> to specify the separator between the text and label and <strong>text_label_separator</strong> to specify the separator between labels.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>text_label_separator</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Separator between labels. By default, the comma (,) is used as the separator. The separator needs to be escaped. Only one character can be used as the separator. The value must contain letters, digits, and one special character (!@#$%^&amp;*_=|?/':.;,).</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>text_sample_separator</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Separator between the text and label. By default, the <strong>Tab</strong> key is used as the separator. The separator needs to be escaped. Only one character can be used as the separator. The value must contain letters, digits, and one special character (!@#$%^&amp;*_=|?/':.;,).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_Sample"></a><a name="request_Sample"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_Sample" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Sample</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>data</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Byte data of sample files. The type is <strong>java.nio.ByteBuffer</strong>. When this parameter is called, the string converted from the byte data is uploaded.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>data_source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p><a href="#UploadSamplesJson__request_DataSource">DataSource</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Data source.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>encoding</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Encoding type of sample files, which is used to upload .txt or .csv files. The value can be <strong>UTF-8</strong>, <strong>GBK</strong>, or <strong>GB2312</strong>. The default value is <strong>UTF-8</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Array of <a href="#UploadSamplesJson__request_SampleLabel">SampleLabel</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Sample label list.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p><a href="#UploadSamplesJson__request_SampleMetadata">SampleMetadata</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Key-value pair of the sample <strong>metadata</strong> attribute.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Name of sample files. The value contains 0 to 1,024 characters and cannot contain special characters (!&lt;&gt;=&amp;"').</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>sample_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Sample type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image</p>
+</li><li><p><strong>1</strong>: text</p>
+</li><li><p><strong>2</strong>: speech</p>
+</li><li><p><strong>4</strong>: table</p>
+</li><li><p><strong>6</strong>: video</p>
+</li><li><p><strong>9</strong>: custom format</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_DataSource"></a><a name="request_DataSource"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_DataSource" frame="border" border="1" rules="all"><caption><b>Table 5 </b>DataSource</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.5.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>data_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Data source path.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>data_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Data type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: OBS bucket (default value)</p>
+</li><li><p><strong>1</strong>: GaussDB(DWS)</p>
+</li><li><p><strong>2</strong>: DLI</p>
+</li><li><p><strong>3</strong>: RDS</p>
+</li><li><p><strong>4</strong>: MRS</p>
+</li><li><p><strong>5</strong>: AI Gallery</p>
+</li><li><p><strong>6</strong>: Inference service</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>schema_maps</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Array of <a href="#UploadSamplesJson__request_SchemaMap">SchemaMap</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Schema mapping information corresponding to the table data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>source_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p><a href="#UploadSamplesJson__request_SourceInfo">SourceInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Information required for importing a table data source.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>with_column_header</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Whether the first row in the file is a column name. This field is valid for the table dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The first row in the file is the column name.</p>
+</li><li><p><strong>false</strong>: The first row in the file is not the column name.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_SchemaMap"></a><a name="request_SchemaMap"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_SchemaMap" frame="border" border="1" rules="all"><caption><b>Table 6 </b>SchemaMap</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.6.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>dest_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Name of the destination column.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>src_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Name of the source column.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_SourceInfo"></a><a name="request_SourceInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_SourceInfo" frame="border" border="1" rules="all"><caption><b>Table 7 </b>SourceInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.7.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>cluster_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>cluster_mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Running mode of an MRS cluster. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: normal cluster</p>
+</li><li><p><strong>1</strong>: security cluster</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>cluster_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Name of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>database_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Name of the database to which the table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>input</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>HDFS path of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>IP address of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Port number of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>queue_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>DLI queue name of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Subnet ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>table_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Name of the table to which a table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>user_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Username, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>user_password</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>User password, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>vpc_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>ID of the VPC where an MRS cluster resides.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_SampleLabel"></a><a name="request_SampleLabel"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_SampleLabel" frame="border" border="1" rules="all"><caption><b>Table 8 </b>SampleLabel</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.8.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>annotated_by</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Video labeling method, which is used to distinguish whether a video is labeled manually or automatically. The options are as follows:</p>
+<ul><li><p><strong>human</strong>: manual labeling</p>
+</li><li><p><strong>auto</strong>: automatic labeling</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Label ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Label name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>property</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p><a href="#UploadSamplesJson__request_SampleLabelProperty">SampleLabelProperty</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Attribute key-value pair of the sample label, such as the object shape and shape feature.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>score</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Confidence.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Label type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image classification</p>
+</li><li><p><strong>1</strong>: object detection</p>
+</li><li><p><strong>100</strong>: text classification</p>
+</li><li><p><strong>101</strong>: named entity recognition</p>
+</li><li><p><strong>102</strong>: text triplet relationship</p>
+</li><li><p><strong>103</strong>: text triplet entity</p>
+</li><li><p><strong>200</strong>: speech classification</p>
+</li><li><p><strong>201</strong>: speech content</p>
+</li><li><p><strong>202</strong>: speech paragraph labeling</p>
+</li><li><p><strong>600</strong>: video classification</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_SampleLabelProperty"></a><a name="request_SampleLabelProperty"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_SampleLabelProperty" frame="border" border="1" rules="all"><caption><b>Table 9 </b>SampleLabelProperty</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.9.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:content</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Speech text content, which is a default attribute dedicated to the speech label (including the speech content and speech start and end points).</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:end_index</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>End position of the text, which is a default attribute dedicated to the named entity label. The end position does not include the character corresponding to the value of <strong>end_index</strong>. Examples are as follows.</p>
+<ul><li><p>If the text content is "Barack Hussein Obama II (born August 4, 1961) is an American attorney and politician.", the <strong>start_index</strong> and <strong>end_index</strong> values of "Barack Hussein Obama II" are <strong>0</strong> and <strong>23</strong>, respectively.</p>
+</li><li><p>If the text content is "By the end of 2018, the company has more than 100 employees.", the <strong>start_index</strong> and <strong>end_index</strong> values of "By the end of 2018" are <strong>0</strong> and <strong>18</strong>, respectively.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:end_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Speech end time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong>hh:mm:ss.SSS</strong>. (<strong>hh</strong> indicates hour; <strong>mm</strong> indicates minute; <strong>ss</strong> indicates second; and <strong>SSS</strong> indicates millisecond.)</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:feature</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Shape feature, which is a default attribute dedicated to the object detection label, with type of <strong>List</strong>. The upper left corner of an image is used as the coordinate origin <strong>[0,0]</strong>. Each coordinate point is represented by <em>[x, y]</em>. <em>x</em> indicates the horizontal coordinate, and <em>y</em> indicates the vertical coordinate (both <em>x</em> and <em>y</em> are greater than or equal to 0). The format of each shape is as follows:</p>
+<ul><li><p><strong>bndbox</strong>: consists of two points, for example, <strong>[[0,10],[50,95]]</strong>. The first point is located at the upper left corner of the rectangle and the second point is located at the lower right corner of the rectangle. That is, the X coordinate of the first point must be smaller than that of the second point, and the Y coordinate of the second point must be smaller than that of the first point.</p>
+</li><li><p><strong>polygon</strong>: consists of multiple points that are connected in sequence to form a polygon, for example, <strong>[[0,100],[50,95],[10,60],[500,400]]</strong>.</p>
+</li><li><p><strong>circle</strong>: consists of the center point and radius, for example, <strong>[[100,100],[50]]</strong>.</p>
+</li><li><p><strong>line</strong>: consists of two points, for example, <strong>[[0,100],[50,95]]</strong>. The first point is the start point, and the second point is the end point.</p>
+</li><li><p><strong>dashed</strong>: consists of two points, for example, <strong>[[0,100],[50,95]]</strong>. The first point is the start point, and the second point is the end point.</p>
+</li><li><p><strong>point</strong>: consists of one point, for example, <strong>[[0,100]]</strong>.</p>
+</li><li><p><strong>polyline</strong>: consists of multiple points, for example, <strong>[[0,100],[50,95],[10,60],[500,400]]</strong>.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:from</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>ID of the head entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:hard</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Sample labeled as a hard sample or not, which is a default attribute. Options:</p>
+<ul><li><p><strong>0/false</strong>: not a hard example</p>
+</li><li><p><strong>1/true</strong>: hard example</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:hard_coefficient</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Coefficient of difficulty of each label level, which is a default attribute. The value range is <strong>[0,1]</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:hard_reasons</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Reasons that the sample is a hard sample, which is a default attribute. Use a hyphen (-) to separate every two hard sample reason IDs, for example, <strong>3-20-21-19</strong>. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: No target objects are identified.</p>
+</li><li><p><strong>1</strong>: The confidence is low.</p>
+</li><li><p><strong>2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result.</p>
+</li><li><p><strong>3</strong>: The prediction result is greatly different from the data of the same type in the training dataset.</p>
+</li><li><p><strong>4</strong>: The prediction results of multiple consecutive similar images are inconsistent.</p>
+</li><li><p><strong>5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset.</p>
+</li><li><p><strong>6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>30</strong>: The data is predicted to be abnormal.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:shape</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Object shape, which is a default attribute dedicated to the object detection label and is left empty by default. The options are as follows:</p>
+<ul><li><p><strong>bndbox</strong>: rectangle</p>
+</li><li><p><strong>polygon</strong>: polygon</p>
+</li><li><p><strong>circle</strong>: circle</p>
+</li><li><p><strong>line</strong>: straight line</p>
+</li><li><p><strong>dashed</strong>: dotted line</p>
+</li><li><p><strong>point</strong>: point</p>
+</li><li><p><strong>polyline</strong>: polyline</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Speech source, which is a default attribute dedicated to the speech start/end point label and can be set to a speaker or narrator.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:start_index</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Start position of the text, which is a default attribute dedicated to the named entity label. The start value begins from 0, including the character corresponding to the value of <strong>start_index</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:start_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Speech start time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong>hh:mm:ss.SSS</strong>. (<strong>hh</strong> indicates hour; <strong>mm</strong> indicates minute; <strong>ss</strong> indicates second; and <strong>SSS</strong> indicates millisecond.)</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:to</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>ID of the tail entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__request_SampleMetadata"></a><a name="request_SampleMetadata"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__request_SampleMetadata" frame="border" border="1" rules="all"><caption><b>Table 10 </b>SampleMetadata</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.10.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>@modelarts:hard</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>Double</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Whether the sample is labeled as a hard sample, which is a default attribute. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: non-hard sample</p>
+</li><li><p><strong>1</strong>: hard sample</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>@modelarts:hard_coefficient</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>Double</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Coefficient of difficulty of each sample level, which is a default attribute. The value range is <strong>[0,1]</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>@modelarts:hard_reasons</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>Array of integers</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>ID of a hard sample reason, which is a default attribute. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: No target objects are identified.</p>
+</li><li><p><strong>1</strong>: The confidence is low.</p>
+</li><li><p><strong>2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result.</p>
+</li><li><p><strong>3</strong>: The prediction result is greatly different from the data of the same type in the training dataset.</p>
+</li><li><p><strong>4</strong>: The prediction results of multiple consecutive similar images are inconsistent.</p>
+</li><li><p><strong>5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset.</p>
+</li><li><p><strong>6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset.</p>
+</li><li><p><strong>12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset.</p>
+</li><li><p><strong>19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image.</p>
+</li><li><p><strong>30</strong>: The data is predicted to be abnormal.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>@modelarts:size</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Image size (width, height, and depth of the image), which is a default attribute, with type of <strong>List</strong>. In the list, the first number indicates the width (pixels), the second number indicates the height (pixels), and the third number indicates the depth (the depth can be left blank and the default value is <strong>3</strong>). For example, <strong>[100,200,3]</strong> and <strong>[100,200]</strong> are both valid. Note: This parameter is mandatory only when the sample label list contains the object detection label.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__response_UploadSamplesResp" frame="border" border="1" rules="all"><caption><b>Table 11 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Error code.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>error_msg</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Error message.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>results</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#UploadSamplesJson__response_UploadSampleResp">UploadSampleResp</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Response list for adding samples in batches.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>success</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether the operation is successful. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: successful</p>
+</li><li><p><strong>false</strong>: failed</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="UploadSamplesJson__response_UploadSampleResp"></a><a name="response_UploadSampleResp"></a><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__response_UploadSampleResp" frame="border" border="1" rules="all"><caption><b>Table 12 </b>UploadSampleResp</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Error code.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>error_msg</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Error message.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Description.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Name of a sample file.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>success</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Whether the operation is successful. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: successful</p>
+</li><li><p><strong>false</strong>: failed</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Requests</h4><p>Adding Samples in Batches</p>
+<pre class="screen">{
+  "samples" : [ {
+    "name" : "2.jpg",
+    "data" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA1AJUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL"
+  } ]
+}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>OK</p>
+<pre class="screen">{
+  "success" : true,
+  "results" : [ {
+    "success" : true,
+    "name" : "/test-obs/classify/input/cat-dog/2.jpg",
+    "info" : "960585877c92d63911ba555ab3129d36"
+  } ]
+}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Status Codes</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UploadSamplesJson__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>OK</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>401</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Unauthorized</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>403</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Forbidden</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>404</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Not Found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Error Codes</h4><p>See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="sample_management.html">Sample Management</a></div>
+</div>
+</div>
+

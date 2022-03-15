@@ -1,0 +1,218 @@
+<a name="modelarts_03_0005"></a><a name="modelarts_03_0005"></a>
+
+<h1 class="topictitle1">Making an API Request</h1>
+<div id="body8662426"><p id="modelarts_03_0005__en-us_topic_0129435569_p122532201579">This section describes the structure of a REST API request, and uses the IAM API for obtaining a user token as an example to demonstrate how to call an API. The obtained token can then be used to authenticate the calling of other APIs.</p>
+<div class="section" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_section1849899574"><h4 class="sectiontitle">Request URI</h4><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p729531715312">The format of a request URI is as follows:</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p11610193811547"><strong id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_b3129104565416">{URI-scheme} :// {<strong id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_b10231116812">Endpoint</strong>} / {resource-path} ? {query-string}</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_table442645372610" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Request URI</caption><thead align="left"><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_row15427253182617"><th align="left" class="cellrowborder" valign="top" width="18.790000000000003%" id="mcps1.3.2.4.2.3.1.1"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p24271253182614">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="81.21000000000001%" id="mcps1.3.2.4.2.3.1.2"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p19427155318264">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_row104278530268"><td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.2.4.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p44271053122619">URI-scheme</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.21000000000001%" headers="mcps1.3.2.4.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p11427453192617">Protocol used to transmit requests. All APIs use HTTPS.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_row1142745318267"><td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.2.4.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1342765311266">Endpoint</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.21000000000001%" headers="mcps1.3.2.4.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_p992044614557">Domain name or IP address of the server for the REST service endpoint. The endpoint varies depending on services in different regions. It can be obtained in <a href="modelarts_03_0141.html">Endpoints</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_row94271453112615"><td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.2.4.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p144271753182618">resource-path</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.21000000000001%" headers="mcps1.3.2.4.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p4427953122617">Access path of an API for performing a specified operation. Obtain the path from the URI of an API. For example, the <strong id="modelarts_03_0005__en-us_topic_0129435569_b104632038479">resource-path</strong> of the API used to obtain a user token is <span class="parmvalue" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_parmvalue176306433280"><b>/v3/auth/tokens</b></span>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_row1991179192817"><td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.2.4.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1091217918289">query-string</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.21000000000001%" headers="mcps1.3.2.4.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p79121799283">Query parameter, which is optional. Ensure that a question mark (?) is included before each query parameter that is in the format of "<em id="modelarts_03_0005__en-us_topic_0129435569_i623715510455">Parameter name=Parameter value</em>". For example, <strong id="modelarts_03_0005__en-us_topic_0129435569_b69817954515">? limit=10</strong> indicates that a maximum of 10 data records will be displayed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="modelarts_03_0005__en-us_topic_0129435569_p1512913502578">For example, to obtain an IAM token in a region, obtain the endpoint of IAM for this region and the <strong id="modelarts_03_0005__en-us_topic_0129435569_b135501211753">resource-path</strong> (<strong id="modelarts_03_0005__en-us_topic_0129435569_b1955518115512">/v3/auth/tokens</strong>) in the URI of the API used to obtain a user token. Then, construct the URI as follows:</p>
+<pre class="screen" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_screen1553450193818">
+https://<em id="modelarts_03_0005__en-us_topic_0129435569_i19573103114352">{iam-endpoint}</em>/v3/auth/tokens</pre>
+<div class="note" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_note16311253154112"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p163316534416">To simplify the URI display in this document, each API is provided only with a <strong id="modelarts_03_0005__en-us_topic_0129435569_b53571353114718">resource-path</strong> and a request method. The <strong id="modelarts_03_0005__en-us_topic_0129435569_b1665051074813">URI-scheme</strong> of all APIs is <strong id="modelarts_03_0005__en-us_topic_0129435569_b12318131618481">HTTPS</strong>, and the endpoints of all APIs in the same region are identical.</p>
+</div></div>
+</div>
+<div class="section" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_section580035055419"><h4 class="sectiontitle">Request Methods</h4><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p65661618145510">The HTTP protocol defines the following request methods that can be used to send a request to the server:</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_table1961229113819" frame="border" border="1" rules="all"><caption><b>Table 2 </b>HTTP methods</caption><thead align="left"><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row86141913816"><th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.3.3.2.3.1.1"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p186147910387"><strong id="modelarts_03_0005__en-us_topic_0129435569_b14244113244714">Method</strong></p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="84%" id="mcps1.3.3.3.2.3.1.2"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p166141293387"><strong id="modelarts_03_0005__en-us_topic_0129435569_b119892335479">Description</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row146141194381"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p12831539123914">GET</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p2831123916397">Requests the server to return specified resources.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row161429103817"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p3831239183912">PUT</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p178311939193911">Requests the server to update specified resources.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row56141190384"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p68311239113912">POST</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p1583133918391">Requests the server to add resources or perform special operations.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row861411903812"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p1183153943916">DELETE</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p6831163914392">Requests the server to delete specified resources, for example, an object.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row5614119183810"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p78314395393">HEAD</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p38311239153920">Same as GET except that the server must return only the response header.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_row2614199163812"><td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.3.3.2.3.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p1483143915390">PATCH</p>
+</td>
+<td class="cellrowborder" valign="top" width="84%" headers="mcps1.3.3.3.2.3.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p17831173918394">Requests the server to update partial content of a specified resource.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0113746487_p9831123911390">If the resource does not exist, a new resource will be created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p" id="modelarts_03_0005__en-us_topic_0129435569_p16980161354713">For example, in the case of the API used to obtain a user token, the request method is POST. The request is as follows:<pre class="screen" id="modelarts_03_0005__en-us_topic_0129435569_screen7888377244">POST https://<em id="modelarts_03_0005__en-us_topic_0129435569_i9425206203714">{iam-endpoint}</em>/v3/auth/tokens</pre>
+</div>
+</div>
+<div class="section" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_section1454211155819"><h4 class="sectiontitle">Request Header</h4><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p11811752397">You can also add additional header fields to a request, such as the fields required by a specified URI or HTTP method. For example, to request for the authentication information, add <span class="parmname" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_parmname28091429124915"><b>Content-Type</b></span>, which specifies the request body type.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1467193205816"><a href="#modelarts_03_0005__en-us_topic_0129435569_table139019272562">Table 3</a> describes the common request header fields to be added to the request.</p>
+
+<div class="tablenoborder"><a name="modelarts_03_0005__en-us_topic_0129435569_table139019272562"></a><a name="en-us_topic_0129435569_table139019272562"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0005__en-us_topic_0129435569_table139019272562" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Common request header fields</caption><thead align="left"><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row46150831"><th align="left" class="cellrowborder" valign="top" width="16.88%" id="mcps1.3.4.4.2.5.1.1"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p47229853">Header</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.12%" id="mcps1.3.4.4.2.5.1.2"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p412859">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.5.1.3"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p33441585">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="30%" id="mcps1.3.4.4.2.5.1.4"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p24413864">Example</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row31365959"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p57614775">Content-type</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p36285216">Request body type or format. The default value is <span class="parmvalue" id="modelarts_03_0005__en-us_topic_0129435569_parmvalue58263396120"><b>application/json</b></span>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p53421353">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p32162298">application/json</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row21025229"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p25322014">Content-Length</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p37817292">Length of the request body. The unit is byte.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p43301822">Mandatory for POST and PUT requests but must be left blank for GET requests</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p17786717">3495</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row25862728"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p14506261">X-Project-Id</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p34156482">Project ID. This parameter is used to obtain the token for each project.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p15211639">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p24183261">e9993fc787d94b6c886cbaa340f9c0f4</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row16322762"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p47075323">X-Auth-Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_p187944531484">User token. It is a response to the API used to obtain a user token. This API is the only one that does not require authentication.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p26207828">Mandatory for token-based authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p46589738">None</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row16654463"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p6834263">X-Sdk-Date</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p16704444">Time when the request is sent. The time is in <em id="modelarts_03_0005__en-us_topic_0129435569_i8423526978249">YYYYMMDD</em><strong id="modelarts_03_0005__en-us_topic_0129435569_b84235270682418">'T'</strong><em id="modelarts_03_0005__en-us_topic_0129435569_i84235269782424">HHMMSS</em><strong id="modelarts_03_0005__en-us_topic_0129435569_b84235270682428">'Z'</strong> format.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p16122270">The value is the current Greenwich Mean Time (GMT) time of the system.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p30835521">Mandatory for AK/SK-based authentication, optional for PKI token-based authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p64734405">20190307T101459Z</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row45738735"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p13850059">Authorization</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p48112991">Authentication information.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p30363742">The value is obtained from the request signature result and is required when the AK/SK are used to encrypt the signature.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p4838228">Type: string</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p43544058">Default value: none</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p10136448">Mandatory for AK/SK-based authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p7496077">SDK-HMAC-SHA256 Credential=ZIRRKMTWPTQFQI1WKNKB/20150907//ec2/sdk_request, SignedHeaders=content-type;host;x-sdk-date, Signature=55741b610f3c9fa3ae40b5a8021ebf7ebc2a28a603fc62d25cb3bfe6608e1994</p>
+</td>
+</tr>
+<tr id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_row355832"><td class="cellrowborder" valign="top" width="16.88%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p28822435">Host</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.12%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p81053717359">Information about the requested server. The value can be obtained from the URL of the service API.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p140124114357">This value is <em id="modelarts_03_0005__en-us_topic_0129435569_i17408173354">host name</em>[:<em id="modelarts_03_0005__en-us_topic_0129435569_i7409031653">port number</em>].</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p52915874">If the port number is not specified, the default port is used. The default port number for <strong id="modelarts_03_0005__en-us_topic_0129435569_b1277082818619">https</strong> is <strong id="modelarts_03_0005__en-us_topic_0129435569_b1761714161260">443</strong>.</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p58327390">Mandatory for AK/SK-based authentication</p>
+</td>
+<td class="cellrowborder" valign="top" width="30%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p40756399">code.test.com</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p31263274">or</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0106912064_p12934017">code.test.com:443</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_note13771123325011"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1513412221808">In addition to supporting authentication using tokens, APIs support authentication using AK/SK, which uses SDK to sign a request. During the signature, the <strong id="modelarts_03_0005__en-us_topic_0129435569_b469313518611">Authorization</strong> (signature authentication) and <strong id="modelarts_03_0005__en-us_topic_0129435569_b469413358611">X-Sdk-Date</strong> (time when a request is sent) headers are automatically added to the request. </p>
+</div></div>
+<div class="p" id="modelarts_03_0005__en-us_topic_0129435569_p766741220577">The API for obtaining a user token does not require authentication. Therefore, this API only requires adding the <span class="parmname" id="modelarts_03_0005__en-us_topic_0129435569_parmname185084109117"><b>Content-Type</b></span> field. The request with the added <span class="parmname" id="modelarts_03_0005__en-us_topic_0129435569_parmname10508110161119"><b>Content-Type</b></span> header is as follows:<pre class="screen" id="modelarts_03_0005__en-us_topic_0129435569_screen186678128579">POST https://<em id="modelarts_03_0005__en-us_topic_0129435569_i214313484399">{iam-endpoint}</em>/v3/auth/tokens
+Content-Type: application/json</pre>
+</div>
+</div>
+<div class="section" id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_section14612192315587"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p23132011213">The body of a request is often sent in a structured format as specified in the Content-Type header field. The request body transfers content except the request header. If the request body contains Chinese characters, these characters must be encoded in UTF-8.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1847214711331">The request body varies between APIs. Some APIs do not require the request body, such as the APIs requested using the GET and DELETE methods.</p>
+<p id="modelarts_03_0005__en-us_topic_0129435569_p959661302018">If an API is used to obtain a user token, the request parameters and parameter description can be obtained from the API request. The following provides an example request with a body included. Replace <em id="modelarts_03_0005__en-us_topic_0129435569_i6596113112011">user_name</em>, <em id="modelarts_03_0005__en-us_topic_0129435569_i1597171319201">domain_name</em>, and <em id="modelarts_03_0005__en-us_topic_0129435569_i794603122614">user_password</em> with the actual username, account name, and login password, respectively. <strong id="modelarts_03_0005__en-us_topic_0129435569_b18458958132612"><em id="modelarts_03_0005__en-us_topic_0129435569_i2061215426411">project_name</em></strong> is the project name. For details, see <a href="modelarts_03_0006.html#modelarts_03_0006">Obtaining a Username</a>, <a href="modelarts_03_0148.html#modelarts_03_0148">Obtaining an Account Name and ID</a>, and <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project Name</a>.</p>
+<div class="note" id="modelarts_03_0005__en-us_topic_0129435569_note1350402418201"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0005__en-us_topic_0129435569_p77561625162017">The <strong id="modelarts_03_0005__en-us_topic_0129435569_b574016447218">scope</strong> parameter specifies where a token takes effect. In the example, the token takes effect only for the resources in a specified project. ModelArts uses a region-specific endpoint to call this API. Set <strong id="modelarts_03_0005__en-us_topic_0129435569_b778018496420">scope</strong> to <strong id="modelarts_03_0005__en-us_topic_0129435569_b66121354134216">project</strong>. You can set <strong id="modelarts_03_0005__en-us_topic_0129435569_b18747185911421">scope</strong> to an account or a project under an account. In the following example, the token takes effect only for the resources in a specified project. For more information about this API, see "Obtaining a User Token".</p>
+</div></div>
+<pre class="screen" id="modelarts_03_0005__en-us_topic_0129435569_screen1930315611554">
+POST https://<em id="modelarts_03_0005__en-us_topic_0129435569_i17401010472">{iam-endpoint}</em>/v3/auth/tokens 
+Content-Type:application/json
+{
+  "auth": {
+    "identity": {
+      "methods": ["password"],
+      "password": {
+        "user": {
+          "name": "<em id="modelarts_03_0005__en-us_topic_0129435569_i27857330174">Username</em>",
+          "password": "<em id="modelarts_03_0005__en-us_topic_0129435569_i75722134715">User password</em>",
+          "domain": {
+            "name": "<em id="modelarts_03_0005__en-us_topic_0129435569_i923745721719">Domain name</em>"
+          }
+        }
+      }
+    },
+    "scope": {
+      "project": {
+        "name": "<em id="modelarts_03_0005__en-us_topic_0129435569_i12996101514339">Project name</em>"
+      }
+    }
+  }
+}</pre>
+<p id="modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_p1859663401915">If all data required for the API request is available, you can send the request to call the API through <a href="https://curl.haxx.se/" target="_blank" rel="noopener noreferrer">curl</a>, <a href="https://www.getpostman.com/" target="_blank" rel="noopener noreferrer">Postman</a>, or coding. In the response to the API used to obtain a user token, <span class="parmname" id="modelarts_03_0005__en-us_topic_0129435569_parmname12918141645414"><b>x-subject-token</b></span> is the desired user token. This token can then be used to authenticate the calling of other APIs.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0144.html">Calling APIs</a></div>
+</div>
+</div>
+

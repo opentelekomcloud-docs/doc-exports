@@ -1,0 +1,660 @@
+<a name="modelarts_03_0045"></a><a name="modelarts_03_0045"></a>
+
+<h1 class="topictitle1">Creating a Training Job</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section694510305355"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0045__en-us_topic_0131062889_p18590161081120">This API is used to create a training job.</p>
+<p id="modelarts_03_0045__en-us_topic_0131062889_p98522361359">Calling this API is an asynchronous operation. The job status can be obtained by calling the APIs described in <a href="modelarts_03_0046.html#modelarts_03_0046">Querying a Training Job List</a> and <a href="modelarts_03_0047.html#modelarts_03_0047">Querying the Details About a Training Job Version</a>.</p>
+</div>
+<div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section20261580353"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0045__en-us_topic_0131062889_p10699185617527">POST /v1/{project_id}/training-jobs</p>
+</div>
+<div class="p" id="modelarts_03_0045__en-us_topic_0131062889_p337811539117"><a href="#modelarts_03_0045__en-us_topic_0131062889_table143351836151117">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table143351836151117"></a><a name="en-us_topic_0131062889_table143351836151117"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table143351836151117" width="100%" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row1533563613114"><th align="left" class="cellrowborder" valign="top" width="19.387755102040817%" id="mcps1.3.3.2.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p15335183631114">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.3265306122449%" id="mcps1.3.3.2.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p10335136191112">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.224489795918368%" id="mcps1.3.3.2.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p1533514365119">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.06122448979592%" id="mcps1.3.3.2.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p1933523631113">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row17335936121112"><td class="cellrowborder" valign="top" width="19.387755102040817%" headers="mcps1.3.3.2.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p4335736161115">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.3265306122449%" headers="mcps1.3.3.2.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p33356361118">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.224489795918368%" headers="mcps1.3.3.2.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p73351936121116">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.06122448979592%" headers="mcps1.3.3.2.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p12335736141110">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section722833995517"><h4 class="sectiontitle">Request Body</h4><div class="p" id="modelarts_03_0045__en-us_topic_0131062889_p12664142510271"><a href="#modelarts_03_0045__en-us_topic_0131062889_table6270801111211">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table6270801111211"></a><a name="en-us_topic_0131062889_table6270801111211"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table6270801111211" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row29941823111211"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.2.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p40715701111242">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.2.2.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p9637448111242">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.4.2.2.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p42435861111242">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53%" id="mcps1.3.4.2.2.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p14752706111242">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row41237117111211"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p21523933111242">job_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p65717019111242">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p21478362111242">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p62025794111242">Training job name. The value is a string of 1 to 64 characters consisting of only digits, letters, underscores (_), and hyphens (-).</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row47335462111211"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p52538571111242">job_desc</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p27765887111242">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p34444375111242">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p38531004111242">Description of a training job. The value is a string of 0 to 256 characters. By default, this parameter is left blank.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row42350277111211"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p37596993111242">config</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p25457572111242">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p48797423111242">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="53%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p60277195111242">Parameters for creating a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row18347183011116"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p143471230219">workspace_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7347530518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1334720302117">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p73471301217">Workspace where a job resides. Default value: <strong id="modelarts_03_0045__en-us_topic_0131062889_b15598103813584">0</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table24411850104213" width="100%" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b89358944114">config</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row24621050184211"><th align="left" class="cellrowborder" valign="top" width="20.408163265306122%" id="mcps1.3.4.2.3.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p846695014420">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.306122448979592%" id="mcps1.3.4.2.3.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p2472250174216">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.346938775510207%" id="mcps1.3.4.2.3.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p4475105094212">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.93877551020408%" id="mcps1.3.4.2.3.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p347885011427">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row11479165020428"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p548345016424">worker_server_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1648616503421">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p8489350124215">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7493195034215">Number of workers in a training job. Obtain the maximum value from the <strong id="modelarts_03_0045__en-us_topic_0131062889_b19498132121818">max_num</strong> value returned by the API in <a href="modelarts_03_0072.html#modelarts_03_0072">Querying Job Resource Specifications</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row24971850184213"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p115007506428">app_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p950317501429">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1750655034220">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p750985094216">Code directory of a training job, for example, <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath65451351105914"><b>/usr/app/</b></span>. This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b1651781415413">boot_file_url</strong>. After setting <strong id="modelarts_03_0045__en-us_topic_0131062889_b15517714195413">model_id</strong>, you do not need to set <strong id="modelarts_03_0045__en-us_topic_0131062889_b1151851413544">app_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b751861485417">boot_file_url</strong>, and <strong id="modelarts_03_0045__en-us_topic_0131062889_b1051910142545">engine_id</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row165164501428"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p35209501423">boot_file_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p552245012421">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1352695094216">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1052817508427">Boot file of a training job, which needs to be stored in the code directory. Example value: <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath953055064213"><b>/usr/app/boot.py</b></span> This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b466271516542">app_url</strong>. After setting <strong id="modelarts_03_0045__en-us_topic_0131062889_b966201555415">model_id</strong>, you do not need to set <strong id="modelarts_03_0045__en-us_topic_0131062889_b2663161519541">app_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b146649156549">boot_file_url</strong>, and <strong id="modelarts_03_0045__en-us_topic_0131062889_b466512155543">engine_id</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row195333503423"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p953625011422">parameter</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p691852818119">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1254318503423">Array&lt;Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p0556216">Running parameters of a training job. It is a collection of label-value pairs. Values can be customized. <strong id="modelarts_03_0045__en-us_topic_0131062889_b6770836192614">label</strong> is a parameter name and <strong id="modelarts_03_0045__en-us_topic_0131062889_b13238396261">value</strong> is the parameter value. For details, see the sample request. This parameter is a container environment variable when a training job uses a custom image. For details, see <a href="#modelarts_03_0045__en-us_topic_0131062889_table1267642234716">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row6549145024219"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p95545506421">data_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p655755054219">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1156015505422">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p956445054210">OBS URL of the dataset required by a training job. By default, this parameter is left blank. For example, <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath1456635018428"><b>/usr/data/</b></span>. This parameter cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b17888101895419">data_source</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b10889151813544">dataset_id</strong> and <strong id="modelarts_03_0045__en-us_topic_0131062889_b14889111811544">dataset_version_id</strong>. However, one of the parameters must exist.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1557018505421"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1857315014211">dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p6578165015427">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p185801150184211">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9583950184210">Dataset ID of a training job. This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b1896875145818">dataset_version_id</strong>, but cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b424901115912">data_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b2022117464172">data_source</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row758516502428"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p18589165044211">dataset_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16592155011420">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p45954508425">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p205997508422">Dataset version ID of a training job. This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b11986180411">dataset_id</strong>, but cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b109861101617">data_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b127125620171">data_source</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row184417105810"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1084415185810">data_source</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9844121105816">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1710342391811">Array&lt;Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p884414112581">Dataset of a training job. This parameter cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b1218418401716">data_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b141842417174">dataset_id</strong> and <strong id="modelarts_03_0045__en-us_topic_0131062889_b818414414176">dataset_version_id</strong>. For details, see <a href="#modelarts_03_0045__en-us_topic_0131062889_table250595919011">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row861516503426"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1561955014420">spec_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7623250164211">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p8627175017420">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7631195024211">ID of the resource specifications selected for a training job. Obtain the ID by calling the API described in <a href="modelarts_03_0072.html#modelarts_03_0072">Querying Job Resource Specifications</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1463518500426"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p863845013426">engine_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1364385014215">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p36461950144210">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p565095012422">ID of the engine selected for a training job. The default value is <strong id="modelarts_03_0045__en-us_topic_0131062889_b179521201897">1</strong>. After setting <strong id="modelarts_03_0045__en-us_topic_0131062889_b1769194917275">model_id</strong>, you do not need to set <strong id="modelarts_03_0045__en-us_topic_0131062889_b369234918270">app_url</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b069214499278">boot_file_url</strong>, and <strong id="modelarts_03_0045__en-us_topic_0131062889_b6693144922712">engine_id</strong>. Obtain the ID by calling the API described in <a href="modelarts_03_0073.html#modelarts_03_0073">Querying Job Engine Specifications</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row146729508427"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p20674175024219">train_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1080617560241">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9679185016423">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p76822506429">OBS URL of the output file of a training job. By default, this parameter is left blank. Example value: <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath685102617317"><b>/usr/train/</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row17687185064211"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p106881050154220">log_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p17806757142413">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1369555013425">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9699950194211">OBS URL of the logs of a training job. By default, this parameter is left blank. Example value: <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath37401535181810"><b>/usr/log/</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row145541841164317"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p255514164311">user_image_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p5555144113435">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p5555841114318">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p755554118434">SWR URL of a custom image used by a training job. Example value: <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath17220185725310"><b>100.125.5.235:20202/jobmng/custom-cpu-base:1.0</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1864183416461"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p46411034174620">user_command</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p11641434154610">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1364113434619">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p17641113410465">Boot command used to start the container of a custom image of a training job. The format is <span class="filepath" id="modelarts_03_0045__en-us_topic_0131062889_filepath199791067542"><b>bash /home/work/run_train.sh python /home/work/user-job-dir/app/train.py {python_file_parameter}</b></span>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row13919194332513"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1692114439251">create_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p15921194352517">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1792184311254">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p0808416202912">Whether a version is created when a training job is created</p>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul16131171918296"><li id="modelarts_03_0045__en-us_topic_0131062889_li11686145622915"><strong id="modelarts_03_0045__en-us_topic_0131062889_b125741425191511">true</strong>: Default value. A version is created when a training job is created.</li><li id="modelarts_03_0045__en-us_topic_0131062889_li1813111912296"><strong id="modelarts_03_0045__en-us_topic_0131062889_b169101223161">false</strong>: A version is not created when a training job is created.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row946462010302"><td class="cellrowborder" valign="top" width="20.408163265306122%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p546532073018">volumes</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.306122448979592%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1146532073020">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.346938775510207%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1946610201303">JSON Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="46.93877551020408%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7466132012305">Storage volume that can be used by a training job. For details, see <a href="#modelarts_03_0045__en-us_topic_0131062889_table6403153714711">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table250595919011"></a><a name="en-us_topic_0131062889_table250595919011"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table250595919011" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b16631161201916">data_source</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row55072591012"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.3.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p1527511378117">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.3.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p1628153716110">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.3.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p22831437411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.3.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p328510371619">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row2507159009"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1680105517118">dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p2804555115">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1180619554119">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p18097554112">Dataset ID of a training job. This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b121082034191610">dataset_version_id</strong>, but cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b15109143415167">data_url</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row205071598010"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p118131955110">dataset_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p148201755118">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1282320551611">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p0823205511117">Dataset version ID of a training job. This parameter must be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b492715389168">dataset_id</strong>, but cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b209271338141612">data_url</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row589115610214"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16892761827">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1892116628">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p188923615217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p88921866216">Dataset type. The value can be <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue11483217131514"><b>obs</b></span> or <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue1594222310157"><b>dataset</b></span>. <strong id="modelarts_03_0045__en-us_topic_0131062889_b9661147191618">obs</strong> and <strong id="modelarts_03_0045__en-us_topic_0131062889_b7864115016165">dataset</strong> cannot be used at the same time.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row151161127191914"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p13117227131918">data_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p131171127181920">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p011752719191">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p141171327171918">OBS bucket path. This parameter cannot be used together with <strong id="modelarts_03_0045__en-us_topic_0131062889_b164435634315">dataset_id</strong> or <strong id="modelarts_03_0045__en-us_topic_0131062889_b1364425654310">dataset_version</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table6403153714711"></a><a name="en-us_topic_0131062889_table6403153714711"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table6403153714711" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b1076810550163">volumes</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row1940419374476"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.4.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p540623710472">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.4.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p240683714713">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.4.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p9406337134712">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.4.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p1340611372471">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row340618374473"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p19407203794711">nfs</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p4407203794719">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p0407133754714">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p124605178532">Storage volume of the shared file system type. Only the training jobs running in the resource pool with the shared file system network connected support such storage volume. For details, see <a href="#modelarts_03_0045__en-us_topic_0131062889_table19871043113315">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row184071537184711"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p144071737144717">host_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p8407133718478">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p19407113717475">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16407837144712">Storage volume of the host file system type. Only training jobs running in the dedicated resource pool support such storage volume. For details, see <a href="#modelarts_03_0045__en-us_topic_0131062889_table4873028185611">Table 7</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table19871043113315"></a><a name="en-us_topic_0131062889_table19871043113315"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table19871043113315" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b671916852218">nfs</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row98718439339"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.5.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p788143103316">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.5.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p0881743193316">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.5.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p128864353314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.5.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p688154314331">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row19881543203313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p19882436334">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p148844363318">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p38894315334">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p198884310331">ID of an SFS Turbo file system</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row16881433332"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p17242113943514">src_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p168814343315">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9884436332">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16254151103616">Address of an SFS Turbo file system</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row788174343319"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p78884323316">dest_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p148864323320">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p108914373317">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p148984312331">Local path of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row9892432337"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p28910436339">read_only</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1089743143320">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p128984323313">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p148915436330">Whether <strong id="modelarts_03_0045__en-us_topic_0131062889_b434540242">dest_path</strong> is read-only. The default value is <strong id="modelarts_03_0045__en-us_topic_0131062889_b1634273172420">false</strong>.</p>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul13960112394512"><li id="modelarts_03_0045__en-us_topic_0131062889_li149601623174517"><span class="parmname" id="modelarts_03_0045__en-us_topic_0131062889_parmname815973219243"><b>true</b></span>: read-only permission</li><li id="modelarts_03_0045__en-us_topic_0131062889_li289893174511"><span class="parmname" id="modelarts_03_0045__en-us_topic_0131062889_parmname19119147132512"><b>false</b></span>: read/write permission. This is the default value.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table4873028185611"></a><a name="en-us_topic_0131062889_table4873028185611"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table4873028185611" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b145381331132515">host_path</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row487472818567"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.6.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p158741728185619">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.6.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p14874728135617">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.6.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p1387442815610">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.6.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p1987472819565">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row108747289562"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.6.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p168758285564">src_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.6.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p14875128125616">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.6.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1387512811566">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.6.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p28751628185614">Local path of a host</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row5875192815616"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.6.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p587552845611">dest_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.6.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p987542819568">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.6.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1787572895619">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.6.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16859190125918">Local path of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row4875162816567"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.6.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p178751928195615">read_only</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.6.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1987510281564">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.6.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7875428205613">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.6.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p687562815569">Whether <strong id="modelarts_03_0045__en-us_topic_0131062889_b17560983264">dest_path</strong> is read-only. The default value is <strong id="modelarts_03_0045__en-us_topic_0131062889_b156113810266">false</strong>.</p>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul58751828105618"><li id="modelarts_03_0045__en-us_topic_0131062889_li1875162814561"><span class="parmname" id="modelarts_03_0045__en-us_topic_0131062889_parmname27011014264"><b>true</b></span>: read-only permission</li><li id="modelarts_03_0045__en-us_topic_0131062889_li187522815566"><span class="parmname" id="modelarts_03_0045__en-us_topic_0131062889_parmname7455101112615"><b>false</b></span>: read/write permission. This is the default value.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table1267642234716"></a><a name="en-us_topic_0131062889_table1267642234716"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table1267642234716" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="modelarts_03_0045__en-us_topic_0131062889_b101961027121914">parameter</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row5677422164714"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.7.2.5.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p7296205262817">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.7.2.5.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p5194191034416">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.7.2.5.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p196771122154718">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.7.2.5.1.4"><p id="modelarts_03_0045__en-us_topic_0131062889_p5677022194719">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row2677192224717"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.7.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p14677192217478">label</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.7.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p17194710144418">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.7.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p16677112218473">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.7.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p10677142210478">Parameter name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row5528181488"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.7.2.5.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p05295804810">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.7.2.5.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p0194410164417">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.7.2.5.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p135299824812">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.7.2.5.1.4 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1652913874819">Parameter value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section143152617293"><h4 class="sectiontitle">Response Body</h4><p id="modelarts_03_0045__en-us_topic_0131062889_p0409245294"><a href="#modelarts_03_0045__en-us_topic_0131062889_table84321612917">Table 9</a> describes the response parameters.</p>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0045__en-us_topic_0131062889_table84321612917"></a><a name="en-us_topic_0131062889_table84321612917"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0045__en-us_topic_0131062889_table84321612917" frame="border" border="1" rules="all"><caption><b>Table 9 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0045__en-us_topic_0131062889_row843017692919"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.6.2.4.1.1"><p id="modelarts_03_0045__en-us_topic_0131062889_p942911615297">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.6.2.4.1.2"><p id="modelarts_03_0045__en-us_topic_0131062889_p134302611293">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="69%" id="mcps1.3.6.2.4.1.3"><p id="modelarts_03_0045__en-us_topic_0131062889_p24301619293">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0045__en-us_topic_0131062889_row134994011495"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p2530905217407">is_success</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p2536505617407">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p4130369517407">Whether the request is successful</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row243046162916"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1443086132910">error_message</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p184301867292">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7430116192913">Error message of a failed API call.</p>
+<p id="modelarts_03_0045__en-us_topic_0131062889_p04309620296">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row14301610291"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p2430146112910">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p14309614292">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1251312531679">Error code of a failed API call. For details, see <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+<p id="modelarts_03_0045__en-us_topic_0131062889_p25919895103529">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row124317642912"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p18430106192915">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p94311965291">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p7431126162912">ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1843114622910"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p11431465292">job_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p154311563298">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p64311167292">Name of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row44311268293"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1743116616294">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1643126142916">Int</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1243186182915">Status of a training job. For details about the job statuses, see <a href="modelarts_03_0074.html#modelarts_03_0074">Job Statuses</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1743206182914"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p243118619298">create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p843212615294">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p54327616294">Timestamp when a training job is created</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row54325682912"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p104326642913">version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p9432065298">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p124323614296">Version ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row1399212519526"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1599355185213">resource_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1799305119523">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p69934513524">Charged resource ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0045__en-us_topic_0131062889_row663472414521"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.4.1.1 "><p id="modelarts_03_0045__en-us_topic_0131062889_p17635224195216">version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.6.2.4.1.2 "><p id="modelarts_03_0045__en-us_topic_0131062889_p1163542495216">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="69%" headers="mcps1.3.6.2.4.1.3 "><p id="modelarts_03_0045__en-us_topic_0131062889_p463519242528">Version name of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section54078976"><h4 class="sectiontitle">Samples</h4><ol id="modelarts_03_0045__en-us_topic_0131062889_ol1085215193224"><li id="modelarts_03_0045__en-us_topic_0131062889_li5852219202214">The following shows how to create training job <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue151320465544"><b>TestModelArtsJob</b></span> with <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue1546524112548"><b>This is a ModelArts job</b></span> as its description.<ul id="modelarts_03_0045__en-us_topic_0131062889_ul865811485616"><li id="modelarts_03_0045__en-us_topic_0131062889_li10001026">Sample request<pre class="screen" id="modelarts_03_0045__en-us_topic_0131062889_screen18701105115410">POST    https://endpoint/v1/{project_id}/training-jobs
+{
+    "job_name": "TestModelArtsJob",
+    "job_desc": "This is a ModelArts job",
+    "workspace_id": "af261af2218841ec960b01ab3cf1a5fa",
+    "config": {
+        "worker_server_num": 1,
+        "app_url": "/usr/app/",
+        "boot_file_url": "/usr/app/boot.py",
+        "parameter": [
+            {
+                "label": "learning_rate",
+                "value": "0.01"
+            },
+            {
+                "label": "batch_size",
+                "value": "32"
+            }
+        ],
+        "dataset_id": "38277e62-9e59-48f4-8d89-c8cf41622c24",
+        "dataset_version_id": "2ff0d6ba-c480-45ae-be41-09a8369bfc90",
+        "spec_id": 1,
+        "engine_id": 1,
+        "train_url": "/usr/train/",
+        "log_url": "/usr/log/"
+    }
+}</pre>
+</li></ul>
+</li><li id="modelarts_03_0045__en-us_topic_0131062889_li4564755184615">The following shows how to create training job <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue1412417129474"><b>TestModelArtsJob2</b></span> with a custom image.</li></ol>
+</div>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul356101195113"><li id="modelarts_03_0045__en-us_topic_0131062889_li155644111513">Sample request<pre class="screen" id="modelarts_03_0045__en-us_topic_0131062889_screen12816943105516">POST    https://endpoint/v1/{project_id}/training-jobs
+{
+    "job_name": "TestModelArtsJob2",
+    "job_desc": "This is a ModelArts job",
+    "workspace_id": "af261af2218841ec960b01ab3cf1a5fa",
+    "config": {
+        "worker_server_num": 1,
+        "data_url": "/usr/data/",
+        "app_url": "/usr/app/",
+        "parameter": [
+            {
+                "label": "CUSTOM_PARAM1",
+                "value": "1"
+            }
+        ],
+        "spec_id": 1,
+        "user_command": "bash -x /home/work/run_train.sh python /home/work/user-job-dir/app/mnist/mnist_softmax.py --data_url /home/work/user-job-dir/app/mnist_data",
+        "user_image_url": "100.125.5.235:20202/jobmng/custom-cpu-base:1.0",
+        "train_url": "/usr/train/",
+        "log_url": "/usr/log/"
+    }
+}</pre>
+</li></ul>
+<p id="modelarts_03_0045__en-us_topic_0131062889_p5654125110172">3. The following shows how to create training job <span class="parmvalue" id="modelarts_03_0045__en-us_topic_0131062889_parmvalue76540514171"><b>TestModelArtsJob3</b></span> using a storage volume.</p>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul19182192501813"><li id="modelarts_03_0045__en-us_topic_0131062889_li11182152511183">Sample request<pre class="screen" id="modelarts_03_0045__en-us_topic_0131062889_screen191828252181">POST    https://endpoint/v1/{project_id}/training-jobs
+{
+    "job_name": "TestModelArtsJob3",
+    "job_desc": "This is a ModelArts job",
+    "workspace_id": "af261af2218841ec960b01ab3cf1a5fa",
+    "config": {
+        "worker_server_num": 1,
+        "app_url": "/usr/app/",
+        "boot_file_url": "/usr/app/boot.py",
+        "parameter": [
+            {
+                "label": "learning_rate",
+                "value": "0.01"
+            },
+            {
+                "label": "batch_size",
+                "value": "32"
+            }
+        ],
+        "dataset_id": "38277e62-9e59-48f4-8d89-c8cf41622c24",
+        "dataset_version_id": "2ff0d6ba-c480-45ae-be41-09a8369bfc90",
+        "spec_id": 1,
+        "engine_id": 1,
+        "train_url": "/usr/train/",
+        "log_url": "/usr/log/",
+        "volumes": [
+            {
+                "nfs": {
+                    "id": "43b37236-9afa-4855-8174-32254b9562e7",
+                    "src_path": "192.168.8.150:/",
+                    "dest_path": "/home/work/nas",
+                    "read_only": false
+                }
+            },
+            {
+                "host_path": {
+                    "src_path": "/root/work",
+                    "dest_path": "/home/mind",
+                    "read_only": false
+                }
+            }
+        ]
+    }
+}</pre>
+</li></ul>
+<ul id="modelarts_03_0045__en-us_topic_0131062889_ul13299638608"><li id="modelarts_03_0045__en-us_topic_0131062889_li43005381906">Successful sample response<pre class="screen" id="modelarts_03_0045__en-us_topic_0131062889_screen836425712552">{
+    "is_success": true,
+    "job_id": "10",
+    "job_name": "TestModelArtsJob",
+    "status": "1",
+    "create_time": "1524189990635",
+    "version_id": "10",
+    "version_name": "V0001",
+    "resource_id": "jobafd08896"
+}</pre>
+</li><li id="modelarts_03_0045__en-us_topic_0131062889_li731573816010">Failed sample response<pre class="screen" id="modelarts_03_0045__en-us_topic_0131062889_screen1299967115618">{
+    "is_success": false,
+    "error_message": "Job name:TestModelArtsJob is existed",
+    "error_code": "ModelArts.0103"
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0045__en-us_topic_0131062889_section16948739"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0045__en-us_topic_0131062889_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094">Status Code</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0044.html">Training Jobs</a></div>
+</div>
+</div>
+

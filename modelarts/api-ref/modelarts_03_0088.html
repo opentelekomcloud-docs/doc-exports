@@ -1,0 +1,346 @@
+<a name="modelarts_03_0088"></a><a name="modelarts_03_0088"></a>
+
+<h1 class="topictitle1">Querying Service Update Logs</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section176273386915"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p33591545993">This API is used to query the update logs of a real-time service. </p>
+</div>
+<div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section181341535122619"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p1118610174576">GET /v1/{project_id}/services/{service_id}/logs</p>
+<div class="p" id="modelarts_03_0088__en-us_topic_0130234308_p675416290220"><a href="#modelarts_03_0088__en-us_topic_0130234308_table10624434011">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0088__en-us_topic_0130234308_table10624434011"></a><a name="en-us_topic_0130234308_table10624434011"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table10624434011" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row13653412406"><th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p8665404020">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p46614184018">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.871287128712872%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p668154124018">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.46534653465347%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0088__en-us_topic_0130234308_p469204194016">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row1797617864917"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p8780885181639">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p40163046181639">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p31981288181639">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0088__en-us_topic_0130234308_p40347522181639">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row870174164011"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p372348400">service_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p19736411406">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p174643403">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0088__en-us_topic_0130234308_p575194174011">Service ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row16748162454515"><td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p16748102464518">update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12748182420452">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p77481524104513">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0088__en-us_topic_0130234308_p13748192413459">Update time for filtering. This parameter can be used to obtain the update logs of a real-time service. By default, the filtering by update time is disabled.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section71456147333"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p34289712276">None</p>
+</div>
+<div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section54078976"><h4 class="sectiontitle">Response Body</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p1931811252619"><a href="#modelarts_03_0088__en-us_topic_0130234308_table1869020408516">Table 2</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="modelarts_03_0088__en-us_topic_0130234308_table1869020408516"></a><a name="en-us_topic_0130234308_table1869020408516"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table1869020408516" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row96940401513"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.3.2.4.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p7695640205120">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.3.2.4.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p1869617402511">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64%" id="mcps1.3.4.3.2.4.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p569824016512">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row11699124012519"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p18701440135118">service_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.3.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p8703740155120">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.3.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p7704640135112">Service ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row107051840185118"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p187062404517">service_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.3.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p10708154019512">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.3.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p11709540105114">Service name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row1771034085116"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p7713194095120">logs</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.3.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p371594015511"><strong id="modelarts_03_0088__en-us_topic_0130234308_b12706051987">log</strong> array</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.3.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p27161040175113">Service update logs. For details, see <a href="#modelarts_03_0088__en-us_topic_0130234308_table0745828125216">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0088__en-us_topic_0130234308_table0745828125216"></a><a name="en-us_topic_0130234308_table0745828125216"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table0745828125216" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="modelarts_03_0088__en-us_topic_0130234308_b11599105920812">log</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row27506282521"><th align="left" class="cellrowborder" valign="top" width="19.191919191919194%" id="mcps1.3.4.4.2.4.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p775217285522">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.4.4.2.4.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p17754162812521">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.64646464646465%" id="mcps1.3.4.4.2.4.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p1375682816528">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row27581928105218"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1175982815210">update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12761162815214">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p20762162865217">Time when a service is updated, in milliseconds calculated from 1970.1.1 0:0:0 UTC</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row67315365332"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p673143610337">result</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1473036173314">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p47314366334">Update result. The value can be <strong id="modelarts_03_0088__en-us_topic_0130234308_b11581029193816">SUCCESS</strong>, <strong id="modelarts_03_0088__en-us_topic_0130234308_b16158029193813">FAIL</strong>, or <strong id="modelarts_03_0088__en-us_topic_0130234308_b2158132953815">RUNNING</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row1276322875213"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p117641428135210">config</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1376602810528"><strong id="modelarts_03_0088__en-us_topic_0130234308_b1424330153815">config</strong> array</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p14770202885215">Updated service configurations. For details, see <a href="#modelarts_03_0088__en-us_topic_0130234308_table1355535185314">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row1143093682215"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1043133615226">success_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p104311036202211">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p114317367222">Number of nodes that are successfully operated. This parameter is returned when <strong id="modelarts_03_0088__en-us_topic_0130234308_b155814128397">infer_type</strong> is set to <strong id="modelarts_03_0088__en-us_topic_0130234308_b255881210391">edge</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row104315344220"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p34343492215">failed_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p114311342225">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1943534162218">Number of nodes that fail to be operated. This parameter is returned when <strong id="modelarts_03_0088__en-us_topic_0130234308_b14455451174218">infer_type</strong> is set to <strong id="modelarts_03_0088__en-us_topic_0130234308_b174631514420">edge</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row154398319228"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1440931172214">result_detail</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p174401431112216"><strong id="modelarts_03_0088__en-us_topic_0130234308_b146041536420">result</strong> array</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p164401231152212">Operation result details. This parameter is returned when <strong id="modelarts_03_0088__en-us_topic_0130234308_b18514523101">infer_type</strong> is set to <strong id="modelarts_03_0088__en-us_topic_0130234308_b1975011119">edge</strong>. For details, see <a href="#modelarts_03_0088__en-us_topic_0130234308_table44853072416">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row1383641119188"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12836121191813">cluster_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p168361611141819">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p6836121110188">ID of a dedicated resource pool</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row8598174920212"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p459918491929">extend_config</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.161616161616163%" headers="mcps1.3.4.4.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p55995491426">List</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p05994491924">Personalized configuration</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0088__en-us_topic_0130234308_table1355535185314"></a><a name="en-us_topic_0130234308_table1355535185314"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table1355535185314" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0088__en-us_topic_0130234308_b10320101781117">config</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row175605513531"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.5.2.4.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p1356112555313">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.4.5.2.4.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p115634515312">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.64646464646465%" id="mcps1.3.4.5.2.4.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p656518518530">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row1056705155315"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p856819515536">model_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p135691557530">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1457175165315">Model ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row2572953538"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p457416555317">model_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p165766510534">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1357735175310">Model name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row105786535317"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p185808516535">model_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p45817519536">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p115831056535">Model version</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row7584258535"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p758610515538">weight</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1058815518539">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12589155195319">Traffic weight allocated to a model. This parameter is returned when <strong id="modelarts_03_0088__en-us_topic_0130234308_b63671039181112">infer_type</strong> is set to <strong id="modelarts_03_0088__en-us_topic_0130234308_b11757174311120">real-time</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row6590195125317"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p105911656539">specification</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p65932555310">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p65946575310">Resource flavor. </p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row127762147118"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p2040254241618">custom_spec</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p17402164271617">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p64021642151618">Custom specifications.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row359555145318"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p059714585313">instance_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p35981256536">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1660017513535">Number of instances deployed in a model. </p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row13601195175319"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p460285145318">envs</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1760415515314">Map&lt;String, String&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12605165145318">Environment variable key-value pair required for running a model</p>
+<p id="modelarts_03_0088__en-us_topic_0130234308_p7751032133413">To ensure data security, do not enter sensitive information, such as plaintext passwords, in environment variables.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row18619155210163"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.5.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p13620352171611">cluster_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.5.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p14620125214167">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.5.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p562011524163">ID of a dedicated resource pool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0088__en-us_topic_0130234308_table44853072416"></a><a name="en-us_topic_0130234308_table44853072416"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table44853072416" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="modelarts_03_0088__en-us_topic_0130234308_b5728113415135">result</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row1851163012415"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.6.2.4.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p115319308241">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.171717171717173%" id="mcps1.3.4.6.2.4.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p11541130142411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.64646464646465%" id="mcps1.3.4.6.2.4.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p135403062412">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row185720305243"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.6.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p15710300249">node_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.6.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p185953010247">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.6.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p106033010247">Node ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row46153022415"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.6.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p37781054142415">node_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.6.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1164330172414">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.6.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1465630122414">Node name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row965133013242"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.6.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p167771954182417">operation</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.6.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1367230172410">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.6.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p668203019241">Operation type. The value can be <strong id="modelarts_03_0088__en-us_topic_0130234308_b183709242445">deploy</strong> or <strong id="modelarts_03_0088__en-us_topic_0130234308_b83701424184414">delete</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row469330172416"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.6.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p4776154112415">result</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.171717171717173%" headers="mcps1.3.4.6.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p87393017243">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.64646464646465%" headers="mcps1.3.4.6.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1473430152417">Operation result. <strong id="modelarts_03_0088__en-us_topic_0130234308_b4377182513443">true</strong> indicates operation success, and <strong id="modelarts_03_0088__en-us_topic_0130234308_b13771625104418">false</strong> indicates operation failure.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0088__en-us_topic_0130234308_table134334512416" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="modelarts_03_0088__en-us_topic_0130234308_b186821355729">custom_spec</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0088__en-us_topic_0130234308_row63432456418"><th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.4.7.2.4.1.1"><p id="modelarts_03_0088__en-us_topic_0130234308_p534318455417">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.4.7.2.4.1.2"><p id="modelarts_03_0088__en-us_topic_0130234308_p153434452415">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.35643564356435%" id="mcps1.3.4.7.2.4.1.3"><p id="modelarts_03_0088__en-us_topic_0130234308_p183446457417">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0088__en-us_topic_0130234308_row10344194584120"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.7.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1434415453416">cpu</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.7.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p53441453417">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.7.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p53441945104115">Number of CPUs</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row1634414517415"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.7.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p334444512410">memory</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.7.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p183447450410">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.7.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p93441445154112">Memory capacity in MB</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row18688125794310"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.7.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p8689205712437">gpu_p4</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.7.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12689175794315">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.7.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p12689457114318">Number of GPUs</p>
+</td>
+</tr>
+<tr id="modelarts_03_0088__en-us_topic_0130234308_row208041835164412"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.7.2.4.1.1 "><p id="modelarts_03_0088__en-us_topic_0130234308_p1580593584410">ascend_a310</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.7.2.4.1.2 "><p id="modelarts_03_0088__en-us_topic_0130234308_p280518356446">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.7.2.4.1.3 "><p id="modelarts_03_0088__en-us_topic_0130234308_p780583510447">Number of Ascend chips</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section1810193414711"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p1626113524475">The following shows how to query the update logs of the real-time service whose ID is <strong id="modelarts_03_0088__en-us_topic_0130234308_b11530745121511">xxxxxx</strong> and name is <strong id="modelarts_03_0088__en-us_topic_0130234308_b679514761516">mnist</strong>.</p>
+</div>
+<ul id="modelarts_03_0088__en-us_topic_0130234308_ul11661134735818"><li id="modelarts_03_0088__en-us_topic_0130234308_li8663184755814">Sample request<pre class="screen" id="modelarts_03_0088__en-us_topic_0130234308_screen298185535714">GET    https://endpoint/v1/{project_id}/services/xxxxxx/logs</pre>
+</li></ul>
+<ul id="modelarts_03_0088__en-us_topic_0130234308_ul163453474715"><li id="modelarts_03_0088__en-us_topic_0130234308_li1533103454717">Sample response<pre class="screen" id="modelarts_03_0088__en-us_topic_0130234308_screen126441155818">{
+	"service_id": "e2122bbd-f7c8-4bf8-bacc-59616276194b",
+	"service_name": "service-demo",
+	"logs": [{
+		"config": [{
+			"model_id": "f565ac47-6239-4e8c-b2dc-0665dc52e302",
+			"model_name": "model-demo",
+			"model_version": "0.0.1",
+			"specification": "modelarts.vm.cpu.2u",
+			"custom_spec": {},
+			"weight": 100,
+			"instance_count": 1,
+			"scaling": false,
+			"envs": {},
+			"cluster_id": "2c9080f86d37da64016d381fe5940002"
+		}],
+		"extend_config": [],
+		"update_time": 1586250930708,
+		"result": "RUNNING",
+		"cluster_id": "2c9080f86d37da64016d381fe5940002"
+	}]
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0088__en-us_topic_0130234308_section16948739"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0088__en-us_topic_0130234308_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094__en-us_topic_0132773864_table1450010510213">Table 1</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0081.html">Service Management</a></div>
+</div>
+</div>
+

@@ -1,0 +1,807 @@
+<a name="ImportTask"></a><a name="ImportTask"></a>
+
+<h1 class="topictitle1">Creating an Import Task</h1>
+<div><div class="section"><h4 class="sectiontitle">Function</h4><p>This API is used to create a dataset import task to import samples and labels from the storage system to the dataset.</p>
+</div>
+<div class="section"><h4 class="sectiontitle">URI</h4><p>POST /v2/{project_id}/datasets/{dataset_id}/import-tasks</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Dataset ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Request Parameters</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_ImportReq" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>annotation_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Format of the labeling information. Currently, only object detection is supported. The options are as follows:</p>
+<ul><li><p><strong>VOC</strong>: VOC</p>
+</li><li><p><strong>COCO</strong>: COCO</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>data_source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p><a href="#ImportTask__request_DataSource">DataSource</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Data source.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>difficult_only</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether to import only hard examples. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Only difficult samples are imported.</p>
+</li><li><p><strong>false</strong>: All samples are imported. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>excluded_labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Array of <a href="#ImportTask__request_Label">Label</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Do not import samples containing the specified label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>final_annotation</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether to import data to the final state. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Import data to the final state. (Default value)</p>
+</li><li><p><strong>false</strong>: Do not import data to the final state.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_annotations</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether to import labels. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Import labels. (Default value)</p>
+</li><li><p><strong>false</strong>: Do not import labels.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_folder</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Name of the subdirectory in the dataset storage directory after import. You can specify the same subdirectory for multiple import tasks to avoid repeated import of the same samples. This field is invalid for table datasets.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_origin</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Data source. The options are as follows:</p>
+<ul><li><p><strong>obs</strong>: OBS bucket (default value)</p>
+</li><li><p><strong>dws</strong>: GaussDB(DWS)</p>
+</li><li><p><strong>dli</strong>: DLI</p>
+</li><li><p><strong>rds</strong>: RDS</p>
+</li><li><p><strong>mrs</strong>: MRS</p>
+</li><li><p><strong>inference</strong>: Inference service</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>OBS path or <strong>manifest</strong> path to be imported.</p>
+<ul><li><p>When importing a manifest file, ensure that the path is accurate to the manifest file.</p>
+</li><li><p>When a path is imported as a directory, the dataset type can only support image classification, object detection, text classification, or sound classification.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether to import samples. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Import samples. (Default value)</p>
+</li><li><p><strong>false</strong>: Do not import samples.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>import_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Import mode. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: Import by directory.</p>
+</li><li><p><strong>1</strong>: Import by manifest file.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>included_labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Array of <a href="#ImportTask__request_Label">Label</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Import samples containing the specified label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>label_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p><a href="#ImportTask__request_LabelFormat">LabelFormat</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Label format. This parameter is used only for text datasets.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>with_column_header</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Whether the first row in the file is a column name. This field is valid for the table dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The first row in the file is the column name.</p>
+</li><li><p><strong>false</strong>: The first row in the file is not the column name. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_DataSource"></a><a name="request_DataSource"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_DataSource" frame="border" border="1" rules="all"><caption><b>Table 3 </b>DataSource</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>data_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Data source path.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>data_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Data type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: OBS bucket (default value)</p>
+</li><li><p><strong>1</strong>: GaussDB(DWS)</p>
+</li><li><p><strong>2</strong>: DLI</p>
+</li><li><p><strong>3</strong>: RDS</p>
+</li><li><p><strong>4</strong>: MRS</p>
+</li><li><p><strong>5</strong>: AI Gallery</p>
+</li><li><p><strong>6</strong>: Inference service</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>schema_maps</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>Array of <a href="#ImportTask__request_SchemaMap">SchemaMap</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Schema mapping information corresponding to the table data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>source_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p><a href="#ImportTask__request_SourceInfo">SourceInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Information required for importing a table data source.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>with_column_header</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Whether the first row in the file is a column name. This field is valid for the table dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The first row in the file is the column name.</p>
+</li><li><p><strong>false</strong>: The first row in the file is not the column name.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_SchemaMap"></a><a name="request_SchemaMap"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_SchemaMap" frame="border" border="1" rules="all"><caption><b>Table 4 </b>SchemaMap</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>dest_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Name of the destination column.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>src_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Name of the source column.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_SourceInfo"></a><a name="request_SourceInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_SourceInfo" frame="border" border="1" rules="all"><caption><b>Table 5 </b>SourceInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.5.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>cluster_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>cluster_mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Running mode of an MRS cluster. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: normal cluster</p>
+</li><li><p><strong>1</strong>: security cluster</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>cluster_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Name of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>database_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Name of the database to which the table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>input</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>HDFS path of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>IP address of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Port number of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>queue_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>DLI queue name of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Subnet ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>table_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Name of the table to which a table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>user_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Username, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>user_password</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>User password, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>vpc_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>ID of the VPC where an MRS cluster resides.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_Label"></a><a name="request_Label"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_Label" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Label</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.6.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>attributes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Array of <a href="#ImportTask__request_LabelAttribute">LabelAttribute</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Multi-dimensional attribute of a label. For example, if the label is music, attributes such as style and artist may be included.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Label name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>property</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p><a href="#ImportTask__request_LabelProperty">LabelProperty</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Basic attribute key-value pair of a label, such as color and shortcut keys.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Label type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image classification</p>
+</li><li><p><strong>1</strong>: object detection</p>
+</li><li><p><strong>100</strong>: text classification</p>
+</li><li><p><strong>101</strong>: named entity recognition</p>
+</li><li><p><strong>102</strong>: text triplet relationship</p>
+</li><li><p><strong>103</strong>: text triplet entity</p>
+</li><li><p><strong>200</strong>: speech classification</p>
+</li><li><p><strong>201</strong>: speech content</p>
+</li><li><p><strong>202</strong>: speech paragraph labeling</p>
+</li><li><p><strong>600</strong>: video classification</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_LabelAttribute"></a><a name="request_LabelAttribute"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_LabelAttribute" frame="border" border="1" rules="all"><caption><b>Table 7 </b>LabelAttribute</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.7.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.7.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>default_value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Default value of a label attribute.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Label attribute ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Label attribute name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>Label attribute type. The options are as follows:</p>
+<ul><li><p><strong>text</strong>: text</p>
+</li><li><p><strong>select</strong>: single-choice drop-down list</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.1 "><p>values</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.7.2.5.1.3 "><p>Array of <a href="#ImportTask__request_LabelAttributeValue">LabelAttributeValue</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.7.2.5.1.4 "><p>List of label attribute values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_LabelAttributeValue"></a><a name="request_LabelAttributeValue"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_LabelAttributeValue" frame="border" border="1" rules="all"><caption><b>Table 8 </b>LabelAttributeValue</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.8.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.8.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Label attribute value ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.1 "><p>value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.8.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.8.2.5.1.4 "><p>Label attribute value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_LabelProperty"></a><a name="request_LabelProperty"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_LabelProperty" frame="border" border="1" rules="all"><caption><b>Table 9 </b>LabelProperty</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.9.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.9.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:color</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: Label color, which is a hexadecimal code of the color. By default, this parameter is left blank. Example: <strong>#FFFFF0</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:default_shape</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: Default shape of an object detection label (dedicated attribute). By default, this parameter is left blank. The options are as follows:</p>
+<ul><li><p><strong>bndbox</strong>: rectangle</p>
+</li><li><p><strong>polygon</strong>: polygon</p>
+</li><li><p><strong>circle</strong>: circle</p>
+</li><li><p><strong>line</strong>: straight line</p>
+</li><li><p><strong>dashed</strong>: dotted line</p>
+</li><li><p><strong>point</strong>: point</p>
+</li><li><p><strong>polyline</strong>: polyline</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:from_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: Type of the head entity in the triplet relationship label. This attribute must be specified when a relationship label is created. This parameter is used only for the text triplet dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:rename_to</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: The new name of the label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:shortcut</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: Label shortcut key. By default, this parameter is left blank. For example: <strong>D</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.1 "><p>@modelarts:to_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.9.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.9.2.5.1.4 "><p>Default attribute: Type of the tail entity in the triplet relationship label. This attribute must be specified when a relationship label is created. This parameter is used only for the text triplet dataset.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ImportTask__request_LabelFormat"></a><a name="request_LabelFormat"></a><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__request_LabelFormat" frame="border" border="1" rules="all"><caption><b>Table 10 </b>LabelFormat</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.10.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.10.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>label_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Label type of text classification. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: The label is separated from the text, and they are distinguished by the fixed suffix <strong>_result</strong>. For example, the text file is <strong>abc.txt</strong>, and the label file is <strong>abc_result.txt</strong>.</p>
+</li><li><p><strong>1</strong>: Default value. Labels and texts are stored in the same file and separated by separators. You can use <strong>text_sample_separator</strong> to specify the separator between the text and label and <strong>text_label_separator</strong> to specify the separator between labels.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>text_label_separator</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Separator between labels. By default, the comma (,) is used as the separator. The separator needs to be escaped. Only one character can be used as the separator. The value must contain letters, digits, and one special character (!@#$%^&amp;*_=|?/':.;,).</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.1 "><p>text_sample_separator</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.10.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.10.2.5.1.4 "><p>Separator between the text and label. By default, the <strong>Tab</strong> key is used as the separator. The separator needs to be escaped. Only one character can be used as the separator. The value must contain letters, digits, and one special character (!@#$%^&amp;*_=|?/':.;,).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__response_ImportResp" frame="border" border="1" rules="all"><caption><b>Table 11 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>ID of an import task.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Requests</h4><ul><li><p>Creating an Import Task (Importing Data from OBS)</p>
+<pre class="screen">{
+  "import_type" : "dir",
+  "import_path" : "s3://test-obs/daoLu_images/cat-dog/",
+  "included_tags" : [ ],
+  "import_annotations" : false,
+  "difficult_only" : false
+}</pre>
+</li><li><p>Creating an Import Task (Importing Data from Manifest)</p>
+<pre class="screen">{
+  "import_type" : "manifest",
+  "import_path" : "s3://test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/annotation/V002/V002.manifest",
+  "included_tags" : [ "cat", "dog", "Cat", "Dog" ],
+  "import_annotations" : true,
+  "difficult_only" : false
+}</pre>
+</li></ul>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>OK</p>
+<pre class="screen">{
+  "task_id" : "gfghHSokody6AJigS5A_m1dYqOw8vWCAznw1V28"
+}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Status Codes</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ImportTask__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>OK</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>401</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Unauthorized</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>403</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Forbidden</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>404</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Not Found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Error Codes</h4><p>See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="data_import.html">Data Import Task</a></div>
+</div>
+</div>
+

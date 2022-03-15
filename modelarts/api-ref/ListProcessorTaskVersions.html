@@ -1,0 +1,585 @@
+<a name="ListProcessorTaskVersions"></a><a name="ListProcessorTaskVersions"></a>
+
+<h1 class="topictitle1">Querying the Version List of a Data Processing Task</h1>
+<div><div class="section"><h4 class="sectiontitle">Function</h4><p>This API is used to query the version list of a data processing task.</p>
+</div>
+<div class="section"><h4 class="sectiontitle">URI</h4><p>GET /v2/{project_id}/processor-tasks/{task_id}/versions</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>ID of a data processing task.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Maximum number of records returned on each page. The value ranges from 1 to 100. The default value is <strong>100</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>offset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Start page of the paging list. The default value is <strong>0</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>order</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Sorting sequence of the query. The options are as follows:</p>
+<ul><li><p><strong>asc</strong>: ascending order</p>
+</li><li><p><strong>desc</strong>: descending order (default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>sort_by</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Sorting mode of the query. The options are as follows:</p>
+<ul><li><p><strong>create_time</strong>: Sort by creation time. (Default value)</p>
+</li><li><p><strong>version_name</strong>: Sort by task version name.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Request Parameters</h4><p>None</p>
+</div>
+<div class="section"><h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_ListTaskVersionsResp" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Total number of versions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#ListProcessorTaskVersions__response_DescTaskVersionResp">DescTaskVersionResp</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Version list of a data processing task queried by page.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ListProcessorTaskVersions__response_DescTaskVersionResp"></a><a name="response_DescTaskVersionResp"></a><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_DescTaskVersionResp" frame="border" border="1" rules="all"><caption><b>Table 4 </b>DescTaskVersionResp</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>add_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Number of added images after processing.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Time when a data processing task is created.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>deleted_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Number of deleted images after processing.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Version description of a data processing task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>duration_seconds</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Running time of a data processing task, in seconds.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>inputs</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Array of <a href="#ListProcessorTaskVersions__response_ProcessorDataSource">ProcessorDataSource</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Input channel of a data processing task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>modified_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Number of modified images after processing.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>origin_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Number of images before processing.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Status of a data processing task. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: initialized</p>
+</li><li><p><strong>1</strong>: running</p>
+</li><li><p><strong>2</strong>: completed</p>
+</li><li><p><strong>3</strong>: failed</p>
+</li><li><p><strong>4</strong>: stopped</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>ID of a data processing task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>task_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Version ID of a data processing task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>template</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p><a href="#ListProcessorTaskVersions__response_TemplateParam">TemplateParam</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Algorithm template, such as the algorithm ID and parameters.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>unmodified_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Number of unmodified images after processing.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Time when a data processing task is created.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Version name of a data processing task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>work_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p><a href="#ListProcessorTaskVersions__response_WorkPath">WorkPath</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Output channel of a data processing task.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ListProcessorTaskVersions__response_ProcessorDataSource"></a><a name="response_ProcessorDataSource"></a><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_ProcessorDataSource" frame="border" border="1" rules="all"><caption><b>Table 5 </b>ProcessorDataSource</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Dataset name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Data source path. The options are as follows:</p>
+<ul><li><p>If <strong>type</strong> is set to <strong>OBS</strong>, <strong>source</strong> is an OBS path.</p>
+</li><li><p>If <strong>type</strong> is set to <strong>TASK</strong>, <strong>source</strong> is a task ID.</p>
+</li><li><p>If <strong>type</strong> is set to <strong>DATASET</strong>, <strong>source</strong> is a dataset ID.</p>
+</li><li><p>If <strong>type</strong> is set to <strong>CUSTOM</strong> and the API is called by resource tenants, set <strong>source</strong> to the <strong>project_id</strong> of the actual user. Otherwise, this field is left blank.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Data source type. The options are as follows:</p>
+<ul><li><p><strong>OBS</strong>: Data obtained from OBS</p>
+</li><li><p><strong>TASK</strong>: Data processing task</p>
+</li><li><p><strong>DATASET</strong>: Dataset</p>
+</li><li><p><strong>CUSTOM</strong>: Data called by resource tenants</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Version of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Dataset version name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ListProcessorTaskVersions__response_TemplateParam"></a><a name="response_TemplateParam"></a><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_TemplateParam" frame="border" border="1" rules="all"><caption><b>Table 6 </b>TemplateParam</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Task type, that is, ID of a data processing template. The options are as follows:</p>
+<ul><li><p><strong>sys_data_analyse</strong>: feature analysis</p>
+</li><li><p><strong>sys_data_cleaning</strong>: data cleansing</p>
+</li><li><p><strong>sys_data_augmentation</strong>: data augmentation</p>
+</li><li><p><strong>sys_data_validation</strong>: data validation</p>
+</li><li><p><strong>sys_data_selection</strong>: data selection</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Template name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>operator_params</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>Array of <a href="#ListProcessorTaskVersions__response_OperatorParam">OperatorParam</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Operator parameter list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ListProcessorTaskVersions__response_OperatorParam"></a><a name="response_OperatorParam"></a><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_OperatorParam" frame="border" border="1" rules="all"><caption><b>Table 7 </b>OperatorParam</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.7.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>advanced_params_switch</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Advanced parameter switch.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>ID of an operator.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Name of an operator.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>params</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Operator parameter. The parameter type is map&lt;string,object&gt;. Currently, object only supports the types of Boolean, Integer, Long, String, List and Map&lt;String,String&gt;. For two special scenarios of object detection and image classification in a data preprocessing task, the value of <strong>task_type</strong> is <strong>object_detection</strong> or <strong>image_classification</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ListProcessorTaskVersions__response_WorkPath"></a><a name="response_WorkPath"></a><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__response_WorkPath" frame="border" border="1" rules="all"><caption><b>Table 8 </b>WorkPath</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.8.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Dataset name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>output_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Output path.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Working path. The options are as follows:</p>
+<ul><li><p>If <strong>type</strong> is set to <strong>OBS</strong>, <strong>source</strong> is an OBS path.</p>
+</li><li><p>If <strong>type</strong> is set to <strong>DATASET</strong>, <strong>source</strong> is a dataset ID.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Type of a working path. The options are as follows:</p>
+<ul><li><p><strong>OBS</strong>: OBS path</p>
+</li><li><p><strong>DATASET</strong>: dataset</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Version of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Name of a dataset version. The value can contain 0 to 32 characters. Only digits, letters, underscores (_), and hyphens (-) are allowed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Requests</h4><p>Querying the Version List of a Data Processing Task</p>
+<pre class="screen">GET https://{endpoint}/v2/{project_id}/processor-tasks/{task_id}/versions?offset=0&amp;limit=5</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>OK</p>
+<pre class="screen">{
+  "count" : 2,
+  "versions" : [ {
+    "task_version_id" : "qSaudx2sbPvthHygckA",
+    "task_id" : "kM7j9TSa611ZzBThzSr",
+    "version_name" : "V002",
+    "description" : "",
+    "status" : 0,
+    "create_time" : 1606377874450,
+    "inputs" : [ {
+      "type" : "DATASET",
+      "source" : "PYc9H2HGv5BJNwBGXyK",
+      "version_id" : "Osc8SZ7TZStiRV4vYkZ",
+      "name" : "dataset-test",
+      "version_name" : "V0010"
+    } ],
+    "work_path" : {
+      "type" : "DATASET",
+      "path" : "PYc9H2HGv5BJNwBGXyK",
+      "name" : "dataset-test",
+      "version_name" : "V0011",
+      "output_path" : "/test-obs/classify/output/qSaudx2sbPvthHygckA/"
+    },
+    "template" : {
+      "id" : "sys_data_validation",
+      "name" : "name to translate",
+      "operator_params" : [ {
+        "name" : "MetaValidation",
+        "advanced_params_switch" : false,
+        "params" : {
+          "task_type" : "image_classification",
+          "dataset_type" : "manifest",
+          "source_service" : "select",
+          "filter_func" : "data_validation_select",
+          "image_max_width" : "1920",
+          "image_max_height" : "1920",
+          "total_status" : "[0,1,2]"
+        }
+      } ]
+    },
+    "duration_seconds" : 151
+  }, {
+    "task_version_id" : "YHFWU18zXuNbqxtzegG",
+    "task_id" : "kM7j9TSa611ZzBThzSr",
+    "version_name" : "V001",
+    "description" : "",
+    "status" : 2,
+    "create_time" : 1606375407276,
+    "inputs" : [ {
+      "type" : "DATASET",
+      "source" : "PYc9H2HGv5BJNwBGXyK",
+      "version_id" : "yoJ5ssClpNlOrsjjFDa",
+      "name" : "dataset-test",
+      "version_name" : "V009"
+    } ],
+    "work_path" : {
+      "type" : "DATASET",
+      "path" : "PYc9H2HGv5BJNwBGXyK",
+      "name" : "dataset-test",
+      "version_id" : "Osc8SZ7TZStiRV4vYkZ",
+      "version_name" : "V0010",
+      "output_path" : "/test-obs/classify/output/YHFWU18zXuNbqxtzegG/"
+    },
+    "template" : {
+      "id" : "sys_data_validation",
+      "name" : "name to translate",
+      "operator_params" : [ {
+        "name" : "MetaValidation",
+        "advanced_params_switch" : false,
+        "params" : {
+          "task_type" : "image_classification",
+          "dataset_type" : "manifest",
+          "source_service" : "select",
+          "filter_func" : "data_validation_select",
+          "image_max_width" : "1920",
+          "image_max_height" : "1920",
+          "total_status" : "[0,1,2]"
+        }
+      } ]
+    },
+    "duration_seconds" : 812,
+    "origin_sample_count" : 18,
+    "add_sample_count" : 0,
+    "modified_sample_count" : 0,
+    "unmodified_sample_count" : 18,
+    "deleted_sample_count" : 0
+  } ]
+}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Status Codes</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ListProcessorTaskVersions__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>OK</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>401</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Unauthorized</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>403</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Forbidden</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>404</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Not Found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Error Codes</h4><p>See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="process_task.html">Processing Task</a></div>
+</div>
+</div>
+

@@ -1,0 +1,270 @@
+<a name="modelarts_03_0155"></a><a name="modelarts_03_0155"></a>
+
+<h1 class="topictitle1">Querying Service Event Logs</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section1543612115413"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0155__en-us_topic_0192973542_p2517918849">This API is used to query service event logs, including service operation records, key actions during deployment, and deployment failure causes.</p>
+</div>
+<div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section181341535122619"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0155__en-us_topic_0192973542_p12213418185619">GET /v1/{project_id}/services/{service_id}/events</p>
+<div class="p" id="modelarts_03_0155__en-us_topic_0192973542_p86385208570"><a href="#modelarts_03_0155__en-us_topic_0192973542_table10624434011">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0155__en-us_topic_0192973542_table10624434011"></a><a name="en-us_topic_0192973542_table10624434011"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0155__en-us_topic_0192973542_table10624434011" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0155__en-us_topic_0192973542_row13653412406"><th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0155__en-us_topic_0192973542_p8665404020">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0155__en-us_topic_0192973542_p46614184018">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.871287128712872%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0155__en-us_topic_0192973542_p668154124018">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.48514851485149%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0155__en-us_topic_0192973542_p469204194016">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0155__en-us_topic_0192973542_row1797617864917"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p8780885181639">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p40163046181639">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p31981288181639">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p40347522181639">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row870174164011"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p372348400">service_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p19736411406">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p174643403">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p575194174011">Service ID</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0155__en-us_topic_0192973542_table118011654615" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0155__en-us_topic_0192973542_row128412615467"><th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.2.3.3.2.5.1.1"><p id="modelarts_03_0155__en-us_topic_0192973542_p198612613464">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.2.3.3.2.5.1.2"><p id="modelarts_03_0155__en-us_topic_0192973542_p488116104612">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12.871287128712872%" id="mcps1.3.2.3.3.2.5.1.3"><p id="modelarts_03_0155__en-us_topic_0192973542_p5894684613">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.48514851485149%" id="mcps1.3.2.3.3.2.5.1.4"><p id="modelarts_03_0155__en-us_topic_0192973542_p139246154610">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0155__en-us_topic_0192973542_row17943614619"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p19951767464">event_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1098196194611">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p199917615466">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p2418198929">Type of the event to be filtered. By default, the event type is not filtered. Options:</p>
+<ul id="modelarts_03_0155__en-us_topic_0192973542_ul1122512135217"><li id="modelarts_03_0155__en-us_topic_0192973542_li11618916527"><strong id="modelarts_03_0155__en-us_topic_0192973542_b15538115385111">normal</strong>: normal events</li><li id="modelarts_03_0155__en-us_topic_0192973542_li72251813723"><strong id="modelarts_03_0155__en-us_topic_0192973542_b196469554512">abnormal</strong>: abnormal events</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row2849143155417"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p3849184335410">start_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p138491943185417">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p138491643195419">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p138492439549">Start time of the event to be filtered. The value is milliseconds between the current time and '1970.1.1 0:0:0 UTC'.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row12961181125610"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p209614115568">end_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p896117165618">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p10962213562">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p99623118564">End time of the event to be filtered. The value is milliseconds between the current time and '1970.1.1 0:0:0 UTC'.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row47467249576"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1474762485718">offset</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p374718248577">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p374742412572">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p20747224165711">Start page of the paging list. Default value: <strong id="modelarts_03_0155__en-us_topic_0192973542_b14897165516536">0</strong></p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row3830317584"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p7844315819">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p8848335817">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p48418345817">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p88443115810">Maximum number of records returned on each page. Default value: <strong id="modelarts_03_0155__en-us_topic_0192973542_b13255825414">1000</strong></p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row875711705813"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p175717775813">sort_by</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p157571576583">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p20757197135818">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p675714715810">Specified sorting field. The default value is <span class="parmname" id="modelarts_03_0155__en-us_topic_0192973542_parmname527112285310"><b>occur_time</b></span>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row044911101586"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p244961055812">order</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1244991011580">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.871287128712872%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p13449101013586">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.48514851485149%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0155__en-us_topic_0192973542_p791315501269">Sorting mode. The default value is <span class="parmname" id="modelarts_03_0155__en-us_topic_0192973542_parmname2091319501867"><b>desc</b></span>. Options:</p>
+<ul id="modelarts_03_0155__en-us_topic_0192973542_ul1586414541561"><li id="modelarts_03_0155__en-us_topic_0192973542_li85734575610"><strong id="modelarts_03_0155__en-us_topic_0192973542_b10246142305011">asc</strong>: ascending order</li><li id="modelarts_03_0155__en-us_topic_0192973542_li2086455414610"><strong id="modelarts_03_0155__en-us_topic_0192973542_b7658142510500">desc</strong>: descending order</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section71456147333"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0155__en-us_topic_0192973542_p363816016013">None</p>
+</div>
+<div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section54078976"><h4 class="sectiontitle">Response Body</h4><div class="p" id="modelarts_03_0155__en-us_topic_0192973542_p334315171906"><a href="#modelarts_03_0155__en-us_topic_0192973542_table413209485">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="modelarts_03_0155__en-us_topic_0192973542_table413209485"></a><a name="en-us_topic_0192973542_table413209485"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0155__en-us_topic_0192973542_table413209485" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0155__en-us_topic_0192973542_row461520144819"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.2.2.4.1.1"><p id="modelarts_03_0155__en-us_topic_0192973542_p671720184814">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.2.4.1.2"><p id="modelarts_03_0155__en-us_topic_0192973542_p41062004818">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64%" id="mcps1.3.4.2.2.2.4.1.3"><p id="modelarts_03_0155__en-us_topic_0192973542_p51317202481">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0155__en-us_topic_0192973542_row121442013482"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1716122012489">service_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p418162011482">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1819420164816">Service ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row92052015484"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p20221720114814">service_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1023220104819">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p825162013488">Service name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row92632004815"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p42818204484">events</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p731120134816"><strong id="modelarts_03_0155__en-us_topic_0192973542_b18338175817501">event</strong> array</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p83212019487">Event logs. For details, see <a href="#modelarts_03_0155__en-us_topic_0192973542_table974014115493">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row981422623"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p108192214217">total_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p381192213214">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p208117220211">Total number of events that meet the search criteria when no paging is implemented</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row4699124616211"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p166991746121">count</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p769914610212">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="64%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p1869974615216">Number of events in the query result</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0155__en-us_topic_0192973542_table974014115493"></a><a name="en-us_topic_0192973542_table974014115493"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0155__en-us_topic_0192973542_table974014115493" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0155__en-us_topic_0192973542_b828275411514">event</strong> structure</caption><thead align="left"><tr id="modelarts_03_0155__en-us_topic_0192973542_row9746151116491"><th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.4.2.3.2.4.1.1"><p id="modelarts_03_0155__en-us_topic_0192973542_p16747181134917">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.4.2.3.2.4.1.2"><p id="modelarts_03_0155__en-us_topic_0192973542_p1374918110495">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="64.35643564356435%" id="mcps1.3.4.2.3.2.4.1.3"><p id="modelarts_03_0155__en-us_topic_0192973542_p12751411154913">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0155__en-us_topic_0192973542_row5753131154919"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p775414117493">occur_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p7756151110496">Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p7758101113496">Time when an event occurs. The value is milliseconds between the current time and '1970.1.1 0:0:0 UTC'.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row14758111124914"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p147601111496">event_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p14761111184916">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p10763151116498">Event type. Possible values are <strong id="modelarts_03_0155__en-us_topic_0192973542_b1717410655316">normal</strong> and <strong id="modelarts_03_0155__en-us_topic_0192973542_b41031125310">abnormal</strong>, indicating whether the event is normal or abnormal.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0155__en-us_topic_0192973542_row47648112490"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0155__en-us_topic_0192973542_p876541119491">event_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0155__en-us_topic_0192973542_p137672011124919">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.35643564356435%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0155__en-us_topic_0192973542_p476921114917">Event information,' including service operation records, key actions during deployment, and deployment failure causes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section1810193414711"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0155__en-us_topic_0192973542_p1626113524475">The following example queries event information of the service whose ID is <span class="filepath" id="modelarts_03_0155__en-us_topic_0192973542_filepath19129913950"><b>35de3ca9-1bca-4ae7-9cb0-914f30fa7d3e</b></span>.</p>
+</div>
+<ul id="modelarts_03_0155__en-us_topic_0192973542_ul11661134735818"><li id="modelarts_03_0155__en-us_topic_0192973542_li8663184755814">Sample request<pre class="screen" id="modelarts_03_0155__en-us_topic_0192973542_screen17210756125618">GET    https://endpoint/v1/{project_id}/services/{service_id}/events</pre>
+</li></ul>
+<ul id="modelarts_03_0155__en-us_topic_0192973542_ul163453474715"><li id="modelarts_03_0155__en-us_topic_0192973542_li1533103454717">Sample response<pre class="screen" id="modelarts_03_0155__en-us_topic_0192973542_screen7636135570">{
+"service_id": "35de3ca9-1bca-4ae7-9cb0-914f30fa7d3e",
+"service_name": "zcjtest-07085",
+"count": 9,
+"total_count": 9,
+"events": [
+    {
+        "occur_time": 1562597251764,
+        "event_type": "normal",
+        "event_info": "start to deploy service"
+    },
+    {
+        "occur_time": 1562597251788,
+        "event_type": "normal",
+        "event_info": "building image for model [zcjtestTF 3.0.0]"
+    },
+    {
+        "occur_time": 1562597251805,
+        "event_type": "normal",
+        "event_info": "model (zcjtestTF 3.0.0) build image success"
+    },
+    {
+        "occur_time": 1562597255744,
+        "event_type": "normal",
+        "event_info": "preparing environment"
+    },
+    {
+        "occur_time": 1562597275915,
+        "event_type": "normal",
+        "event_info": "[zcjtestTF 3.0.0] prepare environment success"
+    },
+    {
+        "occur_time": 1562597275921,
+        "event_type": "normal",
+        "event_info": "[zcjtestTF 3.0.0] schedule resource success"
+    },
+    {
+        "occur_time": 1562597275928,
+        "event_type": "normal",
+        "event_info": "[zcjtestTF 3.0.0] pulling model image"
+    },
+    {
+        "occur_time": 1562597332570,
+        "event_type": "normal",
+        "event_info": "[zcjtestTF 3.0.0] pull image success"
+    },
+    {
+        "occur_time": 1562597332582,
+        "event_type": "normal",
+        "event_info": "[zcjtestTF 3.0.0] starting model"
+    }
+]
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0155__en-us_topic_0192973542_section16948739"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0155__en-us_topic_0192973542_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094__en-us_topic_0132773864_table1450010510213">Table 1</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0081.html">Service Management</a></div>
+</div>
+</div>
+

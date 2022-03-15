@@ -1,0 +1,193 @@
+<a name="modelarts_03_0150"></a><a name="modelarts_03_0150"></a>
+
+<h1 class="topictitle1">Querying Monitoring Information About a Single Container of a Job</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section59889949"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0150__en-us_topic_0188079018_p25674946">This API is used to query monitoring information about a single container of a job.</p>
+</div>
+<div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section2138635"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0150__en-us_topic_0188079018_p37992218355">GET   /v1/{project_id}/training-jobs/{job_id}/versions/{version_id}/pod/{pod_name}/metric-statistic</p>
+<div class="p" id="modelarts_03_0150__en-us_topic_0188079018_p65771147125313"><a href="#modelarts_03_0150__en-us_topic_0188079018_table4442765616454">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0150__en-us_topic_0188079018_table4442765616454"></a><a name="en-us_topic_0188079018_table4442765616454"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0150__en-us_topic_0188079018_table4442765616454" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0150__en-us_topic_0188079018_row1885755016454"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0150__en-us_topic_0188079018_p2131794716511">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0150__en-us_topic_0188079018_p4903214216511">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0150__en-us_topic_0188079018_p1218057416511">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.00000000000001%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0150__en-us_topic_0188079018_p4710241816511">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0150__en-us_topic_0188079018_row5911821816454"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p264845616511">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1319836116511">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p6243435216511">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p2401771416511">Project ID</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row467320216454"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p861340516511">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p2659720516511">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p689001016511">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p2121992316511">ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row2274948268"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p427412487612">version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p13953156365">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p162743482617">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1427434811615">Version ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row589912624819"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p6674163210488">pod_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p2067410325489">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1167453210486">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p166741632174818">Container name, which is the same as the job log name. For details about how to obtain the value, see <a href="modelarts_03_0054.html#modelarts_03_0054">Obtaining the Name of a Training Job Log File</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section14721183115213"><h4 class="sectiontitle">Request Body</h4><div class="p" id="modelarts_03_0150__en-us_topic_0188079018_p215516381222"><a href="#modelarts_03_0150__en-us_topic_0188079018_table87520312215">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="modelarts_03_0150__en-us_topic_0188079018_table87520312215"></a><a name="en-us_topic_0188079018_table87520312215"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0150__en-us_topic_0188079018_table87520312215" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0150__en-us_topic_0188079018_row14751193113211"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.3.2.2.2.5.1.1"><p id="modelarts_03_0150__en-us_topic_0188079018_p207511131327">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.3.2.2.2.5.1.2"><p id="modelarts_03_0150__en-us_topic_0188079018_p17517311823">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.3.2.2.2.5.1.3"><p id="modelarts_03_0150__en-us_topic_0188079018_p1575123118210">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.00000000000001%" id="mcps1.3.3.2.2.2.5.1.4"><p id="modelarts_03_0150__en-us_topic_0188079018_p875193116217">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0150__en-us_topic_0188079018_row1875210312027"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p165671756184413">metrics</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p13567456114417">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p2567256164412">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p45671756184419">Metrics to be queried. Separate metrics by commas (,), for example, <span class="parmname" id="modelarts_03_0150__en-us_topic_0188079018_parmname1273041013551"><b>CpuUsage,MemUsage</b></span>. If this parameter is left blank, all metrics are queried.</p>
+<p id="modelarts_03_0150__en-us_topic_0188079018_p555731221012">Options:</p>
+<ul id="modelarts_03_0150__en-us_topic_0188079018_ul9821419121015"><li id="modelarts_03_0150__en-us_topic_0188079018_li108214191104">CpuUsage</li><li id="modelarts_03_0150__en-us_topic_0188079018_li14733111017">MemUsage</li><li id="modelarts_03_0150__en-us_topic_0188079018_li1461643491016">DiskReadRate</li><li id="modelarts_03_0150__en-us_topic_0188079018_li8123183617108">DiskWriteRate</li><li id="modelarts_03_0150__en-us_topic_0188079018_li17448153791018">RecvBytesRate</li><li id="modelarts_03_0150__en-us_topic_0188079018_li4726163811020">SendBytesRate</li><li id="modelarts_03_0150__en-us_topic_0188079018_li41494041010">GpuUtil</li><li id="modelarts_03_0150__en-us_topic_0188079018_li16335184117100">GpuMemUsage</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row187504224410"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.2.2.5.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1556765614410">statistic_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.3.2.2.2.5.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1056719566442">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.2.2.5.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p756725611440">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.3.2.2.2.5.1.4 "><p id="modelarts_03_0150__en-us_topic_0188079018_p74936661319">Metric statistics method, indicating whether to collect metric statistics based on a single GPU. This parameter applies only to GPU metric statistics.</p>
+<ul id="modelarts_03_0150__en-us_topic_0188079018_ul125481249185319"><li id="modelarts_03_0150__en-us_topic_0188079018_li6548194917532"><strong id="modelarts_03_0150__en-us_topic_0188079018_b14453182915353">all</strong>: Obtain the average value of the metric.</li><li id="modelarts_03_0150__en-us_topic_0188079018_li23161057131111"><strong id="modelarts_03_0150__en-us_topic_0188079018_b13257391369">each</strong>: Obtain the metric monitoring information about each GPU.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section15561295"><h4 class="sectiontitle">Response Body</h4><div class="p" id="modelarts_03_0150__en-us_topic_0188079018_p1422850741"><a href="#modelarts_03_0150__en-us_topic_0188079018_table1414514116749">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="modelarts_03_0150__en-us_topic_0188079018_table1414514116749"></a><a name="en-us_topic_0188079018_table1414514116749"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0150__en-us_topic_0188079018_table1414514116749" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0150__en-us_topic_0188079018_row1296552316749"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.2.2.4.1.1"><p id="modelarts_03_0150__en-us_topic_0188079018_p452264431685">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.2.2.4.1.2"><p id="modelarts_03_0150__en-us_topic_0188079018_p424067391685">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.2.2.4.1.3"><p id="modelarts_03_0150__en-us_topic_0188079018_p123938441685">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0150__en-us_topic_0188079018_row379107356"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p3678195015417">error_message</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p367815017542">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p146788503545">Error message when the API call fails.</p>
+<p id="modelarts_03_0150__en-us_topic_0188079018_p767865010549">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row95021353811"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p11679105018547">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1267985011549">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p0679850175418">Error code when the API call fails. For details, see <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+<p id="modelarts_03_0150__en-us_topic_0188079018_p19679165010545">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row1722835016749"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p773018126138">metrics</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p6730101217138">JSON Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p20730131211320">Metric monitoring details. For details, see <a href="#modelarts_03_0150__en-us_topic_0188079018_table8361164171810">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row5468243216749"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p17730201261311">interval</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1730131210134">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p107304125137">Query interval, in minutes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0150__en-us_topic_0188079018_table8361164171810"></a><a name="en-us_topic_0188079018_table8361164171810"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0150__en-us_topic_0188079018_table8361164171810" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0150__en-us_topic_0188079018_b15561171514384">metrics</strong> data structure</caption><thead align="left"><tr id="modelarts_03_0150__en-us_topic_0188079018_row1036116411818"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.3.2.4.1.1"><p id="modelarts_03_0150__en-us_topic_0188079018_p13361742185">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.3.2.4.1.2"><p id="modelarts_03_0150__en-us_topic_0188079018_p1336116419185">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.3.2.4.1.3"><p id="modelarts_03_0150__en-us_topic_0188079018_p436113417189">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0150__en-us_topic_0188079018_row136110481816"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.3.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p13622416189">metric</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p1536219461814">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.3.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p568715711810">Monitoring metrics</p>
+</td>
+</tr>
+<tr id="modelarts_03_0150__en-us_topic_0188079018_row33621145188"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.3.2.4.1.1 "><p id="modelarts_03_0150__en-us_topic_0188079018_p153621543189">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.3.2.4.1.2 "><p id="modelarts_03_0150__en-us_topic_0188079018_p43626414188">JSON Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.3.2.4.1.3 "><p id="modelarts_03_0150__en-us_topic_0188079018_p33627461816">Sequence of the obtained metric value. The element is of the String type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section828415581838"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0150__en-us_topic_0188079018_p7208203917515">The following shows how to query the logs contained in <span class="filepath" id="modelarts_03_0150__en-us_topic_0188079018_filepath187118555397"><b>log1.log</b></span> of the job whose <span class="parmvalue" id="modelarts_03_0150__en-us_topic_0188079018_parmvalue1772105513395"><b>job_id</b></span> is <strong id="modelarts_03_0150__en-us_topic_0188079018_b157255573920">10</strong> and <span class="parmvalue" id="modelarts_03_0150__en-us_topic_0188079018_parmvalue77317555391"><b>version_id</b></span> is <strong id="modelarts_03_0150__en-us_topic_0188079018_b127315553913">10</strong>.</p>
+<ul id="modelarts_03_0150__en-us_topic_0188079018_ul1233813121945"><li id="modelarts_03_0150__en-us_topic_0188079018_li93381126418">Sample request<pre class="screen" id="modelarts_03_0150__en-us_topic_0188079018_screen3161113433711">GET    https://endpoint/v1/{project_id}/training-jobs/10/versions/10/pod/pod1/metric-statistic?metrics=gpuUtil</pre>
+</li></ul>
+<ul id="modelarts_03_0150__en-us_topic_0188079018_ul13567541132"><li id="modelarts_03_0150__en-us_topic_0188079018_li7639753">Successful sample response<pre class="screen" id="modelarts_03_0150__en-us_topic_0188079018_screen8413744143720">{
+  "metrics":
+  [
+    {
+       "metric":"gpuUtil",
+       "value":["1","22","33"]
+     }
+  ],
+  "interval" : 1
+}</pre>
+</li><li id="modelarts_03_0150__en-us_topic_0188079018_li69931349184">Failed sample response<pre class="screen" id="modelarts_03_0150__en-us_topic_0188079018_screen24001548379">{
+    "error_message": "Error string",
+    "error_code": "ModelArts.0105"
+}</pre>
+</li></ul>
+</div>
+<div class="section" id="modelarts_03_0150__en-us_topic_0188079018_section16342114917109"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0150__en-us_topic_0188079018_p19942204915154">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094">Status Code</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0044.html">Training Jobs</a></div>
+</div>
+</div>
+

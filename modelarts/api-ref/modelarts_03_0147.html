@@ -1,0 +1,40 @@
+<a name="modelarts_03_0147"></a><a name="modelarts_03_0147"></a>
+
+<h1 class="topictitle1">Obtaining a Project ID and Name</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0147__en-us_topic_0171436477_section1887604518013"><h4 class="sectiontitle">Scenarios</h4><p id="modelarts_03_0147__en-us_topic_0171436477_p194391501803">A project ID or name is required for some requests when an API is called. Therefore, obtain the project ID and name before calling the API. Use either of the following methods:</p>
+<ul id="modelarts_03_0147__en-us_topic_0171436477_ul18386171513218"><li id="modelarts_03_0147__en-us_topic_0171436477_li7386515529"><a href="#modelarts_03_0147__en-us_topic_0171436477_section1747620762418">Obtaining a Project ID and Name from the Console</a></li><li id="modelarts_03_0147__en-us_topic_0171436477_li938611151623"><a href="#modelarts_03_0147__en-us_topic_0171436477_section3926171216207">Obtaining a Project ID by Calling an API</a></li></ul>
+</div>
+<div class="section" id="modelarts_03_0147__en-us_topic_0171436477_section1747620762418"><a name="modelarts_03_0147__en-us_topic_0171436477_section1747620762418"></a><a name="en-us_topic_0171436477_section1747620762418"></a><h4 class="sectiontitle">Obtaining a Project ID and Name from the Console</h4><p id="modelarts_03_0147__en-us_topic_0171436477_p1076582711246">To do so, perform the following operations:</p>
+<ol id="modelarts_03_0147__en-us_topic_0171436477_ol816220201182"><li id="modelarts_03_0147__en-us_topic_0171436477_li13222451220">Log in to the console.</li><li id="modelarts_03_0147__en-us_topic_0171436477_en-us_topic_0274511647_en-us_topic_0253465388_li15162320121815">In the upper right corner, click your account avatar icon and choose <strong id="modelarts_03_0147__en-us_topic_0171436477_b1425911019212">My Settings</strong> from the drop-down list.</li><li id="modelarts_03_0147__en-us_topic_0171436477_en-us_topic_0274511647_en-us_topic_0253465388_li15162020201811">On the <strong id="modelarts_03_0147__en-us_topic_0171436477_b12678914102119">My Settings</strong> page, go to the <strong id="modelarts_03_0147__en-us_topic_0171436477_b1968311412118">Project List</strong> tab page, which is displayed by default. View the project ID and name in the project list.</li></ol>
+</div>
+<div class="section" id="modelarts_03_0147__en-us_topic_0171436477_section3926171216207"><a name="modelarts_03_0147__en-us_topic_0171436477_section3926171216207"></a><a name="en-us_topic_0171436477_section3926171216207"></a><h4 class="sectiontitle">Obtaining a Project ID by Calling an API</h4><p id="modelarts_03_0147__en-us_topic_0171436477_p19960121202019">The API for obtaining a project ID is <strong id="modelarts_03_0147__en-us_topic_0171436477_b1868314495209">GET https://</strong><em id="modelarts_03_0147__en-us_topic_0171436477_i8912266217">{iam-endpoint}</em><strong id="modelarts_03_0147__en-us_topic_0171436477_b52591554193019">/v3/projects</strong>. To obtain <em id="modelarts_03_0147__en-us_topic_0171436477_i197541556325">{iam-endpoint}</em>, see <a href="modelarts_03_0005.html#modelarts_03_0005__en-us_topic_0129435569_en-us_topic_0170917207_en-us_topic_0168405763_section1849899574">Request URI</a><a href="modelarts_03_0141.html">Endpoints</a>.</p>
+<p id="modelarts_03_0147__en-us_topic_0171436477_p1296011125204">The following is an example response. For example, if ModelArts is deployed in the <strong id="modelarts_03_0147__en-us_topic_0171436477_b67525227445">xxx</strong> region, the value of <strong id="modelarts_03_0147__en-us_topic_0171436477_b16153103717254">name</strong> in the response body is <strong id="modelarts_03_0147__en-us_topic_0171436477_b119120113459">xxx</strong>. The value of <strong id="modelarts_03_0147__en-us_topic_0171436477_b19157113702515">id</strong> in <strong id="modelarts_03_0147__en-us_topic_0171436477_b1915713715255">projects</strong> is the project ID.</p>
+<pre class="screen" id="modelarts_03_0147__en-us_topic_0171436477_screen49601812102015">{
+	"projects": [{
+		"domain_id": "65382450e8f64ac0870cd180d14e684b",
+		"is_domain": false,
+		"parent_id": "65382450e8f64ac0870cd180d14e684b",
+		"name": "xxx",
+		"description": "",
+		"links": {
+			"next": null,
+			"previous": null,
+			"self": "https://www.example.com/v3/projects/a4a5d4098fb4474fa22cd05f897d6b99"
+		},
+		"id": "a4a5d4098fb4474fa22cd05f897d6b99",
+		"enabled": true
+	}],
+	"links": {
+		"next": null,
+		"previous": null,
+		"self": "https://www.example.com/v3/projects"
+	}
+}</pre>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0093.html">Common Parameters</a></div>
+</div>
+</div>
+

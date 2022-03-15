@@ -1,0 +1,414 @@
+<a name="modelarts_03_0299"></a><a name="modelarts_03_0299"></a>
+
+<h1 class="topictitle1">Data Management APIs</h1>
+<div id="body8662426">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_table19560011132619" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Data management APIs</caption><thead align="left"><tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1056021113264"><th align="left" class="cellrowborder" valign="top" width="19.98%" id="mcps1.3.1.2.4.1.1"><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p121931935228">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="33.77%" id="mcps1.3.1.2.4.1.2"><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p4560171162619">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="46.25%" id="mcps1.3.1.2.4.1.3"><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1056091114268">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row963865810585"><td class="cellrowborder" rowspan="7" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p5193113516218">Dataset Management</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p125828205294"><a href="ListDatasets.html">Querying the Dataset List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p8581192022913">Query created datasets by page based on specified conditions.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row363895855813"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p10581102016296"><a href="CreateDataset.html">Creating a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p4580122002913">Create a new dataset and determine whether to enable team labeling as needed.</p>
+<ul id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_ul151766102519"><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li11176111018515">Enable team labeling. The subsequent operations vary depending on the specified role.<p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p72356333579"><a name="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li11176111018515"></a><a name="en-us_topic_0000001132278507_en-us_topic_0000001074274966_li11176111018515"></a>If a team is specified to assign labeling tasks, the team labeling task is started after the dataset is created.</p>
+<p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p173553619578">If a task manager is specified to assign labeling tasks, the manager calls the API in <a href="StartWorkforceTask.html">Starting a Team Labeling Task</a> to assign and start the team labeling tasks.</p>
+</li><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li12176171015511">Disable team labeling. To enable team labeling later, call the API in <a href="CreateWorkforceTask.html">Creating a Team Labeling Task</a> to create team labeling tasks for the dataset.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row26381058165819"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1580120112910"><a href="DescDataset.html">Querying Details About a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p6579920182910">Query details about a dataset, including the dataset name, type, and version name based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1963995865813"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p3579172052918"><a href="UpdateDataset.html">Modifying a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p4578920192916">Modify basic information about a dataset, such as the dataset name, description, version, or labels.</p>
+<p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1021374113">The modification takes effect in the entire dataset, including the samples in the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row136391358135811"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p557814205297"><a href="DeleteDataset.html">Deleting a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p65591220162914">Delete a dataset based on the dataset ID to release resources.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row176397586589"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p19389147143512"><a href="ListStats.html">Querying Dataset Statistics</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p183885716353">Query dataset statistics, such as sample statistics, label statistics, or hard examples based on specified conditions.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row663918584588"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p538807163512"><a href="GetDatasetMetrics.html">Querying the Monitoring Data of a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p338713716356">Query the monitoring data of a dataset within a specified period, such as the number of labeled samples, number of unlabeled samples, and total number of samples at each time point within the period.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row176223578465"><td class="cellrowborder" rowspan="2" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p13780934114716">Data Synchronization</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p13780034174716"><a href="SyncDataSource.html">Synchronizing a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p137801034174712">Synchronize data and labels from the dataset input path to the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row176510317472"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p187805347474"><a href="SyncDataSourceState.html">Querying the Status of a Dataset Synchronization Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p19780434164711">Query the status of a data source synchronization task based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row16594454155813"><td class="cellrowborder" rowspan="6" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p235712716577">Labeling Data</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p177261345209"><a href="UpdateSamples.html">Updating Sample Labels in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p23556775716">Label multiple samples in a dataset in batches.</p>
+<ul id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_ul256717278199"><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li20920152641512">Label unlabeled samples. You can use an existing label or create a new label.</li><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li8199528121819">Add, modify, or delete labels for labeled samples. You can use an existing label or newly added label to modify an original label. Additionally, you can add an existing label or a new label to a sample.</li></ul>
+<p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p738215323185">This API uses a new label list to overwrite the original one to update the sample label. For example, if an empty label list is used to overwrite the original one, all sample labels will be deleted.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row475473317136"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p12357167175718"><a href="ListSamples.html">Querying the Sample List</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p15755123381310">Query dataset samples by page based on specified conditions.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row16595165475812"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1975513319137"><a href="UploadSamplesJson.html">Adding Samples in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p335687145710">Add samples to a dataset in batches for data labeling.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row13637123631718"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p935667185714"><a href="DeleteSamples.html">Deleting Samples in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p176401336121710">Delete unused samples from a dataset in batches.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row6512173891716"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1464013363174"><a href="DescribeSample.html">Querying Details About a Sample</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p45135387175">Query a single sample based on the sample ID, including the sample status and labels.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row95951054125819"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1251343815179"><a href="ListSearch.html">Querying Sample Search Criteria</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p16355678574">Obtain sample search criteria, such as the label list and attribute key-value pairs of the dataset based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row865744331413"><td class="cellrowborder" rowspan="6" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p10657114371414">Label Management</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1665794391418"><a href="ListLabels.html">Querying the Dataset Label List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p765719434149">Query the labels in a specified dataset version.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row187296537180"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p772955311188"><a href="CreateLabels.html">Creating a Dataset Label</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p132718315429">During dataset labeling, new labels can be created. This function is available only in datasets of the text classification and named entity types.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row13904144111189"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p19907641121819"><a href="UpdateLabels.html">Modifying Labels in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p490774114185">Modify dataset labels in batches. The modification takes effect in the entire dataset, including the samples in the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row121921147121816"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p219224771814"><a href="DeleteLabels.html">Deleting Labels in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p141921447181812">Delete dataset labels in batches and ask you to determine whether to delete the samples with the labels.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row3888154801818"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p3888144810184"><a href="UpdateLabel.html">Updating a Label by Label Name</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p2088864820187">Modify a label in a dataset based on the label name. The modification takes effect in the entire dataset, including the samples in the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1480185013183"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1848045011819"><a href="DeleteLabelAndSamples.html">Deleting a Label and the Files with This Label Only</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1448011509185">Delete a label in a dataset based on the label name and ask you to determine whether to delete the samples with the label.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1691274402212"><td class="cellrowborder" rowspan="3" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p28161036238">Importing Data</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p198172315239"><a href="ListImportTasks.html">Querying the Dataset Import Task List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p16912124432213">Query historical tasks imported to a dataset by page based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1849612433227"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1681711310234"><a href="ImportTask.html">Creating a Dataset Import Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p96154172819">Create a dataset import task to import labels and data (such as Manifest files and OBS data) from a storage system to the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row4881641132215"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p118171831236"><a href="DescImportTask.html">Querying Details About a Dataset Import Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p4881124122215">Query details about a dataset import task based on the dataset ID and task ID to learn about the data source, import mode, and task status.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1011285622516"><td class="cellrowborder" rowspan="3" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1544214971319">Exporting Data</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p8442104910138"><a href="GetExportTasksStatusOfDataset.html">Querying the Dataset Export Task List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p10112185614256">Query historical tasks exported from a dataset by page based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row137433554250"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p205541695284"><a href="ExportTask.html">Creating a Dataset Export Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p127435553251">Export certain data as a new dataset or to OBS.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row167612544254"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p732161319285"><a href="GetExportTaskStatusOfDataset.html">Querying the Status of a Dataset Export Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p87795420253">Query details about a dataset export task based on the dataset ID and task ID to learn about the export type, task status, and number of samples.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row43302406225"><td class="cellrowborder" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p6255172318245">Publishing a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p182551323132418"><a href="CreateDatasetVersion.html">Creating a Dataset Labeling Version</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p14330240132216">Publish the labeled dataset as a new version for model building.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row20586537182214"><td class="cellrowborder" rowspan="4" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p925510239248">Managing Dataset Versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p6255223172419"><a href="ListDatasetVersions.html">Querying the Dataset Version List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p45861137192213">Query the versions of a dataset based on the dataset ID to learn about the dataset version evolution.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row8135355102312"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p625502312245"><a href="CreateDatasetVersion.html">Creating a Dataset Labeling Version</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p15135145562317">Publish a modified dataset as a new version. The modification includes labeling samples, adding samples, and deleting samples in the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row12751115552311"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p142553234247"><a href="DescribeDatasetVersion.html">Querying Details About a Dataset Labeling Version</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p7751195512235">Query details about a specified dataset labeling version, including the name, description, number of files, and storage path based on the dataset ID and version ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row193200560238"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p14255142332414"><a href="DeleteDatasetVersion.html">Deleting a Dataset Labeling Version</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p83207564238">Delete a dataset version based on the dataset ID and version ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row167751456142315"><td class="cellrowborder" rowspan="6" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p634137155716">Auto Labeling</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p193404785716"><a href="ListAutoAnnotationSamples.html">Querying the Auto Labeling Sample List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p277510568237">Query the to-be-confirmed auto labeling samples in a dataset by page based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row172411057152314"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1192413559382"><a href="DescribeAutoAnnotationSample.html">Querying Details About an Auto Labeling Sample</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p224145716237">Query information of a single auto labeling sample based on the dataset ID and sample ID, such as the sample labels, hard example details, and sample type.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row071119576234"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p15340117195716"><a href="ListTasks.html">Querying Auto Labeling Tasks by Page</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p27119578231">Query all auto labeling tasks by page based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1436274032611"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p133912765714"><a href="CreateTask.html">Starting an Auto Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p336244052615">Start an auto labeling task for unlabeled data to quickly label the data. After the auto labeling task is complete, call the API in <a href="UpdateSamples.html">Updating Sample Labels in Batches</a> to check the labeling result.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1523194118268"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p13391277575"><a href="AutoAnnotationProgress.html">Querying Details About an Auto Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p7231041132613">Query details about an auto labeling task based on the dataset ID and task ID to learn about the task configuration, name, and status.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1355110919285"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1133747185710"><a href="StopAutoAnnotation.html">Stopping an Auto Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p165549952814">Stop an ongoing auto labeling task based on the dataset ID and task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row4342205923811"><td class="cellrowborder" rowspan="4" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1934213599384">Auto Grouping</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p934265910385"><a href="ListTasks.html">Querying Auto Grouping Tasks by Page</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p14342155911384">Query all auto grouping tasks by page based on the dataset ID.</p>
+<p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1317423413128">In auto grouping, unlabeled images are clustered using a clustering algorithm and then processed based on the clustering result. Images can be labeled by group or cleaned.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1088001813423"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p18880121814220"><a href="CreateTask.html">Starting an Auto Grouping Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p138801818154212">Execute an auto grouping task based on selected data samples to improve data labeling efficiency.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row8453104918427"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p184535493424"><a href="AutoAnnotationProgress.html">Querying Details About an Auto Grouping Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p5453104914424">Query details about an auto grouping task based on the dataset ID and task ID to learn about the task configuration, name, and status.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row63201683914"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p163201613394"><a href="StopAutoAnnotation.html">Stopping an Auto Grouping Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1032036133918">Stop an ongoing auto grouping task based on the dataset ID and task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row8409563125"><td class="cellrowborder" rowspan="17" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p440919614129">Team Labeling</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p19266741195512"><a href="ListWorkforceTaskStats.html">Querying Statistics for a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p20266194145513">Query statistics for a team labeling task on the data labeling platform, such as the sample statistics, label statistics, and hard example set based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1635111119234"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p18879123913556"><a href="GetWorkforceTaskMetrics.html">Querying Statistics for the Member Labeling Progresses in a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1685833955517">Query statistics for the member labeling progresses in a team labeling task based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row655514715237"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p20409176121216"><a href="ListWorkforceTasks.html">Querying the Team Labeling Task List of a Dataset</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1340919621215">Query the team labeling tasks of a dataset based on the dataset ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row386939122120"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p686913918216"><a href="CreateWorkforceTask.html">Creating a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p7869209122119">Create a team labeling task based on an existing dataset so that multiple members can concurrently label the dataset.</p>
+<ul id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_ul182221622141112"><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li5222182219117">If a team is specified to assign labeling tasks, the team labeling task is started after the task is created.</li><li id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_li922262211112">If a task manager is specified to assign labeling tasks, the manager calls the API in <a href="StartWorkforceTask.html">Starting a Team Labeling Task</a> to assign and start the team labeling tasks.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row13920124910217"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1392315497210"><a href="DescWorkforceTask.html">Querying Details About a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p5923184912115">Query details about a team labeling task based on the dataset ID and team labeling task ID, including the task name, data, and team information.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row775205111219"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p12752451182116"><a href="StartWorkforceTask.html">Starting a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p675275112119">The team labeling task manager assigns and starts a team labeling task on the data labeling platform based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row19360195316218"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p193605539214"><a href="UpdateWorkforceTask.html">Updating a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1636015312118">Update the description, name, and team information of a team labeling task based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row33185552115"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p2310550213"><a href="DeleteWorkforceTask.html">Deleting a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p13117559216">Delete a team labeling task based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row8705125642112"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p27062566213"><a href="StartWorkforceSamplingTask.html">Creating a Team Labeling Acceptance Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p670695602118">Initiate an acceptance task for a team labeling task based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row123289582218"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p3328185862114"><a href="GetWorkforceSamplingTask.html">Querying the Acceptance Report of a Team Labeling Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p432825817219">Query the acceptance report and statistics for a team labeling task based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row17199190122216"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p31991203223"><a href="UpdateWorkforceSamplingTask.html">Updating the Status of a Team Labeling Acceptance Task</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p131991082213">Determine the acceptance scope for a team labeling task, including all labeled data, and update the sample data accordingly.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1651753672211"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1318884762419"><a href="ListWorkforceTaskSamples.html">Querying the Sample List of a Team Labeling Task by Page</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p12188104792419">Query the samples of a team labeling task on the data labeling platform by page based on the dataset ID and team labeling task ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1222018386223"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1818864720249"><a href="DescribeWorkforceTaskSample.html">Querying Details About a Team Labeling Sample</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p11889477242">Query details about a sample in a team labeling task on the data labeling platform based on the dataset ID, team labeling task ID, and sample ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row286313211229"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1686482122218"><a href="ListWorkerTasks.html">Querying Team Labeling Tasks by Team Member</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p158647292212">Members in a team labeling task query all team labeling tasks on the data labeling platform by page.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row554744014227"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1954794010229"><a href="AcceptSamples.html">Submitting Sample Review Comments for Acceptance</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p15547740132215">During the acceptance of a team labeling task, provide review comments on samples, including the review result and score.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row14633442112215"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p10633124272214"><a href="ReviewSamples.html">Reviewing Team Labeling Results</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p563313427221">The manager of a team labeling task reviews the team labeling task on the data labeling platform based on the dataset ID and team labeling task ID, determines the review result, and provides review comments.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row18842174462215"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p10842344142218"><a href="UpdateWorkforceTaskSamples.html">Updating Labels of Team Labeling Samples in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p11842104418227">Update sample labels on the data labeling platform in batches, including adding, modifying, and deleting the sample labels. Ensure that only the labels in the dataset can be added or modified.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1084062181613"><td class="cellrowborder" rowspan="13" valign="top" width="19.98%" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p68401214161">Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="33.77%" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p19840721141611"><a href="ListWorkforces.html">Querying the Labeling Team List</a></p>
+</td>
+<td class="cellrowborder" valign="top" width="46.25%" headers="mcps1.3.1.2.4.1.3 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1584082151614">Query all labeling teams by page.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row85694433231"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p2573104318232"><a href="CreateWorkforce.html">Creating a Labeling Team</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p257394315235">Add a labeling team.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1547217450233"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p16473174512319"><a href="DescWorkforce.html">Querying Details About a Labeling Team</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p204732452231">Query details about a labeling team, including the team name, description, and total number of members based on the team ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1324015496234"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1924084913234"><a href="UpdateWorkforce.html">Updating a Labeling Team</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p124016498238">Update the name and description of a labeling team based on the team ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row493145012236"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1693112509237"><a href="DeleteWorkforce.html">Deleting a Labeling Team</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p193155016235">Delete a labeling team based on the team ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row1626510589236"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p18265105814230"><a href="SendEmails.html">Sending an Email to Labeling Team Members</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p172651358112316">Enable automatic email sending to members in a labeling team to notify them of starting the team labeling task after the task is created.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row13444130152420"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p4444150102414"><a href="ListAllWorkers.html">Querying All Labeling Team Members</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p194441107244">Query all labeling team members by page based on specified conditions.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row41081928245"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p610917252410"><a href="ListWorkers.html">Querying Members in a Labeling Team</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p410913219248">Query members in a labeling team by page based on the team ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row196321352416"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1863219322417"><a href="CreateWorker.html">Creating a Labeling Team Member</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p176325362416">Add new members to a labeling team.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row33082058244"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1430810592419"><a href="DeleteWorkers.html">Deleting Labeling Team Members in Batches</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p113083562416">Delete multiple members from a labeling team in batches.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row172001471248"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p320015792411"><a href="DescWorker.html">Querying Details About a Labeling Team Member</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1420012752415">Query details about a member in a labeling team, including the member description, email address, and role based on the team ID and member ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row44321752142316"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p94329527236"><a href="UpdateWorker.html">Updating Labeling Team Members</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p124321352102319">Update the description and role of a member in a labeling team based on the team ID and member ID.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_row5966192112313"><td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.1 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p2966421152310"><a href="DeleteWorker.html">Deleting a Labeling Team Member</a></p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.1.2.4.1.2 "><p id="modelarts_03_0299__en-us_topic_0000001132278507_en-us_topic_0000001074274966_p1966102142318">Delete a member from a labeling team based on the team ID and member ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0202.html">Data Management</a></div>
+</div>
+</div>
+

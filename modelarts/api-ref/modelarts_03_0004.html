@@ -1,0 +1,113 @@
+<a name="modelarts_03_0004"></a><a name="modelarts_03_0004"></a>
+
+<h1 class="topictitle1">Authentication</h1>
+<div id="body8662426"><div class="p" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p34423277184242">Requests for calling an API can be authenticated using either of the following methods: AK/SK-based authentication: Requests are authenticated by encrypting the request body using an AK/SK pair.<ul id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_ul41374043184242"><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li36822067184242">Token-based authentication: Requests are authenticated using a token.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li62963152184242">AK/SK authentication: Requests are encrypted using the access key ID (AK) and secret access key (SK).</li></ul>
+</div>
+<div class="section" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_section2417768214391"><h4 class="sectiontitle">Token-based Authentication</h4><div class="note" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_note133321911123"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_p1254514271026">The validity period of a token is 24 hours. When using a token for authentication, cache it to prevent frequently calling the IAM API used to obtain a user token.</p>
+</div></div>
+<p id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_p18703477214">A token specifies temporary permissions in a computer system. During API authentication using a token, the token is added to requests to get permissions for calling the API.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p4938113918117">In <a href="modelarts_03_0005.html#modelarts_03_0005">Making an API Request</a>, the process of calling the API used to obtain a user token is described. </p>
+<pre class="screen" id="modelarts_03_0004__en-us_topic_0129435566_screen84049561000">{
+	"auth": {
+		"identity": {
+			"methods": [
+				"password"
+			],
+			"password": {
+				"user": {
+					"name": "<em id="modelarts_03_0004__en-us_topic_0129435566_i10299121512419">user_name</em>",
+					"password": "<em id="modelarts_03_0004__en-us_topic_0129435566_i175561812414">user_password</em>",
+					"domain": {
+						"name": "<em id="modelarts_03_0004__en-us_topic_0129435566_i1258621154113">domain_name</em>"
+					}
+				}
+			}
+		},
+		"scope": {
+			"project": {
+				"name": "<em id="modelarts_03_0004__en-us_topic_0129435566_i032612424111">project_name</em>"
+			}
+		}
+	}
+}</pre>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p175512042712">After a token is obtained, the <strong id="modelarts_03_0004__en-us_topic_0129435566_b890013053514">X-Auth-Token</strong> header field must be added to requests to specify the token when calling other APIs. For example, if the token is <strong id="modelarts_03_0004__en-us_topic_0129435566_b20226313173613">ABCDEFJ....</strong>, <strong id="modelarts_03_0004__en-us_topic_0129435566_b9227121343610">X-Auth-Token: ABCDEFJ....</strong> can be added to a request as follows:</p>
+<pre class="screen" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_screen11189101154015">
+POST https://<em id="modelarts_03_0004__en-us_topic_0129435566_i9375175113450">{endpoint}</em>/v1/<em id="modelarts_03_0004__en-us_topic_0129435566_i15733621175217">{project_id}</em>/services
+Content-Type: application/json
+<strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0170917208_en-us_topic_0168405764_b172853338430">X-Auth-Token: ABCDEFJ....</strong></pre>
+</div>
+<div class="section" id="modelarts_03_0004__en-us_topic_0129435566_section7694258719"><h4 class="sectiontitle">AK/SK-based Authentication</h4><p id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p38992551184055">An AK/SK is used to verify the identity of a request sender. In AK/SK-based authentication, a signature needs to be obtained and then added to requests.</p>
+<div class="note" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_note15388641184055"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p class="text" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p4280047184055">AK: access key ID, which is a unique identifier used in conjunction with a secret access key to sign requests cryptographically.</p>
+<p class="text" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p38520424184055">SK: secret access key used in conjunction with an AK to sign requests cryptographically. It identifies a request sender and prevents the request from being modified.</p>
+</div></div>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p1869494712339">The following uses a demo project to show how to sign a request and use an HTTP client to send an HTTPS request.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p5694174711333">Download the demo project at <a href="https://github.com/api-gate-way/SdkDemo" target="_blank" rel="noopener noreferrer">https://github.com/api-gate-way/SdkDemo</a>.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p1694154793314">If you do not need the demo project, visit the following URL to download the API Gateway signing SDK:</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p19866332181318">Obtain the API Gateway signing SDK from the enterprise administrator.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p146941947123310">Decompress the downloaded package and reference the obtained JAR files as dependencies, as highlighted in the following figure.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p12389340338"><span><img id="modelarts_03_0004__en-us_topic_0129435566_image12154257173317" src="en-us_image_0150916848.gif"></span></p>
+<ol id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_ol11139503184055"><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li33146668184055"><span>Generate an AK/SK. (If an AK/SK file has already been obtained, skip this step and locate the downloaded AK/SK file. Generally, the file name will be <strong id="modelarts_03_0004__en-us_topic_0129435566_b104721755202315">credentials.csv</strong>.)</span><p><ol type="a" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0183235768_en-us_topic_0181281305_en-us_topic_0170647350_en-us_topic_0121671869_ol1041165715248"><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li54486522151559">Log in to ManageOne Operation Portal.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li20616653151559">In the upper right corner of the page, click your account avatar and choose <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b145371959152110">My Settings</strong> from the drop-down list.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li59336166151559">On the <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b19284122214235">My Settings</strong> page, the <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b182366347244">Project List</strong> tab page is displayed by default. Click the <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b193002602815">Manage Access Key</strong> tab page.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li6065177151559">Click <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b167643110261">Add Access Key</strong> to create an AK/SK pair.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li21517315151559">Click <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b559371622818">OK</strong>. The certificate is automatically downloaded.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_en-us_topic_0237961970_en-us_topic_0093946854_li65180974151559">After the certificate is downloaded, obtain the AK and SK information from the <strong id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_b5202851719139">credentials</strong> file.<div class="notice" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_note82541142115013"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-en-us.png"> </span><div class="noticebody"><ul id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_ul13254104215012"><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_li2038762117485">Only two access keys can be added for each user.</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0243320300_li122541342145014">To ensure access key security, access keys are automatically downloaded only when they are generated for the first time and cannot be obtained from the management console later. Keep them properly.</li></ul>
+</div></div>
+</li></ol>
+</p></li><li id="modelarts_03_0004__en-us_topic_0129435566_li157891312153613"><span>Download and decompress the demo project.</span></li><li id="modelarts_03_0004__en-us_topic_0129435566_li94791126103617"><a name="modelarts_03_0004__en-us_topic_0129435566_li94791126103617"></a><a name="en-us_topic_0129435566_li94791126103617"></a><span>Import the demo project to Eclipse.</span><p><div class="fignone" id="modelarts_03_0004__en-us_topic_0129435566_fig10881944183710"><span class="figcap"><b>Figure 1 </b>Selecting Existing Projects into Workspace</span><br><span><img id="modelarts_03_0004__en-us_topic_0129435566_image1269313653714" src="en-us_image_0150917346.gif"></span></div>
+<div class="fignone" id="modelarts_03_0004__en-us_topic_0129435566_fig15961458113717"><span class="figcap"><b>Figure 2 </b>Selecting the demo project</span><br><span><img id="modelarts_03_0004__en-us_topic_0129435566_image2701239376" src="en-us_image_0150917350.gif"></span></div>
+<div class="fignone" id="modelarts_03_0004__en-us_topic_0129435566_fig74501929113815"><span class="figcap"><b>Figure 3 </b>Structure of the demo project</span><br><span><img id="modelarts_03_0004__en-us_topic_0129435566_image16819131113720" src="en-us_image_0150917353.gif"></span></div>
+</p></li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li55824361184055"><span>Sign the request.</span><p><p id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p32657207184055">The request signing method is integrated in the JAR files imported in <a href="#modelarts_03_0004__en-us_topic_0129435566_li94791126103617">3</a>. The request needs to be signed before it is sent. The signature will then be added as part of the HTTP header to the request.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p48653222398">The demo code is classified into the following classes to demonstrate signing and sending the HTTP request:</p>
+<ul id="modelarts_03_0004__en-us_topic_0129435566_ul1486512220397"><li id="modelarts_03_0004__en-us_topic_0129435566_li38651222193913"><strong id="modelarts_03_0004__en-us_topic_0129435566_b474718717244">AccessService</strong>: abstract class that merges the GET, POST, PUT, and DELETE methods into the <strong id="modelarts_03_0004__en-us_topic_0129435566_b4906511279">access</strong> method</li><li id="modelarts_03_0004__en-us_topic_0129435566_li586517224394"><strong id="modelarts_03_0004__en-us_topic_0129435566_b1794013111117">Demo</strong>: execution entry used to simulate the sending of GET, POST, PUT, and DELETE requests</li><li id="modelarts_03_0004__en-us_topic_0129435566_li1786522203918"><strong id="modelarts_03_0004__en-us_topic_0129435566_b27821111172414">AccessServiceImpl</strong>: implementation of the <strong id="modelarts_03_0004__en-us_topic_0129435566_b1851311365283">access</strong> method, which contains the code required for communication with API Gateway</li></ul>
+<p id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_p27988144184055">The following describes how to call a POST method to sign the request.</p>
+<ol type="a" id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_ol50566709184055"><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li52447197184055">(Optional) Add request header fields.<p id="modelarts_03_0004__en-us_topic_0129435566_p11504143117410"><a name="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li52447197184055"></a><a name="en-us_topic_0129435566_en-us_topic_0094388456_li52447197184055"></a>Uncomment the following code snippet in the <strong id="modelarts_03_0004__en-us_topic_0129435566_b165552056182616">AccessServiceImpl.java</strong> file, and specify the project ID and account ID.</p>
+<pre class="codeblock" id="modelarts_03_0004__en-us_topic_0129435566_codeblock9890155315414">//<strong id="modelarts_03_0004__en-us_topic_0129435566_b48999530411">TODO</strong>: Add special headers.
+//request.addHeader("X-Project-Id", "<strong id="modelarts_03_0004__en-us_topic_0129435566_b9899165315411">xxxxx</strong>");
+//request.addHeader("X-Domain-Id", "<strong id="modelarts_03_0004__en-us_topic_0129435566_b4899125344118">xxxxx</strong>");</pre>
+</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li49063522184055">Edit the <strong id="modelarts_03_0004__en-us_topic_0129435566_b1733816292307">main()</strong> method in the Demo.java file, and replace the bold text with actual values.<p id="modelarts_03_0004__en-us_topic_0129435566_p17237183119420">As shown in the following code, if you use other methods such as POST, PUT, and DELETE, see the corresponding comment. Replace the values of <strong id="modelarts_03_0004__en-us_topic_0129435566_b7624114719252">region</strong>, <strong id="modelarts_03_0004__en-us_topic_0129435566_b176259478254">serviceName</strong>, <strong id="modelarts_03_0004__en-us_topic_0129435566_b26263479259">ak</strong>, <strong id="modelarts_03_0004__en-us_topic_0129435566_b12627194711255">sk</strong>, and <strong id="modelarts_03_0004__en-us_topic_0129435566_b17627647152513">url</strong>. The URL for obtaining the VPC is used in the sample project. Replace it with the actual URL. Contact the administrator to obtain the endpoint.</p>
+<pre class="codeblock" id="modelarts_03_0004__en-us_topic_0129435566_codeblock13684120204813">//TODO: Replace the value of <strong id="modelarts_03_0004__en-us_topic_0129435566_b141216594494">region</strong> with the actual region where the service to be accessed is located.
+private static final String region = "";
+
+//TODO: Replace vpc with the name of the service you want to access. For example, ecs, vpc, iam, and elb.
+private static final String serviceName = "";
+
+public static void main(String[] args) throws UnsupportedEncodingException
+{
+//TODO: Replace the values of <strong id="modelarts_03_0004__en-us_topic_0129435566_b12131967518">ak</strong> and <strong id="modelarts_03_0004__en-us_topic_0129435566_b204417975116">sk</strong> with the AK/SK obtained on the <strong id="modelarts_03_0004__en-us_topic_0129435566_b1974751916510">My Credentials</strong> page.
+String ak = "<strong id="modelarts_03_0004__en-us_topic_0129435566_b18861248596">ZIRRKMTWP******1WKNKB</strong>";
+String sk = "<strong id="modelarts_03_0004__en-us_topic_0129435566_b1682213519118">Us0mdMNHk******YrRCnW0ecfzl</strong>";
+
+//TODO: To specify a project ID (multi-project scenarios), add the X-Project-Id header.
+//TODO: To access a global service, such as IAM, DNS, CDN, and TMS, add the X-Domain-Id header to specify an account ID.
+//TODO: To add a header, find "Add special headers" in the AccessServiceImple.java file.
+
+//TODO: Test the API.
+String url = "<strong id="modelarts_03_0004__en-us_topic_0129435566_b1665025412113">https://{Endpoint}/v1/{project_id}/vpcs</strong>";
+get(ak, sk, url);
+
+//TODO: When creating a VPC, replace {project_id} in postUrl with the actual value.
+//String postUrl = "https://serviceEndpoint/v1/{project_id}/cloudservers";
+//String postbody ="{\"vpc\": {\"name\": \"vpc\",\"cidr\": \"192.168.0.0/16\"}}";
+//post(ak, sk, postUrl, postbody);
+
+//TODO: When querying a VPC, replace {project_id} in url with the actual value.
+//String url = "https://serviceEndpoint/v1/{project_id}/vpcs/{vpc_id}";
+//get(ak, sk, url);
+
+//TODO: When updating a VPC, replace {project_id} and {vpc_id} in putUrl with the actual values.
+//String putUrl = "https://serviceEndpoint/v1/{project_id}/vpcs/{vpc_id}";
+//String putbody ="{\"vpc\":{\"name\": \"vpc1\",\"cidr\": \"192.168.0.0/16\"}}";
+//put(ak, sk, putUrl, putbody);
+
+//TODO: When deleting a VPC, replace {project_id} and {vpc_id} in deleteUrl with the actual values.
+//String deleteUrl = "https://serviceEndpoint/v1/{project_id}/vpcs/{vpc_id}";
+//delete(ak, sk, deleteUrl);
+}</pre>
+</li><li id="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li65392176184055">Compile the code and call the API.<p id="modelarts_03_0004__en-us_topic_0129435566_p723410494918"><a name="modelarts_03_0004__en-us_topic_0129435566_en-us_topic_0094388456_li65392176184055"></a><a name="en-us_topic_0129435566_en-us_topic_0094388456_li65392176184055"></a>In the <strong id="modelarts_03_0004__en-us_topic_0129435566_b1145145975210">Package Explorer</strong> area on the left, right-click <strong id="modelarts_03_0004__en-us_topic_0129435566_b184984152537">Demo.java</strong> and choose <strong id="modelarts_03_0004__en-us_topic_0129435566_b139222015530">Run AS</strong> &gt; <strong id="modelarts_03_0004__en-us_topic_0129435566_b92658274538">Java Application</strong> from the shortcut menu to run the demo code.</p>
+<p id="modelarts_03_0004__en-us_topic_0129435566_p4234124134916">You can view the API call logs on the console.</p>
+</li></ol>
+</p></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0144.html">Calling APIs</a></div>
+</div>
+</div>
+

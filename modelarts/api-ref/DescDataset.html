@@ -1,0 +1,1624 @@
+<a name="DescDataset"></a><a name="DescDataset"></a>
+
+<h1 class="topictitle1">Querying Details About a Dataset</h1>
+<div><div class="section"><h4 class="sectiontitle">Function</h4><p>This API is used to query details about a dataset.</p>
+</div>
+<div class="section"><h4 class="sectiontitle">URI</h4><p>GET /v2/{project_id}/datasets/{dataset_id}</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Dataset ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.2"><p>Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.4.2.5.1.3"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.4.2.5.1.4"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>check_running_task</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Whether to detect tasks (including initialization tasks) that are running in a dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Detect tasks (including initialization tasks) that are running in the dataset.</p>
+</li><li><p><strong>false</strong>: Do not detect tasks that are running in the dataset. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.1 "><p>running_task_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.2 "><p>No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.4.2.5.1.3 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.4.2.5.1.4 "><p>Type of the running tasks (including initialization tasks) to be detected. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: auto labeling</p>
+</li><li><p><strong>1</strong>: pre-labeling</p>
+</li><li><p><strong>2</strong>: export</p>
+</li><li><p><strong>3</strong>: version switch</p>
+</li><li><p><strong>4</strong>: manifest file export</p>
+</li><li><p><strong>5</strong>: manifest file import</p>
+</li><li><p><strong>6</strong>: version publishing</p>
+</li><li><p><strong>7</strong>: auto grouping</p>
+</li><li><p><strong>10</strong>: one-click model deployment (default value)</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Request Parameters</h4><p>None</p>
+</div>
+<div class="section"><h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_DescDatasetResp" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>annotated_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of labeled samples in a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>annotated_sub_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of labeled subsamples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>content_labeling</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether to enable content labeling for the speech paragraph labeling dataset. This function is enabled by default.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Time when a dataset is created.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>current_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Current version ID of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>current_version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Current version name of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>data_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Data format.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>data_sources</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#DescDataset__response_DataSource">DataSource</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Data source list.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>data_statistics</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Map&lt;String,Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Sample statistics on a dataset, including the statistics on sample metadata.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>data_update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Time when a sample and a label are updated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset format. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: file</p>
+</li><li><p><strong>1</strong>: table</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Key identifier list of a dataset, for example, ["Image","Object detection"].</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image classification</p>
+</li><li><p><strong>1</strong>: object detection</p>
+</li><li><p><strong>100</strong>: text classification</p>
+</li><li><p><strong>101</strong>: named entity recognition</p>
+</li><li><p><strong>102</strong>: text triplet</p>
+</li><li><p><strong>200</strong>: sound classification</p>
+</li><li><p><strong>201</strong>: speech content</p>
+</li><li><p><strong>202</strong>: speech paragraph labeling</p>
+</li><li><p><strong>400</strong>: table dataset</p>
+</li><li><p><strong>600</strong>: video labeling</p>
+</li><li><p><strong>900</strong>: custom format</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>dataset_version_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of dataset versions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>deleted_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of deleted samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>deletion_stats</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Map&lt;String,Integer&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Deletion reason statistics.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset description.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>enterprise_project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Enterprise project ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>exist_running_task</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether the dataset contains running (including initialization) tasks. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The dataset contains running tasks.</p>
+</li><li><p><strong>false</strong>: The dataset does not contain running tasks.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>exist_workforce_task</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether the dataset contains team labeling tasks. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The dataset contains team labeling tasks.</p>
+</li><li><p><strong>false</strong>: The dataset does not contain team labeling tasks.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>feature_supports</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>List of features supported by the dataset. Currently, only the value <strong>0</strong> is supported, indicating that the OBS file size is limited.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>import_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether to import data. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Import data.</p>
+</li><li><p><strong>false</strong>: Do not import data.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>import_task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>ID of an import task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_annotation_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Path for storing the labeling result of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_data_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Path for storing the internal data of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_log_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Path for storing internal logs of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_task_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Path for internal task of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_temp_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Path for storing internal temporary files of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>inner_work_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Output directory of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>label_task_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of labeling tasks.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#DescDataset__response_Label">Label</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset label list.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>loading_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of loading samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>managed</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether a dataset is hosted. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The dataset is hosted.</p>
+</li><li><p><strong>false</strong>: The dataset is not hosted.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>next_version_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of next versions of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>running_tasks_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>ID list of running (including initialization) tasks.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>schema</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#DescDataset__response_Field">Field</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Schema list.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset status. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: creating dataset</p>
+</li><li><p><strong>1</strong>: normal dataset</p>
+</li><li><p><strong>2</strong>: deleting dataset</p>
+</li><li><p><strong>3</strong>: deleted dataset</p>
+</li><li><p><strong>4</strong>: abnormal dataset</p>
+</li><li><p><strong>5</strong>: synchronizing dataset</p>
+</li><li><p><strong>6</strong>: releasing dataset</p>
+</li><li><p><strong>7</strong>: dataset in version switching</p>
+</li><li><p><strong>8</strong>: importing dataset</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>third_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Third-party path.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>total_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Total number of dataset samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>total_sub_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Total number of subsamples generated from the parent samples. For example, the total number of key frame images extracted from the video labeling dataset is that of subsamples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>unconfirmed_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of auto labeling samples to be confirmed.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Time when a dataset is updated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#DescDataset__response_DatasetVersion">DatasetVersion</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Dataset version information. Currently, only the current version information of a dataset is recorded.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>work_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Output dataset path, which is used to store output files such as label files. The path is an OBS path in the format of /<em>Bucket name</em>/<em>File path</em>. For example: /<strong>obs-bucket</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>work_path_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Type of the dataset output path. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: OBS bucket (default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>workforce_descriptor</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p><a href="#DescDataset__response_WorkforceDescriptor">WorkforceDescriptor</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Team labeling information.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>workforce_task_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Number of team labeling tasks of a dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>workspace_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Workspace ID. If no workspace is created, the default value is <strong>0</strong>. If a workspace is created and used, use the actual value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_DataSource"></a><a name="response_DataSource"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_DataSource" frame="border" border="1" rules="all"><caption><b>Table 4 </b>DataSource</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>data_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Data source path.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>data_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Data type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: OBS bucket (default value)</p>
+</li><li><p><strong>1</strong>: GaussDB(DWS)</p>
+</li><li><p><strong>2</strong>: DLI</p>
+</li><li><p><strong>3</strong>: RDS</p>
+</li><li><p><strong>4</strong>: MRS</p>
+</li><li><p><strong>5</strong>: AI Gallery</p>
+</li><li><p><strong>6</strong>: Inference service</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>schema_maps</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Array of <a href="#DescDataset__response_SchemaMap">SchemaMap</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Schema mapping information corresponding to the table data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>source_info</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p><a href="#DescDataset__response_SourceInfo">SourceInfo</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Information required for importing a table data source.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>with_column_header</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Whether the first row in the file is a column name. This field is valid for the table dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The first row in the file is the column name.</p>
+</li><li><p><strong>false</strong>: The first row in the file is not the column name.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_SchemaMap"></a><a name="response_SchemaMap"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_SchemaMap" frame="border" border="1" rules="all"><caption><b>Table 5 </b>SchemaMap</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.5.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.5.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>dest_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Name of the destination column.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.1 "><p>src_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.5.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.5.2.4.1.3 "><p>Name of the source column.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_SourceInfo"></a><a name="response_SourceInfo"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_SourceInfo" frame="border" border="1" rules="all"><caption><b>Table 6 </b>SourceInfo</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.6.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.6.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>cluster_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>cluster_mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Running mode of an MRS cluster. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: normal cluster</p>
+</li><li><p><strong>1</strong>: security cluster</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>cluster_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Name of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>database_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Name of the database to which the table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>input</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>HDFS path of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>IP address of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>port</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Port number of your GaussDB(DWS) cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>queue_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>DLI queue name of a table dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>subnet_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Subnet ID of an MRS cluster.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>table_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Name of the table to which a table dataset is imported.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>user_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>Username, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>user_password</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>User password, which is mandatory for GaussDB(DWS) data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.1 "><p>vpc_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.6.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.6.2.4.1.3 "><p>ID of the VPC where an MRS cluster resides.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_Label"></a><a name="response_Label"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_Label" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Label</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.7.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.7.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>attributes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>Array of <a href="#DescDataset__response_LabelAttribute">LabelAttribute</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Multi-dimensional attribute of a label. For example, if the label is music, attributes such as style and artist may be included.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Label name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>property</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p><a href="#DescDataset__response_LabelProperty">LabelProperty</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Basic attribute key-value pair of a label, such as color and shortcut keys.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.7.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.7.2.4.1.3 "><p>Label type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image classification</p>
+</li><li><p><strong>1</strong>: object detection</p>
+</li><li><p><strong>100</strong>: text classification</p>
+</li><li><p><strong>101</strong>: named entity recognition</p>
+</li><li><p><strong>102</strong>: text triplet relationship</p>
+</li><li><p><strong>103</strong>: text triplet entity</p>
+</li><li><p><strong>200</strong>: speech classification</p>
+</li><li><p><strong>201</strong>: speech content</p>
+</li><li><p><strong>202</strong>: speech paragraph labeling</p>
+</li><li><p><strong>600</strong>: video classification</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_LabelProperty"></a><a name="response_LabelProperty"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_LabelProperty" frame="border" border="1" rules="all"><caption><b>Table 8 </b>LabelProperty</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.8.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.8.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:color</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: Label color, which is a hexadecimal code of the color. By default, this parameter is left blank. Example: <strong>#FFFFF0</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:default_shape</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: Default shape of an object detection label (dedicated attribute). By default, this parameter is left blank. The options are as follows:</p>
+<ul><li><p><strong>bndbox</strong>: rectangle</p>
+</li><li><p><strong>polygon</strong>: polygon</p>
+</li><li><p><strong>circle</strong>: circle</p>
+</li><li><p><strong>line</strong>: straight line</p>
+</li><li><p><strong>dashed</strong>: dotted line</p>
+</li><li><p><strong>point</strong>: point</p>
+</li><li><p><strong>polyline</strong>: polyline</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:from_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: Type of the head entity in the triplet relationship label. This attribute must be specified when a relationship label is created. This parameter is used only for the text triplet dataset.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:rename_to</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: The new name of the label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:shortcut</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: Label shortcut key. By default, this parameter is left blank. For example: <strong>D</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.1 "><p>@modelarts:to_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.8.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.8.2.4.1.3 "><p>Default attribute: Type of the tail entity in the triplet relationship label. This attribute must be specified when a relationship label is created. This parameter is used only for the text triplet dataset.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_Field"></a><a name="response_Field"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_Field" frame="border" border="1" rules="all"><caption><b>Table 9 </b>Field</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.9.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.9.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Schema description.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Schema name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>schema_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Schema ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.9.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.9.2.4.1.3 "><p>Schema value type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_DatasetVersion"></a><a name="response_DatasetVersion"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_DatasetVersion" frame="border" border="1" rules="all"><caption><b>Table 10 </b>DatasetVersion</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.10.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.10.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>add_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of added samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>annotated_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of samples with labeled versions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>annotated_sub_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of labeled subsamples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>clear_hard_property</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to clear hard example properties during release. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Clear hard example properties. (Default value)</p>
+</li><li><p><strong>false</strong>: Do not clear hard example properties.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>code</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Status code of a preprocessing task such as rotation and cropping.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Time when a version is created.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>crop</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to crop the image. This field is valid only for the object detection dataset whose labeling box is in the rectangle shape. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Crop the image.</p>
+</li><li><p><strong>false</strong>: Do not crop the image. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>crop_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Path for storing cropped files.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>crop_rotate_cache_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Temporary directory for executing the rotation and cropping task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>data_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Path for storing data.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>data_statistics</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Map&lt;String,Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Sample statistics on a dataset, including the statistics on sample metadata in JSON format.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>data_validate</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether data is validated by the validation algorithm before release. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The data has been validated.</p>
+</li><li><p><strong>false</strong>: The data has not been validated.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>deleted_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of deleted samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>deletion_stats</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Map&lt;String,Integer&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Deletion reason statistics.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Description of a version.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>export_images</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to export images to the version output directory during release. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Export images to the version output directory.</p>
+</li><li><p><strong>false</strong>: Do not export images to the version output directory. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>extract_serial_number</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to parse the subsample number during release. The field is valid for the healthcare dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Parse the subsample number.</p>
+</li><li><p><strong>false</strong>: Do not parse the subsample number. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>include_dataset_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to include the source data of a dataset during release. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The source data of a dataset is included.</p>
+</li><li><p><strong>false</strong>: The source data of a dataset is not included.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>is_current</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether the current dataset version is used. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The current dataset version is used.</p>
+</li><li><p><strong>false</strong>: The current dataset version is not used.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>label_stats</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Array of <a href="#DescDataset__response_LabelStats">LabelStats</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Label statistics list of a released version.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>label_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Label type of a released version. The options are as follows:</p>
+<ul><li><p><strong>multi</strong>: Multi-label samples are included.</p>
+</li><li><p><strong>single</strong>: All samples are single-labeled.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>manifest_cache_input_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Input path for the <strong>manifest</strong> file cache during version release.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>manifest_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Path for storing the <strong>manifest</strong> file with the released version.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>message</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Task information recorded during release (for example, error information).</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>modified_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of modified samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>previous_annotated_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Number of labeled samples of parent versions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>previous_total_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Total samples of parent versions.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>previous_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Parent version ID</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>processor_task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>ID of a preprocessing task such as rotation and cropping.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>processor_task_status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Status of a preprocessing task such as rotation and cropping. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: initialized</p>
+</li><li><p><strong>1</strong>: running</p>
+</li><li><p><strong>2</strong>: completed</p>
+</li><li><p><strong>3</strong>: failed</p>
+</li><li><p><strong>4</strong>: stopped</p>
+</li><li><p><strong>5</strong>: timeout</p>
+</li><li><p><strong>6</strong>: deletion failed</p>
+</li><li><p><strong>7</strong>: stop failed</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>remove_sample_usage</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to clear the existing usage information of a dataset during release. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Clear the existing usage information of a dataset. (Default value)</p>
+</li><li><p><strong>false</strong>: Do not clear the existing usage information of a dataset.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>rotate</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether to rotate the image. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Rotate the image.</p>
+</li><li><p><strong>false</strong>: Do not rotate the image. (Default value)</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>rotate_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Path for storing the rotated file.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>sample_state</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Sample status. The options are as follows:</p>
+<ul><li><p><strong><strong>ALL</strong></strong>: labeled</p>
+</li><li><p><strong><strong>NONE</strong></strong>: unlabeled</p>
+</li><li><p><strong><strong>UNCHECK</strong></strong>: pending acceptance</p>
+</li><li><p><strong><strong>ACCEPTED</strong></strong>: accepted</p>
+</li><li><p><strong><strong>REJECTED</strong></strong>: rejected</p>
+</li><li><p><strong><strong>UNREVIEWED</strong></strong>: pending review</p>
+</li><li><p><strong><strong>REVIEWED</strong></strong>: reviewed</p>
+</li><li><p><strong><strong>WORKFORCE_SAMPLED</strong></strong>: sampled</p>
+</li><li><p><strong><strong>WORKFORCE_SAMPLED_UNCHECK</strong></strong>: sampling unchecked</p>
+</li><li><p><strong><strong>WORKFORCE_SAMPLED_CHECKED</strong></strong>: sampling checked</p>
+</li><li><p><strong><strong>WORKFORCE_SAMPLED_ACCEPTED</strong></strong>: sampling accepted</p>
+</li><li><p><strong><strong>WORKFORCE_SAMPLED_REJECTED</strong></strong>: sampling rejected</p>
+</li><li><p><strong><strong>AUTO_ANNOTATION</strong></strong>: to be confirmed</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Status of a dataset version. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: creating</p>
+</li><li><p><strong>1</strong>: running</p>
+</li><li><p><strong>2</strong>: deleting</p>
+</li><li><p><strong>3</strong>: deleted</p>
+</li><li><p><strong>4</strong>: error</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Key identifier list of the dataset. The labeling type is used as the default label when the labeling task releases a version. For example, ["Image","Object detection"].</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>task_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Labeling task type of the released version, which is the same as the dataset type.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>total_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Total number of version samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>total_sub_sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Total number of subsamples generated from the parent samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>train_evaluate_sample_ratio</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Split training and verification ratio during version release. The default value is <strong>1.00</strong>, indicating that all labeled samples are split into the training set.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Time when a version is updated.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>version_format</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Format of a dataset version. The options are as follows:</p>
+<ul><li><p><strong>Default</strong>: default format</p>
+</li><li><p><strong>CarbonData</strong>: CarbonData (supported only by table datasets)</p>
+</li><li><p><strong>CSV</strong>: CSV</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Dataset version ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Dataset version name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.1 "><p>with_column_header</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.10.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.10.2.4.1.3 "><p>Whether the first row in the released CSV file is a column name. This field is valid for the table dataset. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: The first row in the released CSV file is a column name.</p>
+</li><li><p><strong>false</strong>: The first row in the released CSV file is not a column name.</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_LabelStats"></a><a name="response_LabelStats"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_LabelStats" frame="border" border="1" rules="all"><caption><b>Table 11 </b>LabelStats</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.11.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.11.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.11.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>attributes</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>Array of <a href="#DescDataset__response_LabelAttribute">LabelAttribute</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Multi-dimensional attribute of a label. For example, if the label is music, attributes such as style and artist may be included.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Number of labels.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Label name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>property</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p><a href="#DescDataset__response_LabelProperty">LabelProperty</a> object</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Basic attribute key-value pair of a label, such as color and shortcut keys.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>sample_count</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Number of samples containing the label.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.11.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.11.2.4.1.3 "><p>Label type. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: image classification</p>
+</li><li><p><strong>1</strong>: object detection</p>
+</li><li><p><strong>100</strong>: text classification</p>
+</li><li><p><strong>101</strong>: named entity recognition</p>
+</li><li><p><strong>102</strong>: text triplet relationship</p>
+</li><li><p><strong>103</strong>: text triplet entity</p>
+</li><li><p><strong>200</strong>: speech classification</p>
+</li><li><p><strong>201</strong>: speech content</p>
+</li><li><p><strong>202</strong>: speech paragraph labeling</p>
+</li><li><p><strong>600</strong>: video classification</p>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_LabelAttribute"></a><a name="response_LabelAttribute"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_LabelAttribute" frame="border" border="1" rules="all"><caption><b>Table 12 </b>LabelAttribute</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.12.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.12.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.12.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.1 "><p>default_value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.12.2.4.1.3 "><p>Default value of a label attribute.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.12.2.4.1.3 "><p>Label attribute ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.1 "><p>name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.12.2.4.1.3 "><p>Label attribute name.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.1 "><p>type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.12.2.4.1.3 "><p>Label attribute type. The options are as follows:</p>
+<ul><li><p><strong>text</strong>: text</p>
+</li><li><p><strong>select</strong>: single-choice drop-down list</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.1 "><p>values</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.12.2.4.1.2 "><p>Array of <a href="#DescDataset__response_LabelAttributeValue">LabelAttributeValue</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.12.2.4.1.3 "><p>List of label attribute values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_LabelAttributeValue"></a><a name="response_LabelAttributeValue"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_LabelAttributeValue" frame="border" border="1" rules="all"><caption><b>Table 13 </b>LabelAttributeValue</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.13.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.13.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.13.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.13.2.4.1.1 "><p>id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.13.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.13.2.4.1.3 "><p>Label attribute value ID.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.13.2.4.1.1 "><p>value</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.13.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.13.2.4.1.3 "><p>Label attribute value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_WorkforceDescriptor"></a><a name="response_WorkforceDescriptor"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_WorkforceDescriptor" frame="border" border="1" rules="all"><caption><b>Table 14 </b>WorkforceDescriptor</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.14.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.14.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.14.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>current_task_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>ID of a team labeling task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>current_task_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Name of a team labeling task.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>reject_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Number of rejected samples.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>repetition</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Number of persons who label each sample. The minimum value is <strong>1</strong>.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>is_synchronize_auto_labeling_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Whether to synchronously update auto labeling data. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Update auto labeling data synchronously.</p>
+</li><li><p><strong>false</strong>: Do not update auto labeling data synchronously.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>is_synchronize_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Whether to synchronize updated data, such as uploading files, synchronizing data sources, and assigning imported unlabeled files to team members. The options are as follows:</p>
+<ul><li><p><strong>true</strong>: Synchronize updated data to team members.</p>
+</li><li><p><strong>false</strong>: Do not synchronize updated data to team members.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>workers</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>Array of <a href="#DescDataset__response_Worker">Worker</a> objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>List of labeling team members.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>workforce_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>ID of a labeling team.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.1 "><p>workforce_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.14.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.14.2.4.1.3 "><p>Name of a labeling team.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="DescDataset__response_Worker"></a><a name="response_Worker"></a><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__response_Worker" frame="border" border="1" rules="all"><caption><b>Table 15 </b>Worker</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.15.2.4.1.1"><p>Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.15.2.4.1.2"><p>Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.15.2.4.1.3"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Creation time.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>description</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Labeling team member description. The value contains 0 to 256 characters and does not support the following special characters: ^!&lt;&gt;=&amp;"'</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>email</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Email address of a labeling team member.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>role</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Role. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: labeling personnel</p>
+</li><li><p><strong>1</strong>: reviewer</p>
+</li><li><p><strong>2</strong>: team administrator</p>
+</li><li><p><strong>3</strong>: dataset owner</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>status</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Current login status of a labeling team member. The options are as follows:</p>
+<ul><li><p><strong>0</strong>: The invitation email has not been sent.</p>
+</li><li><p><strong>1</strong>: The invitation email has been sent but the user has not logged in.</p>
+</li><li><p><strong>2</strong>: The user has logged in.</p>
+</li><li><p><strong>3</strong>: The labeling team member has been deleted.</p>
+</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>update_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>Update time.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>worker_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>ID of a labeling team member.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.1 "><p>workforce_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.15.2.4.1.2 "><p>String</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.15.2.4.1.3 "><p>ID of a labeling team.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Requests</h4><p>Querying Details About a Dataset</p>
+<pre class="screen">GET https://{endpoint}/v2/{project_id}/datasets/{dataset_id}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
+<p>OK</p>
+<pre class="screen">{
+  "dataset_id" : "gfghHSokody6AJigS5A",
+  "dataset_name" : "dataset-f9e8",
+  "dataset_type" : 0,
+  "data_format" : "Default",
+  "next_version_num" : 4,
+  "status" : 1,
+  "data_sources" : [ {
+    "data_type" : 0,
+    "data_path" : "/test-obs/classify/input/catDog4/"
+  } ],
+  "create_time" : 1605690595404,
+  "update_time" : 1605690595404,
+  "description" : "",
+  "current_version_id" : "54IXbeJhfttGpL46lbv",
+  "current_version_name" : "V003",
+  "total_sample_count" : 10,
+  "annotated_sample_count" : 10,
+  "unconfirmed_sample_count" : 0,
+  "work_path" : "/test-obs/classify/output/",
+  "inner_work_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/",
+  "inner_annotation_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/annotation/",
+  "inner_data_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/data/",
+  "inner_log_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/logs/",
+  "inner_temp_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/temp/",
+  "inner_task_path" : "/test-obs/classify/output/dataset-f9e8-gfghHSokody6AJigS5A/task/",
+  "work_path_type" : 0,
+  "workspace_id" : "0",
+  "enterprise_project_id" : "0",
+  "workforce_task_count" : 0,
+  "feature_supports" : [ "0" ],
+  "managed" : false,
+  "import_data" : false,
+  "ai_project" : "default-ai-project",
+  "label_task_count" : 1,
+  "dataset_format" : 0,
+  "dataset_version_count" : 3,
+  "dataset_version" : "v1",
+  "content_labeling" : true,
+  "labels" : [ {
+    "name" : "Cat",
+    "type" : 0,
+    "property" : {
+      "@modelarts:color" : "#3399ff"
+    }
+  }, {
+    "name" : "Dog",
+    "type" : 0,
+    "property" : {
+      "@modelarts:color" : "#3399ff"
+    }
+  } ]
+}</pre>
+</div>
+<div class="section"><h4 class="sectiontitle">Status Codes</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="DescDataset__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>OK</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>401</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Unauthorized</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>403</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Forbidden</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>404</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Not Found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section"><h4 class="sectiontitle">Error Codes</h4><p>See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="dataset_management.html">Dataset Management</a></div>
+</div>
+</div>
+

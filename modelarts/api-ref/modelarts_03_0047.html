@@ -1,0 +1,936 @@
+<a name="modelarts_03_0047"></a><a name="modelarts_03_0047"></a>
+
+<h1 class="topictitle1">Querying the Details About a Training Job Version</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section64967085"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0047__en-us_topic_0131145862_p53341010">This API is used to query the details about a specified training job based on the job ID.</p>
+</div>
+<div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section47832861"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0047__en-us_topic_0131145862_p632814491810">GET /v1/{project_id}/training-jobs/{job_id}/versions/{version_id}</p>
+<div class="p" id="modelarts_03_0047__en-us_topic_0131145862_p173066322050"><a href="#modelarts_03_0047__en-us_topic_0131145862_table21765985143543">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table21765985143543"></a><a name="en-us_topic_0131145862_table21765985143543"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table21765985143543" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row64596351143543"><th align="left" class="cellrowborder" valign="top" width="18.81188118811881%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p35564137143616">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.841584158415841%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p62122809143616">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.881188118811881%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p65891605143616">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="53.46534653465347%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0047__en-us_topic_0131145862_p35619814143616">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row5740461143543"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p28541574143616">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p30166181143616">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p27541592143616">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16276488143616">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row41876958143543"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p19836797143616">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p63276690143616">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p25138243143616">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_p22931834143616">ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row10822122113813"><td class="cellrowborder" valign="top" width="18.81188118811881%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p482213219818">version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.841584158415841%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18221621589">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9822152115816">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.46534653465347%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1682219211685">Version ID of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section441563135511"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0047__en-us_topic_0131145862_p1560514112019">None</p>
+</div>
+<div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section49256529"><h4 class="sectiontitle">Response Body</h4><div class="p" id="modelarts_03_0047__en-us_topic_0131145862_p2329915144318"><a href="#modelarts_03_0047__en-us_topic_0131145862_table2700823414458">Table 2</a> describes the response parameters.
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table2700823414458"></a><a name="en-us_topic_0131145862_table2700823414458"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table2700823414458" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row4288051214458"><th align="left" class="cellrowborder" valign="top" width="23.762376237623762%" id="mcps1.3.4.2.2.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p14098910144642">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.82178217821782%" id="mcps1.3.4.2.2.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p26935468144642">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.415841584158414%" id="mcps1.3.4.2.2.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p34289304144642">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row161359511143"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p2530905217407">is_success</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1252179181414">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p4130369517407">Whether the request is successful</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row5528623161314"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p952862341310">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9528172311319">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p652892311314">ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row2661800214458"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p26491911144642">job_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1472681144642">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p52178351144642">Name of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1679054191311"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p07905471316">job_desc</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1779454151314">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p127975417138">Description of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row6233145410131"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1723315549134">version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p15233135415130">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p12233105441310">Version ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row5354154111310"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p3354135411319">version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p93541554121316">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p17354554151318">Version name of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row959934914147"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1260154913149">pre_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p360134911142">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p060111491148">Name of the previous version of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row35161155161411"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p6516125518146">engine_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1516145541411">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0170904391_p154301418169">Engine type of a training job. The mapping between <span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue162981292514"><b>engine_type</b></span> and <span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue8393624172510"><b>engine_name</b></span> is as follows: <strong id="modelarts_03_0047__en-us_topic_0131145862_b10275181910513">engine_type</strong>: <strong id="modelarts_03_0047__en-us_topic_0131145862_b1510012316512">13</strong>, <strong id="modelarts_03_0047__en-us_topic_0131145862_b136224254520">engine_name</strong>: <strong id="modelarts_03_0047__en-us_topic_0131145862_b92631132656">Ascend-Powered-Engine</strong></p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row76761655131413"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9676205571419">engine_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p2067675510143">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0170904391_p19543014141617">Name of the engine selected for a training job. Currently, the following engines are supported:</p>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_ul5141041162112"><li id="modelarts_03_0047__en-us_topic_0131145862_li1514341122111">Ascend-Powered-Engine</li><li id="modelarts_03_0047__en-us_topic_0131145862_li51514142112">PyTorch</li><li id="modelarts_03_0047__en-us_topic_0131145862_li5151041112118">Spark_MLlib</li><li id="modelarts_03_0047__en-us_topic_0131145862_li3915829162213">Scikit_Learn</li><li id="modelarts_03_0047__en-us_topic_0131145862_li101584113212">TensorFlow</li><li id="modelarts_03_0047__en-us_topic_0131145862_li141512413211">XGBoost-Sklearn</li><li id="modelarts_03_0047__en-us_topic_0131145862_li5826358224">MindSpore-GPU</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1830125617159"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1330185681516">engine_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p530556101517">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18327185810163">ID of the engine selected for a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row3744144991417"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p117449491144">engine_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1274444941415">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p137441149161410">Version of the engine selected for a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row175931349274"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p195936494713">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p5128715192715">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1959334919717">Status of a training job. For details about the job statuses, see <a href="modelarts_03_0074.html#modelarts_03_0074">Job Statuses</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1676416491479"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1976411493716">app_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p876414494716">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p11764349973">Code directory of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row13528204316190"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p2529194341918">boot_file_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p165291243111915">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p168921234152111">Boot file of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row6994161919218"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p7994419152119">create_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p199521910218">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1437875772113">Time when a training job is created</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row3135132052116"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1113582017211">parameter</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1895915226334">Array&lt;Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9175152812220">Running parameters of a training job. This parameter is a container environment variable when a training job uses a custom image. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table1267642234716">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row8105124491910"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p14105444121920">duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p81055447198">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p10105194441916">Training job running duration, in milliseconds</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1183173615224"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16831183622213">spec_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p198312362227">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p7831203692213">ID of the resource specifications selected for a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row19302203712223"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p123022037192213">core</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p173026372220">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p930213772214">Number of cores of the resource specifications</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row33246842144823"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p19608126144844">cpu</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1228459144844">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p32396334144844">CPU memory of the resource specifications</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row58164772144827"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p61716325144844">gpu_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p53037976144844">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1108820144844">Number of GPUs of the resource specifications</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row45241674144830"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p32600562145224">gpu_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16339264145224">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p48412012145224">GPU type of the resource specifications</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row18780172542413"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p929014122415">worker_server_num</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p4780112592418">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p727854802411">Number of workers in a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row18271126172417"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p5271162611244">data_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p627116265246">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p527111267243">Dataset of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1646193702519"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p10477377257">train_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p4471037122511">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1465683720343">OBS path of the training job output file</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row024817511533"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p106881050154220">log_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1369555013425">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9699950194211">OBS URL of the logs of a training job. By default, this parameter is left blank. Example value: <span class="filepath" id="modelarts_03_0047__en-us_topic_0131145862_filepath01983454201"><b>/usr/train/</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row18199037182510"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16200537122515">dataset_version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p820093792510">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9200437172513">Dataset version ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row93412378251"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p43421637112520">dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p203421137172515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p11342183714259">Dataset ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1999606815"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1084415185810">data_source</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p149691422163314">Array&lt;Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p884414112581">Datasets of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table250595919011">Table 4</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row15390355182519"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p6391755122514">model_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16948155314558">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p2391125512516">Model ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row11549175514254"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p454915522516">model_metric_list</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p854955532519">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p754912558255">Model metrics of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table254511106543">Table 5</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row16159257162520"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p11159155782515">system_metric_list</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p121592573252">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1315925713255">System monitoring metrics of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table199981042536">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row38241035287"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1824635984">user_image_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p127561858088">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p08249351888">SWR URL of a custom image used by a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row12565838381"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1756711381887">user_command</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p24119591820">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1256715381188">Boot command used to start the container of a custom image of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row841811031613"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p141941019167">resource_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p17419141031610">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1141915102160">Charged resource ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row12498125215"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1649914214217">dataset_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1049914216215">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p144991029217">Dataset of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row17588191632310"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1358841618231">spec_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16588516152320">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p10588191622319">Resource specifications selected for a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row71433510265"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p131431502615">start_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p6143115182615">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p214316510261">Training start time</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row33691410152714"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p03695108279">volumes</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p59631922123315">Array&lt;Object&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p17369010122717">Storage volume that can be used by a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table6403153714711">Table 11</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row261443152916"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p061443114292">dataset_version_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p13614631112920">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p17614123118297">Dataset of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row14773124919314"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p187731049123111">pool_name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1977324913310">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18773749103116">Name of a resource pool</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row067384664813"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p13674146174818">pool_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1367411463483">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p06741546164817">ID of a resource pool</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row10901205393614"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p179021553133617">nas_mount_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p19902753103612">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1990255312360">Local mount path of SFS Turbo (NAS). Example value: <span class="filepath" id="modelarts_03_0047__en-us_topic_0131145862_filepath285318194314"><b>/home/work/nas</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row3118105718409"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1118185784015">nas_share_addr</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p15118657164011">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p31187578405">Shared path of SFS Turbo (NAS). Example value: <span class="filepath" id="modelarts_03_0047__en-us_topic_0131145862_filepath10949142474512"><b>192.168.8.150:/</b></span></p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row252422616419"><td class="cellrowborder" valign="top" width="23.762376237623762%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p8524172614414">nas_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.82178217821782%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p12524926174112">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.415841584158414%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p052416265417">Only NFS is supported. Example value: <span class="filepath" id="modelarts_03_0047__en-us_topic_0131145862_filepath964445224516"><b>nfs</b></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table1267642234716"></a><a name="en-us_topic_0131145862_table1267642234716"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table1267642234716" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b12672155911426">parameter</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row5677422164714"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.3.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p7296205262817">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.3.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p196771122154718">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.4.2.3.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p5677022194719">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row2677192224717"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p14677192217478">label</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16677112218473">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p10677142210478">Parameter name</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row5528181488"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p05295804810">value</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p135299824812">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1652913874819">Parameter value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table250595919011"></a><a name="en-us_topic_0131145862_table250595919011"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table250595919011" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b07160324319">data_source</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row55072591012"><th align="left" class="cellrowborder" valign="top" width="19.191919191919194%" id="mcps1.3.4.2.4.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p1527511378117">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.4.2.4.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p22831437411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67.67676767676768%" id="mcps1.3.4.2.4.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p328510371619">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row2507159009"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1680105517118">dataset_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1180619554119">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18097554112">Dataset ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row205071598010"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p118131955110">dataset_version</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1282320551611">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p0823205511117">Dataset version ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row589115610214"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p16892761827">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p188923615217">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p161265721118">Dataset type</p>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_ul134271941142218"><li id="modelarts_03_0047__en-us_topic_0131145862_li18427164119225"><span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue12659657101818"><b>obs</b></span>: Data from OBS is used.</li><li id="modelarts_03_0047__en-us_topic_0131145862_li8124422219"><span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue11471132196"><b>dataset</b></span>: Data from a specified dataset is used.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row151161127191914"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.2.4.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p13117227131918">data_url</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.4.2.4.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p011752719191">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.67676767676768%" headers="mcps1.3.4.2.4.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p141171327171918">OBS bucket path</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table254511106543"></a><a name="en-us_topic_0131145862_table254511106543"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table254511106543" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b7816339162714">model_metric_list</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row454691014542"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.5.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p74817356541">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.5.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p20603162817549">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.5.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p1354173145410">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row8546131020542"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.5.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p9546191016541">metric</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.5.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18546121012542">JSON Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.5.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p172895506550">Validation metrics of a classification of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table226072412518">Table 7</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row6546210195419"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.5.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p8546210115411">total_metric</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.5.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p155461010175418">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.5.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1954661016549">Overall validation parameters of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table102963631010">Table 9</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table199981042536"></a><a name="en-us_topic_0131145862_table199981042536"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table199981042536" frame="border" border="1" rules="all"><caption><b>Table 6 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b9979634153711">system_metric_list</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row5999114115311"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.6.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p9394141555316">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.6.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p17999045536">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.6.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p107926197536">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row799904145315"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.6.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p8999740533">cpuUsage</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.6.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p07731752195310">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.6.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p699934115312">CPU usage of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1899910465315"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.6.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p19991948530">memUsage</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.6.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1939510531531">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.6.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p14379205945310">Memory usage of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1910823915311"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.6.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p31091439155311">gpuUtil</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.6.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p38781853165313">Array</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.6.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1810953975314">GPU usage of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table226072412518"></a><a name="en-us_topic_0131145862_table226072412518"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table226072412518" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b16312505425">metric</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row326062410515"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.7.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p164971461868">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.7.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p206451482614">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.7.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p1226019242059">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row17260162411516"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.7.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p22608243512">metric_values</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.7.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p27766238716">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.7.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1626013244511">Validation metrics of a classification of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table162521255132">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row14260202410511"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.7.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p826042413515">reserved_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.7.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p73051924874">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.7.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p112608241056">Reserved parameter</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row142609240512"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.7.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p162606242510">metric_meta</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.7.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p797818241677">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.7.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p2260124654">Classification of a training job, including the classification ID and name</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table162521255132"></a><a name="en-us_topic_0131145862_table162521255132"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table162521255132" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b1742917166616">metric_values</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row102753551316"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.8.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p1528120511318">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.2.8.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p10286115161317">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.8.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p1329055121312">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row929425151313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.8.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p330115514136">recall</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.8.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p83062518130">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.8.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p14311105121314">Recall of a classification of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1931316512133"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.8.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1631617571314">precision</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.8.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p193221254136">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.8.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1275516291416">Precision of a classification of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1133045121311"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.8.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p18149235181310">accuracy</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.2.8.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p183391355139">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.8.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p8622144191419">Accuracy of a classification of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table102963631010"></a><a name="en-us_topic_0131145862_table102963631010"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table102963631010" frame="border" border="1" rules="all"><caption><b>Table 9 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b9900044112617">total_metric</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row15441436141014"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.9.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p34853671019">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.9.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p185373611101">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.4.2.9.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p1057936111019">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row15917362104"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.9.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p73791155171015">total_metric_meta</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.9.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p196813365101">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.9.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p6811010131119">Reserved parameter</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row877536121018"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.9.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p180173614100">total_reserved_data</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.9.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p48413366107">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.9.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p890183691015">Reserved parameter</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row169113681014"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.9.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p19952364107">total_metric_values</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.9.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1510023691014">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.9.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p310493691015">Overall validation metrics of a training job. For details, see <a href="#modelarts_03_0047__en-us_topic_0131145862_table45171749171414">Table 10</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table45171749171414"></a><a name="en-us_topic_0131145862_table45171749171414"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table45171749171414" frame="border" border="1" rules="all"><caption><b>Table 10 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_b2888192012316">total_metric_values</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_row16549134971417"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.2.10.2.4.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_p15555495147">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.10.2.4.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_p205612049121411">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="67%" id="mcps1.3.4.2.10.2.4.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_p556864971414">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_row145744497142"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.10.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p458154916144">f1_score</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.10.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1458724912144">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.10.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p4596447151615">F1 score of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row75966493149"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.10.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p360234914147">recall</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.10.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1825995320154">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.10.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p1115071311614">Total recall of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row1461624918149"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.10.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p962694981419">precision</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.10.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p75625540158">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.10.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p148985871620">Total precision of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_row413802214157"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.2.10.2.4.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_p413802261512">accuracy</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.10.2.4.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_p436525521519">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="67%" headers="mcps1.3.4.2.10.2.4.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_p13138112219154">Total accuracy of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0047__en-us_topic_0131145862_table6403153714711"></a><a name="en-us_topic_0131145862_table6403153714711"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table6403153714711" frame="border" border="1" rules="all"><caption><b>Table 11 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b1076810550163">volumes</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row1940419374476"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.3.2.5.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p540623710472">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.3.2.5.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p240683714713">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.3.2.5.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p9406337134712">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.3.2.5.1.4"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1340611372471">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row340618374473"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p19407203794711">nfs</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p4407203794719">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p0407133754714">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p124605178532">Storage volume of the shared file system type. Only the training jobs running in the resource pool with the shared file system network connected support such storage volume. For details, see <a href="modelarts_03_0045.html#modelarts_03_0045__en-us_topic_0131062889_table19871043113315">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row184071537184711"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.3.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p144071737144717">host_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.3.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p8407133718478">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.3.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p19407113717475">JSON</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.3.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p16407837144712">Storage volume of the host file system type. Only training jobs running in the dedicated resource pool support such storage volume. For details, see <a href="modelarts_03_0045.html#modelarts_03_0045__en-us_topic_0131062889_table4873028185611">Table 7</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table19871043113315" frame="border" border="1" rules="all"><caption><b>Table 12 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b671916852218">nfs</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row98718439339"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.4.2.5.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p788143103316">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.4.2.5.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p0881743193316">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.4.2.5.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p128864353314">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.4.2.5.1.4"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p688154314331">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row19881543203313"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p19882436334">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p148844363318">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p38894315334">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p198884310331">ID of an SFS Turbo file system</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row16881433332"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p17242113943514">src_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p168814343315">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p9884436332">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p16254151103616">Address of an SFS Turbo file system</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row788174343319"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p78884323316">dest_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p148864323320">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p108914373317">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p148984312331">Local path of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row9892432337"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.4.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p28910436339">read_only</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.4.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1089743143320">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.4.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p128984323313">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.4.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p148915436330">Whether <strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b434540242">dest_path</strong> is read-only. The default value is <strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b1634273172420">false</strong>.</p>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_ul13960112394512"><li id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_li149601623174517"><span class="parmname" id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_parmname815973219243"><b>true</b></span>: read-only permission</li><li id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_li289893174511"><span class="parmname" id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_parmname19119147132512"><b>false</b></span>: read/write permission. This is the default value.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0047__en-us_topic_0131145862_table4873028185611" frame="border" border="1" rules="all"><caption><b>Table 13 </b><strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b145381331132515">host_path</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row487472818567"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.4.5.2.5.1.1"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p158741728185619">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.4.5.2.5.1.2"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p14874728135617">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.4.5.2.5.1.3"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1387442815610">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.4.5.2.5.1.4"><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1987472819565">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row108747289562"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p168758285564">src_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p14875128125616">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1387512811566">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p28751628185614">Local path of a host</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row5875192815616"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p587552845611">dest_path</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p987542819568">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1787572895619">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p16859190125918">Local path of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_row4875162816567"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.4.5.2.5.1.1 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p178751928195615">read_only</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.4.5.2.5.1.2 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p1987510281564">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.4.5.2.5.1.3 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p7875428205613">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.4.5.2.5.1.4 "><p id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_p687562815569">Whether <strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b17560983264">dest_path</strong> is read-only. The default value is <strong id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_b156113810266">false</strong>.</p>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_ul58751828105618"><li id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_li1875162814561"><span class="parmname" id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_parmname27011014264"><b>true</b></span>: read-only permission</li><li id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_li187522815566"><span class="parmname" id="modelarts_03_0047__en-us_topic_0131145862_en-us_topic_0131062889_parmname7455101112615"><b>false</b></span>: read/write permission. This is the default value.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section1964012375449"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0047__en-us_topic_0131145862_p3963124164411">The following shows how to query the details about the job whose <span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue1321492722011"><b>job_id</b></span> is <strong id="modelarts_03_0047__en-us_topic_0131145862_b19181652183716">10</strong> and <span class="parmvalue" id="modelarts_03_0047__en-us_topic_0131145862_parmvalue958416225201"><b>version_id</b></span> is <strong id="modelarts_03_0047__en-us_topic_0131145862_b667495719379">10</strong>.</p>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_ul26432177"><li id="modelarts_03_0047__en-us_topic_0131145862_li36563006">Sample request<pre class="screen" id="modelarts_03_0047__en-us_topic_0131145862_screen38201231162010">GET    https://endpoint/v1/{project_id}/training-jobs/10/versions/10</pre>
+</li></ul>
+</div>
+<ul id="modelarts_03_0047__en-us_topic_0131145862_ul15400121312458"><li id="modelarts_03_0047__en-us_topic_0131145862_li42805723">Successful sample response<pre class="screen" id="modelarts_03_0047__en-us_topic_0131145862_screen12384194192018">{
+    "is_success": true,
+    "job_id": 10,
+    "job_name": "TestModelArtsJob",
+    "job_desc": "TestModelArtsJob desc",
+    "version_id": 10,
+    "version_name": "jobVersion",
+    "pre_version_id": 5,
+    "engine_type": ,
+    "engine_name": "TensorFlow",
+    "engine_id": 1,
+    "engine_version": "TF-1.4.0-python2.7",
+    "status": 10,
+    "app_url": "/usr/app/",
+    "boot_file_url": "/usr/app/boot.py",
+    "create_time": 1524189990635,
+    "parameter": [
+        {
+            "label": "learning_rate",
+            "value": 0.01
+        }
+    ],
+    "duration": 532003,
+    "spec_id": 1,
+    "core": 2,
+    "cpu": 8,
+    "gpu_num": 2,
+    "gpu_type": "P100",
+    "worker_server_num": 1,
+    "data_url": "/usr/data/",
+    "train_url": "/usr/train/",
+    "log_url": "/usr/log/",
+    "dataset_version_id": "2ff0d6ba-c480-45ae-be41-09a8369bfc90",
+    "dataset_id": "38277e62-9e59-48f4-8d89-c8cf41622c24",
+    "data_source": [
+        {
+            "type": "obs",
+            "data_url": "/qianjiajun-test/minst/data/"
+        }
+    ],
+    "user_image_url": "100.125.5.235:20202/jobmng/custom-cpu-base:1.0",
+    "user_command": "bash -x /home/work/run_train.sh python /home/work/user-job-dir/app/mnist/mnist_softmax.py --data_url /home/work/user-job-dir/app/mnist_data",
+    "model_id": 1,
+    "model_metric_list": "{\"metric\":[{\"metric_values\":{\"recall\":0.005833,\"precision\":0.000178,\"accuracy\":0.000937},\"reserved_data\":{},\"metric_meta\":{\"class_name\":0,\"class_id\":0}}],\"total_metric\":{\"total_metric_meta\":{},\"total_reserved_data\":{},\"total_metric_values\":{\"recall\":0.005833,\"id\":0,\"precision\":0.000178,\"accuracy\":0.000937}}}",
+    "system_metric_list": {
+        "cpuUsage": [
+            "0",
+            "3.10",
+            "5.76",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "memUsage": [
+            "0",
+            "0.77",
+            "2.09",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "gpuUtil": [
+            "0",
+            "0.25",
+            "0.88",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "gpuMemUsage": [
+            "0",
+            "0.65",
+            "6.01",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "diskReadRate": [
+            "0",
+            "91811.07",
+            "38846.63",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "diskWriteRate": [
+            "0",
+            "2.23",
+            "0.94",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "recvBytesRate": [
+            "0",
+            "5770405.50",
+            "2980077.75",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "sendBytesRate": [
+            "0",
+            "12607.17",
+            "10487410.00",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "interval": 1
+    },
+    "dataset_name": "dataset-test",
+    "dataset_version_name": "dataset-version-test",
+    "spec_code": ,
+    "start_time": 1563172362000,
+    "volumes": [
+        {
+            "nfs": {
+                "id": "43b37236-9afa-4855-8174-32254b9562e7",
+                "src_path": "192.168.8.150:/",
+                "dest_path": "/home/work/nas",
+                "read_only": false
+            }
+        },
+        {
+            "host_path": {
+                "src_path": "/root/work",
+                "dest_path": "/home/mind",
+                "read_only": false
+            }
+        }
+    ],
+    "pool_id": "pool9928813f",
+    "pool_name": "p100",
+    "nas_mount_path": "/home/work/nas",
+    "nas_share_addr": "192.168.8.150:/",
+    "nas_type": "nfs"
+}</pre>
+</li><li id="modelarts_03_0047__en-us_topic_0131145862_li05141313134514">Failed sample response<pre class="screen" id="modelarts_03_0047__en-us_topic_0131145862_screen9358115612012">{
+    "is_success": false,
+    "error_message": "Error string",
+    "error_code": "ModelArts.0105"
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0047__en-us_topic_0131145862_section118191413677"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0047__en-us_topic_0131145862_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094">Status Code</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0044.html">Training Jobs</a></div>
+</div>
+</div>
+

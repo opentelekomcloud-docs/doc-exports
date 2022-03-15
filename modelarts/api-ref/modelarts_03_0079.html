@@ -1,0 +1,149 @@
+<a name="modelarts_03_0079"></a><a name="modelarts_03_0079"></a>
+
+<h1 class="topictitle1">Deleting a Model</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section15339659413"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0079__en-us_topic_0130168819_p117671131024">This API is used to delete a model based on the model ID. When <strong id="modelarts_03_0079__en-us_topic_0130168819_b202021111132419">cascade</strong> is set to <strong id="modelarts_03_0079__en-us_topic_0130168819_b176091413182419">true</strong>, the model specified by the model ID and models of different versions with the same name as the specified model are deleted. By default, only the model with the specified model ID is deleted.</p>
+</div>
+<div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section181341535122619"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0079__en-us_topic_0130168819_p16335830113212">DELETE /v1/{project_id}/models/{model_id}</p>
+<div class="p" id="modelarts_03_0079__en-us_topic_0130168819_p15493115718424"><a href="#modelarts_03_0079__en-us_topic_0130168819_table16518993181628">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0079__en-us_topic_0130168819_table16518993181628"></a><a name="en-us_topic_0130168819_table16518993181628"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0079__en-us_topic_0130168819_table16518993181628" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0079__en-us_topic_0130168819_row41524868181628"><th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0079__en-us_topic_0130168819_p30350749181639">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0079__en-us_topic_0130168819_p42491604181639">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.111111111111112%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0079__en-us_topic_0130168819_p19267891181639">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.58585858585859%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0079__en-us_topic_0130168819_p17195363181639">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0079__en-us_topic_0130168819_row6770181628"><td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p8780885181639">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p40163046181639">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p31981288181639">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0079__en-us_topic_0130168819_p40347522181639">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0079__en-us_topic_0130168819_row6957194516334"><td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p11589457113311">model_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p059085716337">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p659113575336">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0079__en-us_topic_0130168819_p15592135711336">ID of the model to be deleted</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0079__en-us_topic_0130168819_table2918868102420" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0079__en-us_topic_0130168819_row46282814102420"><th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.2.3.3.2.5.1.1"><p id="modelarts_03_0079__en-us_topic_0130168819_p58767362102449">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.151515151515152%" id="mcps1.3.2.3.3.2.5.1.2"><p id="modelarts_03_0079__en-us_topic_0130168819_p62535864102449">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.111111111111112%" id="mcps1.3.2.3.3.2.5.1.3"><p id="modelarts_03_0079__en-us_topic_0130168819_p32240260102449">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.58585858585859%" id="mcps1.3.2.3.3.2.5.1.4"><p id="modelarts_03_0079__en-us_topic_0130168819_p61324235102449">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0079__en-us_topic_0130168819_row55399715102420"><td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.3.2.5.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p7152145616379">cascade</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.151515151515152%" headers="mcps1.3.2.3.3.2.5.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p14154175673716">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.111111111111112%" headers="mcps1.3.2.3.3.2.5.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p181558560374">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.2.3.3.2.5.1.4 "><p id="modelarts_03_0079__en-us_topic_0130168819_p14156195603710">The default value is <span class="parmname" id="modelarts_03_0079__en-us_topic_0130168819_parmname144461911105"><b>false</b></span>, indicating that only the model with the specified model ID is deleted. The value <span class="parmname" id="modelarts_03_0079__en-us_topic_0130168819_parmname163111515104"><b>true</b></span> indicates that not only the model with the specified model ID but also all models with the same name but different versions as the specified model will be deleted. A maximum of 20 models can be deleted at a time.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section71456147333"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0079__en-us_topic_0130168819_p2738191817457">None</p>
+</div>
+<div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section54078976"><h4 class="sectiontitle">Response Body</h4><div class="p" id="modelarts_03_0079__en-us_topic_0130168819_p1074317586198"><a href="#modelarts_03_0079__en-us_topic_0130168819_table1954662185412">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="modelarts_03_0079__en-us_topic_0130168819_table1954662185412"></a><a name="en-us_topic_0130168819_table1954662185412"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0079__en-us_topic_0130168819_table1954662185412" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0079__en-us_topic_0130168819_row555142175415"><th align="left" class="cellrowborder" valign="top" width="18.181818181818183%" id="mcps1.3.4.2.2.2.4.1.1"><p id="modelarts_03_0079__en-us_topic_0130168819_p1155315211549">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="23.232323232323235%" id="mcps1.3.4.2.2.2.4.1.2"><p id="modelarts_03_0079__en-us_topic_0130168819_p1355662195410">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="58.58585858585859%" id="mcps1.3.4.2.2.2.4.1.3"><p id="modelarts_03_0079__en-us_topic_0130168819_p1055820214544">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0079__en-us_topic_0130168819_row141584191611"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p2041594201612">delete_success_list</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p1541514441617">String array</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p184151649168">ID list of models successfully deleted</p>
+</td>
+</tr>
+<tr id="modelarts_03_0079__en-us_topic_0130168819_row1560152115412"><td class="cellrowborder" valign="top" width="18.181818181818183%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p1656210235418">delete_failed_list</p>
+</td>
+<td class="cellrowborder" valign="top" width="23.232323232323235%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p2056412225411"><strong id="modelarts_03_0079__en-us_topic_0130168819_b2218606284">DeleteModelFailResult</strong> array</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.58585858585859%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p15651629549">List of models that fail to be deleted. For details, see <a href="#modelarts_03_0079__en-us_topic_0130168819_table1198992710540">Table 4</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="modelarts_03_0079__en-us_topic_0130168819_table1198992710540"></a><a name="en-us_topic_0130168819_table1198992710540"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0079__en-us_topic_0130168819_table1198992710540" frame="border" border="1" rules="all"><caption><b>Table 4 </b><strong id="modelarts_03_0079__en-us_topic_0130168819_b11528536112817">DeleteModelFailResult</strong> parameters</caption><thead align="left"><tr id="modelarts_03_0079__en-us_topic_0130168819_row129943277545"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.3.2.4.1.1"><p id="modelarts_03_0079__en-us_topic_0130168819_p13997192714544">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.3.2.4.1.2"><p id="modelarts_03_0079__en-us_topic_0130168819_p120128155419">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.3.2.4.1.3"><p id="modelarts_03_0079__en-us_topic_0130168819_p1821528145411">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0079__en-us_topic_0130168819_row1252028165418"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p87228135417">model_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p8101228145417">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p711182814549">ID of a model that fails to be deleted</p>
+</td>
+</tr>
+<tr id="modelarts_03_0079__en-us_topic_0130168819_row012112817546"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p6148282540">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p31602825420">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p161852845411">Error code of the deletion failure</p>
+</td>
+</tr>
+<tr id="modelarts_03_0079__en-us_topic_0130168819_row16191728145416"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.3.2.4.1.1 "><p id="modelarts_03_0079__en-us_topic_0130168819_p192172820548">error_message</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.3.2.4.1.2 "><p id="modelarts_03_0079__en-us_topic_0130168819_p622528175416">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.3.2.4.1.3 "><p id="modelarts_03_0079__en-us_topic_0130168819_p624172818545">Error message of the deletion failure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section1810193414711"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0079__en-us_topic_0130168819_p1626113524475">The following shows how to delete the model whose ID is <span class="parmvalue" id="modelarts_03_0079__en-us_topic_0130168819_parmvalue1457712215337"><b>023e90be-7e2a-4169-bab4-1bc34ff0ca45</b></span> and all models of the same name but different versions.</p>
+</div>
+<ul id="modelarts_03_0079__en-us_topic_0130168819_ul11661134735818"><li id="modelarts_03_0079__en-us_topic_0130168819_li8663184755814">Sample request<pre class="screen" id="modelarts_03_0079__en-us_topic_0130168819_screen1446219673312">DELETE    https://endpoint/v1/{project_id}/models/023e90be-7e2a-4169-bab4-1bc34ff0ca45?cascade=true</pre>
+</li></ul>
+<ul id="modelarts_03_0079__en-us_topic_0130168819_ul163453474715"><li id="modelarts_03_0079__en-us_topic_0130168819_li1533103454717">Sample response<pre class="screen" id="modelarts_03_0079__en-us_topic_0130168819_screen195185554328">{
+"delete_success_list": ["fc9e88a1-0005-40b3-867e-7aee61449aeb", "f3f3ba0e-f073-454e-9e3f-14b7d786f45e"],
+"delete_failed_list": [
+{
+"model_id": "759645d9-3672-4db1-bb6d-49ed58b84e10",
+"error_code": "ModelArts.3009",
+"error_message": "Failed to delete model, model (759645d9-3672-4db1-bb6d-49ed58b84e10) already deploy service."
+}]
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0079__en-us_topic_0130168819_section16948739"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0079__en-us_topic_0130168819_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094__en-us_topic_0132773864_table1450010510213">Table 1</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0153.html">Models</a></div>
+</div>
+</div>
+

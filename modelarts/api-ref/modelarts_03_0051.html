@@ -1,0 +1,111 @@
+<a name="modelarts_03_0051"></a><a name="modelarts_03_0051"></a>
+
+<h1 class="topictitle1">Stopping a Training Job</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section30162565"><h4 class="sectiontitle">Function</h4><p id="modelarts_03_0051__en-us_topic_0131151010_p462252415307">This API is used to stop a training job.</p>
+<p id="modelarts_03_0051__en-us_topic_0131151010_p9162527">Calling this API is an asynchronous operation. The job status can be obtained by calling the APIs described in <a href="modelarts_03_0046.html#modelarts_03_0046">Querying a Training Job List</a> and <a href="modelarts_03_0047.html#modelarts_03_0047">Querying the Details About a Training Job Version</a>.</p>
+</div>
+<div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section3027630"><h4 class="sectiontitle">URI</h4><p id="modelarts_03_0051__en-us_topic_0131151010_p12904164302">POST /v1/{project_id}/training-jobs/{job_id}/versions/{version_id}/stop</p>
+<div class="p" id="modelarts_03_0051__en-us_topic_0131151010_p770143416307"><a href="#modelarts_03_0051__en-us_topic_0131151010_table38721821155840">Table 1</a> describes the required parameters.
+<div class="tablenoborder"><a name="modelarts_03_0051__en-us_topic_0131151010_table38721821155840"></a><a name="en-us_topic_0131151010_table38721821155840"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0051__en-us_topic_0131151010_table38721821155840" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0051__en-us_topic_0131151010_row43000284155840"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.2.3.2.2.5.1.1"><p id="modelarts_03_0051__en-us_topic_0131151010_p2689837315592">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.2.3.2.2.5.1.2"><p id="modelarts_03_0051__en-us_topic_0131151010_p3128459315592">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.2.3.2.2.5.1.3"><p id="modelarts_03_0051__en-us_topic_0131151010_p5102406515592">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="55.00000000000001%" id="mcps1.3.2.3.2.2.5.1.4"><p id="modelarts_03_0051__en-us_topic_0131151010_p3930857315592">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0051__en-us_topic_0131151010_row8226193155840"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p418844415592">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p371969415592">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p3285982115592">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0051__en-us_topic_0131151010_p4439984015592">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0051__en-us_topic_0131151010_row1425542155840"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p5488438815592">job_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p1645043715592">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p5741698615592">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0051__en-us_topic_0131151010_p2026426715592">ID of a training job</p>
+</td>
+</tr>
+<tr id="modelarts_03_0051__en-us_topic_0131151010_row5324173613167"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.3.2.2.5.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p1324436161611">version_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.2.3.2.2.5.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p1327645412169">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.3.2.2.5.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p1932443613163">Long</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.00000000000001%" headers="mcps1.3.2.3.2.2.5.1.4 "><p id="modelarts_03_0051__en-us_topic_0131151010_p9134192081113">Version ID of a training job</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section441563135511"><h4 class="sectiontitle">Request Body</h4><p id="modelarts_03_0051__en-us_topic_0131151010_p1560514112019">None</p>
+</div>
+<div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section43911483"><h4 class="sectiontitle">Response Body</h4><div class="p" id="modelarts_03_0051__en-us_topic_0131151010_p05231735163512"><a href="#modelarts_03_0051__en-us_topic_0131151010_table61691357155927">Table 2</a> describes the response parameters.
+<div class="tablenoborder"><a name="modelarts_03_0051__en-us_topic_0131151010_table61691357155927"></a><a name="en-us_topic_0131151010_table61691357155927"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0051__en-us_topic_0131151010_table61691357155927" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameter description</caption><thead align="left"><tr id="modelarts_03_0051__en-us_topic_0131151010_row32271610155927"><th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.2.2.4.1.1"><p id="modelarts_03_0051__en-us_topic_0131151010_p63651488155944">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.000000000000002%" id="mcps1.3.4.2.2.2.4.1.2"><p id="modelarts_03_0051__en-us_topic_0131151010_p66066406155944">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68%" id="mcps1.3.4.2.2.2.4.1.3"><p id="modelarts_03_0051__en-us_topic_0131151010_p49778641155944">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0051__en-us_topic_0131151010_row1268391823516"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p2530905217407">is_success</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p2536505617407">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p4130369517407">Whether the request is successful</p>
+</td>
+</tr>
+<tr id="modelarts_03_0051__en-us_topic_0131151010_row341513612180"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p1415665185">error_message</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p174152067182">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p17985833171818">Error message of a failed API call.</p>
+<p id="modelarts_03_0051__en-us_topic_0131151010_p179882033201819">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+<tr id="modelarts_03_0051__en-us_topic_0131151010_row29721694155927"><td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.2.2.4.1.1 "><p id="modelarts_03_0051__en-us_topic_0131151010_p26964844155944">error_code</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.000000000000002%" headers="mcps1.3.4.2.2.2.4.1.2 "><p id="modelarts_03_0051__en-us_topic_0131151010_p17378453155944">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="68%" headers="mcps1.3.4.2.2.2.4.1.3 "><p id="modelarts_03_0051__en-us_topic_0131151010_p65477428155944">Error code of a failed API call. For details, see <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+<p id="modelarts_03_0051__en-us_topic_0131151010_p2071440155944">This parameter is not included when the API call succeeds.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section163412148342"><h4 class="sectiontitle">Samples</h4><p id="modelarts_03_0051__en-us_topic_0131151010_p188854446388">The following shows how to stop a version of the job whose <span class="parmvalue" id="modelarts_03_0051__en-us_topic_0131151010_parmvalue75311136143019"><b>job_id</b></span> is <strong id="modelarts_03_0051__en-us_topic_0131151010_b16668142012488">10</strong> and <span class="parmvalue" id="modelarts_03_0051__en-us_topic_0131151010_parmvalue594013394303"><b>version_id</b></span> is <strong id="modelarts_03_0051__en-us_topic_0131151010_b3668120104810">10</strong>.</p>
+<ul id="modelarts_03_0051__en-us_topic_0131151010_ul51182377"><li id="modelarts_03_0051__en-us_topic_0131151010_li57988211">Sample request<pre class="screen" id="modelarts_03_0051__en-us_topic_0131151010_screen128816454309">POST   https://endpoint/v1/{project_id}/training-jobs/10/versions/10/stop</pre>
+</li></ul>
+</div>
+<ul id="modelarts_03_0051__en-us_topic_0131151010_ul870262512343"><li id="modelarts_03_0051__en-us_topic_0131151010_li20503187">Successful sample response<pre class="screen" id="modelarts_03_0051__en-us_topic_0131151010_screen10908145823015">{
+    "is_success": true
+}</pre>
+</li><li id="modelarts_03_0051__en-us_topic_0131151010_li489215714147">Failed sample response<pre class="screen" id="modelarts_03_0051__en-us_topic_0131151010_screen871417511318">{
+    "is_success": false,
+    "error_message": "Error string",
+    "error_code": "ModelArts.0105"
+}</pre>
+</li></ul>
+<div class="section" id="modelarts_03_0051__en-us_topic_0131151010_section16342114917109"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0051__en-us_topic_0131151010_p1731954913014">For details about the status code, see <a href="modelarts_03_0094.html#modelarts_03_0094">Status Code</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0044.html">Training Jobs</a></div>
+</div>
+</div>
+

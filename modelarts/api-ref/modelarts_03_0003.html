@@ -1,0 +1,97 @@
+<a name="modelarts_03_0003"></a><a name="modelarts_03_0003"></a>
+
+<h1 class="topictitle1">Response</h1>
+<div id="body8662426"><p id="modelarts_03_0003__en-us_topic_0171310283_p18688042817">After sending a request, you will receive a response, including the status code, response header, and response body.</p>
+<div class="section" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_section968114282311"><h4 class="sectiontitle">Status Code</h4><p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p4624111624411">A status code is a group of digits, ranging from 1<em id="modelarts_03_0003__en-us_topic_0171310283_i332210270475">xx</em> to 5<em id="modelarts_03_0003__en-us_topic_0171310283_i911973184710">xx</em>. It indicates the status of a request. For more information, see <a href="modelarts_03_0094.html#modelarts_03_0094">Status Code</a>.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p2861496519">For example, if status code <span class="parmvalue" id="modelarts_03_0003__en-us_topic_0171310283_parmvalue15742182474811"><b>201</b></span> is returned for calling the API used to obtain a user token, the request is successful.</p>
+</div>
+<div class="section" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_section7804143005810"><h4 class="sectiontitle">Response Header</h4><p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p384320471837">Similar to a request, a response also has a header, for example, <span class="parmvalue" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_parmvalue1720109175113"><b>Content-type</b></span>.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0003__en-us_topic_0171310283_table14216843" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Common response header fields</caption><thead align="left"><tr id="modelarts_03_0003__en-us_topic_0171310283_row62973985"><th align="left" class="cellrowborder" valign="top" width="21.43%" id="mcps1.3.3.3.2.4.1.1"><p id="modelarts_03_0003__en-us_topic_0171310283_p619185">Header</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="59.18%" id="mcps1.3.3.3.2.4.1.2"><p id="modelarts_03_0003__en-us_topic_0171310283_p48733195">Description</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.39%" id="mcps1.3.3.3.2.4.1.3"><p id="modelarts_03_0003__en-us_topic_0171310283_p25910100">Mandatory</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0003__en-us_topic_0171310283_row30872424"><td class="cellrowborder" valign="top" width="21.43%" headers="mcps1.3.3.3.2.4.1.1 "><p id="modelarts_03_0003__en-us_topic_0171310283_p17638454">Content-Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.18%" headers="mcps1.3.3.3.2.4.1.2 "><p id="modelarts_03_0003__en-us_topic_0171310283_p8511342153715">Media type of the message body sent to a receiver</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p19428680">Type: string</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p40640399">Default value: <strong id="modelarts_03_0003__en-us_topic_0171310283_b1410583865312">application/json; charset=UTF-8</strong></p>
+</td>
+<td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.3.2.4.1.3 "><p id="modelarts_03_0003__en-us_topic_0171310283_p3537986">Yes</p>
+</td>
+</tr>
+<tr id="modelarts_03_0003__en-us_topic_0171310283_row31841882"><td class="cellrowborder" valign="top" width="21.43%" headers="mcps1.3.3.3.2.4.1.1 "><p id="modelarts_03_0003__en-us_topic_0171310283_p29055658">X-request-id</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.18%" headers="mcps1.3.3.3.2.4.1.2 "><p id="modelarts_03_0003__en-us_topic_0171310283_p1697874723710">This field carries the request ID for task tracing.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p1855111243715">Type: string <strong id="modelarts_03_0003__en-us_topic_0171310283_b730415015418">request_id-timestamp-hostname</strong> (<strong id="modelarts_03_0003__en-us_topic_0171310283_b1730515019549">request_id</strong> is the UUID generated on the server, <strong id="modelarts_03_0003__en-us_topic_0171310283_b73051503549">timestamp</strong> indicates the current timestamp, and <strong id="modelarts_03_0003__en-us_topic_0171310283_b830612015543">hostname</strong> is the name of the server that processes the current API.)</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p45000031">Default value: none</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.3.2.4.1.3 "><p id="modelarts_03_0003__en-us_topic_0171310283_p21123860">No</p>
+</td>
+</tr>
+<tr id="modelarts_03_0003__en-us_topic_0171310283_row55897013"><td class="cellrowborder" valign="top" width="21.43%" headers="mcps1.3.3.3.2.4.1.1 "><p id="modelarts_03_0003__en-us_topic_0171310283_p31364244">X-ratelimit</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.18%" headers="mcps1.3.3.3.2.4.1.2 "><p id="modelarts_03_0003__en-us_topic_0171310283_p57475868">This field carries the total number of flow control requests.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p47520766">Type: integer</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p25033716">Default value: none</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.3.2.4.1.3 "><p id="modelarts_03_0003__en-us_topic_0171310283_p14465092">No</p>
+</td>
+</tr>
+<tr id="modelarts_03_0003__en-us_topic_0171310283_row63076969"><td class="cellrowborder" valign="top" width="21.43%" headers="mcps1.3.3.3.2.4.1.1 "><p id="modelarts_03_0003__en-us_topic_0171310283_p8960865">X-ratelimit-used</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.18%" headers="mcps1.3.3.3.2.4.1.2 "><p id="modelarts_03_0003__en-us_topic_0171310283_p54741478">This field carries the number of remaining requests.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p22911256">Type: integer</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p4874719">Default value: none</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.3.2.4.1.3 "><p id="modelarts_03_0003__en-us_topic_0171310283_p59307957">No</p>
+</td>
+</tr>
+<tr id="modelarts_03_0003__en-us_topic_0171310283_row64009566"><td class="cellrowborder" valign="top" width="21.43%" headers="mcps1.3.3.3.2.4.1.1 "><p id="modelarts_03_0003__en-us_topic_0171310283_p17392329">X-ratelimit-window</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.18%" headers="mcps1.3.3.3.2.4.1.2 "><p id="modelarts_03_0003__en-us_topic_0171310283_p66601413">This field carries the flow control unit.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p62541809">Type: string The unit is minute, hour, or day.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p26005369">Default value: hour</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.39%" headers="mcps1.3.3.3.2.4.1.3 "><p id="modelarts_03_0003__en-us_topic_0171310283_p26060174">No</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="modelarts_03_0003__en-us_topic_0171310283_p1169716258304"><a href="#modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_fig4865141011511">Figure 1</a> shows the response header fields for the API used to obtain a user token.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p4430113619484"><span class="parmname" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_parmname963417819525"><b>x-subject-token</b></span> is the desired user token. This token can then be used to authenticate the calling of other APIs.</p>
+<div class="fignone" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_fig4865141011511"><a name="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_fig4865141011511"></a><a name="en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_fig4865141011511"></a><span class="figcap"><b>Figure 1 </b>Header fields of the response to the request for obtaining a user token</span><br><span><img id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_image48651610135113" src="en-us_image_0171113090.png"></span></div>
+</div>
+<div class="section" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_section034615592583"><h4 class="sectiontitle">Response Body</h4><p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p133921631940">The body of a response is often returned in structured format as specified in the <strong id="modelarts_03_0003__en-us_topic_0171310283_b197441717154818">Content-Type</strong> header field. The response body transfers content except the response header.</p>
+<p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p157041652367">The following is part of the response body for the API used to obtain a user token.</p>
+<pre class="screen" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_screen65818201917">{
+    "token": {
+        "expires_at": "2019-02-13T06:52:13.855000Z",
+        "methods": [
+            "password"
+        ],
+        "catalog": [
+            {
+                "endpoints": [
+                    {
+                        "region_id": "aaa",
+......</pre>
+<p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p127537375412">If an error occurs during API calling, an error code and a message will be displayed. The following shows an error response body.</p>
+<pre class="screen" id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_screen102091730125513">{
+    "error_message": "The format of message is error",
+    "error_code": "AS.0001"
+}</pre>
+<p id="modelarts_03_0003__en-us_topic_0171310283_en-us_topic_0170917209_en-us_topic_0168405765_p1589911464018">In the error response body, <strong id="modelarts_03_0003__en-us_topic_0171310283_b56191737571">error_code</strong> is an error code, and <strong id="modelarts_03_0003__en-us_topic_0171310283_b8138184317714">error_message</strong> provides information about the error. For more details, see <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0144.html">Calling APIs</a></div>
+</div>
+</div>
+

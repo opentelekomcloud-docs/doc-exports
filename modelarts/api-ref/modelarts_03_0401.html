@@ -1,0 +1,307 @@
+<a name="modelarts_03_0401"></a><a name="modelarts_03_0401"></a>
+
+<h1 class="topictitle1">Creating a Training Job Using the TensorFlow Framework</h1>
+<div id="body8662426"><div class="section" id="modelarts_03_0401__en-us_topic_0000001073831232_section1584656102611"><h4 class="sectiontitle">Overview</h4><p id="modelarts_03_0401__en-us_topic_0000001073831232_p15380191918816">This section describes how to train a model on ModelArts by calling a series of APIs.</p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p6171183914104">The process for creating a training job using the TensorFlow framework is as follows:</p>
+<ol id="modelarts_03_0401__en-us_topic_0000001073831232_ol51731432121217"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li18341253141313">Call the API in <a href="modelarts_03_0004.html#modelarts_03_0004">Authentication</a> to obtain the user token, which will be put into the request header for authentication in a subsequent request.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li6173123211219">Call the API in <a href="modelarts_03_0072.html#modelarts_03_0072">Querying Job Resource Specifications</a> to obtain the resource flavors available for training jobs.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li11901135831418">Call the API in <a href="modelarts_03_0073.html#modelarts_03_0073">Querying Job Engine Specifications</a> to view the engine types and versions available for training jobs.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li33722031111515">Call the API in <a href="modelarts_03_0045.html#modelarts_03_0045">Creating a Training Job</a> to create a training job.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li62310211161">Call the API in <a href="modelarts_03_0047.html#modelarts_03_0047">Querying the Details About a Training Job Version</a> to query the details about the training job based on the job ID.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li10490131814338">Call the API in <a href="modelarts_03_0054.html#modelarts_03_0054">Obtaining the Name of a Training Job Log File</a> to obtain the name of the training job log file.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li413871186">Call the API in <a href="modelarts_03_0149.html#modelarts_03_0149">Querying Training Job Logs</a> to view the log details of the training job.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li8603640104114">Call the API in <a href="modelarts_03_0053.html#modelarts_03_0053">Deleting a Training Job</a> to delete the training job if it is no longer needed.</li></ol>
+</div>
+<div class="section" id="modelarts_03_0401__en-us_topic_0000001073831232_section8774173316262"><h4 class="sectiontitle">Prerequisites</h4><ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul11540821132915"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1054032119297">You have obtained the endpoints of  and <a href="modelarts_03_0141.html">ModelArts</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li2023417460">You have located the region where the service is deployed and obtained .</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li125401821152912">You have obtained the project ID. For details, see <a href="modelarts_03_0147.html#modelarts_03_0147">Obtaining a Project ID and Name</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li205401321122913">You have prepared the training code for TensorFlow. For example, you have stored the boot file <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b45593314595">train_mnist_tf.py</strong> in the <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1243011855913">/test-modelarts/mnist-tensorflow-code/</strong> directory of OBS.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li12540921112918">You have prepared a dataset for the training job. For example, you have stored a training dataset in the <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b105831054709">/test-modelarts/dataset-mnist/</strong> directory of OBS.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li15944809390">You have created the output path of the training job, for example, <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b16053191006">/test-modelarts/mnist-model/output/</strong>.</li></ul>
+</div>
+<div class="section" id="modelarts_03_0401__en-us_topic_0000001073831232_section161491156162615"><h4 class="sectiontitle">Procedure</h4><ol id="modelarts_03_0401__en-us_topic_0000001073831232_ol14384463318"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1438114133315"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li1438114133315"></a><a name="en-us_topic_0000001073831232_li1438114133315"></a>Call the API in <a href="modelarts_03_0004.html#modelarts_03_0004">Authentication</a> to obtain the user token.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol163373184505"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li833771810507">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p9350163918"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li833771810507"></a><a name="en-us_topic_0000001073831232_li833771810507"></a>URI format: POST https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i18264153811392"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1226433820399">{iam_endpoint}</strong></em>/v3/auth/tokens</p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p10949122011417">Request header: Content-Type → application/json</p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p174764435412">Request body:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen19442205943814">{
+  "auth": {
+    "identity": {
+      "methods": ["password"],
+      "password": {
+        "user": {
+          "name": "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b34427595382"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i6442145913817">username</em></strong>", 
+          "password": "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1044245913812">*******</strong><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b6442125915387">***</strong>",
+          "domain": {
+            "name": "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b16442205923818"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i164421159163817">domainname</em></strong>"  
+          }
+        }
+      }
+    },
+    "scope": {
+      "project": {
+        "name": ""  
+      }
+    }
+  }
+}</pre>
+</div>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p15443175916381">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul1244325943814"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li14443145920388">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i1544310591385"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b144315911388">iam_endpoint</strong></em> with the IAM endpoint.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li34431859143818">Replace <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1443125933811"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i84431559153817">username</em></strong> with the IAM username.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1944314592387">Replace <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1044316595382"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i104431559103817">********</em></strong> with the login password of the user.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1144385917383">Replace <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b2044305917387"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i7443195923819">domainname</em></strong> with the account to which the user belongs.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li144431559183814">Replace  with the project name, which indicates the zone where the service is deployed.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1033981815504">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b101351387615">201 Created</strong> is returned. The value of <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b423217441560">X-Subject-Token</strong> in the response header is the token.<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen133391818145017">x-subject-token →MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</pre>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li384513468342"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li384513468342"></a><a name="en-us_topic_0000001073831232_li384513468342"></a>Call the API in <a href="modelarts_03_0072.html#modelarts_03_0072">Querying Job Resource Specifications</a> to obtain the resource flavors available for training jobs.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol650610528715"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li050614529717">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p10690193044319"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li050614529717"></a><a name="en-us_topic_0000001073831232_li050614529717"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i2019919241531"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b319952485316">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i61997241537"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b5199172485319">{project_id}</strong></em>/job/resource-specs?job_type=train</p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p10554135145312">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b2272944165418"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i2074319437540">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p15935045514">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul593170155518"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li179315014550">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i79315018551"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b189319085514">ma_endpoint</strong></em> with the ModelArts endpoint.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1993809553">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i33921616105518"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b12392131610553">project_id</strong></em> with the project ID of the user.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li194170155520">Set <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname8385143419118"><b>X-auth-Token</b></span> to the token obtained in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li1438114133315">1</a>.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li105084521376">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b157331318118">200 OK</strong> is returned. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen486132612233">{
+  "specs": [
+    ......
+    {
+      "spec_id": 7,
+      "core": "2",
+      "cpu": "8",
+      "gpu_num": 0,
+      "gpu_type": "",
+      "spec_code": "modelarts.vm.cpu.2u",
+      "unit_num": 1,
+      "max_num": 1,
+      "storage": "",
+      "interface_type": 1,
+      "no_resource": false
+    },
+    {
+      "spec_id": 27,
+      "core": "8",
+      "cpu": "32",
+      "gpu_num": 0,
+      "gpu_type": "",
+      <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1525716318244">"spec_code": "modelarts.vm.cpu.8u"</strong>,
+      "unit_num": 1,
+      <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b19834142942517">"max_num": 1</strong>,
+      "storage": "",
+      "interface_type": 1,
+      <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b20260173412258">"no_resource": false</strong>
+    }
+  ],
+  "is_success": true,
+  "spec_total_count": 5
+}</pre>
+<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul163331053877"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li294551532715">Select and record the flavor type required for creating the training job based on the <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1244911216121">spec_code</strong> field. This section uses <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1664951141218">modelarts.vm.cpu.8u</strong> as an example and records the value of the <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b18671192011214">max_num</strong> field as <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b5447123181211">1</strong>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1033313531570">The <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b193919389127">no_resource</strong> field is used to determine whether resources are sufficient. Value <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b79659211417">false</strong> indicates that resources are available.</li></ul>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li12845104623418"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li12845104623418"></a><a name="en-us_topic_0000001073831232_li12845104623418"></a>Call the API in <a href="modelarts_03_0073.html#modelarts_03_0073">Querying Job Engine Specifications</a> to view the engine types and versions available for training jobs.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol164592217235"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li9459132192311">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p17528951193"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li9459132192311"></a><a name="en-us_topic_0000001073831232_li9459132192311"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i17528185292"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b95281651913">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i6529151913"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b45291510914">{project_id}</strong></em>/job/ai-engines?job_type=train</p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p952910514914">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b19459739171416"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i20459939101413">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p17529851691">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul9529155396"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li352919513916">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i6380191994512"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b133751199453">ma_endpoint</strong></em> with the ModelArts endpoint.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li552965593">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i1536982216450"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b7369112294517">project_id</strong></em> with the project ID of the user.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li75290510912">Set <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname18329181744618"><b>X-auth-Token</b></span> to the token obtained in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li1438114133315">1</a>.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li7459112112311">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b19739491148">200 OK</strong> is returned. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen34601021236">{
+  "engines": [
+    {
+      "engine_type": 13,
+      "engine_name": "Ascend-Powered-Engine",
+      "engine_id": 130,
+      "engine_version": "TF-1.15-python3.7-aarch64"
+    },
+    ......
+    {
+      "engine_type": 1,
+      "engine_name": "TensorFlow",
+      "engine_id": 3,
+      "engine_version": "TF-1.8.0-python2.7"
+    },
+    {
+      "engine_type": 1,
+      "engine_name": "TensorFlow",
+      <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b733153018435">"engine_id": 4,</strong>
+      "engine_version": "TF-1.8.0-python3.6"
+    },
+    ......
+    {
+      "engine_type": 9,
+      "engine_name": "XGBoost-Sklearn",
+      "engine_id": 100,
+      "engine_version": "XGBoost-0.80-Sklearn-0.18.1-python3.6"
+    }
+  ],
+  "is_success": true
+}</pre>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p172411856161617">Select the engine flavor required for creating a training job based on the <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b34083919151">engine_name</strong> and <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1567312123151">engine_version</strong> fields and record <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b16841117171519">engine_id</strong>. This section describes how to create a job based on the TensorFlow engine. Record <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b363274213152">engine_id</strong> as <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1735416481157">4</strong>.</p>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li5845144683416"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li5845144683416"></a><a name="en-us_topic_0000001073831232_li5845144683416"></a>Call the API in <a href="modelarts_03_0045.html#modelarts_03_0045">Creating a Training Job</a> to create a training job named <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b159681629201619">jobtest_TF</strong> based on the TensorFlow framework.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol62959338288"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1295193312813">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p56511814204"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li1295193312813"></a><a name="en-us_topic_0000001073831232_li1295193312813"></a>URI format: POST https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i41981131182015"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b16198193119200">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i12198931132011"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1019816316208">{project_id}</strong></em>/training-jobs</p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p19277173812110">Request header:<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul11977345182113"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1797744510218">X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b99592173210"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i1995912172212">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li355912520223">Content-Type →application/json</li></ul>
+</div>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p2651285201">Request body:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen102951433142819">{
+    "job_name": "<em id="modelarts_03_0401__en-us_topic_0000001073831232_i9799184611228"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1386846142214">jobtest_TF</strong></em>",
+    "job_desc": "<em id="modelarts_03_0401__en-us_topic_0000001073831232_i6499115018223"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b176195015226">using TensorFlow for handwritten digit recognition</strong></em>",
+    "config": {
+        "worker_server_num": <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b203211636153319"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i197741335183313">1</em></strong>,
+        "parameter": [],
+        "flavor": {
+            "code": "<em id="modelarts_03_0401__en-us_topic_0000001073831232_i2030811922310"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b17763198192314">modelarts.vm.cpu.8u</strong></em>"
+        },
+        "train_url": "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b7850163112230"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i232293122318">/test-modelarts/mnist-model/output/</em></strong>",
+        "engine_id": <em id="modelarts_03_0401__en-us_topic_0000001073831232_i145651234142316"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b617023417236">4</strong></em>,
+        "app_url": "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1978713715230"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i240143711232">/test-modelarts/mnist-tensorflow-code/</em></strong>",
+        "boot_file_url": "<em id="modelarts_03_0401__en-us_topic_0000001073831232_i168257413232"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b10370194116232">/test-modelarts/mnist-tensorflow-code/train_mnist_tf.py</strong></em>",
+        "data_source": [
+            {
+                "type": "obs",
+                "data_url": "<em id="modelarts_03_0401__en-us_topic_0000001073831232_i1161310460237"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1519574614237">/test-modelarts/dataset-mnist/</strong></em>"
+            }
+        ]
+    },
+    "notification": {
+        "topic_urn": "",
+        "events": []
+    },
+    "workspace_id": "0"
+}</pre>
+</div>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p1675011412282">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul4750201412280"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li97501214202820">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b626512421919">job_name</strong> and <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b8857119141918">job_desc</strong> to the name and description of the training job.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li8143133064516">Set <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname81451930104513"><b>worker_server_num</b></span> and <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname21456309459"><b>code</b></span> to the values of <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname15145163094513"><b>max_num</b></span> and <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname1914523019454"><b>spec_code</b></span> obtained in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li384513468342">2</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li19336175318363">Set <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname35781532154515"><b>engine_id</b></span> to the engine ID obtained in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li12845104623418">3</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li12382938164320">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b111201253201911">train_url</strong> to the output directory of the training job.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1085984294314">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b128971916202">app_url</strong> and <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1588010411205">boot_file_url</strong> to the code directory and code boot file of the training job, respectively.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1220314581367">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1858815264202">data_url</strong> to the dataset directory used by the training job.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li11295123316283">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b141651390203">200 OK</strong> is returned, indicating that the training job has been created. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen1163416461284">{
+  "version_name": "V0001",
+  "job_name": "jobtest_TF",
+  "create_time": 1609121837000,
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b5689191454417">"job_id": 567524,</strong>
+  "resource_id": "jobaedef089",
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b27211418144420">"version_id": 1108482,</strong>
+  "is_success": true,
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b42377815498">"status": 1</strong>
+}</pre>
+<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul57358304499"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li15224124914910">Record the values of <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b12911009216">job_id</strong> (training job ID) and <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b114258320219">version_id</strong> (training job version ID) for future use.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li11623164465011">The value of <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b38019162215">status</strong> is <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b7135818152116">1</strong>, indicating that the training job is being initialized.</li></ul>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li48451946103416">Call the API in <a href="modelarts_03_0047.html#modelarts_03_0047">Querying the Details About a Training Job Version</a> to query the details about the training job based on the job ID.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol10513134331214"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1351313430125">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p13108556195616"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li1351313430125"></a><a name="en-us_topic_0000001073831232_li1351313430125"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i1510885655610"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b121081856185616">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i1210812564566"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1910895655612">{project_id}</strong></em>/training-jobs/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b684513155710"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i876311321575">567524</em></strong>/versions/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b2840133578"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i05751536165717">1108482</em></strong></p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p81081556125620">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b314613112210"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i414673102219">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p1710865665615">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul210855625615"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li310835614566">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i275851118585">567524</em> with the value of <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname550964365810"><b>job_id</b></span> recorded in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li5845144683416">4</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li152421049135818">Replace <em id="modelarts_03_0401__en-us_topic_0000001073831232_i763125365819">1108482</em> with the value of <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname125061119175912"><b>version_id</b></span> recorded in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li5845144683416">4</a>.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li75134431121">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b599114792312">200 OK</strong> is returned. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen28054374583">{
+  "dataset_name": null,
+  "duration": 1326,
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b934713111924">"spec_code": "modelarts.vm.cpu.8u",</strong>
+  "parameter": [],
+  "start_time": 1609121913000,
+  "model_outputs": [],
+  "engine_name": "TensorFlow",
+  "error_result": null,
+  "gpu_type": "",
+  "user_frame_image": null,
+  "gpu": null,
+  "dataset_id": null,
+  "nas_mount_path": null,
+  "task_summary": {},
+  "max_num": 1,
+  "model_metric_list": "{}",
+  "is_zombie": null,
+  "flavor_code": "modelarts.vm.cpu.8u",
+  "gpu_num": 0,
+  "train_url": "/test-modelarts/mnist-model/output/",
+  "engine_type": 1,
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b98601510705">"job_name": "jobtest_TF",</strong>
+  "nas_type": "efs",
+  "outputs": null,
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b141951316909">"job_id": 567524,</strong>
+  "data_url": "/test-modelarts/dataset-mnist/",
+  "log_url": null,
+  "boot_file_url": "/test-modelarts/mnist-tensorflow-code/train_mnist_tf.py",
+  "volumes": null,
+  "dataset_version_id": null,
+  "algorithm_id": null,
+  "worker_server_num": 1,
+  "pool_type": "SYSTEM_DEFINED",
+  "autosearch_config": null,
+  "job_desc": "using TensorFlow for handwritten digit recognition",
+  "inputs": null,
+  "model_id": null,
+  "dataset_version_name": null,
+  "pool_name": "hec-train-pub-cpu",
+  "engine_version": "TF-1.8.0-python3.6",
+  "system_metric_list": {
+    "recvBytesRate": [
+      "0",
+      "0"
+    ],
+    "cpuUsage": [
+      "0",
+      "0"
+    ],
+    "sendBytesRate": [
+      "0",
+      "0"
+    ],
+    "memUsage": [
+      "0",
+      "0"
+    ],
+    "gpuUtil": [
+      "0",
+      "0"
+    ],
+    "gpuMemUsage": [
+      "0",
+      "0"
+    ],
+    "interval": 1,
+    "diskWriteRate": [
+      "0",
+      "0"
+    ],
+    "diskReadRate": [
+      "0",
+      "0"
+    ]
+  },
+  "retrain_model_id": null,
+  "version_name": "V0001",
+  "pod_version": "1.8.0-cp36",
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1701750404">"engine_id": 4,</strong>
+  <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b18021943103">"status": 10,</strong>
+  "cpu": "32",
+  "user_image_url": null,
+  "spec_id": 27,
+  "is_success": true,
+  "storage": "",
+  "nas_share_addr": null,
+  "version_id": 1108482,
+  "no_resource": false,
+  "user_command": null,
+  "resource_id": "jobaedef089",
+  "core": "8",
+  "npu_info": null,
+  "app_url": "/test-modelarts/mnist-tensorflow-code/",
+  "data_source": [
+    {
+      "type": "obs",
+      "data_url": "/test-modelarts/dataset-mnist/"
+    }
+  ],
+  "pre_version_id": null,
+  "create_time": 1609121837000,
+  "job_type": 1,
+  "pool_id": "pool7d1e384a"
+}</pre>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p13424183016319">You can learn about the version details of the training job based on the response. The value of <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1998374132412">status</strong> is <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b148679782413">10</strong>, indicating that the training job is successful.</p>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li52217241518"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li52217241518"></a><a name="en-us_topic_0000001073831232_li52217241518"></a>Call the API in <a href="modelarts_03_0054.html#modelarts_03_0054">Obtaining the Name of a Training Job Log File</a> to obtain the name of the training job log file.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol15412428104117"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li941218289411">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p692320163"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li941218289411"></a><a name="en-us_topic_0000001073831232_li941218289411"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i1492330366"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b99231904611">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i19233012611"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1992318017615">{project_id}</strong></em>/training-jobs/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b13923401660"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i209231302065">567524</em></strong>/versions/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b592310013616"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i69231901962">1108482</em></strong>/log/file-names</p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p11923706616">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1712173672412"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i16121736122412">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p1692380960">Set the italic fields in bold based on the site requirements.</p>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li6413192819410">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b13701144072419">200 OK</strong> is returned. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen19413928114118">{
+  "is_success": true,
+  "log_file_list": [
+    "<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1066916314218">job-jobtest-tf.0</strong>"
+  ]
+}</pre>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p54131928184110">Only one log file named <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b114671851202410">job-jobtest-tf.0</strong> exists.</p>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li162613854210">Call the API in <a href="modelarts_03_0149.html#modelarts_03_0149">Querying Training Job Logs</a> to query details about eight rows in the training job log file.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol83288121491"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li832841215913">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p203288121094"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li832841215913"></a><a name="en-us_topic_0000001073831232_li832841215913"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i332812122917"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b432812121294">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i203289121899"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b13288129911">{project_id}</strong></em>/training-jobs/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1032812121912"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i132810123920">567524</em></strong>/versions/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b163284121192"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i1132821220910">1108482</em></strong>/aom-log?log_file=<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b6108259191616"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i125771058121616">job-jobtest-tf.0</em></strong>&amp;lines=<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b114132681718"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i962252516177">8</em></strong>&amp;order=<em id="modelarts_03_0401__en-us_topic_0000001073831232_i814423101712"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b11460163011178">desc</strong></em></p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p203287128913">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1036775232511"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i136725218255">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<div class="p" id="modelarts_03_0401__en-us_topic_0000001073831232_p132814121193">Set the italic fields in bold based on the site requirements.<ul id="modelarts_03_0401__en-us_topic_0000001073831232_ul199961159151717"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li14414102617201">Set <span class="parmname" id="modelarts_03_0401__en-us_topic_0000001073831232_parmname11761710172116"><b>log_file</b></span> to the name of the log file obtained in <a href="#modelarts_03_0401__en-us_topic_0000001073831232_li52217241518">6</a>.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1760105417207">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b11596169112720">lines</strong> to the rows to be obtained in the log file.</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li6996859171712">Set <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b14338125814276">order</strong> to the log query direction.</li></ul>
+</div>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li73284121299">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b156651325284">200 OK</strong> is returned. The response body is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen1932831213917">{
+  "start_line": "1609121886518240330",
+  "lines": 8,
+  "is_success": true,
+  "end_line": "1609121900042593083",
+  "content": "Done exporting!\n\n[Modelarts Service Log]Training completed.\n\n[ModelArts Service Log]modelarts-pipe: will create log file /tmp/log/jobtest_TF.log\n\n[ModelArts Service Log]modelarts-pipe: will create log file /tmp/log/jobtest_TF.log\n\n[ModelArts Service Log]modelarts-pipe: will write log file /tmp/log/jobtest_TF.log\n\n[ModelArts Service Log]modelarts-pipe: param for max log length: 1073741824\n\n[ModelArts Service Log]modelarts-pipe: param for whether exit on overflow: 0\n\n[ModelArts Service Log]modelarts-pipe: total length: 23303\n"
+}</pre>
+</li></ol>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li898885119422">Call the API in <a href="modelarts_03_0053.html#modelarts_03_0053">Deleting a Training Job</a> to delete the training job if it is no longer needed.<ol type="a" id="modelarts_03_0401__en-us_topic_0000001073831232_ol811119572528"><li id="modelarts_03_0401__en-us_topic_0000001073831232_li1911118573520">Request body:<p id="modelarts_03_0401__en-us_topic_0000001073831232_p15190112216238"><a name="modelarts_03_0401__en-us_topic_0000001073831232_li1911118573520"></a><a name="en-us_topic_0000001073831232_li1911118573520"></a>URI format: GET https://<em id="modelarts_03_0401__en-us_topic_0000001073831232_i101905229233"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b719022219235">{ma_endpoint}</strong></em>/v1/<em id="modelarts_03_0401__en-us_topic_0000001073831232_i5190622192319"><strong id="modelarts_03_0401__en-us_topic_0000001073831232_b13190622112315">{project_id}</strong></em>/training-jobs/<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b019016226233"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i11190132217234">567524</em></strong></p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p18191122292312">Request header: X-auth-Token →<strong id="modelarts_03_0401__en-us_topic_0000001073831232_b1083414117300"><em id="modelarts_03_0401__en-us_topic_0000001073831232_i10834101103011">MIIZmgYJKoZIhvcNAQcCoIIZizCCGYcCAQExDTALBglghkgBZQMEAgEwgXXXXXX...</em></strong></p>
+<p id="modelarts_03_0401__en-us_topic_0000001073831232_p17191182232318">Set the italic fields in bold based on the site requirements.</p>
+</li><li id="modelarts_03_0401__en-us_topic_0000001073831232_li211155705213">The status code <strong id="modelarts_03_0401__en-us_topic_0000001073831232_b42241177308">200 OK</strong> is returned, indicating that the job has been deleted. The response is as follows:<pre class="screen" id="modelarts_03_0401__en-us_topic_0000001073831232_screen96339711531">{
+  "is_success": true
+}</pre>
+</li></ol>
+</li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0400.html">Application Cases</a></div>
+</div>
+</div>
+
