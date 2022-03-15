@@ -154,7 +154,7 @@ def main():
                     if len(href_parts) > 1:
                         lnk['href'] = (
                             f"{page_url}#" +
-                            re.sub('[-_]', '', href_parts[1])
+                            re.sub('[-_]', '', href_parts[1]).lower()
                             )
                     else:
                         lnk['href'] = lnk['href'].replace(
@@ -201,6 +201,8 @@ def main():
                     r'\*\*Parent topic:.*$', '', processed_line)
                 processed_line = re.sub(
                     r'.. code:: screen', '.. code-block::', processed_line)
+                processed_line = re.sub(
+                    r'.. code:: codeblock', '.. code-block::', processed_line)
                 writer.write(processed_line)
     # Generate indexes
     for k, v in tree.items():
