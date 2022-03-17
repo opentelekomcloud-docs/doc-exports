@@ -119,6 +119,31 @@ def main():
         rename_matrix[f['uri']] = f"{target_path}/{name}.html"
 
     pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
+    docs_anchors = dict()
+
+    for f in pathlib.Path().glob("*.html"):
+        if f.name not in metadata_by_uri:
+            continue
+        # Registering section links
+        with open(f, 'r') as reader:
+            print(f"scanning {f.name}")
+            content = reader.read()
+            soup = bs4.BeautifulSoup(content, "lxml")
+            for lnk in soup.body.find_all('div', class_='section'):
+                title = lnk.find('h4')
+                anchor = None
+                if title.string:
+                    anchor = title.string
+                elif title.strings:
+                    anchor = ''.join(title.strings)
+                if anchor:
+                    title = anchor.replace(' ', '-')
+                    res = dict(
+                        fname=f.name,
+                        title=title,
+                        replace=title.lower()
+                    )
+                    docs_anchors[lnk.get('id')] = res
 
     for f in pathlib.Path().glob("*.html"):
         if f.name not in metadata_by_uri:
@@ -127,6 +152,9 @@ def main():
         target = _target['new_name']
         target_path = get_target_path(_target['p_code'], metadata_by_code)
         target_deepness = target_path.count('/') + 1
+        if not _target['p_code']:
+            # we only +1 if we are not on the same level
+            target_deepness = 0
         pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
         pathlib.Path("tmp_result/" + target_path).mkdir(
                 parents=True, exist_ok=True)
@@ -145,6 +173,7 @@ def main():
                 href = lnk.get('href')
                 if href:
                     page_url = ''
+                    anchor = ''
                     href_parts = href.split('#')
                     if href_parts[0] in rename_matrix:
                         page_url = ('../' * target_deepness) + \
@@ -152,10 +181,12 @@ def main():
                     else:
                         page_url = href_parts[0]
                     if len(href_parts) > 1:
-                        lnk['href'] = (
-                            f"{page_url}#" +
-                            re.sub('[-_]', '', href_parts[1]).lower()
-                            )
+                        anchor = href_parts[1]
+                        if anchor in docs_anchors:
+                            anchor = docs_anchors[anchor]['replace']
+                        else:
+                            anchor = re.sub('[-_]', '', anchor).lower()
+                        lnk['href'] = f"{page_url}#{anchor}"
                     else:
                         lnk['href'] = lnk['href'].replace(
                                 href_parts[0],
@@ -168,7 +199,7 @@ def main():
                     ):
                         lnk['id'] = lnk_name
                         doc_anchors[lnk_name] = 1
-            #writer.write(str(proc))
+
             for line in str(proc).splitlines():
                 table_match = table_re.match(line)
                 if table_match:
