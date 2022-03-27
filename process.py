@@ -92,6 +92,7 @@ def flatten_html(soup):
         tbl_id = tbl.get('id')
         if tbl_id:
             tbl['id'] = re.sub('[-_]', '', tbl_id)
+
     return soup.body
 
 
@@ -117,8 +118,10 @@ def main():
     for f in meta_data:
         # Construct link renaming matrix
         target_path = get_target_path(f['p_code'], metadata_by_code)
-        name = f["new_name"] if not tree.get(f['code']) else "index"
-        rename_matrix[f['uri']] = f"{target_path}/{name}.html"
+        if target_path:
+            target_path += '/'
+        name = f["new_name"] if not tree.get(f['code']) else f"{f['new_name']}/index"
+        rename_matrix[f['uri']] = f"{target_path}{name}.html"
 
     pathlib.Path("temp/").mkdir(parents=True, exist_ok=True)
     docs_anchors = dict()
@@ -139,7 +142,7 @@ def main():
                 elif title.strings:
                     anchor = ''.join(title.strings)
                 if anchor:
-                    title = anchor.replace(' ', '-')
+                    title = re.sub('[ _:]', '-', anchor)
                     res = dict(
                         fname=f.name,
                         title=title,
@@ -233,9 +236,16 @@ def main():
                 processed_line = re.sub(
                     r'\*\*Parent topic:.*$', '', processed_line)
                 processed_line = re.sub(
-                    r'.. code:: screen', '.. code-block::', processed_line)
+                    r'.. code:: screen$',
+                    r'.. code-block::', processed_line)
+                # spaces are important, since code-block may be inside of the
+                # cell
                 processed_line = re.sub(
-                    r'.. code:: codeblock', '.. code-block::', processed_line)
+                    r'.. code:: screen\s',
+                    r'.. code-block::  ', processed_line)
+                processed_line = re.sub(
+                    r'.. code:: codeblock$',
+                    r'.. code-block::', processed_line)
                 writer.write(processed_line)
     # Generate indexes
     for k, v in tree.items():
