@@ -177,25 +177,36 @@ def main():
             for lnk in proc.find_all("a"):
                 href = lnk.get('href')
                 if href:
-                    page_url = ''
-                    anchor = ''
-                    href_parts = href.split('#')
-                    if href_parts[0] in rename_matrix:
-                        page_url = ('../' * target_deepness) + \
-                            rename_matrix[href_parts[0]]
+                    # Drop anchor links to "Figure"s
+                    if (
+                        (lnk.content and lnk.content.startswith('Figure'))
+                        or
+                        (
+                            lnk.contents
+                            and ''.join(lnk.contents).startswith('Figure')
+                        )
+                    ):
+                        lnk.unwrap()
                     else:
-                        page_url = href_parts[0]
-                    if len(href_parts) > 1:
-                        anchor = href_parts[1]
-                        if anchor in docs_anchors:
-                            anchor = docs_anchors[anchor]['replace']
+                        page_url = ''
+                        anchor = ''
+                        href_parts = href.split('#')
+                        if href_parts[0] in rename_matrix:
+                            page_url = ('../' * target_deepness) + \
+                                rename_matrix[href_parts[0]]
                         else:
-                            anchor = re.sub('[-_]', '', anchor).lower()
-                        lnk['href'] = f"{page_url}#{anchor}"
-                    else:
-                        lnk['href'] = lnk['href'].replace(
-                                href_parts[0],
-                                page_url)
+                            page_url = href_parts[0]
+                        if len(href_parts) > 1:
+                            anchor = href_parts[1]
+                            if anchor in docs_anchors:
+                                anchor = docs_anchors[anchor]['replace']
+                            else:
+                                anchor = re.sub('[-_]', '', anchor).lower()
+                            lnk['href'] = f"{page_url}#{anchor}"
+                        else:
+                            lnk['href'] = lnk['href'].replace(
+                                    href_parts[0],
+                                    page_url)
                 if not href:
                     lnk_name = lnk.get('name')
                     if (
