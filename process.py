@@ -54,7 +54,7 @@ def build_doc_tree(metadata):
     return flat_tree
 
 
-def flatten_html(soup):
+def flatten_html(soup, args):
     for i in soup.body.find_all('div'):
         if "note" in i.get('class', []):
             del i['id']
@@ -88,10 +88,24 @@ def flatten_html(soup):
             i.replace_with(figure)
         else:
             i.name = 'p'
+    if args.improve_table_headers:
+        for th in soup.body.find_all('th'):
+            if hasattr(th, 'p') and th.p.string:
+                th.p.string = re.sub(
+                    r'\b/\b',
+                    ' / ',
+                    th.p.string)
     for tbl in soup.body.find_all('table'):
         tbl_id = tbl.get('id')
         if tbl_id:
             tbl['id'] = re.sub('[-_]', '', tbl_id)
+    for lnk in soup.body.find_all("a"):
+        if (
+            lnk.string
+            and re.match(r'\d+', lnk.string)
+            and lnk['href'].startswith('#')
+        ):
+            lnk.unwrap()
 
     return soup.body
 
@@ -99,7 +113,10 @@ def flatten_html(soup):
 def main():
     parser = argparse.ArgumentParser(description='Process links.')
     parser.add_argument(
-            'path', type=str, help='path to the files')
+        'path', type=str, help='path to the files')
+    parser.add_argument(
+        '--improve-table-headers', action='store_true',
+        help='Improve table headers by enforcing spaces around `/`')
     args = parser.parse_args()
     retval = os.getcwd()
     os.chdir(args.path)
@@ -172,7 +189,7 @@ def main():
             doc_anchors = dict()
             content = reader.read()
             soup = bs4.BeautifulSoup(content, "lxml")
-            proc = flatten_html(soup)
+            proc = flatten_html(soup, args)
             # Fix cross links
             for lnk in proc.find_all("a"):
                 href = lnk.get('href')
