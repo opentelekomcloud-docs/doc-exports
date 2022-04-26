@@ -1,3 +1,5 @@
+:original_name: en-us_topic_0037633087.html
+
 .. _en-us_topic_0037633087:
 
 What Is the **cloudbase-init** Account in Windows ECSs Used for?
