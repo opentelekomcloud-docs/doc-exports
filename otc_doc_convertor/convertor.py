@@ -179,22 +179,22 @@ class OTCDocConvertor:
         for li in soup.body.find_all("li"):
             del li['id']
 
-        for pre in soup.body.find_all("pre"):
-            text = pre.get_text()
-            # if text.startswith("{"):
-            #    pre["class"] = "data"
-            if re.search(
-                r'\[[a-z]*@\w+.*\][\s#>]?',
-                text
-            ):
-                # Something like "[root@ecs-test-0001 ~]#"
-                pre["class"] = "console"
-            elif re.match(
-                r'^(GET|PUT|POST|DELETE)',
-                text
-            ):
-                # Something like "DELETE https://some_url"
-                pre["class"] = "text"
+        # for pre in soup.body.find_all("pre"):
+        #     text = pre.get_text()
+        #     # if text.startswith("{"):
+        #     #    pre["class"] = "data"
+        #     if re.search(
+        #         r'\[[a-z]*@\w+.*\][\s#>]?',
+        #         text
+        #     ):
+        #         # Something like "[root@ecs-test-0001 ~]#"
+        #         pre["class"] = "console"
+        #     elif re.match(
+        #         r'^(GET|PUT|POST|DELETE)',
+        #         text
+        #     ):
+        #         # Something like "DELETE https://some_url"
+        #         pre["class"] = "text"
 
         # And now specialities
         rawize_strings = [
