@@ -1,0 +1,75 @@
+---
+- hosts: all
+  vars:
+    docs_rst_location: "docs"
+    docs_base_location: "base"
+    docs_new_location: "new"
+
+  tasks:
+    - name: Read project docs configuration
+      include_vars: "{{ docs_update_data_file }}"
+
+    - name: Detect list of changes
+      command: "git log -1 --name-only --pretty="
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
+      register: git_log
+      ignore_errors: true
+
+    - name: Generate new RSTs
+      include_role:
+        name: "convert_doc"
+      vars:
+        doc_label: "{{ doc.label }}"
+        dest: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}/{{ docs_new_location }}"
+        source: "{{ zuul.project.src_dir }}/{{ doc.html_location }}"
+      loop: "{{ docs }}"
+      loop_control:
+        loop_var: "doc"
+        label: "{{ doc.label }}"
+      when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor')"
+
+    - name: Restore to the previous git state
+      command: "git checkout HEAD^1"
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
+
+    - name: Generate base RSTs
+      include_role:
+        name: "convert_doc"
+      vars:
+        doc_label: "{{ doc.label }}"
+        dest: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}/{{ docs_base_location }}"
+        source: "{{ zuul.project.src_dir }}/{{ doc.html_location }}"
+      loop: "{{ docs }}"
+      loop_control:
+        loop_var: "doc"
+        label: "{{ doc.label }}"
+      when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor')"
+
+    - name: Generate patch file
+      include_role:
+        name: "generate_doc_patch"
+      vars:
+        doc_label: "{{ doc.label }}"
+        generate_doc_patch_base_location: "{{ docs_base_location }}"
+        generate_doc_patch_new_location: "{{ docs_new_location }}"
+        generate_doc_patch_base: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}"
+        generate_doc_patch_patch_location: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+      loop: "{{ docs }}"
+      loop_control:
+        loop_var: "doc"
+        label: "{{ doc.label }}"
+      when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor')"
+
+    - name: Fetch generated artifacts
+      include_role:
+        name: "fetch_doc_artifacts"
+      vars:
+        fetch_doc_artifacts_name: "{{ doc.label }}"
+        fetch_doc_artifacts_rst_source: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}/{{ docs_new_location }}"
+        fetch_doc_artifacts_patch: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+      loop: "{{ docs }}"
+      loop_control:
+        loop_var: "doc"
+        label: "{{ doc.label }}"

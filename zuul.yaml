@@ -1,9 +1,110 @@
+- secret:
+    name: zuul_eco_doc_exports_vault
+    data:
+      vault_role_id: !encrypted/pkcs1-oaep
+        - i+G23kbxo4w3iA7zeqcD4ZeEXkQfzfQZ9AZJemKMkhM1n2gHM35kA7OBCAwKurhTsEbVv
+          xtTgjW3S/fnhA45xc29DeAHluGh7SSY5GoVbyZG9aXrHOt7wMTxGBH1hzZcbA2Yts6IcV
+          kIdyrcN8/LQUNcDX1KNVQk22//MRlB+c81sOsByJtKIwbsuukU0PCpgnaaDh+VptpYOdU
+          YlbUN15q049fG9MdXY9NQuZWuL+w2bG/7jE9AvIVQbJFQHcTmY1fuy+fM9uSi5D/FH9sA
+          NXse3y7ncGbe+ps1wuagyMbWA0SI/SuoEABG0ePQ3QCSmZexyK7UuxxfWTVa7PwGEJDlr
+          bFQiHEz2DlufgY0LloSK8X0gu0dBo/AmFtoZASHRvu/8tcD16cGlLSK/IsoHa8NB8bCM3
+          lyd95WLuFVEdytc7PxK0ccum/9MMNLcRXB9Tmd34wiZ19EF891J/YJIaTo/baurZ+87KY
+          lMuMp2P+PFM50LhZzsBD6kv2P4eKMYPsYpv2UVDw9xrOTgJJ4131r+MpUKADwdeFGa6ux
+          ovDK0GnZXCZ47MDbkY5esaLaCiIDKpJuiRp6rUKSxne5hYp9S4YyRGswjNHXGcWQatLeS
+          qkcsZ1nhfKnV0cTf1+6vCh8q09zW7v4IxQ8pj1O+bzNJ2hPuUJEnT1XIs5LZUg=
+      vault_token_path: !encrypted/pkcs1-oaep
+        - OIGL6UXXZuoFKe+v9u/53hmZkBOo+FYLiz16guzcVJ8MupWe6PtZ9LOggO8yDmNpzs6tQ
+          hQKdsnTJa78nXgZq25V/1wKVV/yz/JSPW84HAWllwN/+n9zqTDJuXDWJwaivGrBxCXLnD
+          PLAXauwB9KGfDSuWKtm8JEFPZvXrFSF8GQXO/hRhL4N1Vxf5cyNZ+nEiWCfJKx0ajXwW3
+          X9LitwfOt4greHs+QAxUQHhaOPqEfPziIriKx9/aHVvKkCBPIXmxXcOKt8s6vSGbLDKy+
+          MxxaE7FXH7fHlW4mhnwqDBUM6kRVOunR/iWrBrSspZp1DTsVxSunHxH5Cw8apveVyeZoL
+          Y6JsQAi4m4Oy+eybpcAXUOTmEeSgydGa0Vm0s3t96N2iiEnhT/MnAk2N5xNwO1CVr7Spn
+          XIZicW4xldAFiy7GKDfNGAgPiqzcpRL4QtzePTj1U5tB7LV9Mg25T3Z4IwxA9NiIM7mtF
+          1qnH9ebWo88ddnR0wzCcEriNVHkS47vpY971kPCFPIlwHNobSA01VQiyDS/s7MgoEev+L
+          R6XGpSbLiduBo4kjiXen2RNeNBC+8QyYANKeaJs82py2H48dPQTpBt3gJbMPy9EqgO+qU
+          PHJ07yaa4zZsTOnG0e6iSWOC9nt7TOJVAmzwipXX33brJ7F8XxP3k1Tui6gFbk=
+
+- job:
+    name: otc-doc-exports-convert-base
+    parent: unittests
+    abstract: true
+    nodeset: ubuntu-focal
+    description: |
+      Convert doc exports from html to rst and generate corresponding rst diff
+      files.
+    pre-run: playbooks/pre.yaml
+    run: playbooks/run.yaml
+
+- job:
+    name: otc-doc-exports-convert-compute
+    parent: otc-doc-exports-convert-base
+    description: |
+      Convert Compute doc exports from html to rst and generate
+      corresponding rst patch files.
+    files:
+      - otc_doc_convertor
+      - docs/ecs
+    vars:
+      docs_update_data_file: "docs_compute.yaml"
+
+- job:
+    name: otc-doc-exports-convert-big-data
+    parent: otc-doc-exports-convert-base
+    description: |
+      Convert BigData doc exports from html to rst and generate
+      corresponding rst patch files.
+    files:
+      - otc_doc_convertor
+      - docs/modelarts
+    vars:
+      docs_update_data_file: "docs_big-data.yaml"
+
+- job:
+    name: otc-doc-exports-propose-update-compute
+    parent: otc-doc-exports-convert-compute
+    description: |
+      Propose Compute changes to the final projects
+      files.
+    post-run: playbooks/propose_update.yaml
+    files:
+      - otc_doc_convertor
+      - docs/ecs
+    secrets:
+      - secret: zuul_eco_doc_exports_vault
+        name: zuul_vault
+        pass-to-parent: true
+
+- job:
+    name: otc-doc-exports-propose-update-big-data
+    parent: otc-doc-exports-convert-big-data
+    description: |
+      Propose BigData changes to the final projects
+      files.
+    post-run: playbooks/propose_update.yaml
+    files:
+      - otc_doc_convertor
+      - docs/modelarts
+    secrets:
+      - secret: zuul_eco_doc_exports_vault
+        name: zuul_vault
+        pass-to-parent: true
+
 - project:
     merge-mode: squash-merge
     default-branch: main
     check:
       jobs:
-        - noop
+        - otc-tox-pep8:
+            nodeset: ubuntu-focal
+        - otc-doc-exports-convert-compute
+        - otc-doc-exports-convert-big-data
+    check-post:
+      jobs:
+        - otc-doc-exports-propose-update-compute
+        - otc-doc-exports-propose-update-big-data
     gate:
       jobs:
-        - noop
+        - otc-tox-pep8:
+            nodeset: ubuntu-focal
+        - otc-doc-exports-convert-compute
+        - otc-doc-exports-convert-big-data

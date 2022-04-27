@@ -179,22 +179,22 @@ class OTCDocConvertor:
         for li in soup.body.find_all("li"):
             del li['id']
 
-        # for pre in soup.body.find_all("pre"):
-        #     text = pre.get_text()
-        #     # if text.startswith("{"):
-        #     #    pre["class"] = "data"
-        #     if re.search(
-        #         r'\[[a-z]*@\w+.*\][\s#>]?',
-        #         text
-        #     ):
-        #         # Something like "[root@ecs-test-0001 ~]#"
-        #         pre["class"] = "console"
-        #     elif re.match(
-        #         r'^(GET|PUT|POST|DELETE)',
-        #         text
-        #     ):
-        #         # Something like "DELETE https://some_url"
-        #         pre["class"] = "text"
+        for pre in soup.body.find_all("pre"):
+            text = pre.get_text()
+            # if text.startswith("{"):
+            #    pre["class"] = "data"
+            if re.search(
+                r'\[[a-z]*@\w+.*\][\s#>]?',
+                text
+            ):
+                # Something like "[root@ecs-test-0001 ~]#"
+                pre["class"] = "console"
+            elif re.match(
+                r'^(GET|PUT|POST|DELETE)',
+                text
+            ):
+                # Something like "DELETE https://some_url"
+                pre["class"] = "text"
 
         # And now specialities
         rawize_strings = [
@@ -344,7 +344,7 @@ class OTCDocConvertor:
                  open(pathlib.Path(dest, target_path,
                       f"{target}.rst"), 'w') as writer:
                 logging.info(f"Post processing {target}")
-                # writer.write(f":original_name: {f.name}\n\n")
+                writer.write(f":original_name: {f.name}\n\n")
                 # Add root file label
                 writer.write(f".. _{f.name.replace('.html', '')}:\n\n")
                 # post process some usual stuff
@@ -363,15 +363,15 @@ class OTCDocConvertor:
                     processed_line = re.sub(
                         r'.. code:: screen$',
                         r'.. code-block::', processed_line)
-                    # for lexer in ["json", "bash", "text", "console"]:
-                    #     processed_line = re.sub(
-                    #         f".. code:: {lexer}$",
-                    #         f".. code-block:: {lexer}", processed_line)
-                    #     if re.match(rf".. code:: {lexer}\s", processed_line):
-                    #         logging.error(
-                    #             f"'code-block: {lexer}' with something "
-                    #             "afterwards")
-                    #         exit(1)
+                    for lexer in ["json", "bash", "text", "console"]:
+                        processed_line = re.sub(
+                            f".. code:: {lexer}$",
+                            f".. code-block:: {lexer}", processed_line)
+                        if re.match(rf".. code:: {lexer}\s", processed_line):
+                            logging.error(
+                                f"'code-block: {lexer}' with something "
+                                "afterwards")
+                            exit(1)
                     # spaces are important, since code-block may reside inside
                     # of the cell
                     processed_line = re.sub(

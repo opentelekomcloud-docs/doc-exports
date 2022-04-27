@@ -1,0 +1,4 @@
+- name: Convert {{ doc_label | default('') }} HTML to RST
+  args:
+    executable: "/bin/bash"
+  shell: "source {{ zuul_work_virtualenv }}/bin/activate; otc-convert-doc --dest {{ dest }} {{ source }}"

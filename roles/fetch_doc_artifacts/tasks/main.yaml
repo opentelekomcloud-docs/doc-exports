@@ -1,0 +1,19 @@
+- name: Inspect {{ fetch_doc_artifacts_name }} build directory
+  find:
+    file_type: any
+    follow: true
+    paths: "{{ fetch_doc_artifacts_rst_source }}"
+  register: doc_dir
+
+- name: Process {{ fetch_doc_artifacts_name }} archive
+  when: "doc_dir.matched > 0"
+  include_tasks: doc.yaml
+
+- name: Find {{ fetch_doc_artifacts_name }} Patch
+  stat:
+    path: "{{ fetch_doc_artifacts_patch }}"
+  register: doc_patch
+
+- name: Process {{ fetch_doc_artifacts_name }} Patch file
+  when: "doc_patch.stat.exists"
+  include_tasks: patch.yaml
