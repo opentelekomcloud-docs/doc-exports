@@ -1,0 +1,111 @@
+---
+- name: Check patch presense
+  ansible.builtin.stat:
+    path: "{{ apply_doc_patch_patch_file }}"
+  register: "patch_stat"
+
+- name: Clone Repository
+  no_log: true
+  command: "git clone https://x-access-token:{{ github_token }}@github.com/{{ apply_doc_patch_repository }} {{ doc_label }}"
+  args:
+    chdir: "{{ ansible_user_dir }}"
+  when: "patch_stat.stat.exists"
+
+- name: Try to apply patch
+  command: "patch -p1 -N -f -i {{ apply_doc_patch_patch_file }}"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}/{{ apply_doc_patch_target_location }}"
+  ignore_errors: true
+  when: "patch_stat.stat.exists"
+
+- name: Find patch backup and reject files
+  find:
+    paths: "{{ ansible_user_dir }}/{{ doc_label }}/{{ apply_doc_patch_target_location }}"
+    patterns: "^.*?\\.(?:rej)$"
+    use_regex: true
+    recurse: true
+  register: rej_files
+  when: "patch_stat.stat.exists"
+
+- name: Drop all interim patch files
+  command: "find . \\( -name '*.rst.orig' -or -name '*.rst.rej' \\) -exec rm {} \\;"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}/{{ apply_doc_patch_target_location }}"
+  register: drop_failed
+  when: "patch_stat.stat.exists"
+
+- name: Perform git diff to see changes
+  command: "git diff"
+  register: diff_output
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}/{{ apply_doc_patch_target_location }}"
+  when: "patch_stat.stat.exists"
+
+- name: Checkout branch
+  command: "git checkout -b {{ apply_doc_patch_branch_name }}"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+- name: Stage files
+  command: "git add ."
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+# Maybe put some reference in the commit message
+- name: Commit files
+  command: "git commit -m 'Update content'"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+- name: Push changes
+  command: "git push -u origin {{ apply_doc_patch_branch_name }} --force"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+# Gists are not available by GitHub App, do not try it now
+# - name: Create patch gist
+#   command: "{{ apply_doc_patch_gh }} gist create {{ apply_doc_patch_patch_file }} -d '{{ doc_label }} patch file for opentelekomcloud-docs/doc-exports#{{ zuul.change }}'"
+#   register: gh_gist
+#   args:
+#     chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+#   when:
+#     - "patch_stat.stat.exists"
+#     - "diff_output.stdout != ''"
+
+- name: Generate PR text
+  template:
+    dest: "{{ apply_doc_patch_pr_body_file }}"
+    src: "pr_body.txt.j2"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+- name: Search existing Pull Request
+  command: "{{ apply_doc_patch_gh }} pr list --search 'head:{{ apply_doc_patch_branch_name }}' --json id"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  register: "existing_pr"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+
+- name: Open Pull Request
+  command: "{{ apply_doc_patch_gh }} pr create -B main -F {{ apply_doc_patch_pr_body_file }} -t '{{ apply_doc_patch_pr_title }}' -l {{ apply_doc_patch_pr_label }}"
+  args:
+    chdir: "{{ ansible_user_dir }}/{{ doc_label }}"
+  when:
+    - "patch_stat.stat.exists"
+    - "diff_output.stdout != ''"
+    - "existing_pr.stdout == '[]'"

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  roles:
+    - ensure-python
+    - ensure-virtualenv
+    - ensure-gh
+  tasks:
+    - name: Install convertor
+      pip:
+        chdir: "{{ zuul.project.src_dir }}"
+        virtualenv: "{{ ansible_user_dir }}/.venv"
+        name: .
+        editable: "yes"

@@ -1,0 +1,43 @@
+- name: Create temporary archive file
+  tempfile:
+    state: file
+    suffix: ".tar.gz"
+  register: doc_archive
+
+- name: Archive Doc
+  command: "tar -f {{ doc_archive.path }} -C {{ fetch_doc_artifacts_rst_source }} -cz ."
+  args:
+    warn: false
+
+- block:
+    - name: Fetch archive
+      synchronize:
+        dest: "{{ zuul.executor.log_root }}/{{ fetch_doc_artifacts_name }}.tar.gz"
+        mode: pull
+        src: "{{ doc_archive.path }}"
+        verify_host: true
+        owner: no
+        group: no
+  when: not zuul_use_fetch_output
+
+- block:
+    - name: Copy archive
+      copy:
+        dest: "{{ zuul_output_dir }}/logs/{{ fetch_doc_artifacts_name }}.tar.gz"
+        src: "{{ doc_archive.path }}"
+        mode: 0644
+        remote_src: true
+  when: zuul_use_fetch_output
+
+- name: Return artifact to Zuul
+  zuul_return:
+    data:
+      zuul:
+        artifacts:
+          - name: "{{ fetch_doc_artifacts_name }} archive"
+            url: "{{ fetch_doc_artifacts_name }}.tar.gz"
+            metadata:
+              type: docs_archive
+              doc_service: "{{ doc.service }}"
+              doc_type: "{{ doc.type }}"
+              doc_label: "{{ fetch_doc_artifacts_name }}"

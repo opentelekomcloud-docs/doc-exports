@@ -1,0 +1,21 @@
+---
+- name: Check base state for {{ doc_label }}
+  stat:
+    path: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_base_location }}"
+  register: base_stat
+
+- name: Check new state for {{ doc_label }}
+  stat:
+    path: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_new_location }}"
+  register: new_stat
+
+- name: Generate {{ doc_label }} patch file
+  shell: "diff -ruN {{ generate_doc_patch_base_location }} {{ generate_doc_patch_new_location }} > {{ generate_doc_patch_patch_location }}"
+  args:
+    chdir: "{{ generate_doc_patch_base }}"
+  register: diff_cmd
+  failed_when: "diff_cmd.rc >= 2"
+  changed_when: "diff_cmd.rc == 1"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
