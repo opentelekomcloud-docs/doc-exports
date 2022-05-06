@@ -1,0 +1,577 @@
+<a name="modelarts_21_0038"></a><a name="modelarts_21_0038"></a>
+
+<h1 class="topictitle1">Using TensorFlow for Handwritten Digit Recognition</h1>
+<div id="body0000001233787406"><p class="firstparagraph" id="modelarts_21_0038__p18389930">This section describes how to use TensorFlow to recognize handwritten digits in images from an MNIST dataset on the ModelArts platform.</p>
+<p class="firstparagraph" id="modelarts_21_0038__p2794612">Before using the following sample, complete necessary operations. For details, see <a href="#modelarts_21_0038__section51133584536">Preparations</a>. The following describes the process of using TensorFlow to recognize handwritten digits in images.</p>
+<ol id="modelarts_21_0038__ol13189358"><li id="modelarts_21_0038__li1681156121014"><strong id="modelarts_21_0038__b134011654125914"><a href="#modelarts_21_0038__section336312088">Preparing Data</a></strong>: Obtain the MNIST dataset and upload it to OBS.</li><li id="modelarts_21_0038__li46544415"><strong id="modelarts_21_0038__b1130914121408"><a href="#modelarts_21_0038__section42320342266">Training a Model</a></strong>: Use the TensorFlow framework to compile the model training script and create a training job for model training.</li><li id="modelarts_21_0038__li3333121619311"><strong id="modelarts_21_0038__b1196215546178"><a href="#modelarts_21_0038__section740614592308">Importing a Model</a></strong>: After training is complete, import the model to ModelArts.</li><li id="modelarts_21_0038__li1656115328171"><strong id="modelarts_21_0038__b7490125631716"><a href="#modelarts_21_0038__section18653124916459">Deploying a Service</a></strong>: Deploy the imported model as a real-time service.</li><li id="modelarts_21_0038__li12001237"><strong id="modelarts_21_0038__b1783225761711"><a href="#modelarts_21_0038__section9961181112311">Performing Prediction</a></strong>: Initiate a prediction request and obtain the prediction result.</li></ol>
+<div class="section" id="modelarts_21_0038__section51133584536"><a name="modelarts_21_0038__section51133584536"></a><a name="section51133584536"></a><h4 class="sectiontitle">Preparations</h4><ul id="modelarts_21_0038__en-us_topic_0168474775_ul37659178457"><li id="modelarts_21_0038__en-us_topic_0168474775_li134559200575">Obtain the AK/SK of the account and configure the AK/SK in <strong id="modelarts_21_0038__b233915480115">Settings</strong> of ModelArts. For details, see <a href="modelarts_08_0006.html">Configuring Access Authorization (Global Configuration)</a>.</li><li id="modelarts_21_0038__en-us_topic_0168474775_li195524588321">You have created a bucket and folders in OBS for storing the sample dataset and model. In this example, create a bucket named <span class="parmvalue" id="modelarts_21_0038__en-us_topic_0168474775_parmvalue11552458103211"><b>test-modelarts</b></span> and folders listed in <a href="#modelarts_21_0038__en-us_topic_0168474775_table2061005120337">Table 1</a>.<div class="p" id="modelarts_21_0038__en-us_topic_0168474775_p47351751133314">For details about how to create an OBS bucket and folder, see <a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/en-us_topic_0045853662.html" target="_blank" rel="noopener noreferrer">Creating a Bucket</a> and <a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/obs_03_0316.html" target="_blank" rel="noopener noreferrer">Creating a Folder</a>. Ensure that OBS and ModelArts are in the same region and belong to the same account.
+<div class="tablenoborder"><a name="modelarts_21_0038__en-us_topic_0168474775_table2061005120337"></a><a name="en-us_topic_0168474775_table2061005120337"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0038__en-us_topic_0168474775_table2061005120337" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Folder list</caption><thead align="left"><tr id="modelarts_21_0038__en-us_topic_0168474775_row1860945116333"><th align="left" class="cellrowborder" valign="top" width="31.180000000000003%" id="mcps1.3.4.2.2.3.3.2.3.1.1"><p id="modelarts_21_0038__en-us_topic_0168474775_p10609195123319">Folder</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="68.82000000000001%" id="mcps1.3.4.2.2.3.3.2.3.1.2"><p id="modelarts_21_0038__en-us_topic_0168474775_p206091751203312">Function</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0038__en-us_topic_0168474775_row06099518334"><td class="cellrowborder" valign="top" width="31.180000000000003%" headers="mcps1.3.4.2.2.3.3.2.3.1.1 "><p id="modelarts_21_0038__en-us_topic_0168474775_p13609175110335">mnist/dataset-mnist</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.82000000000001%" headers="mcps1.3.4.2.2.3.3.2.3.1.2 "><p id="modelarts_21_0038__en-us_topic_0168474775_p1609205193315">Stores the dataset.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__en-us_topic_0168474775_row1660955118338"><td class="cellrowborder" valign="top" width="31.180000000000003%" headers="mcps1.3.4.2.2.3.3.2.3.1.1 "><p id="modelarts_21_0038__en-us_topic_0168474775_p3609175193317">mnist/mnist-tensorflow-code</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.82000000000001%" headers="mcps1.3.4.2.2.3.3.2.3.1.2 "><p id="modelarts_21_0038__en-us_topic_0168474775_p1360910519337">Stores the training script.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__en-us_topic_0168474775_row11609185115337"><td class="cellrowborder" valign="top" width="31.180000000000003%" headers="mcps1.3.4.2.2.3.3.2.3.1.1 "><p id="modelarts_21_0038__en-us_topic_0168474775_p460955193312">mnist/mnist-model</p>
+</td>
+<td class="cellrowborder" valign="top" width="68.82000000000001%" headers="mcps1.3.4.2.2.3.3.2.3.1.2 "><p id="modelarts_21_0038__en-us_topic_0168474775_p260919518338">Stores the model and prediction files outputted from training.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</li></ul>
+</div>
+<div class="section" id="modelarts_21_0038__section336312088"><a name="modelarts_21_0038__section336312088"></a><a name="section336312088"></a><h4 class="sectiontitle">Preparing Data</h4><div class="p" id="modelarts_21_0038__p1734391821013">Obtain the <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener noreferrer">MNIST dataset</a>. Upload the following dataset files to the <span class="filepath" id="modelarts_21_0038__filepath112751157182"><b>test-modelarts/mnist/dataset-mnist</b></span> directory listed in <a href="#modelarts_21_0038__en-us_topic_0168474775_table2061005120337">Table 1</a>.<ul id="modelarts_21_0038__ul2071421613109"><li id="modelarts_21_0038__li144157501563"><span class="filepath" id="modelarts_21_0038__filepath341545019612"><b>t10k-images-idx3-ubyte.gz</b></span>: validation set</li><li id="modelarts_21_0038__li1341520509611"><span class="filepath" id="modelarts_21_0038__filepath841518503616"><b>t10k-labels-idx1-ubyte.gz</b></span>: labels of the validation set</li><li id="modelarts_21_0038__li18415250761"><span class="filepath" id="modelarts_21_0038__filepath19415135011610"><b>train-images-idx3-ubyte.gz</b></span>: training set</li><li id="modelarts_21_0038__li571471618105"><span class="filepath" id="modelarts_21_0038__filepath13415105020611"><b>train-labels-idx1-ubyte.gz</b></span>: labels of the training set</li></ul>
+</div>
+</div>
+<div class="section" id="modelarts_21_0038__section42320342266"><a name="modelarts_21_0038__section42320342266"></a><a name="section42320342266"></a><h4 class="sectiontitle">Training a Model</h4><p id="modelarts_21_0038__p299244011412">After data is prepared, use TensorFlow to compile the training script code. ModelArts provides a code sample, <span class="filepath" id="modelarts_21_0038__filepath3236217123715"><b>train_mnist_tf.py</b></span>. The following uses this sample to train a model.</p>
+<ol id="modelarts_21_0038__ol3642137150"><li id="modelarts_21_0038__li12137553112111">Upload the training script <a href="#modelarts_21_0038__section10371851514"><strong id="modelarts_21_0038__b78073453189">train_mnist_tf.py</strong></a> to the <span class="filepath" id="modelarts_21_0038__filepath17383939132311"><b>test-modelarts/mnist/mnist-tensorflow-code</b></span> directory listed in <a href="#modelarts_21_0038__en-us_topic_0168474775_table2061005120337">Table 1</a>.</li><li id="modelarts_21_0038__li23924204212">On the ModelArts management console, choose <span class="wintitle" id="modelarts_21_0038__wintitle1190164011270"><b>Training Management &gt; Training Jobs</b></span>, and click <span class="uicontrol" id="modelarts_21_0038__uicontrol18478253132712"><b>Create</b></span> in the upper left corner.</li><li id="modelarts_21_0038__li2795175410273">On the <span class="wintitle" id="modelarts_21_0038__wintitle1911142220196"><b>Create Training Job</b></span> page, set required parameters based on <a href="#modelarts_21_0038__table1374631816418">Table 2</a>.
+<div class="tablenoborder"><a name="modelarts_21_0038__table1374631816418"></a><a name="table1374631816418"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0038__table1374631816418" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Training job parameters</caption><thead align="left"><tr id="modelarts_21_0038__row1974417181414"><th align="left" class="cellrowborder" valign="top" width="23.01%" id="mcps1.3.6.3.3.3.2.3.1.1"><p id="modelarts_21_0038__p774441814113">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="76.99000000000001%" id="mcps1.3.6.3.3.3.2.3.1.2"><p id="modelarts_21_0038__p8744161834117">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0038__row07441181413"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p1474411186417">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p07447181415">The value is specified by the system by default. You can change the value based on the site requirements, for example, <strong id="modelarts_21_0038__b479640122912">trainjob-mnist</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row1974514181418"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p1374491854113">Algorithm Source</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p37451218184117">Select <strong id="modelarts_21_0038__b202406566292">frequently-used</strong>.</p>
+<ul id="modelarts_21_0038__ul374591894119"><li id="modelarts_21_0038__li157452180419"><strong id="modelarts_21_0038__b1142024491918">AI Engine</strong>: TensorFlow, TF-1.8.0-python2.7</li><li id="modelarts_21_0038__li1474512188413"><strong id="modelarts_21_0038__b147431827183311">Code Directory</strong>: Click <strong id="modelarts_21_0038__b5513035123320">Select</strong> and select the OBS directory where the training script is stored. Set this parameter to the upper-level directory of the training script.</li><li id="modelarts_21_0038__li3745618124113"><strong id="modelarts_21_0038__b1248953914383">Boot File</strong>: Click <strong id="modelarts_21_0038__b211412456387">Select</strong> and select the training script <strong id="modelarts_21_0038__b159796502382">train_mnist_tf.py</strong> in the code directory.</li></ul>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row174561824117"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p87451418144117">Data Source</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p1574561894116">Select <strong id="modelarts_21_0038__b163411917419">Data path</strong> and then select the OBS path for storing the dataset, that is, the data storage path described in <a href="#modelarts_21_0038__section336312088">Preparing Data</a>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row17451118184114"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p13745171812417">Training Output Path</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p57451818124118">Set this parameter to the OBS directory created in <a href="#modelarts_21_0038__section51133584536">Preparations</a> for storing the trained model.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row794913019426"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p1094917044219">Running Parameter</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p694910154217">Retain the default value. In this example, no other parameters need to be added.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row1474618187417"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p17745121864116">Resource Pool</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p14746418134112">Select <strong id="modelarts_21_0038__b26601045104611">Public resource pools</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row074691812415"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p187469189413">Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p0746318144115">Select <strong id="modelarts_21_0038__b178711150152916">CPU</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row127461618114111"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p774681818413">Specifications</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p47461618174116">Select <strong id="modelarts_21_0038__b10680174816403">CPU: 2 vCPUs | 8 GiB</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row11362556418"><td class="cellrowborder" valign="top" width="23.01%" headers="mcps1.3.6.3.3.3.2.3.1.1 "><p id="modelarts_21_0038__p15136755134115">Compute Nodes</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.99000000000001%" headers="mcps1.3.6.3.3.3.2.3.1.2 "><p id="modelarts_21_0038__p1136855174111">Set this parameter to <strong id="modelarts_21_0038__b1996714508474">1</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fignone" id="modelarts_21_0038__fig67462018144112"><span class="figcap"><b>Figure 1 </b>Basic information for creating a training job</span><br><span><img id="modelarts_21_0038__image13673664454" src="en-us_image_0000001278010757.png"></span></div>
+<div class="fignone" id="modelarts_21_0038__fig18746141811415"><span class="figcap"><b>Figure 2 </b>Parameters for creating a training job</span><br><span><img id="modelarts_21_0038__image119681818174520" src="en-us_image_0000001277931129.png"></span></div>
+<div class="fignone" id="modelarts_21_0038__fig774192913455"><span class="figcap"><b>Figure 3 </b>Resource specifications selected for a training job</span><br><span><img id="modelarts_21_0038__image4741829134516" src="en-us_image_0000001233650798.png"></span></div>
+</li><li id="modelarts_21_0038__li34756521519">Check the parameters of the training job and click <span class="uicontrol" id="modelarts_21_0038__uicontrol98442571613"><b>Create Now</b></span>.</li><li class="msobodytext" id="modelarts_21_0038__li128731186150">On the <strong id="modelarts_21_0038__b11328105219507">Training Jobs</strong> page, when the training job status changes to <strong id="modelarts_21_0038__b032818528508">Running Success</strong>, the model training is complete. If any exception occurs, click the job name to go to the job details page and view the training job logs.<div class="note" id="modelarts_21_0038__note55048517155"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_21_0038__p14504659157">The training job may take more than 10 minutes to complete. If the training time exceeds a certain period (for example, one hour), manually stop it to release resources. Otherwise, the account balance may be insufficient, especially for the training job using GPUs.</p>
+</div></div>
+</li></ol>
+</div>
+<div class="section" id="modelarts_21_0038__section740614592308"><a name="modelarts_21_0038__section740614592308"></a><a name="section740614592308"></a><h4 class="sectiontitle">Importing a Model</h4><p id="modelarts_21_0038__p966694751715">After model training is complete, you can import the model to ModelArts and deploy the model as a real-time service. Before deploying a model, obtain <a href="#modelarts_21_0038__section868435781614">Inference Code (customize_service.py)</a> and <a href="#modelarts_21_0038__section655951611710">Configuration File (config.json)</a>. The inference code and configuration file are sample files provided by ModelArts.</p>
+<ol id="modelarts_21_0038__ol1721712554175"><li id="modelarts_21_0038__li1222343932620">Before deploying the model, upload the inference code and configuration file to the corresponding OBS path.<p id="modelarts_21_0038__p16683439152610"><a name="modelarts_21_0038__li1222343932620"></a><a name="li1222343932620"></a>In this example, the OBS path for saving the outputted model is <span class="filepath" id="modelarts_21_0038__filepath13543134810331"><b>test-modelarts/mnist/mnist-model/model</b></span>. Therefore, the inference script and configuration file need to be uploaded to this directory.</p>
+<div class="note" id="modelarts_21_0038__note1965135612611"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="modelarts_21_0038__ul61215486327"><li id="modelarts_21_0038__li1712124812323">Upload the files after the training is complete.</li><li id="modelarts_21_0038__li812748183213">If <a href="#modelarts_21_0038__section42320342266">Training a Model</a> fails, the training job will be executed for multiple times. In this case, different versions are generated. Directories of multiple versions are generated in the <span class="filepath" id="modelarts_21_0038__filepath1112184810322"><b>mnist-model</b></span> directory, for example, <strong id="modelarts_21_0038__b1365210291822">V0001</strong> and <strong id="modelarts_21_0038__b978818311725">V0002</strong>. Upload the inference script and configuration file to the <strong id="modelarts_21_0038__b17951844226">model</strong> folder of the corresponding version based on the version of the training job, for example, <span class="filepath" id="modelarts_21_0038__filepath11645478332"><b>test-modelarts/mnist/mnist-model/V0002/model</b></span>.</li></ul>
+</div></div>
+</li><li id="modelarts_21_0038__li195121749133310">On the ModelArts management console, choose <span class="parmname" id="modelarts_21_0038__parmname38231357425"><b>Model Management</b></span> &gt; <span class="parmname" id="modelarts_21_0038__parmname13824557321"><b>Models</b></span> in the left navigation pane. On the <span class="wintitle" id="modelarts_21_0038__wintitle1582515711219"><b>Models</b></span> page, click <span class="uicontrol" id="modelarts_21_0038__uicontrol11826145713219"><b>Import</b></span>.</li><li id="modelarts_21_0038__li12703191833416">On the <span class="wintitle" id="modelarts_21_0038__wintitle493692711361"><b>Import Model</b></span> page, set required parameters shown in <a href="#modelarts_21_0038__fig1391183516364">Figure 4</a> and click <span class="uicontrol" id="modelarts_21_0038__uicontrol163283017367"><b>Create Now</b></span>.<p id="modelarts_21_0038__p17696123593617">Set <strong id="modelarts_21_0038__b628224514318">Meta Model Source</strong> to <strong id="modelarts_21_0038__b128715458317">OBS</strong>. Set <strong id="modelarts_21_0038__b145961130445">Meta Model</strong> to the path specified by <span class="parmname" id="modelarts_21_0038__parmname1560113301846"><b>Training Output Path</b></span> in the training job.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0038__table16840120104419" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Parameters for importing a model</caption><thead align="left"><tr id="modelarts_21_0038__row11840182014443"><th align="left" class="cellrowborder" valign="top" width="30.23%" id="mcps1.3.7.3.3.5.2.3.1.1"><p id="modelarts_21_0038__p3840220194411">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="69.77%" id="mcps1.3.7.3.3.5.2.3.1.2"><p id="modelarts_21_0038__p19840420184412">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0038__row684015208447"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p98403206441">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p084011202444">Set the model name, for example, <strong id="modelarts_21_0038__b15410411457">model-mnist</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row28401920134410"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p8441131016198">Meta Model Source</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p384014205442">Select <span class="parmname" id="modelarts_21_0038__parmname6255112051912"><b>Training job</b></span>. Set <strong id="modelarts_21_0038__b17415246968">Training Job</strong> and <strong id="modelarts_21_0038__b570482616">Version</strong> to the job and version created in the previous step. After a training job is selected, the configuration file and inference code in the corresponding directory are automatically identified.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row5840122034416"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p11840620124412">Deployment Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p8840720104410">Select <strong id="modelarts_21_0038__b7193203117718">Real-time services</strong>.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row17840920164417"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p0840122064412">Configuration File</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p18841820174411">The configuration file has been uploaded to the directory where the model is located. Therefore, the button is disabled by default.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row16941460190"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p109494611916">Inference Code</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p1394194651913">The inference code has been uploaded to the directory where the model is located. The path of the inference code is automatically displayed.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row49311737192013"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p693123712015">Parameter Configuration</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p19315373209">Click the <strong id="modelarts_21_0038__b1531114741013">POST</strong> area to view the input and output parameters of the model.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row8500134361919"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p18501943141912">Runtime Dependency</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p650214436196">Runtime dependency of the model</p>
+</td>
+</tr>
+<tr id="modelarts_21_0038__row228893719326"><td class="cellrowborder" valign="top" width="30.23%" headers="mcps1.3.7.3.3.5.2.3.1.1 "><p id="modelarts_21_0038__p328833703218">Min. Inference Specs</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.77%" headers="mcps1.3.7.3.3.5.2.3.1.2 "><p id="modelarts_21_0038__p17288193718322">Minimum inference specifications. In this example, this parameter can be disabled.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fignone" id="modelarts_21_0038__fig1391183516364"><a name="modelarts_21_0038__fig1391183516364"></a><a name="fig1391183516364"></a><span class="figcap"><b>Figure 4 </b>Importing a model</span><br><span><img id="modelarts_21_0038__image145511971204" src="en-us_image_0000001233970646.png"></span></div>
+</li></ol>
+</div>
+<div class="section" id="modelarts_21_0038__section18653124916459"><a name="modelarts_21_0038__section18653124916459"></a><a name="section18653124916459"></a><h4 class="sectiontitle">Deploying a Service</h4><ol id="modelarts_21_0038__ol150413595458"><li id="modelarts_21_0038__li7128163916392">On the <strong id="modelarts_21_0038__b196433218116">Models</strong> page, if the model status changes to <strong id="modelarts_21_0038__b86431623114">Normal</strong>, the model has been imported successfully.</li><li id="modelarts_21_0038__li639119421444">Click the down arrow next to a model name to unfold all versions of the model. Locate the target version, and choose <strong id="modelarts_21_0038__b2168722121216">Deploy</strong> &gt; <strong id="modelarts_21_0038__b171734220125">Real-Time Services</strong> in the <strong id="modelarts_21_0038__b717302201216">Operation</strong> column to deploy the model as a real-time service.<div class="fignone" id="modelarts_21_0038__fig84961522143919"><span class="figcap"><b>Figure 5 </b>Model list</span><br><span><img id="modelarts_21_0038__image1850413350910" src="en-us_image_0000001278010761.png"></span></div>
+</li><li id="modelarts_21_0038__li5505205912452">On the <strong id="modelarts_21_0038__b10128152416135">Deploy</strong> page that is displayed, set the parameters shown in <a href="#modelarts_21_0038__fig3534111012408">Figure 6</a>, click <strong id="modelarts_21_0038__b184861434476">Create Now</strong>, and create the real-time service as prompted.<div class="fignone" id="modelarts_21_0038__fig3534111012408"><a name="modelarts_21_0038__fig3534111012408"></a><a name="fig3534111012408"></a><span class="figcap"><b>Figure 6 </b>Deploying a model</span><br><span><img id="modelarts_21_0038__image1788016819910" src="en-us_image_0000001277931133.png"></span></div>
+<p id="modelarts_21_0038__p27111451174014">After the service deployment task is started, go to the <strong id="modelarts_21_0038__b16353142510186">Real-Time Services</strong> page and wait until the service is deployed. The service deployment takes a couple of minutes. When the service status changes to <strong id="modelarts_21_0038__b7994161716192">Running</strong>, the service is successfully deployed.</p>
+</li></ol>
+</div>
+<div class="section" id="modelarts_21_0038__section9961181112311"><a name="modelarts_21_0038__section9961181112311"></a><a name="section9961181112311"></a><h4 class="sectiontitle">Performing Prediction</h4><ol id="modelarts_21_0038__ol117384124214"><li id="modelarts_21_0038__li1717319444217">On the <span class="menucascade" id="modelarts_21_0038__menucascade92620335208"><b><span class="uicontrol" id="modelarts_21_0038__uicontrol32627339200">Service Deployment &gt; Real-Time Services</span></b></span> page, click the name of the real-time service to go to the service details page.</li><li id="modelarts_21_0038__li1052813227563">Click the <strong id="modelarts_21_0038__b16791386203">Prediction</strong> tab, click <span class="uicontrol" id="modelarts_21_0038__uicontrol38013385207"><b>Upload</b></span> next to <span class="parmname" id="modelarts_21_0038__parmname15817381201"><b>Image File</b></span> to upload an image with a white handwritten digit on a black background, and click <span class="uicontrol" id="modelarts_21_0038__uicontrol18811138142020"><b>Predict</b></span>.<p id="modelarts_21_0038__en-us_topic_0168474775_p133761735019">After the prediction is complete, the prediction result is displayed in the <strong id="modelarts_21_0038__b5790135155420">Test Result</strong> pane. According to the prediction result, the digit on the image is <span class="parmvalue" id="modelarts_21_0038__parmvalue1979516513543"><b>1</b></span>.</p>
+<div class="note" id="modelarts_21_0038__en-us_topic_0168474775_note105621950165116"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="modelarts_21_0038__en-us_topic_0168474775_ul6302145914595"><li id="modelarts_21_0038__en-us_topic_0168474775_li1930210591598">As specified in the inference code and configuration file, the size of the image used for prediction must be 28 x 28 pixels, and the image must contain white handwritten digits on a black background.</li><li id="modelarts_21_0038__en-us_topic_0168474775_li123027599590">You are advised not to use the images provided by the dataset. You can use the drawing tool provided by the Windows operating system to draw an image for prediction.</li></ul>
+</div></div>
+<div class="fignone" id="modelarts_21_0038__en-us_topic_0168474775_fig2049295319516"><span class="figcap"><b>Figure 7 </b>Prediction results</span><br><span><img id="modelarts_21_0038__image343613610101" src="en-us_image_0000001233650802.png"></span></div>
+</li><li id="modelarts_21_0038__li921351614587">If the model and real-time service are no longer required, you are advised to clear related resources.<ul id="modelarts_21_0038__ul7415183995917"><li id="modelarts_21_0038__li15415239145919">On the <strong id="modelarts_21_0038__b9621651192518">Real-Time Services</strong> page, choose <strong id="modelarts_21_0038__b06795116253">More</strong> &gt; <strong id="modelarts_21_0038__b14681351182519">Stop</strong> or <strong id="modelarts_21_0038__b116885116252">Delete</strong> to stop or delete the created real-time service.</li><li id="modelarts_21_0038__li15671222152918">On the <strong id="modelarts_21_0038__b41220152619">Model Management</strong> page, choose <strong id="modelarts_21_0038__b021190102618">More</strong> &gt; <strong id="modelarts_21_0038__b1122140192614">Delete</strong> to delete the imported model.</li><li id="modelarts_21_0038__li7951182152910">On the <strong id="modelarts_21_0038__b3278462612">Training Jobs</strong> page, choose <strong id="modelarts_21_0038__b12322410264">More</strong> &gt; <strong id="modelarts_21_0038__b16325402613">Delete</strong> to delete the finished training job.</li><li id="modelarts_21_0038__li941615392597">Go to OBS and delete the OBS bucket, folders, and files in this example.</li></ul>
+</li></ol>
+</div>
+<div class="section" id="modelarts_21_0038__section10371851514"><a name="modelarts_21_0038__section10371851514"></a><a name="section10371851514"></a><h4 class="sectiontitle">Training Script (train_mnist_tf.py)</h4><p id="modelarts_21_0038__p145731315181510">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath392174451515"><b>train_mnist_tf.py</b></span>. The code is a training script compiled based on the TensorFlow engine in Python.</p>
+<div class="codecoloring" codetype="Python" id="modelarts_21_0038__screen1295704913158"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+
+<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_integer</span><span class="p">(</span><span class="s1">'max_steps'</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">'number of training iterations.'</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_string</span><span class="p">(</span><span class="s1">'data_url'</span><span class="p">,</span> <span class="s1">'/home/jnn/nfs/mnist'</span><span class="p">,</span> <span class="s1">'dataset directory.'</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_string</span><span class="p">(</span><span class="s1">'train_url'</span><span class="p">,</span> <span class="s1">'/home/jnn/temp/delete'</span><span class="p">,</span> <span class="s1">'saved model directory.'</span><span class="p">)</span>
+
+<span class="n">FLAGS</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">FLAGS</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="c1"># Train model</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Training model...'</span><span class="p">)</span>
+  <span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">data_url</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
+  <span class="n">serialized_tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'tf_example'</span><span class="p">)</span>
+  <span class="n">feature_configs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">784</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),}</span>
+  <span class="n">tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">parse_example</span><span class="p">(</span><span class="n">serialized_tf_example</span><span class="p">,</span> <span class="n">feature_configs</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">tf_example</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>
+  <span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+  <span class="n">w</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">]))</span>
+  <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+  <span class="n">cross_entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y_</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+  <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">'cross_entropy'</span><span class="p">,</span> <span class="n">cross_entropy</span><span class="p">)</span>
+
+  <span class="n">train_step</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+
+  <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">))</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">'accuracy'</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+  <span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
+  <span class="n">test_writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">train_url</span><span class="p">,</span> <span class="n">flush_secs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">max_steps</span><span class="p">):</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">train_step</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">summary</span><span class="p">,</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">merged</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y_</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">})</span>
+      <span class="n">test_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'training accuracy is:'</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Done training!'</span><span class="p">)</span>
+
+  <span class="n">builder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">SavedModelBuilder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">train_url</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">))</span>
+
+  <span class="n">tensor_info_x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">tensor_info_y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+  <span class="n">prediction_signature</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_def_utils</span><span class="o">.</span><span class="n">build_signature_def</span><span class="p">(</span>
+          <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'images'</span><span class="p">:</span> <span class="n">tensor_info_x</span><span class="p">},</span>
+          <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'scores'</span><span class="p">:</span> <span class="n">tensor_info_y</span><span class="p">},</span>
+          <span class="n">method_name</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_constants</span><span class="o">.</span><span class="n">PREDICT_METHOD_NAME</span><span class="p">))</span>
+
+  <span class="n">builder</span><span class="o">.</span><span class="n">add_meta_graph_and_variables</span><span class="p">(</span>
+      <span class="n">sess</span><span class="p">,</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">tag_constants</span><span class="o">.</span><span class="n">SERVING</span><span class="p">],</span>
+      <span class="n">signature_def_map</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">'predict_images'</span><span class="p">:</span>
+              <span class="n">prediction_signature</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="n">main_op</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">tables_initializer</span><span class="p">(),</span>
+      <span class="n">strip_default_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="n">builder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Done exporting!'</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_21_0038__section868435781614"><a name="modelarts_21_0038__section868435781614"></a><a name="section868435781614"></a><h4 class="sectiontitle">Inference Code (customize_service.py)</h4><p id="modelarts_21_0038__p174443139178">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath1760616357174"><b>customize_service.py</b></span>. The following inference code meets the ModelArts model package specifications.</p>
+<div class="codecoloring" codetype="Python" id="modelarts_21_0038__screen1595414417189"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">model_service.tfserving_model_service</span> <span class="kn">import</span> <span class="n">TfServingBaseService</span>
+
+
+<span class="k">class</span> <span class="nc">mnist_service</span><span class="p">(</span><span class="n">TfServingBaseService</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">preprocessed_data</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+      <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_content</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">image1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
+        <span class="n">image1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">image1</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span>
+        <span class="n">preprocessed_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">image1</span>
+
+    <span class="k">return</span> <span class="n">preprocessed_data</span>
+
+  <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'scores'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">logits</span><span class="p">))</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'</span><span class="si">%.3f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">logit</span> <span class="k">for</span> <span class="n">logit</span> <span class="ow">in</span> <span class="n">logits</span><span class="p">]</span>
+    <span class="n">outputs</span><span class="p">[</span><span class="s1">'predicted_label'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">label_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">label_list</span><span class="p">,</span> <span class="n">logits</span><span class="p">))</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">outputs</span><span class="p">[</span><span class="s1">'scores'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scores</span>
+
+    <span class="k">return</span> <span class="n">outputs</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modelarts_21_0038__section655951611710"><a name="modelarts_21_0038__section655951611710"></a><a name="section655951611710"></a><h4 class="sectiontitle">Configuration File (config.json)</h4><p id="modelarts_21_0038__p941216250179">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath121181630151910"><b>config.json</b></span>. The configuration file meets the ModelArts model package specifications.</p>
+<div class="codecoloring" codetype="Json" id="modelarts_21_0038__screen65039443194"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="s2">&quot;TensorFlow&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;metrics&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;f1&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;accuracy&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;recall&quot;</span><span class="p">:</span><span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dependencies&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;installer&quot;</span><span class="p">:</span><span class="s2">&quot;pip&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;packages&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;1.15.0&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;numpy&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;h5py&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;1.8.0&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;tensorflow&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;5.2.0&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;Pillow&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;model_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;image_classification&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apis&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;procotol&quot;</span><span class="p">:</span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;request&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;Content-type&quot;</span><span class="p">:</span><span class="s2">&quot;multipart/form-data&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;properties&quot;</span><span class="p">:{</span>
+                        <span class="nt">&quot;images&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;response&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;Content-type&quot;</span><span class="p">:</span><span class="s2">&quot;multipart/form-data&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;required&quot;</span><span class="p">:[</span>
+                        <span class="s2">&quot;predicted_label&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;scores&quot;</span>
+                    <span class="p">],</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;properties&quot;</span><span class="p">:{</span>
+                        <span class="nt">&quot;predicted_label&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;scores&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;items&quot;</span><span class="p">:{</span>
+                                <span class="nt">&quot;minItems&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+                                <span class="nt">&quot;items&quot;</span><span class="p">:[</span>
+                                    <span class="p">{</span>
+                                        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span>
+                                    <span class="p">},</span>
+                                    <span class="p">{</span>
+                                        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;number&quot;</span>
+                                    <span class="p">}</span>
+                                <span class="p">],</span>
+                                <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;maxItems&quot;</span><span class="p">:</span><span class="mi">2</span>
+                            <span class="p">},</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;array&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_21_0037.html">Quick Start</a></div>
+</div>
+</div>
+

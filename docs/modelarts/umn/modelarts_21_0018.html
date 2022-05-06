@@ -1,0 +1,83 @@
+<a name="modelarts_21_0018"></a><a name="modelarts_21_0018"></a>
+
+<h1 class="topictitle1">Training a Model</h1>
+<div id="body0000001251407378"><p id="modelarts_21_0018__en-us_topic_0169446267_p1565816431517">After the data is labeled, train a model to obtain a predictive analytics model. You can publish the model as a real-time inference service.</p>
+<div class="section" id="modelarts_21_0018__en-us_topic_0169446267_section8413329174213"><h4 class="sectiontitle">Procedure</h4><ol id="modelarts_21_0018__en-us_topic_0169446267_ol173552418491"><li id="modelarts_21_0018__en-us_topic_0169446267_li20592193211217">On the <span class="wintitle" id="modelarts_21_0018__en-us_topic_0169446267_wintitle17522171753512"><b>ExeML</b></span> page, click the name of the project that has been created. The <span class="wintitle" id="modelarts_21_0018__en-us_topic_0169446267_wintitle54600565918"><b>Label Data</b></span> tab page is displayed. Select the label column and its data type.</li><li id="modelarts_21_0018__en-us_topic_0169446267_li1937917506514">On the <strong id="modelarts_21_0018__b64233483418">Label Data</strong> tab page, click <strong id="modelarts_21_0018__b74231413411">Train</strong> in the upper right corner. In the displayed <strong id="modelarts_21_0018__b44251644349">Training Configuration</strong> dialog box, select an instance flavor used for training and click <strong id="modelarts_21_0018__b542619483416">Yes</strong> to start model training.<p id="modelarts_21_0018__en-us_topic_0169446267_p0670104015466">The training takes a certain period of time. If you close or exit the page, the system continues training until it is complete.</p>
+<div class="fignone" id="modelarts_21_0018__en-us_topic_0169446267_fig7647103812555"><span class="figcap"><b>Figure 1 </b>Training configuration</span><br><span><img id="modelarts_21_0018__en-us_topic_0169446267_image108217351553" src="en-us_image_0000001297768589.png"></span></div>
+</li><li id="modelarts_21_0018__en-us_topic_0169446267_li139763117536">On the <span class="wintitle" id="modelarts_21_0018__en-us_topic_0169446267_wintitle1079918218315"><b>Train Model</b></span> tab page, wait until the training status changes from <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname58171226318"><b>Running</b></span> to <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname148221928318"><b>Completed</b></span>.</li><li id="modelarts_21_0018__en-us_topic_0169446267_li23511159154911">View the training details, such as the label column, data type, accuracy, and evaluation result.<p id="modelarts_21_0018__en-us_topic_0169446267_p10757923105017"><a name="modelarts_21_0018__en-us_topic_0169446267_li23511159154911"></a><a name="en-us_topic_0169446267_li23511159154911"></a>The example is a discrete value of binary classification. For details about the evaluation result parameters, see <a href="#modelarts_21_0018__en-us_topic_0169446267_table1740915502530">Table 1</a>.</p>
+<p id="modelarts_21_0018__en-us_topic_0169446267_p453016561291">For details about the evaluation result generated for different data types of label columns, see <a href="#modelarts_21_0018__en-us_topic_0169446267_section02494566510">Evaluation Result Description</a>.</p>
+</li></ol>
+<div class="note" id="modelarts_21_0018__en-us_topic_0169446267_note1458123720611"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_21_0018__en-us_topic_0169446267_p6460837966">An ExeML project supports multiple rounds of training, and each round generates a version. For example, the first training version is <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname178712514359"><b>V001 (</b></span><em id="modelarts_21_0018__en-us_topic_0169446267_i1487111518351">xxx</em><span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname887119519356"><b>)</b></span>, and the next version is <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname1387245111357"><b>V002 (</b></span><em id="modelarts_21_0018__en-us_topic_0169446267_i4872185119355">xxx</em><span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_parmname15872351133513"><b>)</b></span>. The trained models can be managed based on the training versions. After the trained model meets your requirements, deploy the model as a service.</p>
+</div></div>
+</div>
+<div class="section" id="modelarts_21_0018__en-us_topic_0169446267_section02494566510"><a name="modelarts_21_0018__en-us_topic_0169446267_section02494566510"></a><a name="en-us_topic_0169446267_section02494566510"></a><h4 class="sectiontitle">Evaluation Result Description</h4><div class="p" id="modelarts_21_0018__en-us_topic_0169446267_p0636195815311">Evaluation result display modes vary according to training data types.<ul id="modelarts_21_0018__en-us_topic_0169446267_ul136926314575"><li id="modelarts_21_0018__en-us_topic_0169446267_li1869213325718"><strong id="modelarts_21_0018__en-us_topic_0169446267_b129945451038">Curve chart</strong><p id="modelarts_21_0018__en-us_topic_0169446267_p4994123125911">For binary classification problems (discrete values, two optional values at most), the evaluation result has a threshold and is displayed in a curve chart after model training is complete. For details about parameters, see <a href="#modelarts_21_0018__en-us_topic_0169446267_table1740915502530">Table 1</a>.</p>
+<p id="modelarts_21_0018__en-us_topic_0169446267_p14805832512">You can click <span><img id="modelarts_21_0018__en-us_topic_0169446267_image468111101824" src="en-us_image_0000001297649133.png"></span> on the right of a curve chart to download the curve chart to a local PC.</p>
+
+<div class="tablenoborder"><a name="modelarts_21_0018__en-us_topic_0169446267_table1740915502530"></a><a name="en-us_topic_0169446267_table1740915502530"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0018__en-us_topic_0169446267_table1740915502530" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Evaluation result parameters</caption><thead align="left"><tr id="modelarts_21_0018__en-us_topic_0169446267_row84091350105318"><th align="left" class="cellrowborder" valign="top" width="28.64%" id="mcps1.3.3.2.1.1.4.2.3.1.1"><p id="modelarts_21_0018__en-us_topic_0169446267_p541017507536">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="71.36%" id="mcps1.3.3.2.1.1.4.2.3.1.2"><p id="modelarts_21_0018__en-us_topic_0169446267_p10410165017533">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0018__en-us_topic_0169446267_row9410850185313"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p241011503537">Threshold</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p14410135014531">A threshold is needed to determine whether the result is negative or positive, because the calculation result of a binary classification model is a value between 0 to 1 (that is, positive probability). A value greater than or equal to the threshold shows that the result is positive. Otherwise, the result is negative. For example, if the value is greater than 0.5 (that is, the positive probability is greater than 50%), the result is positive.</p>
+<p id="modelarts_21_0018__en-us_topic_0169446267_p1410135017538">Currently, the default threshold is 0.5. The threshold is used only for model training effect evaluation and cannot be manually set.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row18410175085313"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p2410350135313">True Positive</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p2410115010533">The model correctly predicts the positive class.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row144101650135314"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p134101850115313">False Positive</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p1341045065319">The model incorrectly predicts the negative class.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row14410350135313"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p13410135055313">False Negative</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p164101050115313">The model incorrectly predicts the positive class.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row174101050175313"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p341035075319">True Negative</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p1241015018535">The model correctly predicts the negative class.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row541016508532"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p041035035320">Recall</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p441005012539">Fraction of correctly predicted samples over all samples labeled as a class. It shows the ability that a model recognizes positive samples.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row1741025045320"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p541105035319">Precision</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p194116506530">Fraction of correctly predicted samples over all samples predicted as a class. It shows the ability of a model to distinguish negative samples.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row94112050185312"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p741111504537">Accuracy</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p8411125018537">Fraction correctly predicted samples over all samples. It shows the general ability of a model to recognize samples.</p>
+</td>
+</tr>
+<tr id="modelarts_21_0018__en-us_topic_0169446267_row741195013533"><td class="cellrowborder" valign="top" width="28.64%" headers="mcps1.3.3.2.1.1.4.2.3.1.1 "><p id="modelarts_21_0018__en-us_topic_0169446267_p2411165005314">F1 Score</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.36%" headers="mcps1.3.3.2.1.1.4.2.3.1.2 "><p id="modelarts_21_0018__en-us_topic_0169446267_p64118501530">Harmonic average of the precision and recall of a model. It is used to evaluate the quality of a model. A high F1 score indicates a good model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="modelarts_21_0018__en-us_topic_0169446267_li67231340002"><strong id="modelarts_21_0018__en-us_topic_0169446267_b127747315314">Confusion matrix</strong><p id="modelarts_21_0018__en-us_topic_0169446267_p126416378312">For multiclass classification problems (discrete values, more than two optional values), the evaluation result is displayed in a confusion matrix after model training is complete. </p>
+<p id="modelarts_21_0018__en-us_topic_0169446267_p6262551135"><span class="uicontrol" id="modelarts_21_0018__en-us_topic_0169446267_uicontrol1830305011419"><b>Real</b></span> shows real values in the evaluation sample. You can move the cursor to the target cell to view a real value and a predicted value. For details about the precision and recall parameters, see <a href="#modelarts_21_0018__en-us_topic_0169446267_table1740915502530">Table 1</a>.</p>
+</li><li id="modelarts_21_0018__en-us_topic_0169446267_li23621572714"><strong id="modelarts_21_0018__en-us_topic_0169446267_b168731420832">Continuous value evaluation result</strong><p id="modelarts_21_0018__en-us_topic_0169446267_p1913551214274">The evaluation values are <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_en-us_topic_0178520508_parmname1215434311557"><b>MAE</b></span>, <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_en-us_topic_0178520508_parmname181551143195513"><b>MSE</b></span>, and <span class="parmname" id="modelarts_21_0018__en-us_topic_0169446267_en-us_topic_0178520508_parmname116811436559"><b>RMSE</b></span>. The three error values can represent a difference between a real value and a predicted value. During multiple rounds of modeling, a group of error values is generated for each round of modeling. The method of checking whether a model is good is to check whether the three error values become smaller or larger. A smaller error value indicates a better model.</p>
+</li></ul>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0000001297767637.html">Predictive Analytics</a></div>
+</div>
+</div>
+

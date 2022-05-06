@@ -2,7 +2,7 @@
 
 <h1 class="topictitle1">Deploying a Model as a Real-Time Service</h1>
 <div id="body8662426"><p id="modelarts_23_0060__en-us_topic_0165025304_p1626935755620">After a model is prepared, you can deploy the model as a real-time service and predict and call the service.</p>
-<div class="note" id="modelarts_23_0060__en-us_topic_0165025304_note187414113379"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0060__en-us_topic_0165025304_p0743411143716">A maximum of 20 real-time services can be deployed by a user.</p>
+<div class="note" id="modelarts_23_0060__en-us_topic_0165025304_note187414113379"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0060__en-us_topic_0165025304_p63528710151">A maximum of one real-time service can be deployed.</p>
 </div></div>
 <div class="section" id="modelarts_23_0060__en-us_topic_0165025304_section588716131207"><h4 class="sectiontitle">Prerequisites</h4><ul id="modelarts_23_0060__en-us_topic_0165025304_ul153712018018"><li id="modelarts_23_0060__en-us_topic_0165025304_li1937182017010">Data has been prepared. Specifically, you have created a model in the <span class="parmname" id="modelarts_23_0060__en-us_topic_0165025304_parmname1783718913212"><b>Normal</b></span> state in ModelArts.</li></ul>
 </div>
@@ -32,6 +32,7 @@
 </tbody>
 </table>
 </div>
+<div class="fignone" id="modelarts_23_0060__en-us_topic_0165025304_fig1173181111421"><span class="figcap"><b>Figure 1 </b>Basic information about deploying a model as a real-time service</span><br><span><img id="modelarts_23_0060__en-us_topic_0165025304_image153885307502" src="en-us_image_0000001233970662.png"></span></div>
 </li><li id="modelarts_23_0060__en-us_topic_0165025304_li31131228711">Enter key information including the resource pool and model configurations. For details, see <a href="#modelarts_23_0060__en-us_topic_0165025304_table10352134481117">Table 2</a>.
 <div class="tablenoborder"><a name="modelarts_23_0060__en-us_topic_0165025304_table10352134481117"></a><a name="en-us_topic_0165025304_table10352134481117"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0060__en-us_topic_0165025304_table10352134481117" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Parameters</caption><thead align="left"><tr id="modelarts_23_0060__en-us_topic_0165025304_row103535447116"><th align="left" class="cellrowborder" valign="top" width="16.161616161616163%" id="mcps1.3.4.2.3.1.2.2.2.4.1.1"><p id="modelarts_23_0060__en-us_topic_0165025304_p193531244161110">Parameter</p>
 </th>
@@ -112,45 +113,15 @@
 </th>
 </tr>
 </thead>
-<tbody><tr id="modelarts_23_0060__en-us_topic_0165025304_row1464372461718"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p18753193221712">ExeML specifications (CPU)</p>
-<p id="modelarts_23_0060__en-us_topic_0165025304_p14753113251715">ExeML specifications (GPU)</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p475314324178">Only be used by models trained in ExeML projects. </p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row447103142019"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p17471439209">CPU: 2 vCPUs | 8 GiB</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p347153162016">Suitable for models with only CPU loads.</p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row88651953111515"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p18866853111514">CPU: 8 vCPUs | 64 GiB GPU: 1 x V100</p>
+<tbody><tr id="modelarts_23_0060__en-us_topic_0165025304_row88651953111515"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p18866853111514">CPU: 8 vCPUs | 64 GiB GPU: 1 x V100</p>
 </td>
 <td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p9866185316159">Suitable for running GPU models.</p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row851983116238"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p11519531182315">CPU: 8 vCPUs | 32 GiB GPU: 1 x T4</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p5519031172315">Suitable for models requiring CPU and GPU (NVIDIA T4) resources.</p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row15315151121614"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p86781454131611">Arm: 3 vCPUs | 6 GiB Ascend: 1 x Ascend 310</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p6678195415167">Carrying one Ascend 310 chip, suitable for models requiring Ascend 310 chip resources.</p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row1415012284553"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p17151428165511">Ascend: 1 x Ascend 910 CPU: 24 vCPUs | 96 GiB</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p515119288551">Carrying one Ascend 910 chip, suitable for models requiring Ascend 910 chip resources.</p>
-</td>
-</tr>
-<tr id="modelarts_23_0060__en-us_topic_0165025304_row96341523112714"><td class="cellrowborder" valign="top" width="33.4%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.1 "><p id="modelarts_23_0060__en-us_topic_0165025304_p863417235278">Ascend: 8 Ascend 910 CPU: 192 vCPUs | 720 GiB</p>
-</td>
-<td class="cellrowborder" valign="top" width="66.60000000000001%" headers="mcps1.3.4.2.3.1.2.3.2.3.1.2 "><p id="modelarts_23_0060__en-us_topic_0165025304_p76351323102711">Carrying eight Ascend 910 chips, suitable for models requiring Ascend 910 chip resources.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="fignone" id="modelarts_23_0060__en-us_topic_0165025304_fig13702918114313"><span class="figcap"><b>Figure 2 </b>Setting model information</span><br><span><img id="modelarts_23_0060__en-us_topic_0165025304_image109811953115719" src="en-us_image_0000001234129978.png"></span></div>
 </li></ol>
 </li><li id="modelarts_23_0060__en-us_topic_0165025304_li0335165819514">After confirming the entered information, complete service deployment as prompted. Generally, service deployment jobs run for a period of time, which may be several minutes or tens of minutes depending on the amount of your selected data and resources.<div class="note" id="modelarts_23_0060__en-us_topic_0165025304_note26817055513"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0060__en-us_topic_0165025304_p156918005513">After a real-time service is deployed, it is started immediately.</p>
 </div></div>

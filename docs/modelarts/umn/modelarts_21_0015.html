@@ -1,0 +1,209 @@
+<a name="modelarts_21_0015"></a><a name="modelarts_21_0015"></a>
+
+<h1 class="topictitle1">Preparing Data</h1>
+<div id="body0000001297847601"><p id="modelarts_21_0015__en-us_topic_0169446264_p109811029142820">Before using ModelArts to build a predictive analytics model, upload data to OBS. </p>
+<div class="section" id="modelarts_21_0015__en-us_topic_0169446264_section155111779288"><h4 class="sectiontitle">Uploading Data to OBS</h4><p id="modelarts_21_0015__en-us_topic_0169446264_p16847114217310">This operation uses the OBS client to upload data. For more information about how to create a bucket and upload files, see <a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/obs_03_0306.html" target="_blank" rel="noopener noreferrer">Creating a Bucket</a> and <a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/obs_03_0307.html" target="_blank" rel="noopener noreferrer">Uploading a File</a>.</p>
+<p id="modelarts_21_0015__en-us_topic_0169446264_p496211317215">Perform the following operations to import data to the dataset for model training and building.</p>
+<ol id="modelarts_21_0015__en-us_topic_0169446264_ol79623313216"><li id="modelarts_21_0015__en-us_topic_0169446264_li4741337144812">Log in to OBS Console and <a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/obs_03_0306.html" target="_blank" rel="noopener noreferrer">create a bucket</a></li><li id="modelarts_21_0015__en-us_topic_0169446264_li1790822143610"><a href="https://docs.otc.t-systems.com/en-us/usermanual/obs/obs_03_0307.html" target="_blank" rel="noopener noreferrer">Upload the local data</a> to the OBS bucket. If you have a large amount of data, you are advised to use OBS Browser+ to upload data or folders. The uploaded data must meet the dataset requirements of the ExeML project.</li></ol>
+</div>
+<div class="section" id="modelarts_21_0015__en-us_topic_0169446264_section158944528285"><h4 class="sectiontitle">Requirements on Datasets</h4><ul id="modelarts_21_0015__en-us_topic_0169446264_ul7356124135318"><li id="modelarts_21_0015__en-us_topic_0169446264_li1435615475311">The name of files in a dataset consists of letters, digits, hyphens (-), and underscores (_), and the file name extension is CSV. The files cannot be stored in the root directory of an OBS bucket, but in a folder in the OBS bucket, for example, <span class="filepath" id="modelarts_21_0015__en-us_topic_0169446264_filepath7246562533"><b>/obs-xxx/data/input.csv</b></span>.</li><li id="modelarts_21_0015__en-us_topic_0169446264_li5356124105316">The files are saved in CSV format. Use newline characters (\n) to separate lines and commas (,) to separate columns of the file content. The file content cannot contain Chinese characters. The column content cannot contain special characters such as commas (,) and newline characters. The quotation marks are not supported. It is recommended that the column content consist of letters and digits.</li><li id="modelarts_21_0015__en-us_topic_0169446264_li1835644195312">The number of training columns is the same. There are at least 100 different data records (a feature with different values is considered as different data) in total. The training columns cannot contain the data of the timestamp format (such as yy-mm-dd and yyyy-mm-dd). If a column has only one value, the column is considered invalid and discarded. Ensure that the dataset contains at least two valid columns except the label column. If you select continuous values for a label column, ensure that the column contains only digits and the training data has at least 25 different values. The training data CSV file cannot contain the table header. Otherwise, the training fails.</li></ul>
+</div>
+<div class="section" id="modelarts_21_0015__en-us_topic_0169446264_section12966821115418"><h4 class="sectiontitle">Requirements for Files Uploaded to OBS</h4><p id="modelarts_21_0015__en-us_topic_0169446264_p136861957105419">The OBS path of the predictive analytics projects must comply with the following rules:</p>
+<ul id="modelarts_21_0015__en-us_topic_0169446264_ul15579111555"><li id="modelarts_21_0015__en-us_topic_0169446264_li155820125519">The OBS path of the input data must redirect to the data files. The data files must be stored in a folder in an OBS bucket rather than the root directory of the OBS bucket, for example, <span class="filepath" id="modelarts_21_0015__en-us_topic_0169446264_filepath24401327113915"><b>/obs-xxx/data/input.csv</b></span>.</li><li id="modelarts_21_0015__en-us_topic_0169446264_li52741466556">The input data must be in CSV format. The data files do not contain the table header and the number of valid data lines must be greater than 150.</li></ul>
+</div>
+<div class="section" id="modelarts_21_0015__en-us_topic_0169446264_section207971911713"><h4 class="sectiontitle">Predictive Analytics File Example</h4><div class="p" id="modelarts_21_0015__en-us_topic_0169446264_p1936116555618">Example: Predict whether customers would be interested in a time deposit based on their characteristics.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0015__en-us_topic_0169446264_table207931411615" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameters and meanings of data sources</caption><thead align="left"><tr id="modelarts_21_0015__en-us_topic_0169446264_row77919116115"><th align="left" class="cellrowborder" valign="top" width="23.45%" id="mcps1.3.5.2.1.2.5.1.1"><p id="modelarts_21_0015__en-us_topic_0169446264_p137917111111">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.72%" id="mcps1.3.5.2.1.2.5.1.2"><p id="modelarts_21_0015__en-us_topic_0169446264_p127911512011">Meaning</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18.790000000000003%" id="mcps1.3.5.2.1.2.5.1.3"><p id="modelarts_21_0015__en-us_topic_0169446264_p9791213114">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="32.04%" id="mcps1.3.5.2.1.2.5.1.4"><p id="modelarts_21_0015__en-us_topic_0169446264_p137911119112">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0015__en-us_topic_0169446264_row1679212117112"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177911116113">attr_1</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p3791914119">Age</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p27911411919">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p167921711510">Age of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row147922116110"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p7792711411">attr_2</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p15792712118">Occupation</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1579215112113">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p4792191314">Occupation of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row167921616119"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177924119111">attr_3</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p679216110111">Marital status</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177921814114">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1779211117119">Marital status of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row157921618114"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p5792101714">attr_4</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p117925114113">Education status</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p979217115117">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p17792111716">Education status of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row17921619111"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p6792311817">attr_5</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1079261817">Real estate</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p17792131112">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1879215119117">Real estate of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row11793511815"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p9793711217">attr_6</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1679319110110">Loan</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p137931416110">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p197931311212">Loan of the customer</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row127931711119"><td class="cellrowborder" valign="top" width="23.45%" headers="mcps1.3.5.2.1.2.5.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p15793611312">attr_7</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.72%" headers="mcps1.3.5.2.1.2.5.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p107935111110">Deposit</p>
+</td>
+<td class="cellrowborder" valign="top" width="18.790000000000003%" headers="mcps1.3.5.2.1.2.5.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p4793111819">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="32.04%" headers="mcps1.3.5.2.1.2.5.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p17793811413">Deposit of the customer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_21_0015__en-us_topic_0169446264_table11797916117" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Sample data</caption><thead align="left"><tr id="modelarts_21_0015__en-us_topic_0169446264_row137948112112"><th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.1"><p id="modelarts_21_0015__en-us_topic_0169446264_p67931011117">attr_1</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.2"><p id="modelarts_21_0015__en-us_topic_0169446264_p579313117117">attr_2</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.3"><p id="modelarts_21_0015__en-us_topic_0169446264_p179321214">attr_3</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.4"><p id="modelarts_21_0015__en-us_topic_0169446264_p3793511914">attr_4</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.5"><p id="modelarts_21_0015__en-us_topic_0169446264_p1679411818">attr_5</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.6"><p id="modelarts_21_0015__en-us_topic_0169446264_p37942013113">attr_6</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="14.285714285714285%" id="mcps1.3.5.2.2.2.8.1.7"><p id="modelarts_21_0015__en-us_topic_0169446264_p10794131712">attr_7</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_21_0015__en-us_topic_0169446264_row3794211917"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1794161414">58</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p16794191211">management</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p18794316113">married</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p18794416111">tertiary</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p157941011417">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p197941811412">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p18794131915">no</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row37941616115"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177941911316">44</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p20794511517">technician</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p4794411120">single</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p10794811316">secondary</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p18794511213">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1779471011">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1879415114114">no</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row17951711811"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p197941214113">33</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p137951011714">entrepreneur</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1479512113119">married</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p27951418113">secondary</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p77951511810">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p47954118111">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p07951111918">no</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row67959111118"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p127951415112">47</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p11795318117">blue-collar</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p7795911512">married</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p16795513110">unknown</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p4795161613">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p07955113118">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p3795418115">no</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row37961117117"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p9795711618">33</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p179561514">unknown</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p67958111113">single</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p15796715110">unknown</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p1979601615">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p97961511913">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177966114115">no</p>
+</td>
+</tr>
+<tr id="modelarts_21_0015__en-us_topic_0169446264_row1579711111111"><td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.1 "><p id="modelarts_21_0015__en-us_topic_0169446264_p67971616119">35</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.2 "><p id="modelarts_21_0015__en-us_topic_0169446264_p879781610">management</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.3 "><p id="modelarts_21_0015__en-us_topic_0169446264_p979741512">married</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.4 "><p id="modelarts_21_0015__en-us_topic_0169446264_p177971811115">tertiary</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.5 "><p id="modelarts_21_0015__en-us_topic_0169446264_p5797815112">yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.6 "><p id="modelarts_21_0015__en-us_topic_0169446264_p579731316">no</p>
+</td>
+<td class="cellrowborder" valign="top" width="14.285714285714285%" headers="mcps1.3.5.2.2.2.8.1.7 "><p id="modelarts_21_0015__en-us_topic_0169446264_p9797717112">no</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0000001297767637.html">Predictive Analytics</a></div>
+</div>
+</div>
+

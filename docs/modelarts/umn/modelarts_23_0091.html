@@ -17,69 +17,11 @@
 |   │   │   ├── variables.data-00000-of-00001 Mandatory
 |   │   ├──config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b89596861717">config.json</strong>. Only one model configuration file is supported.
 |   │   ├──customize_service.py (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory.</pre>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li1823332471014">Structure of the MindSpore-based model package<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen7345164431016">OBS bucket/directory name
-|── resnet
-|   ├── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   │   ├── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   │   ├── checkpoint_lenet_1-1_1875.ckpt (Mandatory) Model file in ckpt format trained using MindSpore
-|   │   ├──config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b1422019098">config.json</strong>. Only one model configuration file is supported.
-|   │   ├──customize_service.py (Optional) Model inference code. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b1679344118307">customize_service.py</strong>. Only one model inference code file is supported. The files on which <strong id="modelarts_23_0091__en-us_topic_0172466148_b19901172203118">customize_service.py</strong> depends can be directly stored in the model directory.</pre>
-<p id="modelarts_23_0091__en-us_topic_0172466148_p1227283611013"></p>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li5831202416390">Structure of the MXNet-based model package<p id="modelarts_23_0091__en-us_topic_0172466148_p14573124164020"><a name="modelarts_23_0091__en-us_topic_0172466148_li5831202416390"></a><a name="en-us_topic_0172466148_li5831202416390"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath13165220164112"><b>resnet</b></span> directory.</p>
-<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen15101127124011">OBS bucket/directory name
-|── resnet
-|   ├── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   │   ├── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   │   ├── resnet-50-symbol.json (Mandatory) Model definition file, which contains the neural network description of the model
-|   │   ├── resnet-50-0000.params (Mandatory) Model variable parameter file, which contains parameter and weight information
-|   │   ├──config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b585513171175">config.json</strong>. Only one model configuration file is supported.
-|   │   ├──customize_service.py (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory.</pre>
 </li><li id="modelarts_23_0091__en-us_topic_0172466148_li737020312406">Structure of the Image-based model package<p id="modelarts_23_0091__en-us_topic_0172466148_p6955191510401"><a name="modelarts_23_0091__en-us_topic_0172466148_li737020312406"></a><a name="en-us_topic_0172466148_li737020312406"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath1333910163416"><b>resnet</b></span> directory.</p>
 <pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen1919154744017">OBS bucket/directory name
 |── resnet
 |   ├── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
 |   │  ├──config.json (Mandatory) Model configuration file (the address of the SWR image must be configured). The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b46112251714">config.json</strong>. Only one model configuration file is supported.</pre>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li863174219418">Structure of the PySpark-based model package<p id="modelarts_23_0091__en-us_topic_0172466148_p112189195518"><a name="modelarts_23_0091__en-us_topic_0172466148_li863174219418"></a><a name="en-us_topic_0172466148_li863174219418"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath10702306303"><b>resnet</b></span> directory.</p>
-<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen6574164414719">OBS bucket/directory name
-|── resnet
-|   ├── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   │  ├── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   │  ├── spark_model (Mandatory) Model directory, which contains the model content saved by PySpark
-|   │  ├──config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b156698374307">config.json</strong>. Only one model configuration file is supported.
-|   │  ├──customize_service.py (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory.</pre>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li610313145402">Structure of the PyTorch-based model package<p id="modelarts_23_0091__en-us_topic_0172466148_p164232524010"><a name="modelarts_23_0091__en-us_topic_0172466148_li610313145402"></a><a name="en-us_topic_0172466148_li610313145402"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath1454313122419"><b>resnet</b></span> directory.</p>
-<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen19421103115403">OBS bucket/directory name
-|── resnet
-|   ├── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   │  ├── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   │  ├── resnet50.pth (Mandatory) PyTorch model file, which contains variable and weight information and is saved as <strong id="modelarts_23_0091__en-us_topic_0172466148_b1835111916222">state_dict</strong>
-|   │  ├──config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b13279182681711">config.json</strong>. Only one model configuration file is supported.
-|   │  ├──customize_service.py (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory.</pre>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li191744350532">Structure of the Caffe-based model package<div class="p" id="modelarts_23_0091__en-us_topic_0172466148_p098165213533"><a name="modelarts_23_0091__en-us_topic_0172466148_li191744350532"></a><a name="en-us_topic_0172466148_li191744350532"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath186316825317"><b>resnet</b></span> directory.<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen115061277542">OBS bucket/directory name
-|── resnet
-|   |── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   |   |── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   |   |── deploy.prototxt (Mandatory) Caffe model file, which contains information such as the model network structure
-|   |   |── resnet.caffemodel (Mandatory) Caffe model file, which contains variable and weight information
-|   |   |── config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b20485194411584">config.json</strong>. Only one model configuration file is supported.
-|   |   |── customize_service.py  (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory. </pre>
-</div>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li14705162955213">Structure of the XGBoost-based model package<div class="p" id="modelarts_23_0091__en-us_topic_0172466148_p9705182925215"><a name="modelarts_23_0091__en-us_topic_0172466148_li14705162955213"></a><a name="en-us_topic_0172466148_li14705162955213"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath10976344133219"><b>resnet</b></span> directory.<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen97066290522">OBS bucket/directory name
-|── resnet
-|   |── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   |   |── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   |   |── *.m (Mandatory): Model file whose extension name is <strong id="modelarts_23_0091__en-us_topic_0172466148_b155216114358">.m</strong>
-|   |   |── config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b145592029354">config.json</strong>. Only one model configuration file is supported.
-|   |   |── customize_service.py  (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which <strong id="modelarts_23_0091__en-us_topic_0172466148_b13825168123519">customize_service.py</strong> depends can be directly stored in the <strong id="modelarts_23_0091__en-us_topic_0172466148_b48266817351">model</strong> directory. </pre>
-</div>
-</li><li id="modelarts_23_0091__en-us_topic_0172466148_li1783019205541">Structure of the Scikit_Learn-based model package<div class="p" id="modelarts_23_0091__en-us_topic_0172466148_p16830122065411"><a name="modelarts_23_0091__en-us_topic_0172466148_li1783019205541"></a><a name="en-us_topic_0172466148_li1783019205541"></a>When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0091__en-us_topic_0172466148_filepath812312063516"><b>resnet</b></span> directory.<pre class="screen" id="modelarts_23_0091__en-us_topic_0172466148_screen1283042013542">OBS bucket/directory name
-|── resnet
-|   |── model (Mandatory) Name of a fixed subdirectory, which is used to store model-related files
-|   |   |── &lt;&lt;Custom Python package&gt;&gt; (Optional) User's Python package, which can be directly referenced in the model inference code
-|   |   |── *.m (Mandatory): Model file whose extension name is <strong id="modelarts_23_0091__en-us_topic_0172466148_b376316365352">.m</strong>
-|   |   |── config.json (Mandatory) Model configuration file. The file name is fixed to <strong id="modelarts_23_0091__en-us_topic_0172466148_b13781038143516">config.json</strong>. Only one model configuration file is supported.
-|   |   |── customize_service.py  (Optional) Model inference code. The file name is fixed to customize_service.py. Only one model inference code file exists. The files on which customize_service.py depends can be directly stored in the model directory. </pre>
-</div>
 </li></ul>
 </div>
 </div>
