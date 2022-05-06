@@ -28,12 +28,13 @@
     name: otc-doc-exports-convert-base
     parent: unittests
     abstract: true
-    nodeset: ubuntu-focal
+    nodeset: ubuntu-jammy
     description: |
       Convert doc exports from html to rst and generate corresponding rst diff
       files.
     pre-run: playbooks/pre.yaml
     run: playbooks/run.yaml
+    post-run: playbooks/post.yaml
 
 - job:
     name: otc-doc-exports-convert-compute
@@ -92,6 +93,10 @@
 - project:
     merge-mode: squash-merge
     default-branch: main
+    vars:
+      docs_rst_location: "docs"
+      docs_base_location: "base"
+      docs_new_location: "new"
     check:
       jobs:
         - otc-tox-pep8:

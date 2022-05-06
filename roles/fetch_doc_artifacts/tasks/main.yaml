@@ -9,11 +9,32 @@
   when: "doc_dir.matched > 0"
   include_tasks: doc.yaml
 
-- name: Find {{ fetch_doc_artifacts_name }} Patch
+- name: Find {{ fetch_doc_artifacts_name }} diff patch
   stat:
-    path: "{{ fetch_doc_artifacts_patch }}"
-  register: doc_patch
+    path: "{{ fetch_doc_artifacts_diff_patch }}"
+  register: doc_diff_patch
+  when: "fetch_doc_artifacts_diff_patch is defined"
 
-- name: Process {{ fetch_doc_artifacts_name }} Patch file
-  when: "doc_patch.stat.exists"
+- name: Process {{ fetch_doc_artifacts_name }} diff patch file
+  when:
+    - "fetch_doc_artifacts_diff_patch is defined"
+    - "doc_diff_patch.stat.exists"
   include_tasks: patch.yaml
+  vars:
+    patch_file: "{{ fetch_doc_artifacts_diff_patch }}"
+    patch_type: "diff"
+
+- name: Find {{ fetch_doc_artifacts_name }} git patch
+  stat:
+    path: "{{ fetch_doc_artifacts_git_patch }}"
+  register: doc_git_patch
+  when: "fetch_doc_artifacts_git_patch is defined"
+
+- name: Process {{ fetch_doc_artifacts_name }} git patch file
+  when:
+    - "fetch_doc_artifacts_git_patch is defined"
+    - "doc_git_patch.stat.exists"
+  include_tasks: patch.yaml
+  vars:
+    patch_file: "{{ fetch_doc_artifacts_git_patch }}"
+    patch_type: "git"

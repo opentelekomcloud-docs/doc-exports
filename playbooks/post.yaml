@@ -1,44 +1,18 @@
 ---
-- hosts: localhost
-  vars:
-    vault_addr: "{{ zuul_vault_addr }}"
-    vault_secret_dest: "{{ zuul.executor.work_root }}/.approle-secret"
-    vault_token_dest: "{{ zuul.executor.work_root }}/.approle-token"
-
-  roles:
-    # Get the Vault token from prepared secret-id
-    - role: create-vault-approle-token
-      vault_role_id: "{{ zuul_vault.vault_role_id }}"
-      vault_wrapping_token_id: "{{ lookup('file', vault_secret_dest) }}"
-
 - hosts: all
-  vars:
-    vault_token_dest: "{{ zuul.executor.work_root }}/.approle-token"
-    vault_addr: "{{ zuul_vault_addr }}"
   tasks:
+    - name: Read project docs configuration
+      include_vars: "{{ docs_update_data_file }}"
 
-    - name: Fetch organization tokens
-      no_log: true
-      check_mode: false
-      ansible.builtin.uri:
-        url: "{{ vault.vault_addr }}/v1/{{ vault.vault_token_path }}"
-        headers:
-          "X-Vault-Token": "{{ lookup('file', vault_token_dest) }}"
-        method: "POST"
-        body:
-          org_name: "opentelekomcloud-docs"
-        body_format: "json"
-      register: "org_token"
-
-    - name: Revoke GitHub token lease
-      check_mode: false
-      no_log: true
-      uri:
-        url: "{{ vault.vault_addr }}/v1/sys/leases/revoke"
-        headers:
-          "X-Vault-Token": "{{ vault.vault_token }}"
-        method: "PUT"
-        body:
-          lease_id: "{{ org_token.json.lease_id }}"
-        body_format: "json"
-        status_code: 204
+    - name: Fetch generated artifacts
+      include_role:
+        name: "fetch_doc_artifacts"
+      vars:
+        fetch_doc_artifacts_name: "{{ doc.label }}"
+        fetch_doc_artifacts_rst_source: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}/{{ docs_new_location }}"
+        fetch_doc_artifacts_diff_patch: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+        fetch_doc_artifacts_git_patch: "{{ ansible_user_dir }}/{{ doc.label }}.git.patch"
+      loop: "{{ docs }}"
+      loop_control:
+        loop_var: "doc"
+        label: "{{ doc.label }}"
