@@ -1,9 +1,9 @@
 - block:
     - name: Fetch archive
       synchronize:
-        dest: "{{ zuul.executor.log_root }}/{{ fetch_doc_artifacts_name }}.patch"
+        dest: "{{ zuul.executor.log_root }}/{{ fetch_doc_artifacts_name }}.{{ patch_type }}.patch"
         mode: pull
-        src: "{{ fetch_doc_artifacts_patch }}"
+        src: "{{ patch_file }}"
         verify_host: true
         owner: no
         group: no
@@ -12,8 +12,8 @@
 - block:
     - name: Copy archive
       copy:
-        dest: "{{ zuul_output_dir }}/logs/{{ fetch_doc_artifacts_name }}.patch"
-        src: "{{ fetch_doc_artifacts_patch }}"
+        dest: "{{ zuul_output_dir }}/logs/{{ fetch_doc_artifacts_name }}.{{ patch_type }}.patch"
+        src: "{{ patch_file }}"
         mode: 0644
         remote_src: true
   when: zuul_use_fetch_output
@@ -23,9 +23,10 @@
     data:
       zuul:
         artifacts:
-          - name: "{{ fetch_doc_artifacts_name }} patch"
-            url: "patches/{{ fetch_doc_artifacts_name }}.patch"
+          - name: "{{ fetch_doc_artifacts_name }} {{ patch_type }} patch"
+            url: "{{ fetch_doc_artifacts_name }}.{{ patch_type }}.patch"
             metadata:
-              type: docs_patch
+              type: "patch"
               doc_service: "{{ doc.service }}"
               doc_type: "{{ doc.type }}"
+              patch_type: "{{ patch_type }}"

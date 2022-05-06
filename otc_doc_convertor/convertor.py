@@ -7,6 +7,7 @@ import logging
 import os
 import pathlib
 import re
+import shutil
 
 
 class OTCDocConvertor:
@@ -124,6 +125,8 @@ class OTCDocConvertor:
                     cap.name = 'figcaption'
                     figure.append(cap)
                 if img:
+                    # Store all referred images for copying
+                    self.doc_images.add(img['src'])
                     img['src'] = '/_static/images/' + img['src']
                     figure.append(img)
                 i.replace_with(figure)
@@ -233,12 +236,12 @@ class OTCDocConvertor:
             '--dest',
             help='Directory to write resulting files')
         self.args = parser.parse_args()
-        retval = os.getcwd()
         meta_data = json.loads(open(
             pathlib.Path(self.args.path, "CLASS.TXT.json")
         ).read())
         metadata_by_uri = dict()
         metadata_by_code = dict()
+        self.doc_images = set()
         if self.args.dest:
             dest = pathlib.Path(self.args.dest)
         else:
@@ -415,7 +418,16 @@ class OTCDocConvertor:
                     f" of result/{path}/index.rst")
                 p.unlink()
 
-        os.chdir(retval)
+        # Copy used images
+        if len(self.doc_images) > 0:
+            logging.debug("Processing images")
+            img_dest = pathlib.Path(dest, '_static', 'images')
+            img_dest.mkdir(parents=True, exist_ok=True)
+            for img in self.doc_images:
+                shutil.copyfile(
+                    pathlib.Path(self.args.path, img).resolve(strict=False),
+                    pathlib.Path(img_dest, img).resolve(strict=False)
+                )
 
 
 def main():

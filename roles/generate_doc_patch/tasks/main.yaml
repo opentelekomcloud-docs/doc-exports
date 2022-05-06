@@ -9,8 +9,103 @@
     path: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_new_location }}"
   register: new_stat
 
+- name: Create reference {{ generate_doc_patch_repository }} repo
+  file:
+    path: "{{ generate_doc_patch_doc_location }}"
+    state: "directory"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Initialize fake git repository
+  command: "git init"
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Copy {{ doc_label }} base version
+  copy:
+    src: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_base_location }}/"
+    dest: "{{ generate_doc_patch_doc_location }}"
+    remote_src: true
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Stage base version
+  command: "git add ."
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Commit base version
+  command: "git commit -m 'base version'"
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Copy {{ doc_label }} new version
+  copy:
+    src: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_new_location }}/"
+    dest: "{{ generate_doc_patch_doc_location }}"
+    remote_src: true
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Stage updated version
+  command: "git add ."
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Perform git diff to see if there are changes
+  command: "git diff --staged"
+  register: diff_output
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Commit updated version
+  command: "git commit -m 'Update {{ doc_label }}'"
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "diff_output.stdout != ''"
+    - "generate_doc_patch_git_patch_location is defined"
+
+- name: Generate {{ doc_label }} patch
+  shell: "git format-patch --binary -1 --stdout > {{ generate_doc_patch_git_patch_location }}"
+  args:
+    chdir: "{{ generate_doc_patch_repo_location }}"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "diff_output.stdout != ''"
+    - "generate_doc_patch_git_patch_location is defined"
+
 - name: Generate {{ doc_label }} patch file
-  shell: "diff -ruN {{ generate_doc_patch_base_location }} {{ generate_doc_patch_new_location }} > {{ generate_doc_patch_patch_location }}"
+  shell: "diff -ruN {{ generate_doc_patch_base_location }} {{ generate_doc_patch_new_location }} > {{ generate_doc_patch_diff_patch_location }}"
   args:
     chdir: "{{ generate_doc_patch_base }}"
   register: diff_cmd
@@ -19,3 +114,4 @@
   when:
     - "base_stat.stat.exists"
     - "new_stat.stat.exists"
+    - "generate_doc_patch_diff_patch_location is defined"

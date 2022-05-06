@@ -1,10 +1,5 @@
 ---
 - hosts: all
-  vars:
-    docs_rst_location: "docs"
-    docs_base_location: "base"
-    docs_new_location: "new"
-
   tasks:
     - name: Read project docs configuration
       include_vars: "{{ docs_update_data_file }}"
@@ -15,6 +10,12 @@
         chdir: "{{ zuul.project.src_dir }}"
       register: git_log
       ignore_errors: true
+
+    - name: Configure git user name
+      command: "git config --global user.name 'OpenTelekomCloud Proposal Bot'"
+
+    - name: Configure git user email
+      command: "git config --global user.email 52695153+otcbot@users.noreply.github.com"
 
     - name: Generate new RSTs
       include_role:
@@ -54,22 +55,13 @@
         doc_label: "{{ doc.label }}"
         generate_doc_patch_base_location: "{{ docs_base_location }}"
         generate_doc_patch_new_location: "{{ docs_new_location }}"
+        generate_doc_patch_repository: "{{ doc.repository }}"
+        generate_doc_patch_project_location: "{{ doc.project_location }}"
         generate_doc_patch_base: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}"
-        generate_doc_patch_patch_location: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+        generate_doc_patch_diff_patch_location: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+        generate_doc_patch_git_patch_location: "{{ ansible_user_dir }}/{{ doc.label }}.git.patch"
       loop: "{{ docs }}"
       loop_control:
         loop_var: "doc"
         label: "{{ doc.label }}"
       when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor')"
-
-    - name: Fetch generated artifacts
-      include_role:
-        name: "fetch_doc_artifacts"
-      vars:
-        fetch_doc_artifacts_name: "{{ doc.label }}"
-        fetch_doc_artifacts_rst_source: "{{ ansible_user_dir }}/{{ docs_rst_location }}/{{ doc.label }}/{{ docs_new_location }}"
-        fetch_doc_artifacts_patch: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
-      loop: "{{ docs }}"
-      loop_control:
-        loop_var: "doc"
-        label: "{{ doc.label }}"
