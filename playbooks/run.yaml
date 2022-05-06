@@ -28,7 +28,7 @@
       loop_control:
         loop_var: "doc"
         label: "{{ doc.label }}"
-      when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor')"
+      when: "git_log.stdout is search(doc.html_location) or git_log.stdout is search('otc_doc_convertor') or git_log.stdout is search('playbooks')"
 
     - name: Restore to the previous git state
       command: "git checkout HEAD^1"
