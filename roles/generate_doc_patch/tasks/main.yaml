@@ -10,7 +10,7 @@
   register: new_stat
 
 - name: Generate {{ doc_label }} patch file
-  shell: "diff -ruN {{ generate_doc_patch_base_location }} {{ generate_doc_patch_new_location }} > {{ generate_doc_patch_patch_location }}"
+  shell: "diff -ruaN {{ generate_doc_patch_base_location }} {{ generate_doc_patch_new_location }} > {{ generate_doc_patch_patch_location }}"
   args:
     chdir: "{{ generate_doc_patch_base }}"
   register: diff_cmd
