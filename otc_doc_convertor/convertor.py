@@ -143,6 +143,12 @@ class OTCDocConvertor:
             else:
                 i.name = 'p'
 
+        # Process remaining images
+        for img in soup.body.find_all('img'):
+            if img['src'] and not img['src'].startswith('/_static/images'):
+                self.doc_images.add(img['src'])
+                img['src'] = '/_static/images/' + img['src']
+
         # Drop strong in table headers "/"
         for th in soup.body.find_all('th'):
             if th.p.strong:
@@ -203,6 +209,8 @@ class OTCDocConvertor:
         rawize_strings = [
             # "\*\*\*\*\*\*",
             # r"([\\\/\:\*\?\"\~|<>]{4,})"
+            # ModelArts UMN contain this "unallowed" sequence
+            r"(\\/:\*\?\"<>\|)"
         ]
         for to_rawize in rawize_strings:
             for p in soup.body.find_all(string=re.compile(to_rawize)):
@@ -217,6 +225,8 @@ class OTCDocConvertor:
                         p.replace_with(bs4.BeautifulSoup(new, 'html.parser'))
                         print(part.group(1))
                         print(f"New content is {p.string}")
+                    else:
+                        print('ups')
                 logging.error(f"String with star: {p}")
 
         return soup.body
@@ -298,9 +308,8 @@ class OTCDocConvertor:
                  open(pathlib.Path(self.args.path,
                       f"temp/{target}.tmp"), 'w') as writer:
                 # if f.name not in [
-                #         "modelarts_21_0031.html",
-                #         "en-us_topic_0032380449.html"]:
-                #     continue
+                # ]:
+                #    continue
                 logging.info(f"Pre-Processing {f} as {target}")
                 content = reader.read()
                 soup = bs4.BeautifulSoup(content, "lxml")
@@ -356,9 +365,6 @@ class OTCDocConvertor:
                     processed_line = re.sub(r'√', 'Y', processed_line)
                     processed_line = re.sub(
                         r'public_sys-resources/', '', processed_line)
-                    processed_line = re.sub(
-                        r'image:: ', 'image:: /_static/images/',
-                        processed_line)
                     processed_line = re.sub(
                         r'   :name: .*$', '', processed_line)
                     processed_line = re.sub(
