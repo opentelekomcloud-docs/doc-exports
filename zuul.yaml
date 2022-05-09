@@ -28,7 +28,7 @@
     name: otc-doc-exports-convert-base
     parent: unittests
     abstract: true
-    nodeset: ubuntu-jammy
+    nodeset: vm
     description: |
       Convert doc exports from html to rst and generate corresponding rst diff
       files.
@@ -45,6 +45,7 @@
     files:
       - otc_doc_convertor
       - docs/ecs
+      - roles
     vars:
       docs_update_data_file: "docs_compute.yaml"
 
@@ -57,6 +58,7 @@
     files:
       - otc_doc_convertor
       - docs/modelarts
+      - roles
     vars:
       docs_update_data_file: "docs_big-data.yaml"
 
@@ -97,6 +99,7 @@
       docs_rst_location: "docs"
       docs_base_location: "base"
       docs_new_location: "new"
+      ensure_pandoc_version: "2.18"
     check:
       jobs:
         - otc-tox-pep8:
