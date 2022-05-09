@@ -55,6 +55,15 @@
     - "new_stat.stat.exists"
     - "generate_doc_patch_git_patch_location is defined"
 
+- name: Drop {{ doc_label }} new version folder
+  file:
+    path: "{{ generate_doc_patch_doc_location }}"
+    state: "absent"
+  when:
+    - "base_stat.stat.exists"
+    - "new_stat.stat.exists"
+    - "generate_doc_patch_git_patch_location is defined"
+
 - name: Copy {{ doc_label }} new version
   copy:
     src: "{{ generate_doc_patch_base }}/{{ generate_doc_patch_new_location }}/"
