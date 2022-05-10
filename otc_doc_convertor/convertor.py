@@ -309,7 +309,7 @@ class OTCDocConvertor:
                       f"temp/{target}.tmp"), 'w') as writer:
                 # if f.name not in [
                 # ]:
-                #    continue
+                #     continue
                 logging.info(f"Pre-Processing {f} as {target}")
                 content = reader.read()
                 soup = bs4.BeautifulSoup(content, "lxml")
@@ -389,6 +389,7 @@ class OTCDocConvertor:
                     processed_line = re.sub(
                         r'.. code:: codeblock$',
                         r'.. code-block::', processed_line)
+                    processed_line = re.sub(r'[ \t]*$', '', processed_line)
                     writer.write(processed_line)
 
         # Generate indexes
