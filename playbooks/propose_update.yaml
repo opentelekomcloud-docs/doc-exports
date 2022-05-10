@@ -80,7 +80,8 @@
           vars:
             doc_label: "{{ doc.label }}"
             apply_doc_patch_repository: "{{ doc.repository }}"
-            apply_doc_patch_patch_file: "{{ ansible_user_dir }}/{{ doc.label }}.patch"
+            apply_doc_patch_diff_patch_file: "{{ ansible_user_dir }}/{{ doc.label }}.diff.patch"
+            apply_doc_patch_git_patch_file: "{{ ansible_user_dir }}/{{ doc.label }}.git.patch"
             apply_doc_patch_target_location: "{{ doc.project_location }}"
           loop: "{{ docs }}"
           loop_control:
