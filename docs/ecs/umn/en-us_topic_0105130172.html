@@ -1,11 +1,11 @@
 <a name="EN-US_TOPIC_0105130172"></a><a name="EN-US_TOPIC_0105130172"></a>
 
 <h1 class="topictitle1">Why Can't an EIP Be Pinged?</h1>
-<div id="body8662426"><div class="section" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_section33522024122612"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p9653153062612">After you purchase an EIP and bind it to an <span id="EN-US_TOPIC_0105130172__text82541137183">ECS</span>, the ping operation to the EIP fails, or the <span id="EN-US_TOPIC_0105130172__text1169219517325">ECS</span> fails to access the Internet.</p>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_section33522024122612"><h4 class="sectiontitle">Symptom</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p9653153062612">After you purchase an EIP and bind it to an ECS, the EIP cannot be pinged on a local server or other cloud servers.</p>
 </div>
 <div class="section" id="EN-US_TOPIC_0105130172__section1116655241118"><h4 class="sectiontitle">Fault Locating</h4><p id="EN-US_TOPIC_0105130172__p17987205213470">The following fault causes are sequenced based on their occurrence probability.</p>
 <p id="EN-US_TOPIC_0105130172__p997211345215">If the fault persists after you have ruled out a cause, check other causes.</p>
-<div class="fignone" id="EN-US_TOPIC_0105130172__en-us_topic_0118498854_fig257119102320"><span class="figcap"><b>Figure 1 </b>Method of locating the failure to ping an EIP</span><br><span><img id="EN-US_TOPIC_0105130172__image1236010411317" src="en-us_image_0293553366.png" title="Click to enlarge" class="imgResize"></span></div>
+<div class="fignone" id="EN-US_TOPIC_0105130172__en-us_topic_0118498854_fig257119102320"><span class="figcap"><b>Figure 1 </b>Method of locating the failure to ping an EIP</span><br><span><img id="EN-US_TOPIC_0105130172__image67448533518" src="en-us_image_0000001223659800.png" title="Click to enlarge" class="imgResize"></span></div>
 
 <div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table6168184132811" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Method of locating the failure to ping an EIP</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row31680416283"><th align="left" class="cellrowborder" valign="top" width="28.189999999999998%" id="mcps1.3.2.5.2.3.1.1"><p id="EN-US_TOPIC_0105130172__p17639192710215">Possible Cause</p>
 </th>
@@ -47,27 +47,51 @@
 </table>
 </div>
 </div>
-<div class="section" id="EN-US_TOPIC_0105130172__section1715910911214"><a name="EN-US_TOPIC_0105130172__section1715910911214"></a><a name="section1715910911214"></a><h4 class="sectiontitle">Checking Security Group Rules</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p74698814216">The ping operations use the ICMP protocol. Check whether the security group accommodating the <span id="EN-US_TOPIC_0105130172__text4440563310">ECS</span> allows ICMP traffic in the inbound direction.</p>
+<div class="section" id="EN-US_TOPIC_0105130172__section1715910911214"><a name="EN-US_TOPIC_0105130172__section1715910911214"></a><a name="section1715910911214"></a><h4 class="sectiontitle">Checking Security Group Rules</h4><p id="EN-US_TOPIC_0105130172__en-us_topic_0096302298_p74698814216">ICMP is used for the ping command. Check whether the security group accommodating the <span id="EN-US_TOPIC_0105130172__text188715155189">ECS</span> allows ICMP traffic.</p>
 <ol id="EN-US_TOPIC_0105130172__ol1062118920910"><li id="EN-US_TOPIC_0105130172__li899315381790">Log in to the management console.</li><li id="EN-US_TOPIC_0105130172__li464234814566">Click <span><img id="EN-US_TOPIC_0105130172__en-us_topic_0014250631_image1862675853202121" src="en-us_image_0210779229.png"></span> in the upper left corner and select your region and project.</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0029320966_li50026016224047">Under <strong id="EN-US_TOPIC_0105130172__b26151629185618"><span id="EN-US_TOPIC_0105130172__text11614629105612">Computing</span></strong>, click <strong id="EN-US_TOPIC_0105130172__b206161829145611">Elastic Cloud Server</strong>.</li><li id="EN-US_TOPIC_0105130172__li34401539214315">On the <strong id="EN-US_TOPIC_0105130172__b116104274418">Elastic Cloud Server</strong> page, click the name of the target <span id="EN-US_TOPIC_0105130172__text10144144802310">ECS</span>.<p id="EN-US_TOPIC_0105130172__p19982029214319">The page providing details about the <span id="EN-US_TOPIC_0105130172__text186236591941">ECS</span> is displayed.</p>
 </li><li id="EN-US_TOPIC_0105130172__li45534692214355">Click the <strong id="EN-US_TOPIC_0105130172__b101784411513">Security Groups</strong> tab, expand the information of the security group, and view security group rules.</li><li id="EN-US_TOPIC_0105130172__li2997365821442">Click the security group ID.<p id="EN-US_TOPIC_0105130172__p5857465521443"><a name="EN-US_TOPIC_0105130172__li2997365821442"></a><a name="li2997365821442"></a>The system automatically switches to the <strong id="EN-US_TOPIC_0105130172__b5881737191118">Security Group</strong> page.</p>
-</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0029320966_li110100322530">On the <strong id="EN-US_TOPIC_0105130172__b14616038181110">Inbound Rules</strong> tab, click <strong id="EN-US_TOPIC_0105130172__b176161838201115">Add Rule</strong>. In the displayed dialog box, set required parameters to add an inbound rule.
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table156272235264" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Security group rules</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row362852317264"><th align="left" class="cellrowborder" valign="top" width="22.222222222222225%" id="mcps1.3.3.3.7.3.2.5.1.1"><p id="EN-US_TOPIC_0105130172__p1662819236265">Transfer Direction</p>
+</li><li id="EN-US_TOPIC_0105130172__li10861174114534">On the <strong id="EN-US_TOPIC_0105130172__b4259884266">Outbound Rules</strong> page, click <strong id="EN-US_TOPIC_0105130172__b14259168162614">Add Rule</strong>. In the displayed dialog box, set required parameters to add an outbound rule.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table20711140338" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Security group rules</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row11721740839"><th align="left" class="cellrowborder" valign="top" width="15.57%" id="mcps1.3.3.3.7.3.2.5.1.1"><p id="EN-US_TOPIC_0105130172__p9722401533">Transfer Direction</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.3.3.7.3.2.5.1.2"><p id="EN-US_TOPIC_0105130172__p20628523132616">Type</p>
+<th align="left" class="cellrowborder" valign="top" width="17.32%" id="mcps1.3.3.3.7.3.2.5.1.2"><p id="EN-US_TOPIC_0105130172__p1724407311">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="25.252525252525253%" id="mcps1.3.3.3.7.3.2.5.1.3"><p id="EN-US_TOPIC_0105130172__p162812311266">Protocol/Port Range</p>
+<th align="left" class="cellrowborder" valign="top" width="21.89%" id="mcps1.3.3.3.7.3.2.5.1.3"><p id="EN-US_TOPIC_0105130172__p19729400311">Protocol/Port Range</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="39.3939393939394%" id="mcps1.3.3.3.7.3.2.5.1.4"><p id="EN-US_TOPIC_0105130172__p16628323202611">Source</p>
+<th align="left" class="cellrowborder" valign="top" width="45.22%" id="mcps1.3.3.3.7.3.2.5.1.4"><p id="EN-US_TOPIC_0105130172__p9725401936">Source</p>
 </th>
 </tr>
 </thead>
-<tbody><tr id="EN-US_TOPIC_0105130172__row56286239261"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.3.3.7.3.2.5.1.1 "><p id="EN-US_TOPIC_0105130172__p14239113312264">Inbound</p>
+<tbody><tr id="EN-US_TOPIC_0105130172__row57264012318"><td class="cellrowborder" valign="top" width="15.57%" headers="mcps1.3.3.3.7.3.2.5.1.1 "><p id="EN-US_TOPIC_0105130172__p1172164011314">Outbound</p>
 </td>
-<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.3.3.7.3.2.5.1.2 "><p id="EN-US_TOPIC_0105130172__p10628023122614">IPv4</p>
+<td class="cellrowborder" valign="top" width="17.32%" headers="mcps1.3.3.3.7.3.2.5.1.2 "><p id="EN-US_TOPIC_0105130172__p15726401538">IPv4</p>
 </td>
-<td class="cellrowborder" valign="top" width="25.252525252525253%" headers="mcps1.3.3.3.7.3.2.5.1.3 "><p id="EN-US_TOPIC_0105130172__p462819234268">ICMP/Any</p>
+<td class="cellrowborder" valign="top" width="21.89%" headers="mcps1.3.3.3.7.3.2.5.1.3 "><p id="EN-US_TOPIC_0105130172__p107218401539">ICMP/Any</p>
 </td>
-<td class="cellrowborder" valign="top" width="39.3939393939394%" headers="mcps1.3.3.3.7.3.2.5.1.4 "><p id="EN-US_TOPIC_0105130172__p115071006306">0.0.0.0/0</p>
+<td class="cellrowborder" valign="top" width="45.22%" headers="mcps1.3.3.3.7.3.2.5.1.4 "><p id="EN-US_TOPIC_0105130172__p1172440138">0.0.0.0/0</p>
+<p id="EN-US_TOPIC_0105130172__p672540231">0.0.0.0/0 indicates all IP addresses.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li><li id="EN-US_TOPIC_0105130172__en-us_topic_0029320966_li110100322530">On the <strong id="EN-US_TOPIC_0105130172__b14616038181110">Inbound Rules</strong> tab, click <strong id="EN-US_TOPIC_0105130172__b176161838201115">Add Rule</strong>. In the displayed dialog box, set required parameters to add an inbound rule.
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0105130172__table156272235264" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Security group rules</caption><thead align="left"><tr id="EN-US_TOPIC_0105130172__row362852317264"><th align="left" class="cellrowborder" valign="top" width="22.222222222222225%" id="mcps1.3.3.3.8.3.2.5.1.1"><p id="EN-US_TOPIC_0105130172__p1662819236265">Transfer Direction</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.131313131313133%" id="mcps1.3.3.3.8.3.2.5.1.2"><p id="EN-US_TOPIC_0105130172__p20628523132616">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="25.252525252525253%" id="mcps1.3.3.3.8.3.2.5.1.3"><p id="EN-US_TOPIC_0105130172__p162812311266">Protocol/Port Range</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="39.3939393939394%" id="mcps1.3.3.3.8.3.2.5.1.4"><p id="EN-US_TOPIC_0105130172__p16628323202611">Source</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0105130172__row56286239261"><td class="cellrowborder" valign="top" width="22.222222222222225%" headers="mcps1.3.3.3.8.3.2.5.1.1 "><p id="EN-US_TOPIC_0105130172__p14239113312264">Inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.131313131313133%" headers="mcps1.3.3.3.8.3.2.5.1.2 "><p id="EN-US_TOPIC_0105130172__p10628023122614">IPv4</p>
+</td>
+<td class="cellrowborder" valign="top" width="25.252525252525253%" headers="mcps1.3.3.3.8.3.2.5.1.3 "><p id="EN-US_TOPIC_0105130172__p462819234268">ICMP/Any</p>
+</td>
+<td class="cellrowborder" valign="top" width="39.3939393939394%" headers="mcps1.3.3.3.8.3.2.5.1.4 "><p id="EN-US_TOPIC_0105130172__p115071006306">0.0.0.0/0</p>
 <p id="EN-US_TOPIC_0105130172__p350740123019">0.0.0.0/0 indicates all IP addresses.</p>
 </td>
 </tr>

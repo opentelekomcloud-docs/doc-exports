@@ -33,7 +33,7 @@
 </td>
 <td class="cellrowborder" valign="top" width="44.125587441255874%" headers="mcps1.3.4.4.1.1.2.4.1.2 "><p id="EN-US_TOPIC_0032380449__p239984053714">Scripts, such as Shell and Python scripts, are used for custom configurations.</p>
 </td>
-<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p839964053718">Methods pre-defined in Cloud-Init, such as the Yum source and SSH key, are used for configuring certain ECS applications.</p>
+<td class="cellrowborder" valign="top" width="38.226177382261774%" headers="mcps1.3.4.4.1.1.2.4.1.3 "><p id="EN-US_TOPIC_0032380449__p839964053718">Methods pre-defined in Cloud-Init, such as the yum repository and SSH key, are used for configuring certain ECS applications.</p>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0032380449__row73991405372"><td class="cellrowborder" valign="top" width="17.648235176482352%" headers="mcps1.3.4.4.1.1.2.4.1.1 "><p id="EN-US_TOPIC_0032380449__p1399174073719">Format</p>
@@ -71,7 +71,7 @@ echo "Hello, the time is now $(date -R)" | tee /root/output.txt</pre>
 <p id="EN-US_TOPIC_0032380449__p316665544119">After the <span id="EN-US_TOPIC_0032380449__text1654745284317">ECS</span> is created, start it and run the <strong id="EN-US_TOPIC_0032380449__b741518589424">cat </strong><em id="EN-US_TOPIC_0032380449__i39973094314">[file]</em> command to check the script execution result.</p>
 <pre class="screen" id="EN-US_TOPIC_0032380449__screen353671394316">[root@XXXXXXXX ~]# cat /root/output.txt
 Hello, the time is now Mon, 16 Jul 2016 16:03:18+0800</pre>
-<p id="EN-US_TOPIC_0032380449__p1849372719381"><strong id="EN-US_TOPIC_0032380449__b1619186626">Example 2: Inject a Cloud-Config data script.</strong></p>
+<p id="EN-US_TOPIC_0032380449__p1849372719381"><strong id="EN-US_TOPIC_0032380449__b1269336628">Example 2: Inject a Cloud-Config data script.</strong></p>
 <p id="EN-US_TOPIC_0032380449__p104921296416">When creating an <span id="EN-US_TOPIC_0032380449__text231733611919">ECS</span>, set <strong id="EN-US_TOPIC_0032380449__b83221136111911">User Data</strong> to <strong id="EN-US_TOPIC_0032380449__b632319362193">As text</strong> and enter the customized user data script.</p>
 <pre class="screen" id="EN-US_TOPIC_0032380449__screen188011505456">#cloud-config
 bootcmd:
@@ -167,7 +167,7 @@ write_files:
 <p id="EN-US_TOPIC_0032380449__p88331362714">User data example:</p>
 <ul id="EN-US_TOPIC_0032380449__ul19621835103412"><li id="EN-US_TOPIC_0032380449__li2448840133414">Using a ciphertext password (recommended)<pre class="screen" id="EN-US_TOPIC_0032380449__screen129561436162716">#!/bin/bash 
 echo 'root:$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig' | chpasswd -e;</pre>
-<p id="EN-US_TOPIC_0032380449__p5537154415278">In the preceding command output, <strong>$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig</strong> is the ciphertext password, which can be generated as follows:</p>
+<p id="EN-US_TOPIC_0032380449__p5537154415278">In the preceding command output, <strong id="EN-US_TOPIC_0032380449__b5011883413">$6$V6azyeLwcD3CHlpY$BN3VVq18fmCkj66B4zdHLWevqcxlig</strong> is the ciphertext password, which can be generated as follows:</p>
 <ol id="EN-US_TOPIC_0032380449__ol1848725423417"><li id="EN-US_TOPIC_0032380449__li34871541346">Run the following command to generate an encrypted ciphertext value:<p id="EN-US_TOPIC_0032380449__p470413414213"><a name="EN-US_TOPIC_0032380449__li34871541346"></a><a name="li34871541346"></a><strong id="EN-US_TOPIC_0032380449__b4944159164218">python -c "import crypt, getpass, pwd;print crypt.mksalt()"</strong></p>
 <p id="EN-US_TOPIC_0032380449__p1344124117433">The following information is displayed:</p>
 <pre class="screen" id="EN-US_TOPIC_0032380449__screen196052012423">$6$V6azyeLwcD3CHlpY</pre>
