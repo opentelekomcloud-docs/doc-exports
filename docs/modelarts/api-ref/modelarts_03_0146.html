@@ -1,0 +1,21 @@
+<a name="modelarts_03_0146"></a><a name="modelarts_03_0146"></a>
+
+<h1 class="topictitle1">Introduction</h1>
+<div id="body8662426"><p id="modelarts_03_0146__en-us_topic_0181004301_p164311783319">This section describes fine-grained permissions management for your ModelArts. If your current account does not require individual IAM users, skip this section.</p>
+<p id="modelarts_03_0146__en-us_topic_0181004301_p1844161723317">By default, new IAM users do not have permissions assigned. You need to add a user to one or more groups, and attach permissions policies or roles to these groups. Users inherit permissions from the groups to which they are added and can perform specified operations on cloud services based on the permissions.</p>
+<div class="note" id="modelarts_03_0146__en-us_topic_0181004301_note39578164335"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0146__en-us_topic_0181004301_p113651321093">Policy-based authorization is useful if you want to allow or deny the access to an API.</p>
+</div></div>
+<p id="modelarts_03_0146__en-us_topic_0181004301_p1845161753311">An account has all the permissions required to call all APIs, but IAM users must be assigned the required permissions. The permissions required for calling an API are determined by the actions supported by the API. Only users who have been granted permissions allowing the actions can call the API successfully. For example, if an IAM user wants to query ECSs using an API, the user must have been granted permissions that allow the <strong id="modelarts_03_0146__en-us_topic_0181004301_b524542111610">modelarts:notebook:create</strong> action.</p>
+<div class="section" id="modelarts_03_0146__en-us_topic_0181004301_section10100735557"><h4 class="sectiontitle">Supported Actions</h4><p id="modelarts_03_0146__en-us_topic_0181004301_p6451617143314">ModelArts provides system-defined policies that can be directly used in IAM. You can also create custom policies and use them to supplement system-defined policies, implementing more refined access control. Operations supported by policies are specific to APIs. The following are common concepts related to policies:</p>
+<ul id="modelarts_03_0146__en-us_topic_0181004301_ul164516173339"><li id="modelarts_03_0146__en-us_topic_0181004301_li16451117103312">Permissions: Statements in a policy that allow or deny certain operations.</li><li id="modelarts_03_0146__en-us_topic_0181004301_li651012113417">APIs: RESTful APIs that can be called in a custom policy.</li></ul>
+<ul id="modelarts_03_0146__en-us_topic_0181004301_ul31178221182"><li id="modelarts_03_0146__en-us_topic_0181004301_li411782216182">Actions: Specific operations that are allowed or denied.</li><li id="modelarts_03_0146__en-us_topic_0181004301_li184733402187">Related actions: Actions on which a specific action depends to take effect. When assigning permissions for the action to a user, you also need to assign permissions for the related actions.</li><li id="modelarts_03_0146__en-us_topic_0181004301_li11117722171812">IAM or enterprise projects: Type of projects for which an action will take effect. Policies that contain actions for both IAM and enterprise projects can be used and take effect for both IAM and Enterprise Management. Policies that only contain actions for IAM projects can be used and only take effect for IAM. <div class="note" id="modelarts_03_0146__en-us_topic_0181004301_note11691347131810"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_03_0146__en-us_topic_0181004301_p16471115320182">The check mark (√) and cross symbol (x) indicate that an action takes effect or does not take effect for the corresponding type of projects.</p>
+</div></div>
+</li></ul>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0138.html">Permissions Policies and Supported Actions</a></div>
+</div>
+</div>
+
