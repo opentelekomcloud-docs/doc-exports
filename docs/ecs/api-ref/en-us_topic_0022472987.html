@@ -52,6 +52,17 @@
 <td class="cellrowborder" valign="top" width="53.53464653534646%" headers="mcps1.3.3.2.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p1051017579521">Specifies the <span id="EN-US_TOPIC_0022472987__text8383155215364">ECS</span> attachment information. For details, see <a href="#EN-US_TOPIC_0022472987__table40707503151632">Table 3</a>.</p>
 </td>
 </tr>
+<tr id="EN-US_TOPIC_0022472987__row17917955151619"><td class="cellrowborder" valign="top" width="16.368363163683632%" headers="mcps1.3.3.2.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p191745517165">dry_run</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.33826617338266%" headers="mcps1.3.3.2.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p199173556163">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12.75872412758724%" headers="mcps1.3.3.2.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p18917105591610">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.53464653534646%" headers="mcps1.3.3.2.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p16988497198">Specifies whether to check the request and attach the disk.</p>
+<ul id="EN-US_TOPIC_0022472987__ul1769834914198"><li id="EN-US_TOPIC_0022472987__li12698144981918"><strong id="EN-US_TOPIC_0022472987__b14411753367">true</strong>: indicates that only the request is sent, and no disk will be attached. Check items include mandatory parameters, request format, and service restrictions. If the check fails, the system returns an error. If the check result is as expected, the system properly responds.</li><li id="EN-US_TOPIC_0022472987__li7698164918199"><strong id="EN-US_TOPIC_0022472987__b84235270611483">false</strong>: indicates that only the request is sent and the disk will be attached if the check result is as expected.</li></ul>
+<p id="EN-US_TOPIC_0022472987__p169834901914">The default value is <strong id="EN-US_TOPIC_0022472987__b99122245816">false</strong>.</p>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -86,6 +97,36 @@
 </div></div>
 </td>
 </tr>
+<tr id="EN-US_TOPIC_0022472987__row454615315168"><td class="cellrowborder" valign="top" width="17.849999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p2546173101613">volume_type</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.26%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p35463310168">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.41%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p454613191611">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.480000000000004%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p12516143417247">Specifies the disk type.</p>
+<p id="EN-US_TOPIC_0022472987__p1768895191319">If <strong id="EN-US_TOPIC_0022472987__b143551051396">volumeId</strong> is unavailable and <strong id="EN-US_TOPIC_0022472987__b987116222920">dry_run</strong> is set to <strong id="EN-US_TOPIC_0022472987__b919915297910">true</strong>, <strong id="EN-US_TOPIC_0022472987__b1699274118920">volume_type</strong> is available and must be specified.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022472987__row2312133414219"><td class="cellrowborder" valign="top" width="17.849999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p73128341217">count</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.26%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p7312234172114">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.41%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p203131834172116">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.480000000000004%" headers="mcps1.3.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0022472987__p1431343432115">Specifies the number of disks.</p>
+<p id="EN-US_TOPIC_0022472987__p11482441131217">If <strong id="EN-US_TOPIC_0022472987__b1507130101017">volumeId</strong> is unavailable and <strong id="EN-US_TOPIC_0022472987__b155082011015">dry_run</strong> is set to <strong id="EN-US_TOPIC_0022472987__b1850814020102">true</strong>, <strong id="EN-US_TOPIC_0022472987__b55085014105">count</strong> is available. If <strong id="EN-US_TOPIC_0022472987__b1362412216150">count</strong> is unavailable, the number of disks is <strong id="EN-US_TOPIC_0022472987__b1544119432109">1</strong> by default.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0022472987__row676311400224"><td class="cellrowborder" valign="top" width="17.849999999999998%" headers="mcps1.3.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0022472987__p14763740162211">hw:passthrough</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.26%" headers="mcps1.3.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0022472987__p1376394016227">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.41%" headers="mcps1.3.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0022472987__p5763164082216">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.480000000000004%" headers="mcps1.3.3.3.2.5.1.4 "><ul id="EN-US_TOPIC_0022472987__ul151413913619"><li id="EN-US_TOPIC_0022472987__li165147943618">If this parameter is set to <strong id="EN-US_TOPIC_0022472987__b84235270620365">true</strong>, the disk device type is SCSI, which allows ECS OSs to directly access the underlying storage media. SCSI reservation commands are supported.</li><li id="EN-US_TOPIC_0022472987__li1751512910362">If this parameter is set to <strong id="EN-US_TOPIC_0022472987__b203367810216">false</strong>, the disk device type is VBD, which supports only simple SCSI read/write commands.</li></ul>
+<p id="EN-US_TOPIC_0022472987__p162351242102412">If <strong id="EN-US_TOPIC_0022472987__b1477917518161">volumeId</strong> is unavailable and <strong id="EN-US_TOPIC_0022472987__b177944561610">dry_run</strong> is set to <strong id="EN-US_TOPIC_0022472987__b198024517161">true</strong>, <strong id="EN-US_TOPIC_0022472987__b2081212571615">hw:passthrough</strong> is available and must be specified.</p>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -96,8 +137,12 @@
 <pre class="screen" id="EN-US_TOPIC_0022472987__screen111411737104016">{
     "volumeAttachment": {
          "volumeId": "a26887c6-c47b-4654-abb5-dfadf7d3f803",
-         "device": "/dev/sda"
-    }
+         "device": "/dev/sda",
+         "volume_type": "SSD",
+         "count": 5,
+         "hw:passthrough": "true"
+    },
+    "dry_run": false
 }</pre>
 </div>
 <div class="section" id="EN-US_TOPIC_0022472987__section7250113841316"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0022472987__screen4283641172510">{
