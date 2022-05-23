@@ -3,107 +3,185 @@
 <h1 class="topictitle1">Specifications for Custom Images Used for Training Jobs</h1>
 <div id="body8662426"><p id="modelarts_23_0217__en-us_topic_0212179951_p1037492192113">When creating an image using locally developed models and training scripts, ensure that they meet the specifications defined by ModelArts.</p>
 <div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section26795139453"><h4 class="sectiontitle">Specifications</h4><ul id="modelarts_23_0217__en-us_topic_0212179951_ul557515200535"><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li1257542005315">Custom images cannot contain malicious code.</li><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li357552012535">Part of content in the basic images cannot be changed, including all the files in <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath18084253712"><b>/bin</b></span>, <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath88093273717"><b>/sbin</b></span>, <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath481019215376"><b>/usr</b></span>, and <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath281022133717"><b>/lib(64)</b></span>, some important configuration files in <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath19811827376"><b>/etc</b></span>, and the ModelArts tools in <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath7812182203716"><b>$HOME</b></span>.</li><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li1757532075313">A file cannot be added whose owner is <strong id="modelarts_23_0217__en-us_topic_0212179951_b1258823152818">root</strong> and has permission <strong id="modelarts_23_0217__en-us_topic_0212179951_b561316268285">setuid</strong> or <strong id="modelarts_23_0217__en-us_topic_0212179951_b3137142982810">setgid</strong>.</li><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li18576520195314">The size of a custom image cannot exceed 9.5 GB.</li></ul>
-<ul id="modelarts_23_0217__en-us_topic_0212179951_ul142648262454"><li id="modelarts_23_0217__en-us_topic_0212179951_li112661926114514">To ensure that the log content can be displayed normally, the logs must be standard output.</li><li id="modelarts_23_0217__en-us_topic_0212179951_li88571413163219">The default user of a custom image must be the user whose UID is <span class="parmvalue" id="modelarts_23_0217__en-us_topic_0212179951_parmvalue98212289148"><b>1101</b></span>.</li><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li17114193725610">Custom images can be developed based on basic ModelArts images. For details about the supported basic images, see <a href="#modelarts_23_0217__en-us_topic_0212179951_section1126616610513">Overview of a Basic Image Package</a>.</li><li id="modelarts_23_0217__en-us_topic_0212179951_li46120446715">Currently, the ModelArts backend does not support the download of open source installation packages. You are advised to install the dependency packages required for training in the custom image.</li></ul>
+<ul id="modelarts_23_0217__en-us_topic_0212179951_ul142648262454"><li id="modelarts_23_0217__en-us_topic_0212179951_li112661926114514">To ensure that the log content can be displayed normally, the logs must be standard output.</li><li id="modelarts_23_0217__en-us_topic_0212179951_li88571413163219">The default user of a custom image must be the user whose UID is <span class="parmvalue" id="modelarts_23_0217__en-us_topic_0212179951_parmvalue98212289148"><b>1101</b></span>.</li><li class="SourceCode" id="modelarts_23_0217__en-us_topic_0212179951_li17114193725610">Custom images can be developed based on basic ModelArts images. For details about the supported basic images, see <a href="#modelarts_23_0217__en-us_topic_0212179951_section1126616610513">Overview of a Basic Image Package</a>.</li></ul>
 </div>
 <div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section1126616610513"><a name="modelarts_23_0217__en-us_topic_0212179951_section1126616610513"></a><a name="en-us_topic_0212179951_section1126616610513"></a><h4 class="sectiontitle">Overview of a Basic Image Package</h4><p id="modelarts_23_0217__en-us_topic_0212179951_p108111215181419">To facilitate code download, training log output, and log file upload to OBS, ModelArts provides basic image packages for creating custom images. The basic images provided by ModelArts have the following features:</p>
 <ul id="modelarts_23_0217__en-us_topic_0212179951_ul088101818269"><li class="FirstParagraph" id="modelarts_23_0217__en-us_topic_0212179951_li20881218102618">Some necessary tools are available in the basic image. You need to create a custom image based on the basic images provided by ModelArts.</li><li class="FirstParagraph" id="modelarts_23_0217__en-us_topic_0212179951_li68821118122618">ModelArts continuously updates the basic image versions. For compatible updates, after the basic images are updated, you can still use the old images. For incompatible updates, the custom images created based on the old version cannot run on ModelArts, but the approved custom images can still be used.</li><li class="MsoBodyText" id="modelarts_23_0217__en-us_topic_0212179951_li20882718202619">If a custom image fails to be approved and the audit log contains an error message indicating that the basic image does not match, you need to use a new basic image to create an image.</li></ul>
 <p id="modelarts_23_0217__en-us_topic_0212179951_p1711824355211">Run the following command to obtain a ModelArts image:</p>
 <pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen9118194385216">docker pull &lt;Address for obtaining a basic image&gt;</pre>
-<p id="modelarts_23_0217__en-us_topic_0212179951_p121181543165213">After customizing an image, upload it to SWR. Make sure that you have created an organization and obtained the password for logging in to SWR. For details, see "Image Management" &gt; "Uploading an Image Through SWR Console" in <em id="modelarts_23_0217__en-us_topic_0212179951_i43531505202">Software Repository for Container User Guide</em>.</p>
+<p id="modelarts_23_0217__en-us_topic_0212179951_p121181543165213">After customizing an image, upload it to SWR. Make sure that you have created an organization and obtained the password for logging in to SWR. For details, see .</p>
 <pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen4321174213373">docker push  swr.&lt;region&gt;.xxx.com/&lt;Organization to which the target image belongs&gt;/&lt;Image name&gt;</pre>
 <p id="modelarts_23_0217__en-us_topic_0212179951_p144105394374">Obtain basic images based on chip requirements:</p>
-<ul id="modelarts_23_0217__en-us_topic_0212179951_ul4276926144315"><li id="modelarts_23_0217__en-us_topic_0212179951_li13276226194315"><a href="#modelarts_23_0217__en-us_topic_0212179951_section2357164275019">CPU-based Basic Images</a></li><li id="modelarts_23_0217__en-us_topic_0212179951_li427622617431"><a href="#modelarts_23_0217__en-us_topic_0212179951_section125281544151710">GPU-based Basic Images</a></li></ul>
-</div>
-<div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section2357164275019"><a name="modelarts_23_0217__en-us_topic_0212179951_section2357164275019"></a><a name="en-us_topic_0212179951_section2357164275019"></a><h4 class="sectiontitle">CPU-based Basic Images</h4><p id="modelarts_23_0217__en-us_topic_0212179951_p17895144019543">Address for obtaining a basic image</p>
-<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen1444215575544">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-cpu-base:1.3</pre>
-<p id="modelarts_23_0217__en-us_topic_0212179951_p117766261612"><a href="#modelarts_23_0217__en-us_topic_0212179951_table42317014714">Table 1</a> and <a href="#modelarts_23_0217__en-us_topic_0212179951_table624501372">Table 2</a> list the components and tools used by basic images.</p>
 
-<div class="tablenoborder"><a name="modelarts_23_0217__en-us_topic_0212179951_table42317014714"></a><a name="en-us_topic_0212179951_table42317014714"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table42317014714" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Components</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row1623801573"><th align="left" class="cellrowborder" valign="top" width="23.11%" id="mcps1.3.4.5.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p1223101975">Component</p>
+</div>
+<div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section2357164275019"><h4 class="sectiontitle">CPU-based Basic Images</h4><p id="modelarts_23_0217__en-us_topic_0212179951_p17895144019543">Address for obtaining a basic image</p>
+<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen1444215575544">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-cpu-base:1.3</pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table11715929121418" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Optional parameters</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row177151729161415"><th align="left" class="cellrowborder" valign="top" width="19.191919191919194%" id="mcps1.3.4.4.2.4.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p1471542911144">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="76.89%" id="mcps1.3.4.5.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p17231101072">Description</p>
+<th align="left" class="cellrowborder" valign="top" width="28.282828282828287%" id="mcps1.3.4.4.2.4.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p37153291140">Optional Value</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52.52525252525253%" id="mcps1.3.4.4.2.4.1.3"><p id="modelarts_23_0217__en-us_topic_0212179951_p187151129161413">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row13241506719"><td class="cellrowborder" valign="top" width="23.11%" headers="mcps1.3.4.5.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p16242005715">run_train.sh</p>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row37151229131418"><td class="cellrowborder" valign="top" width="19.191919191919194%" headers="mcps1.3.4.4.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p13580181911155">&lt;region&gt;</p>
 </td>
-<td class="cellrowborder" valign="top" width="76.89%" headers="mcps1.3.4.5.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p724904711">Training boot script. You can download the code directory, run training commands, redirect training log output, and upload log files to OBS after training commands are executed.</p>
+<td class="cellrowborder" valign="top" width="28.282828282828287%" headers="mcps1.3.4.4.2.4.1.2 ">
+<p id="modelarts_23_0217__en-us_topic_0212179951_p17580111921511">eu-de</p>
+</td>
+<td class="cellrowborder" valign="top" width="52.52525252525253%" headers="mcps1.3.4.4.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1958041971511">Region where the image resides. </p>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="modelarts_23_0217__en-us_topic_0212179951_p117766261612"><a href="#modelarts_23_0217__en-us_topic_0212179951_table42317014714">Table 2</a> and <a href="#modelarts_23_0217__en-us_topic_0212179951_table624501372">Table 3</a> list the components and tools used by basic images.</p>
+
+<div class="tablenoborder"><a name="modelarts_23_0217__en-us_topic_0212179951_table42317014714"></a><a name="en-us_topic_0212179951_table42317014714"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table42317014714" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Components</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row1623801573"><th align="left" class="cellrowborder" valign="top" width="23.11%" id="mcps1.3.4.6.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p1223101975">Component</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="76.89%" id="mcps1.3.4.6.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p17231101072">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row13241506719"><td class="cellrowborder" valign="top" width="23.11%" headers="mcps1.3.4.6.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p16242005715">run_train.sh</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.89%" headers="mcps1.3.4.6.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p724904711">Training boot script. You can download the code directory, run training commands, redirect training log output, and upload log files to OBS after training commands are executed.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="modelarts_23_0217__en-us_topic_0212179951_table624501372"></a><a name="en-us_topic_0212179951_table624501372"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table624501372" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Tool list</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row624706710"><th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.4.6.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p92418016716">Tool</p>
+<div class="tablenoborder"><a name="modelarts_23_0217__en-us_topic_0212179951_table624501372"></a><a name="en-us_topic_0212179951_table624501372"></a><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table624501372" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Tool list</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row624706710"><th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.4.7.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p92418016716">Tool</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="77%" id="mcps1.3.4.6.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p3241601479">Description</p>
+<th align="left" class="cellrowborder" valign="top" width="77%" id="mcps1.3.4.7.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p3241601479">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row6241201572"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.6.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p924170078">utils.sh</p>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row6241201572"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.7.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p924170078">utils.sh</p>
 </td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.6.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p17241401776">Tool script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath16111134451819"><b>run_train.sh</b></span> script depends on this script.</p>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.7.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p17241401776">Tool script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath16111134451819"><b>run_train.sh</b></span> script depends on this script.</p>
 <p id="modelarts_23_0217__en-us_topic_0212179951_p17241406715">It provides methods such as SK decryption, code directory download, and log file upload.</p>
 </td>
 </tr>
-<tr id="modelarts_23_0217__en-us_topic_0212179951_row162415010710"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.6.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1924601876">ip_mapper.py</p>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row162415010710"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.7.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1924601876">ip_mapper.py</p>
 </td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.6.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p112419015716">Script for obtaining NIC addresses.</p>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.7.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p112419015716">Script for obtaining NIC addresses.</p>
 <p id="modelarts_23_0217__en-us_topic_0212179951_p11247010717">By default, the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_b11692128454">ib0</strong> NIC is obtained. Training code can use the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_b1563181564511">ib0</strong> NIC to accelerate network communications.</p>
 </td>
 </tr>
-<tr id="modelarts_23_0217__en-us_topic_0212179951_row19241701279"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.6.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1624401718">dls-downloader.py</p>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row19241701279"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.4.7.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1624401718">dls-downloader.py</p>
 </td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.6.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p124801478">OBS download script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath162490577"><b>utils.sh</b></span> script depends on this script.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section125281544151710"><a name="modelarts_23_0217__en-us_topic_0212179951_section125281544151710"></a><a name="en-us_topic_0212179951_section125281544151710"></a><h4 class="sectiontitle">GPU-based Basic Images</h4><p id="modelarts_23_0217__en-us_topic_0212179951_p15897205910179">Addresses for obtaining a basic image</p>
-<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen14983269182">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-gpu-cuda9-base:1.3
-swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-gpu-cuda92-base:1.3
-swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-gpu-cuda10-cudnn74-base:1.1-4
-swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-base-cuda10.0-cp36-ubuntu18.04-x86:1.1
-swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-base-cuda10.1-cp36-ubuntu18.04-x86:1.1
-swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-base-cuda10.2-cp36-ubuntu18.04-x86:1.1</pre>
-
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table137851182312" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Components</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row1623801573"><th align="left" class="cellrowborder" valign="top" width="23.11%" id="mcps1.3.5.4.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p1223101975">Component</p>
-</th>
-<th align="left" class="cellrowborder" valign="top" width="76.89%" id="mcps1.3.5.4.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p17231101072">Description</p>
-</th>
-</tr>
-</thead>
-<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row13241506719"><td class="cellrowborder" valign="top" width="23.11%" headers="mcps1.3.5.4.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p16242005715">run_train.sh</p>
-</td>
-<td class="cellrowborder" valign="top" width="76.89%" headers="mcps1.3.5.4.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p724904711">Training boot script. You can download the code directory, run training commands, redirect training log output, and upload log files to OBS after training commands are executed.</p>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.4.7.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p124801478">OBS download script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_filepath162490577"><b>utils.sh</b></span> script depends on this script.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="section" id="modelarts_23_0217__en-us_topic_0212179951_section1437564265014"><h4 class="sectiontitle">GPU-based Basic Images</h4><ul id="modelarts_23_0217__en-us_topic_0212179951_ul49321558161018"><li id="modelarts_23_0217__en-us_topic_0212179951_li093275819103">Image of the CUDA 10.0, 10.1, or 10.2 version, using Ubuntu 18.04 as the basic image and with MoXing pre-installed by default<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen4932958171010">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-base-&lt;cuda version&gt;-&lt;python version&gt;-&lt;os&gt;-&lt;arch&gt;:&lt;image tag&gt;</pre>
+</li><li id="modelarts_23_0217__en-us_topic_0212179951_li493245818107">Image of the CUDA 8, 9, or 92 version, with MoXing pre-installed by default<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen1493225811105">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-gpu-&lt;cuda version&gt;-inner-moxing-&lt;python version&gt;:&lt;image tag&gt;</pre>
+</li><li id="modelarts_23_0217__en-us_topic_0212179951_li193215587103">Image of the CUDA 8, 9, or 92 version<pre class="screen" id="modelarts_23_0217__en-us_topic_0212179951_screen693218582108">swr.&lt;region&gt;.xxx.com/modelarts-job-dev-image/custom-gpu-&lt;cuda version&gt;-base:&lt;image tag&gt;</pre>
 
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table135271650237" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Tool list</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row624706710"><th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.5.5.2.3.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p92418016716">Tool</p>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table1193285871018" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Optional parameters</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_row7933958191015"><th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.5.2.3.2.2.4.1.1"><p id="modelarts_23_0217__en-us_topic_0212179951_p20933105871019">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="77%" id="mcps1.3.5.5.2.3.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p3241601479">Description</p>
+<th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.5.2.3.2.2.4.1.2"><p id="modelarts_23_0217__en-us_topic_0212179951_p693315580105">Possible Value</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="56.00000000000001%" id="mcps1.3.5.2.3.2.2.4.1.3"><p id="modelarts_23_0217__en-us_topic_0212179951_p593305851015">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row6241201572"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p924170078">utils.sh</p>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_row293310584106"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p129332589101">&lt;region&gt;</p>
 </td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p17241401776">Tool script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_filepath16111134451819"><b>run_train.sh</b></span> script depends on this script.</p>
-<p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p17241406715">It provides methods such as SK decryption, code directory download, and log file upload.</p>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 ">
+<p id="modelarts_23_0217__en-us_topic_0212179951_p16933115801015">eu-de</p>
 </td>
-</tr>
-<tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row162415010710"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p1924601876">ip_mapper.py</p>
-</td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p112419015716">Script for obtaining NIC addresses.</p>
-<p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p11247010717">By default, the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_b11692128454">ib0</strong> NIC is obtained. Training code can use the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_b1563181564511">ib0</strong> NIC to accelerate network communications.</p>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p793335861013">Region where the image resides. </p>
+
 </td>
 </tr>
-<tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row19241701279"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p1624401718">dls-downloader.py</p>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row29332058121015"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p493395816107">&lt;cuda version&gt;</p>
 </td>
-<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_p124801478">OBS download script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_filepath162490577"><b>utils.sh</b></span> script depends on this script.</p>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 "><ul id="modelarts_23_0217__en-us_topic_0212179951_ul7933558151011"><li id="modelarts_23_0217__en-us_topic_0212179951_li79331158201016">cuda92</li><li id="modelarts_23_0217__en-us_topic_0212179951_li893316580108">cuda9</li><li id="modelarts_23_0217__en-us_topic_0212179951_li139336582104">cuda8</li><li id="modelarts_23_0217__en-us_topic_0212179951_li179336584102">cuda10.0</li><li id="modelarts_23_0217__en-us_topic_0212179951_li15933145811018">cuda10.1</li><li id="modelarts_23_0217__en-us_topic_0212179951_li59331358131016">cuda10.2</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1593312588107">CUDA version installed in the image</p>
+<div class="note" id="modelarts_23_0217__en-us_topic_0212179951_note393375811104"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="modelarts_23_0217__en-us_topic_0212179951_p10933195814108">Check the CUDA version. After the version is specified, it cannot be changed. Otherwise, the training will fail.</p>
+</div></div>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row893314586103"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p293465861019">&lt;image tag&gt;</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 "><ul id="modelarts_23_0217__en-us_topic_0212179951_ul5934758121015"><li id="modelarts_23_0217__en-us_topic_0212179951_li793495817109">1.1</li><li id="modelarts_23_0217__en-us_topic_0212179951_li093435815101">1.3</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1493465816100">Image version</p>
+<ul id="modelarts_23_0217__en-us_topic_0212179951_ul7934205891018"><li id="modelarts_23_0217__en-us_topic_0212179951_li9934155871015">Version 1.3 available for CUDA 8, 9, or 92 version</li><li id="modelarts_23_0217__en-us_topic_0212179951_li4934358191017">Version 1.1 available for CUDA 10.0, 10.1, or 10.2 version</li></ul>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row20934145810102"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p393414586101">python version</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 "><ul id="modelarts_23_0217__en-us_topic_0212179951_ul193475861012"><li id="modelarts_23_0217__en-us_topic_0212179951_li1493445891013">cp27</li><li id="modelarts_23_0217__en-us_topic_0212179951_li1093425811013">cp36</li></ul>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p10934185851012">Python environment</p>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row19341358161015"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1893465841012">os</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p99341581104">ubuntu18.04</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p8934135813104">Operating system</p>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_row1934158151017"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.2.3.2.2.4.1.1 "><p id="modelarts_23_0217__en-us_topic_0212179951_p4934185841012">arch</p>
+</td>
+<td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.2.3.2.2.4.1.2 "><p id="modelarts_23_0217__en-us_topic_0212179951_p169341158181016">x86</p>
+</td>
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.5.2.3.2.2.4.1.3 "><p id="modelarts_23_0217__en-us_topic_0212179951_p1393418588109">Architecture</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+<p id="modelarts_23_0217__en-us_topic_0212179951_p1888019297352"><a href="#modelarts_23_0217__en-us_topic_0212179951_table42317014714">Table 2</a> and <a href="#modelarts_23_0217__en-us_topic_0212179951_table624501372">Table 3</a> list the components and tools used by basic images.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table4880529153516" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Components</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row1623801573"><th align="left" class="cellrowborder" valign="top" width="23.11%" id="mcps1.3.5.4.2.3.1.1"><p id="modelarts_23_0217__p13394278491">Component</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="76.89%" id="mcps1.3.5.4.2.3.1.2"><p id="modelarts_23_0217__p239162717492">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row13241506719"><td class="cellrowborder" valign="top" width="23.11%" headers="mcps1.3.5.4.2.3.1.1 "><p id="modelarts_23_0217__p239142716493">run_train.sh</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.89%" headers="mcps1.3.5.4.2.3.1.2 "><p id="modelarts_23_0217__p24052744917">Training boot script. You can download the code directory, run training commands, redirect training log output, and upload log files to OBS after training commands are executed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_23_0217__en-us_topic_0212179951_table3881429113516" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Tool list</caption><thead align="left"><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row624706710"><th align="left" class="cellrowborder" valign="top" width="23%" id="mcps1.3.5.5.2.3.1.1"><p id="modelarts_23_0217__p341927124919">Tool</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77%" id="mcps1.3.5.5.2.3.1.2"><p id="modelarts_23_0217__p16421327154917">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row6241201572"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__p842527204916">utils.sh</p>
+</td>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__p18421527174912">Tool script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_filepath16111134451819"><b>run_train.sh</b></span> script depends on this script.</p>
+<p id="modelarts_23_0217__p14431127194916">It provides methods such as SK decryption, code directory download, and log file upload.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row162415010710"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__p1643132719492">ip_mapper.py</p>
+</td>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__p14431527174915">Script for obtaining NIC addresses.</p>
+<p id="modelarts_23_0217__p1643827174911">By default, the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_b11692128454">ib0</strong> NIC is obtained. Training code can use the IP address of the <strong id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_b1563181564511">ib0</strong> NIC to accelerate network communications.</p>
+</td>
+</tr>
+<tr id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_row19241701279"><td class="cellrowborder" valign="top" width="23%" headers="mcps1.3.5.5.2.3.1.1 "><p id="modelarts_23_0217__p194413272490">dls-downloader.py</p>
+</td>
+<td class="cellrowborder" valign="top" width="77%" headers="mcps1.3.5.5.2.3.1.2 "><p id="modelarts_23_0217__p344327184914">OBS download script. The <span class="filepath" id="modelarts_23_0217__en-us_topic_0212179951_en-us_topic_0212179951_filepath162490577"><b>utils.sh</b></span> script depends on this script.</p>
 </td>
 </tr>
 </tbody>

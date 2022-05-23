@@ -1,0 +1,34 @@
+<a name="modelarts_23_0163"></a><a name="modelarts_23_0163"></a>
+
+<h1 class="topictitle1">MXNet-py27 General Template</h1>
+<div id="body8662426"><div class="section" id="modelarts_23_0163__en-us_topic_0193596263_section17644758143116"><h4 class="sectiontitle">Introduction</h4><p id="modelarts_23_0163__en-us_topic_0193596263_p1744413013329">AI engine: MXNet 1.2.1; Environment: Python 2.7; Input and output mode: undefined mode. Select an appropriate input and output mode based on the model function or application scenario. When using the template to import a model, select the <strong id="modelarts_23_0163__en-us_topic_0193596263_b7495115811137">model</strong> directory containing the model files.</p>
+</div>
+<div class="section" id="modelarts_23_0163__en-us_topic_0193596263_section1287913116322"><h4 class="sectiontitle">Template Input</h4><p id="modelarts_23_0163__en-us_topic_0193596263_p2351974324">The template input is the MXNet-based model package stored on OBS. Ensure that the OBS directory you use and ModelArts are in the same region. For details about model package requirements, see <a href="#modelarts_23_0163__en-us_topic_0193596263_section164016197320">Model Package Example</a>.</p>
+</div>
+<div class="section" id="modelarts_23_0163__en-us_topic_0193596263_section157592853210"><h4 class="sectiontitle">Input and Output Mode</h4><p id="modelarts_23_0163__en-us_topic_0193596263_p13881330204914"><a href="modelarts_23_0103.html">Undefined Mode</a> can be overwritten. That is, you can select another input and output mode during model creation.</p>
+</div>
+<div class="section" id="modelarts_23_0163__en-us_topic_0193596263_section856341533214"><h4 class="sectiontitle">Model Package Specifications</h4><ul id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_ul1225294533816"><li id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_li11253445183818">The model package must be stored in the OBS folder named <span class="filepath" id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_filepath997444410310"><b>model</b></span>. Model files and the model inference code file are stored in the <span class="filepath" id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_filepath1623415719313"><b>model</b></span> folder.</li><li id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_li1125334515384">The model inference code file is optional. If the file exists, the file name must be <span class="filepath" id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_filepath15441360418"><b>customize_service.py</b></span>. Only one inference code file can exist in the <span class="filepath" id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_filepath154421261045"><b>model</b></span> folder. For details about how to compile the model inference code file, see <a href="modelarts_23_0093.html">Specifications for Compiling Model Inference Code</a>.</li></ul>
+<ul id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_ul7932192875513"><li id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_li199331928145515">The structure of the model package imported using the template is as follows:<pre class="screen" id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_screen166121755782">model/
+│
+├── Model file                 //(Mandatory) The model file format varies according to the engine. For details, see the model package example.
+├── Custom Python package           //(Optional) User's Python package, which can be directly referenced in the model inference code
+├── customize_service.py  //(Optional) Model inference code file. The file name must be <strong id="modelarts_23_0163__en-us_topic_0193596263_en-us_topic_0193596258_b643814618416">customize_service.py</strong>. Otherwise, the code is not considered as inference code.</pre>
+</li></ul>
+</div>
+<div class="section" id="modelarts_23_0163__en-us_topic_0193596263_section164016197320"><a name="modelarts_23_0163__en-us_topic_0193596263_section164016197320"></a><a name="en-us_topic_0193596263_section164016197320"></a><h4 class="sectiontitle">Model Package Example</h4><p id="modelarts_23_0163__en-us_topic_0193596263_p330931610538"><strong id="modelarts_23_0163__en-us_topic_0193596263_b8392133816140">Structure of the MXNet-based model package</strong></p>
+<p id="modelarts_23_0163__en-us_topic_0193596263_p82002029193412">When publishing the model, you only need to specify the <span class="filepath" id="modelarts_23_0163__en-us_topic_0193596263_filepath1522365011411"><b>model</b></span> directory.</p>
+<pre class="screen" id="modelarts_23_0163__en-us_topic_0193596263_screen8201142913345">OBS bucket/directory name
+|── model    (Mandatory) The folder must be named <strong id="modelarts_23_0163__en-us_topic_0193596263_b791115641411">model</strong> and is used to store model-related files.
+    ├── &lt;&lt;Custom Python package&gt;&gt;       (Optional) User's Python package, which can be directly referenced in the model inference code
+    ├── resnet-50-symbol.json    (Mandatory) Model definition file, which contains the neural network description of the model
+    ├── resnet-50-0000.params    (Mandatory) Model variable parameter file, which contains parameter and weight information
+    ├──customize_service.py      (Optional) Model inference code file. The file must be named <strong id="modelarts_23_0163__en-us_topic_0193596263_b5762216152">customize_service.py</strong>. Only one inference code file exists. The <strong id="modelarts_23_0163__en-us_topic_0193596263_b15763191111513">.py</strong> file on which <strong id="modelarts_23_0163__en-us_topic_0193596263_b976416110155">customize_service.py</strong> depends can be directly put in the <strong id="modelarts_23_0163__en-us_topic_0193596263_b1976420141514">model</strong> directory.</pre>
+</div>
+<p id="modelarts_23_0163__en-us_topic_0193596263_p154636367327"></p>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_23_0118.html">Template Description</a></div>
+</div>
+</div>
+
