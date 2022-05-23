@@ -1,0 +1,1308 @@
+<a name="modelarts_03_0161"></a><a name="modelarts_03_0161"></a>
+
+<h1 class="topictitle1">Data Management Permissions</h1>
+<div id="body8662426">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table17347129142918" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Fine-grained permissions for dataset management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row13347179152919"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.1.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p1664020154177">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.1.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p3640181591719">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.1.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p96405156173">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.1.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p9640815171717">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.1.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p164051511170">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.1.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p116406156179">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row13479942917"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p03477919292">Querying the Dataset List</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2051944103112">GET /v2/{project_id}/datasets</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12448141033115">modelarts:dataset:listDatasets</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1134829142920">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1456106111716">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p648811611172">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row53484942920"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19348799293">Creating a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6648164214304">POST /v2/{project_id}/datasets</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p63181347193019">modelarts:dataset:createDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1848519542306">obs:bucket:HeadBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p16485175414302">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1648535419307">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p9485165483013">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p2048565418305">obs:bucket:ListAllMyBuckets</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5288416178">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2554461712">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1634839132916"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1634869122913">Querying Details About a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9538816163114">GET /v2/{project_id}/datasets/{dataset_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5740192303119">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11348129172915">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19856421718">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p16120204161717">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1234819902911"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p33482095291">Modifying a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1970122513219">PUT /v2/{project_id}/datasets/{dataset_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10718728103215">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1734839152915">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p01501416177">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p217515491714">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row193481195292"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p734811914293">Deleting a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p51751933143216">DELETE /v2/{project_id}/datasets/{dataset_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1920103753213">modelarts:dataset:deleteDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p198001442163215">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p180014213326">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p080074263210">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p152019415177">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12227174181712">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row534869182917"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1834879112918">Querying Dataset Statistics</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p151221653193213">GET /v2/{project_id}/datasets/{dataset_id}/data-annotations/stats</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p42651430133117">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11348194293">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7436195951613">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p104737596168">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row334818932915"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4348169142911">Querying the Monitoring Data of a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p691645663218">GET /v2/{project_id}/datasets/{dataset_id}/metrics</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1778202612314">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1334813992920">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p184991459161611">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15526959141617">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1348149152916"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p43481695290">Querying Statistics for a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p49071734133611">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/data-annotations/stats</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p71031831103615">modelarts:dataset:getWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1334810912295">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12551185919169">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8577185916164">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row034829192913"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1234869112912">Querying Statistics for the Member Labeling Progresses in a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.1.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p13744115153415">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/metrics</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.1.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p93481592297">modelarts:dataset:getWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.1.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p434812942910">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.1.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p560325981618">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.1.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p262817590162">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table36681726122810" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Fine-grained permissions for dataset version management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1766811260280"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p9866131341418">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.2.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p11866161312148">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.2.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p10866131313149">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p17866813121415">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.2.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p1486661311415">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.2.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p108661713181419">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row1266842612281"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17669152613285">Querying the Dataset Version List</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p33441454133710">GET /v2/{project_id}/datasets/{dataset_id}/versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1161310585370">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1866915269282">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p184981523181418">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p24981323181411">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row10669122612283"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4669172652813">Creating a Dataset Labeling Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1376714433816">POST /v2/{project_id}/datasets/{dataset_id}/versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p116691526182813">modelarts:dataset:createDatasetVersion</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8265123310381">obs:object:PutObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p749812312148">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19498142315149">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row76691326172820"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p116691226172810">Querying Details About a Dataset Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p177411022143815">GET /v2/{project_id}/datasets/{dataset_id}/versions/{version_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p108771327173816">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p13669726122815">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p04828256145">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p54821025171419">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row106691726162813"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1066917261281">Deleting a Dataset Labeling Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.2.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p630724318381">DELETE /v2/{project_id}/datasets/{dataset_id}/versions/{version_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.2.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15602104813816">modelarts:dataset:deleteDatasetVersion</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p791154113813">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p19195415387">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p5915463818">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.2.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p94821825181420">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.2.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p748219259147">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table19991516182720" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Fine-grained permissions for sample management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1299181613270"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p15364041181713">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.3.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p1536416419172">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.3.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p1336464141716">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p113643418177">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.3.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p11364104111711">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.3.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p1036410418179">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row69961622711"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p89913167276">Querying the Sample List</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10813154013390">GET /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17920104412392">modelarts:sample:listSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10100151602720">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p202071154151712">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1224265413173">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row141005168272"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0100181613271">Adding Samples in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9475122193913">POST /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1929083073919">modelarts:sample:addSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1510010165273">obs:object:PutObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p14278125414171">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1730312546172">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row131001616132718"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p210011619273">Deleting Samples in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1442381824714">POST /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples/delete</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5939925144713">modelarts:sample:deleteSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5118113417478">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9329754201718">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8364205419171">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row191001166273"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p131001116192718">Querying Details About a Sample</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p66142216483">GET /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples/{sample_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p113314711487">modelarts:sample:getSample</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p141001116132710">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2039017548178">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8417135451715">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1810015168279"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1010041613275">Querying Sample Search Criteria</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p192664141347">GET /v2/{project_id}/datasets/{dataset_id}/data-annotations/search-condition</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p757318187412">modelarts:sample:listSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1610051613278">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p178550566174">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5881135620176">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row910011164277"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6100191610273">Querying the Sample List of a Team Labeling Task by Page</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p206781326947">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/data-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2043112323411">modelarts:sample:listSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1110071662715">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p149082056171717">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1393415611178">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row91007163276"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p310019168279">Querying Details About a Team Labeling Sample</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.3.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p135012349511">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/data-annotations/samples/{sample_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9100161632718">modelarts:sample:getSample</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1610014164274">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.3.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1896065611179">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2098535615177">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table0527154611119" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Fine-grained permissions for label management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row952824651111"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p1967304311814">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p367314315188">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.4.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p176731743131820">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.4.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p1367314437182">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.4.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p1267320436187">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.4.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p4673114391817">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row0528194601117"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p20528144671110">Querying the Dataset Label List</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p77381535136">GET /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p252844641118">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17528194610118">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p219635181815">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p152321351141818">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row652810464119"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p3528114641112">Creating a Dataset Label</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2285151431316">POST /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p205281446121116">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p195289468116">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p16269155119187">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15295205111815">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row3528164611118"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p452812469118">Modifying Labels in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p27011231131311">PUT /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1528194619118">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p95280465117">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p16321115161811">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p53485512184">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row18528646121115"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15528114681115">Deleting Labels in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p122631647161313">POST /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels/delete</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0528124681117">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8528104621117">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p143755515186">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7402185115188">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row25285463115"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5528174618115">Updating a Label by Label Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p85941204147">PUT /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels/{label_name}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p990511410146">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p145282465117">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p113431053101812">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p133691353151814">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row14528124620113"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1652815468112">Deleting a Label and the Files with This Label Only</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15092015201415">DELETE /v2/{project_id}/datasets/{dataset_id}/data-annotations/labels/{label_name}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.4.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1952820465118">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.4.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1352815466112">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.4.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19400125318188">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.4.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p542785331816">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table65498569535" frame="border" border="1" rules="all"><caption><b>Table 5 </b>Fine-grained permissions for manual labeling</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1549195618537"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p194855465510">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.5.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p154858415555">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.5.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p7485164105520">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p1448512405513">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.5.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p144851442554">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.5.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p948519410555">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row95499566533"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1854920563532">Updating Sample Labels in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.5.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p854915618534">PUT</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p15349152721117">/v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.5.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1080013914553">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1277314183553">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.5.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p185497566536">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.5.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1155016564538">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table7955194010256" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Fine-grained permissions for labeling task management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1195613406251"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.6.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p4161448151914">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.6.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p10161194812199">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.6.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p111612048131911">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.6.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p171611848171913">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.6.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p7161448111915">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.6.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p81611148161920">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row295664052518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0956134017254">Querying the Team Labeling Task List of a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p165713811616">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1695624022516">modelarts:dataset:listWorkforceTasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p171901711192114">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1120825551919">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0234175512196">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row15956144002514"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p189568403255">Creating a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1048411211461">POST /v2/{project_id}/datasets/{dataset_id}/workforce-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1895644011255">modelarts:dataset:createWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p521716119217">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p626145519198">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p128819553196">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row2956124062510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p995619404253">Querying Details About a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1632283617614">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17956134012250">modelarts:dataset:getWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1224601112217">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p631418553193">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p113401955161918">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row14956174017253"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p09568404256">Starting a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p135146512062">POST /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/acceptance</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p149381454669">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p48955812110">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p936712553190">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1839305520194">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row16956940182519"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10956164017250">Updating a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p382113916714">PUT /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11404420718">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p199222083218">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p342125521916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18450955111912">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1995611408251"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p89562409258">Deleting a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1054691911718">DELETE /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1158552314716">modelarts:dataset:deleteWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p13949984217">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p134766556197">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19503125520198">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row39571840182510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p3957540102511">Creating a Team Labeling Acceptance Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1217441276">POST /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/acceptance</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p173143508714">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1945310662119">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p3529165561910">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p55551755191914">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row6957164013259"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p69579407256">Querying the Acceptance Report of a Team Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10927124483">GET /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/acceptance/report</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p129579408254">modelarts:dataset:getWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1548118602114">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1358185517195">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12607155171913">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row10957144016251"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.6.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1395724022517">Updating the Status of a Team Labeling Acceptance Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p798116469280">PUT /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/acceptance/status</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.6.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2957840202519">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.6.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1750856112117">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.6.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p134591357171914">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p174856578199">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table15176183882010" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Fine-grained permissions for team labeling flow management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1217713812202"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.7.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p424582252118">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.7.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p2024562212119">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.7.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p22451722172120">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.7.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p13245192210217">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.7.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p2024516229215">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.7.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p1724502217211">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row201771738152012"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.7.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1177038152013">Submitting Sample Review Comments for Acceptance</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.7.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8412935152112">POST /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/acceptance/batch-comment</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.7.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1917703811202">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.7.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15683144219">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.7.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p10923175961916">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.7.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1695085917197">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row191775384204"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.7.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p121771238102010">Updating Labels of Team Labeling Samples in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.7.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0177173813207">PUT /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/data-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.7.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1017723822010">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.7.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p871218412112">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.7.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12977125911919">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.7.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p73508209">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table1873933220244" frame="border" border="1" rules="all"><caption><b>Table 8 </b>Fine-grained permissions for labeling team management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row1673943282416"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.8.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p788619251216">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.8.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p138868255218">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="18%" id="mcps1.3.8.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p9886102519211">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.8.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p178861425122119">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.8.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p1988617257218">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.8.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p98863256211">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row187391332122411"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.8.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1073916324241">Querying the Labeling Team List</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p135545451419">GET /v2/{project_id}/workforces</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1273913216246">modelarts:processTask:listWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.8.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11646112122110">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.8.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p13308163192017">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.8.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2033513192011">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row197391932152411"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.8.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p373919328248">Creating a Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1616115571514">POST /v2/{project_id}/workforces</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p97397321247">modelarts:processTask:createWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.8.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p567311217212">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.8.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p33611131209">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.8.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1138715310205">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row6739203213241"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.8.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12739143222420">Querying Details About a Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1815381751516">GET /v2/{project_id}/workforces/{workforce_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p273973292418">modelarts:processTask:getWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.8.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1669919218216">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.8.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5414737203">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.8.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1744112311207">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row47391432122413"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.8.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1273933211246">Updating a Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1566914374150">PUT /v2/{project_id}/workforces/{workforce_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p473913212419">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.8.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p072617282110">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.8.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p74671134200">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.8.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p949403202011">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row3740143216247"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.8.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6740183252411">Deleting a Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1654120546153">DELETE /v2/{project_id}/workforces/{workforce_id}/workers/{worker_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="18%" headers="mcps1.3.8.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p574013212246">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.8.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6753528214">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.8.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p052119372017">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.8.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15506314208">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table14394448132220" frame="border" border="1" rules="all"><caption><b>Table 9 </b>Fine-grained permissions for labeling team member management</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row11394648172212"><th align="left" class="cellrowborder" valign="top" width="19.801980198019802%" id="mcps1.3.9.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p962252832117">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.782178217821784%" id="mcps1.3.9.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p136221928152112">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.782178217821784%" id="mcps1.3.9.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p762262822110">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.861386138613863%" id="mcps1.3.9.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p196222283217">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.891089108910892%" id="mcps1.3.9.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p9622828102111">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.881188118811881%" id="mcps1.3.9.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p116221628182118">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row43941848102212"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p539464814229">Sending an Email to Labeling Team Members</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1990922091615">POST /v2/{project_id}/datasets/{dataset_id}/workforce-tasks/{workforce_task_id}/notify</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1839412489225">modelarts:dataset:updateWorkforceTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9701558182013">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p192191792020">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p325710717204">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row193941248142217"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p203941048192215">Querying All Labeling Team Members</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p14499185513179">GET /v2/{project_id}/workforces/workers</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18394194882218">modelarts:processTask:getWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p173625802011">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p129415716207">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6329127152013">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row18394348142211"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1939484818224">Querying Members in a Labeling Team</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p528116216186">GET /v2/{project_id}/workforces/{workforce_id}/workers</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p20394648102218">modelarts:processTask:getWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1277255810207">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p23551176207">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1638118762019">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row19394144822211"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18394124818221">Creating a Labeling Team Member</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p143641811171819">POST /v2/{project_id}/workforces/{workforce_id}/workers</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p43941148112215">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p78001758112017">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1440747162015">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1843217202011">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row63959484222"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17395174842211">Deleting Labeling Team Members in Batches</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p20782625101812">POST /v2/{project_id}/workforces/{workforce_id}/workers/batch-delete</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9395548102219">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p173181856162018">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1545820713209">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p104846782014">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row103955482228"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p539518484229">Querying Details About a Labeling Team Member</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p121623791815">GET /v2/{project_id}/workforces/{workforce_id}/workers/{worker_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1239594810229">modelarts:processTask:getWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0344155610205">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p151010722017">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p353720772016">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row13956487224"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p63951248162218">Updating Labeling Team Members</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8290949101810">PUT /v2/{project_id}/workforces/{workforce_id}/workers/{worker_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8395204818225">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p23719564209">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p376112913202">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p578899202020">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1395134812222"><td class="cellrowborder" valign="top" width="19.801980198019802%" headers="mcps1.3.9.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19395164813229">Deleting a Labeling Team Member</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2026119595184">DELETE /v2/{project_id}/workforces/{workforce_id}/workers/{worker_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821784%" headers="mcps1.3.9.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p193954482228">modelarts:processTask:updateWorkforce</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.861386138613863%" headers="mcps1.3.9.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7399165611209">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.891089108910892%" headers="mcps1.3.9.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p108141196206">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.9.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1840109202015">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table823505082112" frame="border" border="1" rules="all"><caption><b>Table 10 </b>Fine-grained permissions for data import tasks</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row92355504217"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.10.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p1561153113215">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.10.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p261031152119">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.10.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p1861231182117">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.10.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p116163113218">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.10.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p2061183118216">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.10.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p126112314217">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row3235205015215"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.10.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p423565012212">Querying the Dataset Import Task List</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19766431133612">GET /v2/{project_id}/datasets/{dataset_id}/import-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19982750133618">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.10.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5240155410202">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.10.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1780771192013">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.10.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p783601113208">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1723565017219"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.10.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p182369503219">Creating a Dataset Import Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11646173916364">POST /v2/{project_id}/datasets/{dataset_id}/import-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17236165022115">modelarts:dataset:createImportTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.10.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1226795422011">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.10.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p386621112206">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.10.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1289611111201">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row8236125022120"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.10.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4236165092112">Querying Details About a Dataset Import Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p186204411364">GET /v2/{project_id}/datasets/{dataset_id}/import-tasks/{task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.10.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p148564810365">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.10.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1294135442020">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.10.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1924171115205">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.10.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2095111120205">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table1025043514206" frame="border" border="1" rules="all"><caption><b>Table 11 </b>Fine-grained permissions for data export tasks</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row17250143572018"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.11.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p92662033182117">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.11.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p726633318212">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.11.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p42661331216">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13%" id="mcps1.3.11.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p15266133312112">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11%" id="mcps1.3.11.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p16266173312116">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.11.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p1626643312212">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row1725043518202"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.11.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12501735192017">Querying the Dataset Export Task List</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p62831725173317">GET /v2/{project_id}/datasets/{dataset_id}/export-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1250153572011">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.11.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1110685222011">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.11.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7796013192018">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.11.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6822101312201">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row2250133518205"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.11.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4250335172017">Creating a Dataset Export Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p186670903716">POST /v2/{project_id}/datasets/{dataset_id}/export-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p225063519202">modelarts:dataset:createExportTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.11.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p813435292012">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.11.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18848201317201">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.11.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1587414133201">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row134446554204"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.11.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p44457554200">Querying the Status of a Dataset Export Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p204311045103316">GET /v2/{project_id}/datasets/{resource_id}/export-tasks/{task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.11.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p164451955142014">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="13%" headers="mcps1.3.11.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p61631552122014">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="11%" headers="mcps1.3.11.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p690021342014">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.11.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p192651392012">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table191013534193" frame="border" border="1" rules="all"><caption><b>Table 12 </b>Fine-grained permissions for data synchronization tasks</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row610165391916"><th align="left" class="cellrowborder" valign="top" width="19.8019801980198%" id="mcps1.3.12.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p889563417215">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.782178217821777%" id="mcps1.3.12.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p158959344212">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.8019801980198%" id="mcps1.3.12.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p1895183420211">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.83168316831683%" id="mcps1.3.12.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p2895173492119">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9.9009900990099%" id="mcps1.3.12.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p989503442117">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="11.881188118811878%" id="mcps1.3.12.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p14895103412212">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row1810125321911"><td class="cellrowborder" valign="top" width="19.8019801980198%" headers="mcps1.3.12.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p410115315198">Synchronizing a Dataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821777%" headers="mcps1.3.12.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1622713451351">POST /v2/{project_id}/datasets/{dataset_id}/sync-data</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.8019801980198%" headers="mcps1.3.12.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p31065371916">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.83168316831683%" headers="mcps1.3.12.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4111125683512">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p191111856193515">obs:bucket:ListAllMyBuckets</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.9009900990099%" headers="mcps1.3.12.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5628121572010">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811878%" headers="mcps1.3.12.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p13654121517207">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row201095319196"><td class="cellrowborder" valign="top" width="19.8019801980198%" headers="mcps1.3.12.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p510175313195">Querying the Status of a Dataset Synchronization Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.782178217821777%" headers="mcps1.3.12.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p71982052365">GET /v2/{project_id}/datasets/{dataset_id}/sync-data/status</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.8019801980198%" headers="mcps1.3.12.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p165337918369">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.83168316831683%" headers="mcps1.3.12.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p81017530190">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.9009900990099%" headers="mcps1.3.12.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p768161513204">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="11.881188118811878%" headers="mcps1.3.12.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p137071157205">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table19882123918189" frame="border" border="1" rules="all"><caption><b>Table 13 </b>Fine-grained permissions for auto labeling tasks</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row6882153918185"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.13.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p3959153613218">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="22%" id="mcps1.3.13.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p1895918368218">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.13.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p1795923682114">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.13.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p695943610219">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10%" id="mcps1.3.13.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p2095903632114">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.13.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p79591336142113">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row8882839191816"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18882123961813">Querying the Auto Labeling Sample List</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p03512401390">GET /v2/{project_id}/datasets/{dataset_id}/auto-annotations/samples</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4882133921812">modelarts:sample:listSamples</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1882239181810">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2145101882017">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p181719185201">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row2882839181813"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p148821439111815">Querying Details About an Auto Labeling Sample</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p59861410114018">GET /v2/{project_id}/datasets/{dataset_id}/auto-annotations/samples/{sample_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p793555404">modelarts:sample:getSample</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9882153941820">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p919821819207">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p14224171815202">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row4882193911180"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7882739191813">Querying Auto Labeling Tasks by Page</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9555114212383">GET /v2/{project_id}/datasets/{dataset_id}/tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1336913477388">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1788215398185">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7251141852012">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p202771818162019">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row1088219392181"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18821639191815">Starting an Auto Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p19216614153818">POST /v2/{project_id}/datasets/{dataset_id}/tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p891951833811">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1867592311385">obs:bucket:PutBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p367512393810">obs:bucket:GetBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p96751023163813">obs:bucket:GetBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p16675523113810">obs:bucket:DeleteBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p156751523163819">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1467517233389">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p86751023123815">obs:object:DeleteObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p167562310382">obs:bucket:ListBucketVersions</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1830481816203">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2333118152014">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row588273913186"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p14882103915184">Querying Details About an Auto Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6231155514389">GET /v2/{project_id}/datasets/{dataset_id}/tasks/{task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1788273991814">modelarts:dataset:getDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1947384710209">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p717072017202">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7197162022012">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row138821539131811"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.13.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p38821639171817">Stopping an Auto Labeling Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="22%" headers="mcps1.3.13.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2836478394">POST /v2/{project_id}/datasets/{dataset_id}/tasks/{task_id}/stop</p>
+</td>
+<td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.13.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p153456193392">modelarts:dataset:updateDataset</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.13.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p16499164782015">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="10%" headers="mcps1.3.13.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p0229102092013">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.13.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2025542012207">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="modelarts_03_0161__en-us_topic_0181004302_table138176382147" frame="border" border="1" rules="all"><caption><b>Table 14 </b>Fine-grained permissions for data processing tasks</caption><thead align="left"><tr id="modelarts_03_0161__en-us_topic_0181004302_row6817173816148"><th align="left" class="cellrowborder" valign="top" width="19.999999999999996%" id="mcps1.3.14.2.7.1.1"><p id="modelarts_03_0161__en-us_topic_0181004302_p7445173917212">Permission</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="21.999999999999993%" id="mcps1.3.14.2.7.1.2"><p id="modelarts_03_0161__en-us_topic_0181004302_p54451939142115">API</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="19.999999999999996%" id="mcps1.3.14.2.7.1.3"><p id="modelarts_03_0161__en-us_topic_0181004302_p1144583918216">Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.14.2.7.1.4"><p id="modelarts_03_0161__en-us_topic_0181004302_p54452039172120">Related Action</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="9.999999999999998%" id="mcps1.3.14.2.7.1.5"><p id="modelarts_03_0161__en-us_topic_0181004302_p1244510394216">IAM Project</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="10.999999999999996%" id="mcps1.3.14.2.7.1.6"><p id="modelarts_03_0161__en-us_topic_0181004302_p17445193902114">Enterprise Project</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="modelarts_03_0161__en-us_topic_0181004302_row158173381146"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p168171338181411">Querying the Data Processing Task List</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p037616396404">GET /v2/{project_id}/processor-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p154526434401">modelarts:processTask:listProcessTasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1281703811414">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2739122319204">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p117661723182011">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row19817138131418"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p181743815146">Creating a Data Processing Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p15611923134012">POST /v2/{project_id}/processor-tasks</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1416752714011">modelarts:processTask:createProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p4999931104019">obs:bucket:HeadBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p2999931154019">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p179996312404">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p599963184013">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p799912319404">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1799933111403">obs:bucket:PutBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p899993112402">obs:bucket:GetBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p3999731164017">obs:bucket:GetBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p09991131124011">obs:bucket:DeleteBucketPolicy</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p979382317203">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p782502312013">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row381712389149"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1981718388141">Querying the Algorithms for a Data Processing Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1246149174114">GET /v2/{project_id}/processor-tasks/items</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p16817638101415">modelarts:processTask:getProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p29631743162014">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p630718268203">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p173341326192017">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row781712381147"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p08173385146">Querying Details About a Data Processing Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p489172211410">GET /v2/{project_id}/processor-tasks/{task_id}/versions/{version_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1281819389145">modelarts:processTask:getProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1099312434209">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1361142616200">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9388162612011">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row208187388142"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p88185380142">Updating a Data Processing Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p37234134119">PUT /v2/{project_id}/processor-tasks/{task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1797023714119">modelarts:processTask:updateProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p52034482013">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11414162615201">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p54416262207">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row11818203814149"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p98189387141">Deleting a Data Processing Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p18669104415416">DELETE /v2/{project_id}/processor-tasks/{task_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p8388104984110">modelarts:processTask:deleteProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p115275584116">obs:bucket:PutBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p4531550414">obs:bucket:GetBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p653115511418">obs:bucket:GetBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p4531355154119">obs:bucket:DeleteBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p11531755144111">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p25355554111">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1653555124114">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p184711726112011">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p149817268203">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row16818113881410"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p681813819149">Querying the Versions of a Data Processing Task</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1479418884214">GET /v2/{project_id}/processor-tasks/{task_id}/versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2818123811411">modelarts:processTask:getProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p596815531426">obs:bucket:HeadBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p396816538421">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p119681553144218">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p15968185320420">obs:object:PutObject</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p49680535422">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1396835312424">obs:bucket:PutBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p2968105334216">obs:bucket:GetBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1396855314421">obs:bucket:GetBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p89681553144211">obs:bucket:DeleteBucketPolicy</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p56702293202">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p96965292204">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row68184389149"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12818163814144">Creating a Data Processing Task Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6292114415426">POST /v2/{project_id}/processor-tasks/{task_id}/versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5931148184215">modelarts:processTask:createProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p6818183861419">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p272312912012">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p675022911203">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row108181838111410"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p12818193819141">Querying Details About a Data Processing Task Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p108301677439">GET /v2/{project_id}/processor-tasks/{task_id}/versions</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p20818038161418">modelarts:processTask:getProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p381823831416">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p5776142972014">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17803142962016">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row881843891411"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p281819383146">Deleting a Data Processing Task Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p7157521194316">DELETE /v2/{project_id}/processor-tasks/{task_id}/versions/{version_id}</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p9396253435">modelarts:processTask:deleteProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p17508153284312">obs:bucket:PutBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1508133284319">obs:bucket:GetBucketAcl</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p14508123217430">obs:bucket:GetBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p125081324438">obs:bucket:DeleteBucketPolicy</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p150833218432">obs:bucket:ListBucket</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p175081232134315">obs:bucket:ListAllMyBuckets</p>
+<p id="modelarts_03_0161__en-us_topic_0181004302_p1450833212430">obs:object:DeleteObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1944273219209">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p747813292015">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row581820380144"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p11818153821412">Querying the Result of a Data Processing Task Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p782410419431">GET /v2/{project_id}/processor-tasks/{task_id}/versions/{version_id}/results</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p148181638191414">modelarts:processTask:getProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p2081853811142">obs:object:GetObject</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p951573272016">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p3541133218204">√</p>
+</td>
+</tr>
+<tr id="modelarts_03_0161__en-us_topic_0181004302_row7818638141420"><td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.1 "><p id="modelarts_03_0161__en-us_topic_0181004302_p38181438151416">Stopping a Data Processing Task Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="21.999999999999993%" headers="mcps1.3.14.2.7.1.2 "><p id="modelarts_03_0161__en-us_topic_0181004302_p208161151124313">POST /v2/{project_id}/processor-tasks/{task_id}/versions/{version_id}/stop</p>
+</td>
+<td class="cellrowborder" valign="top" width="19.999999999999996%" headers="mcps1.3.14.2.7.1.3 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1081863817148">modelarts:processTask:updateProcessTask</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.14.2.7.1.4 "><p id="modelarts_03_0161__en-us_topic_0181004302_p168181438141418">N/A</p>
+</td>
+<td class="cellrowborder" valign="top" width="9.999999999999998%" headers="mcps1.3.14.2.7.1.5 "><p id="modelarts_03_0161__en-us_topic_0181004302_p155682032152015">√</p>
+</td>
+<td class="cellrowborder" valign="top" width="10.999999999999996%" headers="mcps1.3.14.2.7.1.6 "><p id="modelarts_03_0161__en-us_topic_0181004302_p1959523212013">√</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="modelarts_03_0138.html">Permissions Policies and Supported Actions</a></div>
+</div>
+</div>
+
