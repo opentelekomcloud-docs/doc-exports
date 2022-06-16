@@ -65,8 +65,8 @@
 </td>
 <td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p62791919165419">Specifies the memory used by sockets for automatic optimization.</p>
 <p id="EN-US_TOPIC_0107659745__p13279121985415">The first value is the minimum number of bytes allocated to the socket buffer for transmitting data.</p>
-<p id="EN-US_TOPIC_0107659745__p10279131945411">The second value is the default value, which is overwritten by <strong id="EN-US_TOPIC_0107659745__b1039819869">wmem_default</strong>. The buffer size can increase to this value when the system load is not heavy.</p>
-<p id="EN-US_TOPIC_0107659745__p1127931955419">The third value is the maximum number of bytes allocated to the socket buffer for transmitting data. This value is overwritten by <strong id="EN-US_TOPIC_0107659745__b1419819215">wmem_max</strong>.</p>
+<p id="EN-US_TOPIC_0107659745__p10279131945411">The second value is the default value, which is overwritten by <strong id="EN-US_TOPIC_0107659745__b470090426">wmem_default</strong>. The buffer size can increase to this value when the system load is not heavy.</p>
+<p id="EN-US_TOPIC_0107659745__p1127931955419">The third value is the maximum number of bytes allocated to the socket buffer for transmitting data. This value is overwritten by <strong id="EN-US_TOPIC_0107659745__b610398514">wmem_max</strong>.</p>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0107659745__row9484201215410"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p927991916543">net.ipv4.tcp_keepalive_time</p>
@@ -96,7 +96,7 @@
 </tr>
 <tr id="EN-US_TOPIC_0107659745__row1121180195411"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p12280121914549">net.ipv4.tcp_timestamps</p>
 </td>
-<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p8280141919544">Specifies a TCP timestamp, which will add 12 bytes in the TCP packet header. This configuration calculates RTT using RFC1323, a more precise retransmission method upon timeout than retransmission. You are suggested to use this configuration for higher system performance.</p>
+<td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p8280141919544">Specifies a TCP timestamp, which will add 12 bytes in the TCP packet header. This configuration calculates RTT using RFC1323, a more precise retransmission method upon timeout than retransmission. You are suggested to enable this parameter for higher system performance.</p>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0107659745__row1812117015543"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p16280191918544">net.ipv4.tcp_window_scaling</p>
@@ -112,14 +112,16 @@
 <tr id="EN-US_TOPIC_0107659745__row157321062544"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p1428018197542">net.ipv4.tcp_tw_reuse</p>
 </td>
 <td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p19645218349">Specifies whether a <strong id="EN-US_TOPIC_0107659745__b1127844296195551">TIME-WAIT</strong> socket (<strong id="EN-US_TOPIC_0107659745__b842352706203136">TIME-WAIT</strong> port) can be used for new TCP connections.</p>
-<div class="note" id="EN-US_TOPIC_0107659745__note1597821818446"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p1978618144412">This parameter cannot be set to <strong id="EN-US_TOPIC_0107659745__b842352706204934">1</strong> if NAT is enabled. Otherwise, an error will occur in remote <span id="EN-US_TOPIC_0107659745__text1520172825214">ECS</span> logins.</p>
+<div class="note" id="EN-US_TOPIC_0107659745__note1597821818446"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p8368843172018">This parameter is valid only for clients and takes effect only when <strong id="EN-US_TOPIC_0107659745__b1996835413467">net.ipv4.tcp_timestamps</strong> is enabled.</p>
+<p id="EN-US_TOPIC_0107659745__p1978618144412">This parameter cannot be set to <strong id="EN-US_TOPIC_0107659745__b842352706204934">1</strong> if NAT is enabled. Otherwise, an error will occur in remote <span id="EN-US_TOPIC_0107659745__text1520172825214">ECS</span> logins. </p>
 </div></div>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0107659745__row12732161544"><td class="cellrowborder" valign="top" width="34%" headers="mcps1.3.3.2.2.3.1.1 "><p id="EN-US_TOPIC_0107659745__p228031935420">net.ipv4.tcp_tw_recycle</p>
 </td>
 <td class="cellrowborder" valign="top" width="66%" headers="mcps1.3.3.2.2.3.1.2 "><p id="EN-US_TOPIC_0107659745__p19857534103412">Allows fast recycle of <strong id="EN-US_TOPIC_0107659745__b842352706203228">TIME-WAIT</strong> sockets.</p>
-<div class="note" id="EN-US_TOPIC_0107659745__note255910298445"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p1755982917442">Do not set this parameter to <strong id="EN-US_TOPIC_0107659745__b1806568119">1</strong> if NAT is enabled. Otherwise, an error will occur during remote <span id="EN-US_TOPIC_0107659745__text171127552612">ECS</span> logins.</p>
+<div class="note" id="EN-US_TOPIC_0107659745__note255910298445"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0107659745__p1291765114205">This parameter is valid only when <strong id="EN-US_TOPIC_0107659745__b697188124910">net.ipv4.tcp_timestamps</strong> is enabled.</p>
+<p id="EN-US_TOPIC_0107659745__p1755982917442">Do not set this parameter to <strong id="EN-US_TOPIC_0107659745__b373370224">1</strong> if NAT is enabled. Otherwise, an error will occur during remote <span id="EN-US_TOPIC_0107659745__text171127552612">ECS</span> logins. </p>
 </div></div>
 </td>
 </tr>
@@ -221,7 +223,7 @@
 </li></ul>
 </div>
 <div class="section" id="EN-US_TOPIC_0107659745__section1996094863415"><h4 class="sectiontitle">Modifying Kernel Parameter Settings</h4><ul id="EN-US_TOPIC_0107659745__ul83973411311"><li id="EN-US_TOPIC_0107659745__li19405341938">Method 1: Run the echo command in <span class="filepath" id="EN-US_TOPIC_0107659745__filepath1268872032233636"><b>/proc/sys</b></span> to modify the file for the target kernel parameters.<p id="EN-US_TOPIC_0107659745__p94318341315">The parameter values changed using this method take effect only during the current running and will be reset after the system is restarted. To make the modification take effect permanently, see method 2.</p>
-<p id="EN-US_TOPIC_0107659745__p7455342032"><span class="filepath" id="EN-US_TOPIC_0107659745__filepath148889868"><b>/proc/sys/</b></span> is a pseudo directory generated after the Linux kernel is started. The <strong id="EN-US_TOPIC_0107659745__b406863115">net</strong> folder in this directory stores all kernel parameters that have taken effect in the system. The directory tree structure is determined based on complete parameter names. For example, <strong id="EN-US_TOPIC_0107659745__b232051340">net.ipv4.tcp_tw_recycle</strong> corresponds to the <strong id="EN-US_TOPIC_0107659745__b295945730">/proc/sys/net/ipv4/tcp_tw_recycle</strong> file, and the content of the file is the parameter value.</p>
+<p id="EN-US_TOPIC_0107659745__p7455342032"><span class="filepath" id="EN-US_TOPIC_0107659745__filepath759023608"><b>/proc/sys/</b></span> is a pseudo directory generated after the Linux kernel is started. The <strong id="EN-US_TOPIC_0107659745__b539799180">net</strong> folder in this directory stores all kernel parameters that have taken effect in the system. The directory tree structure is determined based on complete parameter names. For example, <strong id="EN-US_TOPIC_0107659745__b1676429723">net.ipv4.tcp_tw_recycle</strong> corresponds to the <strong id="EN-US_TOPIC_0107659745__b1479166170">/proc/sys/net/ipv4/tcp_tw_recycle</strong> file, and the content of the file is the parameter value.</p>
 <p id="EN-US_TOPIC_0107659745__p1447203418313">Example:</p>
 <p id="EN-US_TOPIC_0107659745__p1083514271712">To change the <strong id="EN-US_TOPIC_0107659745__b842352706234041">net.ipv4.tcp_tw_recycle</strong> value to <strong id="EN-US_TOPIC_0107659745__b842352706234049">0</strong>, run the following command:</p>
 <p id="EN-US_TOPIC_0107659745__p4499341238"><strong id="EN-US_TOPIC_0107659745__b1742769557234059">echo "0" &gt; /proc/sys/net/ipv4/tcp_tw_recycle</strong></p>

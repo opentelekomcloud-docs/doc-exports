@@ -102,7 +102,7 @@
 <td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5510313525">String</p>
 </td>
 <td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p124996526158">Specifies the flavor ID of the <span id="EN-US_TOPIC_0020212668__text197803388219">ECS</span> to be created.</p>
-<p id="EN-US_TOPIC_0020212668__p14521031105216">For details about the flavors that have been released, see "Instances" in <em id="EN-US_TOPIC_0020212668__i842352697151722">Elastic Cloud Server User Guide</em>.</p>
+<p id="EN-US_TOPIC_0020212668__p14521031105216">For details about the flavors that have been released, see "ECS Specifications and Types" in the <em id="EN-US_TOPIC_0020212668__i842352697151722">Elastic Cloud Server User Guide</em>.</p>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0020212668__row1652163155219"><td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.6.5.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p852153118529">name</p>
@@ -190,8 +190,8 @@ echo 111 &gt; c:\aaa.txt</pre>
 </td>
 <td class="cellrowborder" valign="top" width="11.76470588235294%" headers="mcps1.3.6.5.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p75611317526">Object</p>
 </td>
-<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p17561731155214">Specifies the EIP of the <span id="EN-US_TOPIC_0020212668__text5493108192211">ECS</span>, which can be configured in the following ways:</p>
-<ul id="EN-US_TOPIC_0020212668__ul1456133105216"><li id="EN-US_TOPIC_0020212668__li105693165211">Do not use: In such a case, this field is unavailable.</li><li id="EN-US_TOPIC_0020212668__li155653119529">Automatically assign: The system will automatically assign an EIP to your <span id="EN-US_TOPIC_0020212668__text146395171013">ECS</span>.</li><li id="EN-US_TOPIC_0020212668__li195663175219">Use existing: You need to specify an existing EIP for your <span id="EN-US_TOPIC_0020212668__text624151011018">ECS</span>.</li></ul>
+<td class="cellrowborder" valign="top" width="55.882352941176464%" headers="mcps1.3.6.5.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p17561731155214">Specifies the EIP of the ECS, which can be configured in the following ways:</p>
+<ul id="EN-US_TOPIC_0020212668__ul1456133105216"><li id="EN-US_TOPIC_0020212668__li105693165211">Do not use: In such a case, this parameter is unavailable.</li><li id="EN-US_TOPIC_0020212668__li155653119529">Automatically assign: The system will automatically assign an EIP to your ECS.</li><li id="EN-US_TOPIC_0020212668__li195663175219">Use existing: You need to specify an existing EIP for your ECS.</li></ul>
 <p id="EN-US_TOPIC_0020212668__p76591419152310">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__table2785183710710">Table 1</a>.</p>
 </td>
 </tr>
@@ -318,7 +318,7 @@ echo 111 &gt; c:\aaa.txt</pre>
 <td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.6.6.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p65644149">String</p>
 </td>
 <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.3.6.6.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p52170790174229">Specifies the subnet of the <span id="EN-US_TOPIC_0020212668__text1290819290226">ECS</span>.</p>
-<p id="EN-US_TOPIC_0020212668__p43287089174217">The value must be the ID of the subnet created in the VPC specified by <strong id="EN-US_TOPIC_0020212668__b983995564">vpcid</strong> and in the format of the UUID.</p>
+<p id="EN-US_TOPIC_0020212668__p43287089174217">The value must be the ID of the subnet created in the VPC specified by <strong id="EN-US_TOPIC_0020212668__b2109616466">vpcid</strong> and in the format of the UUID.</p>
 </td>
 </tr>
 <tr id="EN-US_TOPIC_0020212668__row11285618104313"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.6.6.2.5.1.1 "><p id="EN-US_TOPIC_0020212668__p34461706104313">ip_address</p>
@@ -402,10 +402,9 @@ echo 111 &gt; c:\aaa.txt</pre>
 </td>
 <td class="cellrowborder" valign="top" width="11.881188118811881%" headers="mcps1.3.6.7.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p147212852417">Boolean</p>
 </td>
-<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p157213814240">Pay attention to this parameter if your ECS is SDI-compliant. If the value of this parameter is <strong id="EN-US_TOPIC_0020212668__b2211171682615">true</strong>, the created disk is of SCSI type.</p>
-<p id="EN-US_TOPIC_0020212668__p73262871619">Serial digital interface (SDI) only supports EVS disks whose device type is SCSI. There are three types of SDI: SDI storage interfaces, SDI network interfaces, and SDI integrated storage and network interfaces.</p>
-<p id="EN-US_TOPIC_0020212668__p1326188101611">Only c6x_4, c6ie_4, and c7 ECS specifications support SDI.</p>
-<div class="note" id="EN-US_TOPIC_0020212668__note187211802410"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p167298132410">This parameter is of boolean type. If a non-boolean character is imported, the parameter value is set to <strong id="EN-US_TOPIC_0020212668__b709517254143436">false</strong>.</p>
+<td class="cellrowborder" valign="top" width="56.43564356435643%" headers="mcps1.3.6.7.2.5.1.4 "><div class="p" id="EN-US_TOPIC_0020212668__p4404163312419">Specifies the device type of the EVS disks to be created.<ul id="EN-US_TOPIC_0020212668__ul128486424617"><li id="EN-US_TOPIC_0020212668__li1384894218611">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b1510492574416">false</strong>, VBD disks are created.</li><li id="EN-US_TOPIC_0020212668__li78481422616">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b111351331124414">true</strong>, SCSI disks are created.</li><li id="EN-US_TOPIC_0020212668__li48498421766">If this parameter is not specified or set to a non-Boolean character, VBD disks are created by default.</li></ul>
+</div>
+<div class="note" id="EN-US_TOPIC_0020212668__note187211802410"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p3250223286">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b15133344318">true</strong> or not specified for ECSs running SDI flavors (including c6x_4, c6ie_4, and c7), SCSI disks are created.</p>
 </div></div>
 </td>
 </tr>
@@ -490,9 +489,9 @@ echo 111 &gt; c:\aaa.txt</pre>
 </td>
 <td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p5020283814183">Boolean</p>
 </td>
-<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p4088945310517">Indicates whether the data volume uses a SCSI lock.</p>
-<ul id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_ul14462208141855"><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li16942218141855">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b84235270620365">true</strong>, the disk device type is SCSI, which allows ECS OSs to directly access the underlying storage media. SCSI reservation commands are supported.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li42055621173515">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__b203367810216">false</strong>, the disk device type is VBD, which supports only simple SCSI read/write commands.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0044524833_li922714915316">If this parameter does not appear, the disk device type is VBD.</li></ul>
-<div class="note" id="EN-US_TOPIC_0020212668__note1279613227324"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__p679712229326">This parameter is of boolean type. If a non-boolean character is imported, the parameter value is set to <strong id="EN-US_TOPIC_0020212668__b1316150474">false</strong>.</p>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><div class="p" id="EN-US_TOPIC_0020212668__p4088945310517">Specifies the device type of the EVS disks to be created.<ul id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_ul128486424617"><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li1384894218611">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b1510492574416">false</strong>, VBD disks are created.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li78481422616">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b111351331124414">true</strong>, SCSI disks are created.</li><li id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_li48498421766">If this parameter is not specified or set to a non-Boolean character, VBD disks are created by default.</li></ul>
+</div>
+<div class="note" id="EN-US_TOPIC_0020212668__note1279613227324"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_p3250223286">If this parameter is set to <strong id="EN-US_TOPIC_0020212668__en-us_topic_0020212668_b15133344318">true</strong> or not specified for ECSs running SDI flavors (including c6x_4, c6ie_4, and c7), SCSI disks are created.</p>
 </div></div>
 </td>
 </tr>
@@ -522,7 +521,7 @@ echo 111 &gt; c:\aaa.txt</pre>
 </td>
 <td class="cellrowborder" valign="top" width="12.121212121212121%" headers="mcps1.3.6.8.2.5.1.3 "><p id="EN-US_TOPIC_0020212668__p296112276588">Object</p>
 </td>
-<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p544756135816">Specifies the EVS disk metadata. Ensure that <strong id="EN-US_TOPIC_0020212668__b1158273613">key</strong> and <strong id="EN-US_TOPIC_0020212668__b1679753472">value</strong> in the metadata contain at most 255 bytes.</p>
+<td class="cellrowborder" valign="top" width="55.55555555555556%" headers="mcps1.3.6.8.2.5.1.4 "><p id="EN-US_TOPIC_0020212668__p544756135816">Specifies the EVS disk metadata. Ensure that <strong id="EN-US_TOPIC_0020212668__b643498928">key</strong> and <strong id="EN-US_TOPIC_0020212668__b1895599796">value</strong> in the metadata contain at most 255 bytes.</p>
 <p id="EN-US_TOPIC_0020212668__p5568103611379">This field is used only when an encrypted disk is created.</p>
 <p id="EN-US_TOPIC_0020212668__p1815264144920">If data disks are created using a data disk image, this field cannot be used.</p>
 <p id="EN-US_TOPIC_0020212668__p16970151531615">For details, see <a href="en-us_topic_0167957246.html#EN-US_TOPIC_0167957246__section1228814491353">metadata Field Description for Creating Disks</a>.</p>
@@ -554,11 +553,11 @@ echo 111 &gt; c:\aaa.txt</pre>
 </div>
 <p id="EN-US_TOPIC_0020212668__p930619377222">For details about abnormal responses, see <a href="en-us_topic_0022067714.html">Responses (Task)</a>.</p>
 </div>
-<div class="section" id="EN-US_TOPIC_0020212668__section755512111436"><h4 class="sectiontitle">Example Request</h4><p id="EN-US_TOPIC_0020212668__p165385214436">The public cloud platform provides various <span id="EN-US_TOPIC_0020212668__text74184918221">ECS</span> types. The flavor name/ID varies depending on <span id="EN-US_TOPIC_0020212668__text7318195553612">ECS</span> types and specifications. When you use APIs to create <span id="EN-US_TOPIC_0020212668__text19688810375">ECS</span>s with different specifications, the request bodies are the same. You only need to change the parameter values in the following request example based on the parameters described in <a href="#EN-US_TOPIC_0020212668__section5126234">Request</a>.</p>
+<div class="section" id="EN-US_TOPIC_0020212668__section755512111436"><h4 class="sectiontitle">Example Request</h4><p id="EN-US_TOPIC_0020212668__p165385214436">The public cloud platform provides various ECS types. The flavor name/ID varies depending on ECS types and specifications. When you use APIs to create <span id="EN-US_TOPIC_0020212668__text19688810375">ECS</span>s with different specifications, the request bodies are the same. You only need to change the parameter values in the following request example based on the parameters described in <a href="#EN-US_TOPIC_0020212668__section5126234">Request</a>.</p>
 <ul id="EN-US_TOPIC_0020212668__ul15938190403"><li id="EN-US_TOPIC_0020212668__li1693810910400">Example URL request<pre class="screen" id="EN-US_TOPIC_0020212668__screen27636168409">POST https://<em id="EN-US_TOPIC_0020212668__i5452131772714">{endpoint}</em>/v1/{project_id}/cloudservers</pre>
 </li></ul>
 </div>
-<ul id="EN-US_TOPIC_0020212668__ul6110122211309"><li id="EN-US_TOPIC_0020212668__li191181837123013">An <span id="EN-US_TOPIC_0020212668__text1553017528228">ECS</span> with flavor ID <strong id="EN-US_TOPIC_0020212668__b860897747">m3.larger</strong> is to be created, where the image ID is <strong id="EN-US_TOPIC_0020212668__b983044983">imageid_123</strong>, disk type is <strong id="EN-US_TOPIC_0020212668__b344132849">SSD</strong>, and VPC ID is <strong id="EN-US_TOPIC_0020212668__b2132555399">0dae26c9-9a70-4392-93f3-87d53115d171</strong>. An example request is as follows:<pre class="screen" id="EN-US_TOPIC_0020212668__screen0770128355">{
+<ul id="EN-US_TOPIC_0020212668__ul6110122211309"><li id="EN-US_TOPIC_0020212668__li191181837123013">An <span id="EN-US_TOPIC_0020212668__text1553017528228">ECS</span> with flavor ID <strong id="EN-US_TOPIC_0020212668__b1720125677">m3.larger</strong> is to be created, where the image ID is <strong id="EN-US_TOPIC_0020212668__b2036358703">imageid_123</strong>, disk type is <strong id="EN-US_TOPIC_0020212668__b817920836">SSD</strong>, and VPC ID is <strong id="EN-US_TOPIC_0020212668__b1383370241">0dae26c9-9a70-4392-93f3-87d53115d171</strong>. An example request is as follows:<pre class="screen" id="EN-US_TOPIC_0020212668__screen0770128355">{
     "server": {
         "availability_zone":"az1-dc1",
         "name": "newserver", 

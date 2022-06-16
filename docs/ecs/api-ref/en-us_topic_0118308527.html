@@ -1,0 +1,446 @@
+<a name="EN-US_TOPIC_0118308527"></a><a name="EN-US_TOPIC_0118308527"></a>
+
+<h1 class="topictitle1">Modifying an ECS</h1>
+<div id="body1529744953645"><div class="section" id="EN-US_TOPIC_0118308527__section15039321"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0118308527__p40012458">This API is used to modify ECS information. Only the name, description, and hostname of an ECS can be modified currently.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section166281689411"><h4 class="sectiontitle">Constraints</h4><p id="EN-US_TOPIC_0118308527__p142881178413">After the hostname of an ECS is changed, you need to restart the ECS for the configuration to take effect.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section1136168"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0118308527__p34937051153741">PUT /v1/{project_id}/cloudservers/{server_id}</p>
+<div class="p" id="EN-US_TOPIC_0118308527__p5982195613143"><a href="#EN-US_TOPIC_0118308527__table44564854">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table44564854"></a><a name="table44564854"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table44564854" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Parameter description</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row553045"><th align="left" class="cellrowborder" valign="top" width="17.54%" id="mcps1.3.3.3.2.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p44796718">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.36%" id="mcps1.3.3.3.2.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p4655547">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="65.10000000000001%" id="mcps1.3.3.3.2.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p41555045">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row10515475"><td class="cellrowborder" valign="top" width="17.54%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p46447150">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p4122781">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.10000000000001%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row26436338165316"><td class="cellrowborder" valign="top" width="17.54%" headers="mcps1.3.3.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p31999978165316">server_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.36%" headers="mcps1.3.3.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p41861457165316">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="65.10000000000001%" headers="mcps1.3.3.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p35334819165316">Specifies the <span id="EN-US_TOPIC_0118308527__text262992132317">ECS</span> ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section10225512"><h4 class="sectiontitle">Request</h4><div class="p" id="EN-US_TOPIC_0118308527__p36681836121512"><a href="#EN-US_TOPIC_0118308527__table13100926">Table 2</a> describes the request parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table13100926"></a><a name="table13100926"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table13100926" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row35303864"><th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.4.2.2.2.5.1.1"><p id="EN-US_TOPIC_0118308527__p41040744">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.75%" id="mcps1.3.4.2.2.2.5.1.2"><p id="EN-US_TOPIC_0118308527__p35965948">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.48%" id="mcps1.3.4.2.2.2.5.1.3"><p id="EN-US_TOPIC_0118308527__p27560669">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.77%" id="mcps1.3.4.2.2.2.5.1.4"><p id="EN-US_TOPIC_0118308527__p17821682">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row34270115"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.4.2.2.2.5.1.1 "><p id="EN-US_TOPIC_0118308527__p24415962">server</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.75%" headers="mcps1.3.4.2.2.2.5.1.2 "><p id="EN-US_TOPIC_0118308527__p31535868">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.48%" headers="mcps1.3.4.2.2.2.5.1.3 "><p id="EN-US_TOPIC_0118308527__p4268531">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.77%" headers="mcps1.3.4.2.2.2.5.1.4 "><p id="EN-US_TOPIC_0118308527__p24751971">Specifies the ECS data structure.</p>
+<p id="EN-US_TOPIC_0118308527__p953714271163">For details, see <a href="#EN-US_TOPIC_0118308527__table26827213163326">Table 3</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table26827213163326"></a><a name="table26827213163326"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table26827213163326" frame="border" border="1" rules="all"><caption><b>Table 3 </b><strong id="EN-US_TOPIC_0118308527__b20308540583649">server</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row36672866163326"><th align="left" class="cellrowborder" valign="top" width="17.169999999999998%" id="mcps1.3.4.2.3.2.5.1.1"><p id="EN-US_TOPIC_0118308527__p947775310319">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.549999999999997%" id="mcps1.3.4.2.3.2.5.1.2"><p id="EN-US_TOPIC_0118308527__p947717536316">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.51%" id="mcps1.3.4.2.3.2.5.1.3"><p id="EN-US_TOPIC_0118308527__p1147720532316">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="51.77%" id="mcps1.3.4.2.3.2.5.1.4"><p id="EN-US_TOPIC_0118308527__p134771253103114">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row31760590163326"><td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0118308527__p22470979163326">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.549999999999997%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0118308527__p8210025163326">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.51%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0118308527__p61032295163326">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.77%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0118308527__p66475806163326">Specifies the name of the modified ECS.</p>
+<p id="EN-US_TOPIC_0118308527__p032266131219">The parameter value consists of 1 to 64 characters, including letters, digits, underscores (_), hyphens (-), periods (.).</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1590615702514"><td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0118308527__p185271320121118">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.549999999999997%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0118308527__p75277203114">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.51%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0118308527__p195271620111110">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.77%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0118308527__p165273207113">Describes the ECS.</p>
+<p id="EN-US_TOPIC_0118308527__p1561511412123">The value consists of 0-85 characters and cannot contain brackets (&lt;&gt;).</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row14751515161017"><td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.4.2.3.2.5.1.1 "><p id="EN-US_TOPIC_0118308527__p14761315191018">hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.549999999999997%" headers="mcps1.3.4.2.3.2.5.1.2 "><p id="EN-US_TOPIC_0118308527__p847611521014">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.51%" headers="mcps1.3.4.2.3.2.5.1.3 "><p id="EN-US_TOPIC_0118308527__p114634316104">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="51.77%" headers="mcps1.3.4.2.3.2.5.1.4 "><p id="EN-US_TOPIC_0118308527__p447621521017">Specifies the ECS hostname.</p>
+<p id="EN-US_TOPIC_0118308527__p1242195010104">The name consists of 1-64 characters. It can be segmented using periods (.). Only letters, digits, and hyphens (-) are allowed in each segment. A name cannot contain consecutive periods (.) or hyphens (-), and cannot start or end with a period (.) or hyphen (-). Additionally, the combinations of (.-) and (-.) are not allowed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section24920747"><h4 class="sectiontitle">Response</h4><p id="EN-US_TOPIC_0118308527__p716211528145"><a href="#EN-US_TOPIC_0118308527__table44736746">Table 4</a> describes the response parameters.</p>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table44736746"></a><a name="table44736746"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table44736746" frame="border" border="1" rules="all"><caption><b>Table 4 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row8242429"><th align="left" class="cellrowborder" valign="top" width="20.792079207920793%" id="mcps1.3.5.3.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p63657004">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.831683168316832%" id="mcps1.3.5.3.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p35147813">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.37623762376238%" id="mcps1.3.5.3.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p28400574">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row18745119"><td class="cellrowborder" valign="top" width="20.792079207920793%" headers="mcps1.3.5.3.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p41959665">server</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.831683168316832%" headers="mcps1.3.5.3.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p16804102">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.37623762376238%" headers="mcps1.3.5.3.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p36377578">Specifies the <span id="EN-US_TOPIC_0118308527__text18451202242313">ECS</span>.</p>
+<p id="EN-US_TOPIC_0118308527__p467113651412">For details, see <a href="#EN-US_TOPIC_0118308527__table11253402">Table 5</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table11253402"></a><a name="table11253402"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table11253402" frame="border" border="1" rules="all"><caption><b>Table 5 </b><strong id="EN-US_TOPIC_0118308527__b14583181319203">server</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row10267559"><th align="left" class="cellrowborder" valign="top" width="21%" id="mcps1.3.5.4.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p49911341191514">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16%" id="mcps1.3.5.4.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p157164271511">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63%" id="mcps1.3.5.4.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p187164216157">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row15663"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1268752">tenant_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p2786131">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p24350086">Specifies the tenant or project ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row17824184"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p34472770">image</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p18974148">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p1146019416233">Specifies the image ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row7727977"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p21986423">accessIPv4</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1266224310514">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p449319209247">Reserved</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row17881104563115"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p148814457312">addresses</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1830765712513">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p527571319384">Specifies the attributed network information of the <span id="EN-US_TOPIC_0118308527__text51261015113319">ECS</span>.</p>
+<p id="EN-US_TOPIC_0118308527__p064674113818">The structure is Map&lt;String, Object&gt;.</p>
+<p id="EN-US_TOPIC_0118308527__p188114593120">For details, see <a href="#EN-US_TOPIC_0118308527__table1656029015527">Table 6</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row12379948143212"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p337954823220">metadata</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p53791648203212">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p12379154816322">Specifies the <span id="EN-US_TOPIC_0118308527__text465235914209">ECS</span> metadata.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row157021310336"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p2070231193310">accessIPv6</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p107026111331">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p2702610337">Reserved</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1357051111330"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p10571121123317">created</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1057181153310">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p145717115334">Specifies the time when the <span id="EN-US_TOPIC_0118308527__text126951523132117">ECS</span> was created. The time is in the format of "2019-05-22T03:19:19Z".</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row44021729173312"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1040292913331">hostId</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p7403122973316">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p15403729103310">Specifies the host ID of the <span id="EN-US_TOPIC_0118308527__text10284174382113">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1687495133318"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1874145116332">flavor</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1834114812515">Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p1487435113336">Specifies the <span id="EN-US_TOPIC_0118308527__text132202822312">ECS</span> flavor. For details, see <a href="#EN-US_TOPIC_0118308527__table19588408">Table 7</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row64807110488"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p248041174813">OS-DCF:diskConfig</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1848012164812">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p2048819204245">Specifies the disk configuration mode. This is an extended attribute. This field is valid for the <span id="EN-US_TOPIC_0118308527__text13795133182210">ECS</span> started using an image.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1625113556487"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1025111555484">user_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p125175594818">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p192511555114814">Specifies the ID of the user to which an <span id="EN-US_TOPIC_0118308527__text14347343122217">ECS</span> belongs.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1696711163499"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p9968141624920">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p19968716144915">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p12968111615495">Specifies the name of the modified <span id="EN-US_TOPIC_0118308527__text126601306238">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row6518308499"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p13519301498">progress</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p13523018490">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p15730134916">Reserved</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row9985124116491"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p498534117495">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p35973707">Array of Object</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p169324165111">Specifies <span id="EN-US_TOPIC_0118308527__text175646318234">ECS</span> shortcut links for <span id="EN-US_TOPIC_0118308527__text57871613233">ECS</span>. For details, see <a href="#EN-US_TOPIC_0118308527__table64121649">Table 8</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1833531795016"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p3335417195015">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p93353179506">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p16335121765010">Specifies the unique ID of an <span id="EN-US_TOPIC_0118308527__text1547693202311">ECS</span>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row19934421115017"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1934192114503">updated</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p5466712110">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p3934721115015">Specifies the time when the <span id="EN-US_TOPIC_0118308527__text723102112419">ECS</span> was updated last time.</p>
+<p id="EN-US_TOPIC_0118308527__p79461929272">The time is in the format of "2019-05-22T03:19:19Z".</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row43315475142"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p1253710242210">locked</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p1653720241521">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p18537624422">Specifies the <span id="EN-US_TOPIC_0118308527__text751171410244">ECS</span> lock status, which is <strong id="EN-US_TOPIC_0118308527__b6591714122413">True</strong> when the <span id="EN-US_TOPIC_0118308527__text105914144241">ECS</span> is locked and <strong id="EN-US_TOPIC_0118308527__b166061492415">False</strong> when the <span id="EN-US_TOPIC_0118308527__text660914132412">ECS</span> is unlocked.</p>
+<p id="EN-US_TOPIC_0118308527__p13993454402">This parameter is supported in microversion 2.9 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row2806910181520"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p57463526">description</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p24034004">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p48379233">Describes the <span id="EN-US_TOPIC_0118308527__text5993197124617">ECS</span>.</p>
+<p id="EN-US_TOPIC_0118308527__p28201545155518">This parameter is supported in microversion 2.19 and later.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row8354844101514"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p749372082418">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p14493420142420">Array of strings</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p1620274611333">Specifies <span id="EN-US_TOPIC_0118308527__text1726045752411">ECS</span> tags.</p>
+<p id="EN-US_TOPIC_0118308527__p1149310203247">This parameter is supported in microversion 2.26 and later. If the microversion is not used for query, the response does not contain the <strong id="EN-US_TOPIC_0118308527__b84235270615453">tags</strong> field.</p>
+<div class="p" id="EN-US_TOPIC_0118308527__p7300949059">Tag functions have been upgraded on the public cloud. After the upgrade, the tag values returned by the system comply with the following rules:<ul id="EN-US_TOPIC_0118308527__en-us_topic_0020212689_ul871515496611"><li id="EN-US_TOPIC_0118308527__en-us_topic_0020212689_li5715249264">The key and value of a tag are connected using an equal sign (=), for example, key=value.</li><li id="EN-US_TOPIC_0118308527__en-us_topic_0020212689_li571513498613">If the value is empty, only the key is returned.</li></ul>
+</div>
+<p id="EN-US_TOPIC_0118308527__p141334271371">For more details about upgraded tag functions, see <a href="en-us_topic_0167811962.html">Tag Types</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row61813343508"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p131883455011">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p518143415010">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p2018153465013">Specifies the <span id="EN-US_TOPIC_0118308527__text4357193920252">ECS</span> status.</p>
+<p id="EN-US_TOPIC_0118308527__p3162102155817">Options:</p>
+<p id="EN-US_TOPIC_0118308527__p10449173112588"><strong id="EN-US_TOPIC_0118308527__b84235270614233">ACTIVE</strong>, <strong id="EN-US_TOPIC_0118308527__b84235270614237">BUILD</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142313">ERROR</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142317">HARD_REBOOT</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142321">MIGRATING</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142326">REBOOT</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142330">RESIZE</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142333">REVERT_RESIZE</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142337">SHELVED</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142340">SHELVED_OFFLOADED</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142345">SHUTOFF</strong>, <strong id="EN-US_TOPIC_0118308527__b842352706142347">UNKNOWN</strong>, and <strong id="EN-US_TOPIC_0118308527__b842352706142350">VERIFY_RESIZE</strong></p>
+<p id="EN-US_TOPIC_0118308527__p19518218542">For details, see <a href="en-us_topic_0178420672.html">ECS Statuses</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1828203118618"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.3.5.4.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p7131169">OS-EXT-SRV-ATTR:hostname</p>
+</td>
+<td class="cellrowborder" valign="top" width="16%" headers="mcps1.3.5.4.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p40753854">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.4.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__en-us_topic_0057972887_p24324288">Specifies the ECS hostname.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table1656029015527"></a><a name="table1656029015527"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table1656029015527" frame="border" border="1" rules="all"><caption><b>Table 6 </b>Data structure of the network which an <span id="EN-US_TOPIC_0118308527__text20773133812273">ECS</span> accesses</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row2645284715527"><th align="left" class="cellrowborder" valign="top" width="20.588235294117645%" id="mcps1.3.5.5.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p1986420536154">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="16.666666666666668%" id="mcps1.3.5.5.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p148649536156">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.745098039215684%" id="mcps1.3.5.5.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p486414537159">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row5009697415527"><td class="cellrowborder" valign="top" width="20.588235294117645%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p3132311415527">addr</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p5414433915527">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.745098039215684%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p2361534415527">Specifies the IP address.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row1121151015527"><td class="cellrowborder" valign="top" width="20.588235294117645%" headers="mcps1.3.5.5.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p3571711715527">version</p>
+</td>
+<td class="cellrowborder" valign="top" width="16.666666666666668%" headers="mcps1.3.5.5.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p740535615527">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.745098039215684%" headers="mcps1.3.5.5.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p6296298815527">Specifies the type of an IP address. The value of this parameter can be <strong id="EN-US_TOPIC_0118308527__b14616579279">4</strong> or <strong id="EN-US_TOPIC_0118308527__b146917572273">6</strong>.</p>
+<ul id="EN-US_TOPIC_0118308527__ul2979598615527"><li id="EN-US_TOPIC_0118308527__li6683728515527"><strong id="EN-US_TOPIC_0118308527__b719460152819">4</strong>: The type of the IP address is IPv4.</li><li id="EN-US_TOPIC_0118308527__li6466465415527"><strong id="EN-US_TOPIC_0118308527__b61193212818">6</strong>: The type of the IP address is IPv6.</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table19588408"></a><a name="table19588408"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table19588408" frame="border" border="1" rules="all"><caption><b>Table 7 </b><strong id="EN-US_TOPIC_0118308527__b84235270695528">flavor</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row65668512"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.6.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p445185741513">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.6.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p6466185761518">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63%" id="mcps1.3.5.6.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p1546645715151">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row54114449"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p21194271">id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.6.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p6046963">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.6.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p20041994">Specifies the <span id="EN-US_TOPIC_0118308527__text820311002819">ECS</span> ID.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row46160221"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.6.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p47990424">links</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.6.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p57492083">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.6.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p35797372">Specifies shortcut links for <span id="EN-US_TOPIC_0118308527__text13779111752812">ECS</span> types. For details, see <a href="#EN-US_TOPIC_0118308527__table64121649">Table 8</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="EN-US_TOPIC_0118308527__table64121649"></a><a name="table64121649"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0118308527__table64121649" frame="border" border="1" rules="all"><caption><b>Table 8 </b><strong id="EN-US_TOPIC_0118308527__b84258289286">links</strong> field description</caption><thead align="left"><tr id="EN-US_TOPIC_0118308527__row59320951"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.5.7.2.4.1.1"><p id="EN-US_TOPIC_0118308527__p19525409166">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.5.7.2.4.1.2"><p id="EN-US_TOPIC_0118308527__p15255041613">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63%" id="mcps1.3.5.7.2.4.1.3"><p id="EN-US_TOPIC_0118308527__p452516061611">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0118308527__row61486274"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p14332335">rel</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.7.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p14933841">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.7.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p1681623">Specifies the shortcut link marker name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0118308527__row15134612"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.5.7.2.4.1.1 "><p id="EN-US_TOPIC_0118308527__p17944037">href</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.5.7.2.4.1.2 "><p id="EN-US_TOPIC_0118308527__p21885054">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="63%" headers="mcps1.3.5.7.2.4.1.3 "><p id="EN-US_TOPIC_0118308527__p27858965">Provides the shortcut link.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section5682214173"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0118308527__screen9563161085114">PUT  https://<em id="EN-US_TOPIC_0118308527__i13406194416139">{endpoint}</em>/v1/{project_id}/cloudservers/{server_id}</pre>
+<pre class="screen" id="EN-US_TOPIC_0118308527__screen88272191710">{
+    "server": {
+        "name": "new-server-test"
+    }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section204371735204210"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0118308527__screen6361173113426">{
+  "server": {
+    "tenant_id": "66c860cb130b465fbafcdee43fb09c64",
+    "image": "",
+    "accessIPv4": "",
+    "addresses": {
+      "01d7aef8-442b-408e-b82f-13afff51e4e4": [
+        {
+          "addr": "192.168.26.22",
+          "version": 4
+        }
+      ]
+    },
+    "metadata": {
+      "virtual_env_type": "FusionCompute"
+    },
+    "description": "",
+    "accessIPv6": "",
+    "created": "2019-04-25T11:52:53Z",
+    "hostId": "57d278e7c53d07cd34fad3ba4fdc9f3d779017d0879726d83b45a22a",
+    "OS-EXT-SRV-ATTR:hostname": "new-test-hostname",
+    "flavor": {
+      "links": [
+        {
+          "rel": "bookmark",
+          "href": "https://None/66c860cb130b465fbafcdee43fb09c64/flavors/s2.large.2"
+        }
+      ],
+      "id": "s2.large.2"
+    },
+    "OS-DCF:diskConfig": "MANUAL",
+    "user_id": "f88581d53be64716a985c66ca28c75f6",
+    "name": "new-test-hostname",
+    "progress": 0,
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://None/v2/66c860cb130b465fbafcdee43fb09c64/servers/24930df0-db4c-4a8b-8914-d0bd558564b0"
+      },
+      {
+        "rel": "bookmark",
+        "href": "https://None/66c860cb130b465fbafcdee43fb09c64/servers/24930df0-db4c-4a8b-8914-d0bd558564b0"
+      }
+    ],
+    "id": "24930df0-db4c-4a8b-8914-d0bd558564b0",
+    "updated": "2019-04-28T08:15:36Z",
+    "status": "ACTIVE"
+  }
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__section22960139"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0118308527__p23670760">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0118308527__en-us_topic_0092803065_en-us_topic_0067161469_en-us_topic_0057973179_section23611955"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0118308527__p20272163175210">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212657.html">Lifecycle Management</a></div>
+</div>
+</div>
+
