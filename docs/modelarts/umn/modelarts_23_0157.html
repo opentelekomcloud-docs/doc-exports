@@ -3,14 +3,14 @@
 <h1 class="topictitle1">Requirements on Datasets</h1>
 <div id="body8662426"><p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p8060118">The built-in algorithms provided by ModelArts can be used for image classification, object detection, and image semantic segmentation. The requirements for the datasets vary according to the built-in algorithms used for different purposes. Before using a built-in algorithm to create a training job, you are advised to prepare a dataset based on the requirements of the algorithm.</p>
 <div class="section" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_section1417274319431"><h4 class="sectiontitle">Image Classification</h4><p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p927161920454">The training dataset must be stored in the OBS bucket. The following shows the OBS path structure of the dataset:</p>
-<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen114820305216">|-- data_url
+<pre class="screen" id="modelarts_23_0157__screen187381621111514">|-- data_url
       |--a.jpg
       |--a.txt
       |--b.jpg
       |--b.txt
       ...</pre>
 <ul id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_ul978512205545"><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li3785192095418"><span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath19213614538"><b>data_url</b></span> indicates the folder name. You can customize the folder name. Images and label files cannot be stored in the root directory of an OBS bucket.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li74871609558">Images and label files must have the same name. The <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath3449191911561"><b>.txt</b></span> files are label files for image classification. The images can be in JPG, JPEG, PNG, or BMP format.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li1485310241501">The first row of label files for image classification indicates the category name of images, which can be Chinese characters, English letters, or digits. The following provides an example of file content:<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen15844238119">cat</pre>
-</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li02161320552">In addition to the preceding files and folders, no other files or folders can exist in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath6560112135520"><b>data_url</b></span> folder.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li124353575519">You can directly use an existing image classification dataset with published versions in <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b468161474">Data Management</strong> of ModelArts.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li835224064">You can also name sub-folders in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath17060117616"><b>data_url</b></span> directory by label, as shown in the following:<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen54304405618">|-- data_url
+</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li02161320552">In addition to the preceding files and folders, no other files or folders can exist in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath6560112135520"><b>data_url</b></span> folder.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li124353575519">You can directly use an existing image classification dataset with published versions in <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b468161474">Data Management</strong> of ModelArts.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li835224064">You can also name sub-folders in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath17060117616"><b>data_url</b></span> directory by label, as shown in the following:<pre class="screen" id="modelarts_23_0157__screen1850674591516">|-- data_url
     |--cat
       |--a.jpg
       |--a.txt
@@ -21,69 +21,42 @@
 </li></ul>
 </div>
 <div class="section" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_section1491741124418"><h4 class="sectiontitle">Object Detection and Locating</h4><p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p0633113215557">The training dataset must be stored in the OBS bucket. The following shows the OBS path structure of the dataset:</p>
-<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen2633432195511">|-- data_url
+<pre class="screen" id="modelarts_23_0157__screen1166435714152">|-- data_url
       |--a.jpg
       |--a.xml
       |--b.jpg
       |--b.xml
       ...</pre>
-<ul id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_ul263393214551"><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li16330326554"><span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath1891884555016"><b>data_url</b></span> indicates the folder name. You can customize the folder name. Images and label files cannot be stored in the root directory of an OBS bucket.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li76341632165511">Images and label files must have the same name. The <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath16462165845518"><b>.xml</b></span> files are label files for object detection. The images can be in JPG, JPEG, PNG, or BMP format.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li96341832175515">In addition to the preceding files and folders, no other files or folders can exist in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath16866118145119"><b>data_url</b></span> folder.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li1699319231583">You can directly use an existing object detection dataset with published versions in <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b3384131319488">Data Management</strong> of ModelArts.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li8502132927">The following provides a label file for object detection. The key parameters are <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname19949382014"><b>size</b></span> (image size), <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname7111132213016"><b>object</b></span> (object information), and <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname9433191912220"><b>name</b></span> (label name, which can be Chinese characters, English letters, or digits). Note that the values of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname18607125119214"><b>xmin</b></span>, <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname10688057723"><b>ymin</b></span>, <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname184661216310"><b>xmax</b></span>, and <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname485315511316"><b>ymax</b></span> in the <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname749594710210"><b>bndbox</b></span> field cannot exceed the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname687810101938"><b>size</b></span>. That is, the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1968217145319"><b>min</b></span> cannot be less than 0, and the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname10536182013318"><b>max</b></span> cannot be greater than the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1956415231333"><b>width</b></span> or <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1075142512318"><b>height</b></span>.<div class="codecoloring" codetype="Xml" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen16963204171310"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
-<span class="nt">&lt;annotation&gt;</span>
-    <span class="nt">&lt;folder&gt;</span>Images<span class="nt">&lt;/folder&gt;</span>
-    <span class="nt">&lt;filename&gt;</span>IMG_20180919_120022.jpg<span class="nt">&lt;/filename&gt;</span>
-    <span class="nt">&lt;source&gt;</span>
-        <span class="nt">&lt;database&gt;</span>Unknown<span class="nt">&lt;/database&gt;</span>
-    <span class="nt">&lt;/source&gt;</span>
-    <span class="nt">&lt;size&gt;</span>
-        <span class="nt">&lt;width&gt;</span>800<span class="nt">&lt;/width&gt;</span>
-        <span class="nt">&lt;height&gt;</span>600<span class="nt">&lt;/height&gt;</span>
-        <span class="nt">&lt;depth&gt;</span>1<span class="nt">&lt;/depth&gt;</span>
-    <span class="nt">&lt;/size&gt;</span>
-    <span class="nt">&lt;segmented&gt;</span>0<span class="nt">&lt;/segmented&gt;</span>
-    <span class="nt">&lt;object&gt;</span>
-        <span class="nt">&lt;name&gt;</span>yunbao<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
-        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
-        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
-        <span class="nt">&lt;bndbox&gt;</span>
-            <span class="nt">&lt;xmin&gt;</span>216.00<span class="nt">&lt;/xmin&gt;</span>
-            <span class="nt">&lt;ymin&gt;</span>108.00<span class="nt">&lt;/ymin&gt;</span>
-            <span class="nt">&lt;xmax&gt;</span>705.00<span class="nt">&lt;/xmax&gt;</span>
-            <span class="nt">&lt;ymax&gt;</span>488.00<span class="nt">&lt;/ymax&gt;</span>
-        <span class="nt">&lt;/bndbox&gt;</span>
-    <span class="nt">&lt;/object&gt;</span>
-<span class="nt">&lt;/annotation&gt;</span>
-</pre></div>
-</td></tr></table></div>
+<ul id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_ul263393214551"><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li16330326554"><span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath1891884555016"><b>data_url</b></span> indicates the folder name. You can customize the folder name. Images and label files cannot be stored in the root directory of an OBS bucket.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li76341632165511">Images and label files must have the same name. The <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath16462165845518"><b>.xml</b></span> files are label files for object detection. The images can be in JPG, JPEG, PNG, or BMP format.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li96341832175515">In addition to the preceding files and folders, no other files or folders can exist in the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath16866118145119"><b>data_url</b></span> folder.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li1699319231583">You can directly use an existing object detection dataset with published versions in <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b3384131319488">Data Management</strong> of ModelArts.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li8502132927">The following provides a label file for object detection. The key parameters are <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname19949382014"><b>size</b></span> (image size), <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname7111132213016"><b>object</b></span> (object information), and <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname9433191912220"><b>name</b></span> (label name, which can be Chinese characters, English letters, or digits). Note that the values of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname18607125119214"><b>xmin</b></span>, <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname10688057723"><b>ymin</b></span>, <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname184661216310"><b>xmax</b></span>, and <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname485315511316"><b>ymax</b></span> in the <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname749594710210"><b>bndbox</b></span> field cannot exceed the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname687810101938"><b>size</b></span>. That is, the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1968217145319"><b>min</b></span> cannot be less than 0, and the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname10536182013318"><b>max</b></span> cannot be greater than the value of <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1956415231333"><b>width</b></span> or <span class="parmname" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_parmname1075142512318"><b>height</b></span>.<pre class="screen" id="modelarts_23_0157__screen12706201221614">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;annotation&gt;
+    &lt;folder&gt;Images&lt;/folder&gt;
+    &lt;filename&gt;IMG_20180919_120022.jpg&lt;/filename&gt;
+    &lt;source&gt;
+        &lt;database&gt;Unknown&lt;/database&gt;
+    &lt;/source&gt;
+    &lt;size&gt;
+        &lt;width&gt;800&lt;/width&gt;
+        &lt;height&gt;600&lt;/height&gt;
+        &lt;depth&gt;1&lt;/depth&gt;
+    &lt;/size&gt;
+    &lt;segmented&gt;0&lt;/segmented&gt;
+    &lt;object&gt;
+        &lt;name&gt;yunbao&lt;/name&gt;
+        &lt;pose&gt;Unspecified&lt;/pose&gt;
+        &lt;truncated&gt;0&lt;/truncated&gt;
+        &lt;difficult&gt;0&lt;/difficult&gt;
+        &lt;bndbox&gt;
+            &lt;xmin&gt;216.00&lt;/xmin&gt;
+            &lt;ymin&gt;108.00&lt;/ymin&gt;
+            &lt;xmax&gt;705.00&lt;/xmax&gt;
+            &lt;ymax&gt;488.00&lt;/ymax&gt;
+        &lt;/bndbox&gt;
+    &lt;/object&gt;
+&lt;/annotation&gt;</pre>
 </li></ul>
 </div>
 <div class="section" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_section18913131274411"><h4 class="sectiontitle">Image Semantic Segmentation</h4><p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p17389161104613">The training dataset must be stored in the OBS bucket. The following shows the OBS path structure of the dataset:</p>
-<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen1084919147586">|-- data_url
+<pre class="screen" id="modelarts_23_0157__screen25281627141612">|-- data_url
        |--Image
               |--a.jpg
               |--b.jpg
@@ -96,7 +69,7 @@
        |--val.txt</pre>
 <p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p1352110128465"><strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b173141319191815">Description</strong>:</p>
 <ul id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_ul86951261505"><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li136953261705"><span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath4679132845914"><b>data_url</b></span>, <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath36791528165914"><b>Image</b></span>, and <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath1067932815591"><b>Label</b></span> indicate the OBS folder names. The <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath167911284593"><b>Image</b></span> folder stores images for semantic segmentation, and the <span class="filepath" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_filepath1768016283597"><b>Label</b></span> folder stores labeled images.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li96955261704">The name and format of the images for semantic segmentation must be the same as those of the corresponding labeled images. Images in JPG, JPEG, PNG, and BMP formats are supported.</li><li id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_li169662620020">In the preceding code snippet, <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b66874380514">train.txt</strong> and <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b1712415551756">val.txt</strong> are two list files. <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b155771954618">train.txt</strong> is the list file of the training set, and <strong id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_b8461121368">val.txt</strong> is the list file of the validation set. It is recommended that the ratio of the training set to the validation set be 8:2.<p id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_p12505163011019">In the list file, the relative paths of images and labels are separated by spaces. Different pieces of data are separated by newline characters. The following gives an example:</p>
-<pre class="screen" id="modelarts_23_0157__en-us_topic_0259701753_en-us_topic_0189694044_screen151745481005">Image/a.jpg Label/a.jpg
+<pre class="screen" id="modelarts_23_0157__screen61481942201616">Image/a.jpg Label/a.jpg
 Image/b.jpg Label/b.jpg
 ...</pre>
 </li></ul>

@@ -170,403 +170,205 @@
 </li></ol>
 </div>
 <div class="section" id="modelarts_21_0038__section10371851514"><a name="modelarts_21_0038__section10371851514"></a><a name="section10371851514"></a><h4 class="sectiontitle">Training Script (train_mnist_tf.py)</h4><p id="modelarts_21_0038__p145731315181510">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath392174451515"><b>train_mnist_tf.py</b></span>. The code is a training script compiled based on the TensorFlow engine in Python.</p>
-<div class="codecoloring" codetype="Python" id="modelarts_21_0038__screen1295704913158"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<pre class="screen" id="modelarts_21_0038__screen125184711113">from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
-<span class="kn">import</span> <span class="nn">os</span>
+import os
 
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+import tensorflow as tf
+from tensorflow.examples.tutorials.mnist import input_data
 
-<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_integer</span><span class="p">(</span><span class="s1">'max_steps'</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">'number of training iterations.'</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_string</span><span class="p">(</span><span class="s1">'data_url'</span><span class="p">,</span> <span class="s1">'/home/jnn/nfs/mnist'</span><span class="p">,</span> <span class="s1">'dataset directory.'</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">DEFINE_string</span><span class="p">(</span><span class="s1">'train_url'</span><span class="p">,</span> <span class="s1">'/home/jnn/temp/delete'</span><span class="p">,</span> <span class="s1">'saved model directory.'</span><span class="p">)</span>
+tf.flags.DEFINE_integer('max_steps', 1000, 'number of training iterations.')
+tf.flags.DEFINE_string('data_url', '/home/jnn/nfs/mnist', 'dataset directory.')
+tf.flags.DEFINE_string('train_url', '/home/jnn/temp/delete', 'saved model directory.')
 
-<span class="n">FLAGS</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">FLAGS</span>
+FLAGS = tf.flags.FLAGS
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-  <span class="c1"># Train model</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Training model...'</span><span class="p">)</span>
-  <span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">data_url</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-  <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
-  <span class="n">serialized_tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'tf_example'</span><span class="p">)</span>
-  <span class="n">feature_configs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">784</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),}</span>
-  <span class="n">tf_example</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">parse_example</span><span class="p">(</span><span class="n">serialized_tf_example</span><span class="p">,</span> <span class="n">feature_configs</span><span class="p">)</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">tf_example</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>
-  <span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-  <span class="n">w</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
-  <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">]))</span>
-  <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
-  <span class="n">cross_entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y_</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+def main(*args):
+  # Train model
+  print('Training model...')
+  mnist = input_data.read_data_sets(FLAGS.data_url, one_hot=True)
+  sess = tf.InteractiveSession()
+  serialized_tf_example = tf.placeholder(tf.string, name='tf_example')
+  feature_configs = {'x': tf.FixedLenFeature(shape=[784], dtype=tf.float32),}
+  tf_example = tf.parse_example(serialized_tf_example, feature_configs)
+  x = tf.identity(tf_example['x'], name='x')
+  y_ = tf.placeholder('float', shape=[None, 10])
+  w = tf.Variable(tf.zeros([784, 10]))
+  b = tf.Variable(tf.zeros([10]))
+  sess.run(tf.global_variables_initializer())
+  y = tf.nn.softmax(tf.matmul(x, w) + b, name='y')
+  cross_entropy = -tf.reduce_sum(y_ * tf.log(y))
 
-  <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">'cross_entropy'</span><span class="p">,</span> <span class="n">cross_entropy</span><span class="p">)</span>
+  tf.summary.scalar('cross_entropy', cross_entropy)
 
-  <span class="n">train_step</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+  train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
 
-  <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-  <span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">))</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">'accuracy'</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
-  <span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
-  <span class="n">test_writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">train_url</span><span class="p">,</span> <span class="n">flush_secs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+  accuracy = tf.reduce_mean(tf.cast(correct_prediction, 'float'))
+  tf.summary.scalar('accuracy', accuracy)
+  merged = tf.summary.merge_all()
+  test_writer = tf.summary.FileWriter(FLAGS.train_url, flush_secs=1)
 
-  <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">max_steps</span><span class="p">):</span>
-    <span class="n">batch</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-    <span class="n">train_step</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_</span><span class="p">:</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
-    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="n">summary</span><span class="p">,</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">merged</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y_</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">})</span>
-      <span class="n">test_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">'training accuracy is:'</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Done training!'</span><span class="p">)</span>
+  for step in range(FLAGS.max_steps):
+    batch = mnist.train.next_batch(50)
+    train_step.run(feed_dict={x: batch[0], y_: batch[1]})
+    if step % 10 == 0:
+      summary, acc = sess.run([merged, accuracy], feed_dict={x: mnist.test.images, y_: mnist.test.labels})
+      test_writer.add_summary(summary, step)
+      print('training accuracy is:', acc)
+  print('Done training!')
 
-  <span class="n">builder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">SavedModelBuilder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">train_url</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">))</span>
+  builder = tf.saved_model.builder.SavedModelBuilder(os.path.join(FLAGS.train_url, 'model'))
 
-  <span class="n">tensor_info_x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="n">tensor_info_y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_tensor_info</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+  tensor_info_x = tf.saved_model.utils.build_tensor_info(x)
+  tensor_info_y = tf.saved_model.utils.build_tensor_info(y)
 
-  <span class="n">prediction_signature</span> <span class="o">=</span> <span class="p">(</span>
-      <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_def_utils</span><span class="o">.</span><span class="n">build_signature_def</span><span class="p">(</span>
-          <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'images'</span><span class="p">:</span> <span class="n">tensor_info_x</span><span class="p">},</span>
-          <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s1">'scores'</span><span class="p">:</span> <span class="n">tensor_info_y</span><span class="p">},</span>
-          <span class="n">method_name</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_constants</span><span class="o">.</span><span class="n">PREDICT_METHOD_NAME</span><span class="p">))</span>
+  prediction_signature = (
+      tf.saved_model.signature_def_utils.build_signature_def(
+          inputs={'images': tensor_info_x},
+          outputs={'scores': tensor_info_y},
+          method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME))
 
-  <span class="n">builder</span><span class="o">.</span><span class="n">add_meta_graph_and_variables</span><span class="p">(</span>
-      <span class="n">sess</span><span class="p">,</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">tag_constants</span><span class="o">.</span><span class="n">SERVING</span><span class="p">],</span>
-      <span class="n">signature_def_map</span><span class="o">=</span><span class="p">{</span>
-          <span class="s1">'predict_images'</span><span class="p">:</span>
-              <span class="n">prediction_signature</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="n">main_op</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">tables_initializer</span><span class="p">(),</span>
-      <span class="n">strip_default_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  builder.add_meta_graph_and_variables(
+      sess, [tf.saved_model.tag_constants.SERVING],
+      signature_def_map={
+          'predict_images':
+              prediction_signature,
+      },
+      main_op=tf.tables_initializer(),
+      strip_default_attrs=True)
 
-  <span class="n">builder</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+  builder.save()
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">'Done exporting!'</span><span class="p">)</span>
+  print('Done exporting!')
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
+if __name__ == '__main__':
+  tf.app.run(main=main)</pre>
 </div>
 <div class="section" id="modelarts_21_0038__section868435781614"><a name="modelarts_21_0038__section868435781614"></a><a name="section868435781614"></a><h4 class="sectiontitle">Inference Code (customize_service.py)</h4><p id="modelarts_21_0038__p174443139178">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath1760616357174"><b>customize_service.py</b></span>. The following inference code meets the ModelArts model package specifications.</p>
-<div class="codecoloring" codetype="Python" id="modelarts_21_0038__screen1595414417189"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">model_service.tfserving_model_service</span> <span class="kn">import</span> <span class="n">TfServingBaseService</span>
+<pre class="screen" id="modelarts_21_0038__screen12591174011538">from PIL import Image
+import numpy as np
+from model_service.tfserving_model_service import TfServingBaseService
 
 
-<span class="k">class</span> <span class="nc">mnist_service</span><span class="p">(</span><span class="n">TfServingBaseService</span><span class="p">):</span>
-  <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="n">preprocessed_data</span> <span class="o">=</span> <span class="p">{}</span>
+class mnist_service(TfServingBaseService):
+  def _preprocess(self, data):
+    preprocessed_data = {}
 
-    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_content</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">image1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
-        <span class="n">image1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="n">image1</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span>
-        <span class="n">preprocessed_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">image1</span>
+    for k, v in data.items():
+      for file_name, file_content in v.items():
+        image1 = Image.open(file_content)
+        image1 = np.array(image1, dtype=np.float32)
+        image1.resize((1, 784))
+        preprocessed_data[k] = image1
 
-    <span class="k">return</span> <span class="n">preprocessed_data</span>
+    return preprocessed_data
 
-  <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+  def _postprocess(self, data):
 
-    <span class="n">outputs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">logits</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'scores'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">logits</span><span class="p">))</span>
-    <span class="n">logits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'</span><span class="si">%.3f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">logit</span> <span class="k">for</span> <span class="n">logit</span> <span class="ow">in</span> <span class="n">logits</span><span class="p">]</span>
-    <span class="n">outputs</span><span class="p">[</span><span class="s1">'predicted_label'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">label_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))]</span>
-    <span class="n">scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">label_list</span><span class="p">,</span> <span class="n">logits</span><span class="p">))</span>
-    <span class="n">scores</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
-    <span class="n">outputs</span><span class="p">[</span><span class="s1">'scores'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scores</span>
+    outputs = {}
+    logits = data['scores'][0]
+    label = logits.index(max(logits))
+    logits = ['%.3f' % logit for logit in logits]
+    outputs['predicted_label'] = str(label)
+    label_list = [str(label) for label in list(range(10))]
+    scores = dict(zip(label_list, logits))
+    scores = sorted(scores.items(), key=lambda item: item[1], reverse=True)[:5]
+    outputs['scores'] = scores
 
-    <span class="k">return</span> <span class="n">outputs</span>
-</pre></div>
-</td></tr></table></div>
+    return outputs</pre>
 </div>
 <div class="section" id="modelarts_21_0038__section655951611710"><a name="modelarts_21_0038__section655951611710"></a><a name="section655951611710"></a><h4 class="sectiontitle">Configuration File (config.json)</h4><p id="modelarts_21_0038__p941216250179">Copy the following code and name the code file <span class="filepath" id="modelarts_21_0038__filepath121181630151910"><b>config.json</b></span>. The configuration file meets the ModelArts model package specifications.</p>
-<div class="codecoloring" codetype="Json" id="modelarts_21_0038__screen65039443194"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="s2">&quot;TensorFlow&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;metrics&quot;</span><span class="p">:{</span>
-        <span class="nt">&quot;f1&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;accuracy&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;recall&quot;</span><span class="p">:</span><span class="mi">0</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;dependencies&quot;</span><span class="p">:[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;installer&quot;</span><span class="p">:</span><span class="s2">&quot;pip&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;packages&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;1.15.0&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;numpy&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;h5py&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;1.8.0&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;tensorflow&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;restraint&quot;</span><span class="p">:</span><span class="s2">&quot;ATLEAST&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_version&quot;</span><span class="p">:</span><span class="s2">&quot;5.2.0&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="s2">&quot;Pillow&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;model_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;image_classification&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;apis&quot;</span><span class="p">:[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;procotol&quot;</span><span class="p">:</span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;request&quot;</span><span class="p">:{</span>
-                <span class="nt">&quot;Content-type&quot;</span><span class="p">:</span><span class="s2">&quot;multipart/form-data&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;properties&quot;</span><span class="p">:{</span>
-                        <span class="nt">&quot;images&quot;</span><span class="p">:{</span>
-                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;file&quot;</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;response&quot;</span><span class="p">:{</span>
-                <span class="nt">&quot;Content-type&quot;</span><span class="p">:</span><span class="s2">&quot;multipart/form-data&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
-                    <span class="nt">&quot;required&quot;</span><span class="p">:[</span>
-                        <span class="s2">&quot;predicted_label&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;scores&quot;</span>
-                    <span class="p">],</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;properties&quot;</span><span class="p">:{</span>
-                        <span class="nt">&quot;predicted_label&quot;</span><span class="p">:{</span>
-                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span>
-                        <span class="p">},</span>
-                        <span class="nt">&quot;scores&quot;</span><span class="p">:{</span>
-                            <span class="nt">&quot;items&quot;</span><span class="p">:{</span>
-                                <span class="nt">&quot;minItems&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
-                                <span class="nt">&quot;items&quot;</span><span class="p">:[</span>
-                                    <span class="p">{</span>
-                                        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span>
-                                    <span class="p">},</span>
-                                    <span class="p">{</span>
-                                        <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;number&quot;</span>
-                                    <span class="p">}</span>
-                                <span class="p">],</span>
-                                <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-                                <span class="nt">&quot;maxItems&quot;</span><span class="p">:</span><span class="mi">2</span>
-                            <span class="p">},</span>
-                            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;array&quot;</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table></div>
+<pre class="screen" id="modelarts_21_0038__screen26971943155918">{
+    "model_type":"TensorFlow",
+    "metrics":{
+        "f1":0,
+        "accuracy":0,
+        "precision":0,
+        "recall":0
+    },
+    "dependencies":[
+        {
+            "installer":"pip",
+            "packages":[
+                {
+                    "restraint":"ATLEAST",
+                    "package_version":"1.15.0",
+                    "package_name":"numpy"
+                },
+                {
+                    "restraint":"",
+                    "package_version":"",
+                    "package_name":"h5py"
+                },
+                {
+                    "restraint":"ATLEAST",
+                    "package_version":"1.8.0",
+                    "package_name":"tensorflow"
+                },
+                {
+                    "restraint":"ATLEAST",
+                    "package_version":"5.2.0",
+                    "package_name":"Pillow"
+                }
+            ]
+        }
+    ],
+    "model_algorithm":"image_classification",
+    "apis":[
+        {
+            "procotol":"http",
+            "url":"/",
+            "request":{
+                "Content-type":"multipart/form-data",
+                "data":{
+                    "type":"object",
+                    "properties":{
+                        "images":{
+                            "type":"file"
+                        }
+                    }
+                }
+            },
+            "method":"post",
+            "response":{
+                "Content-type":"multipart/form-data",
+                "data":{
+                    "required":[
+                        "predicted_label",
+                        "scores"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "predicted_label":{
+                            "type":"string"
+                        },
+                        "scores":{
+                            "items":{
+                                "minItems":2,
+                                "items":[
+                                    {
+                                        "type":"string"
+                                    },
+                                    {
+                                        "type":"number"
+                                    }
+                                ],
+                                "type":"array",
+                                "maxItems":2
+                            },
+                            "type":"array"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}</pre>
 </div>
 </div>
 <div>

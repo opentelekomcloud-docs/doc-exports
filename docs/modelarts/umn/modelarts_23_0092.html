@@ -411,337 +411,161 @@
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section218715919415"><a name="modelarts_23_0092__en-us_topic_0172466149_section218715919415"></a><a name="en-us_topic_0172466149_section218715919415"></a><h4 class="sectiontitle">Example of the Object Detection Model Configuration File</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p18323116198">The following code uses the TensorFlow engine as an example. You can modify the <strong id="modelarts_23_0092__en-us_topic_0172466149_b0482153318122">model_type</strong> parameter based on the actual engine type.</p>
 <ul id="modelarts_23_0092__en-us_topic_0172466149_ul19743491621"><li id="modelarts_23_0092__en-us_topic_0172466149_li7744495210">Model input<p id="modelarts_23_0092__en-us_topic_0172466149_p9447730219"><a name="modelarts_23_0092__en-us_topic_0172466149_li7744495210"></a><a name="en-us_topic_0172466149_li7744495210"></a>Key: images</p>
 <p id="modelarts_23_0092__en-us_topic_0172466149_p1447931723">Value: image files</p>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li101181414522">Model output<div class="codecoloring" codetype="Python" id="modelarts_23_0092__en-us_topic_0172466149_screen41573010218"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">```</span>
-<span class="p">{</span>
-    <span class="s2">&quot;detection_classes&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;face&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;arm&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;detection_boxes&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">[</span>
-            <span class="mf">33.6</span><span class="p">,</span>
-            <span class="mf">42.6</span><span class="p">,</span>
-            <span class="mf">104.5</span><span class="p">,</span>
-            <span class="mf">203.4</span>
-        <span class="p">],</span>
-        <span class="p">[</span>
-            <span class="mf">103.1</span><span class="p">,</span>
-            <span class="mf">92.8</span><span class="p">,</span>
-            <span class="mf">765.6</span><span class="p">,</span>
-            <span class="mf">945.7</span>
-        <span class="p">]</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;detection_scores&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="err">```</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li1315171322">Configuration file<div class="codecoloring" codetype="Xml" id="modelarts_23_0092__en-us_topic_0172466149_screen18930715435"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73</pre></div></td><td class="code"><div class="highlight"><pre><span></span>```
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li101181414522">Model output<pre class="screen" id="modelarts_23_0092__screen13371131194514">```
 {
-    &quot;model_type&quot;: &quot;TensorFlow&quot;,
-    &quot;model_algorithm&quot;: &quot;object_detection&quot;,
-    &quot;metrics&quot;: {
-        &quot;f1&quot;: 0.345294,
-        &quot;accuracy&quot;: 0.462963,
-        &quot;precision&quot;: 0.338977,
-        &quot;recall&quot;: 0.351852
+    "detection_classes": [
+        "face",
+        "arm"
+    ],
+    "detection_boxes": [
+        [
+            33.6,
+            42.6,
+            104.5,
+            203.4
+        ],
+        [
+            103.1,
+            92.8,
+            765.6,
+            945.7
+        ]
+    ],
+    "detection_scores": [0.99, 0.73]
+}
+```</pre>
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li1315171322">Configuration file<pre class="screen" id="modelarts_23_0092__screen9347330134510">```
+{
+    "model_type": "TensorFlow",
+    "model_algorithm": "object_detection",
+    "metrics": {
+        "f1": 0.345294,
+        "accuracy": 0.462963,
+        "precision": 0.338977,
+        "recall": 0.351852
     },
-    &quot;apis&quot;: [{
-        &quot;protocol&quot;: &quot;http&quot;,
-        &quot;url&quot;: &quot;/&quot;,
-        &quot;method&quot;: &quot;post&quot;,
-        &quot;request&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;properties&quot;: {
-                    &quot;images&quot;: {
-                        &quot;type&quot;: &quot;file&quot;
+    "apis": [{
+        "protocol": "http",
+        "url": "/",
+        "method": "post",
+        "request": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "properties": {
+                    "images": {
+                        "type": "file"
                     }
                 }
             }
         },
-        &quot;response&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;properties&quot;: {
-                    &quot;detection_classes&quot;: {
-                        &quot;type&quot;: &quot;array&quot;,
-                        &quot;items&quot;: [{
-                            &quot;type&quot;: &quot;string&quot;
+        "response": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "properties": {
+                    "detection_classes": {
+                        "type": "array",
+                        "items": [{
+                            "type": "string"
                         }]
                     },
-                    &quot;detection_boxes&quot;: {
-                        &quot;type&quot;: &quot;array&quot;,
-                        &quot;items&quot;: [{
-                            &quot;type&quot;: &quot;array&quot;,
-                            &quot;minItems&quot;: 4,
-                            &quot;maxItems&quot;: 4,
-                            &quot;items&quot;: [{
-                                &quot;type&quot;: &quot;number&quot;
+                    "detection_boxes": {
+                        "type": "array",
+                        "items": [{
+                            "type": "array",
+                            "minItems": 4,
+                            "maxItems": 4,
+                            "items": [{
+                                "type": "number"
                             }]
                         }]
                     },
-                    &quot;detection_scores&quot;: {
-                        &quot;type&quot;: &quot;array&quot;,
-                        &quot;items&quot;: [{
-                            &quot;type&quot;: &quot;number&quot;
+                    "detection_scores": {
+                        "type": "array",
+                        "items": [{
+                            "type": "number"
                         }]
                     }
                 }
             }
         }
     }],
-    &quot;dependencies&quot;: [{
-        &quot;installer&quot;: &quot;pip&quot;,
-        &quot;packages&quot;: [{
-                &quot;restraint&quot;: &quot;EXACT&quot;,
-                &quot;package_version&quot;: &quot;1.15.0&quot;,
-                &quot;package_name&quot;: &quot;numpy&quot;
+    "dependencies": [{
+        "installer": "pip",
+        "packages": [{
+                "restraint": "EXACT",
+                "package_version": "1.15.0",
+                "package_name": "numpy"
             },
             {
-                &quot;restraint&quot;: &quot;EXACT&quot;,
-                &quot;package_version&quot;: &quot;5.2.0&quot;,
-                &quot;package_name&quot;: &quot;Pillow&quot;
+                "restraint": "EXACT",
+                "package_version": "5.2.0",
+                "package_name": "Pillow"
             }
         ]
     }]
 }
-```
-</pre></div>
-</td></tr></table></div>
+```</pre>
 </li></ul>
 </div>
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section8806755101916"><h4 class="sectiontitle">Example of the Image Classification Model Configuration File</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p8229421192015">The following code uses the TensorFlow engine as an example. You can modify the <strong id="modelarts_23_0092__en-us_topic_0172466149_b11456645121215">model_type</strong> parameter based on the actual engine type.</p>
 <ul id="modelarts_23_0092__en-us_topic_0172466149_ul07931028734"><li id="modelarts_23_0092__en-us_topic_0172466149_li97936281538">Model input<p id="modelarts_23_0092__en-us_topic_0172466149_p115813457310"><a name="modelarts_23_0092__en-us_topic_0172466149_li97936281538"></a><a name="en-us_topic_0172466149_li97936281538"></a>Key: images</p>
 <p id="modelarts_23_0092__en-us_topic_0172466149_p9581945833">Value: image files</p>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li1261510310318">Model output<div class="codecoloring" codetype="Python" id="modelarts_23_0092__en-us_topic_0172466149_screen17964175013314"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">```</span>
-<span class="p">{</span>
-    <span class="s2">&quot;predicted_label&quot;</span><span class="p">:</span> <span class="s2">&quot;flower&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span>
-       <span class="p">[</span><span class="s2">&quot;rose&quot;</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span>
-       <span class="p">[</span><span class="s2">&quot;begonia&quot;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-<span class="err">```</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li79592332316">Configuration file<div class="codecoloring" codetype="Xml" id="modelarts_23_0092__en-us_topic_0172466149_screen1558320391416"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69</pre></div></td><td class="code"><div class="highlight"><pre><span></span>```
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li1261510310318">Model output<pre class="screen" id="modelarts_23_0092__screen9126125264512">```
 {
-    &quot;model_type&quot;: &quot;TensorFlow&quot;,
-    &quot;model_algorithm&quot;: &quot;image_classification&quot;,
-    &quot;metrics&quot;: {
-        &quot;f1&quot;: 0.345294,
-        &quot;accuracy&quot;: 0.462963,
-        &quot;precision&quot;: 0.338977,
-        &quot;recall&quot;: 0.351852
+    "predicted_label": "flower",
+    "scores": [
+       ["rose", 0.99],
+       ["begonia", 0.01]
+    ]
+}
+```</pre>
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li79592332316">Configuration file<pre class="screen" id="modelarts_23_0092__screen67712564619">```
+{
+    "model_type": "TensorFlow",
+    "model_algorithm": "image_classification",
+    "metrics": {
+        "f1": 0.345294,
+        "accuracy": 0.462963,
+        "precision": 0.338977,
+        "recall": 0.351852
     },
-    &quot;apis&quot;: [{
-        &quot;protocol&quot;: &quot;http&quot;,
-        &quot;url&quot;: &quot;/&quot;,
-        &quot;method&quot;: &quot;post&quot;,
-        &quot;request&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;properties&quot;: {
-                    &quot;images&quot;: {
-                        &quot;type&quot;: &quot;file&quot;
+    "apis": [{
+        "protocol": "http",
+        "url": "/",
+        "method": "post",
+        "request": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "properties": {
+                    "images": {
+                        "type": "file"
                     }
                 }
             }
         },
-        &quot;response&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;properties&quot;: {
-                    &quot;predicted_label&quot;: {
-                        &quot;type&quot;: &quot;string&quot;
+        "response": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "properties": {
+                    "predicted_label": {
+                        "type": "string"
                     },
-                    &quot;scores&quot;: {
-                        &quot;type&quot;: &quot;array&quot;,
-                        &quot;items&quot;: [{
-                            &quot;type&quot;: &quot;array&quot;,
-                            &quot;minItems&quot;: 2,
-                            &quot;maxItems&quot;: 2,
-                            &quot;items&quot;: [
+                    "scores": {
+                        "type": "array",
+                        "items": [{
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": [
                                 {
-                                    &quot;type&quot;: &quot;string&quot;
+                                    "type": "string"
                                 },
                                 {
-                                    &quot;type&quot;: &quot;number&quot;
+                                    "type": "number"
                                 }
                             ]
                         }]
@@ -750,236 +574,116 @@
             }
         }
     }],
-    &quot;dependencies&quot;: [{
-        &quot;installer&quot;: &quot;pip&quot;,
-        &quot;packages&quot;: [{
-                &quot;restraint&quot;: &quot;ATLEAST&quot;,
-                &quot;package_version&quot;: &quot;1.15.0&quot;,
-                &quot;package_name&quot;: &quot;numpy&quot;
+    "dependencies": [{
+        "installer": "pip",
+        "packages": [{
+                "restraint": "ATLEAST",
+                "package_version": "1.15.0",
+                "package_name": "numpy"
             },
             {
-                &quot;restraint&quot;: &quot;&quot;,
-                &quot;package_version&quot;: &quot;&quot;,
-                &quot;package_name&quot;: &quot;Pillow&quot;
+                "restraint": "",
+                "package_version": "",
+                "package_name": "Pillow"
             }
         ]
     }]
 }
-```
-</pre></div>
-</td></tr></table></div>
+```</pre>
 </li></ul>
 </div>
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section1490393064512"><h4 class="sectiontitle">Example of the Predictive Analytics Model Configuration File</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p992432616208">The following code uses the TensorFlow engine as an example. You can modify the <strong id="modelarts_23_0092__en-us_topic_0172466149_b79601842191214">model_type</strong> parameter based on the actual engine type.</p>
-<ul id="modelarts_23_0092__en-us_topic_0172466149_ul629110581646"><li id="modelarts_23_0092__en-us_topic_0172466149_li6291125817415">Model input<div class="codecoloring" codetype="Python" id="modelarts_23_0092__en-us_topic_0172466149_screen157161625659"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">```</span>
-<span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;req_data&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;buying_price&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;maint_price&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;doors&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;persons&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;lug_boot&quot;</span><span class="p">:</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;safety&quot;</span><span class="p">:</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;acceptability&quot;</span><span class="p">:</span> <span class="s2">&quot;acc&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;buying_price&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;maint_price&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;doors&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;persons&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;lug_boot&quot;</span><span class="p">:</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;safety&quot;</span><span class="p">:</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;acceptability&quot;</span><span class="p">:</span> <span class="s2">&quot;acc&quot;</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="err">```</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li10051551">Model output<div class="codecoloring" codetype="Python" id="modelarts_23_0092__en-us_topic_0172466149_screen974574011718"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="err">```</span>
-<span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;resp_data&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;predict_result&quot;</span><span class="p">:</span> <span class="s2">&quot;unacc&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;predict_result&quot;</span><span class="p">:</span> <span class="s2">&quot;unacc&quot;</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="err">```</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0092__en-us_topic_0172466149_li372010210513">Configuration file<div class="codecoloring" codetype="Xml" id="modelarts_23_0092__en-us_topic_0172466149_screen355813593719"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span></span>```
+<ul id="modelarts_23_0092__en-us_topic_0172466149_ul629110581646"><li id="modelarts_23_0092__en-us_topic_0172466149_li6291125817415">Model input<pre class="screen" id="modelarts_23_0092__screen7118435194613">```
 {
-    &quot;model_type&quot;: &quot;TensorFlow&quot;,
-    &quot;model_algorithm&quot;: &quot;predict_analysis&quot;,
-    &quot;metrics&quot;: {
-        &quot;f1&quot;: 0.345294,
-        &quot;accuracy&quot;: 0.462963,
-        &quot;precision&quot;: 0.338977,
-        &quot;recall&quot;: 0.351852
+    "data": {
+        "req_data": [
+            {
+                "buying_price": "high",
+                "maint_price": "high",
+                "doors": "2",
+                "persons": "2",
+                "lug_boot": "small",
+                "safety": "low",
+                "acceptability": "acc"
+            },
+            {
+                "buying_price": "high",
+                "maint_price": "high",
+                "doors": "2",
+                "persons": "2",
+                "lug_boot": "small",
+                "safety": "low",
+                "acceptability": "acc"
+            }
+        ]
+    }
+}
+```</pre>
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li10051551">Model output<pre class="screen" id="modelarts_23_0092__screen85537128475">```
+{
+    "data": {
+        "resp_data": [
+            {
+                "predict_result": "unacc"
+            },
+            {
+                "predict_result": "unacc"
+            }
+        ]
+    }
+}
+```</pre>
+</li><li id="modelarts_23_0092__en-us_topic_0172466149_li372010210513">Configuration file<pre class="screen" id="modelarts_23_0092__screen082917395471">```
+{
+    "model_type": "TensorFlow",
+    "model_algorithm": "predict_analysis",
+    "metrics": {
+        "f1": 0.345294,
+        "accuracy": 0.462963,
+        "precision": 0.338977,
+        "recall": 0.351852
     },
-    &quot;apis&quot;: [
+    "apis": [
         {
-            &quot;protocol&quot;: &quot;http&quot;,
-            &quot;url&quot;: &quot;/&quot;,
-            &quot;method&quot;: &quot;post&quot;,
-            &quot;request&quot;: {
-                &quot;Content-type&quot;: &quot;application/json&quot;,
-                &quot;data&quot;: {
-                    &quot;type&quot;: &quot;object&quot;,
-                    &quot;properties&quot;: {
-                        &quot;data&quot;: {
-                            &quot;type&quot;: &quot;object&quot;,
-                            &quot;properties&quot;: {
-                                &quot;req_data&quot;: {
-                                    &quot;items&quot;: [
+            "protocol": "http",
+            "url": "/",
+            "method": "post",
+            "request": {
+                "Content-type": "application/json",
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "req_data": {
+                                    "items": [
                                         {
-                                            &quot;type&quot;: &quot;object&quot;,
-                                            &quot;properties&quot;: {
+                                            "type": "object",
+                                            "properties": {
                                             }
                                         }],
-                                    &quot;type&quot;: &quot;array&quot;
+                                    "type": "array"
                                 }
                             }
                         }
                     }
                 }
             },
-            &quot;response&quot;: {
-                &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-                &quot;data&quot;: {
-                    &quot;type&quot;: &quot;object&quot;,
-                    &quot;properties&quot;: {
-                        &quot;data&quot;: {
-                            &quot;type&quot;: &quot;object&quot;,
-                            &quot;properties&quot;: {
-                                &quot;resp_data&quot;: {
-                                    &quot;type&quot;: &quot;array&quot;,
-                                    &quot;items&quot;: [
+            "response": {
+                "Content-type": "multipart/form-data",
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "resp_data": {
+                                    "type": "array",
+                                    "items": [
                                         {
-                                            &quot;type&quot;: &quot;object&quot;,
-                                            &quot;properties&quot;: {
+                                            "type": "object",
+                                            "properties": {
                                             }
                                         }]
                                 }
@@ -989,132 +693,74 @@
                 }
             }
         }],
-    &quot;dependencies&quot;: [
+    "dependencies": [
         {
-            &quot;installer&quot;: &quot;pip&quot;,
-            &quot;packages&quot;: [
+            "installer": "pip",
+            "packages": [
                 {
-                    &quot;restraint&quot;: &quot;EXACT&quot;,
-                    &quot;package_version&quot;: &quot;1.15.0&quot;,
-                    &quot;package_name&quot;: &quot;numpy&quot;
+                    "restraint": "EXACT",
+                    "package_version": "1.15.0",
+                    "package_name": "numpy"
                 },
                 {
-                    &quot;restraint&quot;: &quot;EXACT&quot;,
-                    &quot;package_version&quot;: &quot;5.2.0&quot;,
-                    &quot;package_name&quot;: &quot;Pillow&quot;
+                    "restraint": "EXACT",
+                    "package_version": "5.2.0",
+                    "package_name": "Pillow"
                 }]
         }]
 }
-```
-</pre></div>
-</td></tr></table></div>
+```</pre>
 </li></ul>
 </div>
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section9113122232018"><a name="modelarts_23_0092__en-us_topic_0172466149_section9113122232018"></a><a name="en-us_topic_0172466149_section9113122232018"></a><h4 class="sectiontitle">Example of the Custom Image Model Configuration File</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p184212308818">The model input and output are similar to those in <a href="#modelarts_23_0092__en-us_topic_0172466149_section218715919415">Example of the Object Detection Model Configuration File</a>.</p>
-<div class="codecoloring" codetype="Xml" id="modelarts_23_0092__en-us_topic_0172466149_screen698819551191"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57</pre></div></td><td class="code"><div class="highlight"><pre><span></span>{
-    &quot;model_algorithm&quot;: &quot;image_classification&quot;,
-    &quot;model_type&quot;: &quot;Image&quot;,
+<pre class="screen" id="modelarts_23_0092__screen17853113194810">{
+    "model_algorithm": "image_classification",
+    <strong id="modelarts_23_0092__b59827237483">"model_type": "Image",</strong>
 
-    &quot;metrics&quot;: {
-        &quot;f1&quot;: 0.345294,
-        &quot;accuracy&quot;: 0.462963,
-        &quot;precision&quot;: 0.338977,
-        &quot;recall&quot;: 0.351852
+    "metrics": {
+        "f1": 0.345294,
+        "accuracy": 0.462963,
+        "precision": 0.338977,
+        "recall": 0.351852
     },
-    &quot;apis&quot;: [{
-        &quot;protocol&quot;: &quot;http&quot;,
-        &quot;url&quot;: &quot;/&quot;,
-        &quot;method&quot;: &quot;post&quot;,
-        &quot;request&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;properties&quot;: {
-                    &quot;images&quot;: {
-                        &quot;type&quot;: &quot;file&quot;
+    "apis": [{
+        "protocol": "http",
+        "url": "/",
+        "method": "post",
+        "request": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "properties": {
+                    "images": {
+                        "type": "file"
                     }
                 }
             }
         },
-        &quot;response&quot;: {
-            &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-            &quot;data&quot;: {
-                &quot;type&quot;: &quot;object&quot;,
-                &quot;required&quot;: [
-                    &quot;predicted_label&quot;,
-                    &quot;scores&quot;
+        "response": {
+            "Content-type": "multipart/form-data",
+            "data": {
+                "type": "object",
+                "required": [
+                    "predicted_label",
+                    "scores"
                 ],
-                &quot;properties&quot;: {
-                    &quot;predicted_label&quot;: {
-                        &quot;type&quot;: &quot;string&quot;
+                "properties": {
+                    "predicted_label": {
+                        "type": "string"
                     },
-                    &quot;scores&quot;: {
-                        &quot;type&quot;: &quot;array&quot;,
-                        &quot;items&quot;: [{
-                            &quot;type&quot;: &quot;array&quot;,
-                            &quot;minItems&quot;: 2,
-                            &quot;maxItems&quot;: 2,
-                            &quot;items&quot;: [{
-                                    &quot;type&quot;: &quot;string&quot;
+                    "scores": {
+                        "type": "array",
+                        "items": [{
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": [{
+                                    "type": "string"
                                 },
                                 {
-                                    &quot;type&quot;: &quot;number&quot;
+                                    "type": "number"
                                 }
                             ]
                         }]
@@ -1123,13 +769,11 @@
             }
         }
     }]
-}
-</pre></div>
-</td></tr></table></div>
+}</pre>
 </div>
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section18488143221"><h4 class="sectiontitle">Example of the Machine Learning Model Configuration File</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p17358113192814">The following uses XGBoost as an example:</p>
 <ul id="modelarts_23_0092__en-us_topic_0172466149_ul12224026121620"><li id="modelarts_23_0092__en-us_topic_0172466149_li522472610161">Model input</li></ul>
-<pre class="screen" id="modelarts_23_0092__en-us_topic_0172466149_screen13935184261617">{
+<pre class="screen" id="modelarts_23_0092__screen1048916415487">{
 	"data": {
 		"req_data": [{
 			"sepal_length": 5,
@@ -1150,7 +794,7 @@
 	}
 }</pre>
 <ul id="modelarts_23_0092__en-us_topic_0172466149_ul1312813513161"><li id="modelarts_23_0092__en-us_topic_0172466149_li1712815113167">Model output</li></ul>
-<pre class="screen" id="modelarts_23_0092__en-us_topic_0172466149_screen18314315173">{
+<pre class="screen" id="modelarts_23_0092__screen135383674920">{
 	"data": {
 		"resp_data": [{
 			"predict_result": "Iris-setosa"
@@ -1160,7 +804,7 @@
 	}
 }</pre>
 <ul id="modelarts_23_0092__en-us_topic_0172466149_ul16401142164719"><li id="modelarts_23_0092__en-us_topic_0172466149_li9406425471">Configuration file</li></ul>
-<pre class="screen" id="modelarts_23_0092__en-us_topic_0172466149_screen144119455171">{
+<pre class="screen" id="modelarts_23_0092__screen109851409498">{
   "model_type": "XGBoost",
   "model_algorithm": "xgboost_iris_test",
   "runtime": "python2.7",
@@ -1224,84 +868,34 @@
 <p id="modelarts_23_0092__en-us_topic_0172466149_p169101712219"></p>
 </div>
 <div class="section" id="modelarts_23_0092__en-us_topic_0172466149_section119911955122011"><a name="modelarts_23_0092__en-us_topic_0172466149_section119911955122011"></a><a name="en-us_topic_0172466149_section119911955122011"></a><h4 class="sectiontitle">Example of a Model Configuration File Using a Custom Dependency Package</h4><p id="modelarts_23_0092__en-us_topic_0172466149_p12201155652111">The following example defines the NumPy 1.16.4 dependency environment.</p>
-<div class="codecoloring" codetype="Xml" id="modelarts_23_0092__en-us_topic_0172466149_screen463994352113"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51</pre></div></td><td class="code"><div class="highlight"><pre><span></span>{
-     &quot;model_algorithm&quot;: &quot;image_classification&quot;,
-     &quot;model_type&quot;: &quot;TensorFlow&quot;,
-     &quot;runtime&quot;: &quot;python3.6&quot;,
-     &quot;apis&quot;: [{
-             &quot;procotol&quot;: &quot;http&quot;,
-             &quot;url&quot;: &quot;/&quot;,
-             &quot;method&quot;: &quot;post&quot;,
-             &quot;request&quot;: {
-                 &quot;Content-type&quot;: &quot;multipart/form-data&quot;,
-                 &quot;data&quot;: {
-                     &quot;type&quot;: &quot;object&quot;,
-                     &quot;properties&quot;: {
-                         &quot;images&quot;: {
-                             &quot;type&quot;: &quot;file&quot;
+<pre class="screen" id="modelarts_23_0092__screen040401317506">{
+     "model_algorithm": "image_classification",
+     "model_type": "TensorFlow",
+     "runtime": "python3.6",
+     "apis": [{
+             "procotol": "http",
+             "url": "/",
+             "method": "post",
+             "request": {
+                 "Content-type": "multipart/form-data",
+                 "data": {
+                     "type": "object",
+                     "properties": {
+                         "images": {
+                             "type": "file"
                          }
                      }
                  }
              },
-             &quot;response&quot;: {
-                 &quot;Content-type&quot;: &quot;applicaton/json&quot;,
-                 &quot;data&quot;: {
-                     &quot;type&quot;: &quot;object&quot;,
-                     &quot;properties&quot;: {
-                         &quot;mnist_result&quot;: {
-                             &quot;type&quot;: &quot;array&quot;,
-             &quot;item&quot;: [{
-                &quot;type&quot;: &quot;string&quot;
+             "response": {
+                 "Content-type": "applicaton/json",
+                 "data": {
+                     "type": "object",
+                     "properties": {
+                         "mnist_result": {
+                             "type": "array",
+             "item": [{
+                "type": "string"
                          }]
                          }
                      }
@@ -1309,24 +903,22 @@
              }
          }
      ],
-     &quot;metrics&quot;: {
-         &quot;f1&quot;: 0.124555,
-         &quot;recall&quot;: 0.171875,
-         &quot;precision&quot;: 0.0023493892851938493,
-         &quot;accuracy&quot;: 0.00746268656716417
+     "metrics": {
+         "f1": 0.124555,
+         "recall": 0.171875,
+         "precision": 0.0023493892851938493,
+         "accuracy": 0.00746268656716417
      },
-    &quot;dependencies&quot;: [{
-        &quot;installer&quot;: &quot;pip&quot;,
-        &quot;packages&quot;: [{
-                &quot;restraint&quot;: &quot;EXACT&quot;,
-                &quot;package_version&quot;: &quot;1.16.4&quot;,
-                &quot;package_name&quot;: &quot;numpy&quot;
+<strong id="modelarts_23_0092__b17604152785011">    </strong>"dependencies": [{
+        "installer": "pip",
+        "packages": [{
+                "restraint": "EXACT",
+                "package_version": "1.16.4",
+                "package_name": "numpy"
             }
         ]
     }]
- }
-</pre></div>
-</td></tr></table></div>
+ }</pre>
 </div>
 </div>
 <div>

@@ -6,7 +6,7 @@
 <div class="note" id="modelarts_23_0008__en-us_topic_0170886816_note4680104651112"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0008__en-us_topic_0170886816_p11130184917119">To import data from an OBS directory, you must have the read permission on the OBS directory.</p>
 </div></div>
 <div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section570816190577"><a name="modelarts_23_0008__en-us_topic_0170886816_section570816190577"></a><a name="en-us_topic_0170886816_section570816190577"></a><h4 class="sectiontitle">Image Classification</h4><ul id="modelarts_23_0008__en-us_topic_0170886816_ul44784110593"><li id="modelarts_23_0008__en-us_topic_0170886816_li774652717318">Image classification data can be in two modes. The first mode (directory mode) supports only single labels. The second mode (<strong id="modelarts_23_0008__en-us_topic_0170886816_b7599174312514">.txt</strong> label files) supports multiple labels.<ul id="modelarts_23_0008__en-us_topic_0170886816_ul1544124117313"><li id="modelarts_23_0008__en-us_topic_0170886816_li914816411836">Images with the same label must be stored in the same directory, and the label name is the directory name. If there are multiple levels of directories, the last level is used as the label name.<p id="modelarts_23_0008__en-us_topic_0170886816_p13637746145711"><a name="modelarts_23_0008__en-us_topic_0170886816_li914816411836"></a><a name="en-us_topic_0170886816_li914816411836"></a>In the following example, <strong id="modelarts_23_0008__en-us_topic_0170886816_b1314673212250">Cat</strong> and <strong id="modelarts_23_0008__en-us_topic_0170886816_b11890113412515">Dog</strong> are label names.</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen225022215588">dataset-import-example 
+<pre class="screen" id="modelarts_23_0008__screen1537922219019">dataset-import-example 
 ├─Cat 
 │      10.jpg 
 │      11.jpg 
@@ -17,7 +17,7 @@
         2.jpg 
         3.jpg</pre>
 </li><li id="modelarts_23_0008__en-us_topic_0170886816_li9586436316">If <strong id="modelarts_23_0008__en-us_topic_0170886816_b274012309538">.txt</strong> files exist in the directory, the content in the <strong id="modelarts_23_0008__en-us_topic_0170886816_b10470132020543">.txt</strong> files is used as the image label. This mode is better than the previous one.<p id="modelarts_23_0008__en-us_topic_0170886816_p1084245183512">In the following example, <strong id="modelarts_23_0008__en-us_topic_0170886816_b1313717310564">import-dir-1</strong> and <strong id="modelarts_23_0008__en-us_topic_0170886816_b18851206205614">import-dir-2</strong> are the imported subdirectories:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen10796103149">dataset-import-example 
+<pre class="screen" id="modelarts_23_0008__screen8612163413013">dataset-import-example 
 ├─import-dir-1
 │      10.jpg
 │      10.txt    
@@ -38,9 +38,9 @@ Dog</pre>
 </li></ul>
 </li><li id="modelarts_23_0008__en-us_topic_0170886816_li1747821119592">Only images in JPG, JPEG, PNG, and BMP formats are supported. The size of a single image cannot exceed 5 MB, and the total size of all images uploaded at a time cannot exceed 8 MB.</li></ul>
 </div>
-<div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section1371122614572"><a name="modelarts_23_0008__en-us_topic_0170886816_section1371122614572"></a><a name="en-us_topic_0170886816_section1371122614572"></a><h4 class="sectiontitle">Object Detection</h4><ul id="modelarts_23_0008__en-us_topic_0170886816_ul18106133014541"><li id="modelarts_23_0008__en-us_topic_0170886816_li1510663014545">The simple mode of object detection requires users store labeled objects and their label files (in one-to-one relationship with the labeled objects) in the same directory. For example, if the name of the labeled object file is <strong id="modelarts_23_0008__en-us_topic_0170886816_b8581527359">IMG_20180919_114745.jpg</strong>, the name of the label file must be <strong id="modelarts_23_0008__en-us_topic_0170886816_b188825183715">IMG_20180919_114745.xml</strong>.<p id="modelarts_23_0008__en-us_topic_0170886816_p199324710527">The label files for object detection must be in PASCAL VOC format. For details about the format, see <a href="modelarts_23_0009.html#modelarts_23_0009__en-us_topic_0170886817_table77167388472">Table 8</a>.</p>
+<div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section1371122614572"><a name="modelarts_23_0008__en-us_topic_0170886816_section1371122614572"></a><a name="en-us_topic_0170886816_section1371122614572"></a><h4 class="sectiontitle">Object Detection</h4><ul id="modelarts_23_0008__en-us_topic_0170886816_ul18106133014541"><li id="modelarts_23_0008__en-us_topic_0170886816_li1510663014545">The simple mode of object detection requires users store labeled objects and their label files (in one-to-one relationship with the labeled objects) in the same directory. For example, if the name of the labeled object file is <strong id="modelarts_23_0008__en-us_topic_0170886816_b8581527359">IMG_20180919_114745.jpg</strong>, the name of the label file must be <strong id="modelarts_23_0008__en-us_topic_0170886816_b188825183715">IMG_20180919_114745.xml</strong>.<p id="modelarts_23_0008__en-us_topic_0170886816_p199324710527">The label files for object detection must be in PASCAL VOC format. For details about the format, see <a href="modelarts_23_0009.html#modelarts_23_0009__en-us_topic_0170886817_table77167388472">Table 6</a>.</p>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p1747810389526">Example:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen1880254115215">├─dataset-import-example 
+<pre class="screen" id="modelarts_23_0008__screen18626753806">├─dataset-import-example 
 │      IMG_20180919_114732.jpg 
 │      IMG_20180919_114732.xml 
 │      IMG_20180919_114745.jpg 
@@ -48,200 +48,68 @@ Dog</pre>
 │      IMG_20180919_114945.jpg 
 │      IMG_20180919_114945.xml</pre>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p19637241105414">A label file example is as follows:</p>
-<div class="codecoloring" codetype="Xml" id="modelarts_23_0008__en-us_topic_0170886816_screen1896612205510"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
-<span class="nt">&lt;annotation&gt;</span>
-    <span class="nt">&lt;folder&gt;</span>NA<span class="nt">&lt;/folder&gt;</span>
-    <span class="nt">&lt;filename&gt;</span>bike_1_1593531469339.png<span class="nt">&lt;/filename&gt;</span>
-    <span class="nt">&lt;source&gt;</span>
-        <span class="nt">&lt;database&gt;</span>Unknown<span class="nt">&lt;/database&gt;</span>
-    <span class="nt">&lt;/source&gt;</span>
-    <span class="nt">&lt;size&gt;</span>
-        <span class="nt">&lt;width&gt;</span>554<span class="nt">&lt;/width&gt;</span>
-        <span class="nt">&lt;height&gt;</span>606<span class="nt">&lt;/height&gt;</span>
-        <span class="nt">&lt;depth&gt;</span>3<span class="nt">&lt;/depth&gt;</span>
-    <span class="nt">&lt;/size&gt;</span>
-    <span class="nt">&lt;segmented&gt;</span>0<span class="nt">&lt;/segmented&gt;</span>
-    <span class="nt">&lt;object&gt;</span>
-        <span class="nt">&lt;name&gt;</span>Dog<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
-        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
-        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
-        <span class="nt">&lt;occluded&gt;</span>0<span class="nt">&lt;/occluded&gt;</span>
-        <span class="nt">&lt;bndbox&gt;</span>
-            <span class="nt">&lt;xmin&gt;</span>279<span class="nt">&lt;/xmin&gt;</span>
-            <span class="nt">&lt;ymin&gt;</span>52<span class="nt">&lt;/ymin&gt;</span>
-            <span class="nt">&lt;xmax&gt;</span>474<span class="nt">&lt;/xmax&gt;</span>
-            <span class="nt">&lt;ymax&gt;</span>278<span class="nt">&lt;/ymax&gt;</span>
-        <span class="nt">&lt;/bndbox&gt;</span>
-    <span class="nt">&lt;/object&gt;</span>
-    <span class="nt">&lt;object&gt;</span>
-        <span class="nt">&lt;name&gt;</span>Cat<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
-        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
-        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
-        <span class="nt">&lt;occluded&gt;</span>0<span class="nt">&lt;/occluded&gt;</span>
-        <span class="nt">&lt;bndbox&gt;</span>
-            <span class="nt">&lt;xmin&gt;</span>279<span class="nt">&lt;/xmin&gt;</span>
-            <span class="nt">&lt;ymin&gt;</span>198<span class="nt">&lt;/ymin&gt;</span>
-            <span class="nt">&lt;xmax&gt;</span>456<span class="nt">&lt;/xmax&gt;</span>
-            <span class="nt">&lt;ymax&gt;</span>421<span class="nt">&lt;/ymax&gt;</span>
-        <span class="nt">&lt;/bndbox&gt;</span>
-    <span class="nt">&lt;/object&gt;</span>
-<span class="nt">&lt;/annotation&gt;</span>
-</pre></div>
-</td></tr></table></div>
+<pre class="screen" id="modelarts_23_0008__screen4269676115">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;annotation&gt;
+    &lt;folder&gt;NA&lt;/folder&gt;
+    &lt;filename&gt;bike_1_1593531469339.png&lt;/filename&gt;
+    &lt;source&gt;
+        &lt;database&gt;Unknown&lt;/database&gt;
+    &lt;/source&gt;
+    &lt;size&gt;
+        &lt;width&gt;554&lt;/width&gt;
+        &lt;height&gt;606&lt;/height&gt;
+        &lt;depth&gt;3&lt;/depth&gt;
+    &lt;/size&gt;
+    &lt;segmented&gt;0&lt;/segmented&gt;
+    &lt;object&gt;
+        &lt;name&gt;Dog&lt;/name&gt;
+        &lt;pose&gt;Unspecified&lt;/pose&gt;
+        &lt;truncated&gt;0&lt;/truncated&gt;
+        &lt;difficult&gt;0&lt;/difficult&gt;
+        &lt;occluded&gt;0&lt;/occluded&gt;
+        &lt;bndbox&gt;
+            &lt;xmin&gt;279&lt;/xmin&gt;
+            &lt;ymin&gt;52&lt;/ymin&gt;
+            &lt;xmax&gt;474&lt;/xmax&gt;
+            &lt;ymax&gt;278&lt;/ymax&gt;
+        &lt;/bndbox&gt;
+    &lt;/object&gt;
+    &lt;object&gt;
+        &lt;name&gt;Cat&lt;/name&gt;
+        &lt;pose&gt;Unspecified&lt;/pose&gt;
+        &lt;truncated&gt;0&lt;/truncated&gt;
+        &lt;difficult&gt;0&lt;/difficult&gt;
+        &lt;occluded&gt;0&lt;/occluded&gt;
+        &lt;bndbox&gt;
+            &lt;xmin&gt;279&lt;/xmin&gt;
+            &lt;ymin&gt;198&lt;/ymin&gt;
+            &lt;xmax&gt;456&lt;/xmax&gt;
+            &lt;ymax&gt;421&lt;/ymax&gt;
+        &lt;/bndbox&gt;
+    &lt;/object&gt;
+&lt;/annotation&gt;</pre>
 </li></ul>
 <ul id="modelarts_23_0008__en-us_topic_0170886816_ul82831949175514"><li id="modelarts_23_0008__en-us_topic_0170886816_li428394905511">Only images in JPG, JPEG, PNG, and BMP formats are supported. The size of a single image cannot exceed 5 MB, and the total size of all images uploaded at a time cannot exceed 8 MB.</li></ul>
 </div>
-<div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section1363851815518"><a name="modelarts_23_0008__en-us_topic_0170886816_section1363851815518"></a><a name="en-us_topic_0170886816_section1363851815518"></a><h4 class="sectiontitle">Image Segmentation</h4><ul id="modelarts_23_0008__en-us_topic_0170886816_ul1180112511514"><li id="modelarts_23_0008__en-us_topic_0170886816_li5801172512516">The simple mode of image segmentation requires users store labeled objects and their label files (in one-to-one relationship with the labeled objects) in the same directory. For example, if the name of the labeled object file is <strong id="modelarts_23_0008__en-us_topic_0170886816_b137621815131215">IMG_20180919_114746.jpg</strong>, the name of the label file must be <strong id="modelarts_23_0008__en-us_topic_0170886816_b137701715121215">IMG_20180919_114746.xml</strong>.<p id="modelarts_23_0008__en-us_topic_0170886816_p10801525105117">Fields <strong id="modelarts_23_0008__en-us_topic_0170886816_b1986015015153">mask_source</strong> and <strong id="modelarts_23_0008__en-us_topic_0170886816_b4232105151514">mask_color</strong> are added to the label file in PASCAL VOC format. For details about the format, see <a href="modelarts_23_0009.html#modelarts_23_0009__en-us_topic_0170886817_table1516151991311">Table 4</a>.</p>
-<p id="modelarts_23_0008__en-us_topic_0170886816_p880142575119">Example:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen1380192545112">├─dataset-import-example 
-│      IMG_20180919_114732.jpg 
-│      IMG_20180919_114732.xml 
-│      IMG_20180919_114745.jpg 
-│      IMG_20180919_114745.xml 
-│      IMG_20180919_114945.jpg 
-│      IMG_20180919_114945.xml</pre>
-<p id="modelarts_23_0008__en-us_topic_0170886816_p68011625105112">A label file example is as follows:</p>
-<div class="codecoloring" codetype="Xml" id="modelarts_23_0008__en-us_topic_0170886816_screen1801152515513"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
-<span class="nt">&lt;annotation&gt;</span>
-    <span class="nt">&lt;folder&gt;</span>NA<span class="nt">&lt;/folder&gt;</span>
-    <span class="nt">&lt;filename&gt;</span>image_0006.jpg<span class="nt">&lt;/filename&gt;</span>
-    <span class="nt">&lt;source&gt;</span>
-        <span class="nt">&lt;database&gt;</span>Unknown<span class="nt">&lt;/database&gt;</span>
-    <span class="nt">&lt;/source&gt;</span>
-    <span class="nt">&lt;size&gt;</span>
-        <span class="nt">&lt;width&gt;</span>230<span class="nt">&lt;/width&gt;</span>
-        <span class="nt">&lt;height&gt;</span>300<span class="nt">&lt;/height&gt;</span>
-        <span class="nt">&lt;depth&gt;</span>3<span class="nt">&lt;/depth&gt;</span>
-    <span class="nt">&lt;/size&gt;</span>
-    <span class="nt">&lt;segmented&gt;</span>1<span class="nt">&lt;/segmented&gt;</span>
-    <span class="nt">&lt;mask_source&gt;</span>obs://xianao/out/dataset-8153-Jmf5ylLjRmSacj9KevS/annotation/V001/segmentationClassRaw/image_0006.png<span class="nt">&lt;/mask_source&gt;</span>
-    <span class="nt">&lt;object&gt;</span>
-        <span class="nt">&lt;name&gt;</span>bike<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
-        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
-        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
-        <span class="nt">&lt;mask_color&gt;</span>193,243,53<span class="nt">&lt;/mask_color&gt;</span>
-        <span class="nt">&lt;occluded&gt;</span>0<span class="nt">&lt;/occluded&gt;</span>
-        <span class="nt">&lt;polygon&gt;</span>
-            <span class="nt">&lt;x1&gt;</span>71<span class="nt">&lt;/x1&gt;</span>
-            <span class="nt">&lt;y1&gt;</span>48<span class="nt">&lt;/y1&gt;</span>
-            <span class="nt">&lt;x2&gt;</span>75<span class="nt">&lt;/x2&gt;</span>
-            <span class="nt">&lt;y2&gt;</span>73<span class="nt">&lt;/y2&gt;</span>
-            <span class="nt">&lt;x3&gt;</span>49<span class="nt">&lt;/x3&gt;</span>
-            <span class="nt">&lt;y3&gt;</span>69<span class="nt">&lt;/y3&gt;</span>
-            <span class="nt">&lt;x4&gt;</span>68<span class="nt">&lt;/x4&gt;</span>
-            <span class="nt">&lt;y4&gt;</span>92<span class="nt">&lt;/y4&gt;</span>
-            <span class="nt">&lt;x5&gt;</span>90<span class="nt">&lt;/x5&gt;</span>
-            <span class="nt">&lt;y5&gt;</span>101<span class="nt">&lt;/y5&gt;</span>
-            <span class="nt">&lt;x6&gt;</span>45<span class="nt">&lt;/x6&gt;</span>
-            <span class="nt">&lt;y6&gt;</span>110<span class="nt">&lt;/y6&gt;</span>
-            <span class="nt">&lt;x7&gt;</span>71<span class="nt">&lt;/x7&gt;</span>
-            <span class="nt">&lt;y7&gt;</span>48<span class="nt">&lt;/y7&gt;</span>
-        <span class="nt">&lt;/polygon&gt;</span>
-    <span class="nt">&lt;/object&gt;</span>
-<span class="nt">&lt;/annotation&gt;</span>
-</pre></div>
-</td></tr></table></div>
-</li></ul>
-</div>
 <div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section163641141195713"><a name="modelarts_23_0008__en-us_topic_0170886816_section163641141195713"></a><a name="en-us_topic_0170886816_section163641141195713"></a><h4 class="sectiontitle">Text Classification</h4><p id="modelarts_23_0008__en-us_topic_0170886816_p2036310387446">Text classification supports two import modes.</p>
-<ul id="modelarts_23_0008__en-us_topic_0170886816_ul1916921492"><li id="modelarts_23_0008__en-us_topic_0170886816_li1116916116919">The labeled objects and labels for text classification are in the same text file. You can specify a separator to separate the labeled objects and labels, as well as multiple labeled objects.<div class="p" id="modelarts_23_0008__en-us_topic_0170886816_p104474214536"><a name="modelarts_23_0008__en-us_topic_0170886816_li1116916116919"></a><a name="en-us_topic_0170886816_li1116916116919"></a>For example, the following shows an example text file. The <strong id="modelarts_23_0008__en-us_topic_0170886816_b1470114411019">Tab</strong> key is used to separate the labeled object from the label.<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen993755565417">It touches good and responds quickly. I don't know how it performs in the future.   positive
+<ul id="modelarts_23_0008__en-us_topic_0170886816_ul1916921492"><li id="modelarts_23_0008__en-us_topic_0170886816_li1116916116919">The labeled objects and labels for text classification are in the same text file. You can specify a separator to separate the labeled objects and labels, as well as multiple labeled objects.<div class="p" id="modelarts_23_0008__en-us_topic_0170886816_p104474214536"><a name="modelarts_23_0008__en-us_topic_0170886816_li1116916116919"></a><a name="en-us_topic_0170886816_li1116916116919"></a>For example, the following shows an example text file. The <strong id="modelarts_23_0008__en-us_topic_0170886816_b1470114411019">Tab</strong> key is used to separate the labeled object from the label.<pre class="screen" id="modelarts_23_0008__screen149931653013">It touches good and responds quickly. I don't know how it performs in the future.   positive
 Three months ago, I bought a very good phone and replaced my old one with it. It can operate longer between charges.  positive
 Why does my phone heat up if I charge it for a while? The volume button stuck after being pressed down.  negative
 It's a gift for Father's Day. The logistics is fast and I received it in 24 hours. I like the earphones because the bass sounds feel good and they would not fall off.  positive</pre>
 </div>
 </li><li id="modelarts_23_0008__en-us_topic_0170886816_li12146711898">The labeled objects and label files for text classification are text files, and correspond to each other based on the rows. For example, the first row in a label file indicates the label of the first row in the file of the labeled object.<p id="modelarts_23_0008__en-us_topic_0170886816_p731915108566"><a name="modelarts_23_0008__en-us_topic_0170886816_li12146711898"></a><a name="en-us_topic_0170886816_li12146711898"></a>For example, the content of labeled object <span class="filepath" id="modelarts_23_0008__en-us_topic_0170886816_filepath044574785611"><b>COMMENTS_20180919_114745.txt</b></span> is as follows:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen9319210155614">It touches good and responds quickly. I don't know how it performs in the future.
+<pre class="screen" id="modelarts_23_0008__screen20979371522">It touches good and responds quickly. I don't know how it performs in the future.
 Three months ago, I bought a very good phone and replaced my old one with it. It can operate longer between charges.
 Why does my phone heat up if I charge it for a while? The volume button stuck after being pressed down.
 It's a gift for Father's Day. The logistics is fast and I received it in 24 hours. I like the earphones because the bass sounds feel good and they would not fall off.</pre>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p1632061014569">The content of label file <span class="filepath" id="modelarts_23_0008__en-us_topic_0170886816_filepath2096713504565"><b>COMMENTS_20180919_114745_result.txt</b></span> is as follows:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen3320910125612">positive
+<pre class="screen" id="modelarts_23_0008__screen32851726726">positive
 negative
 negative 
 positive</pre>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p432051025610">The data format requires users to store labeled objects and their label files (in one-to-one relationship with the labeled objects) in the same directory. For example, if the name of the labeled object file is <strong id="modelarts_23_0008__en-us_topic_0170886816_b1497516165418">COMMENTS_20180919_114745.txt</strong>, the name of the label file must be <span class="filepath" id="modelarts_23_0008__en-us_topic_0170886816_filepath48112195719"><b>COMMENTS _20180919_114745_result.txt</b></span>.</p>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p932017105567">Example of data file storage:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen427554819577">├─dataset-import-example 
+<pre class="screen" id="modelarts_23_0008__screen477816383219">├─dataset-import-example 
 │      COMMENTS_20180919_114732.txt 
 │      COMMENTS _20180919_114732_result.txt 
 │      COMMENTS _20180919_114745.txt 
@@ -252,7 +120,7 @@ positive</pre>
 </div>
 <div class="section" id="modelarts_23_0008__en-us_topic_0170886816_section1683314458578"><a name="modelarts_23_0008__en-us_topic_0170886816_section1683314458578"></a><a name="en-us_topic_0170886816_section1683314458578"></a><h4 class="sectiontitle">Sound Classification</h4><p id="modelarts_23_0008__en-us_topic_0170886816_p2013944185814">For sound classification, sound files with the same label must be stored in the same directory, and the label name is the directory name.</p>
 <p id="modelarts_23_0008__en-us_topic_0170886816_p193491442195815">Example:</p>
-<pre class="screen" id="modelarts_23_0008__en-us_topic_0170886816_screen3401104195817">dataset-import-example 
+<pre class="screen" id="modelarts_23_0008__screen463920511624">dataset-import-example 
 ├─Cat 
 │      10.wav 
 │      11.wav 

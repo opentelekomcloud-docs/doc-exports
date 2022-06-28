@@ -8,7 +8,7 @@
 <div class="section" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_section989464119514"><h4 class="sectiontitle">Precautions</h4><ul id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_ul862720251988"><li id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li5627425588">The permissions to use ModelArts depend on OBS authorization. Therefore, you need to grant OBS system permissions to users.</li><li id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li14283202816811">A custom policy can contain actions of multiple services that are globally accessible or accessible through region-specific projects.</li><li id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li273212301186">To define permissions required to access both global and project-level services, create two custom policies and specify the scope as <strong id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_b204661526464">Global services</strong> and <strong id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_b12757132912610">Project-level services</strong>. Then grant the two policies to the users.</li></ul>
 </div>
 <div class="section" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_section3734428121013"><a name="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_section3734428121013"></a><a name="en-us_topic_0284259054_en-us_topic_0170867515_section3734428121013"></a><h4 class="sectiontitle">Example Custom Policies of OBS</h4><p id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_p917171161117">ModelArts is a project-level service, and OBS is a global service. Therefore, you need to create custom policies for the two services respectively and grant them to users. The permissions to use ModelArts depend on OBS authorization. The following example shows the minimum permissions for OBS, including the permissions for OBS buckets and objects. After being granted the minimum permissions for OBS, users can access OBS from ModelArts without restrictions.</p>
-<pre class="screen" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_screen6361057201313">{
+<pre class="screen" id="modelarts_23_0080__screen1663611146218">{
     "Version": "1.1",
     "Statement": [
         {
@@ -35,7 +35,7 @@
 </div>
 <div class="section" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_section1493518251395"><a name="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_section1493518251395"></a><a name="en-us_topic_0284259054_en-us_topic_0170867515_section1493518251395"></a><h4 class="sectiontitle">Example Custom Policies of ModelArts</h4><ul id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_ul6232826394"><li id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li122320262093">Example: Denying ExeML project deletion<p id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_p1023215261890"><a name="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li122320262093"></a><a name="en-us_topic_0284259054_en-us_topic_0170867515_li122320262093"></a>A deny policy must be used in conjunction with other policies to take effect. If the permissions assigned to a user contain both Allow and Deny actions, the Deny actions take precedence over the Allow actions.</p>
 <p id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_p132321226192">The following method can be used if you need to assign permissions of the <strong id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_b128621221121110">ModelArts FullAccess</strong> policy to a user but also forbid the user from deleting ExeML projects. Create a custom policy for denying ExeML project deletion, and assign both policies to the group the user belongs to. Then the user can perform all operations on ModelArts except deleting ExeML projects. The following is an example deny policy:</p>
-<pre class="screen" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_screen59661958133014">{ 
+<pre class="screen" id="modelarts_23_0080__screen16897113414219">{ 
       "Version": "1.1", 
       "Statement": [ 
             { 
@@ -47,7 +47,7 @@
       ] 
 }</pre>
 </li><li id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li1296144415296">Example: Allowing users to use only development environments<p id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_p6862154972914"><a name="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_li1296144415296"></a><a name="en-us_topic_0284259054_en-us_topic_0170867515_li1296144415296"></a>The following is a policy configuration example for this user:</p>
-<pre class="screen" id="modelarts_23_0080__en-us_topic_0284259054_en-us_topic_0170867515_screen12188101517">{ 
+<pre class="screen" id="modelarts_23_0080__screen7720193233">{ 
     "Version": "1.1", 
     "Statement": [ 
 

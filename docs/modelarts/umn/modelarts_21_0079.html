@@ -2,7 +2,7 @@
 
 <h1 class="topictitle1">How Do I Check Whether Folder Copy Is Complete During Job Training?</h1>
 <div id="body0000001279665293"><p id="modelarts_21_0079__en-us_topic_0200343604_p235429583">In the script of the training job boot file, run the following commands to obtain the sizes of the to-be-copied and copied folders. Then determine whether folder copy is complete based on the command output.</p>
-<pre class="screen" id="modelarts_21_0079__en-us_topic_0200343604_screen58061415195915">import moxing as mox
+<pre class="screen" id="modelarts_21_0079__screen7340135732610">import moxing as mox
 mox.file.get_size('obs://bucket_name/obs_file',recursive=True)</pre>
 <p id="modelarts_21_0079__en-us_topic_0200343604_p1855172491214"><span class="parmvalue" id="modelarts_21_0079__en-us_topic_0200343604_parmvalue13550142491217"><b>get_size</b></span> indicates the size of the file or folder to be obtained. <span class="parmvalue" id="modelarts_21_0079__en-us_topic_0200343604_parmvalue1755112451214"><b>recursive=True</b></span> indicates that the type is folder. <span class="parmvalue" id="modelarts_21_0079__en-us_topic_0200343604_parmvalue7551202415121"><b>True</b></span> indicates that the type is folder, and <span class="parmvalue" id="modelarts_21_0079__en-us_topic_0200343604_parmvalue16551122414122"><b>False</b></span> indicates that the type is file.</p>
 <p id="modelarts_21_0079__en-us_topic_0200343604_p1271319499482">If the command output is consistent, the folder copy is complete. If the command output is inconsistent, the folder copy is not complete.</p>
