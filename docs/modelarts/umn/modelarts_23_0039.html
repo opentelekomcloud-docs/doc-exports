@@ -4,70 +4,37 @@
 <div id="body8662426"><p id="modelarts_23_0039__en-us_topic_0164900396_p8060118">In notebook instances, you can use ModelArts SDKs to manage OBS, training jobs, models, and real-time services.</p>
 <p id="modelarts_23_0039__en-us_topic_0164900396_p162413548352">For details about how to use ModelArts SDKs, see <em id="modelarts_23_0039__en-us_topic_0164900396_i2010011816526"><a href="https://docs.otc.t-systems.com/en-us/sdkreference/modelarts/modelarts_04_0002.html" target="_blank" rel="noopener noreferrer">ModelArts SDK Reference</a></em>.</p>
 <p id="modelarts_23_0039__en-us_topic_0164900396_p16192152762319">Notebooks carry the authentication (AK/SK) and region information about login users. Therefore, SDK session authentication can be completed without entering parameters.</p>
-<div class="section" id="modelarts_23_0039__en-us_topic_0164900396_section18220478149"><h4 class="sectiontitle">Example Code</h4><ul id="modelarts_23_0039__en-us_topic_0164900396_ul14151744141914"><li id="modelarts_23_0039__en-us_topic_0164900396_li1441514481915">Creating a training job<div class="codecoloring" codetype="Python" id="modelarts_23_0039__en-us_topic_0164900396_screen10900450672"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modelarts.session</span> <span class="kn">import</span> <span class="n">Session</span>
-<span class="kn">from</span> <span class="nn">modelarts.estimator</span> <span class="kn">import</span> <span class="n">Estimator</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
-<span class="n">estimator</span> <span class="o">=</span> <span class="n">Estimator</span><span class="p">(</span>
-                      <span class="n">modelarts_session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span>
-                      <span class="n">framework_type</span><span class="o">=</span><span class="s1">'PyTorch'</span><span class="p">,</span>                                     <span class="c1"># AI engine name</span>
-                       <span class="n">framework_version</span><span class="o">=</span><span class="s1">'PyTorch-1.0.0-python3.6'</span><span class="p">,</span>                  <span class="c1"># AI engine version</span>
-                      <span class="n">code_dir</span><span class="o">=</span><span class="s1">'/obs-bucket-name/src/'</span><span class="p">,</span>                                      <span class="c1"># Training script directory</span>
-                      <span class="n">boot_file</span><span class="o">=</span><span class="s1">'/obs-bucket-name/src/pytorch_sentiment.py'</span><span class="p">,</span>                 <span class="c1"># Training startup script directory</span>
-                      <span class="n">log_url</span><span class="o">=</span><span class="s1">'/obs-bucket-name/log/'</span><span class="p">,</span>                                       <span class="c1"># Training log directory</span>
-                      <span class="n">hyperparameters</span><span class="o">=</span><span class="p">[</span>
-                                       <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="s2">&quot;classes&quot;</span><span class="p">,</span>
-                                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">},</span>    
-                                       <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="s2">&quot;lr&quot;</span><span class="p">,</span>
-                                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0.001&quot;</span><span class="p">}</span>
-                                       <span class="p">],</span>
-                      <span class="n">output_path</span><span class="o">=</span><span class="s1">'/obs-bucket-name/output/'</span><span class="p">,</span>                                <span class="c1"># Training output directory</span>
-                      <span class="n">train_instance_type</span><span class="o">=</span><span class="s1">'modelarts.vm.gpu.p100'</span><span class="p">,</span>                  <span class="c1"># Training environment specifications</span>
-                      <span class="n">train_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                       <span class="c1"># Number of training nodes</span>
-                      <span class="n">job_description</span><span class="o">=</span><span class="s1">'pytorch-sentiment with ModelArts SDK'</span><span class="p">)</span>       <span class="c1"># Training job description</span>
-<span class="n">job_instance</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="s1">'/obs-bucket-name/data/train/'</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s1">'my_training_job'</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
+<div class="section" id="modelarts_23_0039__en-us_topic_0164900396_section18220478149"><h4 class="sectiontitle">Example Code</h4><ul id="modelarts_23_0039__en-us_topic_0164900396_ul14151744141914"><li id="modelarts_23_0039__en-us_topic_0164900396_li1441514481915">Creating a training job<pre class="screen" id="modelarts_23_0039__screen134201546131113">from modelarts.session import Session
+from modelarts.estimator import Estimator
+session = Session()
+estimator = Estimator(
+                      modelarts_session=session,
+                      framework_type='PyTorch',                                     # AI engine name
+                       framework_version='PyTorch-1.0.0-python3.6',                  # AI engine version
+                      code_dir='/obs-bucket-name/src/',                                      # Training script directory
+                      boot_file='/obs-bucket-name/src/pytorch_sentiment.py',                 # Training startup script directory
+                      log_url='/obs-bucket-name/log/',                                       # Training log directory
+                      hyperparameters=[
+                                       {"label":"classes",
+                                        "value": "10"},    
+                                       {"label":"lr",
+                                        "value": "0.001"}
+                                       ],
+                      output_path='/obs-bucket-name/output/',                                # Training output directory
+                      train_instance_type='modelarts.vm.gpu.p100',                  # Training environment specifications
+                      train_instance_count=1,                                       # Number of training nodes
+                      job_description='pytorch-sentiment with ModelArts SDK')       # Training job description
+job_instance = estimator.fit(inputs='/obs-bucket-name/data/train/', wait=False, job_name='my_training_job')</pre>
 </li></ul>
-<ul id="modelarts_23_0039__en-us_topic_0164900396_ul1468425302019"><li id="modelarts_23_0039__en-us_topic_0164900396_li10684175311205">Querying a model list<div class="codecoloring" codetype="Python" id="modelarts_23_0039__en-us_topic_0164900396_screen48171829141812"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modelarts.session</span> <span class="kn">import</span> <span class="n">Session</span> 
-<span class="kn">from</span> <span class="nn">modelarts.model</span> <span class="kn">import</span> <span class="n">Model</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span> 
-<span class="n">model_list_resp</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">get_model_list</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_status</span><span class="o">=</span><span class="s2">&quot;published&quot;</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;digit&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;desc&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0039__en-us_topic_0164900396_li84221309225">Querying service details<div class="codecoloring" codetype="Python" id="modelarts_23_0039__en-us_topic_0164900396_screen1771057133910"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modelarts.session</span> <span class="kn">import</span> <span class="n">Session</span>
-<span class="kn">from</span> <span class="nn">modelarts.model</span> <span class="kn">import</span> <span class="n">Predictor</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
-<span class="n">predictor_instance</span> <span class="o">=</span> <span class="n">Predictor</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">service_id</span><span class="o">=</span><span class="s2">&quot;input your service_id&quot;</span><span class="p">)</span>
-<span class="n">predictor_info_resp</span> <span class="o">=</span> <span class="n">predictor_instance</span><span class="o">.</span><span class="n">get_service_info</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+<ul id="modelarts_23_0039__en-us_topic_0164900396_ul1468425302019"><li id="modelarts_23_0039__en-us_topic_0164900396_li10684175311205">Querying a model list<pre class="screen" id="modelarts_23_0039__screen186813818124">from modelarts.session import Session 
+from modelarts.model import Model
+session = Session() 
+model_list_resp = Model.get_model_list(session, model_status="published", model_name="digit", order="desc")</pre>
+</li><li id="modelarts_23_0039__en-us_topic_0164900396_li84221309225">Querying service details<pre class="screen" id="modelarts_23_0039__screen135835210124">from modelarts.session import Session
+from modelarts.model import Predictor
+session = Session()
+predictor_instance = Predictor(session, service_id="input your service_id")
+predictor_info_resp = predictor_instance.get_service_info()</pre>
 </li></ul>
 </div>
 </div>

@@ -67,20 +67,20 @@
 </div>
 <div class="section" id="modelarts_23_0066__en-us_topic_0171858292_section190619315314"><a name="modelarts_23_0066__en-us_topic_0171858292_section190619315314"></a><a name="en-us_topic_0171858292_section190619315314"></a><h4 class="sectiontitle">Manifest File Specifications</h4><p id="modelarts_23_0066__en-us_topic_0171858292_p25048010217">Batch services of the inference platform support the manifest file. The manifest file describes the input and output of data.</p>
 </div>
-<div class="p" id="modelarts_23_0066__en-us_topic_0171858292_p197931254171211"><strong id="modelarts_23_0066__en-us_topic_0171858292_b19917513175011">Example input manifest file</strong><ul id="modelarts_23_0066__en-us_topic_0171858292_ul9357193219228"><li id="modelarts_23_0066__en-us_topic_0171858292_li113571932162211">File name: <span class="filepath" id="modelarts_23_0066__en-us_topic_0171858292_filepath228471318"><b>test.manifest</b></span></li><li id="modelarts_23_0066__en-us_topic_0171858292_li63571132102212">File content:<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen17516011164">{"source": "&lt;obs path&gt;/test/data/1.jpg"}
+<div class="p" id="modelarts_23_0066__en-us_topic_0171858292_p197931254171211"><strong id="modelarts_23_0066__en-us_topic_0171858292_b19917513175011">Example input manifest file</strong><ul id="modelarts_23_0066__en-us_topic_0171858292_ul9357193219228"><li id="modelarts_23_0066__en-us_topic_0171858292_li113571932162211">File name: <span class="filepath" id="modelarts_23_0066__en-us_topic_0171858292_filepath228471318"><b>test.manifest</b></span></li><li id="modelarts_23_0066__en-us_topic_0171858292_li63571132102212">File content:<pre class="screen" id="modelarts_23_0066__screen175021455133111">{"source": "&lt;obs path&gt;/test/data/1.jpg"}
 {"source": "https://infers-data.obs.xxx.com:443/xgboosterdata/data.csv?AccessKeyId=2Q0V0TQ461N26DDL18RB&amp;Expires=1550611914&amp;Signature=wZBttZj5QZrReDhz1uDzwve8GpY%3D&amp;x-obs-security-token=gQpzb3V0aGNoaW5hixvY8V9a1SnsxmGoHYmB1SArYMyqnQT-ZaMSxHvl68kKLAy5feYvLDM..."}</pre>
-</li><li id="modelarts_23_0066__en-us_topic_0171858292_li335843211229">File requirements:<ol id="modelarts_23_0066__en-us_topic_0171858292_ol56812191169"><li id="modelarts_23_0066__en-us_topic_0171858292_li958171618161">The file name extension must be <span class="filepath" id="modelarts_23_0066__en-us_topic_0171858292_filepath136511443151414"><b>.manifest</b></span>.</li><li id="modelarts_23_0066__en-us_topic_0171858292_li15521824161619">The file content is in JSON format. Each row describes a piece of input data, which must be accurate to a file instead of a folder.</li></ol>
+</li><li id="modelarts_23_0066__en-us_topic_0171858292_li335843211229">File requirements:<ol id="modelarts_23_0066__en-us_topic_0171858292_ol56812191169"><li id="modelarts_23_0066__en-us_topic_0171858292_li958171618161">The file name extension must be <span class="filepath" id="modelarts_23_0066__en-us_topic_0171858292_filepath136511443151414"><b>.manifest</b></span>.</li><li id="modelarts_23_0066__en-us_topic_0171858292_li15521824161619">The file content is in JSON format. Each row describes a piece of input data, which must be accurate to a file instead of a folder.</li><li id="modelarts_23_0066__li449210432489">A <strong id="modelarts_23_0066__b449217437485">source</strong> field must be defined for the JSON content. The field value is the OBS URL of the file: <span class="filepath" id="modelarts_23_0066__filepath12492443104816"><b>&lt;obs path&gt;/{{Bucket name}}/{{Object name}}</b></span>.</li></ol>
 </li></ul>
 </div>
 <p id="modelarts_23_0066__en-us_topic_0171858292_p20541162110137"><strong id="modelarts_23_0066__en-us_topic_0171858292_b962612312527">Example output manifest file</strong></p>
-<div class="p" id="modelarts_23_0066__en-us_topic_0171858292_p89282911114">If you use an input manifest file, the output directory will contain an output manifest file.<ul id="modelarts_23_0066__en-us_topic_0171858292_ul1948082217114"><li id="modelarts_23_0066__en-us_topic_0171858292_li20480922161115">Assume that the output path is <strong id="modelarts_23_0066__en-us_topic_0171858292_b48111516532">//test-bucket/test/</strong>. The result is stored in the following path:<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen4350164131219">OBS bucket/directory name
+<div class="p" id="modelarts_23_0066__en-us_topic_0171858292_p89282911114">If you use an input manifest file, the output directory will contain an output manifest file.<ul id="modelarts_23_0066__en-us_topic_0171858292_ul1948082217114"><li id="modelarts_23_0066__en-us_topic_0171858292_li20480922161115">Assume that the output path is <strong id="modelarts_23_0066__en-us_topic_0171858292_b48111516532">//test-bucket/test/</strong>. The result is stored in the following path:<pre class="screen" id="modelarts_23_0066__screen53514813321">OBS bucket/directory name
 ├── test-bucket
 │   ├── test
 │   │   ├── infer-result-0.manifest
 │   │   ├── infer-result
 │   │   │ ├── 1.jpg_result.txt
 │   │   │ ├── 2.jpg_result.txt</pre>
-</li><li id="modelarts_23_0066__en-us_topic_0171858292_li8705194511113">Content of the <strong id="modelarts_23_0066__en-us_topic_0171858292_b138058114545">infer-result-0.manifest</strong> file:<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen6474424141217">{"source": "&lt;obs path&gt;/obs-data-bucket/test/data/1.jpg",  "inference-loc": "&lt;obs path&gt;/test-bucket/test/infer-result/1.jpg_result.txt"}
+</li><li id="modelarts_23_0066__en-us_topic_0171858292_li8705194511113">Content of the <strong id="modelarts_23_0066__en-us_topic_0171858292_b138058114545">infer-result-0.manifest</strong> file:<pre class="screen" id="modelarts_23_0066__screen838211194324">{"source": "&lt;obs path&gt;/obs-data-bucket/test/data/1.jpg",  "inference-loc": "&lt;obs path&gt;/test-bucket/test/infer-result/1.jpg_result.txt"}
 {"source ": "https://infers-data.obs.xxx.com:443/xgboosterdata/2.jpg?AccessKeyId=2Q0V0TQ461N26DDL18RB&amp;Expires=1550611914&amp;Signature=wZBttZj5QZrReDhz1uDzwve8GpY%3D&amp;x-obs-security-token=gQpzb3V0aGNoaW5hixvY8V9a1SnsxmGoHYmB1SArYMyqnQT-ZaMSxHvl68kKLAy5feYvLDMNZWxzhBZ6Q-3HcoZMh9gISwQOVBwm4ZytB_m8sg1fL6isU7T3CnoL9jmvDGgT9VBC7dC1EyfSJrUcqfB...",  "inference-loc": "obs://test-bucket/test/infer-result/2.jpg_result.txt"}</pre>
 </li></ul>
 </div>
@@ -89,72 +89,34 @@
 </li></ul>
 <div class="section" id="modelarts_23_0066__en-us_topic_0171858292_section119024213518"><a name="modelarts_23_0066__en-us_topic_0171858292_section119024213518"></a><a name="en-us_topic_0171858292_section119024213518"></a><h4 class="sectiontitle">Example Mapping</h4><p id="modelarts_23_0066__en-us_topic_0171858292_p59931771457">The following example shows the relationship between the configuration file, mapping rule, CSV data, and inference request.</p>
 <p id="modelarts_23_0066__en-us_topic_0171858292_p181894144119">Assume that the <strong id="modelarts_23_0066__en-us_topic_0171858292_b59481214163119">apis</strong> parameter in the configuration file used by your model is as follows:</p>
-<div class="codecoloring" codetype="Xml" id="modelarts_23_0066__en-us_topic_0171858292_screen17324243141114"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span>[
+<pre class="screen" id="modelarts_23_0066__screen11382163123218">[
     {
-        &quot;protocol&quot;: &quot;http&quot;,
-        &quot;method&quot;: &quot;post&quot;,
-        &quot;url&quot;: &quot;/&quot;,
-        &quot;request&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;data&quot;: {
-                    &quot;type&quot;: &quot;object&quot;,
-                    &quot;properties&quot;: {
-                        &quot;req_data&quot;: {
-                            &quot;type&quot;: &quot;array&quot;,
-                            &quot;items&quot;: [
+        "protocol": "http",
+        "method": "post",
+        "url": "/",
+        "request": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "req_data": {
+                            "type": "array",
+                            "items": [
                                 {
-                                    &quot;type&quot;: &quot;object&quot;,
-                                    &quot;properties&quot;: {
-                                        &quot;input_1&quot;: {
-                                            &quot;type&quot;: &quot;number&quot;
+                                    "type": "object",
+                                    "properties": {
+                                        "input_1": {
+                                            "type": "number"
                                         },
-                                        &quot;input_2&quot;: {
-                                            &quot;type&quot;: &quot;number&quot;
+                                        "input_2": {
+                                            "type": "number"
                                         },
-                                        &quot;input_3&quot;: {
-                                            &quot;type&quot;: &quot;number&quot;
+                                        "input_3": {
+                                            "type": "number"
                                         },
-                                        &quot;input_4&quot;: {
-                                            &quot;type&quot;: &quot;number&quot;
+                                        "input_4": {
+                                            "type": "number"
                                         }
                                     }
                                 }
@@ -165,11 +127,9 @@
             }
         }
     }
-]
-</pre></div>
-</td></tr></table></div>
+]</pre>
 <p id="modelarts_23_0066__en-us_topic_0171858292_p9568259141119">At this point, the corresponding mapping relationship is shown below. The ModelArts management console automatically resolves the mapping relationship from the configuration file. When calling a ModelArts API, write the mapping relationship by yourself according to the rule.</p>
-<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen7828205171317">{
+<pre class="screen" id="modelarts_23_0066__screen2880204815327">{
     "type": "object",
     "properties": {
         "data": {
@@ -206,11 +166,11 @@
     }
 }</pre>
 <p id="modelarts_23_0066__en-us_topic_0171858292_p8554201591320">The data for inference, that is, the CSV data, is in the following format. The data must be separated by commas (,).</p>
-<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen5266194461319">5.1,3.5,1.4,0.2
+<pre class="screen" id="modelarts_23_0066__screen10928438338">5.1,3.5,1.4,0.2
 4.9,3.0,1.4,0.2
 4.7,3.2,1.3,0.2</pre>
 <p id="modelarts_23_0066__en-us_topic_0171858292_p191616510147">Depending on the defined mapping relationship, the inference request is shown below. The format is similar to the format used by the real-time service.</p>
-<pre class="screen" id="modelarts_23_0066__en-us_topic_0171858292_screen6445112521411">{
+<pre class="screen" id="modelarts_23_0066__screen9406453193314">{
 	"data": {
 		"req_data": [{
 			"input_1": 5.1,

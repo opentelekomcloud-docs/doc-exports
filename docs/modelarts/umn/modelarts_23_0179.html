@@ -1,102 +1,55 @@
 <a name="modelarts_23_0179"></a><a name="modelarts_23_0179"></a>
 
 <h1 class="topictitle1">Scikit Learn</h1>
-<div id="body8662426"><div class="section" id="modelarts_23_0179__en-us_topic_0196941735_section1962751053415"><h4 class="sectiontitle">Training and Saving a Model</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0179__en-us_topic_0196941735_screen5680226133412"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="kn">import</span> <span class="n">joblib</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'/data/iris.csv'</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'virginica'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[[</span><span class="s1">'virginica'</span><span class="p">]]</span>
-<span class="c1"># Create a LogisticRegression instance and train model</span>
-<span class="n">logisticRegression</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">logisticRegression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="c1"># Save model to local path</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">logisticRegression</span><span class="p">,</span> <span class="s1">'/tmp/sklearn.m'</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-<p id="modelarts_23_0179__en-us_topic_0196941735_p4417193217198">After the model is saved, it must be uploaded to the OBS directory before being published. The <strong id="modelarts_23_0179__en-us_topic_0196941735_b129419124710">config.json</strong> and <strong id="modelarts_23_0179__en-us_topic_0196941735_b109971154719">customize_service.py</strong> files must be contained during publishing. For details about the definition method, see <a href="modelarts_23_0091.html">Model Package Specifications</a>.</p>
+<div id="body8662426"><div class="section" id="modelarts_23_0179__en-us_topic_0196941735_section1962751053415"><h4 class="sectiontitle">Training and Saving a Model</h4><pre class="screen" id="modelarts_23_0179__screen75332147207">import json
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
+iris = pd.read_csv('/home/ma-user/work/iris.csv')
+X = iris.drop(['variety'],axis=1)
+y = iris[['variety']]
+# Create a LogisticRegression instance and train model
+logisticRegression = LogisticRegression(C=1000.0, random_state=0)
+logisticRegression.fit(X,y)
+# Save model to local path
+joblib.dump(logisticRegression, '/tmp/sklearn.m')</pre>
+<p id="modelarts_23_0179__p1296192155020">Before training, download the <strong id="modelarts_23_0179__b27415557085931">iris.csv</strong> dataset, decompress it, and upload it to the <strong id="modelarts_23_0179__b118904573285931">/home/ma-user/work/</strong> directory of the notebook instance. Download the <strong id="modelarts_23_0179__b148777756685913">iris.csv</strong> dataset from <a href="https://gist.github.com/netj/8836201" target="_blank" rel="noopener noreferrer">https://gist.github.com/netj/8836201</a>. </p>
+<p id="modelarts_23_0179__p19585394911">After the model is saved, it must be uploaded to the OBS directory before being published. The <strong id="modelarts_23_0179__b129419124710">config.json</strong> and <strong id="modelarts_23_0179__b109971154719">customize_service.py</strong> files must be contained during publishing. For details about the definition method, see <a href="modelarts_23_0091.html">Model Package Specifications</a>.</p>
 </div>
-<div class="section" id="modelarts_23_0179__en-us_topic_0196941735_section6122193511917"><h4 class="sectiontitle">Inference Code</h4><div class="codecoloring" codetype="Python" id="modelarts_23_0179__en-us_topic_0196941735_screen10578544193412"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># coding:utf-8</span>
-<span class="kn">import</span> <span class="nn">collections</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="kn">import</span> <span class="n">joblib</span>
-<span class="kn">from</span> <span class="nn">model_service.python_model_service</span> <span class="kn">import</span> <span class="n">XgSklServingBaseService</span>
+<div class="section" id="modelarts_23_0179__en-us_topic_0196941735_section6122193511917"><h4 class="sectiontitle">Inference Code</h4><pre class="screen" id="modelarts_23_0179__screen18549326142016"># coding:utf-8
+import collections
+import json
+from sklearn.externals import joblib
+from model_service.python_model_service import XgSklServingBaseService
 
-<span class="k">class</span> <span class="nc">user_Service</span><span class="p">(</span><span class="n">XgSklServingBaseService</span><span class="p">):</span>
+class user_Service(XgSklServingBaseService):
 
-    <span class="c1"># request data preprocess</span>
-    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">object_pairs_hook</span><span class="o">=</span><span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;req_data&quot;</span><span class="p">]:</span>
-            <span class="n">array</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">element</span><span class="p">:</span>
-                <span class="n">array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">[</span><span class="n">each</span><span class="p">])</span>
-                <span class="n">list_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">list_data</span>
+    # request data preprocess
+    def _preprocess(self, data):
+        list_data = []
+        json_data = json.loads(data, object_pairs_hook=collections.OrderedDict)
+        for element in json_data["data"]["req_data"]:
+            array = []
+            for each in element:
+                array.append(element[each])
+                list_data.append(array)
+        return list_data
 
-    <span class="c1"># predict</span>
-    <span class="k">def</span> <span class="nf">_inference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">sk_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">)</span>
-        <span class="n">pre_result</span> <span class="o">=</span> <span class="n">sk_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">pre_result</span> <span class="o">=</span> <span class="n">pre_result</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">pre_result</span>
+    # predict
+    def _inference(self, data):
+        sk_model = joblib.load(self.model_path)
+        pre_result = sk_model.predict(data)
+        pre_result = pre_result.tolist()
+        return pre_result
 
-    <span class="c1"># predict result process</span>
-    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-        <span class="n">resp_data</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="n">resp_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;predictresult&quot;</span><span class="p">:</span> <span class="n">element</span><span class="p">})</span>
-        <span class="k">return</span> <span class="n">resp_data</span>
-</pre></div>
-</td></tr></table></div>
+    # predict result process
+    def _postprocess(self,data):
+        resp_data = []
+        for element in data:
+            resp_data.append({"predictresult": element})
+        return resp_data</pre>
 </div>
 </div>
 <div>

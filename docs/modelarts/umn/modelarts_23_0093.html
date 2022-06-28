@@ -101,22 +101,22 @@
 <div class="note" id="modelarts_23_0093__en-us_topic_0172466150_note27641755185116"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="modelarts_23_0093__en-us_topic_0172466150_ul87643551511"><li id="modelarts_23_0093__en-us_topic_0172466150_li127631455115114">You can choose to rewrite the preprocess and postprocess methods to implement preprocessing of the API input and postprocessing of the inference output.</li><li id="modelarts_23_0093__en-us_topic_0172466150_li57646552514">Rewriting the init method of the BaseService inheritance class may cause a model to run abnormally.</li></ul>
 </div></div>
 </li><li id="modelarts_23_0093__en-us_topic_0172466150_li135956421288"><a name="modelarts_23_0093__en-us_topic_0172466150_li135956421288"></a><a name="en-us_topic_0172466150_li135956421288"></a>The attribute that can be used is the local path where the model resides. The attribute name is <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname3144651365"><b>self.model_path</b></span>. In addition, PySpark-based models can use <span class="filepath" id="modelarts_23_0093__en-us_topic_0172466150_filepath12582451169"><b>self.spark</b></span> to obtain the SparkSession object in <span class="filepath" id="modelarts_23_0093__en-us_topic_0172466150_filepath19569163301610"><b>customize_service.py</b></span>.<div class="note" id="modelarts_23_0093__en-us_topic_0172466150_note1854313623117"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><p id="modelarts_23_0093__en-us_topic_0172466150_p954373614311">An absolute path is required for reading files in the inference code. You can obtain the absolute path of the model from the <strong id="modelarts_23_0093__en-us_topic_0172466150_b19607112010486">self.model_path</strong> attribute.</p>
-<ul id="modelarts_23_0093__en-us_topic_0172466150_ul179961412802"><li id="modelarts_23_0093__en-us_topic_0172466150_li499619121010">When TensorFlow, Caffe, or MXNet is used, <strong id="modelarts_23_0093__en-us_topic_0172466150_b1573672365011">self.model_path</strong> indicates the path of the model file. See the following example:<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen1116519016110"># Store the label.json file in the model directory. The following information is read:
+<ul id="modelarts_23_0093__en-us_topic_0172466150_ul179961412802"><li id="modelarts_23_0093__en-us_topic_0172466150_li499619121010">When TensorFlow, Caffe, or MXNet is used, <strong id="modelarts_23_0093__en-us_topic_0172466150_b1573672365011">self.model_path</strong> indicates the path of the model file. See the following example:<pre class="screen" id="modelarts_23_0093__screen2491193925019"># Store the label.json file in the model directory. The following information is read:
 with open(os.path.join(self.model_path, 'label.json')) as f:
     self.label = json.load(f)</pre>
 </li></ul>
-<ul id="modelarts_23_0093__en-us_topic_0172466150_ul2330191515017"><li id="modelarts_23_0093__en-us_topic_0172466150_li1133013151608">When PyTorch, Scikit_Learn, or PySpark is used, <strong id="modelarts_23_0093__en-us_topic_0172466150_b065511219521">self.model_path</strong> indicates the path of the model file. See the following example:<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen37112122012"># Store the label.json file in the model directory. The following information is read:
+<ul id="modelarts_23_0093__en-us_topic_0172466150_ul2330191515017"><li id="modelarts_23_0093__en-us_topic_0172466150_li1133013151608">When PyTorch, Scikit_Learn, or PySpark is used, <strong id="modelarts_23_0093__en-us_topic_0172466150_b065511219521">self.model_path</strong> indicates the path of the model file. See the following example:<pre class="screen" id="modelarts_23_0093__screen729313579507"># Store the label.json file in the model directory. The following information is read:
 dir_path = os.path.dirname(os.path.realpath(self.model_path))
 with open(os.path.join(dir_path, 'label.json')) as f:
     self.label = json.load(f)</pre>
 </li></ul>
 </div></div>
-</li><li id="modelarts_23_0093__en-us_topic_0172466150_li19263459185811">Two types of <strong id="modelarts_23_0093__en-us_topic_0172466150_b19340131525815">content-type</strong> APIs can be used for inputting data: <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname132171631509"><b>multipart/form-data</b></span> and <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname194561347015"><b>application/json</b></span><ul id="modelarts_23_0093__en-us_topic_0172466150_ul445916178594"><li id="modelarts_23_0093__en-us_topic_0172466150_li1346010176592"><span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname88821389013"><b>multipart/form-data</b></span> request<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen15898123318596">curl -X POST \
+</li><li id="modelarts_23_0093__en-us_topic_0172466150_li19263459185811">Two types of <strong id="modelarts_23_0093__en-us_topic_0172466150_b19340131525815">content-type</strong> APIs can be used for inputting data: <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname132171631509"><b>multipart/form-data</b></span> and <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname194561347015"><b>application/json</b></span><ul id="modelarts_23_0093__en-us_topic_0172466150_ul445916178594"><li id="modelarts_23_0093__en-us_topic_0172466150_li1346010176592"><span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname88821389013"><b>multipart/form-data</b></span> request<pre class="screen" id="modelarts_23_0093__screen73821910135117">curl -X POST \
   &lt;modelarts-inference-endpoint&gt; \
   -F image1=@cat.jpg \
   -F images2=@horse.jpg</pre>
 <p id="modelarts_23_0093__en-us_topic_0172466150_p584916387591">The corresponding input data is as follows:</p>
-<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen94579453597">[
+<pre class="screen" id="modelarts_23_0093__screen189722045113">[
    {
       "image1":{
          "cat.jpg":"&lt;cat..jpg file io&gt;"
@@ -128,81 +128,54 @@ with open(os.path.join(dir_path, 'label.json')) as f:
       }
    }
 ]</pre>
-</li><li id="modelarts_23_0093__en-us_topic_0172466150_li13538112155915"><span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname1846842805"><b>application/json</b></span> request<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen9118165815591"> curl -X POST \
+</li><li id="modelarts_23_0093__en-us_topic_0172466150_li13538112155915"><span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname1846842805"><b>application/json</b></span> request<pre class="screen" id="modelarts_23_0093__screen435539145111"> curl -X POST \
    &lt;modelarts-inference-endpoint&gt; \
    -d '{
     "images":"base64 encode image"
     }'</pre>
 <p id="modelarts_23_0093__en-us_topic_0172466150_p12803175001">The corresponding input data is <strong id="modelarts_23_0093__en-us_topic_0172466150_b2611171111012">python dict</strong>.</p>
-<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen1161215161403"> {
+<pre class="screen" id="modelarts_23_0093__screen1491517564515">{
     "images":"base64 encode image"
 
  }</pre>
 </li></ul>
 </li></ol>
 </div>
-<div class="section" id="modelarts_23_0093__en-us_topic_0172466150_section0900184692811"><h4 class="sectiontitle">TensorFlow Inference Script Example</h4><div class="p" id="modelarts_23_0093__en-us_topic_0172466150_p54391313122916">The following is an example of TensorFlow MnistService.<ul id="modelarts_23_0093__en-us_topic_0172466150_ul17205712105413"><li id="modelarts_23_0093__en-us_topic_0172466150_li5205141255414">Inference code<div class="codecoloring" codetype="Python" id="modelarts_23_0093__en-us_topic_0172466150_screen692724518215"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">model_service.tfserving_model_service</span> <span class="kn">import</span> <span class="n">TfServingBaseService</span>
+<div class="section" id="modelarts_23_0093__en-us_topic_0172466150_section0900184692811"><h4 class="sectiontitle">TensorFlow Inference Script Example</h4><div class="p" id="modelarts_23_0093__en-us_topic_0172466150_p54391313122916">The following is an example of TensorFlow MnistService.<ul id="modelarts_23_0093__en-us_topic_0172466150_ul17205712105413"><li id="modelarts_23_0093__en-us_topic_0172466150_li5205141255414">Inference code<pre class="screen" id="modelarts_23_0093__screen820318816521">
+from PIL import Image
+import numpy as np
+from model_service.tfserving_model_service import TfServingBaseService
 
-<span class="k">class</span> <span class="nc">mnist_service</span><span class="p">(</span><span class="n">TfServingBaseService</span><span class="p">):</span>
+class mnist_service(TfServingBaseService):
 
-    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">preprocessed_data</span> <span class="o">=</span> <span class="p">{}</span>
+    def _preprocess(self, data):
+        preprocessed_data = {}
 
-        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_content</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">image1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
-                <span class="n">image1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-                <span class="n">image1</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span>
-                <span class="n">preprocessed_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">image1</span>
+        for k, v in data.items():
+            for file_name, file_content in v.items():
+                image1 = Image.open(file_content)
+                image1 = np.array(image1, dtype=np.float32)
+                image1.resize((1, 784))
+                preprocessed_data[k] = image1
 
-        <span class="k">return</span> <span class="n">preprocessed_data</span>
+        return preprocessed_data
 
-    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    def _postprocess(self, data):
 
-        <span class="n">infer_output</span> <span class="o">=</span> <span class="p">{}</span>
+        infer_output = {}
 
-        <span class="k">for</span> <span class="n">output_name</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        for output_name, result in data.items():
 
-            <span class="n">infer_output</span><span class="p">[</span><span class="s2">&quot;mnist_result&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            infer_output["mnist_result"] = result[0].index(max(result[0]))
 
-        <span class="k">return</span> <span class="n">infer_output</span>
-</pre></div>
-</td></tr></table></div>
-</li><li id="modelarts_23_0093__en-us_topic_0172466150_li4451613155419">Request<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen438073645616">curl -X POST \ <em id="modelarts_23_0093__en-us_topic_0172466150_i204261841153315">Real-time service address</em> \ -F images=@test.jpg</pre>
-</li><li id="modelarts_23_0093__en-us_topic_0172466150_li12341219135417">Response<pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen664863925613">{"mnist_result": 7}</pre>
+        return infer_output</pre>
+</li><li id="modelarts_23_0093__en-us_topic_0172466150_li4451613155419">Request<pre class="screen" id="modelarts_23_0093__screen202232705211">curl -X POST \ <em id="modelarts_23_0093__i0323193219522">Real-time service address</em> \ -F images=@test.jpg</pre>
+</li><li id="modelarts_23_0093__en-us_topic_0172466150_li12341219135417">Response<pre class="screen" id="modelarts_23_0093__screen2928738125214">{"mnist_result": 7}</pre>
 </li></ul>
 </div>
 <p id="modelarts_23_0093__en-us_topic_0172466150_p162859249544">The preceding code example resizes images imported to the user's form to adapt to the model input shape. The <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname127619719576"><b>32×32</b></span> image is read from the Pillow library and resized to <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname181111210135711"><b>1×784</b></span> to match the model input. In subsequent processing, convert the model output into a list for the RESTful API to display.</p>
 </div>
-<div class="section" id="modelarts_23_0093__en-us_topic_0172466150_section1874171872515"><h4 class="sectiontitle">XGBoost Inference Script Example</h4><pre class="screen" id="modelarts_23_0093__en-us_topic_0172466150_screen6171128103319"># coding:utf-8
+<div class="section" id="modelarts_23_0093__en-us_topic_0172466150_section1874171872515"><h4 class="sectiontitle">XGBoost Inference Script Example</h4><pre class="screen" id="modelarts_23_0093__screen553755645219"># coding:utf-8
 import collections
 import json
 import xgboost as xgb
@@ -239,233 +212,119 @@ class user_Service(XgSklServingBaseService):
 <p id="modelarts_23_0093__en-us_topic_0172466150_p132638213257"></p>
 </div>
 <div class="section" id="modelarts_23_0093__en-us_topic_0172466150_section971394732916"><h4 class="sectiontitle">Inference Script Example of the Custom Inference Logic</h4><p id="modelarts_23_0093__en-us_topic_0172466150_p96801143018">First, define a dependency package in the configuration file. For details, see <a href="modelarts_23_0092.html#modelarts_23_0092__en-us_topic_0172466149_section119911955122011">Example of a Model Configuration File Using a Custom Dependency Package</a>. Then, use the following code example to implement the loading and inference of the model in <span class="parmname" id="modelarts_23_0093__en-us_topic_0172466150_parmname1928615313327"><b>saved_model</b></span> format.</p>
-<div class="codecoloring" codetype="Python" id="modelarts_23_0093__en-us_topic_0172466150_screen147126916327"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<pre class="screen" id="modelarts_23_0093__screen1589818135316"># -*- coding: utf-8 -*-
+import json
+import os
+import threading
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+import numpy as np
+import tensorflow as tf
+from PIL import Image
 
-<span class="kn">from</span> <span class="nn">model_service.tfserving_model_service</span> <span class="kn">import</span> <span class="n">TfServingBaseService</span>
-<span class="kn">import</span> <span class="nn">logging</span>
+from model_service.tfserving_model_service import TfServingBaseService
+import logging
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+logger = logging.getLogger(__name__)
 
 
-<span class="k">class</span> <span class="nc">MnistService</span><span class="p">(</span><span class="n">TfServingBaseService</span><span class="p">):</span>
+class MnistService(TfServingBaseService):
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="n">model_path</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_outputs</span> <span class="o">=</span> <span class="p">{}</span>
+    def __init__(self, model_name, model_path):
+        self.model_name = model_name
+        self.model_path = model_path
+        self.model_inputs = {}
+        self.model_outputs = {}
 
-       <span class="c1"># The label file can be loaded here and used in the post-processing function.</span>
-        <span class="c1"># Directories for storing the label.txt file on OBS and in the model package</span>
+       # The label file can be loaded here and used in the post-processing function.
+        # Directories for storing the <strong id="modelarts_23_0093__b1692013339535">label.txt</strong> file on OBS and in the model package
 
-        <span class="c1"># with open(os.path.join(self.model_path, 'label.txt')) as f:</span>
-        <span class="c1">#     self.label = json.load(f)</span>
+        # with open(os.path.join(self.model_path, 'label.txt')) as f:
+        #     self.label = json.load(f)
 
-        <span class="c1"># Load the model in saved_model format in non-blocking mode to prevent blocking timeout.</span>
-        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_tf_sess</span><span class="p">)</span>
-        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        # Load the model in <strong id="modelarts_23_0093__b6920203315530">saved_model</strong> format in non-blocking mode to prevent blocking timeout.
+        thread = threading.Thread(target=self.get_tf_sess)
+        thread.start()
 
-    <span class="k">def</span> <span class="nf">get_tf_sess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Load the model in saved_model format.</span>
+    def get_tf_sess(self):
+        # Load the model in <strong id="modelarts_23_0093__b2920833125320">saved_model</strong> format.
 
-       <span class="c1"># The session will be reused. Do not use the with statement.</span>
-        <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">())</span>
-        <span class="n">meta_graph_def</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">tag_constants</span><span class="o">.</span><span class="n">SERVING</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">)</span>
-        <span class="n">signature_defs</span> <span class="o">=</span> <span class="n">meta_graph_def</span><span class="o">.</span><span class="n">signature_def</span>
+       # The session will be reused. Do not use the <strong id="modelarts_23_0093__b1292063365312">with</strong> statement.
+        sess = tf.Session(graph=tf.Graph())
+        meta_graph_def = tf.saved_model.loader.load(sess, [tf.saved_model.tag_constants.SERVING], self.model_path)
+        signature_defs = meta_graph_def.signature_def
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span> <span class="o">=</span> <span class="n">sess</span>
+        self.sess = sess
 
-        <span class="n">signature</span> <span class="o">=</span> <span class="p">[]</span>
+        signature = []
 
-        <span class="c1"># only one signature allowed</span>
-        <span class="k">for</span> <span class="n">signature_def</span> <span class="ow">in</span> <span class="n">signature_defs</span><span class="p">:</span>
-            <span class="n">signature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signature_def</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">model_signature</span> <span class="o">=</span> <span class="n">signature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;signatures more than one, use serving_default signature&quot;</span><span class="p">)</span>
-            <span class="n">model_signature</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">signature_constants</span><span class="o">.</span><span class="n">DEFAULT_SERVING_SIGNATURE_DEF_KEY</span>
+        # only one signature allowed
+        for signature_def in signature_defs:
+            signature.append(signature_def)
+        if len(signature) == 1:
+            model_signature = signature[0]
+        else:
+            logger.warning("signatures more than one, use serving_default signature")
+            model_signature = tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;model signature: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">model_signature</span><span class="p">)</span>
+        logger.info("model signature: %s", model_signature)
 
-        <span class="k">for</span> <span class="n">signature_name</span> <span class="ow">in</span> <span class="n">meta_graph_def</span><span class="o">.</span><span class="n">signature_def</span><span class="p">[</span><span class="n">model_signature</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
-            <span class="n">tensorinfo</span> <span class="o">=</span> <span class="n">meta_graph_def</span><span class="o">.</span><span class="n">signature_def</span><span class="p">[</span><span class="n">model_signature</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="n">signature_name</span><span class="p">]</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">tensorinfo</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">op</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">[</span><span class="n">signature_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span>
+        for signature_name in meta_graph_def.signature_def[model_signature].inputs:
+            tensorinfo = meta_graph_def.signature_def[model_signature].inputs[signature_name]
+            name = tensorinfo.name
+            op = self.sess.graph.get_tensor_by_name(name)
+            self.model_inputs[signature_name] = op
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;model inputs: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">)</span>
+        logger.info("model inputs: %s", self.model_inputs)
 
-        <span class="k">for</span> <span class="n">signature_name</span> <span class="ow">in</span> <span class="n">meta_graph_def</span><span class="o">.</span><span class="n">signature_def</span><span class="p">[</span><span class="n">model_signature</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-            <span class="n">tensorinfo</span> <span class="o">=</span> <span class="n">meta_graph_def</span><span class="o">.</span><span class="n">signature_def</span><span class="p">[</span><span class="n">model_signature</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">signature_name</span><span class="p">]</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">tensorinfo</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">op</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_tensor_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        for signature_name in meta_graph_def.signature_def[model_signature].outputs:
+            tensorinfo = meta_graph_def.signature_def[model_signature].outputs[signature_name]
+            name = tensorinfo.name
+            op = self.sess.graph.get_tensor_by_name(name)
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">model_outputs</span><span class="p">[</span><span class="n">signature_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span>
+            self.model_outputs[signature_name] = op
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;model outputs: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_outputs</span><span class="p">)</span>
+        logger.info("model outputs: %s", self.model_outputs)
 
-    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="c1"># Two request modes using HTTPS</span>
-        <span class="c1"># 1. The request in form-data file format is as follows: data = {&quot;Request key value&quot;:{&quot;File name&quot;:&lt;File io&gt;}}</span>
-       <span class="c1"># 2. Request in JSON format is as follows: data = json.loads(&quot;JSON body transferred by the API&quot;)</span>
-        <span class="n">preprocessed_data</span> <span class="o">=</span> <span class="p">{}</span>
+    def _preprocess(self, data):
+        # Two request modes using HTTPS
+        # 1. The request in <strong id="modelarts_23_0093__b1992314334537">form-data</strong> file format is as follows:<strong id="modelarts_23_0093__b16923833185317"> data = {"<em id="modelarts_23_0093__i692453314531">Request key value</em>":{"<em id="modelarts_23_0093__i1192423315319">File name</em>":&lt;<em id="modelarts_23_0093__i16924933155312">File io</em>&gt;}}</strong>
+       # 2. Request in JSON format is as follows:<strong id="modelarts_23_0093__b092463315315"> data = json.loads("<em id="modelarts_23_0093__i6924123316538">JSON body transferred by the API</em>")</strong>
+        preprocessed_data = {}
 
-        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_content</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">image1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
-                <span class="n">image1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-                <span class="n">image1</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
-                <span class="n">preprocessed_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">image1</span>
+        for k, v in data.items():
+            for file_name, file_content in v.items():
+                image1 = Image.open(file_content)
+                image1 = np.array(image1, dtype=np.float32)
+                image1.resize((1, 28, 28))
+                preprocessed_data[k] = image1
 
-        <span class="k">return</span> <span class="n">preprocessed_data</span>
+        return preprocessed_data
 
-    <span class="k">def</span> <span class="nf">_inference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    def _inference(self, data):
 
-        <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;input key </span><span class="si">%s</span><span class="s2"> is not in model inputs </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;input key </span><span class="si">%s</span><span class="s2"> is not in model inputs </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
-            <span class="n">feed_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">model_inputs</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">v</span>
+        feed_dict = {}
+        for k, v in data.items():
+            if k not in self.model_inputs.keys():
+                logger.error("input key %s is not in model inputs %s", k, list(self.model_inputs.keys()))
+                raise Exception("input key %s is not in model inputs %s" % (k, list(self.model_inputs.keys())))
+            feed_dict[self.model_inputs[k]] = v
 
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_outputs</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'predict result : '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+        result = self.sess.run(self.model_outputs, feed_dict=feed_dict)
+        logger.info('predict result : ' + str(result))
 
-        <span class="k">return</span> <span class="n">result</span>
+        return result
 
-    <span class="k">def</span> <span class="nf">_postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">infer_output</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mnist_result&quot;</span><span class="p">:</span> <span class="p">[]}</span>
-        <span class="k">for</span> <span class="n">output_name</span><span class="p">,</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    def _postprocess(self, data):
+        infer_output = {"mnist_result": []}
+        for output_name, results in data.items():
 
-            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-                <span class="n">infer_output</span><span class="p">[</span><span class="s2">&quot;mnist_result&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+            for result in results:
+                infer_output["mnist_result"].append(np.argmax(result))
 
-        <span class="k">return</span> <span class="n">infer_output</span>
+        return infer_output
 
-    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+    def __del__(self):
+        self.sess.close()</pre>
 </div>
 </div>
 <div>
