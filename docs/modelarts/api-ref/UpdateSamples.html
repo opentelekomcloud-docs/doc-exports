@@ -1,492 +1,491 @@
 <a name="UpdateSamples"></a><a name="UpdateSamples"></a>
 
 <h1 class="topictitle1">Updating Sample Labels in Batches</h1>
-<div><div class="section"><h4 class="sectiontitle">Function</h4><p>This API is used to update sample labels in batches, including adding, modifying, and deleting sample labels. If the parameter <strong>Labels</strong> of a sample in the request body is not specified, the label of the sample is deleted.</p>
+<div id="body166391414454"><div class="section" id="UpdateSamples__section1463171414452"><h4 class="sectiontitle">Function</h4><p id="UpdateSamples__p1364171474513">This API is used to update sample labels in batches, including adding, modifying, and deleting sample labels. If the parameter <strong id="UpdateSamples__b1641914124510">Labels</strong> of a sample in the request body is not specified, the label of the sample is deleted.</p>
 </div>
-<div class="section"><h4 class="sectiontitle">URI</h4><p>PUT /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
+<div class="section" id="UpdateSamples__section10661114124514"><h4 class="sectiontitle">URI</h4><p id="UpdateSamples__p1367121414516">PUT /v2/{project_id}/datasets/{dataset_id}/data-annotations/samples</p>
 
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path Parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p>Parameter</p>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__table3691314144516" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path Parameters</caption><thead align="left"><tr id="UpdateSamples__row11681214164513"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.1"><p id="UpdateSamples__p1170714104517">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.2"><p id="UpdateSamples__p14701414184516">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.2.3.2.5.1.3"><p id="UpdateSamples__p271161414453">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.2.3.2.5.1.4"><p id="UpdateSamples__p37231454515">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>dataset_id</p>
+<tbody><tr id="UpdateSamples__row1968121418457"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p id="UpdateSamples__p117311454514">dataset_id</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p id="UpdateSamples__p47318145451">Yes</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p id="UpdateSamples__p11741114174517">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Dataset ID.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p id="UpdateSamples__p8751114194514">Dataset ID.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p>project_id</p>
+<tr id="UpdateSamples__row1368161424519"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.1 "><p id="UpdateSamples__p1976141474514">project_id</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p>Yes</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.2 "><p id="UpdateSamples__p277111419458">Yes</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.2.3.2.5.1.3 "><p id="UpdateSamples__p97815147455">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p>Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.2.3.2.5.1.4 "><p id="UpdateSamples__p28231414453">Project ID. For details about how to obtain the project ID, see <a href="modelarts_03_0147.html">Obtaining a Project ID</a>.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section"><h4 class="sectiontitle">Request Parameters</h4>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_UpdateSamplesReq" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p>Parameter</p>
+<div class="section" id="UpdateSamples__section1183181494517"><h4 class="sectiontitle">Request Parameters</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_UpdateSamplesReq" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Request body parameters</caption><thead align="left"><tr id="UpdateSamples__row784191404518"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.1"><p id="UpdateSamples__p178611411450">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.2"><p id="UpdateSamples__p187414124519">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.2.2.5.1.3"><p id="UpdateSamples__p8882145452">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.2.2.5.1.4"><p id="UpdateSamples__p489214194519">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>email</p>
+<tbody><tr id="UpdateSamples__row8851149456"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p id="UpdateSamples__p16891114164520">email</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p id="UpdateSamples__p179012144454">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p id="UpdateSamples__p199061414459">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Email address of a labeling team member.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p id="UpdateSamples__p891161416456">Email address of a labeling team member.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p>samples</p>
+<tr id="UpdateSamples__row11854140453"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.1 "><p id="UpdateSamples__p7921314174520">samples</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.2 "><p id="UpdateSamples__p109314143456">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p>Array of <a href="#UpdateSamples__request_SampleLabels">SampleLabels</a> objects</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.2.2.5.1.3 "><p id="UpdateSamples__p8941014184511">Array of <a href="#UpdateSamples__request_SampleLabels">SampleLabels</a> objects</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p>Updated sample list.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.2.2.5.1.4 "><p id="UpdateSamples__p2095814184511">Updated sample list.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabels"></a><a name="request_SampleLabels"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabels" frame="border" border="1" rules="all"><caption><b>Table 3 </b>SampleLabels</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p>Parameter</p>
+<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabels"></a><a name="request_SampleLabels"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabels" frame="border" border="1" rules="all"><caption><b>Table 3 </b>SampleLabels</caption><thead align="left"><tr id="UpdateSamples__row15965148450"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.1"><p id="UpdateSamples__p89891413459">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.2"><p id="UpdateSamples__p11991014204515">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.3.2.5.1.3"><p id="UpdateSamples__p0100214174515">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.3.2.5.1.4"><p id="UpdateSamples__p410081413458">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>labels</p>
+<tbody><tr id="UpdateSamples__row496214114511"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p6101181454510">labels</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p11102314174511">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>Array of <a href="#UpdateSamples__request_SampleLabel">SampleLabel</a> objects</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p111031814144518">Array of <a href="#UpdateSamples__request_SampleLabel">SampleLabel</a> objects</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Sample label list. If this parameter is left blank, all sample labels are deleted.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>metadata</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p><a href="#UpdateSamples__request_SampleMetadata">SampleMetadata</a> object</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Key-value pair of the sample <strong>metadata</strong> attribute.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p810361484519">Sample label list. If this parameter is left blank, all sample labels are deleted.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>sample_id</p>
+<tr id="UpdateSamples__row10968144457"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p6104171484515">metadata</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p6105141410451">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p310511412458"><a href="#UpdateSamples__request_SampleMetadata">SampleMetadata</a> object</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Sample ID.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>sample_type</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>Integer</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Sample type. The options are as follows: - <strong>0</strong>: image - <strong>1</strong>: text - <strong>2</strong>: speech - <strong>4</strong>: table - <strong>6</strong>: video - <strong>9</strong>: custom format</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p010612141451">Key-value pair of the sample <strong id="UpdateSamples__b1210661464514">metadata</strong> attribute.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>sample_usage</p>
+<tr id="UpdateSamples__row1196131414510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p710720141453">sample_id</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p151082148455">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p41085147457">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Sample usage. The options are as follows: - <strong>TRAIN</strong>: training - <strong>EVAL</strong>: evaluation - <strong>TEST</strong>: test - <strong>INFERENCE</strong>: inference</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>source</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>Source address of sample data.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p11109101414454">Sample ID.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p>worker_id</p>
+<tr id="UpdateSamples__row119611410458"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p4110191410459">sample_type</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p13110414174519">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p311119145451">Integer</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p>ID of a labeling team member.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p12112161415455">Sample type. The options are as follows:</p>
+<ul id="UpdateSamples__ul10112414174513"><li id="UpdateSamples__li10113914104517"><strong id="UpdateSamples__b5113121419453">0</strong>: image</li><li id="UpdateSamples__li9113191484517"><strong id="UpdateSamples__b15114014124518">1</strong>: text</li><li id="UpdateSamples__li31142144457"><strong id="UpdateSamples__b411461415458">2</strong>: speech</li><li id="UpdateSamples__li111154146458"><strong id="UpdateSamples__b411515144453">4</strong>: table</li><li id="UpdateSamples__li161154149453"><strong id="UpdateSamples__b61163148451">6</strong>: video</li><li id="UpdateSamples__li131163142450"><strong id="UpdateSamples__b101177141457">9</strong>: custom format</li></ul>
+</td>
+</tr>
+<tr id="UpdateSamples__row139751414457"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p18117214184512">sample_usage</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p6118181419456">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p18120714194518">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p4121201464512">Sample usage. The options are as follows:</p>
+<ul id="UpdateSamples__ul1812212147452"><li id="UpdateSamples__li91221714124514"><strong id="UpdateSamples__b1812331454512">TRAIN</strong>: training</li><li id="UpdateSamples__li1412371434518"><strong id="UpdateSamples__b161241514164511">EVAL</strong>: evaluation</li><li id="UpdateSamples__li1212418149454"><strong id="UpdateSamples__b5125514154519">TEST</strong>: test</li><li id="UpdateSamples__li312521413457"><strong id="UpdateSamples__b612581424510">INFERENCE</strong>: inference</li></ul>
+</td>
+</tr>
+<tr id="UpdateSamples__row497181414510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p712610143456">source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p111271614114514">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p1712710147456">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p2128181415452">Source address of sample data.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row1397314134510"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.1 "><p id="UpdateSamples__p11129181420453">worker_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.2 "><p id="UpdateSamples__p111301214134513">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.3.2.5.1.3 "><p id="UpdateSamples__p171301314144517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.3.2.5.1.4 "><p id="UpdateSamples__p12131111417452">ID of a labeling team member.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabel"></a><a name="request_SampleLabel"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabel" frame="border" border="1" rules="all"><caption><b>Table 4 </b>SampleLabel</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p>Parameter</p>
+<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabel"></a><a name="request_SampleLabel"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabel" frame="border" border="1" rules="all"><caption><b>Table 4 </b>SampleLabel</caption><thead align="left"><tr id="UpdateSamples__row71329140458"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.1"><p id="UpdateSamples__p913451417458">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.2"><p id="UpdateSamples__p513421484512">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.4.2.5.1.3"><p id="UpdateSamples__p5135814164520">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.4.2.5.1.4"><p id="UpdateSamples__p31361814124519">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>annotated_by</p>
+<tbody><tr id="UpdateSamples__row10132191494511"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p613611149452">annotated_by</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p14137171434517">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p413751418451">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Video labeling method, which is used to distinguish whether a video is labeled manually or automatically. The options are as follows: - <strong>human</strong>: manual labeling - <strong>auto</strong>: automatic labeling</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>id</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Label ID.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p713813143453">Video labeling method, which is used to distinguish whether a video is labeled manually or automatically. The options are as follows:</p>
+<ul id="UpdateSamples__ul181391514144519"><li id="UpdateSamples__li121390147458"><strong id="UpdateSamples__b6139161404520">human</strong>: manual labeling</li><li id="UpdateSamples__li16140201411455"><strong id="UpdateSamples__b161401814144513">auto</strong>: automatic labeling</li></ul>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>name</p>
+<tr id="UpdateSamples__row141327142450"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p191401014114518">id</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p814101416457">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p914213147451">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Label name.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>property</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p><a href="#UpdateSamples__request_SampleLabelProperty">SampleLabelProperty</a> object</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Attribute key-value pair of the sample label, such as the object shape and shape feature.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p114281414520">Label ID.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>score</p>
+<tr id="UpdateSamples__row313251464518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p6143814164515">name</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p11144121418458">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Float</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p7144814184514">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Confidence.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p41451514184513">Label name.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p>type</p>
+<tr id="UpdateSamples__row161322014104513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p121469145458">property</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p91471914154514">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p>Integer</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p18148114164511"><a href="#UpdateSamples__request_SampleLabelProperty">SampleLabelProperty</a> object</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p>Label type. The options are as follows: - <strong>0</strong>: image classification - <strong>1</strong>: object detection - <strong>100</strong>: text classification - <strong>101</strong>: named entity recognition - <strong>102</strong>: text triplet relationship - <strong>103</strong>: text triplet entity - <strong>200</strong>: speech classification - <strong>201</strong>: speech content - <strong>202</strong>: speech paragraph labeling - <strong>600</strong>: video classification</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p1714813144454">Attribute key-value pair of the sample label, such as the object shape and shape feature.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row18133714144513"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p1514916146459">score</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p15150614164511">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p015114142450">Float</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p1615181424516">Confidence.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row1713361404512"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.1 "><p id="UpdateSamples__p10152191414517">type</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.2 "><p id="UpdateSamples__p15153191494511">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.4.2.5.1.3 "><p id="UpdateSamples__p10153101412459">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.4.2.5.1.4 "><p id="UpdateSamples__p17154131404519">Label type. The options are as follows:</p>
+<ul id="UpdateSamples__ul61551214144514"><li id="UpdateSamples__li19155161414510"><strong id="UpdateSamples__b1515511410450">0</strong>: image classification</li><li id="UpdateSamples__li6156151415454"><strong id="UpdateSamples__b1615631415458">1</strong>: object detection</li><li id="UpdateSamples__li315681424511"><strong id="UpdateSamples__b01571314134513">100</strong>: text classification</li><li id="UpdateSamples__li11571914154518"><strong id="UpdateSamples__b17157314154515">101</strong>: named entity recognition</li><li id="UpdateSamples__li8158314184512"><strong id="UpdateSamples__b191582142450">102</strong>: text triplet relationship</li><li id="UpdateSamples__li191598140454"><strong id="UpdateSamples__b1615901410452">103</strong>: text triplet entity</li><li id="UpdateSamples__li2159141444516"><strong id="UpdateSamples__b1116019141458">200</strong>: speech classification</li><li id="UpdateSamples__li121601214204514"><strong id="UpdateSamples__b6161201494519">201</strong>: speech content</li><li id="UpdateSamples__li1516111141453"><strong id="UpdateSamples__b316221414451">202</strong>: speech paragraph labeling</li><li id="UpdateSamples__li1116271413453"><strong id="UpdateSamples__b14162014154510">600</strong>: video classification</li></ul>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabelProperty"></a><a name="request_SampleLabelProperty"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabelProperty" frame="border" border="1" rules="all"><caption><b>Table 5 </b>SampleLabelProperty</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.1"><p>Parameter</p>
+<div class="tablenoborder"><a name="UpdateSamples__request_SampleLabelProperty"></a><a name="request_SampleLabelProperty"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleLabelProperty" frame="border" border="1" rules="all"><caption><b>Table 5 </b>SampleLabelProperty</caption><thead align="left"><tr id="UpdateSamples__row181634147451"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.1"><p id="UpdateSamples__p216641410451">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.2"><p id="UpdateSamples__p1616721434510">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.5.2.5.1.3"><p id="UpdateSamples__p716718143455">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.5.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.5.2.5.1.4"><p id="UpdateSamples__p3168101484518">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:content</p>
+<tbody><tr id="UpdateSamples__row16163151413457"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p17168121454513">@modelarts:content</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p816915142450">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p13170151414453">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Speech text content, which is a default attribute dedicated to the speech label (including the speech content and speech start and end points).</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:end_index</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Integer</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>End position of the text, which is a default attribute dedicated to the named entity label. The end position does not include the character corresponding to the value of <strong>end_index</strong>. Examples are as follows. - If the text content is "Barack Hussein Obama II (born August 4, 1961) is an American attorney and politician.", the <strong>start_index</strong> and <strong>end_index</strong> values of "Barack Hussein Obama II" are <strong>0</strong> and <strong>23</strong>, respectively. - If the text content is "By the end of 2018, the company has more than 100 employees.", the <strong>start_index</strong> and <strong>end_index</strong> values of "By the end of 2018" are <strong>0</strong> and <strong>18</strong>, respectively.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p12170171454516">Speech text content, which is a default attribute dedicated to the speech label (including the speech content and speech start and end points).</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:end_time</p>
+<tr id="UpdateSamples__row31632146459"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p1171101411453">@modelarts:end_index</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1717231417457">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p017381414459">Integer</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Speech end time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong>hh:mm:ss.SSS</strong>. (<strong>hh</strong> indicates hour; <strong>mm</strong> indicates minute; <strong>ss</strong> indicates second; and <strong>SSS</strong> indicates millisecond.)</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:feature</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Object</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Shape feature, which is a default attribute dedicated to the object detection label, with type of <strong>List</strong>. The upper left corner of an image is used as the coordinate origin <strong>[0,0]</strong>. Each coordinate point is represented by <em>[x, y]</em>. <em>x</em> indicates the horizontal coordinate, and <em>y</em> indicates the vertical coordinate (both <em>x</em> and <em>y</em> are greater than or equal to 0). The format of each shape is as follows: - <strong>bndbox</strong>: consists of two points, for example, <strong>[[0,10],[50,95]]</strong>. The first point is located at the upper left corner of the rectangle and the second point is located at the lower right corner of the rectangle. That is, the X coordinate of the first point must be smaller than that of the second point, and the Y coordinate of the second point must be smaller than that of the first point.</p>
-<pre class="screen">- **polygon**: consists of multiple points that are connected in sequence to form a polygon, for example, **[[0,100],[50,95],[10,60],[500,400]]**. 
-
-      - **circle**: consists of the center point and radius, for example, **[[100,100],[50]]**. 
-
-      - **line**: consists of two points, for example, **[[0,100],[50,95]]**. The first point is the start point, and the second point is the end point. 
-
-      - **dashed**: consists of two points, for example, **[[0,100],[50,95]]**. The first point is the start point, and the second point is the end point. 
-
-      - **point**: consists of one point, for example, **[[0,100]]**. 
-
-      - **polyline**: consists of multiple points, for example, **[[0,100],[50,95],[10,60],[500,400]]**.</pre>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p13215123024511">End position of the text, which is a default attribute dedicated to the named entity label. The end position does not include the character corresponding to the value of <strong id="UpdateSamples__b102151030164518">end_index</strong>. Examples are as follows.</p>
+<ul id="UpdateSamples__ul1577343124520"><li id="UpdateSamples__li11861036184517">If the text content is "Barack Hussein Obama II (born August 4, 1961) is an American attorney and politician.", the <strong id="UpdateSamples__b178646366458">start_index</strong> and <strong id="UpdateSamples__b1886473654516">end_index</strong> values of "Barack Hussein Obama II" are <strong id="UpdateSamples__b1486423618452">0</strong> and <strong id="UpdateSamples__b38641636174516">23</strong>, respectively.</li><li id="UpdateSamples__li2773731164520">If the text content is "By the end of 2018, the company has more than 100 employees.", the <strong id="UpdateSamples__b117991410453">start_index</strong> and <strong id="UpdateSamples__b14179114144512">end_index</strong> values of "By the end of 2018" are <strong id="UpdateSamples__b8179131417455">0</strong> and <strong id="UpdateSamples__b5179121444515">18</strong>, respectively.</li></ul>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:from</p>
+<tr id="UpdateSamples__row516311434515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p171801814134510">@modelarts:end_time</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p81811144450">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p1718210141458">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>ID of the head entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:hard</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Sample labeled as a hard sample or not, which is a default attribute. Options:</p>
-<ul><li><p><strong>0/false</strong>: not a hard example</p>
-</li><li><p><strong>1/true</strong>: hard example</p>
-</li></ul>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p10183714194517">Speech end time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong id="UpdateSamples__b12183141411452">hh:mm:ss.SSS</strong>. (<strong id="UpdateSamples__b51831014104514">hh</strong> indicates hour; <strong id="UpdateSamples__b1218318143451">mm</strong> indicates minute; <strong id="UpdateSamples__b618341484510">ss</strong> indicates second; and <strong id="UpdateSamples__b3184514164516">SSS</strong> indicates millisecond.)</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:hard_coefficient</p>
+<tr id="UpdateSamples__row15163181415452"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p9184121454513">@modelarts:feature</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1918571414510">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p7186714124517">Object</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Coefficient of difficulty of each label level, which is a default attribute. The value range is <strong>[0,1]</strong>.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:hard_reasons</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Reasons that the sample is a hard sample, which is a default attribute. Use a hyphen (-) to separate every two hard sample reason IDs, for example, <strong>3-20-21-19</strong>. The options are as follows: - <strong>0</strong>: No target objects are identified. - <strong>1</strong>: The confidence is low. - <strong>2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result. - <strong>3</strong>: The prediction result is greatly different from the data of the same type in the training dataset. - <strong>4</strong>: The prediction results of multiple consecutive similar images are inconsistent. - <strong>5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset. - <strong>6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset. - <strong>7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset. - <strong>8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset. - <strong>9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset. - <strong>10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset. - <strong>11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset. - <strong>12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset. - <strong>13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset. - <strong>14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset. - <strong>15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset. - <strong>16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset. - <strong>17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset. - <strong>18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset. - <strong>19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image. - <strong>20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image. - <strong>21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image. - <strong>22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image. - <strong>23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image. - <strong>24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image. - <strong>25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image. - <strong>26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image. - <strong>27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image. - <strong>28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image. - <strong>29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image. - <strong>30</strong>: The data is predicted to be abnormal.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p8941194715459">Shape feature, which is a default attribute dedicated to the object detection label, with type of <strong id="UpdateSamples__b4941174710458">List</strong>. The upper left corner of an image is used as the coordinate origin <strong id="UpdateSamples__b1894174711451">[0,0]</strong>. Each coordinate point is represented by <em id="UpdateSamples__i69411471455">[x, y]</em>. <em id="UpdateSamples__i1294184710450">x</em> indicates the horizontal coordinate, and <em id="UpdateSamples__i1694124714513">y</em> indicates the vertical coordinate (both <em id="UpdateSamples__i7941134734514">x</em> and <em id="UpdateSamples__i139411473458">y</em> are greater than or equal to 0). The format of each shape is as follows:</p>
+<ul id="UpdateSamples__ul42077496455"><li id="UpdateSamples__li20581955184520"><strong id="UpdateSamples__b1863755174514">bndbox</strong>: consists of two points, for example, <strong id="UpdateSamples__b663105515458">[[0,10],[50,95]]</strong>. The first point is located at the upper left corner of the rectangle and the second point is located at the lower right corner of the rectangle. That is, the X coordinate of the first point must be smaller than that of the second point, and the Y coordinate of the second point must be smaller than that of the first point.</li><li id="UpdateSamples__li58859112467"><strong id="UpdateSamples__b78884134613">polygon</strong>: consists of multiple points that are connected in sequence to form a polygon, for example, <strong id="UpdateSamples__b15888917466">[[0,100],[50,95],[10,60],[500,400]]</strong>.</li><li id="UpdateSamples__li371096194612"><strong id="UpdateSamples__b13713116194610">circle</strong>: consists of the center point and radius, for example, <strong id="UpdateSamples__b107133614613">[[100,100],[50]]</strong>.</li><li id="UpdateSamples__li18199812154615"><strong id="UpdateSamples__b1620311211468">line</strong>: consists of two points, for example, <strong id="UpdateSamples__b1203512164610">[[0,100],[50,95]]</strong>. The first point is the start point, and the second point is the end point.</li><li id="UpdateSamples__li1516217161463"><strong id="UpdateSamples__b7164101634614">dashed</strong>: consists of two points, for example, <strong id="UpdateSamples__b12164116184619">[[0,100],[50,95]]</strong>. The first point is the start point, and the second point is the end point.</li><li id="UpdateSamples__li1214016209467"><strong id="UpdateSamples__b4143122019464">point</strong>: consists of one point, for example, <strong id="UpdateSamples__b21434209461">[[0,100]]</strong>.</li><li id="UpdateSamples__li192078493451"><strong id="UpdateSamples__b519014149451">polyline</strong>: consists of multiple points, for example, <strong id="UpdateSamples__b2190141484513">[[0,100],[50,95],[10,60],[500,400]]</strong>.</li></ul>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:shape</p>
+<tr id="UpdateSamples__row21641814114511"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p131921014104515">@modelarts:from</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p519211147457">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p4193171484510">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Object shape, which is a default attribute dedicated to the object detection label and is left empty by default. The options are as follows: - <strong>bndbox</strong>: rectangle - <strong>polygon</strong>: polygon - <strong>circle</strong>: circle - <strong>line</strong>: straight line - <strong>dashed</strong>: dotted line - <strong>point</strong>: point - <strong>polyline</strong>: polyline</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:source</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Speech source, which is a default attribute dedicated to the speech start/end point label and can be set to a speaker or narrator.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p119451474518">ID of the head entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:start_index</p>
+<tr id="UpdateSamples__row416451424515"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p719411149451">@modelarts:hard</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p18195111415456">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>Integer</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p17196314174514">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Start position of the text, which is a default attribute dedicated to the named entity label. The start value begins from 0, including the character corresponding to the value of <strong>start_index</strong>.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:start_time</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>Speech start time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong>hh:mm:ss.SSS</strong>. (<strong>hh</strong> indicates hour; <strong>mm</strong> indicates minute; <strong>ss</strong> indicates second; and <strong>SSS</strong> indicates millisecond.)</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p5197131419459">Sample labeled as a hard sample or not, which is a default attribute. Options:</p>
+<ul id="UpdateSamples__ul111981914124518"><li id="UpdateSamples__li1819814142451"><strong id="UpdateSamples__b2199131404510">0/false</strong>: not a hard example</li><li id="UpdateSamples__li19199814194512"><strong id="UpdateSamples__b61991814124514">1/true</strong>: hard example</li></ul>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p>@modelarts:to</p>
+<tr id="UpdateSamples__row216451454517"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p1200111434513">@modelarts:hard_coefficient</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1320081417455">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p220101434516">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p>ID of the tail entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p1320281484519">Coefficient of difficulty of each label level, which is a default attribute. The value range is <strong id="UpdateSamples__b72021814194516">[0,1]</strong>.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row616415141451"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p5203614154511">@modelarts:hard_reasons</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1220341410459">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p152043143457">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p1720516143454">Reasons that the sample is a hard sample, which is a default attribute. Use a hyphen (-) to separate every two hard sample reason IDs, for example, <strong id="UpdateSamples__b720610149455">3-20-21-19</strong>. The options are as follows:</p>
+<ul id="UpdateSamples__ul162071914184512"><li id="UpdateSamples__li182088149457"><strong id="UpdateSamples__b4208181434515">0</strong>: No target objects are identified.</li><li id="UpdateSamples__li7209171412456"><strong id="UpdateSamples__b17209191415459">1</strong>: The confidence is low.</li><li id="UpdateSamples__li162101214144515"><strong id="UpdateSamples__b12211414144513">2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result.</li><li id="UpdateSamples__li3211131416458"><strong id="UpdateSamples__b15212014134514">3</strong>: The prediction result is greatly different from the data of the same type in the training dataset.</li><li id="UpdateSamples__li9213151412457"><strong id="UpdateSamples__b3213151444517">4</strong>: The prediction results of multiple consecutive similar images are inconsistent.</li><li id="UpdateSamples__li92147141457"><strong id="UpdateSamples__b20214814124517">5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset.</li><li id="UpdateSamples__li8215614104518"><strong id="UpdateSamples__b32161014124518">6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li4216191410454"><strong id="UpdateSamples__b122171914194520">7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li321716140456"><strong id="UpdateSamples__b182173149455">8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1021731410452"><strong id="UpdateSamples__b021891434513">9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li3218171414518"><strong id="UpdateSamples__b1921961404511">10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li92191148453"><strong id="UpdateSamples__b1921919141454">11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li7219414134515"><strong id="UpdateSamples__b622011149453">12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li422013143454"><strong id="UpdateSamples__b16221141434511">13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li0221111474512"><strong id="UpdateSamples__b122213141452">14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1222111416456"><strong id="UpdateSamples__b17222151424520">15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li18222101474511"><strong id="UpdateSamples__b522310145458">16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li3223161415454"><strong id="UpdateSamples__b13223151417451">17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li522461417451"><strong id="UpdateSamples__b1522471419452">18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1622411454517"><strong id="UpdateSamples__b1422571417451">19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li5226171412455"><strong id="UpdateSamples__b22264143450">20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li12226151420451"><strong id="UpdateSamples__b122273143459">21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li16227314114515"><strong id="UpdateSamples__b12228171418459">22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li322816145451"><strong id="UpdateSamples__b1222891412450">23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li18228101414455"><strong id="UpdateSamples__b182292014164516">24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li9229914184512"><strong id="UpdateSamples__b52301914154519">25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li6230141434514"><strong id="UpdateSamples__b1230214104518">26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li15231111415450"><strong id="UpdateSamples__b9231111419455">27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li20232614174514"><strong id="UpdateSamples__b9232201494514">28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li623314141457"><strong id="UpdateSamples__b72336145455">29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li2234111464518"><strong id="UpdateSamples__b923415142457">30</strong>: The data is predicted to be abnormal.</li></ul>
+</td>
+</tr>
+<tr id="UpdateSamples__row11164121424514"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p1235191464519">@modelarts:shape</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p15236141464518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p12236141444515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p112371514164519">Object shape, which is a default attribute dedicated to the object detection label and is left empty by default. The options are as follows:</p>
+<ul id="UpdateSamples__ul16238171411458"><li id="UpdateSamples__li122381614134512"><strong id="UpdateSamples__b1223911419456">bndbox</strong>: rectangle</li><li id="UpdateSamples__li723901417457"><strong id="UpdateSamples__b12403149454">polygon</strong>: polygon</li><li id="UpdateSamples__li224051414451"><strong id="UpdateSamples__b92418149450">circle</strong>: circle</li><li id="UpdateSamples__li124677143455"><strong id="UpdateSamples__b1046816149455">line</strong>: straight line</li><li id="UpdateSamples__li946851474512"><strong id="UpdateSamples__b446841484519">dashed</strong>: dotted line</li><li id="UpdateSamples__li346831494519"><strong id="UpdateSamples__b0468914124514">point</strong>: point</li><li id="UpdateSamples__li7468714144520"><strong id="UpdateSamples__b12469131464512">polyline</strong>: polyline</li></ul>
+</td>
+</tr>
+<tr id="UpdateSamples__row1416419146454"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p1546981494513">@modelarts:source</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p20469131413451">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p94697144455">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p104699142452">Speech source, which is a default attribute dedicated to the speech start/end point label and can be set to a speaker or narrator.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row1116421420453"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p546921454514">@modelarts:start_index</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p12470314144518">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p24701414114514">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p11470414184519">Start position of the text, which is a default attribute dedicated to the named entity label. The start value begins from 0, including the character corresponding to the value of <strong id="UpdateSamples__b1547041444517">start_index</strong>.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row12164201464511"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p184705144456">@modelarts:start_time</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1747031412453">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p3471171410452">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p184711514144520">Speech start time, which is a default attribute dedicated to the speech start/end point label, in the format of <strong id="UpdateSamples__b8471314144516">hh:mm:ss.SSS</strong>. (<strong id="UpdateSamples__b10471141454520">hh</strong> indicates hour; <strong id="UpdateSamples__b747117145450">mm</strong> indicates minute; <strong id="UpdateSamples__b1447161464512">ss</strong> indicates second; and <strong id="UpdateSamples__b184717141456">SSS</strong> indicates millisecond.)</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row1716431418459"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.1 "><p id="UpdateSamples__p947191414516">@modelarts:to</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.2 "><p id="UpdateSamples__p1347191424512">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.5.2.5.1.3 "><p id="UpdateSamples__p0472171414457">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.5.2.5.1.4 "><p id="UpdateSamples__p047231419456">ID of the tail entity in the triplet relationship label, which is a default attribute dedicated to the triplet relationship label.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="UpdateSamples__request_SampleMetadata"></a><a name="request_SampleMetadata"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleMetadata" frame="border" border="1" rules="all"><caption><b>Table 6 </b>SampleMetadata</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.1"><p>Parameter</p>
+<div class="tablenoborder"><a name="UpdateSamples__request_SampleMetadata"></a><a name="request_SampleMetadata"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__request_SampleMetadata" frame="border" border="1" rules="all"><caption><b>Table 6 </b>SampleMetadata</caption><thead align="left"><tr id="UpdateSamples__row225161412459"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.1"><p id="UpdateSamples__p1472171410458">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.2"><p>Mandatory</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.2"><p id="UpdateSamples__p15473131454510">Mandatory</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.3"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.3.6.2.5.1.3"><p id="UpdateSamples__p2047317144455">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.6.2.5.1.4"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="40%" id="mcps1.3.3.6.2.5.1.4"><p id="UpdateSamples__p947351412451">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>@modelarts:hard</p>
+<tbody><tr id="UpdateSamples__row15251121413453"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p id="UpdateSamples__p247351474513">@modelarts:hard</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p id="UpdateSamples__p3473181454516">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Double</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p id="UpdateSamples__p2474111494517">Double</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Whether the sample is labeled as a hard sample, which is a default attribute. The options are as follows: - <strong>0</strong>: non-hard sample - <strong>1</strong>: hard sample</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>@modelarts:hard_coefficient</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Double</p>
-</td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Coefficient of difficulty of each sample level, which is a default attribute. The value range is <strong>[0,1]</strong>.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p id="UpdateSamples__p347411141457">Whether the sample is labeled as a hard sample, which is a default attribute. The options are as follows:</p>
+<ul id="UpdateSamples__ul1847417147457"><li id="UpdateSamples__li164741614194517"><strong id="UpdateSamples__b184741114124513">0</strong>: non-hard sample</li><li id="UpdateSamples__li5474101413451"><strong id="UpdateSamples__b447491494511">1</strong>: hard sample</li></ul>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>@modelarts:hard_reasons</p>
+<tr id="UpdateSamples__row1725191434518"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p id="UpdateSamples__p34754146450">@modelarts:hard_coefficient</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p id="UpdateSamples__p134753149455">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Array of integers</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p id="UpdateSamples__p1647581454510">Double</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>ID of a hard sample reason, which is a default attribute. The options are as follows: - <strong>0</strong>: No target objects are identified. - <strong>1</strong>: The confidence is low. - <strong>2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result. - <strong>3</strong>: The prediction result is greatly different from the data of the same type in the training dataset. - <strong>4</strong>: The prediction results of multiple consecutive similar images are inconsistent. - <strong>5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset. - <strong>6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset. - <strong>7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset. - <strong>8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset. - <strong>9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset. - <strong>10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset. - <strong>11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset. - <strong>12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset. - <strong>13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset. - <strong>14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset. - <strong>15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset. - <strong>16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset. - <strong>17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset. - <strong>18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset. - <strong>19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image. - <strong>20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image. - <strong>21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image. - <strong>22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image. - <strong>23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image. - <strong>24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image. - <strong>25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image. - <strong>26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image. - <strong>27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image. - <strong>28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image. - <strong>29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image. - <strong>30</strong>: The data is predicted to be abnormal.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p id="UpdateSamples__p247591419453">Coefficient of difficulty of each sample level, which is a default attribute. The value range is <strong id="UpdateSamples__b7475914184520">[0,1]</strong>.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p>@modelarts:size</p>
+<tr id="UpdateSamples__row825119145455"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p id="UpdateSamples__p1475614164514">@modelarts:hard_reasons</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p>No</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p id="UpdateSamples__p347601416455">No</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p>Array of objects</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p id="UpdateSamples__p3476814154513">Array of integers</p>
 </td>
-<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p>Image size (width, height, and depth of the image), which is a default attribute, with type of <strong>List</strong>. In the list, the first number indicates the width (pixels), the second number indicates the height (pixels), and the third number indicates the depth (the depth can be left blank and the default value is <strong>3</strong>). For example, <strong>[100,200,3]</strong> and <strong>[100,200]</strong> are both valid. Note: This parameter is mandatory only when the sample label list contains the object detection label.</p>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p id="UpdateSamples__p1447618148457">ID of a hard sample reason, which is a default attribute. The options are as follows:</p>
+<ul id="UpdateSamples__ul347715140455"><li id="UpdateSamples__li1447731494516"><strong id="UpdateSamples__b447716147456">0</strong>: No target objects are identified.</li><li id="UpdateSamples__li547771414458"><strong id="UpdateSamples__b10477171404519">1</strong>: The confidence is low.</li><li id="UpdateSamples__li20478161444518"><strong id="UpdateSamples__b1447871444512">2</strong>: The clustering result based on the training dataset is inconsistent with the prediction result.</li><li id="UpdateSamples__li34781114184512"><strong id="UpdateSamples__b2478614174510">3</strong>: The prediction result is greatly different from the data of the same type in the training dataset.</li><li id="UpdateSamples__li17479131414519"><strong id="UpdateSamples__b184797146459">4</strong>: The prediction results of multiple consecutive similar images are inconsistent.</li><li id="UpdateSamples__li14791314184514"><strong id="UpdateSamples__b1947931415452">5</strong>: There is a large offset between the image resolution and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1648014145459"><strong id="UpdateSamples__b9480214204519">6</strong>: There is a large offset between the aspect ratio of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li16480614104519"><strong id="UpdateSamples__b7480314144512">7</strong>: There is a large offset between the brightness of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li15480171413458"><strong id="UpdateSamples__b6480114114519">8</strong>: There is a large offset between the saturation of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li2481171418457"><strong id="UpdateSamples__b9481121404510">9</strong>: There is a large offset between the color richness of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1148161419459"><strong id="UpdateSamples__b7481714184519">10</strong>: There is a large offset between the definition of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li144811514144510"><strong id="UpdateSamples__b548141434511">11</strong>: There is a large offset between the number of frames of the image and the feature distribution of the training dataset.</li><li id="UpdateSamples__li54824146453"><strong id="UpdateSamples__b124821114184518">12</strong>: There is a large offset between the standard deviation of area of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1482141413455"><strong id="UpdateSamples__b17482101424510">13</strong>: There is a large offset between the aspect ratio of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li13482181494511"><strong id="UpdateSamples__b0482161424516">14</strong>: There is a large offset between the area portion of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1482714194511"><strong id="UpdateSamples__b848321418457">15</strong>: There is a large offset between the edge of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li4483131420457"><strong id="UpdateSamples__b10483191410454">16</strong>: There is a large offset between the brightness of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li7483141444510"><strong id="UpdateSamples__b1848311415454">17</strong>: There is a large offset between the definition of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li20483161416454"><strong id="UpdateSamples__b1248351420451">18</strong>: There is a large offset between the stack of image frames and the feature distribution of the training dataset.</li><li id="UpdateSamples__li1748411142453"><strong id="UpdateSamples__b1548451414514">19</strong>: The data enhancement result based on GaussianBlur is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li148441410457"><strong id="UpdateSamples__b748461413453">20</strong>: The data enhancement result based on fliplr is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li1948412146452"><strong id="UpdateSamples__b848419149455">21</strong>: The data enhancement result based on Crop is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li1548517142453"><strong id="UpdateSamples__b174851014164513">22</strong>: The data enhancement result based on flipud is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li204852148459"><strong id="UpdateSamples__b20485161484519">23</strong>: The data enhancement result based on scale is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li19486121411454"><strong id="UpdateSamples__b2486151420457">24</strong>: The data enhancement result based on translate is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li11486161411452"><strong id="UpdateSamples__b10486181494520">25</strong>: The data enhancement result based on shear is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li18487131414454"><strong id="UpdateSamples__b34871214144516">26</strong>: The data enhancement result based on superpixels is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li3487151434513"><strong id="UpdateSamples__b1487171444511">27</strong>: The data enhancement result based on sharpen is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li548791434514"><strong id="UpdateSamples__b144879141452">28</strong>: The data enhancement result based on add is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li54871814144514"><strong id="UpdateSamples__b13488141410459">29</strong>: The data enhancement result based on invert is inconsistent with the prediction result of the original image.</li><li id="UpdateSamples__li1848811146457"><strong id="UpdateSamples__b1548841444513">30</strong>: The data is predicted to be abnormal.</li></ul>
+</td>
+</tr>
+<tr id="UpdateSamples__row152511314164512"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.1 "><p id="UpdateSamples__p1748811418452">@modelarts:size</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.2 "><p id="UpdateSamples__p148831416456">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.3.6.2.5.1.3 "><p id="UpdateSamples__p4488414104520">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="40%" headers="mcps1.3.3.6.2.5.1.4 "><p id="UpdateSamples__p2489161411456">Image size (width, height, and depth of the image), which is a default attribute, with type of <strong id="UpdateSamples__b18489121474517">List</strong>. In the list, the first number indicates the width (pixels), the second number indicates the height (pixels), and the third number indicates the depth (the depth can be left blank and the default value is <strong id="UpdateSamples__b1248931418456">3</strong>). For example, <strong id="UpdateSamples__b44891614104510">[100,200,3]</strong> and <strong id="UpdateSamples__b84892145454">[100,200]</strong> are both valid. Note: This parameter is mandatory only when the sample label list contains the object detection label.</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section"><h4 class="sectiontitle">Response Parameters</h4><p><strong>Status code: 200</strong></p>
+<div class="section" id="UpdateSamples__section94890145458"><h4 class="sectiontitle">Response Parameters</h4><p id="UpdateSamples__p2048961484516"><strong id="UpdateSamples__b10490814184516">Status code: 200</strong></p>
 
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__response_UpdateSamplesResp" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Response body parameters</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p>Parameter</p>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__response_UpdateSamplesResp" frame="border" border="1" rules="all"><caption><b>Table 7 </b>Response body parameters</caption><thead align="left"><tr id="UpdateSamples__row728313146453"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.1"><p id="UpdateSamples__p14902014134515">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.3.2.4.1.2"><p id="UpdateSamples__p9490014114513">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.3.2.4.1.3"><p id="UpdateSamples__p12490121412457">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>error_code</p>
+<tbody><tr id="UpdateSamples__row1328311147457"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateSamples__p94919149457">error_code</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateSamples__p11491191416458">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Error code.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>error_msg</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Error message.</p>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateSamples__p0491141414452">Error code.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>results</p>
+<tr id="UpdateSamples__row13283171411452"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateSamples__p14491111424518">error_msg</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Array of <a href="#UpdateSamples__response_BatchResponse">BatchResponse</a> objects</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateSamples__p1849141424512">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Response list for updating sample labels in batches.</p>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateSamples__p5492201454514">Error message.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p>success</p>
+<tr id="UpdateSamples__row18283214154512"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateSamples__p1849219148454">results</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p>Boolean</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateSamples__p1549231417457">Array of <a href="#UpdateSamples__response_BatchResponse">BatchResponse</a> objects</p>
 </td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p>Whether the operation is successful. The options are as follows: - <strong>true</strong>: successful - <strong>false</strong>: failed</p>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateSamples__p9493201414458">Response list for updating sample labels in batches.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row14283161418459"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.1 "><p id="UpdateSamples__p164931614134518">success</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.3.2.4.1.2 "><p id="UpdateSamples__p349391444519">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.3.2.4.1.3 "><p id="UpdateSamples__p114941914194512">Whether the operation is successful. The options are as follows:</p>
+<ul id="UpdateSamples__ul749419143455"><li id="UpdateSamples__li1749491444520"><strong id="UpdateSamples__b1949551414455">true</strong>: successful</li><li id="UpdateSamples__li1849517147454"><strong id="UpdateSamples__b1449551484510">false</strong>: failed</li></ul>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div class="tablenoborder"><a name="UpdateSamples__response_BatchResponse"></a><a name="response_BatchResponse"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__response_BatchResponse" frame="border" border="1" rules="all"><caption><b>Table 8 </b>BatchResponse</caption><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p>Parameter</p>
+<div class="tablenoborder"><a name="UpdateSamples__response_BatchResponse"></a><a name="response_BatchResponse"></a><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__response_BatchResponse" frame="border" border="1" rules="all"><caption><b>Table 8 </b>BatchResponse</caption><thead align="left"><tr id="UpdateSamples__row52931414144514"><th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.1"><p id="UpdateSamples__p1549611434510">Parameter</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p>Type</p>
+<th align="left" class="cellrowborder" valign="top" width="20%" id="mcps1.3.4.4.2.4.1.2"><p id="UpdateSamples__p20497201474516">Type</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="60%" id="mcps1.3.4.4.2.4.1.3"><p id="UpdateSamples__p15497414144518">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>error_code</p>
+<tbody><tr id="UpdateSamples__row5293414124516"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateSamples__p549751413456">error_code</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateSamples__p1149761418451">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Error code.</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>error_msg</p>
-</td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>String</p>
-</td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Error message.</p>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateSamples__p12498714164518">Error code.</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p>success</p>
+<tr id="UpdateSamples__row22941714134516"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateSamples__p164986142459">error_msg</p>
 </td>
-<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p>Boolean</p>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateSamples__p18498101434514">String</p>
 </td>
-<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p>Check whether the operation is successful. The options are as follows: - <strong>true</strong>: The operation is successful. - <strong>false</strong>: The operation is failed.</p>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateSamples__p1049891419459">Error message.</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row829415146454"><td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.1 "><p id="UpdateSamples__p1949881417456">success</p>
+</td>
+<td class="cellrowborder" valign="top" width="20%" headers="mcps1.3.4.4.2.4.1.2 "><p id="UpdateSamples__p64991714164520">Boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="60%" headers="mcps1.3.4.4.2.4.1.3 "><p id="UpdateSamples__p14499914194516">Check whether the operation is successful. The options are as follows:</p>
+<ul id="UpdateSamples__ul164991814184512"><li id="UpdateSamples__li1549910142455"><strong id="UpdateSamples__b1749941416457">true</strong>: The operation is successful.</li><li id="UpdateSamples__li1749901434515"><strong id="UpdateSamples__b1149917147458">false</strong>: The operation is failed.</li></ul>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section"><h4 class="sectiontitle">Example Requests</h4><p>Updating Sample Labels in Batches</p>
-<pre class="screen">{
+<div class="section" id="UpdateSamples__section175001814144517"><h4 class="sectiontitle">Example Requests</h4><p id="UpdateSamples__p950041434514">Updating Sample Labels in Batches</p>
+<pre class="screen" id="UpdateSamples__screen1250021424515">{
   "samples" : [ {
     "sample_id" : "8b583c44bf249f8ba43ea42c92920221",
     "labels" : [ {
@@ -500,44 +499,44 @@
   } ]
 }</pre>
 </div>
-<div class="section"><h4 class="sectiontitle">Example Responses</h4><p><strong>Status code: 200</strong></p>
-<p>OK</p>
-<pre class="screen">{
+<div class="section" id="UpdateSamples__section1650211140455"><h4 class="sectiontitle">Example Responses</h4><p id="UpdateSamples__p35040148455"><strong id="UpdateSamples__b1504014114512">Status code: 200</strong></p>
+<p id="UpdateSamples__p050451410459">OK</p>
+<pre class="screen" id="UpdateSamples__screen13505121474513">{
   "success" : true
 }</pre>
 </div>
-<div class="section"><h4 class="sectiontitle">Status Codes</h4>
-<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__status_code" frame="border" border="1" rules="all"><thead align="left"><tr><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p>Status Code</p>
+<div class="section" id="UpdateSamples__section14506114154516"><h4 class="sectiontitle">Status Codes</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="UpdateSamples__status_code" frame="border" border="1" rules="all"><thead align="left"><tr id="UpdateSamples__row17313814124517"><th align="left" class="cellrowborder" valign="top" width="15%" id="mcps1.3.7.2.1.3.1.1"><p id="UpdateSamples__p3506714184515">Status Code</p>
 </th>
-<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p>Description</p>
+<th align="left" class="cellrowborder" valign="top" width="85%" id="mcps1.3.7.2.1.3.1.2"><p id="UpdateSamples__p55061514164518">Description</p>
 </th>
 </tr>
 </thead>
-<tbody><tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>200</p>
+<tbody><tr id="UpdateSamples__row5313131419453"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p id="UpdateSamples__p165063147458">200</p>
 </td>
-<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>OK</p>
-</td>
-</tr>
-<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>401</p>
-</td>
-<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Unauthorized</p>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p id="UpdateSamples__p11507314144517">OK</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>403</p>
+<tr id="UpdateSamples__row153131114154518"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p id="UpdateSamples__p6507181464511">401</p>
 </td>
-<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Forbidden</p>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p id="UpdateSamples__p6512814174517">Unauthorized</p>
 </td>
 </tr>
-<tr><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p>404</p>
+<tr id="UpdateSamples__row331331424515"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p id="UpdateSamples__p2512214174513">403</p>
 </td>
-<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p>Not Found</p>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p id="UpdateSamples__p1851216149457">Forbidden</p>
+</td>
+</tr>
+<tr id="UpdateSamples__row18313121484519"><td class="cellrowborder" valign="top" width="15%" headers="mcps1.3.7.2.1.3.1.1 "><p id="UpdateSamples__p651221418450">404</p>
+</td>
+<td class="cellrowborder" valign="top" width="85%" headers="mcps1.3.7.2.1.3.1.2 "><p id="UpdateSamples__p10513614134514">Not Found</p>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="section"><h4 class="sectiontitle">Error Codes</h4><p>See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
+<div class="section" id="UpdateSamples__section205135147452"><h4 class="sectiontitle">Error Codes</h4><p id="UpdateSamples__p205131914124518">See <a href="modelarts_03_0095.html">Error Codes</a>.</p>
 </div>
 </div>
 <div>
