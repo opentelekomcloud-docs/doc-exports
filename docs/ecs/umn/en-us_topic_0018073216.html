@@ -48,8 +48,10 @@
 <p id="EN-US_TOPIC_0018073216__p30721816164524"><strong id="EN-US_TOPIC_0018073216__b84235270601921">Example 2:</strong></p>
 <p id="EN-US_TOPIC_0018073216__p55315599164548">Based on example 1, if you are required to enable routing for default public network traffic through standby NIC <strong id="EN-US_TOPIC_0018073216__b7037019810216">eth1</strong>, perform the following operations to configure a route:</p>
 <ol id="EN-US_TOPIC_0018073216__ol16816170164734"><li id="EN-US_TOPIC_0018073216__li56130240164734">Log in to the <span id="EN-US_TOPIC_0018073216__text66355316182">ECS</span>.</li><li id="EN-US_TOPIC_0018073216__li51081423164738">Run the following command to delete the default route:<p id="EN-US_TOPIC_0018073216__p49989555164813"><a name="EN-US_TOPIC_0018073216__li51081423164738"></a><a name="li51081423164738"></a><strong id="EN-US_TOPIC_0018073216__b62521877164816">ip route delete default</strong></p>
+<div class="notice" id="EN-US_TOPIC_0018073216__note1762381210332"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-en-us.png"> </span><div class="noticebody"><p id="EN-US_TOPIC_0018073216__p96231412163313">Exercise caution when deleting the default route because this operation will interrupt the network and result in SSH login failures.</p>
+</div></div>
 </li><li id="EN-US_TOPIC_0018073216__li16873338164820">Run the following command to configure a new default route:<p id="EN-US_TOPIC_0018073216__p2759619316498"><a name="EN-US_TOPIC_0018073216__li16873338164820"></a><a name="li16873338164820"></a><strong id="EN-US_TOPIC_0018073216__b7933526124213">ip route add 0.0.0.0/0 dev eth1 via 192.168.2.1</strong></p>
-<p id="EN-US_TOPIC_0018073216__p52517685164934">In the preceding command, <strong id="EN-US_TOPIC_0018073216__b1965872420">192.168.2.1</strong> is the gateway IP address of standby NIC <strong id="EN-US_TOPIC_0018073216__b706638583">eth1</strong>.</p>
+<p id="EN-US_TOPIC_0018073216__p52517685164934">In the preceding command, <strong id="EN-US_TOPIC_0018073216__b921800526">192.168.2.1</strong> is the gateway IP address of standby NIC <strong id="EN-US_TOPIC_0018073216__b113606894">eth1</strong>.</p>
 </li></ol>
 </div>
 </div>

@@ -1,0 +1,556 @@
+<a name="EN-US_TOPIC_0094148850"></a><a name="EN-US_TOPIC_0094148850"></a>
+
+<h1 class="topictitle1">Querying Details About ECSs</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_section22874919"><h4 class="sectiontitle">Function</h4><p id="EN-US_TOPIC_0094148850__p8280152074814">This API is used to query ECSs according to search criteria and details about the ECSs.</p>
+<p id="EN-US_TOPIC_0094148850__p66771145356">The information can be queried includes ECS billing modes and ECS frozen statuses.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_section4547687"><h4 class="sectiontitle">URI</h4><p id="EN-US_TOPIC_0094148850__p41811212101012">GET /v1/{project_id}/cloudservers/detail?flavor={flavor}&amp;name={name}&amp;status={status}&amp;limit={limit}&amp;offset={offset}&amp;not-tags={not-tags}&amp;reservation_id={reservation_id}&amp;&amp;tags={tags}&amp;ip={ip}</p>
+<div class="p" id="EN-US_TOPIC_0094148850__p8588188151018"><a href="#EN-US_TOPIC_0094148850__table32475667">Table 1</a> describes the parameters in the URI.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0094148850__table32475667"></a><a name="table32475667"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0094148850__table32475667" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Path parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0094148850__row44937496"><th align="left" class="cellrowborder" valign="top" width="18.86%" id="mcps1.3.2.3.2.2.4.1.1"><p id="EN-US_TOPIC_0094148850__p16058544">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17.169999999999998%" id="mcps1.3.2.3.2.2.4.1.2"><p id="EN-US_TOPIC_0094148850__p25673664">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="63.970000000000006%" id="mcps1.3.2.3.2.2.4.1.3"><p id="EN-US_TOPIC_0094148850__p66300913">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0094148850__row1664874"><td class="cellrowborder" valign="top" width="18.86%" headers="mcps1.3.2.3.2.2.4.1.1 "><p id="EN-US_TOPIC_0094148850__p637140">project_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17.169999999999998%" headers="mcps1.3.2.3.2.2.4.1.2 "><p id="EN-US_TOPIC_0094148850__p51608407">Yes</p>
+</td>
+<td class="cellrowborder" valign="top" width="63.970000000000006%" headers="mcps1.3.2.3.2.2.4.1.3 "><p id="EN-US_TOPIC_0094148850__p37593705">Specifies the project ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0094148850__table49939793" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Query parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0094148850__row40936054"><th align="left" class="cellrowborder" valign="top" width="19%" id="mcps1.3.3.2.5.1.1"><p id="EN-US_TOPIC_0094148850__p27486043">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="17%" id="mcps1.3.3.2.5.1.2"><p id="EN-US_TOPIC_0094148850__p11776988">Mandatory</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="12%" id="mcps1.3.3.2.5.1.3"><p id="EN-US_TOPIC_0094148850__p14412003">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="52%" id="mcps1.3.3.2.5.1.4"><p id="EN-US_TOPIC_0094148850__p37367427">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0094148850__row447192317445"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p0473123104410">offset</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p5473102374418">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p447382384411">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p193574196363">Specifies a page number. </p>
+<p id="EN-US_TOPIC_0094148850__p273217563714">The value must be greater than or equal to <strong id="EN-US_TOPIC_0094148850__b64961322204618">0</strong> and the default value is <strong id="EN-US_TOPIC_0094148850__b192973156465">1</strong>.</p>
+<p id="EN-US_TOPIC_0094148850__p20184253142913">If the value is <strong id="EN-US_TOPIC_0094148850__b1767273615477">0</strong>, the first page is displayed, which is the same as the value <strong id="EN-US_TOPIC_0094148850__b193189305488">1</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row25743851"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p4877220">flavor</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p59510545">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p55624859">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p16768629">Specifies the flavor ID. For details about the published flavors, see <strong id="EN-US_TOPIC_0094148850__b1032643215539">ECS Types</strong> in <em id="EN-US_TOPIC_0094148850__i169357377532">Elastic Cloud Server User Guide</em>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row16699940"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p10517875">name</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p46641535">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p19867951">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p55330634">Specifies the ECS name, which is fuzzy matched.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row28213660"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p3605162">status</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p23582716">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p31151867">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p26915331">Specifies the ECS status.</p>
+<p id="EN-US_TOPIC_0094148850__p13233363305">Options:</p>
+<p id="EN-US_TOPIC_0094148850__p4838184712718"><strong id="EN-US_TOPIC_0094148850__b574812125447">ACTIVE</strong>, <strong id="EN-US_TOPIC_0094148850__b1675617125441">BUILD</strong>, <strong id="EN-US_TOPIC_0094148850__b12756131214446">ERROR</strong>, <strong id="EN-US_TOPIC_0094148850__b375751219446">HARD_REBOOT</strong>, <strong id="EN-US_TOPIC_0094148850__b15757131284412">MIGRATING</strong>, <strong id="EN-US_TOPIC_0094148850__b47586120441">REBOOT</strong>, <strong id="EN-US_TOPIC_0094148850__b1775812128448">REBUILD</strong>, <strong id="EN-US_TOPIC_0094148850__b675871224414">RESIZE</strong>, <strong id="EN-US_TOPIC_0094148850__b207591012134418">REVERT_RESIZE</strong>, <strong id="EN-US_TOPIC_0094148850__b575920128442">SHUTOFF</strong>, and <strong id="EN-US_TOPIC_0094148850__b9760181219443">VERIFY_RESIZE</strong></p>
+<p id="EN-US_TOPIC_0094148850__p1381212457538">For details, see <a href="en-us_topic_0178420672.html">ECS Statuses</a>.</p>
+<div class="note" id="EN-US_TOPIC_0094148850__note124521913175616"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0094148850__en-us_topic_0020212688_p213418685710">When an ECS is in an intermediate state, the statuses that can be obtained are as follows:</p>
+<ul id="EN-US_TOPIC_0094148850__ul0588145013391"><li id="EN-US_TOPIC_0094148850__li95881250153917"><strong id="EN-US_TOPIC_0094148850__b208231124618">ACTIVE</strong>: <strong id="EN-US_TOPIC_0094148850__b18896162054618">ACTIVE</strong>, <strong id="EN-US_TOPIC_0094148850__b418322344613">REBOOT</strong>, <strong id="EN-US_TOPIC_0094148850__b9498132714617">HARD_REBOOT</strong>, <strong id="EN-US_TOPIC_0094148850__b1854412904616">REBUILD</strong>, or <strong id="EN-US_TOPIC_0094148850__b414233211467">MIGRATING</strong></li><li id="EN-US_TOPIC_0094148850__li779525833917"><strong id="EN-US_TOPIC_0094148850__b18521938104611">SHUTOFF</strong>: <strong id="EN-US_TOPIC_0094148850__b4807043184616">SHUTOFF</strong>, <strong id="EN-US_TOPIC_0094148850__b14928194544610">RESIZE</strong>, or <strong id="EN-US_TOPIC_0094148850__b15518511466">REBUILD</strong></li><li id="EN-US_TOPIC_0094148850__li105638820407"><strong id="EN-US_TOPIC_0094148850__b873710571468">ERROR</strong>: <strong id="EN-US_TOPIC_0094148850__b87310419476">ERROR</strong> or <strong id="EN-US_TOPIC_0094148850__b186316154710">REBUILD</strong></li><li id="EN-US_TOPIC_0094148850__li31951311154013"><strong id="EN-US_TOPIC_0094148850__b256611111475">VERIFY_RESIZE</strong>: <strong id="EN-US_TOPIC_0094148850__b134401017174712">VERIFY_RESIZE</strong> or <strong id="EN-US_TOPIC_0094148850__b16614101924711">REVERT_RESIZE</strong></li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row63147504"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p14674162">limit</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p47756489">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p43070429">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p102032048111316">Specifies the maximum number of ECSs on one page.</p>
+<p id="EN-US_TOPIC_0094148850__p58503618">Each page contains 25 ECSs by default, and a maximum of 1000 ECSs are returned. For large volumes of data, you are advised to set the value to <strong id="EN-US_TOPIC_0094148850__b13426161812516">100</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row977019541655"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p1077175414512">tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p1277165415514">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p1277120547517">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p1777118541552">Obtains the ECSs with specified tags.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row3418391114343"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p1743343514343">not-tags</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p282213114343">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p2726607214343">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p497882461442">Queries ECSs whose <strong id="EN-US_TOPIC_0094148850__b84235270617537">tag</strong> field does not contain the specified value.</p>
+<p id="EN-US_TOPIC_0094148850__p1099434663417">For example, if the queried ECS list should not contain BMSs, set this parameter as follows: not-tags=__type_baremetal</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row15964135162918"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p151431598259">reservation_id</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p11452059192515">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p0145165992515">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p191452591254">Specifies the ID returned when ECSs are created in a batch by using OpenStack Nova API. This parameter is used to query ECSs created in a batch.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row415213232011"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p1098119240115">ip</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p18981172412115">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p59817240117">String</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p798132410120">Specifies the filtering result for IPv4 addresses, which are fuzzy matched.</p>
+<p id="EN-US_TOPIC_0094148850__p2935142172820">These IP addresses are private IP addresses of the ECS.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row183618513211"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p7154413125">all_tenants</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p21545131026">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p715416131426">boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p1950133992011">If this parameter is set to <strong id="EN-US_TOPIC_0094148850__b4751134020247">true</strong>, ECSs of all tenants are returned. The default value is <strong id="EN-US_TOPIC_0094148850__b484618132512">false</strong>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row113472490216"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p983214552211">availability_zone</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p1283235515210">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p108323551421">string</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p108324551528">Specifies the AZ where the ECS resides.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row376317142311"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.3.3.2.5.1.1 "><p id="EN-US_TOPIC_0094148850__p1055919520312">deleted</p>
+</td>
+<td class="cellrowborder" valign="top" width="17%" headers="mcps1.3.3.2.5.1.2 "><p id="EN-US_TOPIC_0094148850__p125599521231">No</p>
+</td>
+<td class="cellrowborder" valign="top" width="12%" headers="mcps1.3.3.2.5.1.3 "><p id="EN-US_TOPIC_0094148850__p19559205214318">boolean</p>
+</td>
+<td class="cellrowborder" valign="top" width="52%" headers="mcps1.3.3.2.5.1.4 "><p id="EN-US_TOPIC_0094148850__p17559155215313">If this parameter is set to <strong id="EN-US_TOPIC_0094148850__b1930716155268">true</strong>, deleted ECSs are returned. The default value is <strong id="EN-US_TOPIC_0094148850__b922218249262">false</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__section34351713123619"><h4 class="sectiontitle">Request</h4><p id="EN-US_TOPIC_0094148850__p6843816171119">None</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_section41040854"><h4 class="sectiontitle">Response</h4><div class="p" id="EN-US_TOPIC_0094148850__p5503185815121"><a href="#EN-US_TOPIC_0094148850__en-us_topic_0057972909_table36183900">Table 3</a> describes the response parameters.
+<div class="tablenoborder"><a name="EN-US_TOPIC_0094148850__en-us_topic_0057972909_table36183900"></a><a name="en-us_topic_0057972909_table36183900"></a><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_table36183900" frame="border" border="1" rules="all"><caption><b>Table 3 </b>Response parameters</caption><thead align="left"><tr id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_row28561698"><th align="left" class="cellrowborder" valign="top" width="21.38%" id="mcps1.3.5.2.2.2.4.1.1"><p id="EN-US_TOPIC_0094148850__p1964713131122">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="28.08%" id="mcps1.3.5.2.2.2.4.1.2"><p id="EN-US_TOPIC_0094148850__p964751312121">Type</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="50.54%" id="mcps1.3.5.2.2.2.4.1.3"><p id="EN-US_TOPIC_0094148850__p464731314120">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_row26270940"><td class="cellrowborder" valign="top" width="21.38%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_p47571430">servers</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.08%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_p28080649">Array of objects</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.54%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0094148850__p467113651412">Specifies details about ECSs. For details, see <a href="en-us_topic_0094148849.html#EN-US_TOPIC_0094148849__en-us_topic_0057972887_table61673566">Table 3</a>.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0094148850__row137141615131912"><td class="cellrowborder" valign="top" width="21.38%" headers="mcps1.3.5.2.2.2.4.1.1 "><p id="EN-US_TOPIC_0094148850__p19714151581915">count</p>
+</td>
+<td class="cellrowborder" valign="top" width="28.08%" headers="mcps1.3.5.2.2.2.4.1.2 "><p id="EN-US_TOPIC_0094148850__p771421551912">Integer</p>
+</td>
+<td class="cellrowborder" valign="top" width="50.54%" headers="mcps1.3.5.2.2.2.4.1.3 "><p id="EN-US_TOPIC_0094148850__p1871461510197">Specifies the total number of ECSs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__section19773152510136"><h4 class="sectiontitle">Example Request</h4><pre class="screen" id="EN-US_TOPIC_0094148850__screen116341412313">GET https://{endpoint}/v1/{project_id}/cloudservers/detail?offset=1&amp;limit=10</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__section198081555114014"><h4 class="sectiontitle">Example Response</h4><pre class="screen" id="EN-US_TOPIC_0094148850__screen109261755204016">{
+	"count": 4,
+	"servers": [{
+                "fault": null,
+		"id": "b37fd80e-ac67-4d02-b9f1-9891c9c0fabf",
+		"name": "ecs-yuankai2",
+		"addresses": {
+			"164489f6-cbf7-45b4-b6d0-d407c48cf7fc": [{
+				"version": "4",
+				"addr": "192.168.0.206",
+				"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:95:88:3f",
+				"OS-EXT-IPS:port_id": "7b5d615c-186d-4646-9cb8-444addfe9b92",
+				"OS-EXT-IPS:type": "fixed"
+			},
+			{
+				"version": "4",
+				"addr": "192.168.0.8",
+				"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:1d:88:43",
+				"OS-EXT-IPS:port_id": "dda2027b-2f03-497b-8d42-620da2baacc3",
+				"OS-EXT-IPS:type": "fixed"
+			}]
+		},
+		"flavor": {
+			"disk": "0",
+			"vcpus": "1",
+			"ram": "1024",
+			"id": "c1.medium",
+			"name": "c1.medium"
+		},
+		"accessIPv4": "",
+		"accessIPv6": "",
+		"status": "SHUTOFF",
+                "image": {
+                       "id": "1ce5800a-e487-4c1b-b264-3353a39e2b4b"
+                 },
+		"hostId": "f92345b97fd291f67a29ed735a82a8983f370175d2ba3d18d66893f4",
+		"updated": "2018-08-14T07:26:49Z",
+		"created": "2018-08-13T13:46:09Z",
+		"metadata": {
+			"metering.image_id": "af60e0d5-6952-4f3d-b0ed-31bb19d4a692",
+			"metering.resourcespeccode": "c1.medium.linux",
+			"image_name": "HEC_Public_Cloudinit_CentOS_7.4_64bit",
+			"metering.product_id": "00301-253164-0--0",
+			"os_bit": "64",
+			"lockSourceId": "",
+			"lockScene": "",
+			"metering.order_id": "CS1808132145NRVRE",
+			"lockCheckEndpoint": "",
+			"metering.imagetype": "gold",
+			"lockSource": "",
+			"metering.resourcetype": "1",
+			"vpc_id": "164489f6-cbf7-45b4-b6d0-d407c48cf7fc",
+			"os_type": "Linux",
+			"charging_mode": "1"
+		},
+		"tags": [],
+		"description": "ecs-4cff",
+		"locked": false,
+		"config_drive": "",
+		"tenant_id": "edcb94a885a84ed3a3fdf8ea4d2741da",
+		"user_id": "bb7f23e27e7e46f3aaceb5f53a158bdc",
+		"os-extended-volumes:volumes_attached": [{
+			"device": "/dev/sda",
+			"bootIndex": "0",
+			"id": "2edc879f-022e-4bd6-b079-95a27564d449",
+			"delete_on_termination": "false"
+		}],
+                "OS-EXT-STS:task_state": null,
+		"OS-EXT-STS:power_state": 4,
+		"OS-EXT-STS:vm_state": "stopped",
+		"OS-EXT-SRV-ATTR:host": "az1.dc1",
+		"OS-EXT-SRV-ATTR:instance_name": "instance-00137941",
+		"OS-EXT-SRV-ATTR:hypervisor_hostname": "nova001@248",
+		"OS-DCF:diskConfig": "MANUAL",
+		"OS-EXT-AZ:availability_zone":"az1-dc1", //AZ name
+		"os:scheduler_hints": {
+			
+		},
+		"OS-EXT-SRV-ATTR:root_device_name": "/dev/sda",
+		"OS-EXT-SRV-ATTR:ramdisk_id": "",
+		
+		"OS-EXT-SRV-ATTR:user_data": "IyEvYmluL2Jhc2gKZWNobyAncm9vdDokNiRKQ2FzUWQkbm5wVmhJUFZlNVMwc3pXbnJGLnZVZ1FCWk4xTEo5Vy8wd09WTmFZaWpBRXdtRnhuQmZaTllVZXhBWktVWFVTeVhEeERuSUMzV2JjZEJyQUVBZkZvLy8nIHwgY2hwYXNzd2QgLWU7",
+		"OS-SRV-USG:launched_at": "2018-08-13T13:46:46.000000",
+		"OS-EXT-SRV-ATTR:kernel_id": "",
+		"OS-EXT-SRV-ATTR:launch_index": 0,
+		"host_status": "UP",
+		"OS-EXT-SRV-ATTR:reservation_id": "r-a8mg9vwr",
+		"OS-EXT-SRV-ATTR:hostname": "ecs-4cff",
+		"sys_tags": [{
+			"key": "_sys_enterprise_project_id",
+			"value": "441d5677-b76a-4dd4-a97a-ef7fd633c095"
+		}],
+		"security_groups": [{
+                        "id": "71846bf6-1cda-4515-8590-3707be295e76",
+			"name": "Sys-FullAccess"
+		},
+		{
+                        "id": "b1786350-da65-11e7-b312-0255ac101b03",
+			"name": "default"
+		}]
+	},
+	{
+                "fault": null,
+		"id": "8380dcc9-0eac-4407-9f9e-df8c9eddeacd",
+		"name": "ecs-f680",
+		"addresses": {
+			"164489f6-cbf7-45b4-b6d0-d407c48cf7fc": [{
+				"version": "4",
+				"addr": "192.168.0.218",
+				"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:bb:b3:fe",
+				"OS-EXT-IPS:port_id": "240c696f-68d8-4f3f-941d-fecf2b375132",
+				"OS-EXT-IPS:type": "fixed"
+			}]
+		},
+		"flavor": {
+			"disk": "0",
+			"vcpus": "1",
+			"ram": "1024",
+			"id": "c1.medium",
+			"name": "c1.medium"
+		},
+		"accessIPv4": "",
+		"accessIPv6": "",
+		"status": "SHUTOFF",
+                "image": {
+                       "id": "1ce5800a-e487-4c1b-b264-3353a39e2b4b"
+                 },
+		"hostId": "f92345b97fd291f67a29ed735a82a8983f370175d2ba3d18d66893f4",
+		"updated": "2018-08-14T03:01:00Z",
+		"created": "2018-08-13T13:38:29Z",
+		"metadata": {
+			"metering.image_id": "af60e0d5-6952-4f3d-b0ed-31bb19d4a692",
+			"metering.imagetype": "gold",
+			"metering.resourcespeccode": "c1.medium.linux",
+			"image_name": "HEC_Public_Cloudinit_CentOS_7.4_64bit",
+			"metering.resourcetype": "1",
+			"os_bit": "64",
+			"vpc_id": "164489f6-cbf7-45b4-b6d0-d407c48cf7fc",
+			"os_type": "Linux",
+			"charging_mode": "0"
+		},
+		"tags": [],
+		"description": "ecs-f680",
+		"locked": false,
+		"config_drive": "",
+		"tenant_id": "edcb94a885a84ed3a3fdf8ea4d2741da",
+		"user_id": "61ee747d36bf421fa25c51a3b9565046",
+		"os-extended-volumes:volumes_attached": [{
+			"device": "/dev/sda",
+			"bootIndex": "0",
+			"id": "3721b948-9c2f-4980-90ad-b2a16811f58c",
+			"delete_on_termination": "false"
+		}],
+                "OS-EXT-STS:task_state": null,
+		"OS-EXT-STS:power_state": 4,
+		"OS-EXT-STS:vm_state": "stopped",
+		"OS-EXT-SRV-ATTR:host": "az1.dc1",
+		"OS-EXT-SRV-ATTR:instance_name": "instance-00137937",
+		"OS-EXT-SRV-ATTR:hypervisor_hostname": "nova001@248",
+		"OS-DCF:diskConfig": "MANUAL",
+		"OS-EXT-AZ:availability_zone":"az1-dc1", //AZ name
+		"os:scheduler_hints": {
+		},
+		"OS-EXT-SRV-ATTR:root_device_name": "/dev/sda",
+		"OS-EXT-SRV-ATTR:ramdisk_id": "",
+		
+		"OS-EXT-SRV-ATTR:user_data": "IyEvYmluL2Jhc2gKZWNobyAncm9vdDokNiR5aG9aeFIkVE00OWlwSGQ2OEFWcjlTMTFXNEZrZmFYTENVbEkvd0xVTmdSVjhOb0dCem5WOWFsU1lEN0ZNSHc0VmtwdU9GOERyLncudGUzVmRHLnVmY005elVZSDEnIHwgY2hwYXNzd2QgLWU7",
+		"OS-SRV-USG:launched_at": "2018-08-13T13:38:53.000000",
+		"OS-EXT-SRV-ATTR:kernel_id": "",
+		"OS-EXT-SRV-ATTR:launch_index": 0,
+		"host_status": "UP",
+		"OS-EXT-SRV-ATTR:reservation_id": "r-7e2g78rq",
+		"OS-EXT-SRV-ATTR:hostname": "ecs-f680",
+		"sys_tags": [{
+			"key": "_sys_enterprise_project_id",
+			"value": "441d5677-b76a-4dd4-a97a-ef7fd633c095"
+		}],
+		"security_groups": [{
+			"name": "test"
+		}]
+	},
+	{
+                "fault": null,
+		"id": "fb70fed9-5774-44a7-ad4a-af3ea2c2da61",
+		"name": "ecs-3993",
+		"addresses": {
+			"00159d7d-b3c3-4108-8bc4-6658814e6422": [{
+				"version": "4",
+				"addr": "192.168.20.83",
+				"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:a9:8d:88",
+				"OS-EXT-IPS:port_id": "579ab762-bf89-435e-80ad-a8bdd25119c5",
+				"OS-EXT-IPS:type": "fixed"
+			}]
+		},
+		"flavor": {
+			"disk": "0",
+			"vcpus": "1",
+			"ram": "1024",
+			"id": "c1.medium",
+			"name": "c1.medium"
+		},
+		"accessIPv4": "",
+		"accessIPv6": "",
+		"status": "SHUTOFF",
+                "image": {
+                       "id": "1ce5800a-e487-4c1b-b264-3353a39e2b4b"
+                 },
+		"hostId": "f92345b97fd291f67a29ed735a82a8983f370175d2ba3d18d66893f4",
+		"updated": "2018-08-14T03:01:03Z",
+		"created": "2018-08-13T13:38:02Z",
+		"metadata": {
+			"metering.image_id": "af60e0d5-6952-4f3d-b0ed-31bb19d4a692",
+			"metering.imagetype": "gold",
+			"metering.resourcespeccode": "c1.medium.linux",
+			"image_name": "HEC_Public_Cloudinit_CentOS_7.4_64bit",
+			"metering.resourcetype": "1",
+			"os_bit": "64",
+			"vpc_id": "00159d7d-b3c3-4108-8bc4-6658814e6422",
+			"os_type": "Linux",
+			"charging_mode": "0"
+		},
+		"tags": [],
+		"description": "ecs-3993",
+		"locked": false,
+		"config_drive": "",
+		"tenant_id": "edcb94a885a84ed3a3fdf8ea4d2741da",
+		"user_id": "eb4698fe015848e9a3e86cc9956e54fa",
+		"key_name": "KeyPair-3b38",
+		"os-extended-volumes:volumes_attached": [{
+			"device": "/dev/sda",
+			"bootIndex": "0",
+			"id": "85bfbc4f-7733-419a-b171-c00585abf926",
+			"delete_on_termination": "false"
+		}],
+                "OS-EXT-STS:task_state": null,
+		"OS-EXT-STS:power_state": 4,
+		"OS-EXT-STS:vm_state": "stopped",
+		"OS-EXT-SRV-ATTR:host": "az1.dc1",
+		"OS-EXT-SRV-ATTR:instance_name": "instance-00137936",
+		"OS-EXT-SRV-ATTR:hypervisor_hostname": "nova001@248",
+		"OS-DCF:diskConfig": "MANUAL",
+		"OS-EXT-AZ:availability_zone":"az1-dc1", //AZ name
+		"os:scheduler_hints": {
+		},
+		"OS-EXT-SRV-ATTR:root_device_name": "/dev/sda",
+		"OS-EXT-SRV-ATTR:ramdisk_id": "",
+		
+		"OS-SRV-USG:launched_at": "2018-08-13T13:38:24.000000",
+		"OS-EXT-SRV-ATTR:kernel_id": "",
+		"OS-EXT-SRV-ATTR:launch_index": 0,
+		"host_status": "UP",
+		"OS-EXT-SRV-ATTR:reservation_id": "r-uzsewxii",
+		"OS-EXT-SRV-ATTR:hostname": "ecs-3993",
+		"sys_tags": [{
+			"key": "_sys_enterprise_project_id",
+			"value": "441d5677-b76a-4dd4-a97a-ef7fd633c095"
+		}],
+		"security_groups": [{
+			"name": "test"
+		},
+		{
+			"name": "default"
+		}]
+	},
+	{
+                "fault": null,
+		"id": "e3d3f219-b445-4a7a-8f00-e31412481f8c",
+		"name": "ecs-1f30",
+		"addresses": {
+			"00159d7d-b3c3-4108-8bc4-6658814e6422": [{
+				"version": "4",
+				"addr": "192.168.20.197",
+				"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:41:5a:32",
+				"OS-EXT-IPS:port_id": "cfa2e055-54fb-427a-bde4-128bda47ae5c",
+				"OS-EXT-IPS:type": "fixed"
+			}]
+		},
+		"flavor": {
+			"disk": "0",
+			"vcpus": "1",
+			"ram": "1024",
+			"id": "c1.medium",
+			"name": "c1.medium"
+		},
+		"accessIPv4": "",
+		"accessIPv6": "",
+		"status": "ACTIVE",
+                "image": {
+                       "id": "1ce5800a-e487-4c1b-b264-3353a39e2b4b"
+                 },
+		"progress": 0,
+		"hostId": "f92345b97fd291f67a29ed735a82a8983f370175d2ba3d18d66893f4",
+		"updated": "2018-08-15T08:16:01Z",
+		"created": "2018-08-13T11:57:29Z",
+		"metadata": {
+			"sadfasfasf": "sdffffd",
+			"metering.order_id": "CS180813193577ORO",
+			"metering.imagetype": "gold",
+			"metering.resourcespeccode": "c1.medium.win",
+			"metering.image_id": "65cb40e6-f67e-4bef-a1e7-808166a5999d",
+			"image_name": "HEC_Public_Windows2008R2_Ent_64bit40G_English",
+			"aaaaaa": "0",
+			"metering.resourcetype": "1",
+			"aaaa": "0",
+			"metering.product_id": "00301-146042-0--0",
+			"os_bit": "64",
+			"vpc_id": "00159d7d-b3c3-4108-8bc4-6658814e6422",
+			"os_type": "Windows",
+			"charging_mode": "1"
+		},
+		"tags": [],
+		"description": "ecs-1f30",
+		"locked": false,
+		"config_drive": "",
+		"tenant_id": "edcb94a885a84ed3a3fdf8ea4d2741da",
+		"user_id": "bb7f23e27e7e46f3aaceb5f53a158bdc",
+		"key_name": "Autotest_Init_TC_OriginalAPI_Create_Keypairs_02_keypair",
+		"os-extended-volumes:volumes_attached": [{
+			"device": "/dev/sda",
+			"bootIndex": "0",
+			"id": "5043f66b-a0d8-4eb2-8c48-49976bcdc253",
+			"delete_on_termination": "false"
+		}],
+                "OS-EXT-STS:task_state": null,
+		"OS-EXT-STS:power_state": 1,
+		"OS-EXT-STS:vm_state": "active",
+		"OS-EXT-SRV-ATTR:host": "az1.dc1",
+		"OS-EXT-SRV-ATTR:instance_name": "instance-0013772d",
+		"OS-EXT-SRV-ATTR:hypervisor_hostname": "nova001@248",
+		"OS-DCF:diskConfig": "MANUAL",
+		"OS-EXT-AZ:availability_zone":"az1-dc1", //AZ name
+		"os:scheduler_hints": {
+		},
+		"OS-EXT-SRV-ATTR:root_device_name": "/dev/sda",
+		"OS-EXT-SRV-ATTR:ramdisk_id": "",
+		
+		"OS-SRV-USG:launched_at": "2018-08-13T11:57:53.576640",
+		"OS-EXT-SRV-ATTR:kernel_id": "",
+		"OS-EXT-SRV-ATTR:launch_index": 0,
+		"host_status": "UP",
+		"OS-EXT-SRV-ATTR:reservation_id": "r-xmjj4pnm",
+		"OS-EXT-SRV-ATTR:hostname": "ecs-1f30",
+		"sys_tags": [{
+			"key": "_sys_enterprise_project_id",
+			"value": "441d5677-b76a-4dd4-a97a-ef7fd633c095"
+		}],
+		"security_groups": [{
+			"name": "default"
+		}]
+	}]
+}</pre>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_section25329374"><h4 class="sectiontitle">Returned Values</h4><p id="EN-US_TOPIC_0094148850__en-us_topic_0057972909_p14055149">See <a href="en-us_topic_0022067716.html">Returned Values for General Requests</a>.</p>
+</div>
+<div class="section" id="EN-US_TOPIC_0094148850__section85821649202813"><h4 class="sectiontitle">Error Codes</h4><p id="EN-US_TOPIC_0094148850__p7233105282813">See <a href="en-us_topic_0022067717.html">Error Codes</a>.</p>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="en-us_topic_0020212657.html">Lifecycle Management</a></div>
+</div>
+</div>
+
